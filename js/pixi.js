@@ -7,7 +7,7 @@ let Application = PIXI.Application,
 const app = new Application({
 	autoResize: true, backgroundColor: 0x1099bb, resolution: devicePixelRatio || 1,
 });
-document.body.appendChild(app.view);
+document.querySelector('#frame').appendChild(app.view);
 
 loader
 	.add([
