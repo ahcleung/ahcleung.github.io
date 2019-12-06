@@ -32,6 +32,7 @@ function loadProgressHandler(loader, resource) {
 
 let state, stats, consoleScreen;
 const container = new PIXI.Container();
+const rect;
 
 function setup(){	
 	//app.stage.addChild(container);
@@ -40,7 +41,7 @@ function setup(){
 
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
-	const rect = new PIXI.Graphics()
+	rect = new PIXI.Graphics()
 		.beginFill(0xff0000)
 	  	.drawRect(-50, -50, 100, 100);
 
