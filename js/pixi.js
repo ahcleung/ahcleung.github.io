@@ -115,8 +115,8 @@ function resize() {
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight
 		);
-
-	app.renderer.resize(window.innerWidth, window.innerHeight);
+	const parent = app.view.parentNode;
+	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	//container.position.set(app.screen.width/2, app.screen.height/2);
 // 	container.x = window.innerWidth / 2;
