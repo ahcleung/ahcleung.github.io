@@ -105,15 +105,15 @@ function resize() {
 	// Resize the renderer
 	console.log(
 		"PRE-RESIZE" + 
-		"\nResolution: " + app.renderer.resolution +
+		"\nResolutionTest: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height
 		);
 
 	app.renderer.resize(window.innerWidth, window.innerHeight);
-	container.x = app.renderer.width / 2 / window.devicePixelRatio;
-	container.y = app.renderer.height / 2 / window.devicePixelRatio;
+	//container.x = app.renderer.width / 2 / window.devicePixelRatio;
+	//container.y = app.renderer.height / 2 / window.devicePixelRatio;
 	//app.renderer.resolution = window.devicePixelRatio;
 	consolePrint("RESIZE");
 
