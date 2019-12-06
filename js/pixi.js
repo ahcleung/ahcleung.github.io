@@ -128,7 +128,7 @@ function resize() {
 function consolePrint(fromText){
 	console.log(
 		fromText + 
-		"\nResolution: " + app.renderer.resolution +
+		"\nResolutionTest: " + app.renderer.resolution +
 		"\nWidth: " + app.renderer.width + 
 		"\nHeight: " + app.renderer.height +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height
