@@ -112,8 +112,8 @@ function resize() {
 		);
 
 	app.renderer.resize(window.innerWidth, window.innerHeight);
-	container.x = window.innerWidth / 2 / window.devicePixelRatio;
-	container.y = window.innerHeight / 2 / window.devicePixelRatio;
+	container.x = window.innerWidth / 2;
+	container.y = window.innerHeight / 2;
 	//app.renderer.resolution = window.devicePixelRatio;
 	consolePrint("RESIZE");
 
