@@ -3,6 +3,25 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+canvas {
+  display:block;
+}
+
+#frame {
+  /* Necessary to make sure frame width/height
+  isn't set according to the canvas element */
+  position: absolute;
+  overflow: hidden;
+  
+  /* Optional stuff for positioning */
+  top:50%;
+  left:50%;
+  width: 75%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
