@@ -87,6 +87,8 @@ function play(delta){
 	stats.text = "ResolutionTest: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
+		"\nAppScreen Width: " + app.screen.width + 
+		"\nAppScreen Height: " + app.screen.height +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height;
 }
 
@@ -130,8 +132,8 @@ function consolePrint(fromText){
 	console.log(
 		fromText + 
 		"\nResolution: " + app.renderer.resolution +
-		"\nWidth: " + app.renderer.width + 
-		"\nHeight: " + app.renderer.height +
+		"\nRendererWidth: " + app.renderer.width + 
+		"\nRendererHeight: " + app.renderer.height +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height
 		);
 }
