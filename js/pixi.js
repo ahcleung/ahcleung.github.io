@@ -5,7 +5,7 @@ let Application = PIXI.Application,
 	Text = PIXI.Text;
 
 const app = new Application({
-	autoResize: true, resolution: devicePixelRatio || 1,
+	autoResize: true, transparent: true, resolution: devicePixelRatio || 1,
 });
 document.querySelector('#frame').appendChild(app.view);
 
