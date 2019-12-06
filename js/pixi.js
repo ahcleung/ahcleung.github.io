@@ -84,7 +84,7 @@ function gameLoop(delta){
 
 function play(delta){
 	container.rotation -= 0.01 * delta;
-	stats.text = "Resolution: " + app.renderer.resolution +
+	stats.text = "ResolutionTest: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height;
@@ -105,15 +105,15 @@ function resize() {
 	// Resize the renderer
 	console.log(
 		"PRE-RESIZE" + 
-		"\nResolutionTest: " + app.renderer.resolution +
+		"\nResolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height
 		);
 
 	app.renderer.resize(window.innerWidth, window.innerHeight);
-	//container.x = app.renderer.width / 2 / window.devicePixelRatio;
-	//container.y = app.renderer.height / 2 / window.devicePixelRatio;
+	container.x = window.innerWidth / 2 / window.devicePixelRatio;
+	container.y = window.innerHeight / 2 / window.devicePixelRatio;
 	//app.renderer.resolution = window.devicePixelRatio;
 	consolePrint("RESIZE");
 
@@ -128,7 +128,7 @@ function resize() {
 function consolePrint(fromText){
 	console.log(
 		fromText + 
-		"\nResolutionTest: " + app.renderer.resolution +
+		"\nResolution: " + app.renderer.resolution +
 		"\nWidth: " + app.renderer.width + 
 		"\nHeight: " + app.renderer.height +
 		"\nContainer: " + container.x + ", " + container.y + ", " + container.width + ", " + container.height
