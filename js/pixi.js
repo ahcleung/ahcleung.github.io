@@ -36,7 +36,7 @@ let state, stats, consoleScreen;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
-var isFullScreen = false;
+//var isFullScreen = false;
 
 function setup(){	
 	//app.stage.addChild(container);
@@ -168,22 +168,22 @@ function consolePrint(fromText){
 
 function onButtonDown(){
 	var elem = document.getElementById("frame");
-	if(!isFullScreen){
-		isFullScreen = true;
+	if(!document.fullscreenElement || !document.mozFullScreenElement || !document.msFullScreenElement || !document.webkitFullScreenElement){
+		//isFullScreen = true;
 		this.texture = textureButtonDown;
-		if (body.requestFullscreen) {
-			body.requestFullscreen();
-		} else if (body.mozRequestFullScreen) { /* Firefox */
-			body.mozRequestFullScreen();
-		} else if (body.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			body.webkitRequestFullscreen();
-		} else if (body.msRequestFullscreen) { /* IE/Edge */
-			body.msRequestFullscreen();
+		if (document.documentElement.requestFullscreen) {
+			document.documentElement.requestFullscreen();
+		} else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+			document.documentElement.mozRequestFullScreen();
+		} else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+			document.documentElement.webkitRequestFullscreen();
+		} else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+			document.documentElement.msRequestFullscreen();
 		}
 		console.log("setFullScreen");
 		consoleScreen.text = "setFullScreen\n" + consoleScreen;
 	}else{
-		isFullScreen = false;
+		//isFullScreen = false;
 		this.texture = textureButton;
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
