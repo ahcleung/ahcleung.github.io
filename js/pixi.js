@@ -43,8 +43,8 @@ function setup(){
 	// Create a new texture
 	const texture = PIXI.Texture.from('img/monkey3.png');
 	
-	textureButton = PIXI.Texture.from('img/ability_move.png');
-	textureButtonDown = PIXI.Texture.from('img/leper.ability.five.png');
+	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
+	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
@@ -167,13 +167,32 @@ function consolePrint(fromText){
 }
 
 function onButtonDown(){
+	var elem = document.getElementById("frame");
 	if(!isFullScreen){
 		isFullScreen = true;
 		this.texture = textureButtonDown;
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) { /* Firefox */
+			elem.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+			elem.webkitRequestFullscreen();
+		} else if (elem.msRequestFullscreen) { /* IE/Edge */
+			elem.msRequestFullscreen();
+		}
 		console.log("setFullScreen");
 	}else{
 		isFullScreen = false;
 		this.texture = textureButton;
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.mozCancelFullScreen) { /* Firefox */
+			document.mozCancelFullScreen();
+		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+			document.webkitExitFullscreen();
+		} else if (document.msExitFullscreen) { /* IE/Edge */
+			document.msExitFullscreen();
+		}
 		console.log("disableFullScreen");
 	}
 }
