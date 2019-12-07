@@ -149,7 +149,7 @@ function resize() {
 	//app.renderer.resolution = window.devicePixelRatio;
 	consolePrint("RESIZE");
 
-	consoleScreen.text += "\nRESIZE";
+	consoleScreen.text = "RESIZE\n" + consoleScreen;
 	// You can use the 'screen' property as the renderer visible
 	// area, this is more useful than view.width/height because
 	// it handles resolution
@@ -181,6 +181,7 @@ function onButtonDown(){
 			body.msRequestFullscreen();
 		}
 		console.log("setFullScreen");
+		consoleScreen.text = "setFullScreen\n" + consoleScreen;
 	}else{
 		isFullScreen = false;
 		this.texture = textureButton;
@@ -193,6 +194,7 @@ function onButtonDown(){
 		} else if (document.msExitFullscreen) { /* IE/Edge */
 			document.msExitFullscreen();
 		}
-		console.log("disableFullScreen");
+		console.log("exitFullScreen");
+		consoleScreen.text = "exitFullScreen\n" + consoleScreen;
 	}
 }
