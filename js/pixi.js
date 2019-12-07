@@ -12,7 +12,9 @@ document.querySelector('#frame').appendChild(app.view);
 loader
 	.add([
 		"img/monkey3.png",
-		"img/monkey2.png"
+		"img/monkey2.png",
+		"img/ability_move.png",
+		"img/leper.ability.five.png"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -33,12 +35,16 @@ function loadProgressHandler(loader, resource) {
 let state, stats, consoleScreen;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
+var textureButton, textureButtonDown;
 
 function setup(){	
 	//app.stage.addChild(container);
 	// Create a new texture
 	const texture = PIXI.Texture.from('img/monkey3.png');
-
+	
+	textureButton = PIXI.Texture.fromImage('img/ability_move.png');
+	textureButtonDown = PIXI.Texture.fromImage('img/leper.ability.five.png');
+	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
 	rect.beginFill(0xff0000).drawRect(-50, -50, 100, 100);
@@ -72,7 +78,31 @@ function setup(){
 	consoleScreen = new Text("Console: ");
 	app.stage.addChild(consoleScreen);
 	consoleScreen.x = 300;
+	
+	var button = new PIXI.Sprite(textureButton);
+    	button.buttonMode = true;
 
+    	button.anchor.set(0.5);
+
+    	button.position.x = 50;
+    	button.position.y = 50;
+
+    	// make the button interactive...
+    	button.interactive = true;
+	
+	button
+        // set the mousedown and touchstart callback...
+        .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
+
+        // set the mouseup and touchend callback...
+        .on('mouseup', onButtonUp)
+        .on('touchend', onButtonUp)
+        .on('mouseupoutside', onButtonUp)
+        .on('touchendoutside', onButtonUp)
+	
+	app.stage.addChild(button);
+	
 	consoleScreen.text += "\nSetup";
 
 	window.addEventListener('resize', resize);
