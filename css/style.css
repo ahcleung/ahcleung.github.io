@@ -20,8 +20,8 @@ canvas {
   /* Optional stuff for positioning */
   top:50%;
   left:50%;
-  width: 90%;
-  height: 90%;
+  width: calc(~"100vw - 50px");;
+  height: calc(~"100vh - 50px");;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
