@@ -171,14 +171,14 @@ function onButtonDown(){
 	if(!isFullScreen){
 		isFullScreen = true;
 		this.texture = textureButtonDown;
-		if (document.requestFullscreen) {
-			document.requestFullscreen();
-		} else if (document.mozRequestFullScreen) { /* Firefox */
-			document.mozRequestFullScreen();
-		} else if (document.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			document.webkitRequestFullscreen();
-		} else if (document.msRequestFullscreen) { /* IE/Edge */
-			document.msRequestFullscreen();
+		if (body.requestFullscreen) {
+			body.requestFullscreen();
+		} else if (body.mozRequestFullScreen) { /* Firefox */
+			body.mozRequestFullScreen();
+		} else if (body.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+			body.webkitRequestFullscreen();
+		} else if (body.msRequestFullscreen) { /* IE/Edge */
+			body.msRequestFullscreen();
 		}
 		console.log("setFullScreen");
 	}else{
