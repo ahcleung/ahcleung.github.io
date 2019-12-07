@@ -168,7 +168,7 @@ function consolePrint(fromText){
 
 function onButtonDown(){
 	var elem = document.getElementById("frame");
-	if(!document.fullscreenElement || !document.mozFullScreenElement || !document.msFullScreenElement || !document.webkitFullScreenElement){
+	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
 		//isFullScreen = true;
 		this.texture = textureButtonDown;
 		if (document.documentElement.requestFullscreen) {
