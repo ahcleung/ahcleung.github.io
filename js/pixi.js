@@ -42,8 +42,8 @@ function setup(){
 	// Create a new texture
 	const texture = PIXI.Texture.from('img/monkey3.png');
 	
-	textureButton = PIXI.Texture.fromImage('img/ability_move.png');
-	textureButtonDown = PIXI.Texture.fromImage('img/leper.ability.five.png');
+	textureButton = PIXI.Texture.from('img/ability_move.png');
+	textureButtonDown = PIXI.Texture.from('img/leper.ability.five.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
@@ -90,16 +90,16 @@ function setup(){
     	// make the button interactive...
     	button.interactive = true;
 	
-	button
-        // set the mousedown and touchstart callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
+// 	button
+//         // set the mousedown and touchstart callback...
+//         .on('mousedown', onButtonDown)
+//         .on('touchstart', onButtonDown)
 
-        // set the mouseup and touchend callback...
-        .on('mouseup', onButtonUp)
-        .on('touchend', onButtonUp)
-        .on('mouseupoutside', onButtonUp)
-        .on('touchendoutside', onButtonUp)
+//         // set the mouseup and touchend callback...
+//         .on('mouseup', onButtonUp)
+//         .on('touchend', onButtonUp)
+//         .on('mouseupoutside', onButtonUp)
+//         .on('touchendoutside', onButtonUp)
 	
 	app.stage.addChild(button);
 	
