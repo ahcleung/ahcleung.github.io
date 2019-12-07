@@ -36,6 +36,7 @@ let state, stats, consoleScreen;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
+var isFullScreen = false;
 
 function setup(){	
 	//app.stage.addChild(container);
@@ -90,16 +91,10 @@ function setup(){
     	// make the button interactive...
     	button.interactive = true;
 	
-// 	button
-//         // set the mousedown and touchstart callback...
-//         .on('mousedown', onButtonDown)
-//         .on('touchstart', onButtonDown)
-
-//         // set the mouseup and touchend callback...
-//         .on('mouseup', onButtonUp)
-//         .on('touchend', onButtonUp)
-//         .on('mouseupoutside', onButtonUp)
-//         .on('touchendoutside', onButtonUp)
+	button
+        // set the mousedown and touchstart callback...
+        .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
 	
 	app.stage.addChild(button);
 	
@@ -169,4 +164,14 @@ function consolePrint(fromText){
 		"\nRendererWidth: " + app.renderer.width + 
 		"\nRendererHeight: " + app.renderer.height
 		);
+}
+
+function onButtonDown(){
+	if(!isFullScreen){
+		isFullScreen = true;
+		this.texture = textureButtonDown;
+	}else{
+		isFullScreen = false;
+		this.texture = textureButton;
+	}
 }
