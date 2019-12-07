@@ -170,8 +170,10 @@ function onButtonDown(){
 	if(!isFullScreen){
 		isFullScreen = true;
 		this.texture = textureButtonDown;
+		console.log("setFullScreen");
 	}else{
 		isFullScreen = false;
 		this.texture = textureButton;
+		console.log("disableFullScreen");
 	}
 }
