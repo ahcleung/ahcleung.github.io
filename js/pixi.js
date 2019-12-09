@@ -40,7 +40,7 @@ var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
 const frames = [];
-const anim = new PIXI.AnimatedSprite(frames);
+const anim = new PIXI.AnimatedSprite();
 
 function setup(){	
 	//app.stage.addChild(container);
@@ -105,9 +105,9 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	frames.push(PIXI.Texture.from(`rollSequence00${val}.png`));
     	}
-	
-	//anim.x = app.screen.width/2;
-	//anim.y = app.screen.height/2;
+	anim.textures = frames;
+	anim.x = app.screen.width/2;
+	anim.y = app.screen.height/2;
 	anim.anchor.set(0.5);
 	anim.animationSpeed = 0.5;
 	anim.play();
