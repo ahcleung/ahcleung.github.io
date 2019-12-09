@@ -96,8 +96,8 @@ function setup(){
 	button.accessibleTitle = "Fullscreen button";
 	button
         // set the mousedown and touchstart callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)	
+        .on('pointerdown', onButtonDown);
+
 	app.stage.addChild(button);
 	
 	//Load spritesheet
