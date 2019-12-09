@@ -14,7 +14,8 @@ loader
 		"img/monkey3.png",
 		"img/monkey2.png",
 		"img/ability_move.png",
-		"img/leper.ability.five.png"
+		"img/leper.ability.five.png",
+		"img/fighter.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -94,6 +95,22 @@ function setup(){
         .on('mousedown', onButtonDown)
         .on('touchstart', onButtonDown)	
 	app.stage.addChild(button);
+	
+	//Load spritesheet
+	const frames = [];
+	for (let i = 0; i < 30; i++) {
+        	const val = i < 10 ? `0${i}` : i;
+        	// magically works since the spritesheet was loaded with the pixi loader
+        	frames.push(PIXI.Texture.from(`rollSequence00${val}.png`));
+    	}
+	const anim = new PIXI.AnimatedSprite(frames);
+	
+	anim.x = app.screen.width/2;
+	anim.y = app.screen.height/2;
+	anim.anchor.set(0.5);
+	anim.animationSpeed = 0.5;
+	anim.play();
+	app.stage.addChild(anim);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
