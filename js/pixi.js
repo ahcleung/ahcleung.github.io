@@ -39,6 +39,9 @@ const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
+const frames = [];
+const anim = new PIXI.AnimatedSprite(frames);
+
 function setup(){	
 	//app.stage.addChild(container);
 	// Create a new texture
@@ -97,16 +100,14 @@ function setup(){
 	app.stage.addChild(button);
 	
 	//Load spritesheet
-	const frames = [];
 	for (let i = 0; i < 30; i++) {
         	const val = i < 10 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
         	frames.push(PIXI.Texture.from(`rollSequence00${val}.png`));
     	}
-	const anim = new PIXI.AnimatedSprite(frames);
 	
-	anim.x = app.screen.width/2;
-	anim.y = app.screen.height/2;
+	//anim.x = app.screen.width/2;
+	//anim.y = app.screen.height/2;
 	anim.anchor.set(0.5);
 	anim.animationSpeed = 0.5;
 	anim.play();
@@ -159,6 +160,7 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
+	anim.position.set(app.screen.width/2, app.screen.height/2);
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
