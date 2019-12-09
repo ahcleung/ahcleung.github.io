@@ -91,7 +91,9 @@ function setup(){
     	button.position.x = 50;
     	button.position.y = 50;
     	// make the button interactive...
-    	button.interactive = true;	
+    	button.interactive = true;
+	button.accessible = true;
+	button.accessibleTitle = "Fullscreen button";
 	button
         // set the mousedown and touchstart callback...
         .on('mousedown', onButtonDown)
