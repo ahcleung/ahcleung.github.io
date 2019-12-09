@@ -69,37 +69,36 @@ function setup(){
 	// Center bunny sprite in local container coordinates
 	//container.pivot.x = container.width / 2;
 	//container.pivot.y = container.height / 2;
-
+	
+	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight);
-
 	app.stage.addChild(stats);
 
+	//Console text printout
 	consoleScreen = new Text("Console: ");
 	app.stage.addChild(consoleScreen);
 	consoleScreen.x = 300;
 	
+	//Resize button
 	var button = new PIXI.Sprite(textureButton);
     	button.buttonMode = true;
-
     	button.anchor.set(0.5);
-
     	button.position.x = 50;
     	button.position.y = 50;
-
     	// make the button interactive...
-    	button.interactive = true;
-	
+    	button.interactive = true;	
 	button
         // set the mousedown and touchstart callback...
         .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-	
+        .on('touchstart', onButtonDown)	
 	app.stage.addChild(button);
 	
+	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
-
+	
+	//Resize the screen
 	window.addEventListener('resize', resize);
 
 	resize();
@@ -143,19 +142,11 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
-	//container.position.set(app.screen.width/2, app.screen.height/2);
-// 	container.x = window.innerWidth / 2;
-// 	container.y = window.innerHeight / 2;
-	//app.renderer.resolution = window.devicePixelRatio;
+	
+	//Console log RESIZE
 	consolePrint("RESIZE");
-
 	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
-	// You can use the 'screen' property as the renderer visible
-	// area, this is more useful than view.width/height because
-	// it handles resolution
 }
-
-
 
 function consolePrint(fromText){
 	console.log(
