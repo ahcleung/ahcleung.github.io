@@ -187,7 +187,7 @@ function onButtonDown(){
 		} else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
 			document.documentElement.mozRequestFullScreen();
 		} else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			document.documentElement.webkitRequestFullscreen();
+			document.documentElement.webkitRequestFullScreen();
 		} else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
 			document.documentElement.msRequestFullscreen();
 		}
@@ -201,7 +201,7 @@ function onButtonDown(){
 		} else if (document.mozCancelFullScreen) { /* Firefox */
 			document.mozCancelFullScreen();
 		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-			document.webkitExitFullscreen();
+			document.webkitExitFullScreen();
 		} else if (document.msExitFullscreen) { /* IE/Edge */
 			document.msExitFullscreen();
 		}
