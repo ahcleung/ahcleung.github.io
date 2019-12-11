@@ -132,7 +132,7 @@ function gameLoop(delta){
 
 function play(delta){
 	container.rotation -= 0.01 * delta;
-	stats.text = "ResolutionTest2: " + app.renderer.resolution +
+	stats.text = "ResolutionTest3: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
@@ -184,16 +184,24 @@ function onButtonDown(){
 		//isFullScreen = true;
 		this.texture = textureButtonDown;
 		if (elem.requestFullscreen) {
-			elem.requestFullscreen();
+			elem.requestFullscreen().catch(err => {
+				alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+			});
 		} else if (elem.mozRequestFullScreen) { /* Firefox */
-			elem.mozRequestFullScreen();
+			elem.mozRequestFullScreen().catch(err => {
+				alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+			});
 		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			elem.webkitRequestFullScreen();
+			elem.webkitRequestFullScreen().catch(err => {
+				alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+			});
 		} else if (elem.msRequestFullscreen) { /* IE/Edge */
-			elem.msRequestFullscreen();
+			elem.msRequestFullscreen().catch(err => {
+				alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+			});
 		}
-		console.log("setFullScreen2");
-		consoleScreen.text = "setFullScreen2\n" + consoleScreen.text;
+		console.log("setFullScreen3");
+		consoleScreen.text = "setFullScreen3\n" + consoleScreen.text;
 	}else{
 		//isFullScreen = false;
 		this.texture = textureButton;
@@ -206,7 +214,7 @@ function onButtonDown(){
 		} else if (document.msExitFullscreen) { /* IE/Edge */
 			document.msExitFullscreen();
 		}
-		console.log("exitFullScreen2");
-		consoleScreen.text = "exitFullScreen2\n" + consoleScreen.text;
+		console.log("exitFullScreen3");
+		consoleScreen.text = "exitFullScreen3\n" + consoleScreen.text;
 	}
 }
