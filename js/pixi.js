@@ -132,7 +132,7 @@ function gameLoop(delta){
 
 function play(delta){
 	container.rotation -= 0.01 * delta;
-	stats.text = "ResolutionTest: " + app.renderer.resolution +
+	stats.text = "ResolutionTest2: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
@@ -191,8 +191,8 @@ function onButtonDown(){
 		} else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
 			document.documentElement.msRequestFullscreen();
 		}
-		console.log("setFullScreen");
-		consoleScreen.text = "setFullScreen\n" + consoleScreen.text;
+		console.log("setFullScreen2");
+		consoleScreen.text = "setFullScreen2\n" + consoleScreen.text;
 	}else{
 		//isFullScreen = false;
 		this.texture = textureButton;
@@ -205,7 +205,7 @@ function onButtonDown(){
 		} else if (document.msExitFullscreen) { /* IE/Edge */
 			document.msExitFullscreen();
 		}
-		console.log("exitFullScreen");
-		consoleScreen.text = "exitFullScreen\n" + consoleScreen.text;
+		console.log("exitFullScreen2");
+		consoleScreen.text = "exitFullScreen2\n" + consoleScreen.text;
 	}
 }
