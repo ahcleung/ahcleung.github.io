@@ -178,18 +178,19 @@ function consolePrint(fromText){
 }
 
 function onButtonDown(){
-	var elem = document.getElementById("frame");
+	//var elem = document.getElementById("frame");
+	var elem = document.documentElement;
 	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
 		//isFullScreen = true;
 		this.texture = textureButtonDown;
-		if (document.documentElement.requestFullscreen) {
-			document.documentElement.requestFullscreen();
-		} else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
-			document.documentElement.mozRequestFullScreen();
-		} else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			document.documentElement.webkitRequestFullScreen();
-		} else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
-			document.documentElement.msRequestFullscreen();
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) { /* Firefox */
+			elem.mozRequestFullScreen();
+		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+			elem.webkitRequestFullScreen();
+		} else if (elem.msRequestFullscreen) { /* IE/Edge */
+			elem.msRequestFullscreen();
 		}
 		console.log("setFullScreen2");
 		consoleScreen.text = "setFullScreen2\n" + consoleScreen.text;
