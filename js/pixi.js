@@ -99,6 +99,8 @@ function setup(){
         .on('pointerdown', onButtonDown);
 	
 	document.addEventListener('fullscreenerror', (event) => {
+		alert('an error occurred changing into fullscreen');
+		alert(event);
 		console.error('an error occurred changing into fullscreen');
 		console.log(event);
 	});
