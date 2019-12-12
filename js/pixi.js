@@ -97,6 +97,11 @@ function setup(){
 	button
         // set the mousedown and touchstart callback...
         .on('pointerdown', onButtonDown);
+	
+	document.addEventListener('fullscreenerror', (event) => {
+		console.error('an error occurred changing into fullscreen');
+		console.log(event);
+	});
 
 	app.stage.addChild(button);
 	
@@ -132,7 +137,7 @@ function gameLoop(delta){
 
 function play(delta){
 	container.rotation -= 0.01 * delta;
-	stats.text = "ResolutionTest4: " + app.renderer.resolution +
+	stats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
@@ -184,23 +189,15 @@ function onButtonDown(){
 		//isFullScreen = true;
 		this.texture = textureButtonDown;
 		if (elem.requestFullscreen) {
-			elem.requestFullscreen().catch(err => {
-				alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-			});
+			elem.requestFullscreen();
 		} else if (elem.mozRequestFullScreen) { /* Firefox */
-			elem.mozRequestFullScreen().catch(err => {
-				alert(`Error attempting to enable full-screen mode (moz): ${err.message} (${err.name})`);
-			});
+			elem.mozRequestFullScreen();
 		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			elem.webkitRequestFullscreen().catch(err => {
-				alert(`Error attempting to enable full-screen mode (webkit): ${err.message} (${err.name})`);
-			});
+			elem.webkitRequestFullscreen();
 		} else if (elem.msRequestFullscreen) { /* IE/Edge */
-			elem.msRequestFullscreen().catch(err => {
-				alert(`Error attempting to enable full-screen mode (ms): ${err.message} (${err.name})`);
-			});
+			elem.msRequestFullscreen();
 		}
-		console.log("setFullScreen4");
+		console.log("setFullScreen5");
 		consoleScreen.text = "setFullScreen4\n" + consoleScreen.text;
 	}else{
 		//isFullScreen = false;
@@ -210,11 +207,11 @@ function onButtonDown(){
 		} else if (document.mozCancelFullScreen) { /* Firefox */
 			document.mozCancelFullScreen();
 		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-			document.webkitExitFullScreen();
+			document.webkitExitFullscreen();
 		} else if (document.msExitFullscreen) { /* IE/Edge */
 			document.msExitFullscreen();
 		}
-		console.log("exitFullScreen4");
+		console.log("exitFullScreen5");
 		consoleScreen.text = "exitFullScreen4\n" + consoleScreen.text;
 	}
 }
