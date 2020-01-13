@@ -111,7 +111,7 @@ function setup(){
 	for (let i = 0; i < 15; i++) {
         	const val = i < 10 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames.push(PIXI.Texture.from(`rollSequence00${val}.png`));
+        	frames.push(PIXI.Texture.from(`idleSequence00${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
 	anim.x = app.screen.width/2;
