@@ -15,7 +15,7 @@ loader
 		"img/monkey2.png",
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
-		"img/fighter.json"
+		"img/flygon.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -108,7 +108,7 @@ function setup(){
 	app.stage.addChild(button);
 	
 	//Load spritesheet
-	for (let i = 0; i < 30; i++) {
+	for (let i = 0; i < 15; i++) {
         	const val = i < 10 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
         	frames.push(PIXI.Texture.from(`rollSequence00${val}.png`));
