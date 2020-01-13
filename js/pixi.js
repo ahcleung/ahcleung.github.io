@@ -51,7 +51,7 @@ function setup(){
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
-	rect.beginFill(0xff0000).drawRect(-50, -50, 100, 100);
+	rect.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
 
 	// Add it to the stage
 	app.stage.addChild(rect);
