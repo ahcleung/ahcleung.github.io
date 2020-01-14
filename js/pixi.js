@@ -113,7 +113,7 @@ function setup(){
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+        	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
 	anim.x = app.screen.width/2;
@@ -126,10 +126,10 @@ function setup(){
 	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames2.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
+        	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	anim2 = new PIXI.AnimatedSprite(frames2);
-	anim2.x = (app.screen.width/2) - 100;
+	anim2.x = (app.screen.width/2) - 25;
 	anim2.y = app.screen.height/2;
 	anim2.anchor.set(0.5);
 	anim2.animationSpeed = 0.5;
