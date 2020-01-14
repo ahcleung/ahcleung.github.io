@@ -15,7 +15,8 @@ loader
 		"img/monkey2.png",
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
-		"img/flygon.json"
+		"img/flygon.json",
+		"img/crobat.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
