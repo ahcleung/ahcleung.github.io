@@ -34,13 +34,14 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, anim;
+let state, stats, consoleScreen, anim, anim2;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
 const frames = [];
+const frames2 = [];
 
 function setup(){	
 	//app.stage.addChild(container);
@@ -121,6 +122,19 @@ function setup(){
 	anim.animationSpeed = 0.5;
 	anim.play();
 	app.stage.addChild(anim);
+	
+	for (let i = 0; i < 125; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	// magically works since the spritesheet was loaded with the pixi loader
+        	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+    	}
+	anim2 = new PIXI.AnimatedSprite(frames2);
+	anim2.x = (app.screen.width/2) - 100;
+	anim2.y = app.screen.height/2;
+	anim2.anchor.set(0.5);
+	anim2.animationSpeed = 0.5;
+	anim2.play();
+	app.stage.addChild(anim2);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
