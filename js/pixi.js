@@ -109,10 +109,10 @@ function setup(){
 	app.stage.addChild(button);
 	
 	//Load spritesheet
-	for (let i = 0; i < 125; i++) {
+	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames.push(PIXI.Texture.from(`idleSequence0${val}.png`));
+        	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
 	anim.x = app.screen.width/2;
