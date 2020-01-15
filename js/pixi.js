@@ -44,7 +44,7 @@ const frames = [];
 const frames2 = [];
 
 function setup(){	
-	//app.stage.addChild(container);
+	app.stage.addChild(container);
 	// Create a new texture
 	const texture = PIXI.Texture.from('img/monkey3.png');
 	
@@ -67,13 +67,7 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 
-	// Move container to the center
-	//container.x = app.renderer.width / 2;
-	//container.y = app.renderer.height / 2;
-
-	// Center bunny sprite in local container coordinates
-	//container.pivot.x = container.width / 2;
-	//container.pivot.y = container.height / 2;
+	
 	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
@@ -109,6 +103,14 @@ function setup(){
 
 	app.stage.addChild(button);
 	
+	// Move container to the center
+	container.x = app.screen.width/2;
+	container.y = app.screen.height/2;
+
+	// Center bunny sprite in local container coordinates
+// 	container.pivot.x = container.width / 2;
+// 	container.pivot.y = container.height / 2;
+	
 	//Load spritesheet
 	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
@@ -116,12 +118,13 @@ function setup(){
         	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
-	anim.x = app.screen.width/2;
-	anim.y = app.screen.height/2;
+// 	anim.x = app.screen.width/2;
+// 	anim.y = app.screen.height/2;
 	anim.anchor.set(0.5);
 	anim.animationSpeed = 0.5;
 	anim.play();
-	app.stage.addChild(anim);
+	container.addChild(anim);
+// 	app.stage.addChild(anim);
 	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
@@ -129,13 +132,13 @@ function setup(){
         	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	anim2 = new PIXI.AnimatedSprite(frames2);
-	anim2.x = app.screen.width/2;
-	anim2.x = anim2.x + 50;
-	anim2.y = app.screen.height/2;
+// 	anim2.x = app.screen.width/2;
+// 	anim2.y = app.screen.height/2;
 	anim2.anchor.set(0.5);
 	anim2.animationSpeed = 0.5;
 	anim2.play();
-	app.stage.addChild(anim2);
+	container.addChild(anim2);
+// 	app.stage.addChild(anim2);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
