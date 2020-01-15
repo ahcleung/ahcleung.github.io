@@ -100,13 +100,7 @@ function setup(){
 	});
 
 	app.stage.addChild(button);
-	
-	// Move container to the center
-	container.x = app.screen.width/2;
-	container.y = app.screen.height/2;
-
-	
-	
+		
 	//Load spritesheet
 	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
@@ -135,6 +129,10 @@ function setup(){
 	anim2.play();
 	container.addChild(anim2);
 // 	app.stage.addChild(anim2);
+	
+	// Move container to the center
+	container.x = app.screen.width/2;
+	container.y = app.screen.height/2;
 	
 	// Center bunny sprite in local container coordinates
 	container.pivot.x = container.width / 2;
@@ -187,6 +185,7 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
+	container.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
 	
