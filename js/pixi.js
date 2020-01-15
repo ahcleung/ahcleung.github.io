@@ -105,9 +105,7 @@ function setup(){
 	container.x = app.screen.width/2;
 	container.y = app.screen.height/2;
 
-	// Center bunny sprite in local container coordinates
-	container.pivot.x = container.width / 2;
-	container.pivot.y = container.height / 2;
+	
 	
 	//Load spritesheet
 	for (let i = 0; i < 95; i++) {
@@ -137,6 +135,10 @@ function setup(){
 	anim2.play();
 	container.addChild(anim2);
 // 	app.stage.addChild(anim2);
+	
+	// Center bunny sprite in local container coordinates
+	container.pivot.x = container.width / 2;
+	container.pivot.y = container.height / 2;
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
