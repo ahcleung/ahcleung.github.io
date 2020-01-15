@@ -110,7 +110,7 @@ function setup(){
 	anim = new PIXI.AnimatedSprite(frames);
 	anim.x = 0;
 	anim.y = 0;
-	anim.anchor.set(0.5);
+	anim.anchor.set(0,1);
 	anim.animationSpeed = 0.5;
 	anim.play();
 	container.addChild(anim);
@@ -124,7 +124,7 @@ function setup(){
 	anim2 = new PIXI.AnimatedSprite(frames2);
 	anim2.x = -50;
 	anim2.y = 0;
-	anim2.anchor.set(0.5);
+	anim2.anchor.set(0,1);
 	anim2.animationSpeed = 0.5;
 	anim2.play();
 	container.addChild(anim2);
