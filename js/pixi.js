@@ -119,8 +119,8 @@ function setup(){
         	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
-// 	anim.x = app.screen.width/2;
-// 	anim.y = app.screen.height/2;
+	anim.x = 0;
+	anim.y = 0;
 	anim.anchor.set(0.5);
 	anim.animationSpeed = 0.5;
 	anim.play();
@@ -133,8 +133,8 @@ function setup(){
         	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	anim2 = new PIXI.AnimatedSprite(frames2);
-// 	anim2.x = app.screen.width/2;
-// 	anim2.y = app.screen.height/2;
+	anim2.x = -50;
+	anim2.y = 0;
 	anim2.anchor.set(0.5);
 	anim2.animationSpeed = 0.5;
 	anim2.play();
