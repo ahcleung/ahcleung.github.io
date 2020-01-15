@@ -108,6 +108,7 @@ function setup(){
 	container.y = app.screen.height/2;
 
 	// Center bunny sprite in local container coordinates
+	container.anchor.set(0.5);
 // 	container.pivot.x = container.width / 2;
 // 	container.pivot.y = container.height / 2;
 	
