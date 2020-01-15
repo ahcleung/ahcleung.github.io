@@ -129,7 +129,7 @@ function setup(){
         	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	anim2 = new PIXI.AnimatedSprite(frames2);
-	anim2.x = (app.screen.width/2) - 25;
+	anim2.x = (app.screen.width/2) - 10;
 	anim2.y = app.screen.height/2;
 	anim2.anchor.set(0.5);
 	anim2.animationSpeed = 0.5;
