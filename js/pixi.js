@@ -187,8 +187,8 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
-	anim.position.set(app.screen.width/2, app.screen.height/2);
-	anim2.position.set(app.screen.width/2, app.screen.height/2);
+// 	anim.position.set(app.screen.width/2, app.screen.height/2);
+// 	anim2.position.set(app.screen.width/2, app.screen.height/2);
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
