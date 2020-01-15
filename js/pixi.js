@@ -67,8 +67,6 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 
-	
-	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
@@ -108,9 +106,8 @@ function setup(){
 	container.y = app.screen.height/2;
 
 	// Center bunny sprite in local container coordinates
-	container.anchor.set(0.5);
-// 	container.pivot.x = container.width / 2;
-// 	container.pivot.y = container.height / 2;
+	container.pivot.x = container.width / 2;
+	container.pivot.y = container.height / 2;
 	
 	//Load spritesheet
 	for (let i = 0; i < 95; i++) {
