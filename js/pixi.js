@@ -112,7 +112,7 @@ function setup(){
         	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	anim = new PIXI.AnimatedSprite(frames);
-	anim.x = 0;
+	anim.x = 100;
 	anim.y = 0;
 	anim.anchor.set(0,1);
 	anim.animationSpeed = 0.5;
@@ -126,7 +126,7 @@ function setup(){
         	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	anim2 = new PIXI.AnimatedSprite(frames2);
-	anim2.x = -50;
+	anim2.x = 50;
 	anim2.y = 0;
 	anim2.anchor.set(0,1);
 	anim2.animationSpeed = 0.5;
@@ -139,7 +139,7 @@ function setup(){
         	frames3.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
 	anim3 = new PIXI.AnimatedSprite(frames3);
-	anim3.x = 50;
+	anim3.x = 150;
 	anim3.y = 0;
 	anim3.anchor.set(0,1);
 	anim3.animationSpeed = 0.5;
@@ -152,7 +152,7 @@ function setup(){
         	frames4.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
 	anim4 = new PIXI.AnimatedSprite(frames4);
-	anim4.x = -100;
+	anim4.x = 0;
 	anim4.y = 0;
 	anim4.anchor.set(0,1);
 	anim4.animationSpeed = 0.5;
