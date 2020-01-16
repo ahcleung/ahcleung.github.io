@@ -18,7 +18,10 @@ loader
 		"img/flygon.json",
 		"img/crobat.json",
 		"img/magmortar.json",
-		"img/hippowdon.json"
+		"img/hippowdon.json",
+		"img/mawile.json",
+		"img/quilava.json",
+		"img/mamoswine.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -36,16 +39,20 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, anim, anim2, anim3, anim4;
+let state, stats, consoleScreen, 
+    animIdleCrobat, animIdleFlygon, animIdleMagmortar, animIdleHippowdonm, animIdleMawile, animIdleQuilava, animIdleMamoswine;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
-const frames = [];
+const frames1 = [];
 const frames2 = [];
 const frames3 = [];
 const frames4 = [];
+const frames5 = [];
+const frames6 = [];
+const frames7 = [];
 
 function setup(){	
 	app.stage.addChild(container);
@@ -106,58 +113,103 @@ function setup(){
 	app.stage.addChild(button);
 		
 	//Load spritesheet
-	for (let i = 0; i < 95; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	// magically works since the spritesheet was loaded with the pixi loader
-        	frames.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
-    	}
-	anim = new PIXI.AnimatedSprite(frames);
-	anim.x = 100;
-	anim.y = 0;
-	anim.anchor.set(0,1);
-	anim.animationSpeed = 0.5;
-	anim.play();
-	container.addChild(anim);
-// 	app.stage.addChild(anim);
-	
+	//Flygon
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames2.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+        	frames1.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
-	anim2 = new PIXI.AnimatedSprite(frames2);
-	anim2.x = 50;
-	anim2.y = 0;
-	anim2.anchor.set(0,1);
-	anim2.animationSpeed = 0.5;
-	anim2.play();
-	container.addChild(anim2);
+	animIdleFlygon = new PIXI.AnimatedSprite(frames1);
+	animIdleFlygon.x = 0;
+	animIdleFlygon.y = 0;
+	animIdleFlygon.anchor.set(0,1);
+	animIdleFlygon.animationSpeed = 0.5;
+	animIdleFlygon.play();
+	container.addChild(animIdleFlygon);
+// 	app.stage.addChild(anim);
 	
+	//Hippowdon
+	for (let i = 0; i < 91; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	frames2.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
+    	}
+	animIdleHippowdon = new PIXI.AnimatedSprite(frames2);
+	animIdleHippowdon.x = 50;
+	animIdleHippowdon.y = 0;
+	animIdleHippowdon.anchor.set(0,1);
+	animIdleHippowdon.animationSpeed = 0.5;
+	animIdleHippowdon.play();
+	container.addChild(animIdleHippowdon);
+	
+	//Mawile
+	for (let i = 0; i < 155; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	frames3.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
+    	}
+	animIdleMawile = new PIXI.AnimatedSprite(frames3);
+	animIdleMawile.x = 100;
+	animIdleMawile.y = 0;
+	animIdleMawile.anchor.set(0,1);
+	animIdleMawile.animationSpeed = 0.5;
+	animIdleMawile.play();
+	container.addChild(animIdleMawile);
+	
+	//quilava
+	for (let i = 0; i < 82; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	// magically works since the spritesheet was loaded with the pixi loader
+        	frames4.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
+    	}
+	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
+	animIdleQuilava.x = 150;
+	animIdleQuilava.y = 0;
+	animIdleQuilava.anchor.set(0,1);
+	animIdleQuilava.animationSpeed = 0.5;
+	animIdleQuilava.play();
+	container.addChild(animIdleQuilava);
+	
+	//crobat
+	for (let i = 0; i < 95; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	frames5.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
+    	}
+	animIdleCrobat = new PIXI.AnimatedSprite(frames5);
+	animIdleCrobat.x = 250;
+	animIdleCrobat.y = 0;
+	animIdleCrobat.anchor.set(0,1);
+	animIdleCrobat.animationSpeed = 0.5;
+	animIdleCrobat.play();
+	container.addChild(animIdleCrobat);	
+	
+	//magmortar
 	for (let i = 0; i < 160; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames3.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
+        	frames6.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
-	anim3 = new PIXI.AnimatedSprite(frames3);
-	anim3.x = 150;
-	anim3.y = 0;
-	anim3.anchor.set(0,1);
-	anim3.animationSpeed = 0.5;
-	anim3.play();
-	container.addChild(anim3);
+	animIdleMagmortar = new PIXI.AnimatedSprite(frames6);
+	animIdleMagmortar.x = 300;
+	animIdleMagmortar.y = 0;
+	animIdleMagmortar.anchor.set(0,1);
+	animIdleMagmortar.animationSpeed = 0.5;
+	animIdleMagmortar.play();
+	container.addChild(animIdleMagmortar);
 	
-	for (let i = 0; i < 91; i++) {
+	//mamoswine
+	for (let i = 0; i < 165; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames4.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
+        	frames7.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
-	anim4 = new PIXI.AnimatedSprite(frames4);
-	anim4.x = 0;
-	anim4.y = 0;
-	anim4.anchor.set(0,1);
-	anim4.animationSpeed = 0.5;
-	anim4.play();
-	container.addChild(anim4);
+	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
+	animIdleMamoswine.x = 350;
+	animIdleMamoswine.y = 0;
+	animIdleMamoswine.anchor.set(0,1);
+	animIdleMamoswine.animationSpeed = 0.5;
+	animIdleMamoswine.play();
+	container.addChild(animIdleMamoswine);
+	
+	
 	
 	
 // 	app.stage.addChild(anim2);
