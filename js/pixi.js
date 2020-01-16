@@ -16,7 +16,8 @@ loader
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
-		"img/crobat.json"
+		"img/crobat.json",
+		"img/magmortar.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -34,7 +35,7 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, anim, anim2;
+let state, stats, consoleScreen, anim, anim2, anim3;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
@@ -42,6 +43,7 @@ var textureButton, textureButtonDown;
 
 const frames = [];
 const frames2 = [];
+const frames3 = [];
 
 function setup(){	
 	app.stage.addChild(container);
@@ -128,6 +130,19 @@ function setup(){
 	anim2.animationSpeed = 0.5;
 	anim2.play();
 	container.addChild(anim2);
+	
+	for (let i = 0; i < 160; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	// magically works since the spritesheet was loaded with the pixi loader
+        	frames3.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
+    	}
+	anim3 = new PIXI.AnimatedSprite(frames3);
+	anim3.x = 50;
+	anim3.y = 0;
+	anim3.anchor.set(0,1);
+	anim3.animationSpeed = 0.5;
+	anim3.play();
+	container.addChild(anim3);
 // 	app.stage.addChild(anim2);
 	
 	// Move container to the center
