@@ -1,0 +1,3315 @@
+{
+	"frames": {
+		"mamoswineIdleSequence0000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0001.png": {
+			"frame": {
+				"x": 87,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0002.png": {
+			"frame": {
+				"x": 173,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0003.png": {
+			"frame": {
+				"x": 259,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0004.png": {
+			"frame": {
+				"x": 345,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0005.png": {
+			"frame": {
+				"x": 431,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0006.png": {
+			"frame": {
+				"x": 517,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0007.png": {
+			"frame": {
+				"x": 603,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0008.png": {
+			"frame": {
+				"x": 689,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0009.png": {
+			"frame": {
+				"x": 775,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0010.png": {
+			"frame": {
+				"x": 861,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0011.png": {
+			"frame": {
+				"x": 1,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0012.png": {
+			"frame": {
+				"x": 87,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0013.png": {
+			"frame": {
+				"x": 173,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0014.png": {
+			"frame": {
+				"x": 259,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0015.png": {
+			"frame": {
+				"x": 345,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0016.png": {
+			"frame": {
+				"x": 431,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0017.png": {
+			"frame": {
+				"x": 517,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0018.png": {
+			"frame": {
+				"x": 603,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0019.png": {
+			"frame": {
+				"x": 689,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0020.png": {
+			"frame": {
+				"x": 775,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0021.png": {
+			"frame": {
+				"x": 861,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0022.png": {
+			"frame": {
+				"x": 1,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0023.png": {
+			"frame": {
+				"x": 87,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0024.png": {
+			"frame": {
+				"x": 173,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0025.png": {
+			"frame": {
+				"x": 259,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0026.png": {
+			"frame": {
+				"x": 345,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0027.png": {
+			"frame": {
+				"x": 431,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0028.png": {
+			"frame": {
+				"x": 517,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0029.png": {
+			"frame": {
+				"x": 603,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0030.png": {
+			"frame": {
+				"x": 689,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0031.png": {
+			"frame": {
+				"x": 775,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0032.png": {
+			"frame": {
+				"x": 861,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0033.png": {
+			"frame": {
+				"x": 1,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0034.png": {
+			"frame": {
+				"x": 87,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0035.png": {
+			"frame": {
+				"x": 173,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0036.png": {
+			"frame": {
+				"x": 259,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0037.png": {
+			"frame": {
+				"x": 345,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0038.png": {
+			"frame": {
+				"x": 431,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0039.png": {
+			"frame": {
+				"x": 517,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0040.png": {
+			"frame": {
+				"x": 603,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0041.png": {
+			"frame": {
+				"x": 689,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0042.png": {
+			"frame": {
+				"x": 775,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0043.png": {
+			"frame": {
+				"x": 861,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0044.png": {
+			"frame": {
+				"x": 1,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0045.png": {
+			"frame": {
+				"x": 87,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0046.png": {
+			"frame": {
+				"x": 173,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0047.png": {
+			"frame": {
+				"x": 259,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0048.png": {
+			"frame": {
+				"x": 345,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0049.png": {
+			"frame": {
+				"x": 431,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0050.png": {
+			"frame": {
+				"x": 517,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0051.png": {
+			"frame": {
+				"x": 603,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0052.png": {
+			"frame": {
+				"x": 689,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0053.png": {
+			"frame": {
+				"x": 775,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0054.png": {
+			"frame": {
+				"x": 861,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0055.png": {
+			"frame": {
+				"x": 1,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0056.png": {
+			"frame": {
+				"x": 87,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0057.png": {
+			"frame": {
+				"x": 173,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0058.png": {
+			"frame": {
+				"x": 259,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0059.png": {
+			"frame": {
+				"x": 345,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0060.png": {
+			"frame": {
+				"x": 431,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0061.png": {
+			"frame": {
+				"x": 517,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0062.png": {
+			"frame": {
+				"x": 603,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0063.png": {
+			"frame": {
+				"x": 689,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0064.png": {
+			"frame": {
+				"x": 775,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0065.png": {
+			"frame": {
+				"x": 861,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0066.png": {
+			"frame": {
+				"x": 1,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0067.png": {
+			"frame": {
+				"x": 87,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0068.png": {
+			"frame": {
+				"x": 173,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0069.png": {
+			"frame": {
+				"x": 259,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0070.png": {
+			"frame": {
+				"x": 345,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0071.png": {
+			"frame": {
+				"x": 431,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0072.png": {
+			"frame": {
+				"x": 517,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0073.png": {
+			"frame": {
+				"x": 603,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0074.png": {
+			"frame": {
+				"x": 689,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0075.png": {
+			"frame": {
+				"x": 775,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0076.png": {
+			"frame": {
+				"x": 861,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0077.png": {
+			"frame": {
+				"x": 1,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0078.png": {
+			"frame": {
+				"x": 87,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0079.png": {
+			"frame": {
+				"x": 173,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0080.png": {
+			"frame": {
+				"x": 259,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0081.png": {
+			"frame": {
+				"x": 345,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0082.png": {
+			"frame": {
+				"x": 431,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0083.png": {
+			"frame": {
+				"x": 517,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0084.png": {
+			"frame": {
+				"x": 603,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0085.png": {
+			"frame": {
+				"x": 689,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0086.png": {
+			"frame": {
+				"x": 775,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0087.png": {
+			"frame": {
+				"x": 861,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0088.png": {
+			"frame": {
+				"x": 1,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0089.png": {
+			"frame": {
+				"x": 87,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0090.png": {
+			"frame": {
+				"x": 173,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0091.png": {
+			"frame": {
+				"x": 259,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0092.png": {
+			"frame": {
+				"x": 345,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0093.png": {
+			"frame": {
+				"x": 431,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0094.png": {
+			"frame": {
+				"x": 517,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0095.png": {
+			"frame": {
+				"x": 603,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0096.png": {
+			"frame": {
+				"x": 689,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0097.png": {
+			"frame": {
+				"x": 775,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0098.png": {
+			"frame": {
+				"x": 861,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0099.png": {
+			"frame": {
+				"x": 1,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0100.png": {
+			"frame": {
+				"x": 87,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0101.png": {
+			"frame": {
+				"x": 173,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0102.png": {
+			"frame": {
+				"x": 259,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0103.png": {
+			"frame": {
+				"x": 345,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0104.png": {
+			"frame": {
+				"x": 431,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0105.png": {
+			"frame": {
+				"x": 517,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0106.png": {
+			"frame": {
+				"x": 603,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0107.png": {
+			"frame": {
+				"x": 689,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0108.png": {
+			"frame": {
+				"x": 775,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0109.png": {
+			"frame": {
+				"x": 861,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0110.png": {
+			"frame": {
+				"x": 1,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0111.png": {
+			"frame": {
+				"x": 87,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0112.png": {
+			"frame": {
+				"x": 173,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0113.png": {
+			"frame": {
+				"x": 259,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0114.png": {
+			"frame": {
+				"x": 345,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0115.png": {
+			"frame": {
+				"x": 431,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0116.png": {
+			"frame": {
+				"x": 517,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0117.png": {
+			"frame": {
+				"x": 603,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0118.png": {
+			"frame": {
+				"x": 689,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0119.png": {
+			"frame": {
+				"x": 775,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0120.png": {
+			"frame": {
+				"x": 861,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0121.png": {
+			"frame": {
+				"x": 1,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0122.png": {
+			"frame": {
+				"x": 87,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0123.png": {
+			"frame": {
+				"x": 173,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0124.png": {
+			"frame": {
+				"x": 259,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0125.png": {
+			"frame": {
+				"x": 345,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0126.png": {
+			"frame": {
+				"x": 431,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0127.png": {
+			"frame": {
+				"x": 517,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0128.png": {
+			"frame": {
+				"x": 603,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0129.png": {
+			"frame": {
+				"x": 689,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0130.png": {
+			"frame": {
+				"x": 775,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0131.png": {
+			"frame": {
+				"x": 861,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0132.png": {
+			"frame": {
+				"x": 1,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0133.png": {
+			"frame": {
+				"x": 87,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0134.png": {
+			"frame": {
+				"x": 173,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0135.png": {
+			"frame": {
+				"x": 259,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0136.png": {
+			"frame": {
+				"x": 345,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0137.png": {
+			"frame": {
+				"x": 431,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0138.png": {
+			"frame": {
+				"x": 517,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0139.png": {
+			"frame": {
+				"x": 603,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0140.png": {
+			"frame": {
+				"x": 689,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0141.png": {
+			"frame": {
+				"x": 775,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0142.png": {
+			"frame": {
+				"x": 861,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0143.png": {
+			"frame": {
+				"x": 947,
+				"y": 1,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0144.png": {
+			"frame": {
+				"x": 947,
+				"y": 75,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0145.png": {
+			"frame": {
+				"x": 947,
+				"y": 149,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0146.png": {
+			"frame": {
+				"x": 947,
+				"y": 223,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0147.png": {
+			"frame": {
+				"x": 947,
+				"y": 297,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0148.png": {
+			"frame": {
+				"x": 947,
+				"y": 371,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0149.png": {
+			"frame": {
+				"x": 947,
+				"y": 445,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0150.png": {
+			"frame": {
+				"x": 947,
+				"y": 519,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0151.png": {
+			"frame": {
+				"x": 947,
+				"y": 593,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0152.png": {
+			"frame": {
+				"x": 947,
+				"y": 667,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0153.png": {
+			"frame": {
+				"x": 947,
+				"y": 741,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0154.png": {
+			"frame": {
+				"x": 947,
+				"y": 815,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0155.png": {
+			"frame": {
+				"x": 947,
+				"y": 889,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0156.png": {
+			"frame": {
+				"x": 1,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0157.png": {
+			"frame": {
+				"x": 87,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0158.png": {
+			"frame": {
+				"x": 173,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0159.png": {
+			"frame": {
+				"x": 259,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0160.png": {
+			"frame": {
+				"x": 345,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0161.png": {
+			"frame": {
+				"x": 431,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0162.png": {
+			"frame": {
+				"x": 517,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0163.png": {
+			"frame": {
+				"x": 603,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		},
+		"mamoswineIdleSequence0164.png": {
+			"frame": {
+				"x": 689,
+				"y": 963,
+				"w": 84,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 84,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 84,
+				"h": 72
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "mamoswine.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1032,
+			"h": 1036
+		},
+		"scale": "1"
+	}
+}
