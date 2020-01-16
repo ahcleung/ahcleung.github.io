@@ -17,7 +17,8 @@ loader
 		"img/leper.ability.five.png",
 		"img/flygon.json",
 		"img/crobat.json",
-		"img/magmortar.json"
+		"img/magmortar.json",
+		"img/hippowdon.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -35,7 +36,7 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, anim, anim2, anim3;
+let state, stats, consoleScreen, anim, anim2, anim3, anim4;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 var textureButton, textureButtonDown;
@@ -44,6 +45,7 @@ var textureButton, textureButtonDown;
 const frames = [];
 const frames2 = [];
 const frames3 = [];
+const frames4 = [];
 
 function setup(){	
 	app.stage.addChild(container);
@@ -143,6 +145,21 @@ function setup(){
 	anim3.animationSpeed = 0.5;
 	anim3.play();
 	container.addChild(anim3);
+	
+	for (let i = 0; i < 91; i++) {
+        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+        	// magically works since the spritesheet was loaded with the pixi loader
+        	frames4.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
+    	}
+	anim4 = new PIXI.AnimatedSprite(frames4);
+	anim4.x = -100;
+	anim4.y = 0;
+	anim4.anchor.set(0,1);
+	anim4.animationSpeed = 0.5;
+	anim4.play();
+	container.addChild(anim4);
+	
+	
 // 	app.stage.addChild(anim2);
 	
 	// Move container to the center
