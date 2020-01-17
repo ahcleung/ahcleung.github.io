@@ -208,7 +208,7 @@ function setup(){
         	frames7.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
 	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
-	animIdleMamoswine.x = 350;
+	animIdleMamoswine.x = 650;
 	animIdleMamoswine.y = 0;
 	animIdleMamoswine.anchor.set(0,1);
 	animIdleMamoswine.animationSpeed = 0.5;
