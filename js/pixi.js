@@ -210,7 +210,7 @@ function setup(){
 	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
 	animIdleMamoswine.x = 350;
 	animIdleMamoswine.y = 0;
-	animIdleMamoswine.scale.set(1.5);
+	animIdleMamoswine.scale.set(1.25);
 	animIdleMamoswine.anchor.set(0,1);
 	animIdleMamoswine.animationSpeed = 0.5;
 	animIdleMamoswine.play();
