@@ -43,6 +43,7 @@ let state, stats, consoleScreen,
     animIdleCrobat, animIdleFlygon, animIdleMagmortar, animIdleHippowdonm, animIdleMawile, animIdleQuilava, animIdleMamoswine;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
+const rect2 = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
@@ -68,6 +69,11 @@ function setup(){
 
 	// Add it to the stage
 	app.stage.addChild(rect);
+	
+	rect2.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
+	rect2.x = 100;
+	rect2.y = 100;
+	app.stage.addChild(rect2);
 	
 	// Create a 5x5 grid of bunnies
 // 	for (let i = 0; i < 25; i++) {
