@@ -246,7 +246,7 @@ function gameLoop(delta){
 }
 
 function play(delta){
-	container.rotation -= 0.01 * delta;
+// 	container.rotation -= 0.01 * delta;
 	stats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
