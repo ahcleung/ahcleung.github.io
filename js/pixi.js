@@ -295,6 +295,12 @@ function consolePrint(fromText){
 }
 
 function onButtonDown(){
+	if (screenfull.isEnabled) {
+		screenfull.toggle();
+	}
+}
+
+function onButtonDown2(){
 	//var elem = document.getElementById("frame");
 	var elem = document.documentElement;
 	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
