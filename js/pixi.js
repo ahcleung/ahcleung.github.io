@@ -41,8 +41,16 @@ function loadProgressHandler(loader, resource) {
 
 let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4;
 const container = new PIXI.Container();
+
+const rosterHero = new PIXI.Container();
+const rosterEnemy = new PIXI.Container();
+
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
+
+const rectHero = new PIXI.Graphics();
+const rectEnemy = new PIXI.Graphics();
+
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
@@ -73,6 +81,16 @@ function setup(){
 	rect2.x = 100;
 	rect2.y = 100;
 	app.stage.addChild(rect2);
+	
+	rectHero.beginFill(0xaec6cf).drawRect(-100, -50, 200, 100);
+	rectHero.x = 25;
+	rectHero.y = 25;
+	app.stage.addChild(rectHero);
+	
+	rectEnemy.beginFill(0xff6961).drawRect(-100, -50, 200, 100);
+	rectEnemy.x = 500;
+	rectEnemy.y = 25;
+	app.stage.addChild(rectEnemy);
 	
 	// Create a 5x5 grid of bunnies
 // 	for (let i = 0; i < 25; i++) {
