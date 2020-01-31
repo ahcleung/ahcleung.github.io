@@ -149,6 +149,9 @@ function setup(){
 	var globalScale = 2;
 	var spriteSpacer = 2;
 	
+	app.stage.addChild(rosterHero);
+	app.stage.addChild(rosterEnemy);
+	
 	//Load spritesheet
 	//Flygon
 	for (let i = 0; i < 125; i++) {
