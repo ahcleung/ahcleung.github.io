@@ -80,7 +80,7 @@ function setup(){
 	rect2.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
 	rect2.x = 100;
 	rect2.y = 100;
-	app.stage.addChild(rect2);
+// 	app.stage.addChild(rect2);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
 	rectHero.x = 0;
@@ -329,8 +329,8 @@ function resize() {
 // 	anim.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
 	
-	rect2.position.set(app.screen.width/2, app.screen.height/3);
-	rect2.width = app.screen.width/2;
+// 	rect2.position.set(app.screen.width/2, app.screen.height/3);
+// 	rect2.width = app.screen.width/2;
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
