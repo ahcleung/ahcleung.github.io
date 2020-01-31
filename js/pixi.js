@@ -133,7 +133,7 @@ function setup(){
         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	hero1 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	hero1.x = 100;
+	hero1.x = 0;
 	hero1.y = 0;
 	hero1.scale.set(globalScale);
 	hero1.anchor.set(anchorX1,anchorY1);
@@ -148,7 +148,7 @@ function setup(){
         	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
 	hero2 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	hero2.x = 2*50*spriteSpacer;
+	hero2.x = -1*50*spriteSpacer;
 	hero2.y = 0;
 	hero2.scale.set(globalScale);
 	hero2.anchor.set(anchorX1,anchorY1);
@@ -161,7 +161,7 @@ function setup(){
         	framesIdleMawile.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
     	}
 	hero3 = new PIXI.AnimatedSprite(framesIdleMawile);
-	hero3.x = 2*50*spriteSpacer;
+	hero3.x = -2*50*spriteSpacer;
 	hero3.y = 0;
 	hero3.scale.set(globalScale);
 	hero3.anchor.set(anchorX1,anchorY1);
@@ -175,7 +175,7 @@ function setup(){
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero4.x = 3*50*spriteSpacer;
+	hero4.x = -3*50*spriteSpacer;
 	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
@@ -188,7 +188,7 @@ function setup(){
         	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	enemy1 = new PIXI.AnimatedSprite(framesIdleQuilava);
-	enemy1.x = 5*50*spriteSpacer;
+	enemy1.x = 0;
 	enemy1.y = 0;
 	enemy1.scale.set(-globalScale, globalScale);
 	enemy1.anchor.set(anchorX2,anchorY2);
@@ -202,7 +202,7 @@ function setup(){
         	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
 	enemy2 = new PIXI.AnimatedSprite(framesIdleMawile);
-	enemy2.x = 6*50*spriteSpacer;
+	enemy2.x = 1*50*spriteSpacer;
 	enemy2.y = 0;
 	enemy2.scale.set(-globalScale, globalScale);
 	enemy2.anchor.set(anchorX2,anchorY2)
@@ -216,7 +216,7 @@ function setup(){
         	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
 	enemy3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	enemy3.x = 7*50*spriteSpacer;
+	enemy3.x = 2*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(-globalScale, globalScale);
 	enemy3.anchor.set(anchorX2,anchorY2)
@@ -224,7 +224,7 @@ function setup(){
 	enemy3.play();
 	
 	enemy4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	enemy4.x = 8*50*spriteSpacer;
+	enemy4.x = 3*50*spriteSpacer;
 	enemy4.y = 0;
 	enemy4.scale.set(-globalScale, globalScale);
 	enemy4.anchor.set(anchorX2,anchorY2)
