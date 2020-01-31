@@ -118,7 +118,7 @@ function setup(){
 	app.stage.addChild(button);
 	
 	app.stage.addChild(container);
-	var anchorX = 0;
+	var anchorX = 1;
 	var anchorY = 1;
 	var globalScale = 2;
 	var spriteSpacer = 2;
