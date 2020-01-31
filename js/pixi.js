@@ -175,7 +175,7 @@ function setup(){
 	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
 	hero4.x = 3*50*spriteSpacer;
 	hero4.y = 0;
-	hero4.scale.set(-globalScale,globalScale);
+	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX,anchorY);
 	hero4.animationSpeed = 0.5;
 	hero4.play();	
