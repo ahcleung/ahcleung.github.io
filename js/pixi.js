@@ -83,14 +83,20 @@ function setup(){
 	app.stage.addChild(rect2);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
-	rectHero.x = 500;
-	rectHero.y = 200;
-	app.stage.addChild(rectHero);
+	rectHero.x = 0;
+	rectHero.y = 0;
+	rosterHero.addChild(rectHero);
 	
 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, -100);
-	rectEnemy.x = 500;
-	rectEnemy.y = 200;
-	app.stage.addChild(rectEnemy);
+	rectEnemy.x = 0;
+	rectEnemy.y = 0;
+	rosterEnemy.addChild(rectEnemy);
+	
+	rosterHero.x = app.screen.width/2;
+	rosterHero.y = app.screen.height/2;
+	
+	rosterEnemy.x = app.screen.width/2;
+	rosterEnemy.y = app.screen.height/2;
 	
 	// Create a 5x5 grid of bunnies
 // 	for (let i = 0; i < 25; i++) {
