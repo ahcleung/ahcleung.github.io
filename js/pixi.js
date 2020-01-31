@@ -213,13 +213,21 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
-	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
+	enemy3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
 	enemy3.x = 7*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(globalScale);
 	enemy3.anchor.set(anchorX,anchorY);
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();
+	
+	enemy4 = new PIXI.AnimatedSprite(framesIdleFlygon);
+	enemy4.x = 8*50*spriteSpacer;
+	enemy4.y = 0;
+	enemy4.scale.set(globalScale);
+	enemy4.anchor.set(anchorX,anchorY);
+	enemy4.animationSpeed = 0.5;
+	enemy4.play();
 	
 	container.addChild(hero4);
 	container.addChild(hero3);
@@ -228,6 +236,7 @@ function setup(){
 	container.addChild(enemy1);
 	container.addChild(enemy2);
 	container.addChild(enemy3);
+	container.addChild(enemy4);
 	
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
