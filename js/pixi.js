@@ -122,7 +122,7 @@ function setup(){
 	var anchorX = 0;
 	var anchorY = 1;
 	var globalScale = 2;
-	var spriteSpacer = 1;
+	var spriteSpacer = 2;
 	
 	//Load spritesheet
 	//Flygon
