@@ -118,6 +118,10 @@ function setup(){
 
 	app.stage.addChild(button);
 		
+	var anchorX = 0;
+	var anchorY = 0;
+	var globalScale = 2;
+	
 	//Load spritesheet
 	//Flygon
 	for (let i = 0; i < 125; i++) {
@@ -128,8 +132,8 @@ function setup(){
 	animIdleFlygon = new PIXI.AnimatedSprite(frames1);
 	animIdleFlygon.x = 0;
 	animIdleFlygon.y = 0;
-	animIdleFlygon.scale.set(2);
-	animIdleFlygon.anchor.set(0,1);
+	animIdleFlygon.scale.set(globalScale);
+	animIdleFlygon.anchor.set(anchorX,anchorY);
 	animIdleFlygon.animationSpeed = 0.5;
 	animIdleFlygon.play();
 	container.addChild(animIdleFlygon);
@@ -143,8 +147,8 @@ function setup(){
 	animIdleHippowdon = new PIXI.AnimatedSprite(frames2);
 	animIdleHippowdon.x = 50;
 	animIdleHippowdon.y = 0;
-	animIdleHippowdon.scale.set(2);
-	animIdleHippowdon.anchor.set(0,1);
+	animIdleHippowdon.scale.set(globalScale);
+	animIdleHippowdon.anchor.set(anchorX,anchorY);
 	animIdleHippowdon.animationSpeed = 0.5;
 	animIdleHippowdon.play();
 	container.addChild(animIdleHippowdon);
@@ -157,8 +161,8 @@ function setup(){
 	animIdleMawile = new PIXI.AnimatedSprite(frames3);
 	animIdleMawile.x = 100;
 	animIdleMawile.y = 0;
-	animIdleMawile.scale.set(2);
-	animIdleMawile.anchor.set(0,1);
+	animIdleMawile.scale.set(globalScale);
+	animIdleMawile.anchor.set(anchorX,anchorY);
 	animIdleMawile.animationSpeed = 0.5;
 	animIdleMawile.play();
 	container.addChild(animIdleMawile);
@@ -172,8 +176,8 @@ function setup(){
 	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
 	animIdleQuilava.x = 150;
 	animIdleQuilava.y = 0;
-	animIdleQuilava.scale.set(2);
-	animIdleQuilava.anchor.set(0,1);
+	animIdleQuilava.scale.set(globalScale);
+	animIdleQuilava.anchor.set(anchorX,anchorY);
 	animIdleQuilava.animationSpeed = 0.5;
 	animIdleQuilava.play();
 	container.addChild(animIdleQuilava);
@@ -186,8 +190,8 @@ function setup(){
 	animIdleCrobat = new PIXI.AnimatedSprite(frames5);
 	animIdleCrobat.x = 250;
 	animIdleCrobat.y = 0;
-	animIdleCrobat.scale.set(2);
-	animIdleCrobat.anchor.set(0,1);
+	animIdleCrobat.scale.set(globalScale);
+	animIdleCrobat.anchor.set(anchorX,anchorY);
 	animIdleCrobat.animationSpeed = 0.5;
 	animIdleCrobat.play();
 	container.addChild(animIdleCrobat);	
@@ -201,8 +205,8 @@ function setup(){
 	animIdleMagmortar = new PIXI.AnimatedSprite(frames6);
 	animIdleMagmortar.x = 300;
 	animIdleMagmortar.y = 0;
-	animIdleMagmortar.scale.set(2);
-	animIdleMagmortar.anchor.set(0,1);
+	animIdleMagmortar.scale.set(globalScale);
+	animIdleMagmortar.anchor.set(anchorX,anchorY);
 	animIdleMagmortar.animationSpeed = 0.5;
 	animIdleMagmortar.play();
 	container.addChild(animIdleMagmortar);
@@ -216,8 +220,8 @@ function setup(){
 	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
 	animIdleMamoswine.x = 350;
 	animIdleMamoswine.y = 0;
-	animIdleMamoswine.scale.set(2);
-	animIdleMamoswine.anchor.set(0,1);
+	animIdleMamoswine.scale.set(globalScale);
+	animIdleMamoswine.anchor.set(anchorX,anchorY);
 	animIdleMamoswine.animationSpeed = 0.5;
 	animIdleMamoswine.play();
 	container.addChild(animIdleMamoswine);
