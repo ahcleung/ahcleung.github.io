@@ -82,14 +82,14 @@ function setup(){
 	rect2.y = 100;
 	app.stage.addChild(rect2);
 	
-	rectHero.beginFill(0xaec6cf).drawRect(-100, -50, 200, 100);
+	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
 	rectHero.x = 25;
-	rectHero.y = 25;
+	rectHero.y = 200;
 	app.stage.addChild(rectHero);
 	
-	rectEnemy.beginFill(0xff6961).drawRect(-100, -50, 200, 100);
+	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, -100);
 	rectEnemy.x = 500;
-	rectEnemy.y = 25;
+	rectEnemy.y = 200;
 	app.stage.addChild(rectEnemy);
 	
 	// Create a 5x5 grid of bunnies
