@@ -216,7 +216,7 @@ function setup(){
 	enemy3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
 	enemy3.x = 7*50*spriteSpacer;
 	enemy3.y = 0;
-	enemy3.scale.set(globalScale);
+	enemy3.scale.set(-globalScale, globalScale);
 	enemy3.anchor.set(anchorX,anchorY);
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();
@@ -224,7 +224,7 @@ function setup(){
 	enemy4 = new PIXI.AnimatedSprite(framesIdleFlygon);
 	enemy4.x = 8*50*spriteSpacer;
 	enemy4.y = 0;
-	enemy4.scale.set(globalScale);
+	enemy4.scale.set(-globalScale, globalScale);
 	enemy4.anchor.set(anchorX,anchorY);
 	enemy4.animationSpeed = 0.5;
 	enemy4.play();
