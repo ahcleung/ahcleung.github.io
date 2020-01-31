@@ -118,8 +118,10 @@ function setup(){
 	app.stage.addChild(button);
 	
 	app.stage.addChild(container);
-	var anchorX = 1;
-	var anchorY = 1;
+	var anchorX1 = 0;
+	var anchorY1 = 1;
+	var anchorX2 = 1;
+	var anchorY2 = 1;
 	var globalScale = 2;
 	var spriteSpacer = 2;
 	
@@ -134,7 +136,7 @@ function setup(){
 	hero1.x = 0;
 	hero1.y = 0;
 	hero1.scale.set(globalScale);
-	hero1.anchor.set(anchorX,anchorY);
+	hero1.anchor.set(anchorX1,anchorY1);
 	hero1.animationSpeed = 0.5;
 	hero1.play();
 	
@@ -149,7 +151,7 @@ function setup(){
 	hero2.x = 1*50*spriteSpacer;
 	hero2.y = 0;
 	hero2.scale.set(globalScale);
-	hero2.anchor.set(anchorX,anchorY);
+	hero2.anchor.set(anchorX1,anchorY1);
 	hero2.animationSpeed = 0.5;
 	hero2.play();	
 	
@@ -162,7 +164,7 @@ function setup(){
 	hero3.x = 2*50*spriteSpacer;
 	hero3.y = 0;
 	hero3.scale.set(globalScale);
-	hero3.anchor.set(anchorX,anchorY);
+	hero3.anchor.set(anchorX1,anchorY1);
 	hero3.animationSpeed = 0.5;
 	hero3.play();	
 	
@@ -176,7 +178,7 @@ function setup(){
 	hero4.x = 3*50*spriteSpacer;
 	hero4.y = 0;
 	hero4.scale.set(globalScale);
-	hero4.anchor.set(anchorX,anchorY);
+	hero4.anchor.set(anchorX1,anchorY1);
 	hero4.animationSpeed = 0.5;
 	hero4.play();	
 	
@@ -185,11 +187,11 @@ function setup(){
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
-	enemy1 = new PIXI.AnimatedSprite(framesIdleCrobat);
+	enemy1 = new PIXI.AnimatedSprite(framesIdleQuilava);
 	enemy1.x = 5*50*spriteSpacer;
 	enemy1.y = 0;
-	enemy1.scale.set(globalScale);
-	enemy1.anchor.set(anchorX,anchorY);
+	enemy1.scale.set(-globalScale, globalScale);
+	enemy1.anchor.set(anchorX2,anchorY2);
 	enemy1.animationSpeed = 0.5;
 	enemy1.play();		
 	
@@ -199,11 +201,11 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
-	enemy2 = new PIXI.AnimatedSprite(framesIdleMagmortar);
+	enemy2 = new PIXI.AnimatedSprite(framesIdleMawile);
 	enemy2.x = 6*50*spriteSpacer;
 	enemy2.y = 0;
-	enemy2.scale.set(globalScale);
-	enemy2.anchor.set(anchorX,anchorY);
+	enemy2.scale.set(-globalScale, globalScale);
+	enemy2.anchor.set(anchorX2,anchorY2)
 	enemy2.animationSpeed = 0.5;
 	enemy2.play();	
 	
@@ -217,7 +219,7 @@ function setup(){
 	enemy3.x = 7*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(-globalScale, globalScale);
-	enemy3.anchor.set(1,anchorY);
+	enemy3.anchor.set(anchorX2,anchorY2)
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();
 	
@@ -225,7 +227,7 @@ function setup(){
 	enemy4.x = 8*50*spriteSpacer;
 	enemy4.y = 0;
 	enemy4.scale.set(-globalScale, globalScale);
-	enemy4.anchor.set(1,anchorY);
+	enemy4.anchor.set(anchorX2,anchorY2)
 	enemy4.animationSpeed = 0.5;
 	enemy4.play();
 	
