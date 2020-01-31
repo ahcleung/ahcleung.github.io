@@ -220,7 +220,7 @@ function setup(){
 	
 	
 // 	app.stage.addChild(anim2);
-// 	container.scale.set(2);
+	container.scale.set(2);
 	// Move container to the center
 	container.x = app.screen.width/2;
 	container.y = app.screen.height/2;
