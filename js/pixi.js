@@ -281,7 +281,7 @@ function resize() {
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
 	
 	rect2.position.set(0, app.screen.height/4);
-	rect2.width.set(app.screen.width/2);
+	rect2.width(app.screen.width/2);
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
