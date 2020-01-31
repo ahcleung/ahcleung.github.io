@@ -83,7 +83,7 @@ function setup(){
 	app.stage.addChild(rect2);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
-	rectHero.x = 25;
+	rectHero.x = 500;
 	rectHero.y = 200;
 	app.stage.addChild(rectHero);
 	
