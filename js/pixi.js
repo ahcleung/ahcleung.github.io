@@ -120,8 +120,9 @@ function setup(){
 	
 	app.stage.addChild(container);
 	var anchorX = 0;
-	var anchorY = 0;
+	var anchorY = 1;
 	var globalScale = 2;
+	var spriteSpacer = 1;
 	
 	//Load spritesheet
 	//Flygon
@@ -146,7 +147,7 @@ function setup(){
         	frames2.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
 	animIdleHippowdon = new PIXI.AnimatedSprite(frames2);
-	animIdleHippowdon.x = 50;
+	animIdleHippowdon.x = 1*50*spriteSpacer;
 	animIdleHippowdon.y = 0;
 	animIdleHippowdon.scale.set(globalScale);
 	animIdleHippowdon.anchor.set(anchorX,anchorY);
@@ -160,7 +161,7 @@ function setup(){
         	frames3.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
     	}
 	animIdleMawile = new PIXI.AnimatedSprite(frames3);
-	animIdleMawile.x = 100;
+	animIdleMawile.x = 2*50*spriteSpacer;
 	animIdleMawile.y = 0;
 	animIdleMawile.scale.set(globalScale);
 	animIdleMawile.anchor.set(anchorX,anchorY);
@@ -175,7 +176,7 @@ function setup(){
         	frames4.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
-	animIdleQuilava.x = 150;
+	animIdleQuilava.x = 3*50*spriteSpacer;
 	animIdleQuilava.y = 0;
 	animIdleQuilava.scale.set(globalScale);
 	animIdleQuilava.anchor.set(anchorX,anchorY);
@@ -189,7 +190,7 @@ function setup(){
         	frames5.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	animIdleCrobat = new PIXI.AnimatedSprite(frames5);
-	animIdleCrobat.x = 250;
+	animIdleCrobat.x = 5*50*spriteSpacer;
 	animIdleCrobat.y = 0;
 	animIdleCrobat.scale.set(globalScale);
 	animIdleCrobat.anchor.set(anchorX,anchorY);
@@ -204,7 +205,7 @@ function setup(){
         	frames6.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
 	animIdleMagmortar = new PIXI.AnimatedSprite(frames6);
-	animIdleMagmortar.x = 300;
+	animIdleMagmortar.x = 6*50*spriteSpacer;
 	animIdleMagmortar.y = 0;
 	animIdleMagmortar.scale.set(globalScale);
 	animIdleMagmortar.anchor.set(anchorX,anchorY);
@@ -219,7 +220,7 @@ function setup(){
         	frames7.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
 	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
-	animIdleMamoswine.x = 350;
+	animIdleMamoswine.x = 7*50*spriteSpacer;
 	animIdleMamoswine.y = 0;
 	animIdleMamoswine.scale.set(globalScale);
 	animIdleMamoswine.anchor.set(anchorX,anchorY);
