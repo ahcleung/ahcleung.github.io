@@ -251,7 +251,8 @@ function play(delta){
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: " + app.screen.height;
+		"\nAppScreen Height: " + app.screen.height +
+		"\nRect2 Width: " + rect2.width;
 }
 
 // // Listen for animate update
