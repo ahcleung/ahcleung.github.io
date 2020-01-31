@@ -118,7 +118,7 @@ function setup(){
 	app.stage.addChild(button);
 	
 	app.stage.addChild(container);
-	var anchorX1 = 1;
+	var anchorX1 = 0;
 	var anchorY1 = 1;
 	var anchorX2 = 1;
 	var anchorY2 = 1;
@@ -175,7 +175,7 @@ function setup(){
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero4.x = 0;
+	hero4.x = 0 - hero4.width;
 	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
