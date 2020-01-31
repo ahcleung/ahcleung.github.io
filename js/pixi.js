@@ -176,7 +176,7 @@ function setup(){
 	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
 	animIdleQuilava.x = 3*50*spriteSpacer;
 	animIdleQuilava.y = 0;
-	animIdleQuilava.scale.set(-globalScale);
+	animIdleQuilava.scale.set(0,-globalScale);
 	animIdleQuilava.anchor.set(anchorX,anchorY);
 	animIdleQuilava.animationSpeed = 0.5;
 	animIdleQuilava.play();	
