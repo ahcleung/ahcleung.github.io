@@ -138,7 +138,7 @@ function setup(){
 	animIdleFlygon.anchor.set(anchorX,anchorY);
 	animIdleFlygon.animationSpeed = 0.5;
 	animIdleFlygon.play();
-	container.addChild(animIdleFlygon);
+	
 // 	app.stage.addChild(anim);
 	
 	//Hippowdon
@@ -152,8 +152,7 @@ function setup(){
 	animIdleHippowdon.scale.set(globalScale);
 	animIdleHippowdon.anchor.set(anchorX,anchorY);
 	animIdleHippowdon.animationSpeed = 0.5;
-	animIdleHippowdon.play();
-	container.addChild(animIdleHippowdon);
+	animIdleHippowdon.play();	
 	
 	//Mawile
 	for (let i = 0; i < 155; i++) {
@@ -166,8 +165,7 @@ function setup(){
 	animIdleMawile.scale.set(globalScale);
 	animIdleMawile.anchor.set(anchorX,anchorY);
 	animIdleMawile.animationSpeed = 0.5;
-	animIdleMawile.play();
-	container.addChild(animIdleMawile);
+	animIdleMawile.play();	
 	
 	//quilava
 	for (let i = 0; i < 82; i++) {
@@ -178,11 +176,10 @@ function setup(){
 	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
 	animIdleQuilava.x = 3*50*spriteSpacer;
 	animIdleQuilava.y = 0;
-	animIdleQuilava.scale.set(globalScale);
+	animIdleQuilava.scale.set(-globalScale);
 	animIdleQuilava.anchor.set(anchorX,anchorY);
 	animIdleQuilava.animationSpeed = 0.5;
-	animIdleQuilava.play();
-	container.addChild(animIdleQuilava);
+	animIdleQuilava.play();	
 	
 	//crobat
 	for (let i = 0; i < 95; i++) {
@@ -195,8 +192,7 @@ function setup(){
 	animIdleCrobat.scale.set(globalScale);
 	animIdleCrobat.anchor.set(anchorX,anchorY);
 	animIdleCrobat.animationSpeed = 0.5;
-	animIdleCrobat.play();
-	container.addChild(animIdleCrobat);	
+	animIdleCrobat.play();		
 	
 	//magmortar
 	for (let i = 0; i < 160; i++) {
@@ -210,8 +206,7 @@ function setup(){
 	animIdleMagmortar.scale.set(globalScale);
 	animIdleMagmortar.anchor.set(anchorX,anchorY);
 	animIdleMagmortar.animationSpeed = 0.5;
-	animIdleMagmortar.play();
-	container.addChild(animIdleMagmortar);
+	animIdleMagmortar.play();	
 	
 	//mamoswine
 	for (let i = 0; i < 165; i++) {
@@ -226,10 +221,14 @@ function setup(){
 	animIdleMamoswine.anchor.set(anchorX,anchorY);
 	animIdleMamoswine.animationSpeed = 0.5;
 	animIdleMamoswine.play();
+	
+	container.addChild(animIdleQuilava);
+	container.addChild(animIdleMawile);
+	container.addChild(animIdleHippowdon);
+	container.addChild(animIdleFlygon);
+	container.addChild(animIdleCrobat);
+	container.addChild(animIdleMagmortar);
 	container.addChild(animIdleMamoswine);
-	
-	
-	
 	
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
