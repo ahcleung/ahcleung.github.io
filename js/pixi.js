@@ -56,7 +56,7 @@ const frames6 = [];
 const frames7 = [];
 
 function setup(){	
-	app.stage.addChild(container);
+	
 	// Create a new texture
 	const texture = PIXI.Texture.from('img/monkey3.png');
 	
@@ -117,7 +117,8 @@ function setup(){
 // 	});
 
 	app.stage.addChild(button);
-		
+	
+	app.stage.addChild(container);
 	var anchorX = 0;
 	var anchorY = 0;
 	var globalScale = 2;
