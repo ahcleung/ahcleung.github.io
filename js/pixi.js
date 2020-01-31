@@ -262,7 +262,7 @@ function setup(){
 	enemy4.play();
 	
 	
-	rosterHero.addChild(hero1);
+	rosterHero.addChild(hero4);
 	rosterEnemy.addChild(enemy1);
 // 	container.addChild(hero4);
 // 	container.addChild(hero3);
