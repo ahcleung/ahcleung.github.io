@@ -175,7 +175,7 @@ function setup(){
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero4.x = -3*50*spriteSpacer;
+	hero4.x = 0;
 	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
@@ -231,10 +231,10 @@ function setup(){
 	enemy4.animationSpeed = 0.5;
 	enemy4.play();
 	
-// 	container.addChild(hero4);
+	container.addChild(hero4);
 // 	container.addChild(hero3);
 // 	container.addChild(hero2);
-	container.addChild(hero1);
+// 	container.addChild(hero1);
 	container.addChild(enemy1);
 // 	container.addChild(enemy2);
 // 	container.addChild(enemy3);
