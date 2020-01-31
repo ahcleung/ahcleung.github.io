@@ -118,7 +118,7 @@ function setup(){
 	app.stage.addChild(button);
 	
 	app.stage.addChild(container);
-	var anchorX1 = 1;
+	var anchorX1 = 0;
 	var anchorY1 = 1;
 	var anchorX2 = 1;
 	var anchorY2 = 1;
