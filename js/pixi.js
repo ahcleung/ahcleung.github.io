@@ -231,14 +231,14 @@ function setup(){
 	enemy4.animationSpeed = 0.5;
 	enemy4.play();
 	
-	container.addChild(hero4);
-	container.addChild(hero3);
-	container.addChild(hero2);
+// 	container.addChild(hero4);
+// 	container.addChild(hero3);
+// 	container.addChild(hero2);
 	container.addChild(hero1);
 	container.addChild(enemy1);
-	container.addChild(enemy2);
-	container.addChild(enemy3);
-	container.addChild(enemy4);
+// 	container.addChild(enemy2);
+// 	container.addChild(enemy3);
+// 	container.addChild(enemy4);
 	
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
