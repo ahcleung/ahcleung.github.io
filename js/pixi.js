@@ -128,6 +128,7 @@ function setup(){
 	animIdleFlygon = new PIXI.AnimatedSprite(frames1);
 	animIdleFlygon.x = 0;
 	animIdleFlygon.y = 0;
+	animIdleFlygon.scale.set(2);
 	animIdleFlygon.anchor.set(0,1);
 	animIdleFlygon.animationSpeed = 0.5;
 	animIdleFlygon.play();
@@ -142,6 +143,7 @@ function setup(){
 	animIdleHippowdon = new PIXI.AnimatedSprite(frames2);
 	animIdleHippowdon.x = 50;
 	animIdleHippowdon.y = 0;
+	animIdleHippowdon.scale.set(2);
 	animIdleHippowdon.anchor.set(0,1);
 	animIdleHippowdon.animationSpeed = 0.5;
 	animIdleHippowdon.play();
@@ -155,6 +157,7 @@ function setup(){
 	animIdleMawile = new PIXI.AnimatedSprite(frames3);
 	animIdleMawile.x = 100;
 	animIdleMawile.y = 0;
+	animIdleMawile.scale.set(2);
 	animIdleMawile.anchor.set(0,1);
 	animIdleMawile.animationSpeed = 0.5;
 	animIdleMawile.play();
@@ -169,6 +172,7 @@ function setup(){
 	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
 	animIdleQuilava.x = 150;
 	animIdleQuilava.y = 0;
+	animIdleQuilava.scale.set(2);
 	animIdleQuilava.anchor.set(0,1);
 	animIdleQuilava.animationSpeed = 0.5;
 	animIdleQuilava.play();
@@ -182,6 +186,7 @@ function setup(){
 	animIdleCrobat = new PIXI.AnimatedSprite(frames5);
 	animIdleCrobat.x = 250;
 	animIdleCrobat.y = 0;
+	animIdleCrobat.scale.set(2);
 	animIdleCrobat.anchor.set(0,1);
 	animIdleCrobat.animationSpeed = 0.5;
 	animIdleCrobat.play();
@@ -196,6 +201,7 @@ function setup(){
 	animIdleMagmortar = new PIXI.AnimatedSprite(frames6);
 	animIdleMagmortar.x = 300;
 	animIdleMagmortar.y = 0;
+	animIdleMagmortar.scale.set(2);
 	animIdleMagmortar.anchor.set(0,1);
 	animIdleMagmortar.animationSpeed = 0.5;
 	animIdleMagmortar.play();
@@ -210,7 +216,7 @@ function setup(){
 	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
 	animIdleMamoswine.x = 350;
 	animIdleMamoswine.y = 0;
-	animIdleMamoswine.scale.set(1.25);
+	animIdleMamoswine.scale.set(2);
 	animIdleMamoswine.anchor.set(0,1);
 	animIdleMamoswine.animationSpeed = 0.5;
 	animIdleMamoswine.play();
@@ -220,7 +226,7 @@ function setup(){
 	
 	
 // 	app.stage.addChild(anim2);
-	container.scale.set(2);
+// 	container.scale.set(2);
 	// Move container to the center
 	container.x = app.screen.width/2;
 	container.y = app.screen.height/2;
