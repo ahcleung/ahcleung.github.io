@@ -202,26 +202,28 @@ function setup(){
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero4.x = app.screen.width/2;
-	hero4.y = app.screen.height/2;
+	hero4.x = 0;
+	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
 	hero4.animationSpeed = 0.5;
 	hero4.play();	
-	app.stage.addChild(hero4);
+// 	app.stage.addChild(hero4);
+	
+	
 	//crobat
 	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
 	enemy1 = new PIXI.AnimatedSprite(framesIdleQuilava);
-	enemy1.x = app.screen.width/2;
-	enemy1.y = app.screen.height/2;
+	enemy1.x = 0;
+	enemy1.y = 0;
 	enemy1.scale.set(-globalScale, globalScale);
 	enemy1.anchor.set(anchorX2,anchorY2);
 	enemy1.animationSpeed = 0.5;
 	enemy1.play();	
-	app.stage.addChild(enemy1);
+// 	app.stage.addChild(enemy1);
 	
 	//magmortar
 	for (let i = 0; i < 160; i++) {
@@ -259,6 +261,9 @@ function setup(){
 	enemy4.animationSpeed = 0.5;
 	enemy4.play();
 	
+	
+	rosterHero.addChild(hero1);
+	rosterEnemy.addChild(enemy1);
 // 	container.addChild(hero4);
 // 	container.addChild(hero3);
 // 	container.addChild(hero2);
