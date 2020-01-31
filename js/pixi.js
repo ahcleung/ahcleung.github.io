@@ -133,7 +133,7 @@ function setup(){
         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	hero1 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	hero1.x = 0;
+	hero1.x = 100;
 	hero1.y = 0;
 	hero1.scale.set(globalScale);
 	hero1.anchor.set(anchorX1,anchorY1);
