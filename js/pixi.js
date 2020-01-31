@@ -148,7 +148,7 @@ function setup(){
         	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
 	hero2 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	hero2.x = 1*50*spriteSpacer;
+	hero2.x = 2*50*spriteSpacer;
 	hero2.y = 0;
 	hero2.scale.set(globalScale);
 	hero2.anchor.set(anchorX1,anchorY1);
