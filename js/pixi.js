@@ -39,21 +39,20 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, 
-    animIdleCrobat, animIdleFlygon, animIdleMagmortar, animIdleHippowdonm, animIdleMawile, animIdleQuilava, animIdleMamoswine;
+let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4;
 const container = new PIXI.Container();
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
-const frames1 = [];
-const frames2 = [];
-const frames3 = [];
-const frames4 = [];
-const frames5 = [];
-const frames6 = [];
-const frames7 = [];
+const framesIdleFlygon = [];
+const framesIdleHippowdon = [];
+const framesIdleMawile = [];
+const framesIdleQuilava = [];
+const framesIdleCrobat = [];
+const framesIdleMagmortar = [];
+const framesIdleMamoswine = [];
 
 function setup(){	
 	
@@ -129,107 +128,106 @@ function setup(){
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames1.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+        	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
-	animIdleFlygon = new PIXI.AnimatedSprite(frames1);
-	animIdleFlygon.x = 0;
-	animIdleFlygon.y = 0;
-	animIdleFlygon.scale.set(globalScale);
-	animIdleFlygon.anchor.set(anchorX,anchorY);
-	animIdleFlygon.animationSpeed = 0.5;
-	animIdleFlygon.play();
+	hero1 = new PIXI.AnimatedSprite(framesIdleFlygon);
+	hero1.x = 0;
+	hero1.y = 0;
+	hero1.scale.set(globalScale);
+	hero1.anchor.set(anchorX,anchorY);
+	hero1.animationSpeed = 0.5;
+	hero1.play();
 	
 // 	app.stage.addChild(anim);
 	
 	//Hippowdon
 	for (let i = 0; i < 91; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	frames2.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
+        	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
-	animIdleHippowdon = new PIXI.AnimatedSprite(frames2);
-	animIdleHippowdon.x = 1*50*spriteSpacer;
-	animIdleHippowdon.y = 0;
-	animIdleHippowdon.scale.set(globalScale);
-	animIdleHippowdon.anchor.set(anchorX,anchorY);
-	animIdleHippowdon.animationSpeed = 0.5;
-	animIdleHippowdon.play();	
+	hero2 = new PIXI.AnimatedSprite(framesIdleHippowdon);
+	hero2.x = 1*50*spriteSpacer;
+	hero2.y = 0;
+	hero2.scale.set(globalScale);
+	hero2.anchor.set(anchorX,anchorY);
+	hero2.animationSpeed = 0.5;
+	hero2.play();	
 	
 	//Mawile
 	for (let i = 0; i < 155; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	frames3.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
+        	framesIdleMawile.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
     	}
-	animIdleMawile = new PIXI.AnimatedSprite(frames3);
-	animIdleMawile.x = 2*50*spriteSpacer;
-	animIdleMawile.y = 0;
-	animIdleMawile.scale.set(globalScale);
-	animIdleMawile.anchor.set(anchorX,anchorY);
-	animIdleMawile.animationSpeed = 0.5;
-	animIdleMawile.play();	
+	hero3 = new PIXI.AnimatedSprite(framesIdleMawile);
+	hero3.x = 2*50*spriteSpacer;
+	hero3.y = 0;
+	hero3.scale.set(globalScale);
+	hero3.anchor.set(anchorX,anchorY);
+	hero3.animationSpeed = 0.5;
+	hero3.play();	
 	
 	//quilava
 	for (let i = 0; i < 82; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames4.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
+        	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
-	animIdleQuilava = new PIXI.AnimatedSprite(frames4);
-	animIdleQuilava.scale.set(-globalScale,globalScale);
-	animIdleQuilava.x = 3*50*spriteSpacer;
-	animIdleQuilava.y = 0;
-	
-	animIdleQuilava.anchor.set(anchorX,anchorY);
-	animIdleQuilava.animationSpeed = 0.5;
-	animIdleQuilava.play();	
+	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
+	hero4.x = 3*50*spriteSpacer;
+	hero4.y = 0;
+	hero4.scale.set(-globalScale,globalScale);
+	hero4.anchor.set(anchorX,anchorY);
+	hero4.animationSpeed = 0.5;
+	hero4.play();	
 	
 	//crobat
 	for (let i = 0; i < 95; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	frames5.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
+        	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
-	animIdleCrobat = new PIXI.AnimatedSprite(frames5);
-	animIdleCrobat.x = 5*50*spriteSpacer;
-	animIdleCrobat.y = 0;
-	animIdleCrobat.scale.set(globalScale);
-	animIdleCrobat.anchor.set(anchorX,anchorY);
-	animIdleCrobat.animationSpeed = 0.5;
-	animIdleCrobat.play();		
+	enemy1 = new PIXI.AnimatedSprite(framesIdleCrobat);
+	enemy1.x = 5*50*spriteSpacer;
+	enemy1.y = 0;
+	enemy1.scale.set(globalScale);
+	enemy1.anchor.set(anchorX,anchorY);
+	enemy1.animationSpeed = 0.5;
+	enemy1.play();		
 	
 	//magmortar
 	for (let i = 0; i < 160; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames6.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
+        	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
-	animIdleMagmortar = new PIXI.AnimatedSprite(frames6);
-	animIdleMagmortar.x = 6*50*spriteSpacer;
-	animIdleMagmortar.y = 0;
-	animIdleMagmortar.scale.set(globalScale);
-	animIdleMagmortar.anchor.set(anchorX,anchorY);
-	animIdleMagmortar.animationSpeed = 0.5;
-	animIdleMagmortar.play();	
+	enemy2 = new PIXI.AnimatedSprite(framesIdleMagmortar);
+	enemy2.x = 6*50*spriteSpacer;
+	enemy2.y = 0;
+	enemy2.scale.set(globalScale);
+	enemy2.anchor.set(anchorX,anchorY);
+	enemy2.animationSpeed = 0.5;
+	enemy2.play();	
 	
 	//mamoswine
 	for (let i = 0; i < 165; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
-        	frames7.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
+        	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
-	animIdleMamoswine = new PIXI.AnimatedSprite(frames7);
-	animIdleMamoswine.x = 7*50*spriteSpacer;
-	animIdleMamoswine.y = 0;
-	animIdleMamoswine.scale.set(globalScale);
-	animIdleMamoswine.anchor.set(anchorX,anchorY);
-	animIdleMamoswine.animationSpeed = 0.5;
-	animIdleMamoswine.play();
+	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
+	enemy3.x = 7*50*spriteSpacer;
+	enemy3.y = 0;
+	enemy3.scale.set(globalScale);
+	enemy3.anchor.set(anchorX,anchorY);
+	enemy3.animationSpeed = 0.5;
+	enemy3.play();
 	
-	container.addChild(animIdleQuilava);
-	container.addChild(animIdleMawile);
-	container.addChild(animIdleHippowdon);
-	container.addChild(animIdleFlygon);
-	container.addChild(animIdleCrobat);
-	container.addChild(animIdleMagmortar);
-	container.addChild(animIdleMamoswine);
+	container.addChild(hero4);
+	container.addChild(hero3);
+	container.addChild(hero2);
+	container.addChild(hero1);
+	container.addChild(enemy1);
+	container.addChild(enemy2);
+	container.addChild(enemy3);
 	
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
