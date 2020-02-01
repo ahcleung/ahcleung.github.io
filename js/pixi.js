@@ -159,13 +159,13 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
-	hero1 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	hero1.x = 0;
-	hero1.y = 0;
-	hero1.scale.set(globalScale);
-	hero1.anchor.set(anchorX1,anchorY1);
-	hero1.animationSpeed = 0.5;
-	hero1.play();
+	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
+	hero4.x = 0;
+	hero4.y = 0;
+	hero4.scale.set(globalScale);
+	hero4.anchor.set(anchorX1,anchorY1);
+	hero4.animationSpeed = 0.5;
+	hero4.play();
 	
 // 	app.stage.addChild(anim);
 	
@@ -174,26 +174,26 @@ function setup(){
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
-	hero2 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	hero2.x = -1*50*spriteSpacer;
-	hero2.y = 0;
-	hero2.scale.set(globalScale);
-	hero2.anchor.set(anchorX1,anchorY1);
-	hero2.animationSpeed = 0.5;
-	hero2.play();	
+	hero3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
+	hero3.x = -1*50*spriteSpacer;
+	hero3.y = 0;
+	hero3.scale.set(globalScale);
+	hero3.anchor.set(anchorX1,anchorY1);
+	hero3.animationSpeed = 0.5;
+	hero3.play();	
 	
 	//Mawile
 	for (let i = 0; i < 155; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	framesIdleMawile.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
     	}
-	hero3 = new PIXI.AnimatedSprite(framesIdleMawile);
-	hero3.x = -2*50*spriteSpacer;
-	hero3.y = 0;
-	hero3.scale.set(globalScale);
-	hero3.anchor.set(anchorX1,anchorY1);
-	hero3.animationSpeed = 0.5;
-	hero3.play();	
+	hero2 = new PIXI.AnimatedSprite(framesIdleMawile);
+	hero2.x = -2*50*spriteSpacer;
+	hero2.y = 0;
+	hero2.scale.set(globalScale);
+	hero2.anchor.set(anchorX1,anchorY1);
+	hero2.animationSpeed = 0.5;
+	hero2.play();	
 	
 	//quilava
 	for (let i = 0; i < 82; i++) {
@@ -201,13 +201,13 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
-	hero4 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero4.x = 0;
-	hero4.y = 0;
-	hero4.scale.set(globalScale);
-	hero4.anchor.set(anchorX1,anchorY1);
-	hero4.animationSpeed = 0.5;
-	hero4.play();	
+	hero1 = new PIXI.AnimatedSprite(framesIdleQuilava);	
+	hero1.x = -3*50*spriteSpacer;
+	hero1.y = 0;
+	hero1.scale.set(globalScale);
+	hero1.anchor.set(anchorX1,anchorY1);
+	hero1.animationSpeed = 0.5;
+	hero1.play();	
 // 	app.stage.addChild(hero4);
 	
 	
@@ -262,8 +262,14 @@ function setup(){
 	enemy4.play();
 	
 	
+	rosterHero.addChild(hero1);
+	rosterHero.addChild(hero2);
+	rosterHero.addChild(hero3);
 	rosterHero.addChild(hero4);
 	rosterEnemy.addChild(enemy1);
+	rosterEnemy.addChild(enemy2);
+	rosterEnemy.addChild(enemy3);
+	rosterEnemy.addChild(enemy4);
 // 	container.addChild(hero4);
 // 	container.addChild(hero3);
 // 	container.addChild(hero2);
