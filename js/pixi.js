@@ -160,7 +160,7 @@ function setup(){
         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	hero4.x = 0;
+	hero4.x = -3*50*spriteSpacer;
 	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
@@ -175,7 +175,7 @@ function setup(){
         	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
     	}
 	hero3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	hero3.x = -1*50*spriteSpacer;
+	hero3.x = -2*50*spriteSpacer;
 	hero3.y = 0;
 	hero3.scale.set(globalScale);
 	hero3.anchor.set(anchorX1,anchorY1);
@@ -188,7 +188,7 @@ function setup(){
         	framesIdleMawile.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
     	}
 	hero2 = new PIXI.AnimatedSprite(framesIdleMawile);
-	hero2.x = -2*50*spriteSpacer;
+	hero2.x = -1*50*spriteSpacer;
 	hero2.y = 0;
 	hero2.scale.set(globalScale);
 	hero2.anchor.set(anchorX1,anchorY1);
@@ -202,7 +202,7 @@ function setup(){
         	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
     	}
 	hero1 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero1.x = -3*50*spriteSpacer;
+	hero1.x = 0;
 	hero1.y = 0;
 	hero1.scale.set(globalScale);
 	hero1.anchor.set(anchorX1,anchorY1);
