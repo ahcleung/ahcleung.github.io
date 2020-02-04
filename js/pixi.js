@@ -19,7 +19,7 @@ loader
 		"img/crobat.json",
 		"img/magmortar.json",
 		"img/hippowdon.json",
-		"img/mawile.json",
+		"img/carvanha.json",
 		"img/quilava.json",
 		"img/mamoswine.json"
 	])
@@ -56,7 +56,7 @@ var textureButton, textureButtonDown;
 
 const framesIdleFlygon = [];
 const framesIdleHippowdon = [];
-const framesIdleMawile = [];
+const framesIdleCarvanha = [];
 const framesIdleQuilava = [];
 const framesIdleCrobat = [];
 const framesIdleMagmortar = [];
@@ -182,12 +182,12 @@ function setup(){
 	hero3.animationSpeed = 0.5;
 	hero3.play();	
 	
-	//Mawile
-	for (let i = 0; i < 155; i++) {
+	//Carvanha
+	for (let i = 0; i < 131; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	framesIdleMawile.push(PIXI.Texture.from(`mawileIdleSequence0${val}.png`));
+        	framesIdleCarvanha.push(PIXI.Texture.from(`carvanhaIdleSequence0${val}.png`));
     	}
-	hero2 = new PIXI.AnimatedSprite(framesIdleMawile);
+	hero2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
 	hero2.x = -1*50*spriteSpacer;
 	hero2.y = 0;
 	hero2.scale.set(globalScale);
