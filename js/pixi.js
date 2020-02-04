@@ -190,7 +190,7 @@ function setup(){
 	hero2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
 	hero2.x = -1*50*spriteSpacer;
 	hero2.y = 0;
-	hero2.scale.set(globalScale);
+	hero2.scale.set(-globalScale, globalScale);
 	hero2.anchor.set(anchorX1,anchorY1);
 	hero2.animationSpeed = 0.5;
 	hero2.play();	
@@ -234,7 +234,7 @@ function setup(){
 	enemy2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
 	enemy2.x = 1*50*spriteSpacer;
 	enemy2.y = 0;
-	enemy2.scale.set(-globalScale, globalScale);
+	enemy2.scale.set(globalScale);
 	enemy2.anchor.set(anchorX2,anchorY2)
 	enemy2.animationSpeed = 0.5;
 	enemy2.play();	
