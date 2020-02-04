@@ -216,7 +216,7 @@ function setup(){
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
     	}
-	enemy1 = new PIXI.AnimatedSprite(framesIdleQuilava);
+	enemy1 = new PIXI.AnimatedSprite(framesIdleCrobat);
 	enemy1.x = 0;
 	enemy1.y = 0;
 	enemy1.scale.set(-globalScale, globalScale);
@@ -231,7 +231,7 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
-	enemy2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
+	enemy2 = new PIXI.AnimatedSprite(framesIdleMagmortar);
 	enemy2.x = 1*50*spriteSpacer;
 	enemy2.y = 0;
 	enemy2.scale.set(globalScale);
@@ -245,7 +245,7 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
-	enemy3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
+	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
 	enemy3.x = 2*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(-globalScale, globalScale);
