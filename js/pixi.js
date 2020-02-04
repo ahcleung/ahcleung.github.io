@@ -231,7 +231,7 @@ function setup(){
         	// magically works since the spritesheet was loaded with the pixi loader
         	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
-	enemy2 = new PIXI.AnimatedSprite(framesIdleMawile);
+	enemy2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
 	enemy2.x = 1*50*spriteSpacer;
 	enemy2.y = 0;
 	enemy2.scale.set(-globalScale, globalScale);
