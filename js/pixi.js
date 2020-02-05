@@ -232,7 +232,7 @@ function setup(){
         	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
     	}
 	enemy2 = new PIXI.AnimatedSprite(framesIdleMagmortar);
-	enemy2.x = 1*50*spriteSpacer;
+	enemy2.x = 3*50*spriteSpacer;
 	enemy2.y = 0;
 	enemy2.scale.set(-globalScale, globalScale);
 	enemy2.anchor.set(anchorX2,anchorY2)
@@ -246,7 +246,7 @@ function setup(){
         	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
     	}
 	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
-	enemy3.x = 2*50*spriteSpacer;
+	enemy3.x = 1*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(-globalScale*1.25, globalScale*1.25);
 	enemy3.anchor.set(anchorX2,anchorY2)
