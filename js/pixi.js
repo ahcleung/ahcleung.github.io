@@ -248,7 +248,7 @@ function setup(){
 	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
 	enemy3.x = 2*50*spriteSpacer;
 	enemy3.y = 0;
-	enemy3.scale.set(-globalScale*1.5, globalScale*1.5);
+	enemy3.scale.set(-globalScale*1.25, globalScale*1.25);
 	enemy3.anchor.set(anchorX2,anchorY2)
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();	
