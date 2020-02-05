@@ -248,19 +248,10 @@ function setup(){
 	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
 	enemy3.x = 2*50*spriteSpacer;
 	enemy3.y = 0;
-	enemy3.scale.set(-globalScale, globalScale);
+	enemy3.scale.set(-globalScale*1.25, globalScale*1.25);
 	enemy3.anchor.set(anchorX2,anchorY2)
 	enemy3.animationSpeed = 0.5;
-	enemy3.play();
-	
-	enemy4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	enemy4.x = 3*50*spriteSpacer;
-	enemy4.y = 0;
-	enemy4.scale.set(-globalScale, globalScale);
-	enemy4.anchor.set(anchorX2,anchorY2)
-	enemy4.animationSpeed = 0.5;
-	enemy4.play();
-	
+	enemy3.play();	
 	
 	rosterHero.addChild(hero1);
 	rosterHero.addChild(hero2);
