@@ -1,5 +1,5 @@
 {
-  "monsters":[
+  "monsters":
     {
       "name": "Zeppole",
       "elements": [
@@ -43,5 +43,4 @@
       "spd": "65",
       "size": "2",
     },
-  ]
 }
