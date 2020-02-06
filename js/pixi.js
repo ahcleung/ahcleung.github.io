@@ -9,6 +9,54 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
+let jsonData = {
+   "monsters" : [
+      {
+      "name": "Zeppole",
+      "elements": [
+        "wind"
+        ],
+      "hp": 55,
+      "dodge": 8,
+      "patk": 43,
+      "pdef": 42,
+      "satk": 60,
+      "sdef": 55,    
+      "spd": 55,
+      "size": 1
+    },
+    {
+      "name": "Zepplet",
+      "elements": [
+        "wind"
+        ],
+      "hp": 70,
+      "dodge": 9,
+      "patk": 53,
+      "pdef": 52,
+      "satk": 83,
+      "sdef": 78,    
+      "spd": 60,
+      "size": 1
+    },
+    {
+      "name": "Fload",
+      "elements": [
+        "wind",
+        "toxic"
+        ],
+      "hp": 85,
+      "dodge": 10,
+      "patk": 74,
+      "pdef": 71,
+      "satk": 120,
+      "sdef": 105,    
+      "spd": 65,
+      "size": 2
+    }
+  ]
+}
+
 loader
 	.add([
 		"img/monkey3.png",
@@ -118,7 +166,9 @@ function setup(){
 		actual_JSON = JSON.parse(response);
 	});
 	
-	debug = new Text("Monster name: " + actual_JSON.monsters[0]);
+	const obj = JSON.parse(jsonData);
+	
+	debug = new Text("Monster name: " + obj.monsters[0].name);
 	debug.x = 200;
 	debug.y = 400;
 	
