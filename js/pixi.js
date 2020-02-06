@@ -39,7 +39,7 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
-let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4;
+let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4, debug;
 const container = new PIXI.Container();
 
 const rosterHero = new PIXI.Container();
@@ -113,9 +113,13 @@ function setup(){
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
-		"\nInner Height: " + window.innerHeight +
-		"Monster name: " + user1_name;);
+		"\nInner Height: " + window.innerHeight);
 	app.stage.addChild(stats);
+	
+	debug = new Text("Monster name: " + user1_name);
+	debug.x = 200;
+	debug.y = 400;
+	app.stage.addChild(debug);
 
 	//Console text printout
 	consoleScreen = new Text("Console: ");
