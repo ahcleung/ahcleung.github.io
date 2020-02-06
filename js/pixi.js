@@ -9,7 +9,7 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-let jsonData = {
+let jsonData = '{
    "monsters" : [
       {
       "name": "Zeppole",
@@ -55,7 +55,7 @@ let jsonData = {
       "size": 2
     }
   ]
-}
+}';
 
 loader
 	.add([
