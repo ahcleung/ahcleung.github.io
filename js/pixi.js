@@ -22,7 +22,8 @@ loader
 		"img/hippowdon.json",
 		"img/carvanha.json",
 		"img/quilava.json",
-		"img/mamoswine.json"
+		"img/mamoswine.json",
+		"js/monsters.json"
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -107,12 +108,6 @@ function setup(){
 // 		bunny.y = Math.floor(i / 5) * 40;
 // 		container.addChild(bunny);
 // 	}
-	
-// 	var jsonFile;
-// 	fetch("js/monsters.json")
-//     		.then(res => res.json())
-//    		.then(data => jsonFile = data);
-// 	var user1_name = jsonFile
 	
 	const obj = JSON.parse(jsonData);
 	
