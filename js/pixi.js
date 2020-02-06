@@ -108,10 +108,10 @@ function setup(){
 // 	}
 	
 	var jsonFile;
-	fetch("monsters.json")
+	fetch("js/monsters.json")
     		.then(res => res.json())
    		.then(data => jsonFile = JSON.parse(data));
-	var user1_name = jsonFile.name;
+	var user1_name = jsonFile[0].name;
 	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
