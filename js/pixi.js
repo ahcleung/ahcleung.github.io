@@ -109,7 +109,9 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const obj = JSON.parse(jsonData);
+	const obj = loader.resources.myJsonFile.data;
+	
+// 	const obj = JSON.parse(jsonData);
 	
 	debug = new Text("Monster name: " + obj.name);
 	debug.x = 200;
