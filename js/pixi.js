@@ -154,6 +154,24 @@ function setup(){
 	
 	//Load spritesheet
 	//Flygon
+	const hero4Container  = new PIXI.Container();
+	const healthBar = new PIXI.Container();
+	
+	let innerBar = new PIXI.Graphics();
+	innerBar.beginFill(0x000000);
+	innerBar.drawRect(0, 0, 128, 8);
+	innerBar.endFill();
+	healthBar.addChild(innerBar);
+	
+	let outerBar = new PIXI.Graphics();
+	outerBar.beginFill(0xFF3300);
+	outerBar.drawRect(0, 0, 128, 8);
+	outerBar.endFill();
+	healthBar.addChild(outerBar);
+	healthBar.outer = outerBar;
+	
+	hero4Container.addChild(healthBar);
+	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
@@ -167,6 +185,7 @@ function setup(){
 	hero4.animationSpeed = 0.5;
 	hero4.play();
 	
+	hero4Container.addChild(hero4);
 // 	app.stage.addChild(anim);
 	
 	//Hippowdon
@@ -256,7 +275,7 @@ function setup(){
 	rosterHero.addChild(hero1);
 	rosterHero.addChild(hero2);
 	rosterHero.addChild(hero3);
-	rosterHero.addChild(hero4);
+	rosterHero.addChild(hero4Container);
 	rosterEnemy.addChild(enemy1);
 	rosterEnemy.addChild(enemy2);
 	rosterEnemy.addChild(enemy3);
