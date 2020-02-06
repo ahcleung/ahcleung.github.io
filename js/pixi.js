@@ -118,7 +118,7 @@ function setup(){
 		actual_JSON = JSON.parse(response);
 	});
 	
-	debug = new Text("Monster name: " + actual_JSON);
+	debug = new Text("Monster name: " + actual_JSON.name);
 	debug.x = 200;
 	debug.y = 400;
 	
