@@ -178,14 +178,16 @@ function setup(){
         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
     	}
 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-	hero4.x = -3*50*spriteSpacer;
-	hero4.y = 0;
+// 	hero4.x = -3*50*spriteSpacer;
+// 	hero4.y = 0;
 	hero4.scale.set(globalScale);
 	hero4.anchor.set(anchorX1,anchorY1);
 	hero4.animationSpeed = 0.5;
 	hero4.play();
 	
 	hero4Container.addChild(hero4);
+	hero4Container.x = -3*50*spriteSpacer;
+	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
 	
 	//Hippowdon
