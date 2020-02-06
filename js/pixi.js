@@ -106,11 +106,15 @@ function setup(){
 // 		bunny.y = Math.floor(i / 5) * 40;
 // 		container.addChild(bunny);
 // 	}
-
+	
+	var userdata = JSON.parse(monsters);
+	var user1_name = userdata[0].name;
+	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
-		"\nInner Height: " + window.innerHeight);
+		"\nInner Height: " + window.innerHeight +
+		"Monster name: " + user1_name;);
 	app.stage.addChild(stats);
 
 	//Console text printout
