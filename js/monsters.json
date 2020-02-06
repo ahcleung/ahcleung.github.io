@@ -1,4 +1,5 @@
-   {
+{
+   "monsters" : {
       "name": "Zeppole",
       "elements": [
         "wind"
