@@ -1,5 +1,6 @@
 {
-   "monsters" : {
+   "monsters" : [
+      {
       "name": "Zeppole",
       "elements": [
         "wind"
@@ -42,3 +43,5 @@
       "spd": "65",
       "size": "2",
     }
+      ]
+}
