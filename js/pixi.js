@@ -111,7 +111,7 @@ function setup(){
 	fetch("js/monsters.json")
     		.then(res => res.json())
    		.then(data => jsonFile = JSON.parse(data));
-	var user1_name = jsonFile[0].name;
+	var user1_name = jsonFile.data[0].name;
 	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
