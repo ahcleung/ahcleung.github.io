@@ -115,7 +115,7 @@ function setup(){
 	
 // 	const obj = JSON.parse(id);
 	
-	debug = new Text("Monster name: " + obj.monsters);
+	debug = new Text("Monster name: " + obj.data);
 	debug.x = 200;
 	debug.y = 400;
 	
