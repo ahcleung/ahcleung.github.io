@@ -109,7 +109,7 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const obj = loader.resources[monsters.json];
+	const obj = loader.resources[js/monsters.json];
 	
 // 	const obj = JSON.parse(jsonData);
 	
