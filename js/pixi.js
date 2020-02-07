@@ -9,9 +9,6 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-// let id = PIXI.loader.resources["js/monsters.json"];
-
-var jsonData = '{ "name":"John", "age":30, "city":"New York"}';
 loader
 	.add([
 		"img/monkey3.png",
@@ -113,8 +110,6 @@ function setup(){
 	
 	const obj = loader.resources["js/monsters.json"];
 	
-// 	const obj = JSON.parse(id);
-	
 	debug = new Text("Monster name: " + obj.data.monsters[0].name);
 	debug.x = 200;
 	debug.y = 400;
@@ -123,9 +118,7 @@ function setup(){
 	stats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight);
-	app.stage.addChild(stats);
-	
-	
+	app.stage.addChild(stats);	
 
 	//Console text printout
 	consoleScreen = new Text("Console: ");
@@ -296,14 +289,6 @@ function setup(){
 	rosterEnemy.addChild(enemy2);
 	rosterEnemy.addChild(enemy3);
 // 	rosterEnemy.addChild(enemy4);
-// 	container.addChild(hero4);
-// 	container.addChild(hero3);
-// 	container.addChild(hero2);
-// 	container.addChild(hero1);
-// 	container.addChild(enemy1);
-// 	container.addChild(enemy2);
-// 	container.addChild(enemy3);
-// 	container.addChild(enemy4);
 	
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
