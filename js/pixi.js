@@ -9,6 +9,8 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
+let id = PIXI.loader.resources["js/monsters.json"]
+
 var jsonData = '{ "name":"John", "age":30, "city":"New York"}';
 loader
 	.add([
@@ -109,9 +111,9 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const obj = loader.resources[js/monsters.json];
+// 	const obj = loader.resources[js/monsters.json];
 	
-// 	const obj = JSON.parse(jsonData);
+	const obj = JSON.parse(id);
 	
 	debug = new Text("Monster name: " + obj.name);
 	debug.x = 200;
