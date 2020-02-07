@@ -9,7 +9,7 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-let id = PIXI.loader.resources["js/monsters.json"]
+let id = PIXI.loader.resources["js/monsters.json"];
 
 var jsonData = '{ "name":"John", "age":30, "city":"New York"}';
 loader
