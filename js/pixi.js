@@ -9,7 +9,7 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-let id = PIXI.loader.resources["js/monsters.json"];
+// let id = PIXI.loader.resources["js/monsters.json"];
 
 var jsonData = '{ "name":"John", "age":30, "city":"New York"}';
 loader
@@ -111,9 +111,9 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-// 	const obj = loader.resources[js/monsters.json];
+	const obj = loader.resources["js/monsters.json"];
 	
-	const obj = JSON.parse(id);
+// 	const obj = JSON.parse(id);
 	
 	debug = new Text("Monster name: " + obj.name);
 	debug.x = 200;
