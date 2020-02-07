@@ -110,7 +110,7 @@ function setup(){
 	
 	const obj = loader.resources["js/monsters.json"];
 	
-	debug = new Text("Monster name: " + obj.data.monsters[0].name);
+	debug = new Text("Monster name: " + obj.data.monsters[2].elements);
 	debug.x = 200;
 	debug.y = 400;
 	
