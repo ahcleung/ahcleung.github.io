@@ -1,6 +1,6 @@
 let Application = PIXI.Application,
 	loader = PIXI.Loader.shared,
-	resources = PIXI.loader.resources,
+	resources = PIXI.Loader.shared.resources,
 	Sprite = PIXI.Sprite,
 	Text = PIXI.Text;
 
