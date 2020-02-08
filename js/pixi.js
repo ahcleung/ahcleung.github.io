@@ -301,6 +301,18 @@ function setup(){
 	
 	app.stage.addChild(debug);
 	
+	const factory = dragonBones.PixiFactory.factory;
+
+    	factory.parseDragonBonesData(resources.skeleton.data);
+    	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
+
+    	const armatureDisplay = factory.buildArmatureDisplay('leper_test', 'leper_test');
+    	armatureDisplay.animation.play('idle');
+    	armatureDisplay.x = 400.0;
+    	armatureDisplay.y = 500.0;
+
+    	app.stage.addChild(armatureDisplay);
+	
 	// Move container to the center
 	container.x = app.screen.width/2;
 	container.y = app.screen.height/2;
