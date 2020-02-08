@@ -22,7 +22,7 @@ loader
 		"img/carvanha.json",
 		"img/quilava.json",
 		"img/mamoswine.json",
-		"js/monsters.json",
+		"js/creatures.json",
 		{name:'skeleton', url:'img/leper_test_ske.json'},
 		{name:'texture_json', url:'img/leper_test_tex.json'},
 		{name:'texture_png', url:'img/leper_test_tex.png'}
@@ -117,9 +117,9 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const obj = resources["js/monsters.json"];
+	const obj = resources["js/creatures.json"];
 	
-	debug = new Text("Monster name: " + obj.data.monsters[2].elements);
+	debug = new Text("Creature element: " + obj.data.creatures[2].elements);
 	debug.x = 200;
 	debug.y = 400;
 	
