@@ -306,7 +306,7 @@ function setup(){
     	factory.parseDragonBonesData(resources.skeleton.data);
     	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
 
-    	const armatureDisplay = factory.buildArmatureDisplay('leper_test', 'leper_test');
+    	const armatureDisplay = factory.buildArmatureDisplay('Armature', 'leper_test');
     	armatureDisplay.animation.play('idle');
     	armatureDisplay.x = 400.0;
     	armatureDisplay.y = 500.0;
