@@ -114,7 +114,7 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const obj = loader.resources["js/monsters.json"];
+	const obj = resources["js/monsters.json"];
 	
 	debug = new Text("Monster name: " + obj.data.monsters[2].elements);
 	debug.x = 200;
