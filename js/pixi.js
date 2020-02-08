@@ -25,11 +25,13 @@ loader
 		"js/monsters.json"
 	])
 	.on("progress", loadProgressHandler)
-	.shared
-		.add('skeleton', 'img/leper_test_ske.json')
-		.add('texture_json', 'img/leper_test_tex.json')
-		.add('texture_png', 'img/leper_test_tex.png')
 	.load(setup);
+
+Pixi.Loader.shared
+	.add('skeleton', 'img/leper_test_ske.json')
+	.add('texture_json', 'img/leper_test_tex.json')
+	.add('texture_png', 'img/leper_test_tex.png')
+	.load(onAssetsLoaded);
 
 function loadProgressHandler(loader, resource) {
 
@@ -66,6 +68,10 @@ const framesIdleQuilava = [];
 const framesIdleCrobat = [];
 const framesIdleMagmortar = [];
 const framesIdleMamoswine = [];
+
+function onAssetsLoaded(){
+	console.log("DragonBones loaded");
+}
 
 function setup(){	
 	
