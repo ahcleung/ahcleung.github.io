@@ -186,6 +186,8 @@ function setup(){
 	healthBar.addChild(outerBar);
 	healthBar.outer = outerBar;
 	
+	healthBar.outer = 50;
+	
 	hero4Container.addChild(healthBar);
 	
 	for (let i = 0; i < 125; i++) {
