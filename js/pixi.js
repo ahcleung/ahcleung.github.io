@@ -24,8 +24,8 @@ loader
 		"img/mamoswine.json",
 		"js/monsters.json",
 		{name:'skeleton', url:'img/leper_test_ske.json'},
-		{'texture_json', 'img/leper_test_tex.json'},
-		{'texture_png', 'img/leper_test_tex.png'}
+		{name:'texture_json', url:'img/leper_test_tex.json'},
+		{name:'texture_png', url:'img/leper_test_tex.png'}
 	])
 // 	.add('skeleton', 'img/leper_test_ske.json')
 // 	.add('texture_json', 'img/leper_test_tex.json')
