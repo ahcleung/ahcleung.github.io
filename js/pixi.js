@@ -22,12 +22,13 @@ loader
 		"img/carvanha.json",
 		"img/quilava.json",
 		"img/mamoswine.json",
-		"js/monsters.json",
-		{'skeleton', 'img/leper_test_ske.json'},
-		{'texture_json', 'img/leper_test_tex.json'},
-		{'texture_png', 'img/leper_test_tex.png'},
+		"js/monsters.json"
 	])
 	.on("progress", loadProgressHandler)
+	.shared
+		.add('skeleton', 'img/leper_test_ske.json')
+		.add('texture_json', 'img/leper_test_tex.json')
+		.add('texture_png', 'img/leper_test_tex.png')
 	.load(setup);
 
 function loadProgressHandler(loader, resource) {
