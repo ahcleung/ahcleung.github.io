@@ -1,5 +1,5 @@
 let Application = PIXI.Application,
-	loader = PIXI.loader,
+	loader = PIXI.Loader.shared,
 	resources = PIXI.loader.resources,
 	Sprite = PIXI.Sprite,
 	Text = PIXI.Text;
@@ -24,14 +24,11 @@ loader
 		"img/mamoswine.json",
 		"js/monsters.json"
 	])
-	.on("progress", loadProgressHandler)
-	.load(setup);
-
-PIXI.Loader.shared
 	.add('skeleton', 'img/leper_test_ske.json')
 	.add('texture_json', 'img/leper_test_tex.json')
 	.add('texture_png', 'img/leper_test_tex.png')
-	.load(onAssetsLoaded);
+	.on("progress", loadProgressHandler)
+	.load(setup);
 
 function loadProgressHandler(loader, resource) {
 
@@ -68,10 +65,6 @@ const framesIdleQuilava = [];
 const framesIdleCrobat = [];
 const framesIdleMagmortar = [];
 const framesIdleMamoswine = [];
-
-function onAssetsLoaded(){
-	console.log("DragonBones loaded");
-}
 
 function setup(){	
 	
