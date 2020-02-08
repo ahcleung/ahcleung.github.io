@@ -22,7 +22,10 @@ loader
 		"img/carvanha.json",
 		"img/quilava.json",
 		"img/mamoswine.json",
-		"js/monsters.json"
+		"js/monsters.json",
+		{'skeleton', 'img/leper_test_ske.json'},
+		{'texture_json', 'img/leper_test_tex.json'},
+		{'texture_png', 'img/leper_test_tex.png'},
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
