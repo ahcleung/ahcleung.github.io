@@ -313,7 +313,7 @@ function setup(){
 
     	const armatureDisplay = factory.buildArmatureDisplay('Toad3', 'toad3');
     	armatureDisplay.animation.play('idle');
-	armatureDisplay.animationSpeed = 0.5;
+	armatureDisplay.animationSpeed = 0.25;
 	armatureDisplay.scale.set(0.25,0.25);
     	armatureDisplay.x = 400.0;
     	armatureDisplay.y = 500.0;
