@@ -23,9 +23,9 @@ loader
 		"img/quilava.json",
 		"img/mamoswine.json",
 		"js/creatures.json",
-		{name:'skeleton', url:'img/leper_test_ske.json'},
-		{name:'texture_json', url:'img/leper_test_tex.json'},
-		{name:'texture_png', url:'img/leper_test_tex.png'}
+		{name:'skeleton', url:'img/toad3_ske.json'},
+		{name:'texture_json', url:'img/toad3_tex.json'},
+		{name:'texture_png', url:'img/toad3_tex.png'}
 // 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
 // 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
 // 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
@@ -311,8 +311,9 @@ function setup(){
     	factory.parseDragonBonesData(resources.skeleton.data);
     	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
 
-    	const armatureDisplay = factory.buildArmatureDisplay('Armature', 'leper_test');
+    	const armatureDisplay = factory.buildArmatureDisplay('Toad3', 'toad3');
     	armatureDisplay.animation.play('idle');
+	armatureDisplay.animationSpeed = 0.5;
     	armatureDisplay.x = 400.0;
     	armatureDisplay.y = 500.0;
 
