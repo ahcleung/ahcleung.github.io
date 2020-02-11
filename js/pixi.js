@@ -55,14 +55,6 @@ class Creature{
 		this.level = level;
 	}
 	
-	get id(){
-		return this.creatureID;	
-	}
-	
-	get level(){
-		return this.level;	
-	}
-	
 	get hp(){
 		return this.calcHP();
 	}
