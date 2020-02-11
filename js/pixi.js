@@ -58,6 +58,7 @@ class Creature{
 		const obj = resources["js/creatures.json"];	
 		console.log("Creature name: " + obj.data.creatures[this.id].name);
 		
+		this.name = obj.data.creatures[this.id].name;
 		this.elements = obj.data.creatures[this.id].elements;
 		
 		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
@@ -156,11 +157,11 @@ function setup(){
 	
 	const creature1 = new Creature({id:2, level:45, stats:[5, 0, 8, 12, 7, 13, 0]});
 	
-	console.log("Creature elements: " + creature1.elements);
+	console.log(creature1.elements);
 	
-	const obj = resources["js/creatures.json"];
+	//const obj = resources["js/creatures.json"];
 	
-	debug = new Text("Creature element: " + obj.data.creatures[creature1.id].name);
+	debug = new Text("Creature element: " + creature1.name);
 	debug.x = 200;
 	debug.y = 400;
 	
