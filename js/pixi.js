@@ -49,6 +49,35 @@ function loadProgressHandler(loader, resource) {
   //console.log("loading: " + resource.name);
 }
 
+class Creature{
+	constructor(creatureID, level){
+		this.creatureID = creatureID;
+		this.level = level;
+	}
+	
+	get stats(statID){
+		switch(statID){
+			case 0:
+				return this.calcHP();
+				break;
+			case 1:
+				return this.calcPAtk();
+				break;
+			default:
+				return 69;
+				break;
+		}
+	}
+	
+	calcHP(){
+		return this.level * 5;
+	}
+	
+	calcPAtk(){
+		return this.level * 2;	
+	}
+}
+
 let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4, debug;
 const container = new PIXI.Container();
 
