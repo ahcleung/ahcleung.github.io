@@ -56,9 +56,9 @@ class Creature{
 // 		this.statDistribution = statDistributionArray;
 		
 		const obj = resources["js/creatures.json"];	
-		console.log("Creature name: " + obj.data.creatures[this.id].name);
+		console.log("Creature name: " + obj.data.creatures[id].name);
 		
-		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
+		this.EHP = (((2*obj.data.creatures[id].hp + stats[0]) * level)/100) + level + 10;
 	}
 	
 	get hp(){
