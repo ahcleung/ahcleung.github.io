@@ -50,15 +50,15 @@ function loadProgressHandler(loader, resource) {
 }
 
 class Creature{
-	constructor(creatureID, level, statDistributionArray){
-		this.id = creatureID;
-		this.level = level;
-		this.statDistribution = statDistributionArray;
+	constructor({id = 0, level = 1, stats = [0,0,0,0,0,0,0]}){
+// 		this.id = id;
+// 		this.level = level;
+// 		this.statDistribution = statDistributionArray;
 		
 		const obj = resources["js/creatures.json"];	
 		console.log("Creature name: " + obj.data.creatures[this.id].name);
 		
-		this.EHP = (((2*obj.data.creatures[this.id].hp + this.statDistribution[0]) * this.level)/100) + this.level + 10;
+		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
 	}
 	
 	get hp(){
@@ -146,7 +146,7 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const creature1 = new Creature(1, 50, [10, 0, 8, 12, 7, 13, 0]);
+	const creature1 = new Creature({id:2, level:45, stats:[5, 0, 8, 12, 7, 13, 0]});
 	
 	console.log("Creature EHP: " + creature1.EHP);
 	
