@@ -219,6 +219,10 @@ function setup(){
 	
 	hero4Container.addChild(healthBar);
 	
+	const creature1 = new Creature(2, 50);
+	
+	console.log("Creature HP: " + creature.stats(0));
+	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
         	// magically works since the spritesheet was loaded with the pixi loader
