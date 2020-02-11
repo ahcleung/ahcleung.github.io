@@ -69,7 +69,11 @@ class Creature{
 		this.SAtk = obj.data.creatures[this.id].satk + this.stats[4];
 		this.SDef = obj.data.creatures[this.id].sdef + this.stats[5];
 		this.Spd = obj.data.creatures[this.id].spd + this.stats[6];
-	}	
+	}
+	
+	heal(){
+		this.HP = this.EHP;	
+	}
 // 	get hp(){
 // 		return this.calcHP();
 // 	}
