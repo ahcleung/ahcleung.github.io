@@ -221,7 +221,7 @@ function setup(){
 	
 	const creature1 = new Creature(2, 50);
 	
-	console.log("Creature HP: " + creature.stats(0));
+	console.log("Creature HP: " + creature1.stats(0));
 	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
