@@ -51,7 +51,7 @@ function loadProgressHandler(loader, resource) {
 
 class Creature{
 	constructor(creatureID, level){
-		this.creatureID = creatureID;
+		this.id = creatureID;
 		this.level = level;
 	}
 	
