@@ -53,6 +53,9 @@ class Creature{
 	constructor(creatureID, level){
 		this.id = creatureID;
 		this.level = level;
+		
+		const obj = resources["js/creatures.json"];	
+		console.log("Creature name: " + obj.data.creatures[this.id].name);
 	}
 	
 	get hp(){
