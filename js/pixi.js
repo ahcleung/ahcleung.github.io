@@ -51,15 +51,16 @@ function loadProgressHandler(loader, resource) {
 
 class Creature{
 	constructor({id = 0, level = 1, stats = [0,0,0,0,0,0,0]}){
-// 		this.id = id;
-// 		this.level = level;
-// 		this.statDistribution = statDistributionArray;
+		this.id = id;
+		this.level = level;
+		this.stats = stats;
 		
 		const obj = resources["js/creatures.json"];	
-		console.log("Creature name: " + obj.data.creatures[id].name);
+		console.log("Creature name: " + obj.data.creatures[this.id].name);
 		
-		this.EHP = (((2*obj.data.creatures[id].hp + stats[0]) * level)/100) + level + 10;
+		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
 	}
+	
 	
 	get hp(){
 		return this.calcHP();
