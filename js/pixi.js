@@ -50,7 +50,7 @@ function loadProgressHandler(loader, resource) {
 }
 
 class Creature{
-	constructor(creatureID, level){
+	constructor(creatureID, level, statDistribution){
 		this.id = creatureID;
 		this.level = level;
 		
@@ -59,7 +59,7 @@ class Creature{
 		
 		var statdistributionHP = 10;
 		
-		this.EHP = (((2*obj.data.creatures[this.id].hp + statdistributionHP) * this.level)/100) + this.level + 10;
+		this.EHP = (((2*obj.data.creatures[this.id].hp + statDistribution[0]) * this.level)/100) + this.level + 10;
 	}
 	
 	get hp(){
@@ -147,7 +147,7 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const creature1 = new Creature(1, 50);
+	const creature1 = new Creature(1, 50, [10, 0, 8, 12, 7, 13, 0]);
 	
 	console.log("Creature EHP: " + creature1.EHP);
 	
