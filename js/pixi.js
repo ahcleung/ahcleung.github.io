@@ -58,25 +58,32 @@ class Creature{
 		const obj = resources["js/creatures.json"];	
 		console.log("Creature name: " + obj.data.creatures[this.id].name);
 		
+		this.elements = obj.data.creatures[this.id].elements;
+		
 		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
-	}
+		this.HP = this.EHP;
+		this.Dodge = obj.data.creatures[this.id].dodge + this.stats[1]/2;
+		this.PAtk = obj.data.creatures[this.id].patk + this.stats[2];
+		this.PDef = obj.data.creatures[this.id].pdef + this.stats[3];
+		this.SAtk = obj.data.creatures[this.id].satk + this.stats[4];
+		this.SDef = obj.data.creatures[this.id].sdef + this.stats[5];
+		this.Spd = obj.data.creatures[this.id].spd + this.stats[6];
+	}	
+// 	get hp(){
+// 		return this.calcHP();
+// 	}
 	
+// 	get PAtk(){
+// 		return this.calcPAtk();	
+// 	}
 	
-	get hp(){
-		return this.calcHP();
-	}
+// 	calcHP(){
+// 		return this.level * 5;
+// 	}
 	
-	get PAtk(){
-		return this.calcPAtk();	
-	}
-	
-	calcHP(){
-		return this.level * 5;
-	}
-	
-	calcPAtk(){
-		return this.level * 2;	
-	}
+// 	calcPAtk(){
+// 		return this.level * 2;	
+// 	}
 }
 
 let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4, debug;
@@ -149,7 +156,7 @@ function setup(){
 	
 	const creature1 = new Creature({id:2, level:45, stats:[5, 0, 8, 12, 7, 13, 0]});
 	
-	console.log("Creature EHP: " + creature1.EHP);
+	console.log("Creature elements: " + creature1.elements);
 	
 	const obj = resources["js/creatures.json"];
 	
