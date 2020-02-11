@@ -55,18 +55,12 @@ class Creature{
 		this.level = level;
 	}
 	
-	get stats(statID){
-		switch(statID){
-			case 0:
-				return this.calcHP();
-				break;
-			case 1:
-				return this.calcPAtk();
-				break;
-			default:
-				return 69;
-				break;
-		}
+	get hp(){
+		return this.calcHP();
+	}
+	
+	get PAtk(){
+		return this.calcPAtk();	
 	}
 	
 	calcHP(){
@@ -221,7 +215,7 @@ function setup(){
 	
 	const creature1 = new Creature(2, 50);
 	
-	console.log("Creature HP: " + creature1.stats(0));
+	console.log("Creature HP: " + creature1.hp);
 	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
