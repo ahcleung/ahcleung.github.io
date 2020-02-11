@@ -331,8 +331,6 @@ function setup(){
 // 	app.stage.addChild(anim2);
 // 	container.scale.set(2);
 	
-	app.stage.addChild(debug);
-	
 	const factory = dragonBones.PixiFactory.factory;
 
     	factory.parseDragonBonesData(resources.skeleton.data);
@@ -346,6 +344,8 @@ function setup(){
     	armatureDisplay.y = 500.0;
 
     	app.stage.addChild(armatureDisplay);
+	
+	app.stage.addChild(debug);
 	
 	// Move container to the center
 	container.x = app.screen.width/2;
