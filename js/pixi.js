@@ -55,6 +55,14 @@ class Creature{
 		this.level = level;
 	}
 	
+	get id(){
+		return this.creatureID;	
+	}
+	
+	get level(){
+		return this.level;	
+	}
+	
 	get hp(){
 		return this.calcHP();
 	}
@@ -140,9 +148,13 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
+	const creature1 = new Creature(1, 50);
+	
+	console.log("Creature HP: " + creature1.hp);
+	
 	const obj = resources["js/creatures.json"];
 	
-	debug = new Text("Creature element: " + obj.data.creatures[2].elements);
+	debug = new Text("Creature element: " + obj.data.creatures[creature1.id].name);
 	debug.x = 200;
 	debug.y = 400;
 	
@@ -212,10 +224,6 @@ function setup(){
 	healthBar.outer.width = 50;
 	
 	hero4Container.addChild(healthBar);
-	
-	const creature1 = new Creature(2, 50);
-	
-	console.log("Creature HP: " + creature1.hp);
 	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
