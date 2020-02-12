@@ -166,6 +166,8 @@ function setup(){
 	console.log(creature1.HP);
 	creature1.HP -= 21;
 	console.log(creature1.HP);
+	creature1.heal();
+	console.log(creature1.HP);
 	
 	//const obj = resources["js/creatures.json"];
 	
