@@ -159,9 +159,13 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-	const creature1 = new Creature({id:2, level:45, stats:[5, 0, 8, 12, 7, 13, 0]});
+// 	const creature1 = new Creature({id:2, level:45, stats:[5, 0, 8, 12, 7, 13, 0]});
+	const creature1 = new Creature({id:2});
 	
-	console.log(creature1.elements);
+	console.log(creature1.EHP);
+	console.log(creature1.HP);
+	creature1.HP -= 21;
+	console.log(creature1.HP);
 	
 	//const obj = resources["js/creatures.json"];
 	
