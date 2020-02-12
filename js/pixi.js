@@ -61,7 +61,7 @@ class Creature{
 		this.name = obj.data.creatures[this.id].name;
 		this.elements = obj.data.creatures[this.id].elements;
 		
-		this.EHP = (((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10;
+		this.EHP = Math.round((((2*obj.data.creatures[this.id].hp + this.stats[0]) * this.level)/100) + this.level + 10);
 		this.HP = this.EHP;
 		this.Dodge = obj.data.creatures[this.id].dodge + this.stats[1]/2;
 		this.PAtk = obj.data.creatures[this.id].patk + this.stats[2];
