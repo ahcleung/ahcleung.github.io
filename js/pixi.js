@@ -53,7 +53,7 @@ class Creature{
 	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0]}){
 		this.id = id;
 		this.level = level;
-		this.statDis = stats;
+		this.statDis = statDis;
 		
 		const obj = resources["js/creatures.json"];	
 		console.log("Creature name: " + obj.data.creatures[this.id].name);
