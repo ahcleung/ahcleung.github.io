@@ -50,10 +50,11 @@ function loadProgressHandler(loader, resource) {
 }
 
 class Creature{
-	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0]}){
+	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], moves=[0,0,0,0]}){
 		this.id = id;
 		this.level = level;
 		this.statDis = statDis;
+		this.moves = moves;
 		
 		const obj = resources["js/creatures.json"];	
 		console.log("Creature name: " + obj.data.creatures[this.id].name);
