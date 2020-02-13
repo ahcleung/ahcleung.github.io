@@ -1,0 +1,244 @@
+{
+	"moves" : [
+		{
+			"name": "Spike trap",
+			"element": "Earth",
+			"type": "phy",
+			"power": 20,
+			"accuracy": 100,
+			"position": [
+				1, 2
+			],
+			"target": [
+				1, 2, 3, 4
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [10,"cover"],
+			"turns": 5,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Lightning strike",
+			"element": "Lightning",
+			"type": "spe",
+			"power": 60,
+			"accuracy": 90,
+			"position": [
+				3, 4
+			],
+			"target": [
+				1, 2, 3, 4
+			],
+			"tags":[
+				"splash"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0.5,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Fire wall",
+			"element": "Fire",
+			"type": "spe",
+			"power": 20,
+			"accuracy": 100,
+			"position": [
+				1, 2, 3
+			],
+			"target": [
+				1, 2, 3, 4
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [10,"between"],
+			"turns": 5,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Tectonic shift",
+			"element": "Earth",
+			"type": "phy",
+			"power": 20,
+			"accuracy": 90,
+			"position": [
+				2, 3
+			],
+			"target": [
+				2, 3
+			],
+			"tags":[
+				"displace"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [1,1],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Water geyser",
+			"element": "Water",
+			"type": "spe",
+			"power": 40,
+			"accuracy": 80,
+			"position": [
+				1, 2, 3, 4
+			],
+			"target": [
+
+			],
+			"tags":[
+				"column"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [3,0.5],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Aeropush",
+			"element": "Wind",
+			"type": "spe",
+			"power": 30,
+			"accuracy": 80,
+			"position": [
+				1, 2
+			],
+			"target": [
+				1, 2
+			],
+			"tags":[
+				"displace"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [-2,0],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Uproot",
+			"element": "Flora",
+			"type": "oth",
+			"power": 0,
+			"accuracy": 100,
+			"position": [
+				3, 4
+			],
+			"target": [
+				2, 3
+			],
+			"tags":[
+				"displace"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [1,1],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Airburst",
+			"element": "Wind",
+			"type": "spe",
+			"power": 60,
+			"accuracy": 100,
+			"position": [
+				2, 3
+			],
+			"target": [
+				2, 3
+			],
+			"tags":[
+
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : [0, 0]
+		},
+		{
+			"name": "Wind rush",
+			"element": "Wind",
+			"type": "spe",
+			"power": 40,
+			"accuracy": 80,
+			"position": [
+				1, 2
+			],
+			"target": [
+				1, 2
+			],
+			"tags":[
+				"statchange", "turns"
+			],
+			"multiple": 0,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 5,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : ["spd", 1]
+		},
+		{
+			"name": "Volt punch",
+			"element": "Lightning",
+			"type": "phy",
+			"power": 15,
+			"accuracy": 80,
+			"position": [
+				1, 2
+			],
+			"target": [
+				1, 2
+			],
+			"tags":[
+				"multiple", "statchange", "turns"
+			],
+			"multiple": 2,
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 5,
+			"splash": 0,
+			"displace": [0,0],
+			"column": [0,0],
+			"statchange" : ["spd", -1]
+		}
+	]
+}
