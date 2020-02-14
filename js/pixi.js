@@ -23,6 +23,7 @@ loader
 		"img/quilava.json",
 		"img/mamoswine.json",
 		"js/creatures.json",
+		"js/moves.json",
 		{name:'skeleton', url:'img/toad3_ske.json'},
 		{name:'texture_json', url:'img/toad3_tex.json'},
 		{name:'texture_png', url:'img/toad3_tex.png'}
