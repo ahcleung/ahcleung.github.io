@@ -57,21 +57,21 @@ class Creature{
 		this.statDis = statDis;
 		this.moves = moves;
 		
-		const obj = resources["js/creatures.json"];	
-		console.log("Creature name: " + obj.data.creatures[this.id].name);
+		const creatureList = resources["js/creatures.json"];	
+		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
 		
-		this.name = obj.data.creatures[this.id].name;
-		this.elements = obj.data.creatures[this.id].elements;
+		this.name = creatureList.data.creatures[this.id].name;
+		this.elements = creatureList.data.creatures[this.id].elements;
 		
-		this.EHP = Math.round((((2*obj.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10);
+		this.EHP = Math.round((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10);
 		this.stats = [
 			this.EHP, 
-			obj.data.creatures[this.id].dodge + this.statDis[1]/2,
-			obj.data.creatures[this.id].patk + this.statDis[2],
-			obj.data.creatures[this.id].pdef + this.statDis[3],
-			obj.data.creatures[this.id].satk + this.statDis[4],
-			obj.data.creatures[this.id].sdef + this.statDis[5],
-			obj.data.creatures[this.id].spd + this.statDis[6]
+			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
+			creatureList.data.creatures[this.id].patk + this.statDis[2],
+			creatureList.data.creatures[this.id].pdef + this.statDis[3],
+			creatureList.data.creatures[this.id].satk + this.statDis[4],
+			creatureList.data.creatures[this.id].sdef + this.statDis[5],
+			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 // 		this.HP = this.EHP;
 // 		this.Dodge = obj.data.creatures[this.id].dodge + this.statDis[1]/2;
@@ -170,8 +170,10 @@ function setup(){
 // 		container.addChild(bunny);
 // 	}
 	
-// 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0]});
-	const creature1 = new Creature({id:2});
+	const movesList = resources["js/moves.json"];	
+	
+	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
+// 	const creature1 = new Creature({id:2});
 	
 	console.log(creature1.EHP);
 	console.log(creature1.stats[0]);
@@ -179,6 +181,8 @@ function setup(){
 	console.log(creature1.stats[0]);
 	creature1.heal();
 	console.log(creature1.stats[0]);
+	
+	console.log("Move2: " + movesList.data.moves[creature1.moves[2]].name);
 	
 	//const obj = resources["js/creatures.json"];
 	
