@@ -182,8 +182,8 @@ function setup(){
 	creature1.heal();
 	console.log(creature1.stats[0]);
 	
-	console.log("Move2: " + movesList.data.moves[creature1.moves[2]].name);
-	console.log("Move2: " + movesList.data.moves[creature1.moves[2]].tags);
+	console.log(movesList.data.moves[creature1.moves[2]].name);
+	console.log(movesList.data.moves[creature1.moves[2]].tags);
 	
 	//const obj = resources["js/creatures.json"];
 	
