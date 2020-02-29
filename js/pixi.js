@@ -377,7 +377,7 @@ function setup(){
     	factory.parseDragonBonesData(resources.skeleton.data);
     	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
 
-    	const armatureDisplay = factory.buildArmatureDisplay('Toad3', 'toad3_2');
+    	const armatureDisplay = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
     	armatureDisplay.animation.play('idle');
 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
