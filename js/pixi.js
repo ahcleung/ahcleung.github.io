@@ -24,9 +24,9 @@ loader
 		"img/mamoswine.json",
 		"js/creatures.json",
 		"js/moves.json",
-		{name:'skeleton', url:'img/toad3_ske.json'},
-		{name:'texture_json', url:'img/toad3_tex.json'},
-		{name:'texture_png', url:'img/toad3_tex.png'}
+		{name:'skeleton', url:'img/toad3_2_ske.json'},
+		{name:'texture_json', url:'img/toad3_2_tex.json'},
+		{name:'texture_png', url:'img/toad3_2_tex.png'}
 // 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
 // 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
 // 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
