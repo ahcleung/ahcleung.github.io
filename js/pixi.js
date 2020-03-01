@@ -410,13 +410,13 @@ function setup(){
 //     	fumeDisplay2.x = -100.0;
 //     	fumeDisplay2.y = -100.0;
 
-    	armatureContainer.addChild(armatureDisplay);
-	armatureContainer.addChild(fumeDisplay);
-	armatureContainer.addChild(fumeDisplay2);
+//     	armatureContainer.addChild(armatureDisplay);
+// 	armatureContainer.addChild(fumeDisplay);
+// 	armatureContainer.addChild(fumeDisplay2);
 	
 	armatureContainer.x = 0;
 	armatureContainer.y = 0;
-	rosterHero.addChild(armatureContainer);
+	rosterHero.addChild(armatureDisplay);
 // 	app.stage.addChild();
 	
 	app.stage.addChild(debug);
