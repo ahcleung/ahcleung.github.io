@@ -396,9 +396,17 @@ function setup(){
 	fumeDisplay.scale.set(0.25,0.25);
     	fumeDisplay.x = 325.0;
     	fumeDisplay.y = 500.0;
+	
+	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
+    	fumeDisplay2.animation.play('Fume');
+	fumeDisplay2.animation.timeScale = 0.5;
+	fumeDisplay2.scale.set(0.25,0.25);
+    	fumeDisplay2.x = 325.0;
+    	fumeDisplay2.y = 400.0;
 
     	app.stage.addChild(armatureDisplay);
 	app.stage.addChild(fumeDisplay);
+	app.stage.addChild(fumeDisplay2);
 	
 	app.stage.addChild(debug);
 	
