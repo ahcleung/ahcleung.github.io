@@ -384,7 +384,7 @@ function setup(){
     	armatureDisplay.animation.play('idle');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
-    	armatureDisplay.x = 400.0;
+    	armatureDisplay.x = 360.0;
     	armatureDisplay.y = 500.0;
 	
 	factory.parseDragonBonesData(resources.fume_skeleton.data);
@@ -394,7 +394,7 @@ function setup(){
     	fumeDisplay.animation.play('Fume');
 	fumeDisplay.animation.timeScale = 0.5;
 	fumeDisplay.scale.set(0.25,0.25);
-    	fumeDisplay.x = 360.0;
+    	fumeDisplay.x = 355.0;
     	fumeDisplay.y = 500.0;
 	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
