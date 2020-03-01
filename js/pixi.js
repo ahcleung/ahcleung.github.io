@@ -111,6 +111,8 @@ const container = new PIXI.Container();
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
 
+const armatureContainer = new PIXI.Container();
+
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
 
@@ -384,8 +386,8 @@ function setup(){
     	armatureDisplay.animation.play('idle');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
-    	armatureDisplay.x = 400.0;
-    	armatureDisplay.y = 500.0;
+    	armatureDisplay.x = 100.0;
+    	armatureDisplay.y = 100.0;
 	
 	factory.parseDragonBonesData(resources.fume_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
@@ -394,20 +396,22 @@ function setup(){
     	fumeDisplay.animation.play('Fume');
 // 	fumeDisplay.animation.timeScale = 0.5;
 	fumeDisplay.scale.set(0.25,0.25);
-    	fumeDisplay.x = 350.0;
-    	fumeDisplay.y = 490.0;
+    	fumeDisplay.x = 100.0;
+    	fumeDisplay.y = 200.0;
 	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay2.scale.set(0.33,0.33);
-    	fumeDisplay2.x = 360.0;
-    	fumeDisplay2.y = 400.0;
+//     	fumeDisplay2.x = 360.0;
+//     	fumeDisplay2.y = 400.0;
 
-    	app.stage.addChild(armatureDisplay);
-	app.stage.addChild(fumeDisplay);
-	app.stage.addChild(fumeDisplay2);
+    	armatureContainer.addChild(armatureDisplay);
+	armatureContainer.addChild(fumeDisplay);
+	armatureContainer.addChild(fumeDisplay2);
+	
+	app.stage.addChild(armatureContainer);
 	
 	app.stage.addChild(debug);
 	
