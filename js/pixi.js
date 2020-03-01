@@ -416,7 +416,7 @@ function setup(){
 // 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay3.scale.set(0.30,0.30);
     	fumeDisplay3.x = -70.0;
-    	fumeDisplay3.y = -170.0;
+    	fumeDisplay3.y = -180.0;
 
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
