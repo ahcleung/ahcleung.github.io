@@ -399,16 +399,16 @@ function setup(){
 // 	fumeDisplay.animation.timeScale = 0.5;
 	
 	fumeDisplay.scale.set(0.25,0.25);
-    	fumeDisplay.x = -50.0;
-    	fumeDisplay.y = -5;
+    	fumeDisplay.x = -125.0;
+    	fumeDisplay.y = -100;
 	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay2.scale.set(0.33,0.33);
-    	fumeDisplay2.x = -100.0;
-    	fumeDisplay2.y = -100.0;
+    	fumeDisplay2.x = -120.0;
+    	fumeDisplay2.y = -200.0;
 
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
