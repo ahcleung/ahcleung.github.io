@@ -398,7 +398,7 @@ function setup(){
     	fumeDisplay.animation.play('Fume');
 // 	fumeDisplay.animation.timeScale = 0.5;
 	
-	fumeDisplay.scale.set(0.25,0.25);
+	fumeDisplay.scale.set(0.10,0.10);
     	fumeDisplay.x = -130.0;
     	fumeDisplay.y = -90;
 	
@@ -406,7 +406,7 @@ function setup(){
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
-	fumeDisplay2.scale.set(0.33,0.33);
+	fumeDisplay2.scale.set(0.20,0.20);
     	fumeDisplay2.x = -120.0;
     	fumeDisplay2.y = -180.0;
 	
@@ -414,15 +414,15 @@ function setup(){
 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume', 8);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
-	fumeDisplay3.scale.set(0.30,0.30);
+	fumeDisplay3.scale.set(0.15,0.15);
     	fumeDisplay3.x = -70.0;
     	fumeDisplay3.y = -180.0;
 	
-	armatureContainer.addChild(fumeDisplay3);
+	
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
 	armatureContainer.addChild(fumeDisplay2);
-	
+	armatureContainer.addChild(fumeDisplay3);
 	
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
