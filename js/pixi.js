@@ -347,7 +347,7 @@ function setup(){
 	enemy2.x = 3*50*spriteSpacer;
 	enemy2.y = 0;
 	enemy2.scale.set(-globalScale, globalScale);
-	enemy2.anchor.set(anchorX2,anchorY2)
+	enemy2.anchor.set(anchorX2,anchorY2);
 	enemy2.animationSpeed = 0.5;
 	enemy2.play();	
 	
@@ -361,7 +361,7 @@ function setup(){
 	enemy3.x = 1*50*spriteSpacer;
 	enemy3.y = 0;
 	enemy3.scale.set(-globalScale*1.33, globalScale*1.33);
-	enemy3.anchor.set(anchorX2,anchorY2)
+	enemy3.anchor.set(anchorX2,anchorY2);
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();	
 	
@@ -386,8 +386,9 @@ function setup(){
     	armatureDisplay.animation.play('idle');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
-    	armatureDisplay.x = 100.0;
-    	armatureDisplay.y = 100.0;
+	armatureDisplay.anchor.set(anchorX1,anchorY1);
+//     	armatureDisplay.x = 100.0;
+//     	armatureDisplay.y = 100.0;
 	
 	factory.parseDragonBonesData(resources.fume_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
@@ -395,6 +396,7 @@ function setup(){
     	const fumeDisplay = factory.buildArmatureDisplay('Fume', 'fume');
     	fumeDisplay.animation.play('Fume');
 // 	fumeDisplay.animation.timeScale = 0.5;
+	
 	fumeDisplay.scale.set(0.25,0.25);
     	fumeDisplay.x = 100.0;
     	fumeDisplay.y = 200.0;
@@ -410,6 +412,9 @@ function setup(){
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
 	armatureContainer.addChild(fumeDisplay2);
+	
+	armatureContainer.x = app.screen.width/2;
+	armatureContainer.y = app.screen.height/2;
 	
 	app.stage.addChild(armatureContainer);
 	
@@ -477,6 +482,8 @@ function resize() {
 	
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
+	
+	armatureContainer.position.set(app.screen.width/2, app.screen.height/2);
 	
 // 	anim.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
