@@ -365,7 +365,7 @@ function setup(){
 	enemy3.animationSpeed = 0.5;
 	enemy3.play();	
 	
-	rosterHero.addChild(hero1);
+// 	rosterHero.addChild(hero1);
 	rosterHero.addChild(hero2);
 	rosterHero.addChild(hero3);
 	rosterHero.addChild(hero4Container);
@@ -386,7 +386,7 @@ function setup(){
     	armatureDisplay.animation.play('idle');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
-	armatureDisplay.anchor.set(0,1);
+	armatureDisplay.anchor.set(1,1);
 // 	armatureDisplay.pivot.set(1,1);
     	armatureDisplay.x = 0;
     	armatureDisplay.y = 0;
@@ -399,16 +399,16 @@ function setup(){
 // 	fumeDisplay.animation.timeScale = 0.5;
 	
 	fumeDisplay.scale.set(0.25,0.25);
-//     	fumeDisplay.x = 100.0;
-//     	fumeDisplay.y = 200.0;
+    	fumeDisplay.x = -50.0;
+    	fumeDisplay.y = 0;
 	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay2.scale.set(0.33,0.33);
-//     	fumeDisplay2.x = 360.0;
-//     	fumeDisplay2.y = 400.0;
+    	fumeDisplay2.x = -100.0;
+    	fumeDisplay2.y = -100.0;
 
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
@@ -416,8 +416,8 @@ function setup(){
 	
 	armatureContainer.x = app.screen.width/2;
 	armatureContainer.y = app.screen.height/2;
-	
-	app.stage.addChild(armatureContainer);
+	rosterHero.addChild(armatureContainer);
+// 	app.stage.addChild();
 	
 	app.stage.addChild(debug);
 	
@@ -484,7 +484,7 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
 	
-	armatureContainer.position.set(app.screen.width/2-50, app.screen.height/2);
+// 	armatureContainer.position.set(app.screen.width/2-50, app.screen.height/2);
 	
 // 	anim.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
