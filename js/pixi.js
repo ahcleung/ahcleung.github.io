@@ -193,8 +193,8 @@ function setup(){
 	//const obj = resources["js/creatures.json"];
 	
 	debug = new Text("Creature element: " + creature1.name);
-	debug.x = 200;
-	debug.y = 400;
+	debug.x = 100;
+	debug.y = 200;
 	
 	//Current display stats
 	stats = new Text("Resolution: " + app.renderer.resolution +
