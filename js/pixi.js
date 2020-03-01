@@ -386,8 +386,8 @@ function setup(){
     	armatureDisplay.animation.play('idle');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
-// 	armatureDisplay.anchor.set(anchorX1,anchorY1);
-	armatureDisplay.pivot.set(1,1);
+	armatureDisplay.anchor.set(0,1);
+// 	armatureDisplay.pivot.set(1,1);
     	armatureDisplay.x = 0;
     	armatureDisplay.y = 0;
 	
