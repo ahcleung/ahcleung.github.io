@@ -26,7 +26,10 @@ loader
 		"js/moves.json",
 		{name:'skeleton', url:'img/toad3_2_ske.json'},
 		{name:'texture_json', url:'img/toad3_2_tex.json'},
-		{name:'texture_png', url:'img/toad3_2_tex.png'}
+		{name:'texture_png', url:'img/toad3_2_tex.png'},
+		{name:'fume_skeleton', url:'img/fume_ske.json'},
+		{name:'fume_texture_json', url:'img/fume_tex.json'},
+		{name:'fume_texture_png', url:'img/fume_tex.png'}
 // 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
 // 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
 // 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
@@ -383,8 +386,19 @@ function setup(){
 	armatureDisplay.scale.set(0.25,0.25);
     	armatureDisplay.x = 400.0;
     	armatureDisplay.y = 500.0;
+	
+	factory.parseDragonBonesData(resources.fume_skeleton.data);
+    	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
+
+    	const fumeDisplay = factory.buildArmatureDisplay('Fume', 'fume');
+    	fumeDisplay.animation.play('Sprite');
+// 	armatureDisplay.animation.timeScale = 0.5;
+	fumeDisplay.scale.set(0.25,0.25);
+    	fumeDisplay.x = 400.0;
+    	fumeDisplay.y = 500.0;
 
     	app.stage.addChild(armatureDisplay);
+	app.stage.addChild(fumeDisplay);
 	
 	app.stage.addChild(debug);
 	
