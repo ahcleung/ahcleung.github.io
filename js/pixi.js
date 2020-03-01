@@ -411,11 +411,11 @@ function setup(){
     	fumeDisplay2.y = -180.0;
 	
 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume', 'fume');
-	fumeDisplay3.animation.gotoAndPlayByFrame('Fume', 6);
+	fumeDisplay3.animation.gotoAndPlayByFrame('Fume', 8);
 //     	fumeDisplay2.animation.play('Fume');
 // 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay3.scale.set(0.30,0.30);
-    	fumeDisplay3.x = -80.0;
+    	fumeDisplay3.x = -70.0;
     	fumeDisplay3.y = -170.0;
 
     	armatureContainer.addChild(armatureDisplay);
