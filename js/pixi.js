@@ -391,7 +391,7 @@ function setup(){
     	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
 
     	const fumeDisplay = factory.buildArmatureDisplay('Fume', 'fume');
-    	fumeDisplay.animation.play('Sprite');
+    	fumeDisplay.animation.play('Fume');
 // 	armatureDisplay.animation.timeScale = 0.5;
 	fumeDisplay.scale.set(0.25,0.25);
     	fumeDisplay.x = 400.0;
