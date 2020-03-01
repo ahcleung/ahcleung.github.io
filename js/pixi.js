@@ -483,7 +483,7 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
 	
-	armatureContainer.position.set(app.screen.width/2, app.screen.height/2);
+	armatureContainer.position.set(app.screen.width/2-50, app.screen.height/2);
 	
 // 	anim.position.set(app.screen.width/2, app.screen.height/2);
 // 	anim2.position.set(app.screen.width/2, app.screen.height/2);
