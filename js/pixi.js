@@ -409,10 +409,19 @@ function setup(){
 	fumeDisplay2.scale.set(0.33,0.33);
     	fumeDisplay2.x = -120.0;
     	fumeDisplay2.y = -180.0;
+	
+	const fumeDisplay3 = factory.buildArmatureDisplay('Fume', 'fume');
+	fumeDisplay3.animation.gotoAndPlayByFrame('Fume', 6);
+//     	fumeDisplay2.animation.play('Fume');
+// 	fumeDisplay2.animation.timeScale = 0.5;
+	fumeDisplay3.scale.set(0.30,0.30);
+    	fumeDisplay3.x = -80.0;
+    	fumeDisplay3.y = -170.0;
 
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
 	armatureContainer.addChild(fumeDisplay2);
+	armatureContainer.addChild(fumeDisplay3);
 	
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
