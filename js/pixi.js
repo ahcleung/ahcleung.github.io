@@ -387,8 +387,8 @@ function setup(){
 // 	armatureDisplay.animation.timeScale = 0.5;
 	armatureDisplay.scale.set(0.25,0.25);
 	armatureDisplay.anchor.set(anchorX1,anchorY1);
-//     	armatureDisplay.x = 100.0;
-//     	armatureDisplay.y = 100.0;
+    	armatureDisplay.x = 0;
+    	armatureDisplay.y = 0;
 	
 	factory.parseDragonBonesData(resources.fume_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
@@ -398,8 +398,8 @@ function setup(){
 // 	fumeDisplay.animation.timeScale = 0.5;
 	
 	fumeDisplay.scale.set(0.25,0.25);
-    	fumeDisplay.x = 100.0;
-    	fumeDisplay.y = 200.0;
+//     	fumeDisplay.x = 100.0;
+//     	fumeDisplay.y = 200.0;
 	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
