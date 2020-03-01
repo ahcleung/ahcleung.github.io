@@ -417,11 +417,12 @@ function setup(){
 	fumeDisplay3.scale.set(0.30,0.30);
     	fumeDisplay3.x = -70.0;
     	fumeDisplay3.y = -180.0;
-
+	
+	armatureContainer.addChild(fumeDisplay3);
     	armatureContainer.addChild(armatureDisplay);
 	armatureContainer.addChild(fumeDisplay);
 	armatureContainer.addChild(fumeDisplay2);
-	armatureContainer.addChild(fumeDisplay3);
+	
 	
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
