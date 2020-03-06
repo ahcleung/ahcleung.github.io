@@ -29,7 +29,10 @@ loader
 		{name:'texture_png', url:'img/toad3_2_tex.png'},
 		{name:'fume_skeleton', url:'img/fume_ske.json'},
 		{name:'fume_texture_json', url:'img/fume_tex.json'},
-		{name:'fume_texture_png', url:'img/fume_tex.png'}
+		{name:'fume_texture_png', url:'img/fume_tex.png'},
+		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
+		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
+		{name:'fume2_texture_png', url:'img/fume2_tex.png'}
 // 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
 // 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
 // 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
@@ -391,27 +394,27 @@ function setup(){
     	armatureDisplay.x = 0;
     	armatureDisplay.y = 0;
 	
-	factory.parseDragonBonesData(resources.fume_skeleton.data);
-    	factory.parseTextureAtlasData(resources.fume_texture_json.data, resources.fume_texture_png.texture);
+	factory.parseDragonBonesData(resources.fume2_skeleton.data);
+    	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
 
-    	const fumeDisplay = factory.buildArmatureDisplay('Fume', 'fume');
-    	fumeDisplay.animation.play('Fume');
+    	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
+    	fumeDisplay.animation.play('Fume2');
 	fumeDisplay.animation.timeScale = 0.5;
 	
 	fumeDisplay.scale.set(0.20,0.20);
     	fumeDisplay.x = -135.0;
     	fumeDisplay.y = -85;
 	
-	const fumeDisplay2 = factory.buildArmatureDisplay('Fume', 'fume');
-	fumeDisplay2.animation.gotoAndPlayByFrame('Fume', 12);
+	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
+	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
 //     	fumeDisplay2.animation.play('Fume');
 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay2.scale.set(0.25,0.25);
     	fumeDisplay2.x = -115.0;
     	fumeDisplay2.y = -172.0;
 	
-	const fumeDisplay3 = factory.buildArmatureDisplay('Fume', 'fume');
-	fumeDisplay3.animation.gotoAndPlayByFrame('Fume', 30);
+	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
+	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
 //     	fumeDisplay2.animation.play('Fume');
 	fumeDisplay3.animation.timeScale = 0.5;
 	fumeDisplay3.scale.set(0.22,0.22);
