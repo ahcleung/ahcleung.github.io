@@ -32,7 +32,10 @@ loader
 		{name:'fume_texture_png', url:'img/fume_tex.png'},
 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
-		{name:'fume2_texture_png', url:'img/fume2_tex.png'}
+		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
+		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
+		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
+		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'}
 // 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
 // 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
 // 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
@@ -115,6 +118,7 @@ const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
 
 const armatureContainer = new PIXI.Container();
+const armatureContainer2 = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
@@ -394,6 +398,14 @@ function setup(){
     	armatureDisplay.x = 0;
     	armatureDisplay.y = 0;
 	
+	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
+    	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
+	const armatureDisplay2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureDisplay2.animation.play('idle');
+	armatureDisplay2.scale.set(0.25,0.25);
+    	armatureDisplay2.x = 0;
+    	armatureDisplay2.y = 0;
+	
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
 
@@ -424,7 +436,9 @@ function setup(){
 	armatureContainer.addChild(fumeDisplay2);
 	armatureContainer.addChild(fumeDisplay3);
     	armatureContainer.addChild(armatureDisplay);
-	armatureContainer.addChild(fumeDisplay);	
+	armatureContainer.addChild(fumeDisplay);
+	
+	armatureContainer2.addChild(armatureDisplay2);
 	
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
