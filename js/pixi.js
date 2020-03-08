@@ -402,7 +402,7 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	const armatureDisplay2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureDisplay2.animation.play('idle');
-	armatureDisplay2.scale.set(0.25,0.25);
+	armatureDisplay2.scale.set(-0.25,0.25);
     	armatureDisplay2.x = 0;
     	armatureDisplay2.y = 0;
 	
@@ -443,6 +443,7 @@ function setup(){
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
 	rosterHero.addChild(armatureContainer);
+	rosterEnemy.addChild(armatureContainer2);
 // 	app.stage.addChild();
 	
 	app.stage.addChild(debug);
