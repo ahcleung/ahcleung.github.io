@@ -364,19 +364,21 @@ function setup(){
     	armatureEnemy1.y = 0;
 	
 	const armatureEnemy2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
+	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 43);
 //     	armatureEnemy2.animation.play('idle');
 	armatureEnemy2.scale.set(-0.25,0.25);
     	armatureEnemy2.x = 0;
     	armatureEnemy2.y = 0;
 	
 	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-    	armatureEnemy3.animation.play('idle');
+	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
+//     	armatureEnemy3.animation.play('idle');
 	armatureEnemy3.scale.set(-0.25,0.25);
     	armatureEnemy3.x = 0;
     	armatureEnemy3.y = 0;
 	
 	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
     	armatureEnemy4.animation.play('idle');
 	armatureEnemy4.scale.set(-0.25,0.25);
     	armatureEnemy4.x = 0;
