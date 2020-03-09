@@ -379,7 +379,7 @@ function setup(){
 	
 	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
-    	armatureEnemy4.animation.play('idle');
+//     	armatureEnemy4.animation.play('idle');
 	armatureEnemy4.scale.set(-0.25,0.25);
     	armatureEnemy4.x = 0;
     	armatureEnemy4.y = 0;
