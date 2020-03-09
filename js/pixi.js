@@ -24,9 +24,9 @@ loader
 		"img/mamoswine.json",
 		"js/creatures.json",
 		"js/moves.json",
-		{name:'skeleton', url:'img/toad3_2_ske.json'},
-		{name:'texture_json', url:'img/toad3_2_tex.json'},
-		{name:'texture_png', url:'img/toad3_2_tex.png'},
+		{name:'toad3_skeleton', url:'img/toad3_2_ske.json'},
+		{name:'toad3_texture_json', url:'img/toad3_2_tex.json'},
+		{name:'toad3_texture_png', url:'img/toad3_2_tex.png'},
 		{name:'fume_skeleton', url:'img/fume_ske.json'},
 		{name:'fume_texture_json', url:'img/fume_tex.json'},
 		{name:'fume_texture_png', url:'img/fume_tex.png'},
@@ -119,6 +119,8 @@ const rosterEnemy = new PIXI.Container();
 
 const hero1Container = new PIXI.Container();
 const hero2Container = new PIXI.Container();
+const hero3Container = new PIXI.Container();
+const hero4Container = new PIXI.Container();
 const enemy1Container = new PIXI.Container();
 const enemy2Container = new PIXI.Container();
 const enemy3Container = new PIXI.Container();
@@ -319,22 +321,7 @@ function setup(){
 	hero2.scale.set(globalScale);
 	hero2.anchor.set(anchorX1,anchorY1);
 	hero2.animationSpeed = 0.5;
-	hero2.play();	
-	
-	//quilava
-	for (let i = 0; i < 82; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	// magically works since the spritesheet was loaded with the pixi loader
-        	framesIdleQuilava.push(PIXI.Texture.from(`quilavaIdleSequence0${val}.png`));
-    	}
-	hero1 = new PIXI.AnimatedSprite(framesIdleQuilava);	
-	hero1.x = 0;
-	hero1.y = 0;
-	hero1.scale.set(globalScale);
-	hero1.anchor.set(anchorX1,anchorY1);
-	hero1.animationSpeed = 0.5;
-	hero1.play();	
-// 	app.stage.addChild(hero4);
+	hero2.play();
 	
 // 	rosterHero.addChild(hero1);
 	rosterHero.addChild(hero2);
@@ -347,14 +334,24 @@ function setup(){
 	
 	const factory = dragonBones.PixiFactory.factory;
 
-    	factory.parseDragonBonesData(resources.skeleton.data);
-    	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
-    	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
-    	armatureHero1.animation.play('idle');
-	armatureHero1.scale.set(0.25,0.25);
-	
+    	factory.parseDragonBonesData(resources.toad3_skeleton.data);
+    	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
+	factory.parseDragonBonesData(resources.fume2_skeleton.data);
+    	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
+	
+    	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+    	armatureHero1.animation.play('idle');
+	armatureHero1.scale.set(0.40,0.40);
+	
+	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
+	armatureHero2.scale.set(0.25,0.25);
+	const armatureHero3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureHero3.animation.gotoAndPlayByFrame('idle', 57);
+	armatureHero3.scale.set(0.25,0.25);
+	
 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureEnemy1.animation.play('idle');
 	armatureEnemy1.scale.set(-0.25,0.25);
@@ -372,10 +369,7 @@ function setup(){
 	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
 //     	armatureEnemy4.animation.play('idle');
-	armatureEnemy4.scale.set(-0.25,0.25);
-	
-	factory.parseDragonBonesData(resources.fume2_skeleton.data);
-    	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
+	armatureEnemy4.scale.set(-0.25,0.25);	
 
     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
     	fumeDisplay.animation.play('Fume2');
@@ -399,17 +393,27 @@ function setup(){
     	hero1Container.addChild(armatureHero1);
 	hero1Container.addChild(fumeDisplay);
 	
+	hero2Container.addChild(armatureHero2);
+	hero3Container.addChild(armatureHero3);
+	
 	enemy1Container.addChild(armatureEnemy1);
 	enemy2Container.addChild(armatureEnemy2);
 // 	enemy3Container.addChild(armatureEnemy3);
 	enemy4Container.addChild(armatureEnemy4);
 	
+	hero1Container.x = 0;
+	hero2Container.x = 2*50*spriteSpacer;
+	hero3Container.x = 3*50*spriteSpacer;
+	
 	enemy1Container.x = 0;
-	enemy2Container.x = 1*50*spriteSpacer;
+	enemy2Container.x = -1*50*spriteSpacer;
 // 	enemy3Container.x = 2*50*spriteSpacer;
-	enemy4Container.x = 3*50*spriteSpacer;
+	enemy4Container.x = -3*50*spriteSpacer;
 	
 	rosterHero.addChild(hero1Container);
+	rosterHero.addChild(hero2Container);
+	rosterHero.addChild(hero3Container);
+	
 	rosterEnemy.addChild(enemy1Container);
 	rosterEnemy.addChild(enemy2Container);
 // 	rosterEnemy.addChild(enemy3Container);
