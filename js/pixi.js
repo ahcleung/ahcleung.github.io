@@ -402,13 +402,13 @@ function setup(){
 	enemy4Container.addChild(armatureEnemy4);
 	
 	hero1Container.x = 0;
-	hero2Container.x = 2*50*spriteSpacer;
-	hero3Container.x = 3*50*spriteSpacer;
+	hero2Container.x = -2*50*spriteSpacer;
+	hero3Container.x = -3*50*spriteSpacer;
 	
 	enemy1Container.x = 0;
-	enemy2Container.x = -1*50*spriteSpacer;
+	enemy2Container.x = 1*50*spriteSpacer;
 // 	enemy3Container.x = 2*50*spriteSpacer;
-	enemy4Container.x = -3*50*spriteSpacer;
+	enemy4Container.x = 3*50*spriteSpacer;
 	
 	rosterHero.addChild(hero1Container);
 	rosterHero.addChild(hero2Container);
