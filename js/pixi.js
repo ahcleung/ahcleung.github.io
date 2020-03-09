@@ -16,12 +16,6 @@ loader
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
-		"img/crobat.json",
-		"img/magmortar.json",
-		"img/hippowdon.json",
-		"img/carvanha.json",
-		"img/quilava.json",
-		"img/mamoswine.json",
 		"js/creatures.json",
 		"js/moves.json",
 		{name:'toad3_skeleton', url:'img/toad3_2_ske.json'},
@@ -36,13 +30,7 @@ loader
 		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
 		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
 		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'}
-// 		{name:'skeleton', url:'img/mecha_1002_101d_show_ske.json'},
-// 		{name:'texture_json', url:'img/mecha_1002_101d_show_tex.json'},
-// 		{name:'texture_png', url:'img/mecha_1002_101d_show_tex.png'}
 	])
-// 	.add('skeleton', 'img/leper_test_ske.json')
-// 	.add('texture_json', 'img/leper_test_tex.json')
-// 	.add('texture_png', 'img/leper_test_tex.png')
 	.on("progress", loadProgressHandler)
 	.load(setup);
 
@@ -179,15 +167,6 @@ function setup(){
 	rosterEnemy.x = app.screen.width/2;
 	rosterEnemy.y = app.screen.height/2;
 	
-	// Create a 5x5 grid of bunnies
-// 	for (let i = 0; i < 25; i++) {
-// 		const bunny = new Sprite(texture);
-// 		bunny.anchor.set(0.5);
-// 		bunny.x = (i % 5) * 40;
-// 		bunny.y = Math.floor(i / 5) * 40;
-// 		container.addChild(bunny);
-// 	}
-	
 	const movesList = resources["js/moves.json"];	
 	
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
@@ -256,7 +235,7 @@ function setup(){
 	
 	//Load spritesheet
 	//Flygon
-	const hero4Container  = new PIXI.Container();
+// 	const hero4Container  = new PIXI.Container();
 // 	const healthBar = new PIXI.Container();
 	
 // 	let innerBar = new PIXI.Graphics();
@@ -276,64 +255,29 @@ function setup(){
 	
 // 	hero4Container.addChild(healthBar);
 	
-	for (let i = 0; i < 125; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	// magically works since the spritesheet was loaded with the pixi loader
-        	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
-    	}
-	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
+// 	for (let i = 0; i < 125; i++) {
+//         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+//         	// magically works since the spritesheet was loaded with the pixi loader
+//         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+//     	}
+// 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
 // 	hero4.x = -3*50*spriteSpacer;
 // 	hero4.y = 0;
-	hero4.scale.set(globalScale);
-	hero4.anchor.set(anchorX1,anchorY1);
-	hero4.animationSpeed = 0.5;
-	hero4.play();
+// 	hero4.scale.set(globalScale);
+// 	hero4.anchor.set(anchorX1,anchorY1);
+// 	hero4.animationSpeed = 0.5;
+// 	hero4.play();
 	
 // 	healthBar.x = -(hero4.width/2) - 60;
 // 	healthBar.y = -300;
 	
-	hero4Container.addChild(hero4);
-	hero4Container.x = -3*50*spriteSpacer;
-	hero4Container.y = 0;
+// 	hero4Container.addChild(hero4);
+// 	hero4Container.x = -3*50*spriteSpacer;
+// 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
 	
-	//Hippowdon
-	for (let i = 0; i < 91; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	framesIdleHippowdon.push(PIXI.Texture.from(`hippowdonIdleSequence0${val}.png`));
-    	}
-	hero3 = new PIXI.AnimatedSprite(framesIdleHippowdon);
-	hero3.x = -2*50*spriteSpacer;
-	hero3.y = 0;
-	hero3.scale.set(globalScale);
-	hero3.anchor.set(anchorX1,anchorY1);
-	hero3.animationSpeed = 0.5;
-	hero3.play();	
-	
-	//Carvanha
-	for (let i = 0; i < 131; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	framesIdleCarvanha.push(PIXI.Texture.from(`carvanhaIdleSequence0${val}.png`));
-    	}
-	hero2 = new PIXI.AnimatedSprite(framesIdleCarvanha);
-	hero2.x = -1*50*spriteSpacer;
-	hero2.y = 0;
-	hero2.scale.set(globalScale);
-	hero2.anchor.set(anchorX1,anchorY1);
-	hero2.animationSpeed = 0.5;
-	hero2.play();
-	
-// 	rosterHero.addChild(hero1);
-	rosterHero.addChild(hero2);
-	rosterHero.addChild(hero3);
-	rosterHero.addChild(hero4Container);
-// 	rosterEnemy.addChild(enemy4);
-	
-// 	app.stage.addChild(anim2);
-// 	container.scale.set(2);
 	
 	const factory = dragonBones.PixiFactory.factory;
-
     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
@@ -343,8 +287,7 @@ function setup(){
 	
     	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
     	armatureHero1.animation.play('idle');
-	armatureHero1.scale.set(0.40,0.40);
-	
+	armatureHero1.scale.set(0.40,0.40);	
 	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
 	armatureHero2.scale.set(0.25,0.25);
@@ -354,18 +297,15 @@ function setup(){
 	
 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureEnemy1.animation.play('idle');
-	armatureEnemy1.scale.set(-0.25,0.25);
-	
+	armatureEnemy1.scale.set(-0.25,0.25);	
 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 //     	armatureEnemy2.animation.play('idle');
-	armatureEnemy2.scale.set(-0.40,0.40);
-	
+	armatureEnemy2.scale.set(-0.40,0.40);	
 // 	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 // 	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
 // //     	armatureEnemy3.animation.play('idle');
-// 	armatureEnemy3.scale.set(-0.25,0.25);
-	
+// 	armatureEnemy3.scale.set(-0.25,0.25);	
 	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
 //     	armatureEnemy4.animation.play('idle');
