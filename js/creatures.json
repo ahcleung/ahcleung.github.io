@@ -2,6 +2,7 @@
    "creatures" : [
       {
       "name": "Zeppole",
+      "code": "toad1",
       "elements": [
         "wind"
         ],
@@ -16,6 +17,7 @@
     },
     {
       "name": "Zepplet",
+      "code": "toad2",
       "elements": [
         "wind"
         ],
@@ -30,6 +32,7 @@
     },
     {
       "name": "Fload",
+      "code": "toad3",
       "elements": [
         "wind",
         "toxic"
