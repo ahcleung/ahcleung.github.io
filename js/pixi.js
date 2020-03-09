@@ -352,37 +352,27 @@ function setup(){
     	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
     	armatureHero1.animation.play('idle');
 	armatureHero1.scale.set(0.25,0.25);
-    	armatureHero1.x = 0;
-    	armatureHero1.y = 0;
 	
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureEnemy1.animation.play('idle');
 	armatureEnemy1.scale.set(-0.25,0.25);
-    	armatureEnemy1.x = 0;
-    	armatureEnemy1.y = 0;
 	
-	const armatureEnemy2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 43);
+	const armatureEnemy2 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 //     	armatureEnemy2.animation.play('idle');
-	armatureEnemy2.scale.set(-0.25,0.25);
-    	armatureEnemy2.x = 0;
-    	armatureEnemy2.y = 0;
+	armatureEnemy2.scale.set(-0.33,0.33);
 	
-	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
-//     	armatureEnemy3.animation.play('idle');
-	armatureEnemy3.scale.set(-0.25,0.25);
-    	armatureEnemy3.x = 0;
-    	armatureEnemy3.y = 0;
+// 	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+// 	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
+// //     	armatureEnemy3.animation.play('idle');
+// 	armatureEnemy3.scale.set(-0.25,0.25);
 	
 	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
 //     	armatureEnemy4.animation.play('idle');
 	armatureEnemy4.scale.set(-0.25,0.25);
-    	armatureEnemy4.x = 0;
-    	armatureEnemy4.y = 0;
 	
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
@@ -411,18 +401,18 @@ function setup(){
 	
 	enemy1Container.addChild(armatureEnemy1);
 	enemy2Container.addChild(armatureEnemy2);
-	enemy3Container.addChild(armatureEnemy3);
+// 	enemy3Container.addChild(armatureEnemy3);
 	enemy4Container.addChild(armatureEnemy4);
 	
 	enemy1Container.x = 0;
 	enemy2Container.x = 1*50*spriteSpacer;
-	enemy3Container.x = 2*50*spriteSpacer;
+// 	enemy3Container.x = 2*50*spriteSpacer;
 	enemy4Container.x = 3*50*spriteSpacer;
 	
 	rosterHero.addChild(hero1Container);
 	rosterEnemy.addChild(enemy1Container);
 	rosterEnemy.addChild(enemy2Container);
-	rosterEnemy.addChild(enemy3Container);
+// 	rosterEnemy.addChild(enemy3Container);
 	rosterEnemy.addChild(enemy4Container);
 	
 	app.stage.addChild(debug);
