@@ -255,13 +255,13 @@ function setup(){
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x222222);
-	innerBar.drawRect(0, 0, 120, 20);
+	innerBar.drawRoundedRect(0, 0, 120, 20, 10);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
 	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x2C8A2C);
-	outerBar.drawRect(0, 0, 120, 20);
+	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	healthBar.outer = outerBar;
