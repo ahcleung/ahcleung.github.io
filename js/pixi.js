@@ -120,6 +120,9 @@ const rosterEnemy = new PIXI.Container();
 const hero1Container = new PIXI.Container();
 const hero2Container = new PIXI.Container();
 const enemy1Container = new PIXI.Container();
+const enemy2Container = new PIXI.Container();
+const enemy3Container = new PIXI.Container();
+const enemy4Container = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
@@ -333,56 +336,10 @@ function setup(){
 	hero1.play();	
 // 	app.stage.addChild(hero4);
 	
-	
-	//crobat
-	for (let i = 0; i < 95; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	framesIdleCrobat.push(PIXI.Texture.from(`crobatIdleSequence0${val}.png`));
-    	}
-	enemy1 = new PIXI.AnimatedSprite(framesIdleCrobat);
-	enemy1.x = 0;
-	enemy1.y = 0;
-	enemy1.scale.set(-globalScale, globalScale);
-	enemy1.anchor.set(anchorX2,anchorY2);
-	enemy1.animationSpeed = 0.5;
-	enemy1.play();	
-// 	app.stage.addChild(enemy1);
-	
-	//magmortar
-	for (let i = 0; i < 160; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	// magically works since the spritesheet was loaded with the pixi loader
-        	framesIdleMagmortar.push(PIXI.Texture.from(`magmortarIdleSequence0${val}.png`));
-    	}
-	enemy2 = new PIXI.AnimatedSprite(framesIdleMagmortar);
-	enemy2.x = 3*50*spriteSpacer;
-	enemy2.y = 0;
-	enemy2.scale.set(-globalScale, globalScale);
-	enemy2.anchor.set(anchorX2,anchorY2);
-	enemy2.animationSpeed = 0.5;
-	enemy2.play();	
-	
-	//mamoswine
-	for (let i = 0; i < 165; i++) {
-        	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-        	// magically works since the spritesheet was loaded with the pixi loader
-        	framesIdleMamoswine.push(PIXI.Texture.from(`mamoswineIdleSequence0${val}.png`));
-    	}
-	enemy3 = new PIXI.AnimatedSprite(framesIdleMamoswine);
-	enemy3.x = 1*50*spriteSpacer;
-	enemy3.y = 0;
-	enemy3.scale.set(-globalScale*1.33, globalScale*1.33);
-	enemy3.anchor.set(anchorX2,anchorY2);
-	enemy3.animationSpeed = 0.5;
-	enemy3.play();	
-	
 // 	rosterHero.addChild(hero1);
 	rosterHero.addChild(hero2);
 	rosterHero.addChild(hero3);
 	rosterHero.addChild(hero4Container);
-	rosterEnemy.addChild(enemy1);
-	rosterEnemy.addChild(enemy2);
-	rosterEnemy.addChild(enemy3);
 // 	rosterEnemy.addChild(enemy4);
 	
 // 	app.stage.addChild(anim2);
@@ -406,29 +363,40 @@ function setup(){
     	armatureEnemy1.x = 0;
     	armatureEnemy1.y = 0;
 	
+	const armatureEnemy2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureEnemy2.animation.play('idle');
+	armatureEnemy2.scale.set(-0.25,0.25);
+    	armatureEnemy2.x = 0;
+    	armatureEnemy2.y = 0;
+	
+	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureEnemy3.animation.play('idle');
+	armatureEnemy3.scale.set(-0.25,0.25);
+    	armatureEnemy3.x = 0;
+    	armatureEnemy3.y = 0;
+	
+	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureEnemy4.animation.play('idle');
+	armatureEnemy4.scale.set(-0.25,0.25);
+    	armatureEnemy4.x = 0;
+    	armatureEnemy4.y = 0;
+	
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
 
     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
     	fumeDisplay.animation.play('Fume2');
 // 	fumeDisplay.animation.timeScale = 0.5;
-	
 	fumeDisplay.scale.set(0.20,0.20);
     	fumeDisplay.x = -130.0;
-    	fumeDisplay.y = -90;
-	
+    	fumeDisplay.y = -90;	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
-//     	fumeDisplay2.animation.play('Fume');
-// 	fumeDisplay2.animation.timeScale = 0.5;
 	fumeDisplay2.scale.set(0.25,0.25);
     	fumeDisplay2.x = -110.0;
-    	fumeDisplay2.y = -180.0;
-	
+    	fumeDisplay2.y = -180.0;	
 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
-//     	fumeDisplay2.animation.play('Fume');
-// 	fumeDisplay3.animation.timeScale = 0.5;
 	fumeDisplay3.scale.set(0.22,0.22);
     	fumeDisplay3.x = -60.0;
     	fumeDisplay3.y = -175.0;
@@ -439,12 +407,20 @@ function setup(){
 	hero1Container.addChild(fumeDisplay);
 	
 	enemy1Container.addChild(armatureEnemy1);
+	enemy2Container.addChild(armatureEnemy2);
+	enemy3Container.addChild(armatureEnemy3);
+	enemy4Container.addChild(armatureEnemy4);
 	
-// 	armatureContainer.x = 0;
-// 	armatureContainer.y = 0;
+	enemy1Container.x = 0;
+	enemy2Container.x = 1*50*spriteSpacer;
+	enemy3Container.x = 2*50*spriteSpacer;
+	enemy4Container.x = 3*50*spriteSpacer;
+	
 	rosterHero.addChild(hero1Container);
 	rosterEnemy.addChild(enemy1Container);
-// 	app.stage.addChild();
+	rosterEnemy.addChild(enemy2Container);
+	rosterEnemy.addChild(enemy3Container);
+	rosterEnemy.addChild(enemy4Container);
 	
 	app.stage.addChild(debug);
 	
