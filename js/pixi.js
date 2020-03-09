@@ -284,6 +284,7 @@ function setup(){
 	hero4.play();
 	
 	healthBar.x = -(hero4.width/2) - 60;
+	healthBar.y = -300;
 	
 	hero4Container.addChild(hero4);
 	hero4Container.x = -3*50*spriteSpacer;
