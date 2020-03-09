@@ -117,8 +117,9 @@ const container = new PIXI.Container();
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
 
-const armatureContainer = new PIXI.Container();
-const armatureContainer2 = new PIXI.Container();
+const hero1Container = new PIXI.Container();
+const hero2Container = new PIXI.Container();
+const enemy1Container = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
 const rect2 = new PIXI.Graphics();
@@ -251,24 +252,24 @@ function setup(){
 	//Load spritesheet
 	//Flygon
 	const hero4Container  = new PIXI.Container();
-	const healthBar = new PIXI.Container();
+// 	const healthBar = new PIXI.Container();
 	
-	let innerBar = new PIXI.Graphics();
-	innerBar.beginFill(0x222222);
-	innerBar.drawRoundedRect(0, 0, 120, 20, 10);
-	innerBar.endFill();
-	healthBar.addChild(innerBar);
+// 	let innerBar = new PIXI.Graphics();
+// 	innerBar.beginFill(0x222222);
+// 	innerBar.drawRoundedRect(0, 0, 120, 20, 10);
+// 	innerBar.endFill();
+// 	healthBar.addChild(innerBar);
 	
-	let outerBar = new PIXI.Graphics();
-	outerBar.beginFill(0x2C8A2C);
-	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
-	outerBar.endFill();
-	healthBar.addChild(outerBar);
-	healthBar.outer = outerBar;
+// 	let outerBar = new PIXI.Graphics();
+// 	outerBar.beginFill(0x2C8A2C);
+// 	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
+// 	outerBar.endFill();
+// 	healthBar.addChild(outerBar);
+// 	healthBar.outer = outerBar;
 	
-	healthBar.outer.width = 50;
+// 	healthBar.outer.width = 50;
 	
-	hero4Container.addChild(healthBar);
+// 	hero4Container.addChild(healthBar);
 	
 	for (let i = 0; i < 125; i++) {
         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
@@ -283,8 +284,8 @@ function setup(){
 	hero4.animationSpeed = 0.5;
 	hero4.play();
 	
-	healthBar.x = -(hero4.width/2) - 60;
-	healthBar.y = -300;
+// 	healthBar.x = -(hero4.width/2) - 60;
+// 	healthBar.y = -300;
 	
 	hero4Container.addChild(hero4);
 	hero4Container.x = -3*50*spriteSpacer;
@@ -391,23 +392,19 @@ function setup(){
 
     	factory.parseDragonBonesData(resources.skeleton.data);
     	factory.parseTextureAtlasData(resources.texture_json.data, resources.texture_png.texture);
-
-    	const armatureDisplay = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
-    	armatureDisplay.animation.play('idle');
-// 	armatureDisplay.animation.timeScale = 0.5;
-	armatureDisplay.scale.set(0.25,0.25);
-// 	armatureDisplay.anchor.set(1,1);
-// 	armatureDisplay.pivot.set(1,1);
-    	armatureDisplay.x = 0;
-    	armatureDisplay.y = 0;
+    	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+    	armatureHero1.animation.play('idle');
+	armatureHero1.scale.set(0.25,0.25);
+    	armatureHero1.x = 0;
+    	armatureHero1.y = 0;
 	
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
-	const armatureDisplay2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-    	armatureDisplay2.animation.play('idle');
-	armatureDisplay2.scale.set(-0.25,0.25);
-    	armatureDisplay2.x = 0;
-    	armatureDisplay2.y = 0;
+	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureEnemy1.animation.play('idle');
+	armatureEnemy1.scale.set(-0.25,0.25);
+    	armatureEnemy1.x = 0;
+    	armatureEnemy1.y = 0;
 	
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
@@ -436,17 +433,17 @@ function setup(){
     	fumeDisplay3.x = -60.0;
     	fumeDisplay3.y = -175.0;
 	
-	armatureContainer.addChild(fumeDisplay2);
-	armatureContainer.addChild(fumeDisplay3);
-    	armatureContainer.addChild(armatureDisplay);
-	armatureContainer.addChild(fumeDisplay);
+	hero1Container.addChild(fumeDisplay2);
+	hero1Container.addChild(fumeDisplay3);
+    	hero1Container.addChild(armatureHero1);
+	hero1Container.addChild(fumeDisplay);
 	
-	armatureContainer2.addChild(armatureDisplay2);
+	enemy1Container.addChild(armatureEnemy1);
 	
 // 	armatureContainer.x = 0;
 // 	armatureContainer.y = 0;
-	rosterHero.addChild(armatureContainer);
-	rosterEnemy.addChild(armatureContainer2);
+	rosterHero.addChild(hero1Container);
+	rosterEnemy.addChild(enemy1Container);
 // 	app.stage.addChild();
 	
 	app.stage.addChild(debug);
