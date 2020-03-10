@@ -287,7 +287,7 @@ function setup(){
 	
     	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
     	armatureHero1.animation.play('idle');
-	armatureHero1.scale.set(0.40,0.40);	
+	armatureHero1.scale.set(0.35,0.35);	
 	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
 	armatureHero2.scale.set(0.25,0.25);
@@ -301,7 +301,7 @@ function setup(){
 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 //     	armatureEnemy2.animation.play('idle');
-	armatureEnemy2.scale.set(-0.40,0.40);	
+	armatureEnemy2.scale.set(-0.35,0.35);	
 // 	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
 // 	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
 // //     	armatureEnemy3.animation.play('idle');
