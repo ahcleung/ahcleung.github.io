@@ -315,18 +315,18 @@ function setup(){
     	fumeDisplay.animation.play('Fume2');
 // 	fumeDisplay.animation.timeScale = 0.5;
 	fumeDisplay.scale.set(0.30,0.30);
-    	fumeDisplay.x = -150.0;
-    	fumeDisplay.y = -100;	
+    	fumeDisplay.x = -200.0;
+    	fumeDisplay.y = -150;	
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
 	fumeDisplay2.scale.set(0.35,0.35);
-    	fumeDisplay2.x = -110.0;
-    	fumeDisplay2.y = -205.0;	
+    	fumeDisplay2.x = -150.0;
+    	fumeDisplay2.y = -235.0;	
 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
 	fumeDisplay3.scale.set(0.32,0.32);
     	fumeDisplay3.x = -60.0;
-    	fumeDisplay3.y = -200.0;
+    	fumeDisplay3.y = -230.0;
 	
 	hero1Container.addChild(fumeDisplay2);
 	hero1Container.addChild(fumeDisplay3);
