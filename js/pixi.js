@@ -29,7 +29,10 @@ loader
 		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
 		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
 		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
-		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'}
+		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
+		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
+		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
+		{name:'hel1_texture_png', url:'img/hel1_tex.png'}
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -284,6 +287,8 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
+	factory.parseDragonBonesData(resources.hel1_skeleton.data);
+    	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
     	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
     	armatureHero1.animation.play('idle');
@@ -306,8 +311,8 @@ function setup(){
 // 	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
 // //     	armatureEnemy3.animation.play('idle');
 // 	armatureEnemy3.scale.set(-0.25,0.25);	
-	const armatureEnemy4 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 67);
+	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
+	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
 //     	armatureEnemy4.animation.play('idle');
 	armatureEnemy4.scale.set(-0.25,0.25);	
 
@@ -320,13 +325,13 @@ function setup(){
 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
 	fumeDisplay2.scale.set(0.35,0.35);
-    	fumeDisplay2.x = -155.0;
-    	fumeDisplay2.y = -245.0;	
+    	fumeDisplay2.x = -150.0;
+    	fumeDisplay2.y = -250.0;	
 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
 	fumeDisplay3.scale.set(0.32,0.32);
     	fumeDisplay3.x = -80.0;
-    	fumeDisplay3.y = -240.0;
+    	fumeDisplay3.y = -245.0;
 	
 	hero1Container.addChild(fumeDisplay2);
 	hero1Container.addChild(fumeDisplay3);
