@@ -155,6 +155,16 @@ function setup(){
 	
 	const movesList = resources["js/moves.json"];	
 	
+// 	const numHero = [1, 1, 1, 1];
+// 	const arrayEnemy = [2, 2, 2, 2];
+	
+// 	const arrayHero;
+	
+// 	for (var i = 0; i < numHero.length; i++){
+// 		const creature = new Creature({id:i, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
+// 		arrayHero.push(creature);
+// 	}
+	
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
 // 	const creature1 = new Creature({id:2});
 	
