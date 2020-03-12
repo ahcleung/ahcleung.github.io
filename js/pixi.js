@@ -11,8 +11,6 @@ document.querySelector('#frame').appendChild(app.view);
 
 loader
 	.add([
-		"img/monkey3.png",
-		"img/monkey2.png",
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
@@ -21,9 +19,6 @@ loader
 		{name:'toad3_skeleton', url:'img/toad3_2_ske.json'},
 		{name:'toad3_texture_json', url:'img/toad3_2_tex.json'},
 		{name:'toad3_texture_png', url:'img/toad3_2_tex.png'},
-		{name:'fume_skeleton', url:'img/fume_ske.json'},
-		{name:'fume_texture_json', url:'img/fume_tex.json'},
-		{name:'fume_texture_png', url:'img/fume_tex.png'},
 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
 		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
@@ -118,7 +113,6 @@ const enemy3Container = new PIXI.Container();
 const enemy4Container = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
-// const rect2 = new PIXI.Graphics();
 
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
@@ -142,11 +136,6 @@ function setup(){
 
 	// Add it to the stage
 	app.stage.addChild(rect);
-	
-// 	rect2.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-// 	rect2.x = 100;
-// 	rect2.y = 100;
-// 	app.stage.addChild(rect2);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
 	rectHero.x = 0;
@@ -217,10 +206,7 @@ function setup(){
 // 		console.log(event);
 // 	});
 
-	app.stage.addChild(button);
-	
-// 	app.stage.addChild(container);
-	
+	app.stage.addChild(button);	
 	
 	var anchorX1 = 1;
 	var anchorY1 = 1;
@@ -301,15 +287,9 @@ function setup(){
 	armatureEnemy1.scale.set(-0.25,0.25);	
 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
-//     	armatureEnemy2.animation.play('idle');
 	armatureEnemy2.scale.set(-0.35,0.35);	
-// 	const armatureEnemy3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-// 	armatureEnemy3.animation.gotoAndPlayByFrame('idle', 20);
-// //     	armatureEnemy3.animation.play('idle');
-// 	armatureEnemy3.scale.set(-0.25,0.25);	
 	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
-//     	armatureEnemy4.animation.play('idle');
 	armatureEnemy4.scale.set(-0.25,0.25);	
 
     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
@@ -332,14 +312,12 @@ function setup(){
 	hero1Container.addChild(fumeDisplay2);
 	hero1Container.addChild(fumeDisplay3);
     	hero1Container.addChild(armatureHero1);
-	hero1Container.addChild(fumeDisplay);
-	
+	hero1Container.addChild(fumeDisplay);	
 	hero2Container.addChild(armatureHero2);
 	hero3Container.addChild(armatureHero3);
 	
 	enemy1Container.addChild(armatureEnemy1);
 	enemy2Container.addChild(armatureEnemy2);
-// 	enemy3Container.addChild(armatureEnemy3);
 	enemy4Container.addChild(armatureEnemy4);
 	
 	hero1Container.x = 0;
@@ -362,14 +340,6 @@ function setup(){
 	
 	app.stage.addChild(debug);
 	
-// 	// Move container to the center
-// 	container.x = app.screen.width/2;
-// 	container.y = app.screen.height/2;
-	
-// 	// Center bunny sprite in local container coordinates
-// 	container.pivot.x = container.width / 2;
-// 	container.pivot.y = container.height / 2;
-	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
 	
@@ -387,7 +357,6 @@ function gameLoop(delta){
 }
 
 function play(delta){
-// 	container.rotation -= 0.01 * delta;
 	stats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
@@ -402,7 +371,6 @@ function play(delta){
 // 	container.rotation -= 0.01 * delta;
 // });
 
-// Listen for window resize events
 
 
 // Resize function window
@@ -417,20 +385,9 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
-// 	container.position.set(app.screen.width/2, app.screen.height/2);
-// 	hero4.position.set(app.screen.width/2, app.screen.height/2);
-// 	enemy1.position.set(app.screen.width/2, app.screen.height/2);
 	
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
-	
-// 	armatureContainer.position.set(app.screen.width/2-50, app.screen.height/2);
-	
-// 	anim.position.set(app.screen.width/2, app.screen.height/2);
-// 	anim2.position.set(app.screen.width/2, app.screen.height/2);
-	
-// 	rect2.position.set(app.screen.width/2, app.screen.height/3);
-// 	rect2.width = app.screen.width/2;
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
