@@ -118,7 +118,7 @@ const enemy3Container = new PIXI.Container();
 const enemy4Container = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
-const rect2 = new PIXI.Graphics();
+// const rect2 = new PIXI.Graphics();
 
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
@@ -143,9 +143,9 @@ function setup(){
 	// Add it to the stage
 	app.stage.addChild(rect);
 	
-	rect2.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-	rect2.x = 100;
-	rect2.y = 100;
+// 	rect2.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
+// 	rect2.x = 100;
+// 	rect2.y = 100;
 // 	app.stage.addChild(rect2);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
@@ -390,8 +390,7 @@ function play(delta){
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: " + app.screen.height +
-		"\nRect2 Width: " + rect2.width;
+		"\nAppScreen Height: " + app.screen.height;
 }
 
 // // Listen for animate update
