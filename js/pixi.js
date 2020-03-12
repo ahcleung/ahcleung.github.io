@@ -103,7 +103,7 @@ class Creature{
 }
 
 let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4, debug;
-const container = new PIXI.Container();
+// const container = new PIXI.Container();
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
@@ -219,7 +219,9 @@ function setup(){
 
 	app.stage.addChild(button);
 	
-	app.stage.addChild(container);
+// 	app.stage.addChild(container);
+	
+	
 	var anchorX1 = 1;
 	var anchorY1 = 1;
 	var anchorX2 = 1;
@@ -360,13 +362,13 @@ function setup(){
 	
 	app.stage.addChild(debug);
 	
-	// Move container to the center
-	container.x = app.screen.width/2;
-	container.y = app.screen.height/2;
+// 	// Move container to the center
+// 	container.x = app.screen.width/2;
+// 	container.y = app.screen.height/2;
 	
-	// Center bunny sprite in local container coordinates
-	container.pivot.x = container.width / 2;
-	container.pivot.y = container.height / 2;
+// 	// Center bunny sprite in local container coordinates
+// 	container.pivot.x = container.width / 2;
+// 	container.pivot.y = container.height / 2;
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
@@ -415,7 +417,7 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
-	container.position.set(app.screen.width/2, app.screen.height/2);
+// 	container.position.set(app.screen.width/2, app.screen.height/2);
 // 	hero4.position.set(app.screen.width/2, app.screen.height/2);
 // 	enemy1.position.set(app.screen.width/2, app.screen.height/2);
 	
