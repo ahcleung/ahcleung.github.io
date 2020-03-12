@@ -126,13 +126,7 @@ const rectEnemy = new PIXI.Graphics();
 var textureButton, textureButtonDown;
 //var isFullScreen = false;
 
-const framesIdleFlygon = [];
-const framesIdleHippowdon = [];
-const framesIdleCarvanha = [];
-const framesIdleQuilava = [];
-const framesIdleCrobat = [];
-const framesIdleMagmortar = [];
-const framesIdleMamoswine = [];
+// const framesIdleFlygon = [];
 
 function setup(){	
 	
