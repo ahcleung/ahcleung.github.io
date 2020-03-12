@@ -15,7 +15,7 @@
 			"tags":[
 				"hazard", "turns"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [10,"cover"],
 			"turns": 5,
@@ -39,7 +39,7 @@
 			"tags":[
 				"splash"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -63,7 +63,7 @@
 			"tags":[
 				"hazard", "turns"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [10,"between"],
 			"turns": 5,
@@ -87,7 +87,7 @@
 			"tags":[
 				"displace"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -111,7 +111,7 @@
 			"tags":[
 				"column"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -135,7 +135,7 @@
 			"tags":[
 				"displace"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -159,7 +159,7 @@
 			"tags":[
 				"displace"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -183,7 +183,7 @@
 			"tags":[
 
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -207,7 +207,7 @@
 			"tags":[
 				"statchange", "turns"
 			],
-			"multiple": 0,
+			"multiple": [0,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 5,
@@ -231,7 +231,7 @@
 			"tags":[
 				"multiple", "statchange", "turns"
 			],
-			"multiple": 2,
+			"multiple": [2,0],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 5,
