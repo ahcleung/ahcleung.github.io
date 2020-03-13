@@ -122,15 +122,15 @@ var textureButton, textureButtonDown;
 var db = firebase.firestore();
 
 //Write to firestore
-db.collection("vita").doc("001").set({
-	id: 3,
-	statPDEF: 55
+// db.collection("vita").doc("001").set({
+db.collection("vita").doc("001").update({
+	id: 1
 })
 .then(function() {
-    console.log("Document successfully written!");
+    console.log("Document successfully updated!");
 })
 .catch(function(error) {
-    console.error("Error writing document: ", error);
+    console.error("Error updating document: ", error);
 });
 
 //Read from firestore
