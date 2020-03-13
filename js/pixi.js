@@ -118,6 +118,9 @@ const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
 var textureButton, textureButtonDown;
+
+var db = firebase.firestore();
+
 //var isFullScreen = false;
 
 // const framesIdleFlygon = [];
