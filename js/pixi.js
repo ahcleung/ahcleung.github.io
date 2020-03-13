@@ -122,22 +122,21 @@ var textureButton, textureButtonDown;
 var db = firebase.firestore();
 
 //Write to firestore
-// db.collection("users").add({
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-// })
-// .then(function(docRef) {
-//     console.log("Document written with ID: ", docRef.id);
-// })
-// .catch(function(error) {
-//     console.error("Error adding document: ", error);
-// });
+db.collection("vita").doc("001").set({
+	id: 3,
+	statdis[0]: 55
+})
+.then(function() {
+    console.log("Document successfully written!");
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
 
 //Read from firestore
-db.collection("users").get().then((querySnapshot) => {
+db.collection("vita").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().first}`);
+        console.log(`${doc.id} => ${doc.data().id}`);
     });
 });
 
