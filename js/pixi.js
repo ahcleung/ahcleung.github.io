@@ -122,20 +122,20 @@ var textureButton, textureButtonDown;
 var db = firebase.firestore();
 
 //Write to firestore
-db.collection("vita").doc("002").set({
-	id: 2,
-	level: 45,
-	move1: 0,
-	move2: 0,
-	move3: 0,
-	move4: 0,
+db.collection("vita").doc("003").set({
+	id: 3,
+	level: 47,
+	move1: 1,
+	move2: 1,
+	move3: 2,
+	move4: 2,
 	statDODG: 20,
 	statHP: 35,
-	statPATK: 40,
-	statPDEF: 20,
-	statSATK: 0,
-	statSDEF: 3,
-	statSPD: 17
+	statPATK: 0,
+	statPDEF: 3,
+	statSATK: 40,
+	statSDEF: 20,
+	statSPD: 19
 })
 .then(function() {
 	console.log("Document successfully written!");
