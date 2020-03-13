@@ -215,6 +215,8 @@ function setup(){
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
 // 	const creature1 = new Creature({id:2});
 	
+	console.log(creature1);
+	
 	console.log(creature1.EHP);
 	console.log(creature1.stats[0]);
 	creature1.stats[0] -= 21;
