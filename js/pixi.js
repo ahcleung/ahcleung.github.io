@@ -133,6 +133,12 @@ db.collection("users").add({
     console.error("Error adding document: ", error);
 });
 
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+});
+
 //var isFullScreen = false;
 
 // const framesIdleFlygon = [];
