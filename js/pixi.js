@@ -80,6 +80,10 @@ class Creature{
 	heal(){
 		this.stats[0] = this.EHP;	
 	}
+	
+	get thisName(){
+		return this.name;
+	}
 // 	get hp(){
 // 		return this.calcHP();
 // 	}
@@ -210,8 +214,9 @@ function setup(){
 		});
 	});
 	
-	console.log("Array: " + arrayHero);
+	console.log(arrayHero);
 	console.log("0 ==> " + arrayHero[0]);
+	console.log(arrayHero[0].thisName);
 	
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
 // 	const creature1 = new Creature({id:2});
