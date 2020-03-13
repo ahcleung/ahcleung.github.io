@@ -124,7 +124,7 @@ var db = firebase.firestore();
 //Write to firestore
 db.collection("vita").doc("001").set({
 	id: 3,
-	statdis[0]: 55
+	statPDEF: 55
 })
 .then(function() {
     console.log("Document successfully written!");
