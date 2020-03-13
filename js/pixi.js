@@ -122,38 +122,38 @@ var textureButton, textureButtonDown;
 var db = firebase.firestore();
 
 //Write to firestore
-// db.collection("vita").doc("003").set({
-// 	id: 3,
-// 	level: 47,
-// 	move1: 1,
-// 	move2: 1,
-// 	move3: 2,
-// 	move4: 2,
-// 	statDODG: 20,
-// 	statHP: 35,
-// 	statPATK: 0,
-// 	statPDEF: 3,
-// 	statSATK: 40,
-// 	statSDEF: 20,
-// 	statSPD: 19
-// })
-// .then(function() {
-// 	console.log("Document successfully written!");
-// })
-// .catch(function(error) {
-// 	console.error("Error writing document: ", error);
-// });
-
-//Update firestore document
-db.collection("vita").doc("001").update({
-	stat: [{0,69}]
+db.collection("vita").doc("004").set({
+	id: 5,
+	level: 49,
+	move1: 2,
+	move2: 2,
+	move3: 3,
+	move4: 3,
+	statDODG: 20,
+	statHP: 20,
+	statPATK: 0,
+	statPDEF: 40,
+	statSATK: 67,
+	statSDEF: 0,
+	statSPD: 0
 })
 .then(function() {
-	console.log("Document successfully updated!");
+	console.log("Document successfully written!");
 })
 .catch(function(error) {
-	console.error("Error updating document: ", error);
+	console.error("Error writing document: ", error);
 });
+
+//Update firestore document
+// db.collection("vita").doc("001").update({
+// 	statHP: 35
+// })
+// .then(function() {
+// 	console.log("Document successfully updated!");
+// })
+// .catch(function(error) {
+// 	console.error("Error updating document: ", error);
+// });
 
 //Read from firestore
 db.collection("vita").get().then((querySnapshot) => {
