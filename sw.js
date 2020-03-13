@@ -12,17 +12,13 @@ var filesToCache = [
 	'./img/background.png',
 	'./img/leper.ability.five.png',
   	'./img/ability_move.png',
-  	'./img/monkey2.png',
-  	'./img/monkey3.png',
-	'./js/game.js',
 	'./js/pixi.js',
 	'./css/style.css',
-	'//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser.min.js',
 	'https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js', 
-	'https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js',
-	'https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js',
-	'https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js',
-  	'https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js'
+	'https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js',
+	'https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js',
+	'https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js',
+  	'https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js'
 ];
 
 self.addEventListener('install', function(event) {
