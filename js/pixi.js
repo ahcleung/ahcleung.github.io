@@ -124,7 +124,7 @@ var db = firebase.firestore();
 //Write to firestore
 // db.collection("vita").doc("001").set({
 db.collection("vita").doc("001").update({
-	id: 1
+	statHP: 35
 })
 .then(function() {
     console.log("Document successfully updated!");
@@ -136,7 +136,7 @@ db.collection("vita").doc("001").update({
 //Read from firestore
 db.collection("vita").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().id}`);
+        console.log(`${doc.id} => ${doc.data()}`);
     });
 });
 
