@@ -155,12 +155,7 @@ var db = firebase.firestore();
 // 	console.error("Error updating document: ", error);
 // });
 
-//Read from firestore
-db.collection("vita").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-    });
-});
+
 
 //var isFullScreen = false;
 
@@ -199,12 +194,23 @@ function setup(){
 // 	const numHero = [1, 1, 1, 1];
 // 	const arrayEnemy = [2, 2, 2, 2];
 	
-// 	const arrayHero;
+	const arrayHero;
 	
 // 	for (var i = 0; i < numHero.length; i++){
 // 		const creature = new Creature({id:i, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
 // 		arrayHero.push(creature);
 // 	}
+	
+	//Read from firestore
+	db.collection("vita").get().then((querySnapshot) => {
+		querySnapshot.forEach((doc) => {
+			console.log(`${doc.id} => ${doc.data()}`);
+			const creature = new Creature({id: doc.data().id, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
+			arrayHero.push(creature);
+		});
+	});
+	
+	console.log(arrayHero[0].name);
 	
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
 // 	const creature1 = new Creature({id:2});
