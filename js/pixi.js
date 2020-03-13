@@ -121,6 +121,7 @@ var textureButton, textureButtonDown;
 
 var db = firebase.firestore();
 
+//Write to firestore
 db.collection("users").add({
     first: "Ada",
     last: "Lovelace",
@@ -133,9 +134,10 @@ db.collection("users").add({
     console.error("Error adding document: ", error);
 });
 
+//Read from firestore
 db.collection("users").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        console.log(`${doc.id} => ${doc.data().first}`);
     });
 });
 
