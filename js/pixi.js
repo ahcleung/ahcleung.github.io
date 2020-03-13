@@ -122,10 +122,7 @@ var textureButton, textureButtonDown;
 
 // const framesIdleFlygon = [];
 
-function setup(){	
-	
-	// Create a new texture
-	const texture = PIXI.Texture.from('img/monkey3.png');
+function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
