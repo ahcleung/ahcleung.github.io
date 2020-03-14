@@ -209,13 +209,29 @@ function setup(){
 	db.collection("vita").get().then((querySnapshot) => {
 		querySnapshot.forEach((doc) => {
 			console.log(`${doc.id} => ${doc.data()}`);
-			const creature = new Creature({id: doc.data().id, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
+			const creature = new Creature({
+				id: doc.data().id, 
+				level: doc.data().level, 
+				statDis:[
+					doc.data().statHP, 
+					doc.data().statDODG, 
+					doc.data().statPATK, 
+					doc.data().statPDEF, 
+					doc.data().statSATK, 
+					doc.data().statSDEF, 
+					doc.data().statSPD
+				], moves:[
+					doc.data().move1, 
+					doc.data().move2, 
+					doc.data().move3, 
+					doc.data().move4
+				]});
 			arrayHero.push(creature);
 		});
 	})
 	.then(function() {
 		console.log("Creatures created successfully!");
-		console.log("0 ==> " + arrayHero[0]);
+		console.log(arrayHero[0]);
 		console.log(arrayHero[0].name);
 	});
 	
