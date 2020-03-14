@@ -242,7 +242,7 @@ function setup(){
 	
 	console.log(creature1.EHP);
 	console.log(creature1.statCalc[0]);
-	creature1.stats[0] -= 21;
+	creature1.statCalc[0] -= 21;
 	console.log(creature1.statCalc[0]);
 	creature1.heal();
 	console.log(creature1.statCalc[0]);
