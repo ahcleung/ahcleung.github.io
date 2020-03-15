@@ -1,114 +1,207 @@
 {
    "creatures" : [
       {
-      "name": "Zeppole",
-      "code": "toad1",
-      "elements": [
-        "wind"
-        ],
-      "hp": 55,
-      "dodge": 8,
-      "patk": 43,
-      "pdef": 42,
-      "satk": 60,
-      "sdef": 55,    
-      "spd": 55,
-      "size": 1
-    },
-    {
-      "name": "Zepplet",
-      "code": "toad2",
-      "elements": [
-        "wind"
-        ],
-      "hp": 70,
-      "dodge": 9,
-      "patk": 53,
-      "pdef": 52,
-      "satk": 83,
-      "sdef": 78,    
-      "spd": 60,
-      "size": 1
-    },
-    {
-      "name": "Fload",
-      "code": "toad3",
-      "elements": [
-        "wind",
-        "toxic"
-        ],
-      "hp": 85,
-      "dodge": 10,
-      "patk": 74,
-      "pdef": 71,
-      "satk": 120,
-      "sdef": 105,    
-      "spd": 65,
-      "size": 2
-    },
-    {
-      "name": "Veehel",
-      "code": "hel1",
-      "elements": [
-        "shadow",
-        "toxic"
-        ],
-      "hp": 59,
-      "dodge": 7,
-      "patk": 70,
-      "pdef": 68,
-      "satk": 52,
-      "sdef": 69,    
-      "spd": 75,
-      "size": 1
-    },
-    {
-      "name": "Umbrahel",
-      "code": "hel2",
-      "elements": [
-        "shadow",
-        "toxic"
-        ],
-      "hp": 76,
-      "dodge": 8,
-      "patk": 89,
-      "pdef": 80,
-      "satk": 61,
-      "sdef": 81,    
-      "spd": 85,
-      "size": 1
-    },
-    {
-      "name": "Tannjoltr",
-      "code": "goat2_2",
-      "elements": [
-        "wind",
-        "lightning"
-        ],
-      "hp": 86,
-      "dodge": 9,
-      "patk": 74,
-      "pdef": 98,
-      "satk": 100,
-      "sdef": 61,    
-      "spd": 88,
-      "size": 1
-    },
-    {
-      "name": "Tannrisear",
-      "code": "goat2_2",
-      "elements": [
-        "wind",
-        "fire"
-        ],
-      "hp": 86,
-      "dodge": 9,
-      "patk": 74,
-      "pdef": 61,
-      "satk": 100,
-      "sdef": 98,    
-      "spd": 88,
-      "size": 1
-    }
-  ]
+         "name": "Apock",
+         "code": "gorilla1",
+         "elements": [
+           "earth"
+           ],
+         "hp": 60,
+         "dodge": 7,
+         "patk": 68,
+         "pdef": 63,
+         "satk": 42,
+         "sdef": 43,    
+         "spd": 35,
+         "size": 1
+      },
+      {
+         "name": "Goroka",
+         "code": "gorilla2",
+         "elements": [
+           "earth"
+           ],
+         "hp": 75,
+         "dodge": 8,
+         "patk": 80,
+         "pdef": 80,
+         "satk": 53,
+         "sdef": 57,    
+         "spd": 52,
+         "size": 1
+      },
+      {
+         "name": "Gorillder",
+         "code": "gorilla3",
+         "elements": [
+           "earth",
+            "spirit"
+           ],
+         "hp": 99,
+         "dodge": 8,
+         "patk": 95,
+         "pdef": 110,
+         "satk": 68,
+         "sdef": 80,    
+         "spd": 70,
+         "size": 2
+      },
+      {
+         "name": "Litoon",
+         "code": "racoon1",
+         "elements": [
+           "lightning"
+           ],
+         "hp": 57,
+         "dodge": 10,
+         "patk": 61,
+         "pdef": 43,
+         "satk": 42,
+         "sdef": 47,    
+         "spd": 58,
+         "size": 1
+      },
+      {
+         "name": "Lynite",
+         "code": "racoon2",
+         "elements": [
+           "lightning",
+            "shadow"
+           ],
+         "hp": 64,
+         "dodge": 12,
+         "patk": 78,
+         "pdef": 61,
+         "satk": 57,
+         "sdef": 53,    
+         "spd": 80,
+         "size": 1
+      },
+      {
+         "name": "Lyncoon",
+         "code": "racoon3",
+         "elements": [
+           "lightning",
+            "shadow"
+           ],
+         "hp": 75,
+         "dodge": 15,
+         "patk": 90,
+         "pdef": 78,
+         "satk": 90,
+         "sdef": 72,    
+         "spd": 110,
+         "size": 1
+      },
+      {
+         "name": "Zeppole",
+         "code": "toad1",
+         "elements": [
+           "wind"
+           ],
+         "hp": 55,
+         "dodge": 8,
+         "patk": 43,
+         "pdef": 42,
+         "satk": 60,
+         "sdef": 55,    
+         "spd": 55,
+         "size": 1
+      },
+      {
+         "name": "Zepplet",
+         "code": "toad2",
+         "elements": [
+           "wind"
+           ],
+         "hp": 70,
+         "dodge": 9,
+         "patk": 53,
+         "pdef": 52,
+         "satk": 83,
+         "sdef": 78,    
+         "spd": 60,
+         "size": 1
+      },
+      {
+         "name": "Fload",
+         "code": "toad3",
+         "elements": [
+           "wind",
+           "toxic"
+           ],
+         "hp": 85,
+         "dodge": 10,
+         "patk": 74,
+         "pdef": 71,
+         "satk": 120,
+         "sdef": 105,    
+         "spd": 65,
+         "size": 2
+      },
+      {
+         "name": "Veehel",
+         "code": "hel1",
+         "elements": [
+           "shadow",
+           "toxic"
+           ],
+         "hp": 59,
+         "dodge": 7,
+         "patk": 70,
+         "pdef": 68,
+         "satk": 52,
+         "sdef": 69,    
+         "spd": 75,
+         "size": 1
+      },
+      {
+         "name": "Umbrahel",
+         "code": "hel2",
+         "elements": [
+           "shadow",
+           "toxic"
+           ],
+         "hp": 76,
+         "dodge": 8,
+         "patk": 89,
+         "pdef": 80,
+         "satk": 61,
+         "sdef": 81,    
+         "spd": 85,
+         "size": 1
+      },
+      {
+         "name": "Tannjoltr",
+         "code": "goat2_2",
+         "elements": [
+           "wind",
+           "lightning"
+           ],
+         "hp": 86,
+         "dodge": 9,
+         "patk": 74,
+         "pdef": 98,
+         "satk": 100,
+         "sdef": 61,    
+         "spd": 88,
+         "size": 1
+      },
+      {
+         "name": "Tannrisear",
+         "code": "goat2_2",
+         "elements": [
+           "wind",
+           "fire"
+           ],
+         "hp": 86,
+         "dodge": 9,
+         "patk": 74,
+         "pdef": 61,
+         "satk": 100,
+         "sdef": 98,    
+         "spd": 88,
+         "size": 1
+      }
+   ]
 }
