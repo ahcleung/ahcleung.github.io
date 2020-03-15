@@ -68,6 +68,8 @@ class Creature{
 			creatureList.data.creatures[this.id].sdef + this.statDis[5],
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
+		
+		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 // 		this.HP = this.EHP;
 // 		this.Dodge = obj.data.creatures[this.id].dodge + this.statDis[1]/2;
 // 		this.PAtk = obj.data.creatures[this.id].patk + this.statDis[2];
@@ -230,6 +232,7 @@ function setup(){
 		console.log("Creatures created successfully!");
 		console.log(arrayHero[0]);
 		console.log(arrayHero[0].name);
+		arrayHero.forEach(createSprite);
 	});
 	
 	console.log(arrayHero);
@@ -453,6 +456,15 @@ function play(delta){
 // 	container.rotation -= 0.01 * delta;
 // });
 
+
+function createSprite(item, index){
+	console.log("EHP: " + item.name);
+// 	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+//     	armatureHero1.animation.play('idle');
+// 	armatureHero1.scale.set(0.35,0.35);
+// 	hero1Container.addChild(armatureHero1);
+// 	rosterHero.addChild(hero1Container);
+}
 
 
 // Resize function window
