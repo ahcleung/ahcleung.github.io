@@ -45,6 +45,70 @@
       "sdef": 105,    
       "spd": 65,
       "size": 2
+    },
+    {
+      "name": "Veehel",
+      "code": "hel1",
+      "elements": [
+        "shadow",
+        "toxic"
+        ],
+      "hp": 59,
+      "dodge": 7,
+      "patk": 70,
+      "pdef": 68,
+      "satk": 52,
+      "sdef": 69,    
+      "spd": 75,
+      "size": 1
+    },
+    {
+      "name": "Umbrahel",
+      "code": "hel2",
+      "elements": [
+        "shadow",
+        "toxic"
+        ],
+      "hp": 76,
+      "dodge": 8,
+      "patk": 89,
+      "pdef": 80,
+      "satk": 61,
+      "sdef": 81,    
+      "spd": 85,
+      "size": 1
+    },
+    {
+      "name": "Tannjoltr",
+      "code": "goat2_2",
+      "elements": [
+        "wind",
+        "lightning"
+        ],
+      "hp": 86,
+      "dodge": 9,
+      "patk": 74,
+      "pdef": 98,
+      "satk": 100,
+      "sdef": 61,    
+      "spd": 88,
+      "size": 1
+    },
+    {
+      "name": "Tannrisear",
+      "code": "goat2_2",
+      "elements": [
+        "wind",
+        "fire"
+        ],
+      "hp": 86,
+      "dodge": 9,
+      "patk": 74,
+      "pdef": 61,
+      "satk": 100,
+      "sdef": 98,    
+      "spd": 88,
+      "size": 1
     }
   ]
 }
