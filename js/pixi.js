@@ -56,6 +56,7 @@ class Creature{
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
 		
 		this.code = creatureList.data.creatures[this.id].code;
+		this.size = creatureList.data.creatures[this.id].size;
 		
 		this.name = creatureList.data.creatures[this.id].name;
 		this.elements = creatureList.data.creatures[this.id].elements;
@@ -460,7 +461,7 @@ function play(delta){
 
 
 function createSprite(item, index){
-	console.log("Code: " + item.code);
+	console.log("Code: " + item.id + "\nSize: " + item.size);
 // 	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
 //     	armatureHero1.animation.play('idle');
 // 	armatureHero1.scale.set(0.35,0.35);
