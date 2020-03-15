@@ -78,7 +78,7 @@ class Creature{
 	}
 	
 	heal(){
-		this.stats[0] = this.EHP;	
+		this.statCalc[0] = this.EHP;	
 	}
 
 // 	get hp(){
