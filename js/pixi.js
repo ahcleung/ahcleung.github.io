@@ -350,10 +350,7 @@ function setup(){
 // 	hero4Container.x = -3*50*spriteSpacer;
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
-	
-	var codename = "hel1";
-	
-	
+		
     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
@@ -470,10 +467,10 @@ function createSprite(item, index){
 //     	factory.parseDragonBonesData("resources." + item.code + "_skeleton.data");
 //     	factory.parseTextureAtlasData("resources." + item.code + "_texture_json.data", "resources." + item.code + "_texture_png.texture");
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
-    	armatureHero1.animation.play('idle');
-	armatureHero1.scale.set(0.25,0.25);
+    	armatureHero.animation.play('idle');
+	armatureHero.scale.set(0.25,0.25);
 	
-// 	const heroContainer = new PIXI.Container();
+	const heroContainer = new PIXI.Container();
 	heroContainer.addChild(armatureHero);
 	heroContainer.x = index * 100;
 	rosterHero.addChild(heroContainer);
