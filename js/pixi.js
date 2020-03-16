@@ -363,8 +363,10 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-	factory.parseDragonBonesData(dataSkel[codename]);
-    	factory.parseTextureAtlasData(dataJSON[codename] , dataPNG[codename]);
+// 	factory.parseDragonBonesData(dataSkel[codename]);
+//     	factory.parseTextureAtlasData(dataJSON[codename] , dataPNG[codename]);
+	factory.parseDragonBonesData(this['resources.' + codename + '_skeleton.data']);
+    	factory.parseTextureAtlasData(this['resources.' + codename + '_texture_json.data'], this['resources.' + codename + '_texture_png.texture']);
 // 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
 //     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
