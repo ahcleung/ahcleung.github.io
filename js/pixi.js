@@ -352,6 +352,10 @@ function setup(){
 // 	app.stage.addChild(anim);
 	
 	var codename = "hel1";
+	
+	var dataSkel = {hel1: resources.hel1_skeleton.data};
+	var dataJSON = {hel1: resources.hel1_texture_json.data};
+	var dataPNG = {hel1: resources.hel1_texture_png.texture};
 		
     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
@@ -359,8 +363,8 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-	factory.parseDragonBonesData(eval('resources.' + codename + '_skeleton.data'));
-    	factory.parseTextureAtlasData(eval('resources.' + codename + '_texture_json.data'), eval('resources.' + codename + '_texture_png.texture'));
+	factory.parseDragonBonesData(dataSkel[codename]);
+    	factory.parseTextureAtlasData(dataJSON[codename] , dataPNG[codename]);
 // 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
 //     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
