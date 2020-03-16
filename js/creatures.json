@@ -3,6 +3,7 @@
       {
          "name": "Apock",
          "code": "gorilla1",
+         "frames": 60,
          "elements": [
            "earth"
            ],
@@ -18,6 +19,7 @@
       {
          "name": "Goroka",
          "code": "gorilla2",
+         "frames": 60,
          "elements": [
            "earth"
            ],
@@ -33,6 +35,7 @@
       {
          "name": "Gorillder",
          "code": "gorilla3",
+         "frames": 60,
          "elements": [
            "earth",
             "spirit"
@@ -49,6 +52,7 @@
       {
          "name": "Litoon",
          "code": "racoon1",
+         "frames": 60,
          "elements": [
            "lightning"
            ],
@@ -64,6 +68,7 @@
       {
          "name": "Lynite",
          "code": "racoon2",
+         "frames": 60,
          "elements": [
            "lightning",
             "shadow"
@@ -80,6 +85,7 @@
       {
          "name": "Lyncoon",
          "code": "racoon3",
+         "frames": 60,
          "elements": [
            "lightning",
             "shadow"
@@ -96,6 +102,7 @@
       {
          "name": "Zeppole",
          "code": "toad1",
+         "frames": 60,
          "elements": [
            "wind"
            ],
@@ -111,6 +118,7 @@
       {
          "name": "Zepplet",
          "code": "toad2",
+         "frames": 60,
          "elements": [
            "wind"
            ],
@@ -126,6 +134,7 @@
       {
          "name": "Fload",
          "code": "toad3",
+         "frames": 62,
          "elements": [
            "wind",
            "toxic"
@@ -142,6 +151,7 @@
       {
          "name": "Veehel",
          "code": "hel1",
+         "frames": 48,
          "elements": [
            "shadow",
            "toxic"
@@ -158,6 +168,7 @@
       {
          "name": "Umbrahel",
          "code": "hel2",
+         "frames": 60,
          "elements": [
            "shadow",
            "toxic"
@@ -174,6 +185,7 @@
       {
          "name": "Tannjoltr",
          "code": "goat2_2",
+         "frames": 90,
          "elements": [
            "wind",
            "lightning"
@@ -190,6 +202,7 @@
       {
          "name": "Tannrisear",
          "code": "goat2_2",
+         "frames": 90,
          "elements": [
            "wind",
            "fire"
