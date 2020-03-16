@@ -25,9 +25,9 @@ loader
 		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
 		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
 		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
-		{name:'hel1_skeleton', url:'img/hel1_2_ske.json'},
-		{name:'hel1_texture_json', url:'img/hel1_2_tex.json'},
-		{name:'hel1_texture_png', url:'img/hel1_2_tex.png'}
+		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
+		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
+		{name:'hel1_texture_png', url:'img/hel1_tex.png'}
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -358,7 +358,7 @@ function setup(){
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
-    	factory.parseTextureAtlasData(resources.hel1_skeleton.data, resources.hel1_skeleton.data);
+    	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
     	armatureHero1.animation.play('idle');
