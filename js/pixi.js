@@ -359,7 +359,7 @@ function setup(){
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
 	factory.parseDragonBonesData(['resources.' + codename + '_skeleton.data']);
-    	factory.parseTextureAtlasData(window['resources.' + codename + '_texture_json.data'], {'resources.' + codename + '_texture_png.texture'});
+    	factory.parseTextureAtlasData(['resources.' + codename + '_texture_json.data'], ['resources.' + codename + '_texture_png.texture']);
 	
 //     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
 //     	armatureHero1.animation.play('idle');
