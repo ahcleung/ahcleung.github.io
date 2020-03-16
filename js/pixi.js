@@ -417,9 +417,9 @@ function setup(){
 // 	enemy3Container.x = 2*50*spriteSpacer;
 	enemy4Container.x = 3*50*spriteSpacer;
 	
-	rosterHero.addChild(hero1Container);
-	rosterHero.addChild(hero2Container);
-	rosterHero.addChild(hero3Container);
+// 	rosterHero.addChild(hero1Container);
+// 	rosterHero.addChild(hero2Container);
+// 	rosterHero.addChild(hero3Container);
 	
 	rosterEnemy.addChild(enemy1Container);
 	rosterEnemy.addChild(enemy2Container);
@@ -463,14 +463,14 @@ function play(delta){
 function createSprite(item, index){
 	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
 	
-// 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
-//     	armatureHero.animation.play('idle');
-// 	armatureHero.scale.set(0.25,0.25);
+	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
+    	armatureHero.animation.play('idle');
+	armatureHero.scale.set(0.25,0.25);
 	
-// 	const heroContainer = new PIXI.Container();
-// 	heroContainer.addChild(armatureHero);
-// 	heroContainer.x = -index * 100;
-// 	rosterHero.addChild(heroContainer);
+	const heroContainer = new PIXI.Container();
+	heroContainer.addChild(armatureHero);
+	heroContainer.x = -index * 100;
+	rosterHero.addChild(heroContainer);
 }
 
 
