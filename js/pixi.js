@@ -359,8 +359,8 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-	factory.parseDragonBonesData(window['resources.' + codename + '_skeleton.data']);
-    	factory.parseTextureAtlasData(window['resources.' + codename + '_texture_json.data'], window['resources.' + codename + '_texture_png.texture']);
+	factory.parseDragonBonesData(['resources.' + codename + '_skeleton.data']);
+    	factory.parseTextureAtlasData(['resources.' + codename + '_texture_json.data'], ['resources.' + codename + '_texture_png.texture']);
 // 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
 //     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
