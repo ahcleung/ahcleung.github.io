@@ -349,16 +349,17 @@ function setup(){
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
 	
+	var codename = "hel1";
 	
-// 	const factory = dragonBones.PixiFactory.factory;
-//     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
-// 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
-// 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-// 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
+	const factory = dragonBones.PixiFactory.factory;
+    	factory.parseDragonBonesData(resources.toad3_skeleton.data);
+    	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
+	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
+    	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
+	factory.parseDragonBonesData(resources.fume2_skeleton.data);
+    	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
+	factory.parseDragonBonesData("resources." + codename + "_skeleton.data");
+    	factory.parseTextureAtlasData("resources." + codename + "_texture_json.data", "resources." + codename + "_texture_png.texture");
 	
 //     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
 //     	armatureHero1.animation.play('idle');
@@ -370,15 +371,15 @@ function setup(){
 //     	armatureHero3.animation.gotoAndPlayByFrame('idle', 57);
 // 	armatureHero3.scale.set(0.25,0.25);
 	
-// 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-//     	armatureEnemy1.animation.play('idle');
-// 	armatureEnemy1.scale.set(-0.25,0.25);	
-// 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
-// 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
-// 	armatureEnemy2.scale.set(-0.35,0.35);	
-// 	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
-// 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
-// 	armatureEnemy4.scale.set(-0.25,0.25);	
+	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+    	armatureEnemy1.animation.play('idle');
+	armatureEnemy1.scale.set(-0.25,0.25);	
+	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
+	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
+	armatureEnemy2.scale.set(-0.35,0.35);	
+	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
+	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
+	armatureEnemy4.scale.set(-0.25,0.25);	
 
 //     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
 //     	fumeDisplay.animation.play('Fume2');
@@ -404,27 +405,27 @@ function setup(){
 // 	hero2Container.addChild(armatureHero2);
 // 	hero3Container.addChild(armatureHero3);
 	
-// 	enemy1Container.addChild(armatureEnemy1);
-// 	enemy2Container.addChild(armatureEnemy2);
-// 	enemy4Container.addChild(armatureEnemy4);
+	enemy1Container.addChild(armatureEnemy1);
+	enemy2Container.addChild(armatureEnemy2);
+	enemy4Container.addChild(armatureEnemy4);
 	
 // 	hero1Container.x = 0;
 // 	hero2Container.x = -2*50*spriteSpacer;
 // 	hero3Container.x = -3*50*spriteSpacer;
 	
-// 	enemy1Container.x = 0;
-// 	enemy2Container.x = 1*50*spriteSpacer;
-// // 	enemy3Container.x = 2*50*spriteSpacer;
-// 	enemy4Container.x = 3*50*spriteSpacer;
+	enemy1Container.x = 0;
+	enemy2Container.x = 1*50*spriteSpacer;
+// 	enemy3Container.x = 2*50*spriteSpacer;
+	enemy4Container.x = 3*50*spriteSpacer;
 	
 // 	rosterHero.addChild(hero1Container);
 // 	rosterHero.addChild(hero2Container);
 // 	rosterHero.addChild(hero3Container);
 	
-// 	rosterEnemy.addChild(enemy1Container);
-// 	rosterEnemy.addChild(enemy2Container);
-// // 	rosterEnemy.addChild(enemy3Container);
-// 	rosterEnemy.addChild(enemy4Container);
+	rosterEnemy.addChild(enemy1Container);
+	rosterEnemy.addChild(enemy2Container);
+// 	rosterEnemy.addChild(enemy3Container);
+	rosterEnemy.addChild(enemy4Container);
 	
 	app.stage.addChild(debug);
 	
