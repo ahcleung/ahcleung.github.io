@@ -466,7 +466,7 @@ function play(delta){
 function setPos(item, index){
 	if(index == 0){
 		item.pos = 1;
-	}else if(arrayHero[index-1] == 2){
+	}else if(arrayHero[index-1].size == 2){
 		item.pos = arrayHero[index-1].pos + 2;
 	}else{
 		item.pos = arrayHero[index-1].pos + 1;	
