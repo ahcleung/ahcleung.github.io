@@ -51,6 +51,7 @@ class Creature{
 		this.level = level;
 		this.statDis = statDis;
 		this.moves = moves;
+		this.pos = 0;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
@@ -129,6 +130,8 @@ var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
 
+const arrayHero = [];
+
 //Write to firestore
 // db.collection("vita").doc("004").set({
 // 	id: 5,
@@ -202,7 +205,7 @@ function setup(){
 // 	const numHero = [1, 1, 1, 1];
 // 	const arrayEnemy = [2, 2, 2, 2];
 	
-	const arrayHero = [];
+	
 	
 // 	for (var i = 0; i < numHero.length; i++){
 // 		const creature = new Creature({id:i, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
@@ -237,6 +240,7 @@ function setup(){
 		console.log("Creatures created successfully!");
 		console.log(arrayHero[0]);
 		console.log(arrayHero[0].name);
+		arrayHero.forEach(setPos);
 		arrayHero.forEach(createSprite);
 	});
 	
@@ -459,10 +463,14 @@ function play(delta){
 // 	container.rotation -= 0.01 * delta;
 // });
 
+function setPos(item, index){
+	item.pos = index;	
+}
+
 const heroContainerArray = [];
 
 function createSprite(item, index){
-	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
+	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code + "\nPosition: " + item.pos);
 	
 	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
     	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
@@ -471,10 +479,12 @@ function createSprite(item, index){
     	armatureHero.animation.play('idle');
 	armatureHero.scale.set(0.25,0.25);
 	
-	const heroContainer = new PIXI.Container();
-	heroContainer.addChild(armatureHero);
-	heroContainer.x = -index * 100;
-	rosterHero.addChild(heroContainer);
+	const creatureContainer = new PIXI.Container();	
+	creatureContainer.addChild(armatureHero);
+	creatureContainer.x = -index * 100;	
+	
+	heroContainerArray.push(creatureContainer);
+	rosterHero.addChild(creatureContainer);
 }
 
 
