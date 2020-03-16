@@ -350,91 +350,81 @@ function setup(){
 // 	hero4Container.x = -3*50*spriteSpacer;
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
-	
-	var codename = "hel1";
-	
-	var dataSkel = {hel1: resources.hel1_skeleton.data};
-	var dataJSON = {hel1: resources.hel1_texture_json.data};
-	var dataPNG = {hel1: resources.hel1_texture_png.texture};
 		
-    	factory.parseDragonBonesData(resources.toad3_skeleton.data);
-    	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
-	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
-    	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
-	factory.parseDragonBonesData(resources.fume2_skeleton.data);
-    	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-// 	factory.parseDragonBonesData(dataSkel[codename]);
-//     	factory.parseTextureAtlasData(dataJSON[codename] , dataPNG[codename]);
-	factory.parseDragonBonesData(resources[codename + '_skeleton'].data);
-    	factory.parseTextureAtlasData(resources[codename + '_texture_json'].data, resources[codename + '_texture_png'].texture);
-// 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
+//     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
+//     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
+// 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
+//     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
+// 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
+//     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
+// 	factory.parseDragonBonesData(resources[codename + '_skeleton'].data);
+//     	factory.parseTextureAtlasData(resources[codename + '_texture_json'].data, resources[codename + '_texture_png'].texture);
 	
-    	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
-    	armatureHero1.animation.play('idle');
-	armatureHero1.scale.set(0.35,0.35);	
-	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-    	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
-	armatureHero2.scale.set(0.25,0.25);
-	const armatureHero3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-    	armatureHero3.animation.gotoAndPlayByFrame('idle', 57);
-	armatureHero3.scale.set(0.25,0.25);
+//     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
+//     	armatureHero1.animation.play('idle');
+// 	armatureHero1.scale.set(0.35,0.35);	
+// 	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+//     	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
+// 	armatureHero2.scale.set(0.25,0.25);
+// 	const armatureHero3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+//     	armatureHero3.animation.gotoAndPlayByFrame('idle', 57);
+// 	armatureHero3.scale.set(0.25,0.25);
 	
-	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-    	armatureEnemy1.animation.play('idle');
-	armatureEnemy1.scale.set(-0.25,0.25);	
-	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
-	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
-	armatureEnemy2.scale.set(-0.35,0.35);	
-	const armatureEnemy4 = factory.buildArmatureDisplay(codename, codename);
-	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
-	armatureEnemy4.scale.set(-0.25,0.25);	
+// 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
+//     	armatureEnemy1.animation.play('idle');
+// 	armatureEnemy1.scale.set(-0.25,0.25);	
+// 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
+// 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
+// 	armatureEnemy2.scale.set(-0.35,0.35);	
+// 	const armatureEnemy4 = factory.buildArmatureDisplay(codename, codename);
+// 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
+// 	armatureEnemy4.scale.set(-0.25,0.25);	
 
-    	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
-    	fumeDisplay.animation.play('Fume2');
-// 	fumeDisplay.animation.timeScale = 0.5;
-	fumeDisplay.scale.set(0.30,0.30);
-    	fumeDisplay.x = -180.0;
-    	fumeDisplay.y = -130;	
-	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
-	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
-	fumeDisplay2.scale.set(0.35,0.35);
-    	fumeDisplay2.x = -150.0;
-    	fumeDisplay2.y = -250.0;	
-	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
-	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
-	fumeDisplay3.scale.set(0.32,0.32);
-    	fumeDisplay3.x = -80.0;
-    	fumeDisplay3.y = -245.0;
+//     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
+//     	fumeDisplay.animation.play('Fume2');
+// // 	fumeDisplay.animation.timeScale = 0.5;
+// 	fumeDisplay.scale.set(0.30,0.30);
+//     	fumeDisplay.x = -180.0;
+//     	fumeDisplay.y = -130;	
+// 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
+// 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
+// 	fumeDisplay2.scale.set(0.35,0.35);
+//     	fumeDisplay2.x = -150.0;
+//     	fumeDisplay2.y = -250.0;	
+// 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
+// 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
+// 	fumeDisplay3.scale.set(0.32,0.32);
+//     	fumeDisplay3.x = -80.0;
+//     	fumeDisplay3.y = -245.0;
 	
-	hero1Container.addChild(fumeDisplay2);
-	hero1Container.addChild(fumeDisplay3);
-    	hero1Container.addChild(armatureHero1);
-	hero1Container.addChild(fumeDisplay);	
-	hero2Container.addChild(armatureHero2);
-	hero3Container.addChild(armatureHero3);
+// 	hero1Container.addChild(fumeDisplay2);
+// 	hero1Container.addChild(fumeDisplay3);
+//     	hero1Container.addChild(armatureHero1);
+// 	hero1Container.addChild(fumeDisplay);	
+// 	hero2Container.addChild(armatureHero2);
+// 	hero3Container.addChild(armatureHero3);
 	
-	enemy1Container.addChild(armatureEnemy1);
-	enemy2Container.addChild(armatureEnemy2);
-	enemy4Container.addChild(armatureEnemy4);
+// 	enemy1Container.addChild(armatureEnemy1);
+// 	enemy2Container.addChild(armatureEnemy2);
+// 	enemy4Container.addChild(armatureEnemy4);
 	
-	hero1Container.x = 0;
-	hero2Container.x = -2*50*spriteSpacer;
-	hero3Container.x = -3*50*spriteSpacer;
+// 	hero1Container.x = 0;
+// 	hero2Container.x = -2*50*spriteSpacer;
+// 	hero3Container.x = -3*50*spriteSpacer;
 	
-	enemy1Container.x = 0;
-	enemy2Container.x = 1*50*spriteSpacer;
-// 	enemy3Container.x = 2*50*spriteSpacer;
-	enemy4Container.x = 3*50*spriteSpacer;
+// 	enemy1Container.x = 0;
+// 	enemy2Container.x = 1*50*spriteSpacer;
+// // 	enemy3Container.x = 2*50*spriteSpacer;
+// 	enemy4Container.x = 3*50*spriteSpacer;
 	
-// 	rosterHero.addChild(hero1Container);
-// 	rosterHero.addChild(hero2Container);
-// 	rosterHero.addChild(hero3Container);
+// // 	rosterHero.addChild(hero1Container);
+// // 	rosterHero.addChild(hero2Container);
+// // 	rosterHero.addChild(hero3Container);
 	
-	rosterEnemy.addChild(enemy1Container);
-	rosterEnemy.addChild(enemy2Container);
-// 	rosterEnemy.addChild(enemy3Container);
-	rosterEnemy.addChild(enemy4Container);
+// 	rosterEnemy.addChild(enemy1Container);
+// 	rosterEnemy.addChild(enemy2Container);
+// // 	rosterEnemy.addChild(enemy3Container);
+// 	rosterEnemy.addChild(enemy4Container);
 	
 	app.stage.addChild(debug);
 	
@@ -469,9 +459,13 @@ function play(delta){
 // 	container.rotation -= 0.01 * delta;
 // });
 
+const heroContainerArray = [];
 
 function createSprite(item, index){
 	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
+	
+	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
+    	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
 	
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
     	armatureHero.animation.play('idle');
