@@ -376,7 +376,7 @@ function setup(){
 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 	armatureEnemy2.scale.set(-0.35,0.35);	
-	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
+	const armatureEnemy4 = factory.buildArmatureDisplay('toad3', 'toad3');
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
 	armatureEnemy4.scale.set(-0.25,0.25);	
 
