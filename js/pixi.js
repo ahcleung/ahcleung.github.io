@@ -350,6 +350,8 @@ function setup(){
 // 	hero4Container.x = -3*50*spriteSpacer;
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
+	
+	var codename = "hel1";
 		
     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
@@ -357,8 +359,10 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-	factory.parseDragonBonesData(resources.hel1_skeleton.data);
-    	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
+	factory.parseDragonBonesData(window['resources.' + codename + '_skeleton.data']);
+    	factory.parseTextureAtlasData(window['resources.' + codename + '_texture_json.data'], window['resources.' + codename + '_texture_png.texture']);
+// 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
+//     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
     	armatureHero1.animation.play('idle');
@@ -376,7 +380,7 @@ function setup(){
 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 	armatureEnemy2.scale.set(-0.35,0.35);	
-	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
+	const armatureEnemy4 = factory.buildArmatureDisplay(codename, codename);
 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
 	armatureEnemy4.scale.set(-0.25,0.25);	
 
