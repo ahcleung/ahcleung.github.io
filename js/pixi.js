@@ -127,6 +127,8 @@ var textureButton, textureButtonDown;
 
 var db = firebase.firestore();
 
+const factory = dragonBones.PixiFactory.factory;
+
 //Write to firestore
 // db.collection("vita").doc("004").set({
 // 	id: 5,
@@ -351,7 +353,7 @@ function setup(){
 	
 	var codename = "hel1";
 	
-	const factory = dragonBones.PixiFactory.factory;
+	
     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
