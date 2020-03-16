@@ -494,13 +494,13 @@ function createSprite(item, index){
 			creatureContainer.x = 0;
 			break;
 		case 2:
-			creatureContainer.x = 100;
+			creatureContainer.x = -100;
 			break;
 		case 3:
-			creatureContainer.x = 200;
+			creatureContainer.x = -200;
 			break;
 		case 4:
-			creatureContainer.x = 300;
+			creatureContainer.x = -300;
 			break;
 		default:
 			creatureContainer.x = 0;
