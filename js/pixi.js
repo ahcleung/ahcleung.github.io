@@ -488,7 +488,24 @@ function createSprite(item, index){
 	
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
-	creatureContainer.x = -index * 100;	
+	
+	switch(item.pos) {
+		case 1:
+			creatureContainer.x = 0;
+			break;
+		case 2:
+			creatureContainer.x = 100;
+			break;
+		case 3:
+			creatureContainer.x = 200;
+			break;
+		case 4:
+			creatureContainer.x = 300;
+			break;
+		default:
+			creatureContainer.x = 0;
+	}
+// 	creatureContainer.x = -index * 100;	
 	
 	heroContainerArray.push(creatureContainer);
 	rosterHero.addChild(creatureContainer);
