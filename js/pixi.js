@@ -464,13 +464,13 @@ function createSprite(item, index){
 	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
 	
 	const factory = dragonBones.PixiFactory.factory;
-    	factory.parseDragonBonesData("resources." + code + "_skeleton.data");
-    	factory.parseTextureAtlasData("resources." + code + "_texture_json.data", "resources." + code + "_texture_png.texture");
-	const armatureHero = factory.buildArmatureDisplay(code, code);
+    	factory.parseDragonBonesData("resources." + item.code + "_skeleton.data");
+    	factory.parseTextureAtlasData("resources." + item.code + "_texture_json.data", "resources." + item.code + "_texture_png.texture");
+	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
     	armatureHero1.animation.play('idle');
 	armatureHero1.scale.set(0.25,0.25);
 	
-	const heroContainer = new PIXI.Container();
+// 	const heroContainer = new PIXI.Container();
 	heroContainer.addChild(armatureHero);
 	heroContainer.x = index * 100;
 	rosterHero.addChild(heroContainer);
