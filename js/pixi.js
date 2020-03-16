@@ -358,8 +358,8 @@ function setup(){
     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-	factory.parseDragonBonesData(window['resources.' + codename + '_skeleton.data']);
-    	factory.parseTextureAtlasData(window['resources.' + codename + '_texture_json.data'], window['resources.' + codename + '_texture_png.texture']);
+	factory.parseDragonBonesData(resources.hel1_skeleton.data);
+    	factory.parseTextureAtlasData(resources.hel1_skeleton.data, resources.hel1_skeleton.data);
 	
 //     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
 //     	armatureHero1.animation.play('idle');
@@ -464,9 +464,9 @@ function play(delta){
 function createSprite(item, index){
 	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
 	
-	const factory = dragonBones.PixiFactory.factory;
-    	factory.parseDragonBonesData("resources." + item.code + "_skeleton.data");
-    	factory.parseTextureAtlasData("resources." + item.code + "_texture_json.data", "resources." + item.code + "_texture_png.texture");
+// 	const factory = dragonBones.PixiFactory.factory;
+//     	factory.parseDragonBonesData("resources." + item.code + "_skeleton.data");
+//     	factory.parseTextureAtlasData("resources." + item.code + "_texture_json.data", "resources." + item.code + "_texture_png.texture");
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
     	armatureHero1.animation.play('idle');
 	armatureHero1.scale.set(0.25,0.25);
