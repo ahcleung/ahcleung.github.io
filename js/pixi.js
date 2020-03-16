@@ -16,9 +16,9 @@ loader
 		"img/flygon.json",
 		"js/creatures.json",
 		"js/moves.json",
-		{name:'toad3_skeleton', url:'img/toad3_2_ske.json'},
-		{name:'toad3_texture_json', url:'img/toad3_2_tex.json'},
-		{name:'toad3_texture_png', url:'img/toad3_2_tex.png'},
+		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
+		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
+		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
 		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
@@ -360,7 +360,7 @@ function setup(){
 	factory.parseDragonBonesData(resources.hel1_skeleton.data);
     	factory.parseTextureAtlasData(resources.hel1_texture_json.data, resources.hel1_texture_png.texture);
 	
-    	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+    	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
     	armatureHero1.animation.play('idle');
 	armatureHero1.scale.set(0.35,0.35);	
 	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
@@ -373,7 +373,7 @@ function setup(){
 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
     	armatureEnemy1.animation.play('idle');
 	armatureEnemy1.scale.set(-0.25,0.25);	
-	const armatureEnemy2 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
+	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
 	armatureEnemy2.scale.set(-0.35,0.35);	
 	const armatureEnemy4 = factory.buildArmatureDisplay('hel1', 'hel1');
@@ -461,7 +461,11 @@ function play(delta){
 
 
 function createSprite(item, index){
-	console.log("Code: " + item.id + "\nSize: " + item.size);
+	console.log("Code: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code);
+	
+// 	const factory = dragonBones.PixiFactory.factory;
+//     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
+//     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
 // 	const armatureHero1 = factory.buildArmatureDisplay('toad3_2', 'toad3_2');
 //     	armatureHero1.animation.play('idle');
 // 	armatureHero1.scale.set(0.35,0.35);
