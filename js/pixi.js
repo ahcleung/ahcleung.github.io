@@ -52,11 +52,12 @@ class Creature{
 		this.statDis = statDis;
 		this.moves = moves;
 		this.pos = 0;
-		this.frames = creatureList.data.creatures[this.id].frames;
+		
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
 		
+		this.frames = creatureList.data.creatures[this.id].frames;
 		this.code = creatureList.data.creatures[this.id].code;
 		this.size = creatureList.data.creatures[this.id].size;
 		
