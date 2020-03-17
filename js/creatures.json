@@ -168,7 +168,7 @@
       {
          "name": "Umbrahel",
          "code": "hel2",
-         "frames": 60,
+         "frames": 55,
          "elements": [
            "shadow",
            "toxic"
