@@ -484,7 +484,7 @@ function createSprite(item, index){
     	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
 	
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
-	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1;);
+	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
 //     	armatureHero.animation.play('idle');
 	if(item.size == 2){		
 		armatureHero.scale.set(0.35,0.35);
