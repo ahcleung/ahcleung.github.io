@@ -135,27 +135,27 @@ const factory = dragonBones.PixiFactory.factory;
 const arrayHero = [];
 
 //Write to firestore
-// db.collection("vita").doc("004").set({
-// 	id: 5,
-// 	level: 49,
-// 	move1: 2,
-// 	move2: 2,
-// 	move3: 3,
-// 	move4: 3,
-// 	statDODG: 20,
-// 	statHP: 20,
-// 	statPATK: 0,
-// 	statPDEF: 40,
-// 	statSATK: 67,
-// 	statSDEF: 0,
-// 	statSPD: 0
-// })
-// .then(function() {
-// 	console.log("Document successfully written!");
-// })
-// .catch(function(error) {
-// 	console.error("Error writing document: ", error);
-// });
+db.collection("enemy").doc("001").set({
+	id: 8,
+	level: 49,
+	move1: 2,
+	move2: 2,
+	move3: 3,
+	move4: 3,
+	statDODG: 20,
+	statHP: 20,
+	statPATK: 0,
+	statPDEF: 40,
+	statSATK: 67,
+	statSDEF: 0,
+	statSPD: 0
+})
+.then(function() {
+	console.log("Document successfully written!");
+})
+.catch(function(error) {
+	console.error("Error writing document: ", error);
+});
 
 //Update firestore document
 // db.collection("vita").doc("001").update({
