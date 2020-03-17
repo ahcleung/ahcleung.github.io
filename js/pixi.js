@@ -138,9 +138,9 @@ const factory = dragonBones.PixiFactory.factory;
 const arrayHero = [];
 
 //Write to firestore
-db.collection("enemy").doc("002").set({
-	id: 9,
-	level: 46,
+db.collection("enemy").doc("003").set({
+	id: 10,
+	level: 45,
 	move1: 1,
 	move2: 1,
 	move3: 2,
@@ -149,7 +149,7 @@ db.collection("enemy").doc("002").set({
 	statHP: 20,
 	statPATK: 0,
 	statPDEF: 40,
-	statSATK: 68,
+	statSATK: 65,
 	statSDEF: 0,
 	statSPD: 0
 })
