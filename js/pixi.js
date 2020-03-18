@@ -259,36 +259,38 @@ function setup(){
 	});
 	
 	//Read from firestore
-// 	db.collection("enemy").get().then((querySnapshot) => {
-// 		querySnapshot.forEach((doc) => {
-// 			console.log(`${doc.id} => ${doc.data()}`);
-// 			const creature = new Creature({
-// 				id: doc.data().id, 
-// 				level: doc.data().level, 
-// 				statDis:[
-// 					doc.data().statHP, 
-// 					doc.data().statDODG, 
-// 					doc.data().statPATK, 
-// 					doc.data().statPDEF, 
-// 					doc.data().statSATK, 
-// 					doc.data().statSDEF, 
-// 					doc.data().statSPD
-// 				], moves:[
-// 					doc.data().move1, 
-// 					doc.data().move2, 
-// 					doc.data().move3, 
-// 					doc.data().move4
-// 				]});
-// 			arrayEnemy.push(creature);
-// 		});
-// 	})
-// 	.then(function() {
-// 		console.log("Enemies created successfully!");
-// // 		console.log(arrayHero[0]);
-// // 		console.log(arrayHero[0].name);
-// 		arrayEnemy.forEach(setPos);
-// 		arrayEnemy.forEach(createSprite, -1);
-// 	});
+	db.collection("enemy").get().then((querySnapshot) => {
+		querySnapshot.forEach((doc) => {
+			console.log(`${doc.id} => ${doc.data()}`);
+			const creature = new Creature({
+				id: doc.data().id, 
+				level: doc.data().level, 
+				statDis:[
+					doc.data().statHP, 
+					doc.data().statDODG, 
+					doc.data().statPATK, 
+					doc.data().statPDEF, 
+					doc.data().statSATK, 
+					doc.data().statSDEF, 
+					doc.data().statSPD
+				], moves:[
+					doc.data().move1, 
+					doc.data().move2, 
+					doc.data().move3, 
+					doc.data().move4
+				]});
+			arrayEnemy.push(creature);
+		});
+	})
+	.then(function() {
+		console.log("Enemies created successfully!");
+// 		console.log(arrayHero[0]);
+// 		console.log(arrayHero[0].name);
+		arrayEnemy.forEach(setPos);
+		arrayEnemy.forEach(function (item, index){
+			createSprite(-1, item, index)	
+		});
+	});
 	
 	console.log(arrayEnemy);
 	
