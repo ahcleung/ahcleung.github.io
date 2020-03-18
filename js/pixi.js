@@ -113,6 +113,8 @@ let state, onScreenStats, consoleScreen, debug;
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
+const hpHero = new PIXI.Container();
+const hpEnemy = new PIXI.Container();
 
 const rect = new PIXI.Graphics();
 
@@ -178,21 +180,26 @@ function setup(){
 	// Add it to the stage
 	app.stage.addChild(rect);
 	
-	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, -100);
+	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
 	rectHero.y = 0;
-	rosterHero.addChild(rectHero);
+	hpHero.addChild(rectHero);
 	
-	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, -100);
+	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
 	rectEnemy.x = 0;
 	rectEnemy.y = 0;
-	rosterEnemy.addChild(rectEnemy);
+	hpEnemy.addChild(rectEnemy);
 	
 	rosterHero.x = app.screen.width/2;
 	rosterHero.y = app.screen.height/2;
 	
 	rosterEnemy.x = app.screen.width/2;
 	rosterEnemy.y = app.screen.height/2;
+	
+	hpHero.x = app.screen.width/2;
+	hpHero.y = 10;
+	hpEnemy.x = app.screen.width/2;
+	hpEnemy.y = 10;
 	
 	const movesList = resources["js/moves.json"];	
 	
@@ -329,7 +336,8 @@ function setup(){
 	
 	app.stage.addChild(rosterHero);
 	app.stage.addChild(rosterEnemy);
-	
+	app.stage.addChild(hpHero);
+	app.stage.addChild(hpEnemy);
 	//Load spritesheet
 	//Flygon
 // 	const hero4Container  = new PIXI.Container();
@@ -476,6 +484,9 @@ function resize() {
 	
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
+	
+	hpHero.position.set(app.screen.width/2-50, 10);
+	hpEnemy.position.set(app.screen.width/2+50, 10);
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
