@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Project Element</title>
-<!-- *******************************************************************************************
-* TODO(DEVELOPER): Paste the initialization snippet from:
-* Firebase Console > Overview > Add Firebase to your web app. *
-***************************************************************************************** -->
-<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-<script>
-	// Initialize Firebase
-	const firebaseConfig = {
-		apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
-		authDomain: "projectelement-54e7b.firebaseapp.com",
-		databaseURL: "https://projectelement-54e7b.firebaseio.com",
-		projectId: "projectelement-54e7b",
-		storageBucket: "projectelement-54e7b.appspot.com",
-		messagingSenderId: "625380203325",
-		appId: "1:625380203325:web:a2d734339a2e133b948354",
-		measurementId: "G-5T1Q6XW5TH"
-	};
-	</script>
-	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-	<script type="text/javascript">
-	// FirebaseUI config.
-	var uiConfig = {
-		signInSuccessUrl: 'game.html',
-		signInOptions: [
-			// Leave the lines as is for the providers you want to offer your users.
-			firebase.auth.EmailAuthProvider.PROVIDER_ID
-		],
-		// tosUrl and privacyPolicyUrl accept either url string or a callback
-		// function.
-		// Terms of service url/callback.
-		tosUrl: '<your-tos-url>',
-		// Privacy policy url/callback.
-		privacyPolicyUrl: function() {
-			window.location.assign('<your-privacy-policy-url>');
-		}
-	};
-	// Initialize the FirebaseUI Widget using Firebase.
-	var ui = new firebaseui.auth.AuthUI(firebase.auth());
-	// The start method will wait until the DOM is loaded.
-	ui.start('#firebaseui-auth-container', uiConfig);
-</script>
-</head>
-<body>
-	<!-- The surrounding HTML is left untouched by FirebaseUI.
-	Your app may use that space for branding, controls and other customizations.-->
-	<h1>Project Element</h1>
-	<div id="firebaseui-auth-container"></div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Project Element</title>
+		<!-- *******************************************************************************************
+		* TODO(DEVELOPER): Paste the initialization snippet from:
+		* Firebase Console > Overview > Add Firebase to your web app. *
+		***************************************************************************************** -->
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+		<script>
+			// Initialize Firebase
+			const firebaseConfig = {
+				apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
+				authDomain: "projectelement-54e7b.firebaseapp.com",
+				databaseURL: "https://projectelement-54e7b.firebaseio.com",
+				projectId: "projectelement-54e7b",
+				storageBucket: "projectelement-54e7b.appspot.com",
+				messagingSenderId: "625380203325",
+				appId: "1:625380203325:web:a2d734339a2e133b948354",
+				measurementId: "G-5T1Q6XW5TH"
+			};
+			firebase.initializeApp(firebaseConfig);
+		</script>
+
+		<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+		<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+		<script type="text/javascript">
+			// FirebaseUI config.
+			var uiConfig = {
+				signInSuccessUrl: 'game.html',
+				signInOptions: [
+					// Leave the lines as is for the providers you want to offer your users.
+					firebase.auth.EmailAuthProvider.PROVIDER_ID
+				],
+				// tosUrl and privacyPolicyUrl accept either url string or a callback
+				// function.
+				// Terms of service url/callback.
+				tosUrl: '<your-tos-url>',
+				// Privacy policy url/callback.
+				privacyPolicyUrl: function() {
+					window.location.assign('<your-privacy-policy-url>');
+				}
+			};
+			// Initialize the FirebaseUI Widget using Firebase.
+			var ui = new firebaseui.auth.AuthUI(firebase.auth());
+			// The start method will wait until the DOM is loaded.
+			ui.start('#firebaseui-auth-container', uiConfig);
+		</script>
+
+	</head>
+	<body>
+		<!-- The surrounding HTML is left untouched by FirebaseUI.
+		Your app may use that space for branding, controls and other customizations.-->
+		<h1>Project Element</h1>
+		<div id="firebaseui-auth-container"></div>
+	</body>
 </html>
