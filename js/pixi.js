@@ -528,46 +528,59 @@ const enemyContainerArray = [];
 function createSprite(direction, item, index){
 	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos);
 	
-	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
-    	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
+	loader
+		.add([
+			{name: item.code + '_skeleton', url:'img/' + item.code + '_ske.json'},
+			{name: item.code + '_texture_json', url:'img/' + item.code + '_tex.json'},
+			{name: item.code + '_texture_png', url:'img/' + item.code + '_tex.png'}
+		])
+	.on("progress", loadProgressHandler)
+	.load(function(){
+		
+		factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
+    		factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
 	
-	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
-	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
-//     	armatureHero.animation.play('idle');
-	if(item.size == 2){		
-		armatureHero.scale.set(direction * 0.35, 0.35);
-	}else{
-		armatureHero.scale.set(direction * 0.25, 0.25);
-	}
+		const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
+		armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
+//     		armatureHero.animation.play('idle');
+		if(item.size == 2){		
+			armatureHero.scale.set(direction * 0.35, 0.35);
+		}else{
+			armatureHero.scale.set(direction * 0.25, 0.25);
+		}
 	
-	const creatureContainer = new PIXI.Container();	
-	creatureContainer.addChild(armatureHero);
+		const creatureContainer = new PIXI.Container();	
+		creatureContainer.addChild(armatureHero);
 	
-	switch(item.pos) {
-		case 1:
-			creatureContainer.x = 0;
-			break;
-		case 2:
-			creatureContainer.x = direction * -100;
-			break;
-		case 3:
-			creatureContainer.x = direction * -200;
-			break;
-		case 4:
-			creatureContainer.x = direction * -300;
-			break;
-		default:
-			creatureContainer.x = 0;
-	}
-// 	creatureContainer.x = -index * 100;	
+		switch(item.pos) {
+			case 1:
+				creatureContainer.x = 0;
+				break;
+			case 2:
+				creatureContainer.x = direction * -100;
+				break;
+			case 3:
+				creatureContainer.x = direction * -200;
+				break;
+			case 4:
+				creatureContainer.x = direction * -300;
+				break;
+			default:
+				creatureContainer.x = 0;
+		}
+	// 	creatureContainer.x = -index * 100;	
+
+		if(direction > 0){
+			heroContainerArray.push(creatureContainer);
+			rosterHero.addChild(creatureContainer);
+		}else{
+			enemyContainerArray.push(creatureContainer);
+			rosterEnemy.addChild(creatureContainer);
+		}	
+	});
+		
 	
-	if(direction > 0){
-		heroContainerArray.push(creatureContainer);
-		rosterHero.addChild(creatureContainer);
-	}else{
-		enemyContainerArray.push(creatureContainer);
-		rosterEnemy.addChild(creatureContainer);
-	}
+	
 }
 
 
