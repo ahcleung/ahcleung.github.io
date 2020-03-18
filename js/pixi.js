@@ -108,7 +108,7 @@ class Creature{
 // 	}
 }
 
-let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, enemy3, enemy4, debug;
+let state, onScreenStats, consoleScreen, debug;
 // const container = new PIXI.Container();
 
 const rosterHero = new PIXI.Container();
@@ -287,10 +287,10 @@ function setup(){
 	debug.y = 200;
 	
 	//Current display stats
-	stats = new Text("Resolution: " + app.renderer.resolution +
+	onScreenStats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight);
-	app.stage.addChild(stats);	
+	app.stage.addChild(onScreenStats);	
 
 	//Console text printout
 	consoleScreen = new Text("Console: ");
@@ -392,7 +392,7 @@ function gameLoop(delta){
 }
 
 function play(delta){
-	stats.text = "ResolutionTest5: " + app.renderer.resolution +
+	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
