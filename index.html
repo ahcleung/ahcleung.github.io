@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>timyung.com data sign in</title>
+	<title>Project Element</title>
 <!-- *******************************************************************************************
 * TODO(DEVELOPER): Paste the initialization snippet from:
 * Firebase Console > Overview > Add Firebase to your web app. *
@@ -21,8 +21,6 @@
 		measurementId: "G-5T1Q6XW5TH"
 	};
 	</script>
-	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>        
-	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 	<script type="text/javascript">
@@ -30,18 +28,17 @@
 	var uiConfig = {
 		signInSuccessUrl: 'game.html',
 		signInOptions: [
-		// Leave the lines as is for the providers you want to offer your users.
-		firebase.auth.EmailAuthProvider.PROVIDER_ID
+			// Leave the lines as is for the providers you want to offer your users.
+			firebase.auth.EmailAuthProvider.PROVIDER_ID
 		],
-
-	// tosUrl and privacyPolicyUrl accept either url string or a callback
-	// function.
-	// Terms of service url/callback.
-	tosUrl: '<your-tos-url>',
-	// Privacy policy url/callback.
-	privacyPolicyUrl: function() {
-		window.location.assign('<your-privacy-policy-url>');
-	}
+		// tosUrl and privacyPolicyUrl accept either url string or a callback
+		// function.
+		// Terms of service url/callback.
+		tosUrl: '<your-tos-url>',
+		// Privacy policy url/callback.
+		privacyPolicyUrl: function() {
+			window.location.assign('<your-privacy-policy-url>');
+		}
 	};
 	// Initialize the FirebaseUI Widget using Firebase.
 	var ui = new firebaseui.auth.AuthUI(firebase.auth());
