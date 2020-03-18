@@ -142,6 +142,7 @@ var db = firebase.firestore();
 const factory = dragonBones.PixiFactory.factory;
 
 const arrayHero = [];
+const arrayEnemy = [];
 
 //Write to firestore
 // db.collection("enemy").doc("003").set({
@@ -248,14 +249,46 @@ function setup(){
 		});
 	})
 	.then(function() {
-		console.log("Creatures created successfully!");
-		console.log(arrayHero[0]);
-		console.log(arrayHero[0].name);
+		console.log("Heroes created successfully!");
+// 		console.log(arrayHero[0]);
+// 		console.log(arrayHero[0].name);
 		arrayHero.forEach(setPos);
-		arrayHero.forEach(createSprite);
+		arrayHero.forEach(createSprite, 1);
 	});
 	
-	console.log(arrayHero);
+	//Read from firestore
+	db.collection("enemy").get().then((querySnapshot) => {
+		querySnapshot.forEach((doc) => {
+			console.log(`${doc.id} => ${doc.data()}`);
+			const creature = new Creature({
+				id: doc.data().id, 
+				level: doc.data().level, 
+				statDis:[
+					doc.data().statHP, 
+					doc.data().statDODG, 
+					doc.data().statPATK, 
+					doc.data().statPDEF, 
+					doc.data().statSATK, 
+					doc.data().statSDEF, 
+					doc.data().statSPD
+				], moves:[
+					doc.data().move1, 
+					doc.data().move2, 
+					doc.data().move3, 
+					doc.data().move4
+				]});
+			arrayEnemy.push(creature);
+		});
+	})
+	.then(function() {
+		console.log("Enemies created successfully!");
+// 		console.log(arrayHero[0]);
+// 		console.log(arrayHero[0].name);
+		arrayEnemy.forEach(setPos);
+		arrayEnemy.forEach(createSprite, -1);
+	});
+	
+	console.log(arrayEnemy);
 	
 	
 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
@@ -486,9 +519,10 @@ function setPos(item, index){
 }
 
 const heroContainerArray = [];
+const enemyContainerArray = [];
 
-function createSprite(item, index){
-	console.log("ID: " + item.id + "\nSize: " + item.size + "\nCode: " + item.code + "\nPosition: " + item.pos);
+function createSprite(item, index, direction){
+	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos);
 	
 	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
     	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
@@ -497,9 +531,9 @@ function createSprite(item, index){
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
 //     	armatureHero.animation.play('idle');
 	if(item.size == 2){		
-		armatureHero.scale.set(0.35,0.35);
+		armatureHero.scale.set(direction * 0.35, direction * 0.35);
 	}else{
-		armatureHero.scale.set(0.25,0.25);
+		armatureHero.scale.set(direction * 0.25, direction * 0.25);
 	}
 	
 	const creatureContainer = new PIXI.Container();	
@@ -510,21 +544,26 @@ function createSprite(item, index){
 			creatureContainer.x = 0;
 			break;
 		case 2:
-			creatureContainer.x = -100;
+			creatureContainer.x = direction * -100;
 			break;
 		case 3:
-			creatureContainer.x = -200;
+			creatureContainer.x = direction * -200;
 			break;
 		case 4:
-			creatureContainer.x = -300;
+			creatureContainer.x = direction * -300;
 			break;
 		default:
 			creatureContainer.x = 0;
 	}
 // 	creatureContainer.x = -index * 100;	
 	
-	heroContainerArray.push(creatureContainer);
-	rosterHero.addChild(creatureContainer);
+	if(direction > 0){
+		heroContainerArray.push(creatureContainer);
+		rosterHero.addChild(creatureContainer);
+	}else{
+		enemyContainerArray.push(creatureContainer);
+		rosterEnemy.addChild(creatureContainer);
+	}
 }
 
 
