@@ -535,9 +535,9 @@ function createSprite(direction, item, index){
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
 //     	armatureHero.animation.play('idle');
 	if(item.size == 2){		
-		armatureHero.scale.set(direction * 0.35, direction * 0.35);
+		armatureHero.scale.set(direction * 0.35, 0.35);
 	}else{
-		armatureHero.scale.set(direction * 0.25, direction * 0.25);
+		armatureHero.scale.set(direction * 0.25, 0.25);
 	}
 	
 	const creatureContainer = new PIXI.Container();	
