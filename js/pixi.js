@@ -15,29 +15,28 @@ loader
 		"img/leper.ability.five.png",
 		"img/flygon.json",
 		"js/creatures.json",
-		"js/moves.json"
-// 		,
-// 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
-// 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
-// 		{name:'gorilla3_texture_png', url:'img/gorilla3_tex.png'},
-// 		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
-// 		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
-// 		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
-// 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
-// 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
-// 		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
-// 		{name:'goat2_1_skeleton', url:'img/goat2_1_ske.json'},
-// 		{name:'goat2_1_texture_json', url:'img/goat2_1_tex.json'},
-// 		{name:'goat2_1_texture_png', url:'img/goat2_1_tex.png'},
-// 		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
-// 		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
-// 		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
-// 		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
-// 		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
-// 		{name:'hel1_texture_png', url:'img/hel1_tex.png'},
-// 		{name:'hel2_skeleton', url:'img/hel2_ske.json'},
-// 		{name:'hel2_texture_json', url:'img/hel2_tex.json'},
-// 		{name:'hel2_texture_png', url:'img/hel2_tex.png'}
+		"js/moves.json",
+		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
+		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
+		{name:'gorilla3_texture_png', url:'img/gorilla3_tex.png'},
+		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
+		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
+		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
+		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
+		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
+		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
+		{name:'goat2_1_skeleton', url:'img/goat2_1_ske.json'},
+		{name:'goat2_1_texture_json', url:'img/goat2_1_tex.json'},
+		{name:'goat2_1_texture_png', url:'img/goat2_1_tex.png'},
+		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
+		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
+		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
+		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
+		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
+		{name:'hel1_texture_png', url:'img/hel1_tex.png'},
+		{name:'hel2_skeleton', url:'img/hel2_ske.json'},
+		{name:'hel2_texture_json', url:'img/hel2_tex.json'},
+		{name:'hel2_texture_png', url:'img/hel2_tex.png'}
 	])
 	.on("progress", loadProgressHandler)
 	.load(setup);
@@ -86,13 +85,6 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
-// 		this.HP = this.EHP;
-// 		this.Dodge = obj.data.creatures[this.id].dodge + this.statDis[1]/2;
-// 		this.PAtk = obj.data.creatures[this.id].patk + this.statDis[2];
-// 		this.PDef = obj.data.creatures[this.id].pdef + this.statDis[3];
-// 		this.SAtk = obj.data.creatures[this.id].satk + this.statDis[4];
-// 		this.SDef = obj.data.creatures[this.id].sdef + this.statDis[5];
-// 		this.Spd = obj.data.creatures[this.id].spd + this.statDis[6];
 	}
 	
 	heal(){
@@ -122,15 +114,6 @@ let state, stats, consoleScreen, hero1, hero2, hero3, hero4, enemy1, enemy2, ene
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
 
-const hero1Container = new PIXI.Container();
-const hero2Container = new PIXI.Container();
-const hero3Container = new PIXI.Container();
-const hero4Container = new PIXI.Container();
-const enemy1Container = new PIXI.Container();
-const enemy2Container = new PIXI.Container();
-const enemy3Container = new PIXI.Container();
-const enemy4Container = new PIXI.Container();
-
 const rect = new PIXI.Graphics();
 
 const rectHero = new PIXI.Graphics();
@@ -142,8 +125,10 @@ var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
 
-const arrayHero = [];
-const arrayEnemy = [];
+const arrayHero = [];			//Array of hero vitas
+const arrayEnemy = [];			//Array of enemy vitas
+const heroContainerArray = [];		//Array of hero sprite containers
+const enemyContainerArray = [];		//Array of enemy sprite containers
 
 //Write to firestore
 // db.collection("enemy").doc("003").set({
@@ -179,10 +164,6 @@ const arrayEnemy = [];
 // 	console.error("Error updating document: ", error);
 // });
 
-
-
-//var isFullScreen = false;
-
 // const framesIdleFlygon = [];
 
 function setup(){
@@ -214,16 +195,6 @@ function setup(){
 	rosterEnemy.y = app.screen.height/2;
 	
 	const movesList = resources["js/moves.json"];	
-	
-// 	const numHero = [1, 1, 1, 1];
-// 	const arrayEnemy = [2, 2, 2, 2];
-	
-	
-	
-// 	for (var i = 0; i < numHero.length; i++){
-// 		const creature = new Creature({id:i, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
-// 		arrayHero.push(creature);
-// 	}
 	
 	//Read from firestore
 	db.collection("vita").get().then((querySnapshot) => {
@@ -285,8 +256,6 @@ function setup(){
 	})
 	.then(function() {
 		console.log("Enemies created successfully!");
-// 		console.log(arrayHero[0]);
-// 		console.log(arrayHero[0].name);
 		arrayEnemy.forEach(setPos);
 		arrayEnemy.forEach(function (item, index){
 			createSprite(-1, item, index)	
@@ -403,81 +372,6 @@ function setup(){
 // 	hero4Container.x = -3*50*spriteSpacer;
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
-		
-//     	factory.parseDragonBonesData(resources.toad3_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.toad3_texture_json.data, resources.toad3_texture_png.texture);
-// 	factory.parseDragonBonesData(resources.goat2_2_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.goat2_2_texture_json.data, resources.goat2_2_texture_png.texture);
-// 	factory.parseDragonBonesData(resources.fume2_skeleton.data);
-//     	factory.parseTextureAtlasData(resources.fume2_texture_json.data, resources.fume2_texture_png.texture);
-// 	factory.parseDragonBonesData(resources[codename + '_skeleton'].data);
-//     	factory.parseTextureAtlasData(resources[codename + '_texture_json'].data, resources[codename + '_texture_png'].texture);
-	
-//     	const armatureHero1 = factory.buildArmatureDisplay('toad3', 'toad3');
-//     	armatureHero1.animation.play('idle');
-// 	armatureHero1.scale.set(0.35,0.35);	
-// 	const armatureHero2 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-//     	armatureHero2.animation.gotoAndPlayByFrame('idle', 24);
-// 	armatureHero2.scale.set(0.25,0.25);
-// 	const armatureHero3 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-//     	armatureHero3.animation.gotoAndPlayByFrame('idle', 57);
-// 	armatureHero3.scale.set(0.25,0.25);
-	
-// 	const armatureEnemy1 = factory.buildArmatureDisplay('goat2_2', 'goat2_2');
-//     	armatureEnemy1.animation.play('idle');
-// 	armatureEnemy1.scale.set(-0.25,0.25);	
-// 	const armatureEnemy2 = factory.buildArmatureDisplay('toad3', 'toad3');
-// 	armatureEnemy2.animation.gotoAndPlayByFrame('idle', 12);
-// 	armatureEnemy2.scale.set(-0.35,0.35);	
-// 	const armatureEnemy4 = factory.buildArmatureDisplay(codename, codename);
-// 	armatureEnemy4.animation.gotoAndPlayByFrame('idle', 13);
-// 	armatureEnemy4.scale.set(-0.25,0.25);	
-
-//     	const fumeDisplay = factory.buildArmatureDisplay('Fume2', 'fume2');
-//     	fumeDisplay.animation.play('Fume2');
-// // 	fumeDisplay.animation.timeScale = 0.5;
-// 	fumeDisplay.scale.set(0.30,0.30);
-//     	fumeDisplay.x = -180.0;
-//     	fumeDisplay.y = -130;	
-// 	const fumeDisplay2 = factory.buildArmatureDisplay('Fume2', 'fume2');
-// 	fumeDisplay2.animation.gotoAndPlayByFrame('Fume2', 12);
-// 	fumeDisplay2.scale.set(0.35,0.35);
-//     	fumeDisplay2.x = -150.0;
-//     	fumeDisplay2.y = -250.0;	
-// 	const fumeDisplay3 = factory.buildArmatureDisplay('Fume2', 'fume2');
-// 	fumeDisplay3.animation.gotoAndPlayByFrame('Fume2', 30);
-// 	fumeDisplay3.scale.set(0.32,0.32);
-//     	fumeDisplay3.x = -80.0;
-//     	fumeDisplay3.y = -245.0;
-	
-// 	hero1Container.addChild(fumeDisplay2);
-// 	hero1Container.addChild(fumeDisplay3);
-//     	hero1Container.addChild(armatureHero1);
-// 	hero1Container.addChild(fumeDisplay);	
-// 	hero2Container.addChild(armatureHero2);
-// 	hero3Container.addChild(armatureHero3);
-	
-// 	enemy1Container.addChild(armatureEnemy1);
-// 	enemy2Container.addChild(armatureEnemy2);
-// 	enemy4Container.addChild(armatureEnemy4);
-	
-// 	hero1Container.x = 0;
-// 	hero2Container.x = -2*50*spriteSpacer;
-// 	hero3Container.x = -3*50*spriteSpacer;
-	
-// 	enemy1Container.x = 0;
-// 	enemy2Container.x = 1*50*spriteSpacer;
-// // 	enemy3Container.x = 2*50*spriteSpacer;
-// 	enemy4Container.x = 3*50*spriteSpacer;
-	
-// // 	rosterHero.addChild(hero1Container);
-// // 	rosterHero.addChild(hero2Container);
-// // 	rosterHero.addChild(hero3Container);
-	
-// 	rosterEnemy.addChild(enemy1Container);
-// 	rosterEnemy.addChild(enemy2Container);
-// // 	rosterEnemy.addChild(enemy3Container);
-// 	rosterEnemy.addChild(enemy4Container);
 	
 	app.stage.addChild(debug);
 	
@@ -519,69 +413,51 @@ function setPos(item, index, array){
 		item.pos = array[index-1].pos + 2;
 	}else{
 		item.pos = array[index-1].pos + 1;	
-	}
-// 	item.pos = index;	
+	}	
 }
-
-const heroContainerArray = [];
-const enemyContainerArray = [];
 
 function createSprite(direction, item, index){
 	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos);
-	
-	loader
-		.add([
-			{name: item.code + '_skeleton', url:'img/' + item.code + '_ske.json'},
-			{name: item.code + '_texture_json', url:'img/' + item.code + '_tex.json'},
-			{name: item.code + '_texture_png', url:'img/' + item.code + '_tex.png'}
-		])
-	.on("progress", loadProgressHandler)
-	.load(function(){
-		
-		factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
-    		factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
-	
-		const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
-		armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
-//     		armatureHero.animation.play('idle');
-		if(item.size == 2){		
-			armatureHero.scale.set(direction * 0.35, 0.35);
-		}else{
-			armatureHero.scale.set(direction * 0.25, 0.25);
-		}
-	
-		const creatureContainer = new PIXI.Container();	
-		creatureContainer.addChild(armatureHero);
-	
-		switch(item.pos) {
-			case 1:
-				creatureContainer.x = 0;
-				break;
-			case 2:
-				creatureContainer.x = direction * -100;
-				break;
-			case 3:
-				creatureContainer.x = direction * -200;
-				break;
-			case 4:
-				creatureContainer.x = direction * -300;
-				break;
-			default:
-				creatureContainer.x = 0;
-		}
-	// 	creatureContainer.x = -index * 100;	
+			
+	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
+	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
 
-		if(direction > 0){
-			heroContainerArray.push(creatureContainer);
-			rosterHero.addChild(creatureContainer);
-		}else{
-			enemyContainerArray.push(creatureContainer);
-			rosterEnemy.addChild(creatureContainer);
-		}	
-	});
-		
-	
-	
+	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
+	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
+//     		armatureHero.animation.play('idle');
+	if(item.size == 2){		
+		armatureHero.scale.set(direction * 0.35, 0.35);
+	}else{
+		armatureHero.scale.set(direction * 0.25, 0.25);
+	}
+
+	const creatureContainer = new PIXI.Container();	
+	creatureContainer.addChild(armatureHero);
+
+	switch(item.pos) {
+		case 1:
+			creatureContainer.x = 0;
+			break;
+		case 2:
+			creatureContainer.x = direction * -100;
+			break;
+		case 3:
+			creatureContainer.x = direction * -200;
+			break;
+		case 4:
+			creatureContainer.x = direction * -300;
+			break;
+		default:
+			creatureContainer.x = 0;
+	}
+
+	if(direction > 0){
+		heroContainerArray.push(creatureContainer);
+		rosterHero.addChild(creatureContainer);
+	}else{
+		enemyContainerArray.push(creatureContainer);
+		rosterEnemy.addChild(creatureContainer);
+	}	
 }
 
 
