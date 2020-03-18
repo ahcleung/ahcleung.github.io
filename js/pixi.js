@@ -253,7 +253,9 @@ function setup(){
 // 		console.log(arrayHero[0]);
 // 		console.log(arrayHero[0].name);
 		arrayHero.forEach(setPos);
-		arrayHero.forEach(createSprite, 1);
+		arrayHero.forEach(function (item, index){
+			createSprite(1, item, index)	
+		});
 	});
 	
 	//Read from firestore
@@ -521,7 +523,7 @@ function setPos(item, index){
 const heroContainerArray = [];
 const enemyContainerArray = [];
 
-function createSprite(item, index, direction){
+function createSprite(direction, item, index){
 	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos);
 	
 	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
