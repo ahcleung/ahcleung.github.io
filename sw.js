@@ -1,4 +1,4 @@
-var cacheName = 'phaser-v1';
+var cacheName = 'pixi-v1';
 var filesToCache = [
 	'./',
   	'./index.html',
@@ -13,12 +13,7 @@ var filesToCache = [
 	'./img/leper.ability.five.png',
   	'./img/ability_move.png',
 	'./js/pixi.js',
-	'./css/style.css',
-	'https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js', 
-	'https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js',
-	'https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js',
-	'https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js',
-  	'https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js'
+	'./css/style.css'
 ];
 
 self.addEventListener('install', function(event) {
