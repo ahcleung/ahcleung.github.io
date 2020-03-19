@@ -30,7 +30,7 @@
         </div>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-
+        
         <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>        
@@ -77,15 +77,15 @@
             // Your web app's Firebase configuration
             // INSERT FIREBASE APIKEY HERE
             const firebaseConfig = {
-  apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
-  authDomain: "projectelement-54e7b.firebaseapp.com",
-  databaseURL: "https://projectelement-54e7b.firebaseio.com",
-  projectId: "projectelement-54e7b",
-  storageBucket: "projectelement-54e7b.appspot.com",
-  messagingSenderId: "625380203325",
-  appId: "1:625380203325:web:a2d734339a2e133b948354",
-  measurementId: "G-5T1Q6XW5TH"
-};
+                apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
+                authDomain: "projectelement-54e7b.firebaseapp.com",
+                databaseURL: "https://projectelement-54e7b.firebaseio.com",
+                projectId: "projectelement-54e7b",
+                storageBucket: "projectelement-54e7b.appspot.com",
+                messagingSenderId: "625380203325",
+                appId: "1:625380203325:web:a2d734339a2e133b948354",
+                measurementId: "G-5T1Q6XW5TH"
+            };
             
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
@@ -100,10 +100,19 @@
             //   signInSuccessUrl: '/'
             //   // Other config options...
             // });
-
+            
+            firebase.auth().onAuthStateChanged(function(user){
+                if(user){
+                    document.getElementById('frame').style.display = 'block';
+                }else{
+                    window.location.assign('index.html');   
+                }
+            }, function(){
+                console.log(error);
+            });
             
         </script>
-        <div id="frame"></div>
+        <div id="frame" style="display:none;"></div>
         <!-- <script src="//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser.min.js"></script>
         <script src="js/game.js"></script> -->
         
