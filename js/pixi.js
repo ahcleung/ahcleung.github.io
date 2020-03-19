@@ -252,7 +252,7 @@ function setup(){
 // 		});
 // 	});
 	
-	vita.forEach(function{
+	vita.forEach(function(){
 		const creature = new Creature({
 			id: item.id,
 			level: item.level,
