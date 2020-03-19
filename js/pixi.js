@@ -540,14 +540,14 @@ function createSprite(direction, item, index){
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
-	outerBar.drawRect(0, 0, 209, 40);
+	outerBar.drawRect(0, 0, 189, 40);
 // 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
-	innerBar.drawRect(0, 0, 209 * (item.statCalc[0]/item.EHP), 40);
+	innerBar.drawRect(0, 0, 189 * (item.statCalc[0]/item.EHP), 40);
 // 	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
@@ -556,19 +556,19 @@ function createSprite(direction, item, index){
 	switch(item.pos) {
 		case 1:
 			creatureContainer.x = 0;
-			healthBar.x = 0;
+			healthBar.x = -189;
 			break;
 		case 2:
 			creatureContainer.x = -209 * direction;
-			healthBar.x = -209 * direction;
+			healthBar.x = -398 * direction;
 			break;
 		case 3:
 			creatureContainer.x = -418 * direction;
-			healthBar.x = -418 * direction;
+			healthBar.x = -607 * direction;
 			break;
 		case 4:
 			creatureContainer.x = -627 * direction;
-			healthBar.x = -627 * direction;
+			healthBar.x = -816 * direction;
 			break;
 		default:
 			creatureContainer.x = 0;
@@ -607,7 +607,7 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
 	
-	hpHero.position.set(app.screen.width/2-170, 10);
+	hpHero.position.set(app.screen.width/2-50, 10);
 	hpEnemy.position.set(app.screen.width/2+50, 10);
 	
 	//Console log RESIZE
