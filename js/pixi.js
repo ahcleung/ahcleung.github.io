@@ -556,19 +556,35 @@ function createSprite(direction, item, index){
 	switch(item.pos) {
 		case 1:
 			creatureContainer.x = 0;
-			healthBar.x = -189;
+			if(direction > 0){				
+				healthBar.x = -189;
+			}else{
+				healthBar.x = 0;
+			}
 			break;
 		case 2:
 			creatureContainer.x = -209 * direction;
-			healthBar.x = -398 * direction;
+			if(direction > 0){	
+				healthBar.x = -398 * direction;
+			}else{
+				healthBar.x = 209;
+			}
 			break;
 		case 3:
 			creatureContainer.x = -418 * direction;
-			healthBar.x = -607 * direction;
+			if(direction > 0){	
+				healthBar.x = -607 * direction;
+			}else{
+				healthBar.x = 418;
+			}
 			break;
 		case 4:
 			creatureContainer.x = -627 * direction;
-			healthBar.x = -816 * direction;
+			if(direction > 0){	
+				healthBar.x = -816 * direction;
+			}else{
+				healthBar.x = 627;
+			}
 			break;
 		default:
 			creatureContainer.x = 0;
