@@ -254,7 +254,7 @@ function setup(){
 		statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 	};
 	
-	vita.forEach(function(){
+	vita.forEach(function(item, index){
 		const creature = new Creature({
 			id: item.id,
 			level: item.level,
