@@ -540,14 +540,14 @@ function createSprite(direction, item, index){
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
-	outerBar.drawRect(0, 0, (app.screen.width - 320)/8, 40);
+	outerBar.drawRect(0, 0, 209, 40);
 // 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
-	innerBar.drawRect(0, 0, (app.screen.width - 320)/8 * (item.statCalc[0]/item.EHP), 40);
+	innerBar.drawRect(0, 0, 209 * (item.statCalc[0]/item.EHP), 40);
 // 	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
