@@ -136,7 +136,7 @@ const hpEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
-	id: 2, level: 50, 
+	id: 9, level: 50, 
 	move1: 0, move2: 1, move3: 2, move4: 3,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
@@ -150,6 +150,11 @@ vita[2] = {
 	move1: 1, move2: 1, move3: 2, move4: 2,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
+vita[3] = {
+	id: 12, level: 47, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
+};
 
 const enemy = [];
 enemy[0] = {
@@ -158,12 +163,17 @@ enemy[0] = {
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 67, statSDEF: 0, statSPD: 0
 };
 enemy[1] = {
-	id: 8, level: 46, 
+	id: 9, level: 46, 
 	move1: 1, move2: 1, move3: 2, move4: 2,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
 };
 enemy[2] = {
 	id: 12, level: 45, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+};
+enemy[3] = {
+	id: 11, level: 45, 
 	move1: 1, move2: 1, move3: 2, move4: 2,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
 };
