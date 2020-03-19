@@ -560,15 +560,15 @@ function createSprite(direction, item, index){
 			break;
 		case 2:
 			creatureContainer.x = -209 * direction;
-			healthBar.x = -150 * direction;
+			healthBar.x = -209 * direction;
 			break;
 		case 3:
 			creatureContainer.x = -418 * direction;
-			healthBar.x = -300 * direction;
+			healthBar.x = -418 * direction;
 			break;
 		case 4:
 			creatureContainer.x = -627 * direction;
-			healthBar.x = -450 * direction;
+			healthBar.x = -627 * direction;
 			break;
 		default:
 			creatureContainer.x = 0;
