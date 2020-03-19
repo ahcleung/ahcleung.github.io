@@ -530,13 +530,13 @@ function createSprite(direction, item, index){
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
-	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
+	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
-	innerBar.drawRoundedRect(0, 0, 80, 20, 10);
+	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
@@ -574,7 +574,7 @@ function createSprite(direction, item, index){
 		hpEnemyContainerArray.push(healthBar);
 		
 		rosterEnemy.addChild(creatureContainer);
-		hpEnemy.addChild(healthBar);
+// 		hpEnemy.addChild(healthBar);
 	}	
 }
 
