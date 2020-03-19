@@ -123,7 +123,7 @@ const rectEnemy = new PIXI.Graphics();
 
 var textureButton, textureButtonDown;
 
-var db = firebase.firestore();
+// var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
 
