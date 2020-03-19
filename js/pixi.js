@@ -132,6 +132,23 @@ const arrayEnemy = [];			//Array of enemy vitas
 const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
 
+const vita = [];
+vita[0] = {
+	id: 2, level: 50, 
+	move1: 0, move2: 1, move3: 2, move4: 3,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
+};
+vita[1] = {
+	id: 11, level: 45, 
+	move1: 0, move2: 0, move3: 0, move4: 0,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
+};
+vita[2] = {
+	id: 10, level: 47, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
+};
+
 //Write to firestore
 // db.collection("enemy").doc("004").set({
 // 	id: 10,
@@ -204,38 +221,64 @@ function setup(){
 	const movesList = resources["js/moves.json"];	
 	
 	//Read from firestore
-	db.collection("vita").get().then((querySnapshot) => {
-		querySnapshot.forEach((doc) => {
-			console.log(`${doc.id} => ${doc.data()}`);
-			const creature = new Creature({
-				id: doc.data().id, 
-				level: doc.data().level, 
-				statDis:[
-					doc.data().statHP, 
-					doc.data().statDODG, 
-					doc.data().statPATK, 
-					doc.data().statPDEF, 
-					doc.data().statSATK, 
-					doc.data().statSDEF, 
-					doc.data().statSPD
-				], moves:[
-					doc.data().move1, 
-					doc.data().move2, 
-					doc.data().move3, 
-					doc.data().move4
-				]});
-			arrayHero.push(creature);
+// 	db.collection("vita").get().then((querySnapshot) => {
+// 		querySnapshot.forEach((doc) => {
+// 			console.log(`${doc.id} => ${doc.data()}`);
+// 			const creature = new Creature({
+// 				id: doc.data().id, 
+// 				level: doc.data().level, 
+// 				statDis:[
+// 					doc.data().statHP, 
+// 					doc.data().statDODG, 
+// 					doc.data().statPATK, 
+// 					doc.data().statPDEF, 
+// 					doc.data().statSATK, 
+// 					doc.data().statSDEF, 
+// 					doc.data().statSPD
+// 				], moves:[
+// 					doc.data().move1, 
+// 					doc.data().move2, 
+// 					doc.data().move3, 
+// 					doc.data().move4
+// 				]});
+// 			arrayHero.push(creature);
+// 		});
+// 	})
+// 	.then(function() {
+// 		console.log("Heroes created successfully!");
+// 		arrayHero.forEach(setPos);
+// 		arrayHero.forEach(function (item, index){
+// 			createSprite(1, item, index)	
+// 		});
+// 	});
+	
+	vita.forEach(function{
+		const creature = new Creature({
+			id: item.id,
+			level: item.level,
+			statDis:[
+				item.statHP,
+				item.statDODG,
+				item.statPATK,
+				item.statPDEF,
+				item.statSATK,
+				item.statSDEF,
+				item.statSPD
+			], moves:[
+				item.move1,
+				item.move2,
+				item.move3,
+				item.move4
+			]
 		});
-	})
-	.then(function() {
-		console.log("Heroes created successfully!");
-// 		console.log(arrayHero[0]);
-// 		console.log(arrayHero[0].name);
-		arrayHero.forEach(setPos);
-		arrayHero.forEach(function (item, index){
-			createSprite(1, item, index)	
-		});
+		arrayHero.push(creature);
 	});
+
+	arrayHero.forEach(setPos);
+	arrayHero.forEach(function (item, index){
+		createSprite(1, item, index)	
+	});
+	
 	
 	//Read from firestore
 	db.collection("enemy").get().then((querySnapshot) => {
