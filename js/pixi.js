@@ -281,58 +281,56 @@ function setup(){
 	
 	
 	//Read from firestore
-	db.collection("enemy").get().then((querySnapshot) => {
-		querySnapshot.forEach((doc) => {
-			console.log(`${doc.id} => ${doc.data()}`);
-			const creature = new Creature({
-				id: doc.data().id, 
-				level: doc.data().level, 
-				statDis:[
-					doc.data().statHP, 
-					doc.data().statDODG, 
-					doc.data().statPATK, 
-					doc.data().statPDEF, 
-					doc.data().statSATK, 
-					doc.data().statSDEF, 
-					doc.data().statSPD
-				], moves:[
-					doc.data().move1, 
-					doc.data().move2, 
-					doc.data().move3, 
-					doc.data().move4
-				]});
-			arrayEnemy.push(creature);
-		});
-	})
-	.then(function() {
-		console.log("Enemies created successfully!");
-		arrayEnemy.forEach(setPos);
-		arrayEnemy.forEach(function (item, index){
-			createSprite(-1, item, index)	
-		});
-	});
-	
-	console.log(arrayEnemy);
+// 	db.collection("enemy").get().then((querySnapshot) => {
+// 		querySnapshot.forEach((doc) => {
+// 			console.log(`${doc.id} => ${doc.data()}`);
+// 			const creature = new Creature({
+// 				id: doc.data().id, 
+// 				level: doc.data().level, 
+// 				statDis:[
+// 					doc.data().statHP, 
+// 					doc.data().statDODG, 
+// 					doc.data().statPATK, 
+// 					doc.data().statPDEF, 
+// 					doc.data().statSATK, 
+// 					doc.data().statSDEF, 
+// 					doc.data().statSPD
+// 				], moves:[
+// 					doc.data().move1, 
+// 					doc.data().move2, 
+// 					doc.data().move3, 
+// 					doc.data().move4
+// 				]});
+// 			arrayEnemy.push(creature);
+// 		});
+// 	})
+// 	.then(function() {
+// 		console.log("Enemies created successfully!");
+// 		arrayEnemy.forEach(setPos);
+// 		arrayEnemy.forEach(function (item, index){
+// 			createSprite(-1, item, index)	
+// 		});
+// 	});
 	
 	
-	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
-// 	const creature1 = new Creature({id:2});
+// 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
+// // 	const creature1 = new Creature({id:2});
 	
-	console.log(creature1);
+// 	console.log(creature1);
 	
-	console.log(creature1.EHP);
-	console.log(creature1.statCalc[0]);
-	creature1.statCalc[0] -= 21;
-	console.log(creature1.statCalc[0]);
-	creature1.heal();
-	console.log(creature1.statCalc[0]);
+// 	console.log(creature1.EHP);
+// 	console.log(creature1.statCalc[0]);
+// 	creature1.statCalc[0] -= 21;
+// 	console.log(creature1.statCalc[0]);
+// 	creature1.heal();
+// 	console.log(creature1.statCalc[0]);
 	
-	console.log(movesList.data.moves[creature1.moves[2]].name);
-	console.log(movesList.data.moves[creature1.moves[2]].tags);
+// 	console.log(movesList.data.moves[creature1.moves[2]].name);
+// 	console.log(movesList.data.moves[creature1.moves[2]].tags);
 	
 	//const obj = resources["js/creatures.json"];
 	
-	debug = new Text("Creature element: " + creature1.name);
+// 	debug = new Text("Creature element: " + creature1.name);
 	debug.x = 100;
 	debug.y = 200;
 	
