@@ -540,7 +540,7 @@ function createSprite(direction, item, index){
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
-	outerBar.drawRect(0, 0, 120, 40);
+	outerBar.drawRect(0, 0, (app.screen.width - 320)/8, 40);
 // 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
@@ -559,15 +559,15 @@ function createSprite(direction, item, index){
 			healthBar.x = 0;
 			break;
 		case 2:
-			creatureContainer.x = -100 * direction;
+			creatureContainer.x = -209 * direction;
 			healthBar.x = -150 * direction;
 			break;
 		case 3:
-			creatureContainer.x = -200 * direction;
+			creatureContainer.x = -418 * direction;
 			healthBar.x = -300 * direction;
 			break;
 		case 4:
-			creatureContainer.x = -300 * direction;
+			creatureContainer.x = -627 * direction;
 			healthBar.x = -450 * direction;
 			break;
 		default:
