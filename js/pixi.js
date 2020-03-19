@@ -424,7 +424,7 @@ function setup(){
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
 	
-	app.stage.addChild(debug);
+// 	app.stage.addChild(debug);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
