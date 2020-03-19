@@ -73,7 +73,7 @@ class Creature{
 		this.name = creatureList.data.creatures[this.id].name;
 		this.elements = creatureList.data.creatures[this.id].elements;
 		
-		this.EHP = Math.round((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10);
+		this.EHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 		this.statCalc = [
 			this.EHP, 
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
