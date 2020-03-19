@@ -544,19 +544,19 @@ function createSprite(direction, item, index){
 	switch(item.pos) {
 		case 1:
 			creatureContainer.x = 0;
-			healthBar.x = -120;
+			healthBar.x = 0;
 			break;
 		case 2:
 			creatureContainer.x = direction * -100;
-			healthBar.x = direction * -150 - 120;
+			healthBar.x = direction * -150;
 			break;
 		case 3:
 			creatureContainer.x = direction * -200;
-			healthBar.x = direction * -300 - 120;
+			healthBar.x = direction * -300;
 			break;
 		case 4:
 			creatureContainer.x = direction * -300;
-			healthBar.x = direction * -450 - 120;
+			healthBar.x = direction * -450;
 			break;
 		default:
 			creatureContainer.x = 0;
@@ -574,7 +574,7 @@ function createSprite(direction, item, index){
 		hpEnemyContainerArray.push(healthBar);
 		
 		rosterEnemy.addChild(creatureContainer);
-// 		hpEnemy.addChild(healthBar);
+		hpEnemy.addChild(healthBar);
 	}	
 }
 
@@ -595,8 +595,8 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
 	
-	hpHero.position.set(app.screen.width/2-50, 10);
-	hpEnemy.position.set(app.screen.width/2+50, 10);
+	hpHero.position.set(app.screen.width/2-170, 10);
+	hpEnemy.position.set(app.screen.width/2+170, 10);
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
