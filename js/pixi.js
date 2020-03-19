@@ -133,27 +133,27 @@ const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
 
 //Write to firestore
-// db.collection("enemy").doc("003").set({
-// 	id: 10,
-// 	level: 45,
-// 	move1: 1,
-// 	move2: 1,
-// 	move3: 2,
-// 	move4: 2,
-// 	statDODG: 10,
-// 	statHP: 20,
-// 	statPATK: 0,
-// 	statPDEF: 40,
-// 	statSATK: 65,
-// 	statSDEF: 0,
-// 	statSPD: 0
-// })
-// .then(function() {
-// 	console.log("Document successfully written!");
-// })
-// .catch(function(error) {
-// 	console.error("Error writing document: ", error);
-// });
+db.collection("enemy").doc("004").set({
+	id: 10,
+	level: 45,
+	move1: 1,
+	move2: 1,
+	move3: 2,
+	move4: 2,
+	statDODG: 10,
+	statHP: 20,
+	statPATK: 0,
+	statPDEF: 40,
+	statSATK: 65,
+	statSDEF: 0,
+	statSPD: 0
+})
+.then(function() {
+	console.log("Document successfully written!");
+})
+.catch(function(error) {
+	console.error("Error writing document: ", error);
+});
 
 //Update firestore document
 // db.collection("vita").doc("001").update({
