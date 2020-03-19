@@ -133,7 +133,38 @@ const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
 
 const vita = [];
+vita[0] = {
+	id: 2, level: 50, 
+	move1: 0, move2: 1, move3: 2, move4: 3,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
+};
+vita[1] = {
+	id: 11, level: 45, 
+	move1: 0, move2: 0, move3: 0, move4: 0,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
+};
+vita[2] = {
+	id: 10, level: 47, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
+};
 
+const enemy = [];
+enemy[0] = {
+	id: 9, level: 49, 
+	move1: 2, move2: 2, move3: 2, move4: 2,
+	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 67, statSDEF: 0, statSPD: 0
+};
+enemy[1] = {
+	id: 8, level: 46, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
+};
+enemy[2] = {
+	id: 12, level: 45, 
+	move1: 1, move2: 1, move3: 2, move4: 2,
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+};
 
 //Write to firestore
 // db.collection("enemy").doc("004").set({
@@ -238,22 +269,6 @@ function setup(){
 // 		});
 // 	});
 	
-	vita[0] = {
-		id: 2, level: 50, 
-		move1: 0, move2: 1, move3: 2, move4: 3,
-		statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
-	};
-	vita[1] = {
-		id: 11, level: 45, 
-		move1: 0, move2: 0, move3: 0, move4: 0,
-		statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
-	};
-	vita[2] = {
-		id: 10, level: 47, 
-		move1: 1, move2: 1, move3: 2, move4: 2,
-		statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
-	};
-	
 	vita.forEach(function(item, index){
 		const creature = new Creature({
 			id: item.id,
@@ -281,7 +296,32 @@ function setup(){
 		createSprite(1, item, index)	
 	});
 	
-	
+	enemy.forEach(function(item, index){
+		const creature = new Creature({
+			id: item.id,
+			level: item.level,
+			statDis:[
+				item.statHP,
+				item.statDODG,
+				item.statPATK,
+				item.statPDEF,
+				item.statSATK,
+				item.statSDEF,
+				item.statSPD
+			], moves:[
+				item.move1,
+				item.move2,
+				item.move3,
+				item.move4
+			]
+		});
+		arrayEnemy.push(creature);
+	});
+
+	arrayEnemy.forEach(setPos);
+	arrayEnemy.forEach(function (item, index){
+		createSprite(-1, item, index)	
+	});
 	//Read from firestore
 // 	db.collection("enemy").get().then((querySnapshot) => {
 // 		querySnapshot.forEach((doc) => {
