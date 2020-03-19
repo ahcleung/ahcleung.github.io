@@ -75,7 +75,7 @@ class Creature{
 		
 		this.EHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 		this.statCalc = [
-			this.EHP - Math.floor(Math.random() * (this.EHP-20)) + 20, 
+			this.EHP - Math.floor(Math.random() * (this.EHP-40)) + 20, 
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
 			creatureList.data.creatures[this.id].pdef + this.statDis[3],
