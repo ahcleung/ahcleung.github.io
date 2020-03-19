@@ -131,6 +131,8 @@ const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
 const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
+const hpHeroContainerArray = [];
+const hpEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
@@ -524,30 +526,55 @@ function createSprite(direction, item, index){
 
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
-
+	
+	const healthBar = new PIXI.Container();
+	let outerBar = new PIXI.Graphics();
+	outerBar.beginFill(0x222222);
+	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
+	outerBar.endFill();
+	healthBar.addChild(outerBar);
+	
+	let innerBar = new PIXI.Graphics();
+	innerBar.beginFill(0x2C8A2C);
+	innerBar.drawRoundedRect(0, 0, 80, 20, 10);
+	innerBar.endFill();
+	healthBar.addChild(innerBar);
+	healthBar.inner = innerBar;	
+	
 	switch(item.pos) {
 		case 1:
 			creatureContainer.x = 0;
+			healthBar.x = 0;
 			break;
 		case 2:
 			creatureContainer.x = direction * -100;
+			healthBar.x = direction * -100;
 			break;
 		case 3:
 			creatureContainer.x = direction * -200;
+			healthBar.x = direction * -100;
 			break;
 		case 4:
 			creatureContainer.x = direction * -300;
+			healthBar.x = direction * -100;
 			break;
 		default:
 			creatureContainer.x = 0;
+			healthBar.x = direction * -100;
 	}
 
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
+		hpHeroContainerArray.push(healthBar);
+		
 		rosterHero.addChild(creatureContainer);
+		hpHero.addChild(healthBar);
 	}else{
 		enemyContainerArray.push(creatureContainer);
+		hpEnemyContainerArray.push(healthBar);
+		
 		rosterEnemy.addChild(creatureContainer);
+		hpEnemy.addChild(healthBar);
 	}	
 }
 
