@@ -10,8 +10,6 @@
         <link rel="icon" href="img/icon-256.png" sizes="256x256" />
         <link rel="icon" href="img/icon-512.png" sizes="512x512" />
         <link rel="stylesheet" href="css/style.css" />
-        <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
-        <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
         <style>
             body{
                 overflow:hidden;
@@ -77,56 +75,38 @@
             
             // Your web app's Firebase configuration
             // INSERT FIREBASE APIKEY HERE
-            const firebaseConfig = {
-                apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
-                authDomain: "projectelement-54e7b.firebaseapp.com",
-                databaseURL: "https://projectelement-54e7b.firebaseio.com",
-                projectId: "projectelement-54e7b",
-                storageBucket: "projectelement-54e7b.appspot.com",
-                messagingSenderId: "625380203325",
-                appId: "1:625380203325:web:a2d734339a2e133b948354",
-                measurementId: "G-5T1Q6XW5TH"
-            };
+//             const firebaseConfig = {
+//                 apiKey: "AIzaSyBfPtn5pae5etWGy1ESPKCPdvvRVK08QPI",
+//                 authDomain: "projectelement-54e7b.firebaseapp.com",
+//                 databaseURL: "https://projectelement-54e7b.firebaseio.com",
+//                 projectId: "projectelement-54e7b",
+//                 storageBucket: "projectelement-54e7b.appspot.com",
+//                 messagingSenderId: "625380203325",
+//                 appId: "1:625380203325:web:a2d734339a2e133b948354",
+//                 measurementId: "G-5T1Q6XW5TH"
+//             };
             
             // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-            var db = firebase.firestore();
-            // // Initialize the FirebaseUI Widget using Firebase.
-            // var ui = new firebaseui.auth.AuthUI(firebase.auth());
-            // ui.start('#firebaseui-auth-container', {
-            //   signInOptions: [
-            //     firebase.auth.EmailAuthProvider.PROVIDER_ID
-            //   ],
-            //   signInSuccessUrl: '/'
-            //   // Other config options...
-            // });
+//             firebase.initializeApp(firebaseConfig);
+//             firebase.analytics();
+//             var db = firebase.firestore();
             
-            firebase.auth().onAuthStateChanged(function(user){
-                if(user){
-                    document.getElementById('frame').style.display = 'block';
-                }else{
-                    window.location.assign('index.html');   
-                }
-            }, function(){
-                console.log(error);
-            });
+//             firebase.auth().onAuthStateChanged(function(user){
+//                 if(user){
+//                     document.getElementById('frame').style.display = 'block';
+//                 }else{
+//                     window.location.assign('index.html');   
+//                 }
+//             }, function(){
+//                 console.log(error);
+//             });
             
         </script>
         <div id="frame" style="display:none;"></div>
-        <!-- <script src="//cdn.jsdelivr.net/npm/phaser@3.20.0/dist/phaser.min.js"></script>
-        <script src="js/game.js"></script> -->
+        <div id="frame"></div>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
         <script src="js/dragonBones.min.js"></script>
         <script src="js/pixi.js"></script>
-
-<!--          The surrounding HTML is left untouched by FirebaseUI.
-             Your app may use that space for branding, controls and other customizations.
-        <h1>Welcome to My Awesome App</h1>
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div> -->
-        <!-- <script src ="lib/phaser.min.js"></script>
-        <script src="game.js"></script> -->
     </body>
 </html>
