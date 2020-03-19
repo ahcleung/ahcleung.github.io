@@ -75,7 +75,7 @@ class Creature{
 		
 		this.EHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 		this.statCalc = [
-			this.EHP, 
+			this.EHP - Math.floor(Math.random() * this.EHP-20) + 20), 
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
 			creatureList.data.creatures[this.id].pdef + this.statDis[3],
@@ -540,13 +540,15 @@ function createSprite(direction, item, index){
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
-	outerBar.drawRoundedRect(0, 0, 120*item.size, 20, 5);
+	outerBar.drawRect(0, 0, 120, 40);
+// 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
-	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
+	innerBar.drawRect(0, 0, 80, 40);
+// 	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
