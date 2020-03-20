@@ -614,6 +614,7 @@ function createSprite(direction, item, index){
 	textHP.x = 94.5;
 	textHP.y = 20;
 	healthBar.addChild(textHP);
+	healthBar.textHP = textHP;
 
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
@@ -668,6 +669,7 @@ function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width-320)/8;
 	item.outer.width = resizeWidth;
+	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
 		item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
 	}else{		
