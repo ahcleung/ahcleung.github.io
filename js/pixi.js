@@ -650,18 +650,29 @@ function resize() {
 	hpHero.position.set(50, 10);
 	hpEnemy.position.set(app.screen.width/2+50, 10);
 	
-	hpEnemyContainerArray.forEach(resizeHP);
+	
+	hpHeroContainerArray.forEach(function (item, index){
+		resizeHP(0, item, index)	
+	});
+	hpEnemyContainerArray.forEach(function (item, index){
+		resizeHP(1, item, index)	
+	});
+	
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
-function resizeHP(item, index){
+function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width-320)/8;
 	item.outer.width = resizeWidth;
-	item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+	if(roster == 0){
+		item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+	}else{		
+		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+	}
 }
 
 function consolePrint(fromText){
