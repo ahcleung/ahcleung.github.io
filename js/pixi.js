@@ -5,7 +5,7 @@ let Application = PIXI.Application,
 	Text = PIXI.Text;
 
 const app = new Application({
-	autoResize: true, transparent: true, resolution: devicePixelRatio || 2,
+	autoResize: true, transparent: true, resolution: devicePixelRatio || 1,
 });
 document.querySelector('#frame').appendChild(app.view);
 
@@ -553,8 +553,8 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
-	textHP.anchor.set(0.5);
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
+// 	textHP.anchor.set(0.5);
 	textHP.x = 94.5;
 	textHP.y = 20;
 	healthBar.addChild(textHP);
