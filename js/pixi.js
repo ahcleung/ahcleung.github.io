@@ -553,7 +553,8 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
 	
-	let textHP = new Text(item.statCalc[0] + "/" + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xff1010, align : 'center'});
+	let textHP = new Text(item.statCalc[0] + "/" + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
+	textHP.anchor(0.5, 0.5);
 	textHP.x = 94.5;
 	textHP.y = 20;
 	healthBar.addChild(textHP);
