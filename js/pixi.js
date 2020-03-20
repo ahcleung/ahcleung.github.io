@@ -670,7 +670,7 @@ function resize() {
 
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	var resizeWidth = (app.screen.width- (2*margin) - 6*(healthSpacing))/8;
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	item.outer.width = resizeWidth;
 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
