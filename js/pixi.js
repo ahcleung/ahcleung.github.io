@@ -659,7 +659,9 @@ function resize() {
 
 function resizeHP(item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	item.outer.width = (app.screen.width-320)/8;
+	var resizeWidth = (app.screen.width-320)/8;
+	item.outer.width = resizeWidth;
+	item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
 }
 
 function consolePrint(fromText){
