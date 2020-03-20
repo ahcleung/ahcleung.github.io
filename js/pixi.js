@@ -694,6 +694,23 @@ function resizeHP(roster, item, index){
 		}
 	}else{		
 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+		switch(arrayEnemy[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;
+				
+		}
 	}
 }
 
