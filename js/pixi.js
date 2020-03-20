@@ -123,6 +123,9 @@ const rectEnemy = new PIXI.Graphics();
 
 var textureButton, textureButtonDown;
 
+var healthSpacing = 20;
+var margin = 50;
+
 // var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
@@ -645,11 +648,11 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
-	rosterHero.position.set(app.screen.width/2-50, app.screen.height/2);
-	rosterEnemy.position.set(app.screen.width/2+50, app.screen.height/2);
+	rosterHero.position.set(app.screen.width/2-margin, app.screen.height/2);
+	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height/2);
 	
-	hpHero.position.set(50, 10);
-	hpEnemy.position.set(app.screen.width/2+50, 10);
+	hpHero.position.set(margin, margin);
+	hpEnemy.position.set(app.screen.width/2+margin, margin);
 	
 	
 	hpHeroContainerArray.forEach(function (item, index){
@@ -667,11 +670,28 @@ function resize() {
 
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	var resizeWidth = (app.screen.width-320)/8;
+	var resizeWidth = (app.screen.width- (2*margin) - 6*(healthSpacing))/8;
 	item.outer.width = resizeWidth;
 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
 		item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+		switch(arrayHero[index].pos) {
+			case 1:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			case 2:
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 3:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 4:
+				item.x = 0;
+				break;
+			default:
+				item.x = 0;
+				
+		}
 	}else{		
 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
 	}
