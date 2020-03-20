@@ -553,14 +553,17 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
+// 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
 // 	textHP.anchor.set(0.5);
-	textHP.x = 94.5;
-	textHP.y = 20;
-	healthBar.addChild(textHP);
+// 	textHP.x = 94.5;
+// 	textHP.y = 20;
+// 	healthBar.addChild(textHP);
 	
 	switch(item.pos) {
 		case 1:
+			let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
+			textHP.anchor.set(0.5);
+			
 			creatureContainer.x = 0;
 			if(direction > 0){				
 				healthBar.x = 627;
@@ -569,6 +572,9 @@ function createSprite(direction, item, index){
 			}
 			break;
 		case 2:
+			let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
+// 			textHP.anchor.set(0.5);
+			
 			creatureContainer.x = -209 * direction;
 			if(direction > 0){	
 				healthBar.x = 418;
@@ -577,6 +583,9 @@ function createSprite(direction, item, index){
 			}
 			break;
 		case 3:
+			let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
+			textHP.anchor.set(0.5);
+			
 			creatureContainer.x = -418 * direction;
 			if(direction > 0){	
 				healthBar.x = 209;
@@ -585,6 +594,9 @@ function createSprite(direction, item, index){
 			}
 			break;
 		case 4:
+			let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
+// 			textHP.anchor.set(0.5);
+			
 			creatureContainer.x = -627 * direction;
 			if(direction > 0){	
 				healthBar.x = 0;
@@ -596,6 +608,10 @@ function createSprite(direction, item, index){
 			creatureContainer.x = 0;
 			healthBar.x = 0;
 	}
+	
+	textHP.x = 94.5;
+	textHP.y = 20;
+	healthBar.addChild(textHP);
 
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
