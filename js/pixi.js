@@ -544,6 +544,7 @@ function createSprite(direction, item, index){
 // 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
+	healthBar.outer = outerBar;
 	
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
@@ -658,7 +659,7 @@ function resize() {
 
 function resizeHP(item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	item.width = (app.screen.width-320)/8;
+	item.outer = (app.screen.width-320)/8;
 }
 
 function consolePrint(fromText){
