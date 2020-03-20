@@ -553,6 +553,11 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
 	
+	let textHP = new Text(item.statCalc[0] + "/" + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xff1010, align : 'center'});
+	textHP.x = 94.5;
+	textHP.y = 20;
+	healthBar.addChild(textHP);
+	
 	switch(item.pos) {
 		case 1:
 			creatureContainer.x = 0;
