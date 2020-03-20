@@ -657,6 +657,7 @@ function resize() {
 }
 
 function resizeHP(item, index){
+	console.log(app.screen.width", " + (app.screen.width-320)/8);
 	item.width = (app.screen.width-320)/8;
 }
 
