@@ -139,12 +139,12 @@ const hpEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
-	id: 2, level: 50, 
+	id: 11, level: 50, 
 	move1: 0, move2: 1, move3: 2, move4: 3,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
 vita[1] = {
-	id: 11, level: 45, 
+	id: 2, level: 45, 
 	move1: 0, move2: 0, move3: 0, move4: 0,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
