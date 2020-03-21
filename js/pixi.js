@@ -531,14 +531,16 @@ function createSprite(direction, item, index){
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
 //     		armatureHero.animation.play('idle');
-	if(item.size == 2){		
-		armatureHero.scale.set(direction * 0.35, 0.35);
-	}else{
-		armatureHero.scale.set(direction * 0.25, 0.25);
-	}
+	
 
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
+	
+	if(item.size == 2){		
+		creatureContainer.scale.set(direction * 0.35, 0.35);
+	}else{
+		creatureContainer.scale.set(direction * 0.25, 0.25);
+	}
 	
 	const healthBar = new PIXI.Container();
 	let outerBar = new PIXI.Graphics();
@@ -665,6 +667,9 @@ function resize() {
 	heroContainerArray.forEach(function (item, index){
 		resizeSprites(1, item, index)	
 	});
+	enemyContainerArray.forEach(function (item, index){
+		resizeSprites(-1, item, index)	
+	});
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
@@ -719,7 +724,7 @@ function resizeHP(roster, item, index){
 
 function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-// 	if(roster == 0){
+	if(direction > 0){
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = 0;
@@ -737,26 +742,26 @@ function resizeSprites(direction, item, index){
 				item.x = 0;
 				
 		}
-// 	}else{		
+	}else{		
 // 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
-// 		switch(arrayEnemy[index].pos) {
-// 			case 1:
-// 				item.x = 0;
-// 				break;
-// 			case 2:
-// 				item.x = resizeWidth + healthSpacing;
-// 				break;
-// 			case 3:				
-// 				item.x = (resizeWidth + healthSpacing) * 2;
-// 				break;
-// 			case 4:
-// 				item.x = (resizeWidth + healthSpacing) * 3;
-// 				break;
-// 			default:
-// 				item.x = 0;
+		switch(arrayEnemy[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;
 				
-// 		}
-// 	}
+		}
+	}
 }
 
 function consolePrint(fromText){
