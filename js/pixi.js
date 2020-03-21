@@ -675,10 +675,10 @@ function resizeHP(roster, item, index){
 		var switcher = 0;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
-			item.inner.width = resizeWidth * 2 + healthSpacing * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
 			switcher = 1;
 		}else{
-			item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
 		}		
 		switch(arrayHero[index].pos) {
 			case 1:
@@ -700,11 +700,10 @@ function resizeHP(roster, item, index){
 	}else{	
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
-			item.inner.width = resizeWidth * 2 + healthSpacing * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP);
 		}else{
-			item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP);
 		}
-		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
