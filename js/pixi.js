@@ -710,6 +710,7 @@ function resizeHP(roster, item, index){
 	}
 	
 	item.textHP.x = item.outer.width/2;
+	item.textHP.y = item.outer.height/2;
 }
 
 function resizeSprites(direction, item, index){
