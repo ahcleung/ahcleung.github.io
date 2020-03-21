@@ -550,64 +550,52 @@ function createSprite(direction, item, index){
 	healthBar.inner = innerBar;	
 	
 	let textHP = new Text();
-// 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
-// 	textHP.anchor.set(0.5);
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
+	textHP.anchor.set(0.5);
 // 	textHP.x = 94.5;
 // 	textHP.y = 20;
 // 	healthBar.addChild(textHP);
 	
-	switch(item.pos) {
-		case 1:
-			textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
-			textHP.anchor.set(0.5);
-			
-			creatureContainer.x = 0;
-			if(direction > 0){				
-				healthBar.x = 627;
-			}else{
-				healthBar.x = 0;
-			}
-			break;
-		case 2:
-			textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Open Sans', fontSize: 24, fill : 0xffffff, align : 'center'});
-// 			textHP.anchor.set(0.5);
-			
-			creatureContainer.x = -209 * direction;
-			if(direction > 0){	
-				healthBar.x = 418;
-			}else{
-				healthBar.x = 209;
-			}
-			break;
-		case 3:
-			textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
-			textHP.anchor.set(0.5);
-			
-			creatureContainer.x = -418 * direction;
-			if(direction > 0){	
-				healthBar.x = 209;
-			}else{
-				healthBar.x = 418;
-			}
-			break;
-		case 4:
-			textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
-// 			textHP.anchor.set(0.5);
-			
-			creatureContainer.x = -627 * direction;
-			if(direction > 0){	
-				healthBar.x = 0;
-			}else{
-				healthBar.x = 627;
-			}
-			break;
-		default:
-			creatureContainer.x = 0;
-			healthBar.x = 0;
-	}
+// 	switch(item.pos) {
+// 		case 1:		
+// 			creatureContainer.x = 0;
+// 			if(direction > 0){				
+// 				healthBar.x = 627;
+// 			}else{
+// 				healthBar.x = 0;
+// 			}
+// 			break;
+// 		case 2:			
+// 			creatureContainer.x = -209 * direction;
+// 			if(direction > 0){	
+// 				healthBar.x = 418;
+// 			}else{
+// 				healthBar.x = 209;
+// 			}
+// 			break;
+// 		case 3:
+// 			creatureContainer.x = -418 * direction;
+// 			if(direction > 0){	
+// 				healthBar.x = 209;
+// 			}else{
+// 				healthBar.x = 418;
+// 			}
+// 			break;
+// 		case 4:
+// 			creatureContainer.x = -627 * direction;
+// 			if(direction > 0){	
+// 				healthBar.x = 0;
+// 			}else{
+// 				healthBar.x = 627;
+// 			}
+// 			break;
+// 		default:
+// 			creatureContainer.x = 0;
+// 			healthBar.x = 0;
+// 	}
 	
-	textHP.x = 94.5;
-	textHP.y = 20;
+// 	textHP.x = 94.5;
+// 	textHP.y = 20;
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
@@ -670,7 +658,7 @@ function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	item.outer.width = resizeWidth;
-	item.textHP.x = resizeWidth/2;
+// 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
 		var switcher = 0;
 		if(arrayHero[index].size > 1){
@@ -722,6 +710,8 @@ function resizeHP(roster, item, index){
 				
 		}
 	}
+	
+	item.textHP.x = item.outer.width/2;
 }
 
 function resizeSprites(direction, item, index){
@@ -745,7 +735,6 @@ function resizeSprites(direction, item, index){
 				
 		}
 	}else{		
-// 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
@@ -781,36 +770,36 @@ function onButtonDown(){
 	}
 }
 
-function onButtonDown2(){
-	//var elem = document.getElementById("frame");
-	var elem = document.documentElement;
-	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
-		//isFullScreen = true;
-		this.texture = textureButtonDown;
-		if (elem.requestFullscreen) {
-			elem.requestFullscreen();
-		} else if (elem.mozRequestFullScreen) { /* Firefox */
-			elem.mozRequestFullScreen();
-		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-			elem.webkitRequestFullscreen();
-		} else if (elem.msRequestFullscreen) { /* IE/Edge */
-			elem.msRequestFullscreen();
-		}
-		console.log("setFullScreen5");
-		consoleScreen.text = "setFullScreen4\n" + consoleScreen.text;
-	}else{
-		//isFullScreen = false;
-		this.texture = textureButton;
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
-		} else if (document.mozCancelFullScreen) { /* Firefox */
-			document.mozCancelFullScreen();
-		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-			document.webkitExitFullscreen();
-		} else if (document.msExitFullscreen) { /* IE/Edge */
-			document.msExitFullscreen();
-		}
-		console.log("exitFullScreen5");
-		consoleScreen.text = "exitFullScreen4\n" + consoleScreen.text;
-	}
-}
+// function onButtonDown2(){
+// 	//var elem = document.getElementById("frame");
+// 	var elem = document.documentElement;
+// 	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
+// 		//isFullScreen = true;
+// 		this.texture = textureButtonDown;
+// 		if (elem.requestFullscreen) {
+// 			elem.requestFullscreen();
+// 		} else if (elem.mozRequestFullScreen) { /* Firefox */
+// 			elem.mozRequestFullScreen();
+// 		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+// 			elem.webkitRequestFullscreen();
+// 		} else if (elem.msRequestFullscreen) { /* IE/Edge */
+// 			elem.msRequestFullscreen();
+// 		}
+// 		console.log("setFullScreen5");
+// 		consoleScreen.text = "setFullScreen4\n" + consoleScreen.text;
+// 	}else{
+// 		//isFullScreen = false;
+// 		this.texture = textureButton;
+// 		if (document.exitFullscreen) {
+// 			document.exitFullscreen();
+// 		} else if (document.mozCancelFullScreen) { /* Firefox */
+// 			document.mozCancelFullScreen();
+// 		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+// 			document.webkitExitFullscreen();
+// 		} else if (document.msExitFullscreen) { /* IE/Edge */
+// 			document.msExitFullscreen();
+// 		}
+// 		console.log("exitFullScreen5");
+// 		consoleScreen.text = "exitFullScreen4\n" + consoleScreen.text;
+// 	}
+// }
