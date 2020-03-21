@@ -662,6 +662,9 @@ function resize() {
 		resizeHP(1, item, index)	
 	});
 	
+	heroContainerArray.forEach(function (item, index){
+		resizeSprites(1, item, index)	
+	});
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
@@ -712,6 +715,48 @@ function resizeHP(roster, item, index){
 				
 		}
 	}
+}
+
+function resizeSprites(direction, item, index){
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+// 	if(roster == 0){
+		switch(arrayHero[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = -(resizeWidth + healthSpacing);
+				break;
+			case 3:				
+				item.x = -((resizeWidth + healthSpacing) * 2);
+				break;
+			case 4:
+				item.x = -((resizeWidth + healthSpacing) * 3);
+				break;
+			default:
+				item.x = 0;
+				
+		}
+// 	}else{		
+// 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+// 		switch(arrayEnemy[index].pos) {
+// 			case 1:
+// 				item.x = 0;
+// 				break;
+// 			case 2:
+// 				item.x = resizeWidth + healthSpacing;
+// 				break;
+// 			case 3:				
+// 				item.x = (resizeWidth + healthSpacing) * 2;
+// 				break;
+// 			case 4:
+// 				item.x = (resizeWidth + healthSpacing) * 3;
+// 				break;
+// 			default:
+// 				item.x = 0;
+				
+// 		}
+// 	}
 }
 
 function consolePrint(fromText){
