@@ -521,7 +521,6 @@ function createSprite(direction, item, index){
 	const armatureHero = factory.buildArmatureDisplay(item.code, item.code);
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
 //     		armatureHero.animation.play('idle');
-	
 
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
@@ -549,7 +548,6 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;	
 	
-	let textHP = new Text();
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
 	textHP.anchor.set(0.5);
 // 	textHP.x = 94.5;
