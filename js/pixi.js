@@ -677,21 +677,23 @@ function resizeHP(roster, item, index){
 	item.outer.width = resizeWidth;
 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
+		var switcher = 0;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = resizeWidth * 2 + healthSpacing * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+			switcher = 1;
 		}else{
 			item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
 		}		
 		switch(arrayHero[index].pos) {
 			case 1:
-				item.x = (resizeWidth + healthSpacing) * 3;
+				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
 				break;
 			case 2:
-				item.x = (resizeWidth + healthSpacing) * 2;
+				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
-				item.x = resizeWidth + healthSpacing;
+				item.x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
 				item.x = 0;
@@ -700,7 +702,13 @@ function resizeHP(roster, item, index){
 				item.x = 0;
 				
 		}
-	}else{		
+	}else{	
+		if(arrayEnemy[index].size > 1){
+			item.outer.width = resizeWidth * 2 + healthSpacing;
+			item.inner.width = resizeWidth * 2 + healthSpacing * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+		}else{
+			item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
+		}
 		item.inner.width = resizeWidth * arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP;
 		switch(arrayEnemy[index].pos) {
 			case 1:
