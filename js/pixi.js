@@ -156,12 +156,12 @@ vita[2] = {
 
 const enemy = [];
 enemy[0] = {
-	id: 8, level: 49, 
+	id: 9, level: 49, 
 	move1: 2, move2: 2, move3: 2, move4: 2,
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 67, statSDEF: 0, statSPD: 0
 };
 enemy[1] = {
-	id: 10, level: 46, 
+	id: 8, level: 46, 
 	move1: 1, move2: 1, move3: 2, move4: 2,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
 };
