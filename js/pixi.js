@@ -677,7 +677,12 @@ function resizeHP(roster, item, index){
 	item.outer.width = resizeWidth;
 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
-		item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+		if(arrayHero[index].size > 1){
+			item.outer.width = resizeWidth * 2 + healthSpacing;
+			item.inner.width = resizeWidth * 2 + healthSpacing * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+		}else{
+			item.inner.width = resizeWidth * arrayHero[index].statCalc[0]/arrayHero[index].EHP;
+		}		
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = (resizeWidth + healthSpacing) * 3;
