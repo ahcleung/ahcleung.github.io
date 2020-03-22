@@ -44,16 +44,16 @@ canvas {
 }
 
 /* Modal Content */
-.modal-content {
+/* .modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
+} */
 
 /* The Close Button */
-.close {
+/* .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -65,4 +65,4 @@ canvas {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
+} */
