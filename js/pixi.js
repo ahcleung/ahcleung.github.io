@@ -583,12 +583,16 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
+	if(app.screen.width < 800){
+		margin = 25;
+		healthSpacing = 5;
+	}
+	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
 	
 	hpHero.position.set(margin, 20);
 	hpEnemy.position.set(app.screen.width/2+margin, 20);
-	
 	
 	hpHeroContainerArray.forEach(function (item, index){
 		resizeHP(0, item, index)	
@@ -612,6 +616,10 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	if(app.screen.width < 800){
+		item.outer.height = 20;
+		item.inner.height = 20;
+	}
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
