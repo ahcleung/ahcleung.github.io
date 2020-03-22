@@ -583,8 +583,8 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
-	rosterHero.position.set(app.screen.width/2-margin, app.screen.height/2);
-	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height/2);
+	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
+	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
 	
 	hpHero.position.set(margin, 10);
 	hpEnemy.position.set(app.screen.width/2+margin, 10);
