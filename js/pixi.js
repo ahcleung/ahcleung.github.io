@@ -526,9 +526,9 @@ function createSprite(direction, item, index){
 	creatureContainer.addChild(armatureHero);
 	
 	if(item.size == 2){		
-		creatureContainer.scale.set(direction * 0.35, 0.35);
+		creatureContainer.scale.set(direction * 0.5, 0.5);
 	}else{
-		creatureContainer.scale.set(direction * 0.25, 0.25);
+		creatureContainer.scale.set(direction * 0.33, 0.33);
 	}
 	
 	const healthBar = new PIXI.Container();
@@ -550,50 +550,7 @@ function createSprite(direction, item, index){
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
 	textHP.anchor.set(0.5);
-// 	textHP.x = 94.5;
-// 	textHP.y = 20;
-// 	healthBar.addChild(textHP);
-	
-// 	switch(item.pos) {
-// 		case 1:		
-// 			creatureContainer.x = 0;
-// 			if(direction > 0){				
-// 				healthBar.x = 627;
-// 			}else{
-// 				healthBar.x = 0;
-// 			}
-// 			break;
-// 		case 2:			
-// 			creatureContainer.x = -209 * direction;
-// 			if(direction > 0){	
-// 				healthBar.x = 418;
-// 			}else{
-// 				healthBar.x = 209;
-// 			}
-// 			break;
-// 		case 3:
-// 			creatureContainer.x = -418 * direction;
-// 			if(direction > 0){	
-// 				healthBar.x = 209;
-// 			}else{
-// 				healthBar.x = 418;
-// 			}
-// 			break;
-// 		case 4:
-// 			creatureContainer.x = -627 * direction;
-// 			if(direction > 0){	
-// 				healthBar.x = 0;
-// 			}else{
-// 				healthBar.x = 627;
-// 			}
-// 			break;
-// 		default:
-// 			creatureContainer.x = 0;
-// 			healthBar.x = 0;
-// 	}
-	
-// 	textHP.x = 94.5;
-// 	textHP.y = 20;
+
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
@@ -629,8 +586,8 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height/2);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height/2);
 	
-	hpHero.position.set(margin, margin);
-	hpEnemy.position.set(app.screen.width/2+margin, margin);
+	hpHero.position.set(margin, 10);
+	hpEnemy.position.set(app.screen.width/2+margin, 10);
 	
 	
 	hpHeroContainerArray.forEach(function (item, index){
