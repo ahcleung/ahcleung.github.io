@@ -222,12 +222,12 @@ function setup(){
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
 	rectHero.y = 0;
-	hpHero.addChild(rectHero);
+// 	hpHero.addChild(rectHero);
 	
 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
 	rectEnemy.x = 0;
 	rectEnemy.y = 0;
-	hpEnemy.addChild(rectEnemy);
+// 	hpEnemy.addChild(rectEnemy);
 	
 	rosterHero.x = app.screen.width/2;
 	rosterHero.y = app.screen.height/2;
