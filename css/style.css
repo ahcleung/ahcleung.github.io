@@ -13,6 +13,7 @@ canvas {
   background: url(../img/bg3.png);
   background-repeat: no-repeat;
   background-size: auto;
+  background-position: 50% 50%;
   /* Necessary to make sure frame width/height
   isn't set according to the canvas element */
   position: absolute;
