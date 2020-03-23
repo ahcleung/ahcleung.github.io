@@ -586,6 +586,9 @@ function resize() {
 	if(app.screen.width < 800){
 		margin = 25;
 		healthSpacing = 5;
+	}else{
+		margin = 50;
+		healthSpacing = 20;
 	}
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
