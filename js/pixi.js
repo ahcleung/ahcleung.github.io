@@ -688,20 +688,20 @@ function resizeHP(roster, item, index){
 
 function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	if(app.screen.width < 860){
-		if(item.size == 2){		
-			item.scale.set(direction * 0.25, 0.25);
-		}else{
-			item.scale.set(direction * 0.10, 0.10);
-		}
-	}else{
-		if(item.size == 2){		
-			item.scale.set(direction * 0.5, 0.5);
-		}else{
-			item.scale.set(direction * 0.33, 0.33);
-		}
-	}
 	if(direction > 0){
+		if(app.screen.width < 860){
+			if(arrayHero[index].size == 2){		
+				item.scale.set(direction * 0.25, 0.25);
+			}else{
+				item.scale.set(direction * 0.10, 0.10);
+			}
+		}else{
+			if(arrayHero[index].size == 2){		
+				item.scale.set(direction * 0.5, 0.5);
+			}else{
+				item.scale.set(direction * 0.33, 0.33);
+			}
+		}
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = 0;
@@ -719,7 +719,20 @@ function resizeSprites(direction, item, index){
 				item.x = 0;
 				
 		}
-	}else{		
+	}else{
+		if(app.screen.width < 860){
+			if(arrayEnemy[index].size == 2){		
+				item.scale.set(direction * 0.25, 0.25);
+			}else{
+				item.scale.set(direction * 0.10, 0.10);
+			}
+		}else{
+			if(arrayEnemy[index].size == 2){		
+				item.scale.set(direction * 0.5, 0.5);
+			}else{
+				item.scale.set(direction * 0.33, 0.33);
+			}
+		}
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
