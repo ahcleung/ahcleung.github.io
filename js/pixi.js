@@ -690,15 +690,15 @@ function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(app.screen.width < 860){
 		if(item.size == 2){		
-			creatureContainer.scale.set(direction * 0.25, 0.25);
+			item.scale.set(direction * 0.25, 0.25);
 		}else{
-			creatureContainer.scale.set(direction * 0.10, 0.10);
+			item.scale.set(direction * 0.10, 0.10);
 		}
 	}else{
 		if(item.size == 2){		
-			creatureContainer.scale.set(direction * 0.5, 0.5);
+			item.scale.set(direction * 0.5, 0.5);
 		}else{
-			creatureContainer.scale.set(direction * 0.33, 0.33);
+			item.scale.set(direction * 0.33, 0.33);
 		}
 	}
 	if(direction > 0){
