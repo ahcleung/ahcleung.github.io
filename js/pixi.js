@@ -579,10 +579,14 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	if(app.screen.width < 1000){
+	if(app.screen.width < 860){
 		item.outer.height = 20;
 		item.inner.height = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
+	}else if(app.screen.width < 1000){
+		item.outer.height = 40;
+		item.inner.height = 40;
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xffffff, align : 'center'};	
 	}else{
 		item.outer.height = 40;
 		item.inner.height = 40;
