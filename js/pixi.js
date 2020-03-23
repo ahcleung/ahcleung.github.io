@@ -620,6 +620,10 @@ function resizeHP(roster, item, index){
 		item.outer.height = 20;
 		item.inner.height = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
+	}else{
+		item.outer.height = 40;
+		item.inner.height = 40;
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'};
 	}
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
