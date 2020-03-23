@@ -543,8 +543,8 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
-	if(app.screen.width < 860){
-		margin = 25;
+	if(app.screen.width < 1000){
+		margin = 20;
 		healthSpacing = 10;
 	}else{
 		margin = 50;
@@ -579,7 +579,7 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	if(app.screen.width < 860){
+	if(app.screen.width < 1000){
 		item.outer.height = 20;
 		item.inner.height = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
@@ -649,7 +649,7 @@ function resizeHP(roster, item, index){
 function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
-		if(app.screen.width < 860){
+		if(app.screen.width < 1000){
 			if(arrayHero[index].size == 2){		
 				item.scale.set(direction * 0.22, 0.22);
 			}else{
@@ -680,7 +680,7 @@ function resizeSprites(direction, item, index){
 				
 		}
 	}else{
-		if(app.screen.width < 860){
+		if(app.screen.width < 1000){
 			if(arrayEnemy[index].size == 2){		
 				item.scale.set(direction * 0.22, 0.22);
 			}else{
