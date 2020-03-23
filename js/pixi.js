@@ -619,10 +619,8 @@ function resizeHP(roster, item, index){
 	if(app.screen.width < 800){
 		item.outer.height = 20;
 		item.inner.height = 20;
-		
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
 	}
-	
-	item.textHP.style = {fontSize: 14};
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	if(roster == 0){
