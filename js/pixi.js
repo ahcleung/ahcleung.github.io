@@ -543,8 +543,11 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
-	if(app.screen.width < 1000){
+	if(app.screen.width < 860){
 		margin = 20;
+		healthSpacing = 10;
+	}else if(app.screen.width < 1000){
+		margin = 15;
 		healthSpacing = 10;
 	}else{
 		margin = 50;
@@ -661,7 +664,7 @@ function resizeSprites(direction, item, index){
 			}
 		}else if(app.screen.width < 1000){
 			if(arrayHero[index].size == 2){		
-				item.scale.set(direction * 0.33, 0.33);
+				item.scale.set(direction * 0.3, 0.3);
 			}else{
 				item.scale.set(direction * 0.22, 0.22);
 			} 
@@ -698,7 +701,7 @@ function resizeSprites(direction, item, index){
 			}
 		}else if(app.screen.width < 1000){
 			if(arrayHero[index].size == 2){		
-				item.scale.set(direction * 0.33, 0.33);
+				item.scale.set(direction * 0.3, 0.3);
 			}else{
 				item.scale.set(direction * 0.22, 0.22);
 			} 
