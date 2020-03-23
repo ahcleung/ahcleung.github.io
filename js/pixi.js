@@ -359,22 +359,6 @@ function setup(){
 // 		});
 // 	});
 	
-	
-// 	const creature1 = new Creature({id:2, level:45, statDis:[5, 0, 8, 12, 7, 13, 0], moves:[0, 1, 2, 3]});
-// // 	const creature1 = new Creature({id:2});
-	
-// 	console.log(creature1);
-	
-// 	console.log(creature1.EHP);
-// 	console.log(creature1.statCalc[0]);
-// 	creature1.statCalc[0] -= 21;
-// 	console.log(creature1.statCalc[0]);
-// 	creature1.heal();
-// 	console.log(creature1.statCalc[0]);
-	
-// 	console.log(movesList.data.moves[creature1.moves[2]].name);
-// 	console.log(movesList.data.moves[creature1.moves[2]].tags);
-	
 	//const obj = resources["js/creatures.json"];
 	
 // 	debug = new Text("Creature element: " + creature1.name);
@@ -422,32 +406,13 @@ function setup(){
 	var globalScale = 2;
 	var spriteSpacer = 2;
 	
-	app.stage.addChild(rosterHero);
-	app.stage.addChild(rosterEnemy);
+// 	app.stage.addChild(rosterHero);
+// 	app.stage.addChild(rosterEnemy);
 	app.stage.addChild(hpHero);
 	app.stage.addChild(hpEnemy);
 	//Load spritesheet
-	//Flygon
-// 	const hero4Container  = new PIXI.Container();
-// 	const healthBar = new PIXI.Container();
 	
-// 	let innerBar = new PIXI.Graphics();
-// 	innerBar.beginFill(0x222222);
-// 	innerBar.drawRoundedRect(0, 0, 120, 20, 10);
-// 	innerBar.endFill();
-// 	healthBar.addChild(innerBar);
-	
-// 	let outerBar = new PIXI.Graphics();
-// 	outerBar.beginFill(0x2C8A2C);
-// 	outerBar.drawRoundedRect(0, 0, 120, 20, 10);
-// 	outerBar.endFill();
-// 	healthBar.addChild(outerBar);
-// 	healthBar.outer = outerBar;
-	
-// 	healthBar.outer.width = 50;
-	
-// 	hero4Container.addChild(healthBar);
-	
+	//Flygon	
 // 	for (let i = 0; i < 125; i++) {
 //         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
 //         	// magically works since the spritesheet was loaded with the pixi loader
@@ -461,15 +426,10 @@ function setup(){
 // 	hero4.animationSpeed = 0.5;
 // 	hero4.play();
 	
-// 	healthBar.x = -(hero4.width/2) - 60;
-// 	healthBar.y = -300;
-	
 // 	hero4Container.addChild(hero4);
 // 	hero4Container.x = -3*50*spriteSpacer;
 // 	hero4Container.y = 0;
 // 	app.stage.addChild(anim);
-	
-// 	app.stage.addChild(debug);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
