@@ -653,12 +653,18 @@ function resizeHP(roster, item, index){
 function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
-		if(app.screen.width < 1000){
+		if(app.screen.width < 860){
 			if(arrayHero[index].size == 2){		
 				item.scale.set(direction * 0.22, 0.22);
 			}else{
 				item.scale.set(direction * 0.15, 0.15);
 			}
+		}else if(app.screen.width < 1000){
+			if(arrayHero[index].size == 2){		
+				item.scale.set(direction * 0.33, 0.33);
+			}else{
+				item.scale.set(direction * 0.22, 0.22);
+			} 
 		}else{
 			if(arrayHero[index].size == 2){		
 				item.scale.set(direction * 0.5, 0.5);
@@ -684,12 +690,18 @@ function resizeSprites(direction, item, index){
 				
 		}
 	}else{
-		if(app.screen.width < 1000){
+		if(app.screen.width < 860){
 			if(arrayEnemy[index].size == 2){		
 				item.scale.set(direction * 0.22, 0.22);
 			}else{
 				item.scale.set(direction * 0.15, 0.15);
 			}
+		}else if(app.screen.width < 1000){
+			if(arrayHero[index].size == 2){		
+				item.scale.set(direction * 0.33, 0.33);
+			}else{
+				item.scale.set(direction * 0.22, 0.22);
+			} 
 		}else{
 			if(arrayEnemy[index].size == 2){		
 				item.scale.set(direction * 0.5, 0.5);
