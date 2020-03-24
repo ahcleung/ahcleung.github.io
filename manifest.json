@@ -1,10 +1,11 @@
 {
-	"name": "Phaser PWAA",
-	"short_name": "PhaserA",
-	"description": "Phaser template Web App.",
+	"name": "Pixi PWA",
+	"short_name": "PixiElement",
+	"orientation": "landscape",
+	"description": "Project Element",
 	"start_url": "./",
 	"background_color": "#000000",
-	"theme_color": "#0f4a73",
+	"theme_color": "#66cc66",
 	"display": "fullscreen",
 	"icons": [{
 		"src": "img/icon-192.png",
