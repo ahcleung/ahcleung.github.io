@@ -406,8 +406,8 @@ function setup(){
 	var globalScale = 2;
 	var spriteSpacer = 2;
 	
-	app.stage.addChild(rosterHero);
-	app.stage.addChild(rosterEnemy);
+// 	app.stage.addChild(rosterHero);
+// 	app.stage.addChild(rosterEnemy);
 	app.stage.addChild(hpHero);
 	app.stage.addChild(hpEnemy);
 	//Load spritesheet
