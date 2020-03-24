@@ -5,9 +5,9 @@ body {
     background-color: #222222;
 }
 
-canvas {
+/* canvas {
   display:block;
-}
+} */
 
 #frame {
   background: url(../img/bg3.png);
@@ -28,7 +28,9 @@ canvas {
   -webkit-transform: translate(-50%, -50%);
 }
 
-/* The Modal (background) */
+
+
+/* The Modal (background) PWA install popup */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -44,16 +46,16 @@ canvas {
 }
 
 /* Modal Content */
-/* .modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-} */
+}
 
 /* The Close Button */
-/* .close {
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -65,4 +67,27 @@ canvas {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-} */
+}
+
+#container { display:block; }
+
+@media only screen and (orientation:portrait){
+    #frame {
+        height: 100vw;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+@media only screen and (orientation:landscape){
+    #frame {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+   }
+}
