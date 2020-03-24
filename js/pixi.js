@@ -587,8 +587,8 @@ function resizeHP(roster, item, index){
 		item.inner.height = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
 	}else if(app.screen.width < 1000){
-		item.outer.height = 40;
-		item.inner.height = 40;
+		item.outer.height = 30;
+		item.inner.height = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xffffff, align : 'center'};	
 	}else{
 		item.outer.height = 40;
