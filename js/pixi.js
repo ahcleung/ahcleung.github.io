@@ -657,9 +657,9 @@ function resizeSprites(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.25, 0.25);
+			item.scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1000){
-			item.scale.set(direction * 0.4, 0.4); 
+			item.scale.set(direction * 0.3, 0.3); 
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
@@ -701,9 +701,9 @@ function resizeSprites(direction, item, index){
 		}
 	}else{
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.2, 0.2);
+			item.scale.set(direction * 0.22, 0.22);
 		}else if(app.screen.width < 1000){
-			item.scale.set(direction * 0.35, 0.35); 
+			item.scale.set(direction * 0.33, 0.33); 
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
