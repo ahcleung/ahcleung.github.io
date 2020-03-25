@@ -701,9 +701,9 @@ function resizeSprites(direction, item, index){
 		}
 	}else{
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.22, 0.22);
+			item.scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1000){
-			item.scale.set(direction * 0.33, 0.33); 
+			item.scale.set(direction * 0.3, 0.3); 
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
