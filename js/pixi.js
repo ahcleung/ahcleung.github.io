@@ -215,7 +215,7 @@ function setup(){
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
 	rect.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-	rect.alpha.set(0.1);
+	rect.alpha = 0.1;
 	// Add it to the stage
 	app.stage.addChild(rect);
 	
