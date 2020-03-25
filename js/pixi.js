@@ -705,7 +705,7 @@ function resizeSprites(direction, item, index){
 		}else if(app.screen.width < 1000){
 			item.scale.set(direction * 0.22, 0.22); 
 		}else{
-			item.scale.set(direction * 0.6, 0.6);
+			item.scale.set(direction * 0.5, 0.5);
 		}
 		switch(arrayEnemy[index].pos) {
 			case 1:
