@@ -660,7 +660,7 @@ function resizeHP(roster, item, index){
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
 				element.x = statusSpacing;
-				element.y = 100;
+				element.y = item.outer.width + statusSpacing;
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
@@ -668,7 +668,7 @@ function resizeHP(roster, item, index){
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
 				element.x = statusSpacing;
-				element.y = 100;
+				element.y = item.outer.width + statusSpacing;
 			});
 		}		
 		switch(arrayHero[index].pos) {
