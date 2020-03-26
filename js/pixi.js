@@ -568,7 +568,7 @@ function createSprite(direction, item, index){
 				statusEffect = new PIXI.Sprite(resources.status_secured.texture);
 				break;
 			case 12:
-				statusEffect = new PIXI.Sprite(resources.status_sileneced.texture);
+				statusEffect = new PIXI.Sprite(resources.status_silenced.texture);
 				break;
 			case 13:
 				statusEffect = new PIXI.Sprite(resources.status_stunned.texture);
