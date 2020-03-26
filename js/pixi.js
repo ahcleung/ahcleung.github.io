@@ -529,25 +529,25 @@ function createSprite(direction, item, index){
 	
 	item.statusEffect.forEach((element) => {
 		console.log(element[0]);
-// 		switch(item.statusEffect[index][0]){
-// 			case 1:
-// 				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
-// 				break;
-// 			case 2:
-// 				statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
-// 				break;
-// 			case 3:
-// 				statusEffect = new PIXI.Sprite(resources.status_immune.texture);
-// 				break;
-// 			case 4:
-// 				statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
-// 				break;
-// 			default:
-// 				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
+		switch(element[0]){
+			case 1:
+				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
+				break;
+			case 2:
+				statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
+				break;
+			case 3:
+				statusEffect = new PIXI.Sprite(resources.status_immune.texture);
+				break;
+			case 4:
+				statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
+				break;
+			default:
+				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
 				
-// 		}
-// 		healthBar.addChild(statusEffect);
-// 		item.statusEffectSprite.push(statusEffect);
+		}
+		healthBar.addChild(statusEffect);
+		item.statusEffectSprite.push(statusEffect);
 	});	
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
@@ -656,20 +656,20 @@ function resizeHP(roster, item, index){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
 			switcher = 1;
-// 			arrayHero[index].statusEffectSprite.forEach(function(){
-// 				item.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				item.height = item.width;
-// 				item.x = statusSpacing;
-// 				item.y = 100;
-// 			});
+			arrayHero[index].statusEffectSprite.forEach((element) = > {
+				element.width = (resizeWidth - (statusSpacing * 5))/4;
+				element.height = item.width;
+				element.x = statusSpacing;
+				element.y = 100;
+			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
-// 			arrayHero[index].statusEffectSprite.forEach(function(){
-// 				item.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				item.height = item.width;
-// 				item.x = statusSpacing;
-// 				item.y = 100;
-// 			});
+			arrayHero[index].statusEffectSprite.forEach((element) = > {
+				element.width = (resizeWidth - (statusSpacing * 5))/4;
+				element.height = item.width;
+				element.x = statusSpacing;
+				element.y = 100;
+			});
 		}		
 		switch(arrayHero[index].pos) {
 			case 1:
