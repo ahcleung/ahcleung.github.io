@@ -525,22 +525,24 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
 	
+	let statusEffect;
+	
 	item.statusEffect.forEach(function(index){
 		switch(item.statusEffect[index][0]){
 			case 1:
-				let statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
+				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 				break;
 			case 2:
-				let statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
+				statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
 				break;
 			case 3:
-				let statusEffect = new PIXI.Sprite(resources.status_immune.texture);
+				statusEffect = new PIXI.Sprite(resources.status_immune.texture);
 				break;
 			case 4:
-				let statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
+				statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
 				break;
 			default:
-				let statusEffect = new PIXI.Sprite(resources.status_buff.texture);
+				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
 				
 		}
 		healthBar.addChild(statusEffect);
