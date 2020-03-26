@@ -100,7 +100,11 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
-		this.statusEffect = [[1, 1], [2, 3, 5], [3, 2]];
+		this.statusEffect = [
+			[Math.floor(Math.random() * 13) + 1, 1],
+			[Math.floor(Math.random() * 13) + 1, 3, 5],
+			[Math.floor(Math.random() * 13) + 1, 2]
+		];
 		this.statusEffectSprite = [];
 	}
 	
@@ -531,16 +535,43 @@ function createSprite(direction, item, index){
 // 		console.log(element[0]);
 		switch(element[0]){
 			case 1:
-				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
+				statusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 				break;
 			case 2:
-				statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
+				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
 				break;
 			case 3:
-				statusEffect = new PIXI.Sprite(resources.status_immune.texture);
+				statusEffect = new PIXI.Sprite(resources.status_burned.texture);
 				break;
 			case 4:
 				statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
+				break;
+			case 5:
+				statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
+				break;
+			case 6:
+				statusEffect = new PIXI.Sprite(resources.status_guard.texture);
+				break;
+			case 7:
+				statusEffect = new PIXI.Sprite(resources.status_immune.texture);
+				break;
+			case 8:
+				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
+				break;
+			case 9:
+				statusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
+				break;
+			case 10:
+				statusEffect = new PIXI.Sprite(resources.status_recover.texture);
+				break;
+			case 11:
+				statusEffect = new PIXI.Sprite(resources.status_secured.texture);
+				break;
+			case 12:
+				statusEffect = new PIXI.Sprite(resources.status_sileneced.texture);
+				break;
+			case 13:
+				statusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 				break;
 			default:
 				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
