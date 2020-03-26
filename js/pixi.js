@@ -100,7 +100,8 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
-		this.statusEffect = [];
+		this.statusEffect = [{1, 1}, {2, 3, 5}, {3, 2}];
+		this.statusEffectSprite = [];
 	}
 	
 	heal(){
@@ -524,9 +525,27 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
 	
-	let statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
-	healthBar.addChild(statusEffect);
-	healthBar.status = statusEffect;
+	item.statusEffect.forEach(function(index){
+		switch(item.statusEffect[index][0]){
+			case 1:
+				let statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
+				break;
+			case 2:
+				let statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
+				break;
+			case 3:
+				let statusEffect = new PIXI.Sprite(resources.status_immune.texture);
+				break;
+			case 4:
+				let statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
+				break;
+			default:
+				let statusEffect = new PIXI.Sprite(resources.status_buff.texture);
+				
+		}
+		healthBar.addChild(statusEffect);
+		item.statusEffectSprite.push(statusEffect);
+	});	
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
 	textHP.anchor.set(0.5);
@@ -622,10 +641,11 @@ function resizeHP(roster, item, index){
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	
-	item.status.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.status.height = item.status.width;
-	item.status.x = statusSpacing;
-	item.status.y = item.outer.height + statusSpacing;
+	
+// 	item.status.width = (resizeWidth - (statusSpacing * 5))/4;
+// 	item.status.height = item.status.width;
+// 	item.status.x = statusSpacing;
+// 	item.status.y = item.outer.height + statusSpacing;
 	
 	if(roster == 0){
 		var switcher = 0;
@@ -633,8 +653,20 @@ function resizeHP(roster, item, index){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
 			switcher = 1;
+			arrayHero[index].statusEffectSprite.forEach(function(){
+				item.width = (resizeWidth - (statusSpacing * 5))/4;
+				item.height = item.width;
+				item.x = statusSpacing;
+				item.y = 100;
+			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
+			arrayHero[index].statusEffectSprite.forEach(function(){
+				item.width = (resizeWidth - (statusSpacing * 5))/4;
+				item.height = item.width;
+				item.x = statusSpacing;
+				item.y = 100;
+			});
 		}		
 		switch(arrayHero[index].pos) {
 			case 1:
