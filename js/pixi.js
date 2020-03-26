@@ -527,7 +527,7 @@ function createSprite(direction, item, index){
 	
 	let statusEffect;
 	
-	item.statusEffect.forEach(function(index){
+	item.statusEffect.forEach(function(){
 		console.log(item.statusEffect[index]);
 // 		switch(item.statusEffect[index][0]){
 // 			case 1:
