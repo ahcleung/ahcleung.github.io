@@ -524,7 +524,7 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
 	
-	var statusEffect = PIXI.Texture.from('status_paralyzed');
+	let statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 	healthBar.addChild(statusEffect);
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
