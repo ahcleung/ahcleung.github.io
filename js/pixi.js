@@ -16,6 +16,21 @@ loader
 		"img/flygon.json",
 		"js/creatures.json",
 		"js/moves.json",
+	
+		{name:'status_bleed', url:'img/status_bleed.png'},
+		{name:'status_buff', url:'img/status_buff.png'},
+		{name:'status_burned', url:'img/status_burned.png'},
+		{name:'status_debuff', url:'img/status_debuff.png'},
+		{name:'status_depressed', url:'img/status_depressed.png'},
+		{name:'status_guard', url:'img/status_guard.png'},
+		{name:'status_immune', url:'img/status_immune.png'},
+		{name:'status_paralyzed', url:'img/status_paralyzed.png'},
+		{name:'status_poisoned', url:'img/status_poisoned.png'},
+		{name:'status_recover', url:'img/status_recover.png'},
+		{name:'status_secured', url:'img/status_secured.png'},
+		{name:'status_silenced', url:'img/status_silenced.png'},
+		{name:'status_stunned', url:'img/status_stunned.png'},
+		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
 		{name:'gorilla3_texture_png', url:'img/gorilla3_tex.png'},
@@ -85,6 +100,7 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
+		this.statusEffect = [];
 	}
 	
 	heal(){
@@ -506,7 +522,10 @@ function createSprite(direction, item, index){
 // 	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
-	healthBar.inner = innerBar;	
+	healthBar.inner = innerBar;
+	
+	var statusEffect = PIXI.Texture.from('status_paralyzed');
+	healthBar.addChild(statusEffect);
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
 	textHP.anchor.set(0.5);
