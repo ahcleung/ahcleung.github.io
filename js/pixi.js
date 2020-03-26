@@ -544,7 +544,7 @@ function resize() {
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
 	if(app.screen.width < 860){
-		margin = 20;
+		margin = 10;
 		healthSpacing = 10;
 	}else if(app.screen.width < 1000){
 		margin = 15;
