@@ -624,23 +624,24 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	var resizeHeight = 40;
 	var statusSpacing = 5;
 	if(app.screen.width < 860){
-		item.outer.height = 20;
-		item.inner.height = 20;
+		resizeHeight = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};	
 		statusSpacing = 2;
 	}else if(app.screen.width < 1000){
-		item.outer.height = 30;
-		item.inner.height = 30;
+		resizeHeight = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xffffff, align : 'center'};	
 		statusSpacing = 4;
 	}else{
-		item.outer.height = 40;
-		item.inner.height = 40;
+		resizeHeight = 40;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'};
 		statusSpacing = 5;
 	}
+	
+	item.outer.height = resizeHeight;
+	item.inner.height = resizeHeight;
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	
@@ -660,7 +661,7 @@ function resizeHP(roster, item, index){
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
 				element.x = statusSpacing;
-				element.y = item.outer.width + statusSpacing;
+				element.y = resizeHeight + statusSpacing;
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
@@ -668,7 +669,7 @@ function resizeHP(roster, item, index){
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
 				element.x = statusSpacing;
-				element.y = item.outer.width + statusSpacing;
+				element.y = resizeHeight + statusSpacing;
 			});
 		}		
 		switch(arrayHero[index].pos) {
