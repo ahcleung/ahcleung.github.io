@@ -527,8 +527,8 @@ function createSprite(direction, item, index){
 	
 	let statusEffect;
 	
-	item.statusEffect.forEach(function(){
-		console.log(item.statusEffect[index]);
+	item.statusEffect.forEach((element) => {
+		console.log(element);
 // 		switch(item.statusEffect[index][0]){
 // 			case 1:
 // 				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
