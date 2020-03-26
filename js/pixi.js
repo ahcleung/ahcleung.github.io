@@ -602,27 +602,30 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	
+	var statusSpacing = 5;
 	if(app.screen.width < 860){
 		item.outer.height = 20;
 		item.inner.height = 20;
-		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};		
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};	
+		statusSpacing = 2;
 	}else if(app.screen.width < 1000){
 		item.outer.height = 30;
 		item.inner.height = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xffffff, align : 'center'};	
+		statusSpacing = 4;
 	}else{
 		item.outer.height = 40;
 		item.inner.height = 40;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'};
+		statusSpacing = 5;
 	}
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	
-	item.status.width = (resizeWidth - 25)/4;
+	item.status.width = (resizeWidth - (statusSpacing * 5))/4;
 	item.status.height = item.status.width;
-	item.status.x = 5;
-	item.status.y = item.outer.height + 5;
+	item.status.x = statusSpacing;
+	item.status.y = item.outer.height + statusSpacing;
 	
 	if(roster == 0){
 		var switcher = 0;
