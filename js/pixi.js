@@ -526,6 +526,7 @@ function createSprite(direction, item, index){
 	
 	let statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 	healthBar.addChild(statusEffect);
+	healthBar.status = statusEffect;
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
 	textHP.anchor.set(0.5);
@@ -601,6 +602,7 @@ function resize() {
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	
 	if(app.screen.width < 860){
 		item.outer.height = 20;
 		item.inner.height = 20;
@@ -616,6 +618,11 @@ function resizeHP(roster, item, index){
 	}
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
+	
+	item.status.width = (resizeWidth - 25)/4;
+	item.status.x = 5;
+	item.status.y = item.outer.height + 5;
+	
 	if(roster == 0){
 		var switcher = 0;
 		if(arrayHero[index].size > 1){
