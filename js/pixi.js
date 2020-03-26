@@ -657,7 +657,7 @@ function resizeHP(roster, item, index){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
 			switcher = 1;
-			arrayHero[index].statusEffectSprite.forEach((element) => {
+			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
 				element.x = statusSpacing * index;
