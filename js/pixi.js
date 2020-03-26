@@ -528,7 +528,7 @@ function createSprite(direction, item, index){
 	let statusEffect;
 	
 	item.statusEffect.forEach((element) => {
-		console.log(element);
+		console.log(element[0]);
 // 		switch(item.statusEffect[index][0]){
 // 			case 1:
 // 				statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
@@ -546,8 +546,8 @@ function createSprite(direction, item, index){
 // 				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
 				
 // 		}
-		healthBar.addChild(statusEffect);
-		item.statusEffectSprite.push(statusEffect);
+// 		healthBar.addChild(statusEffect);
+// 		item.statusEffectSprite.push(statusEffect);
 	});	
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
