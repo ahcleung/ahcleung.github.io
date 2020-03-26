@@ -665,10 +665,10 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
-			arrayHero[index].statusEffectSprite.forEach((element) => {
+			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing * index;
+				element.x = statusSpacing + ((statusSpacing + element.width)*index);
 				element.y = resizeHeight + statusSpacing;
 			});
 		}		
@@ -693,8 +693,20 @@ function resizeHP(roster, item, index){
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP);
+			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
+				element.width = (resizeWidth - (statusSpacing * 5))/4;
+				element.height = element.width;
+				element.x = statusSpacing + ((statusSpacing + element.width)*index);
+				element.y = resizeHeight + statusSpacing;
+			});
 		}else{
 			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP);
+			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
+				element.width = (resizeWidth - (statusSpacing * 5))/4;
+				element.height = element.width;
+				element.x = statusSpacing + ((statusSpacing + element.width)*index);
+				element.y = resizeHeight + statusSpacing;
+			});
 		}
 		switch(arrayEnemy[index].pos) {
 			case 1:
