@@ -100,7 +100,7 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
-		this.statusEffect = [{1, 1}, {2, 3, 5}, {3, 2}];
+		this.statusEffect = [[1, 1], [2, 3, 5], [3, 2]];
 		this.statusEffectSprite = [];
 	}
 	
