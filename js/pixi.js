@@ -660,7 +660,7 @@ function resizeHP(roster, item, index){
 			arrayHero[index].statusEffectSprite.forEach((element) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing;
+				element.x = statusSpacing * index;
 				element.y = resizeHeight + statusSpacing;
 			});
 		}else{
@@ -668,7 +668,7 @@ function resizeHP(roster, item, index){
 			arrayHero[index].statusEffectSprite.forEach((element) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing;
+				element.x = statusSpacing * index;
 				element.y = resizeHeight + statusSpacing;
 			});
 		}		
