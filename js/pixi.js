@@ -620,6 +620,7 @@ function resizeHP(roster, item, index){
 // 	item.textHP.x = resizeWidth/2;
 	
 	item.status.width = (resizeWidth - 25)/4;
+	item.status.height = item.status.width;
 	item.status.x = 5;
 	item.status.y = item.outer.height + 5;
 	
