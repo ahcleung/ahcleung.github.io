@@ -582,6 +582,9 @@ function createSprite(direction, item, index){
 			case 13:
 				statusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 				break;
+			case 14:
+				statusEffect = new PIXI.Sprite(resources.status_vital.texture);
+				break;
 			default:
 				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
 				
