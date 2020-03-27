@@ -156,7 +156,7 @@ let move2 = new PIXI.Graphics();
 let move3 = new PIXI.Graphics();
 let move4 = new PIXI.Graphics();
 
-var button, textureButton, textureButtonDown;
+var button, button2, textureButton, textureButtonDown;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -452,6 +452,9 @@ function setup(){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onButtonDown);
 	
+	button2 = new PIXI.Sprite(textureButtonDown);
+	button.anchor.set(0,1);
+	
 // 	document.addEventListener('fullscreenerror', (event) => {
 // 		alert('an error occurred changing into fullscreen');
 // 		alert(event);
@@ -671,9 +674,15 @@ function resize() {
 		healthSpacing = 20;
 	}
 	
-	button.width = ((2*app.screen.width - 4*margin - 14*healthSpacing)/9)/4;
+	var calcWidth = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
+	
+	button.width = calcWidth/4;
 	button.height = button.width;
 	button.position.set(app.screen.width - margin, app.screen.height - margin);
+	
+	button2.width = button.width;
+	button2.height = button.width;
+	button2.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
 		element.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
