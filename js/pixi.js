@@ -261,7 +261,7 @@ function setup(){
 		moveRect.x = 0;
 		moveRect.y = 0;
 		
-		moveContainer.addChild(move1);
+		moveContainer.addChild(moveRect);
 		moveContainer.rect = moveRect;
 		
 		var moveElement = new PIXI.Sprite(resources.element_fire.texture);
