@@ -152,6 +152,9 @@ const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
 let move1 = new PIXI.Graphics();
+let move2 = new PIXI.Graphics();
+let move3 = new PIXI.Graphics();
+let move4 = new PIXI.Graphics();
 
 var button, textureButton, textureButtonDown;
 
@@ -166,8 +169,9 @@ const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
 const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
-const hpHeroContainerArray = [];
-const hpEnemyContainerArray = [];
+const hpHeroContainerArray = [];	//Array of hero HP containers
+const hpEnemyContainerArray = [];	//Array of enemy HP containers
+const moveArray = [];			//Array of move containers
 
 const vita = [];
 vita[0] = {
@@ -255,6 +259,25 @@ function setup(){
 	move1.x = 0;
 	move1.y = 0;
 	app.stage.addChild(move1);
+	moveArray.push(move1);
+	
+	move2.beginFill(0x222222).drawRect(0, 0, 50, 50);
+	move2.x = 0;
+	move2.y = 0;
+	app.stage.addChild(move2);
+	moveArray.push(move2);
+	
+	move3.beginFill(0x222222).drawRect(0, 0, 50, 50);
+	move3.x = 0;
+	move3.y = 0;
+	app.stage.addChild(move3);
+	moveArray.push(move3);
+	
+	move4.beginFill(0x222222).drawRect(0, 0, 50, 50);
+	move4.x = 0;
+	move4.y = 0;
+	app.stage.addChild(move4);
+	moveArray.push(move4);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
@@ -650,10 +673,13 @@ function resize() {
 		healthSpacing = 20;
 	}
 	
-	move1.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
-	move1.height = move1.width/4;
-	move1.x = margin;
-	move1.y = app.screen.height - move1.height - margin;
+	moveArray.forEach((element, index) => {
+		element.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
+		element.height = element.width/4;
+		element.x = margin + healthSpacing*2 + element.height + (healthSpacing + element.width)*index;
+		element.y = app.screen.height - element.height - margin;
+	});
+	
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
@@ -888,6 +914,10 @@ function resizeSprites(direction, item, index){
 				
 		}
 	}
+}
+
+function resizeMove(element){
+	
 }
 
 function consolePrint(fromText){
