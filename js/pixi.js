@@ -153,12 +153,6 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-let move1 = new PIXI.Graphics();
-let move2 = new PIXI.Graphics();
-let move3 = new PIXI.Graphics();
-let move4 = new PIXI.Graphics();
-
-const move1Container = new PIXI.Container();
 
 var button, button2, textureButton, textureButtonDown;
 
@@ -259,20 +253,25 @@ function setup(){
 	// Add it to the stage
 	app.stage.addChild(rect);
 	
-	move1.beginFill(0x222222).drawRect(0, 0, 50, 50);
-	move1.x = 0;
-	move1.y = 0;	
+	for(var i = 0; i < 4; i++){
+		let moveRect = new PIXI.Graphics();
+		const moveContainer = new PIXI.Container();
+		
+		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveRect.x = 0;
+		moveRect.y = 0;
+		
+		moveContainer.addChild(move1);
+		moveContainer.rect = moveRect;
+		
+		var moveElement = new PIXI.Sprite(resources.element_fire.texture);
+		moveElement.anchor.set(0, 0.5);
+		moveContainer.addChild(moveElement);
+		moveContainer.moveElement = moveElement;
 	
-	move1Container.addChild(move1);
-	move1Container.rect = move1;
-	
-	var moveElement = new PIXI.Sprite(resources.element_fire.texture);
-	moveElement.anchor.set(0, 0.5);
-	move1Container.addChild(moveElement);
-	move1Container.moveElement = moveElement;
-	
-	moveArray.push(move1Container);
-	app.stage.addChild(move1Container);
+		moveArray.push(moveContainer);
+		app.stage.addChild(moveContainer);
+	}
 	
 // 	move2.beginFill(0x222222).drawRect(0, 0, 50, 50);
 // 	move2.x = 0;
