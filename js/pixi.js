@@ -453,7 +453,7 @@ function setup(){
         .on('pointerdown', onButtonDown);
 	
 	button2 = new PIXI.Sprite(textureButtonDown);
-	button.anchor.set(0,1);
+	button2.anchor.set(0,1);
 	
 // 	document.addEventListener('fullscreenerror', (event) => {
 // 		alert('an error occurred changing into fullscreen');
