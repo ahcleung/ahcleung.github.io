@@ -267,6 +267,7 @@ function setup(){
 	move1Container.rect = move1;
 	
 	var moveElement = new PIXI.Sprite(resources.element_fire.texture);
+	moveElement.anchor.set(0, 0.5);
 	move1Container.addChild(moveElement);
 	move1Container.moveElement = moveElement;
 	
@@ -702,6 +703,11 @@ function resize() {
 		element.rect.height = element.rect.width/4;
 		element.x = margin + healthSpacing*2 + element.rect.height + (healthSpacing + element.rect.width)*index;
 		element.y = app.screen.height - element.rect.height - margin;
+		
+		element.moveElement.width = element.rect.width/11;
+		element.moveElement.height = element.moveElement.width * 2.3;
+		element.moveElement.x = 10;
+		element.moveElement.y = element.rect.height/2;
 	});
 	
 	
