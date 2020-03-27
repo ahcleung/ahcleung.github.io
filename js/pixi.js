@@ -699,8 +699,13 @@ function resizeHP(roster, item, index){
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing + ((statusSpacing + element.width)*index);
-				element.y = resizeHeight + statusSpacing;
+				if(index < 8){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index);
+					element.y = resizeHeight + statusSpacing;
+				}else{
+					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
+					element.y = resizeHeight + statusSpacing*2 + element.height;
+				}
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
@@ -743,8 +748,13 @@ function resizeHP(roster, item, index){
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing + ((statusSpacing + element.width)*index);
-				element.y = resizeHeight + statusSpacing;
+				if(index < 8){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index);
+					element.y = resizeHeight + statusSpacing;
+				}else{
+					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
+					element.y = resizeHeight + statusSpacing*2 + element.height;
+				}
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].EHP);
