@@ -30,6 +30,7 @@ loader
 		{name:'status_secured', url:'img/status_secured.png'},
 		{name:'status_silenced', url:'img/status_silenced.png'},
 		{name:'status_stunned', url:'img/status_stunned.png'},
+		{name:'status_vital', url:'img/status_vital.png'},
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -101,17 +102,17 @@ class Creature{
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 		this.statusEffect = [
-			[Math.floor(Math.random() * 13) + 1, 1],
-			[Math.floor(Math.random() * 13) + 1, 3, 5],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
-			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 1],
+			[Math.floor(Math.random() * 14) + 1, 3, 5],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
 		];
 		this.statusEffectSprite = [];
 	}
