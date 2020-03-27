@@ -254,6 +254,7 @@ function setup(){
 	move1.beginFill(0x222222).drawRect(0, 0, 50, 50);
 	move1.x = 0;
 	move1.y = 0;
+	app.stage.addChild(move1);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
