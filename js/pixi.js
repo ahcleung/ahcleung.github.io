@@ -651,7 +651,7 @@ function resize() {
 	}
 	
 	move1.width = (2*app.screen.width - 4*margin - 14*spacing)/9;
-	move1.height = move1.width/4
+	move1.height = move1.width/4;
 	move1.x = margin;
 	move1.y = app.screen.height - move1.height - margin;
 	
