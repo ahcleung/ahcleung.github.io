@@ -103,7 +103,9 @@ class Creature{
 		this.statusEffect = [
 			[Math.floor(Math.random() * 13) + 1, 1],
 			[Math.floor(Math.random() * 13) + 1, 3, 5],
-			[Math.floor(Math.random() * 13) + 1, 2]
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
 		];
 		this.statusEffectSprite = [];
 	}
@@ -699,8 +701,16 @@ function resizeHP(roster, item, index){
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing + ((statusSpacing + element.width)*index);
-				element.y = resizeHeight + statusSpacing;
+				if(index < 4){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index);
+					element.y = resizeHeight + statusSpacing;
+				}else if(index < 8){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index-4);
+					element.y = resizeHeight*2 + statusSpacing;
+				}else{
+					element.x = statusSpacing + ((statusSpacing + element.width)*index-8);
+					element.y = resizeHeight*3 + statusSpacing*2;
+				}
 			});
 		}		
 		switch(arrayHero[index].pos) {
@@ -735,8 +745,16 @@ function resizeHP(roster, item, index){
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
-				element.x = statusSpacing + ((statusSpacing + element.width)*index);
-				element.y = resizeHeight + statusSpacing;
+				if(index < 4){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index);
+					element.y = resizeHeight + statusSpacing;
+				}else if(index < 8){
+					element.x = statusSpacing + ((statusSpacing + element.width)*index-4);
+					element.y = resizeHeight*2 + statusSpacing;
+				}else{
+					element.x = statusSpacing + ((statusSpacing + element.width)*index-8);
+					element.y = resizeHeight*3 + statusSpacing*2;
+				}
 			});
 		}
 		switch(arrayEnemy[index].pos) {
