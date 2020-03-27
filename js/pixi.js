@@ -650,8 +650,10 @@ function resize() {
 		healthSpacing = 20;
 	}
 	
-	move1.width = 200;
-	
+	move1.width = (2*app.screen.width - 4*margin - 14*spacing)/9;
+	move1.height = move1.width/4
+	move1.x = margin;
+	move1.y = app.screen.height - move1.height - margin;
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
