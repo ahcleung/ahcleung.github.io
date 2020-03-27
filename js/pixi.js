@@ -31,6 +31,8 @@ loader
 		{name:'status_silenced', url:'img/status_silenced.png'},
 		{name:'status_stunned', url:'img/status_stunned.png'},
 		{name:'status_vital', url:'img/status_vital.png'},
+	
+		{name:'element_fire', url:'img/element_fire.png'},
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -156,6 +158,8 @@ let move2 = new PIXI.Graphics();
 let move3 = new PIXI.Graphics();
 let move4 = new PIXI.Graphics();
 
+const move1Container = new PIXI.Container();
+
 var button, button2, textureButton, textureButtonDown;
 
 var healthSpacing = 20;
@@ -257,27 +261,35 @@ function setup(){
 	
 	move1.beginFill(0x222222).drawRect(0, 0, 50, 50);
 	move1.x = 0;
-	move1.y = 0;
-	app.stage.addChild(move1);
-	moveArray.push(move1);
+	move1.y = 0;	
 	
-	move2.beginFill(0x222222).drawRect(0, 0, 50, 50);
-	move2.x = 0;
-	move2.y = 0;
-	app.stage.addChild(move2);
-	moveArray.push(move2);
+	move1Container.addChild(move1);
+	move1Container.rect = move1;
 	
-	move3.beginFill(0x222222).drawRect(0, 0, 50, 50);
-	move3.x = 0;
-	move3.y = 0;
-	app.stage.addChild(move3);
-	moveArray.push(move3);
+	var moveElement = new PIXI.Sprite(resources.element_fire.texture);
+	move1Container.addChild(moveElement);
+	move1Container.moveElement = moveElement;
 	
-	move4.beginFill(0x222222).drawRect(0, 0, 50, 50);
-	move4.x = 0;
-	move4.y = 0;
-	app.stage.addChild(move4);
-	moveArray.push(move4);
+	moveArray.push(move1Container);
+	app.stage.addChild(move1Container);
+	
+// 	move2.beginFill(0x222222).drawRect(0, 0, 50, 50);
+// 	move2.x = 0;
+// 	move2.y = 0;
+// 	app.stage.addChild(move2);
+// 	moveArray.push(move2);
+	
+// 	move3.beginFill(0x222222).drawRect(0, 0, 50, 50);
+// 	move3.x = 0;
+// 	move3.y = 0;
+// 	app.stage.addChild(move3);
+// 	moveArray.push(move3);
+	
+// 	move4.beginFill(0x222222).drawRect(0, 0, 50, 50);
+// 	move4.x = 0;
+// 	move4.y = 0;
+// 	app.stage.addChild(move4);
+// 	moveArray.push(move4);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
@@ -686,10 +698,10 @@ function resize() {
 	button2.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
-		element.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
-		element.height = element.width/4;
-		element.x = margin + healthSpacing*2 + element.height + (healthSpacing + element.width)*index;
-		element.y = app.screen.height - element.height - margin;
+		element.rect.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
+		element.rect.height = element.rect.width/4;
+		element.rect.x = margin + healthSpacing*2 + element.rect.height + (healthSpacing + element.rect.width)*index;
+		element.rect.y = app.screen.height - element.rect.height - margin;
 	});
 	
 	
