@@ -660,8 +660,6 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
-	button.position.set(app.screen.width - 50, app.screen.height - 50);
-	
 	if(app.screen.width < 860){
 		margin = 10;
 		healthSpacing = 10;
@@ -672,6 +670,10 @@ function resize() {
 		margin = 50;
 		healthSpacing = 20;
 	}
+	
+	button.width = ((2*app.screen.width - 4*margin - 14*healthSpacing)/9)/4;
+	button.height = button.width;
+	button.position.set(app.screen.width - margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
 		element.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
