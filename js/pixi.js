@@ -264,7 +264,40 @@ function setup(){
 		moveContainer.addChild(moveRect);
 		moveContainer.rect = moveRect;
 		
-		var moveElement = new PIXI.Sprite(resources.element_fire.texture);
+		var elementID = Math.floor(Math.random() * 9) + 1;
+		var moveElement;
+		switch(elementID){
+			case 1:
+				moveElement = new PIXI.Sprite(resources.element_earth.texture);
+				break;
+			case 2:
+				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
+			case 3:
+				moveElement = new PIXI.Sprite(resources.element_flora.texture);
+				break;
+			case 4:
+				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
+				break;
+			case 5:
+				moveElement = new PIXI.Sprite(resources.element_shadow.texture);
+				break;
+			case 6:
+				moveElement = new PIXI.Sprite(resources.element_spirit.texture);
+				break;
+			case 7:
+				moveElement = new PIXI.Sprite(resources.element_toxic.texture);
+				break;
+			case 8:
+				moveElement = new PIXI.Sprite(resources.element_water.texture);
+				break;
+			case 9:
+				moveElement = new PIXI.Sprite(resources.element_wind.texture);
+				break;
+			default:
+				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
+		}
 		moveElement.anchor.set(0, 0.5);
 		moveContainer.addChild(moveElement);
 		moveContainer.moveElement = moveElement;
@@ -272,24 +305,6 @@ function setup(){
 		moveArray.push(moveContainer);
 		app.stage.addChild(moveContainer);
 	}
-	
-// 	move2.beginFill(0x222222).drawRect(0, 0, 50, 50);
-// 	move2.x = 0;
-// 	move2.y = 0;
-// 	app.stage.addChild(move2);
-// 	moveArray.push(move2);
-	
-// 	move3.beginFill(0x222222).drawRect(0, 0, 50, 50);
-// 	move3.x = 0;
-// 	move3.y = 0;
-// 	app.stage.addChild(move3);
-// 	moveArray.push(move3);
-	
-// 	move4.beginFill(0x222222).drawRect(0, 0, 50, 50);
-// 	move4.x = 0;
-// 	move4.y = 0;
-// 	app.stage.addChild(move4);
-// 	moveArray.push(move4);
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
