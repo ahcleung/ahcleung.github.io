@@ -151,7 +151,7 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-var textureButton, textureButtonDown;
+var button, textureButton, textureButtonDown;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -407,11 +407,13 @@ function setup(){
 	consoleScreen.x = 300;
 	
 	//Resize button
-	var button = new PIXI.Sprite(textureButton);
+	button = new PIXI.Sprite(textureButton);
     	button.buttonMode = true;
     	button.anchor.set(0.5);
     	button.position.x = 50;
     	button.position.y = 50;
+	button.width = 50;
+	button.height = 50;
     	// make the button interactive...
     	button.interactive = true;
 	button.accessible = true;
@@ -627,6 +629,8 @@ function resize() {
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
+	
+	button.position.set(app.screen.width - 50, app.screen.height - 50);
 	
 	if(app.screen.width < 860){
 		margin = 10;
