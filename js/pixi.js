@@ -409,7 +409,7 @@ function setup(){
 	//Resize button
 	button = new PIXI.Sprite(textureButton);
     	button.buttonMode = true;
-    	button.anchor.set(0.5);
+    	button.anchor.set(1,1);
     	button.position.x = 50;
     	button.position.y = 50;
 	button.width = 50;
