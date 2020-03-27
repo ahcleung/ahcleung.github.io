@@ -153,11 +153,11 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-
 var button, button2, textureButton, textureButtonDown;
 
 var healthSpacing = 20;
 var margin = 50;
+var moveSpacer = 10;
 
 // var db = firebase.firestore();
 
@@ -679,12 +679,15 @@ function resize() {
 	if(app.screen.width < 860){
 		margin = 10;
 		healthSpacing = 10;
+		moveSpacer = 5;
 	}else if(app.screen.width < 1000){
 		margin = 15;
 		healthSpacing = 10;
+		moveSpacer = 8;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
+		moveSpacer = 10;
 	}
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
@@ -705,7 +708,7 @@ function resize() {
 		
 		element.moveElement.width = element.rect.width/11;
 		element.moveElement.height = element.moveElement.width * 2.3;
-		element.moveElement.x = 10;
+		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 	});
 	
