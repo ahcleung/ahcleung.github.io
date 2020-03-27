@@ -106,6 +106,12 @@ class Creature{
 			[Math.floor(Math.random() * 13) + 1, 2],
 			[Math.floor(Math.random() * 13) + 1, 2],
 			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
+			[Math.floor(Math.random() * 13) + 1, 2],
 		];
 		this.statusEffectSprite = [];
 	}
