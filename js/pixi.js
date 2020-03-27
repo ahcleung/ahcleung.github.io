@@ -463,6 +463,7 @@ function setup(){
 // 	});
 
 	app.stage.addChild(button);	
+	app.stage.addChild(button2);	
 	
 	var anchorX1 = 1;
 	var anchorY1 = 1;
