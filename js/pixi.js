@@ -151,6 +151,8 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
+let move1 = new PIXI.Graphics();
+
 var button, textureButton, textureButtonDown;
 
 var healthSpacing = 20;
@@ -248,6 +250,10 @@ function setup(){
 	rect.alpha = 0.1;
 	// Add it to the stage
 	app.stage.addChild(rect);
+	
+	move1.beginFill(0x222222).drawRect(0, 0, 50, 50);
+	move1.x = 0;
+	move1.y = 0;
 	
 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 	rectHero.x = 0;
@@ -642,6 +648,9 @@ function resize() {
 		margin = 50;
 		healthSpacing = 20;
 	}
+	
+	move1.width = 200;
+	
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
