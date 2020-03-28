@@ -738,6 +738,14 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
+		if(app.screen.width < 860){
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 16, fill : 0xfefefe};	
+		}else if(app.screen.width < 1000){
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 20, fill : 0xfefefe};	
+		}else{
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+		}
+		
 		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
 	});
