@@ -730,7 +730,7 @@ function resize() {
 	moveArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.rect.height = element.rect.width/4;
-		element.x = margin + healthSpacing + element.rect.height + (healthSpacing + element.rect.width)*index;
+		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
 		element.y = app.screen.height - element.rect.height - margin;
 		
 		element.moveElement.width = element.rect.width/11;
