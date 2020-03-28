@@ -766,14 +766,14 @@ function resize() {
 			element.posMarkerContainer.scale.set(0.6);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
-			element.moveNum.style = {fontFamily : 'Arial', fontSize: 20, fill : 0x636363, align : 'right'};	
+			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(1);
 		}
 		
 		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
 		
-		element.moveNum.x = element.rect.width-50;
+		element.moveNum.x = (element.rect.width/6)*5;
 		element.moveNum.y = (element.rect.height/3)*2;
 		
 		element.posMarkerContainer.x = element.rect.width/6;
