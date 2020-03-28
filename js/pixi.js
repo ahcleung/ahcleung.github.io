@@ -277,7 +277,7 @@ function setup(){
 		moveContainer.moveName = moveName;
 		
 		let allyPos4 = new PIXI.Graphics();
-		allyPos4.beginFill(0x969696).drawRect(0, -7.5, 15, 15);
+		allyPos4.beginFill(0x969696).drawRect(0, 0, 15, 15);
 		allyPos4.angle = 45;
 		moveContainer.addChild(allyPos4);
 		moveContainer.allyPos4 = allyPos4;
