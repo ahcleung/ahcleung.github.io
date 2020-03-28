@@ -276,6 +276,12 @@ function setup(){
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
 		
+		let allyPos4 = new PIXI.Graphics();
+		allyPos4.beginFill(0x969696).drawRect(-7.5, -7.5, 15, 15);
+		allyPos4.rotation = 45;
+		moveContainer.addChild(allyPos4);
+		moveContainer.allyPos4 = allyPos4;
+		
 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
 		switch(elementID){
@@ -318,14 +324,14 @@ function setup(){
 		app.stage.addChild(moveContainer);
 	}
 	
-	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
-	rectHero.x = 0;
-	rectHero.y = 0;
+// 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
+// 	rectHero.x = 0;
+// 	rectHero.y = 0;
 // 	hpHero.addChild(rectHero);
 	
-	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
-	rectEnemy.x = 0;
-	rectEnemy.y = 0;
+// 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
+// 	rectEnemy.x = 0;
+// 	rectEnemy.y = 0;
 // 	hpEnemy.addChild(rectEnemy);
 	
 	rosterHero.x = app.screen.width/2;
@@ -494,13 +500,6 @@ function setup(){
 	button2 = new PIXI.Sprite(textureButtonDown);
 	button2.anchor.set(0,1);
 	
-// 	document.addEventListener('fullscreenerror', (event) => {
-// 		alert('an error occurred changing into fullscreen');
-// 		alert(event);
-// 		console.error('an error occurred changing into fullscreen');
-// 		console.log(event);
-// 	});
-
 	app.stage.addChild(button);	
 	app.stage.addChild(button2);	
 	
@@ -515,26 +514,6 @@ function setup(){
 	app.stage.addChild(rosterEnemy);
 	app.stage.addChild(hpHero);
 	app.stage.addChild(hpEnemy);
-	//Load spritesheet
-	
-	//Flygon	
-// 	for (let i = 0; i < 125; i++) {
-//         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-//         	// magically works since the spritesheet was loaded with the pixi loader
-//         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
-//     	}
-// 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-// 	hero4.x = -3*50*spriteSpacer;
-// 	hero4.y = 0;
-// 	hero4.scale.set(globalScale);
-// 	hero4.anchor.set(anchorX1,anchorY1);
-// 	hero4.animationSpeed = 0.5;
-// 	hero4.play();
-	
-// 	hero4Container.addChild(hero4);
-// 	hero4Container.x = -3*50*spriteSpacer;
-// 	hero4Container.y = 0;
-// 	app.stage.addChild(anim);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
@@ -546,6 +525,26 @@ function setup(){
 
 	state = play;
 	app.ticker.add(delta => gameLoop(delta));
+	
+// 	document.addEventListener('fullscreenerror', (event) => {
+// 		alert('an error occurred changing into fullscreen');
+// 		alert(event);
+// 		console.error('an error occurred changing into fullscreen');
+// 		console.log(event);
+// 	});
+	
+	//Load spritesheet	
+	//Flygon	
+// 	for (let i = 0; i < 125; i++) {
+//         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
+//         	// magically works since the spritesheet was loaded with the pixi loader
+//         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
+//     	}
+// 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
+// 	hero4.animationSpeed = 0.5;
+// 	hero4.play();	
+// 	hero4Container.addChild(hero4);
+// 	app.stage.addChild(anim);
 }
 
 function gameLoop(delta){
@@ -737,7 +736,7 @@ function resize() {
 		element.moveElement.height = element.moveElement.width * 2.3;
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
-		
+				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 16, fill : 0xfefefe};	
 		}else if(app.screen.width < 1000){
@@ -748,6 +747,9 @@ function resize() {
 		
 		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
+		
+		element.allyPos4.x = element.rect.width/6;
+		element.allyPos4.y = (element.rect.height/3)*2;
 	});
 	
 	
