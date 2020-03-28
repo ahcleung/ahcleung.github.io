@@ -276,11 +276,21 @@ function setup(){
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
 		
-		let allyPos4 = new PIXI.Graphics();
-		allyPos4.beginFill(0x969696).drawRect(0, -7.5, 15, 15);
-		allyPos4.angle = 45;
-		moveContainer.addChild(allyPos4);
-		moveContainer.allyPos4 = allyPos4;
+		const posMarkerArray = [];		
+		const posMarkerContainer = new PIXI.Container();
+		
+		for (var j = 0; j < 8; j++){
+			let posMarker = new PIXI.Graphics();
+			posMarker.beginFill(0x969696).drawRect(0, -7.5, 15, 15);
+			posMarker.angle = 45;
+			posMarker.x = 25*j;
+			posMarkerArray.push(posMarker);
+			posMarkerContainer.addChild(posMarker);
+		}
+		
+		moveContainer.addChild(posMarkerContainer);
+		moveContainer.posMarkerArray = posMarkerArray;
+		moveContainer.posMarkerContainer = posMarkerContainer;
 		
 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
@@ -748,8 +758,8 @@ function resize() {
 		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
 		
-		element.allyPos4.x = element.rect.width/6;
-		element.allyPos4.y = (element.rect.height/3)*2;
+		element.posMarkerContainer.x = element.rect.width/6;
+		element.posMarkerContainer.y = (element.rect.height/3)*2;
 	});
 	
 	
