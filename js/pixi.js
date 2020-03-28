@@ -267,6 +267,9 @@ function setup(){
 		let moveName = new Text("Move name", {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
 		
+		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
+		moveNum.anchor.set(1, 0.5);
+		
 		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		moveRect.x = 0;
 		moveRect.y = 0;
@@ -275,13 +278,15 @@ function setup(){
 		moveContainer.rect = moveRect;
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
+		moveContainer.addChild(moveNum);
+		moveContainer.moveNum = moveNum;
 		
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
 		
 		for (var j = 0; j < 8; j++){
 			let posMarker = new PIXI.Graphics();
-			posMarker.beginFill(0x969696).drawRect(0, -7.5, 15, 15);
+			posMarker.beginFill(0x636363).drawRect(0, -7.5, 15, 15);
 			posMarker.angle = 45;
 			if(j > 3){
 				posMarker.x = 25*j + 15;
@@ -753,17 +758,23 @@ function resize() {
 				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 16, fill : 0xfefefe};	
+			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1000){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 20, fill : 0xfefefe};	
+			element.moveNum.style = {fontFamily : 'Arial', fontSize: 16, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.6);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			element.moveNum.style = {fontFamily : 'Arial', fontSize: 20, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(1);
 		}
 		
 		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
+		
+		element.moveNum.x = element.rect.width-50;
+		element.moveNum.y = (element.rect.height/3)*2;
 		
 		element.posMarkerContainer.x = element.rect.width/6;
 		element.posMarkerContainer.y = (element.rect.height/3)*2;
