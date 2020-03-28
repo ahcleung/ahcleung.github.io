@@ -717,7 +717,7 @@ function resize() {
 		moveSpacer = 10;
 	}
 	
-	var calcWidth = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
+	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
 	button.width = calcWidth/4;
 	button.height = button.width;
@@ -728,7 +728,7 @@ function resize() {
 	button2.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
-		element.rect.width = (2*app.screen.width - 4*margin - 14*healthSpacing)/9;
+		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.rect.height = element.rect.width/4;
 		element.x = margin + healthSpacing*2 + element.rect.height + (healthSpacing + element.rect.width)*index;
 		element.y = app.screen.height - element.rect.height - margin;
