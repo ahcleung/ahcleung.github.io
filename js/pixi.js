@@ -283,7 +283,11 @@ function setup(){
 			let posMarker = new PIXI.Graphics();
 			posMarker.beginFill(0x969696).drawRect(0, -7.5, 15, 15);
 			posMarker.angle = 45;
-			posMarker.x = 25*j;
+			if(j > 4){
+				posMarker.x = 25*j + 10;
+			}else{
+				posMarker.x = 25*j;
+			}			
 			posMarkerArray.push(posMarker);
 			posMarkerContainer.addChild(posMarker);
 		}
@@ -749,10 +753,13 @@ function resize() {
 				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 16, fill : 0xfefefe};	
+			element.posMarkerContainer.scale.set(0.5);
 		}else if(app.screen.width < 1000){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 20, fill : 0xfefefe};	
+			element.posMarkerContainer.scale.set(0.75);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			element.posMarkerContainer.scale.set(1);
 		}
 		
 		element.moveName.x = element.rect.width/6;
