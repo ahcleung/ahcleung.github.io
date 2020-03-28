@@ -738,7 +738,7 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
-		element.moveName.x = element.moveElement.width/6;
+		element.moveName.x = element.rect.width/6;
 		element.moveName.y = element.rect.height/3;
 	});
 	
