@@ -286,7 +286,7 @@ function setup(){
 		
 		for (var j = 0; j < 8; j++){
 			let posMarker = new PIXI.Graphics();
-			posMarker.beginFill(0x636363).drawRect(0, -7.5, 15, 15);
+			posMarker.beginFill(0x636363).drawRect(0, 0, 15, 15);
 			posMarker.angle = 45;
 			if(j > 3){
 				posMarker.x = 25*j + 15;
