@@ -264,6 +264,8 @@ function setup(){
 	for(var i = 0; i < 4; i++){
 		let moveRect = new PIXI.Graphics();
 		const moveContainer = new PIXI.Container();
+		let moveName = new Text("Move name", {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+		moveName.anchor.set(0, 0.5);
 		
 		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		moveRect.x = 0;
@@ -271,6 +273,8 @@ function setup(){
 		
 		moveContainer.addChild(moveRect);
 		moveContainer.rect = moveRect;
+		moveContainer.addChild(moveName);
+		moveContainer.moveName = moveName;
 		
 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
@@ -664,7 +668,7 @@ function createSprite(direction, item, index){
 		item.statusEffectSprite.push(statusEffect);
 	});	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'});
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'});
 	textHP.anchor.set(0.5);
 
 	healthBar.addChild(textHP);
@@ -733,6 +737,9 @@ function resize() {
 		element.moveElement.height = element.moveElement.width * 2.3;
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
+		
+		element.moveName.x = element.moveElement.width/6;
+		element.moveName.y = element.rect.height/3;
 	});
 	
 	
@@ -768,15 +775,15 @@ function resizeHP(roster, item, index){
 	var statusSpacing = 5;
 	if(app.screen.width < 860){
 		resizeHeight = 20;
-		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xffffff, align : 'center'};	
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 2;
 	}else if(app.screen.width < 1000){
 		resizeHeight = 30;
-		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xffffff, align : 'center'};	
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
 	}else{
 		resizeHeight = 40;
-		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xffffff, align : 'center'};
+		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
 		statusSpacing = 5;
 	}
 	
