@@ -758,12 +758,12 @@ function resize() {
 		element.moveElement.y = element.rect.height/2;
 				
 		if(app.screen.width < 860){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 16, fill : 0xfefefe};	
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 15, fill : 0xfefefe};	
 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1000){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 20, fill : 0xfefefe};	
-			element.moveNum.style = {fontFamily : 'Arial', fontSize: 16, fill : 0x636363, align : 'right'};	
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
+			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.6);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
