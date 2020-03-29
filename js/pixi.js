@@ -758,7 +758,7 @@ function resize() {
 		element.moveElement.y = element.rect.height/2;
 				
 		if(app.screen.width < 860){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 15, fill : 0xfefefe};	
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1000){
