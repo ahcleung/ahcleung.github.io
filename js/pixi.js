@@ -777,7 +777,7 @@ function resize() {
 // 		element.moveName.x = element.rect.width;
 // 		element.moveName.y = 0;
 		
-		element.moveNum.x = (element.rect.width/12)*11;
+		element.moveNum.x = (element.rect.width/15)*14;
 		element.moveNum.y = (element.rect.height/3)*2;
 		
 // 		element.posMarkerContainer.x = 0;
