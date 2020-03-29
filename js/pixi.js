@@ -771,20 +771,20 @@ function resize() {
 			element.posMarkerContainer.scale.set(1);
 		}
 		
-// 		element.moveName.x = element.rect.width/6;
-// 		element.moveName.y = element.rect.height/3;
+		element.moveName.x = element.rect.width/6;
+		element.moveName.y = element.rect.height/3;
 		
-		element.moveName.x = element.rect.width;
-		element.moveName.y = 0;
+// 		element.moveName.x = element.rect.width;
+// 		element.moveName.y = 0;
 		
-		element.moveNum.x = element.rect.width;
-		element.moveNum.y = element.rect.height;
+		element.moveNum.x = (element.rect.width/12)*11;
+		element.moveNum.y = (element.rect.height/3)*2;
 		
-		element.posMarkerContainer.x = 0;
-		element.posMarkerContainer.y = 0;
+// 		element.posMarkerContainer.x = 0;
+// 		element.posMarkerContainer.y = 0;
 		
-// 		element.posMarkerContainer.x = element.rect.width/6;
-// 		element.posMarkerContainer.y = (element.rect.height/3)*2;
+		element.posMarkerContainer.x = element.rect.width/6;
+		element.posMarkerContainer.y = (element.rect.height/3)*2;
 	});
 	
 	
