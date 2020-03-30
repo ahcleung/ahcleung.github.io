@@ -261,116 +261,6 @@ function setup(){
 	// Add it to the stage
 	app.stage.addChild(rect);
 	
-	const movesList = resources["js/moves.json"];
-	
-	for(var i = 0; i < 4; i++){
-		let moveRect = new PIXI.Graphics();
-		const moveContainer = new PIXI.Container();
-		let moveName = new Text(movesList.data.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
-		moveName.anchor.set(0, 0.5);
-		
-		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
-		moveNum.anchor.set(1, 0.5);
-		
-		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		moveRect.x = 0;
-		moveRect.y = 0;
-		
-		moveContainer.addChild(moveRect);
-		moveContainer.rect = moveRect;
-		moveContainer.addChild(moveName);
-		moveContainer.moveName = moveName;
-		moveContainer.addChild(moveNum);
-		moveContainer.moveNum = moveNum;
-		
-		const posMarkerArray = [];		
-		const posMarkerContainer = new PIXI.Container();
-		
-// 		for (var j = 0; j < 8; j++){
-// 			let posMarker = new PIXI.Graphics();
-// 			posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// 			if(j > 3){
-// 				posMarker.x = 25*j + 15;
-// 			}else{
-// 				posMarker.x = 25*j;
-// 			}			
-// 			posMarkerArray.push(posMarker);
-// 			posMarkerContainer.addChild(posMarker);
-// 		}
-		
-		for (var j = 0; j < 2; j++){			
-			for (var k = 0; k < 4; k++){
-				let posMarker = new PIXI.Graphics();
-				if(j == 0){
-					if(movesList.data.moves[i].position[k] == 1){
-						posMarker.beginFill(0x66cc66).drawRect(0, -15, 15, 15);
-					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					}
-					posMarker.x = 25 * (j+k);
-				}else{
-					if(movesList.data.moves[i].target[k] == 1){
-						posMarker.beginFill(0xFF6961).drawRect(0, -15, 15, 15);
-					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					}
-					posMarker.x = 25 * (k+4) + 15;
-				}
-				posMarker.pivot.set(0.5);
-				posMarker.angle = 45;
-				posMarkerArray.push(posMarker);
-				posMarkerContainer.addChild(posMarker);
-			}
-		}
-		
-		moveContainer.addChild(posMarkerContainer);
-		moveContainer.posMarkerArray = posMarkerArray;
-		moveContainer.posMarkerContainer = posMarkerContainer;
-		
-// 		var elementID = Math.floor(Math.random() * 9) + 1;
-		var moveElement;
-		switch(movesList.data.moves[i].element){
-			case 1:
-				moveElement = new PIXI.Sprite(resources.element_earth.texture);
-				break;
-			case 2:
-				moveElement = new PIXI.Sprite(resources.element_fire.texture);
-				break;
-			case 3:
-				moveElement = new PIXI.Sprite(resources.element_flora.texture);
-				break;
-			case 4:
-				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
-				break;
-			case 5:
-				moveElement = new PIXI.Sprite(resources.element_shadow.texture);
-				break;
-			case 6:
-				moveElement = new PIXI.Sprite(resources.element_spirit.texture);
-				break;
-			case 7:
-				moveElement = new PIXI.Sprite(resources.element_toxic.texture);
-				break;
-			case 8:
-				moveElement = new PIXI.Sprite(resources.element_water.texture);
-				break;
-			case 9:
-				moveElement = new PIXI.Sprite(resources.element_wind.texture);
-				break;
-			default:
-				moveElement = new PIXI.Sprite(resources.element_fire.texture);
-				break;
-		}
-		moveElement.anchor.set(0, 0.5);
-		moveContainer.addChild(moveElement);
-		moveContainer.moveElement = moveElement;
-	
-		moveArray.push(moveContainer);
-		app.stage.addChild(moveContainer);
-	}
-	
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
 // 	rectHero.y = 0;
@@ -479,6 +369,103 @@ function setup(){
 	arrayEnemy.forEach(function (item, index){
 		createSprite(-1, item, index)	
 	});
+	
+	const movesList = resources["js/moves.json"];
+	
+	for(var i = 0; i < 4; i++){
+		let moveRect = new PIXI.Graphics();
+		const moveContainer = new PIXI.Container();
+		let moveName = new Text(movesList.data.moves[arrayHero[0].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+// 		let moveName = new Text(movesList.data.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+		moveName.anchor.set(0, 0.5);
+		
+		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
+		moveNum.anchor.set(1, 0.5);
+		
+		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveRect.x = 0;
+		moveRect.y = 0;
+		
+		moveContainer.addChild(moveRect);
+		moveContainer.rect = moveRect;
+		moveContainer.addChild(moveName);
+		moveContainer.moveName = moveName;
+		moveContainer.addChild(moveNum);
+		moveContainer.moveNum = moveNum;
+		
+		const posMarkerArray = [];		
+		const posMarkerContainer = new PIXI.Container();
+		
+		for (var j = 0; j < 2; j++){			
+			for (var k = 0; k < 4; k++){
+				let posMarker = new PIXI.Graphics();
+				if(j == 0){
+					if(movesList.data.moves[i].position[k] == 1){
+						posMarker.beginFill(0x66cc66).drawRect(0, -15, 15, 15);
+					}else{
+						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					}
+					posMarker.x = 25 * (j+k);
+				}else{
+					if(movesList.data.moves[i].target[k] == 1){
+						posMarker.beginFill(0xFF6961).drawRect(0, -15, 15, 15);
+					}else{
+						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					}
+					posMarker.x = 25 * (k+4) + 15;
+				}
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+				posMarkerArray.push(posMarker);
+				posMarkerContainer.addChild(posMarker);
+			}
+		}
+		
+		moveContainer.addChild(posMarkerContainer);
+		moveContainer.posMarkerArray = posMarkerArray;
+		moveContainer.posMarkerContainer = posMarkerContainer;
+		
+// 		var elementID = Math.floor(Math.random() * 9) + 1;
+		var moveElement;
+		switch(movesList.data.moves[i].element){
+			case 1:
+				moveElement = new PIXI.Sprite(resources.element_earth.texture);
+				break;
+			case 2:
+				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
+			case 3:
+				moveElement = new PIXI.Sprite(resources.element_flora.texture);
+				break;
+			case 4:
+				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
+				break;
+			case 5:
+				moveElement = new PIXI.Sprite(resources.element_shadow.texture);
+				break;
+			case 6:
+				moveElement = new PIXI.Sprite(resources.element_spirit.texture);
+				break;
+			case 7:
+				moveElement = new PIXI.Sprite(resources.element_toxic.texture);
+				break;
+			case 8:
+				moveElement = new PIXI.Sprite(resources.element_water.texture);
+				break;
+			case 9:
+				moveElement = new PIXI.Sprite(resources.element_wind.texture);
+				break;
+			default:
+				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
+		}
+		moveElement.anchor.set(0, 0.5);
+		moveContainer.addChild(moveElement);
+		moveContainer.moveElement = moveElement;
+	
+		moveArray.push(moveContainer);
+		app.stage.addChild(moveContainer);
+	}
 	//Read from firestore
 // 	db.collection("enemy").get().then((querySnapshot) => {
 // 		querySnapshot.forEach((doc) => {
