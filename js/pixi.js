@@ -401,14 +401,14 @@ function setup(){
 			for (var k = 0; k < 4; k++){
 				let posMarker = new PIXI.Graphics();
 				if(j == 0){
-					if(movesList.data.moves[i].position[k] == 1){
+					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 1){
 						posMarker.beginFill(0x66cc66).drawRect(0, -15, 15, 15);
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
 					}
 					posMarker.x = 25 * (j+k);
 				}else{
-					if(movesList.data.moves[i].target[k] == 1){
+					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 1){
 						posMarker.beginFill(0xFF6961).drawRect(0, -15, 15, 15);
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
@@ -428,7 +428,7 @@ function setup(){
 		
 // 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
-		switch(movesList.data.moves[i].element){
+		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
 			case 1:
 				moveElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
