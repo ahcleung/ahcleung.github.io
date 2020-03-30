@@ -650,6 +650,13 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
 	
+	let vitalBar = new PIXI.Graphics();
+	vitalBar.beginFill(0xCE0000);
+	vitalBar.drawRect(0, 0, (app.screen.width-320)/8 * (item.statCalc[0]/item.vital), 40);
+	innerBar.endFill();
+	healthBar.addChild(vitalBar);
+	healthBar.vital = vitalBar;
+	
 	let statusEffect;
 	
 	item.statusEffect.forEach((element) => {
@@ -866,6 +873,7 @@ function resizeHP(roster, item, index){
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
+			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -880,6 +888,7 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
+			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
