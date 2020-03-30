@@ -865,7 +865,7 @@ function resizeHP(roster, item, index){
 		var switcher = 0;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
-			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
+			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -879,7 +879,7 @@ function resizeHP(roster, item, index){
 				}
 			});
 		}else{
-			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].EHP);
+			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
