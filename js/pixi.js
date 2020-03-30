@@ -88,8 +88,8 @@ class Creature{
 		this.moves = moves;
 		this.pos = 0;
 		
-// 		this.vital = Math.floor(Math.random() * 50) + 10;
-		this.vital = 25;
+		this.vital = Math.floor(Math.random() * 50) + 10;
+// 		this.vital = 25;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
@@ -102,13 +102,13 @@ class Creature{
 		this.elements = creatureList.data.creatures[this.id].elements;
 		
 		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
-		this.overallHP = 100;
+// 		this.overallHP = 100;
 			
 		this.EHP = this.overallHP - this.vital;
 
 		this.statCalc = [
-// 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
-			this.EHP - 25,
+			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
+// 			this.EHP - 25,
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
 			creatureList.data.creatures[this.id].pdef + this.statDis[3],
