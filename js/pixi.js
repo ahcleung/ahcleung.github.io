@@ -656,7 +656,7 @@ function createSprite(direction, item, index){
 	
 	let vitalBar = new PIXI.Graphics();
 	vitalBar.beginFill(0xCE0000);
-	vitalBar.drawRect(0, 0, (app.screen.width-320)/8 * (item.statCalc[0]/item.vital), 40);
+	vitalBar.drawRect(0, 0, -(app.screen.width-320)/8 * (item.statCalc[0]/item.vital), 40);
 	innerBar.endFill();
 	healthBar.addChild(vitalBar);
 	healthBar.vital = vitalBar;
