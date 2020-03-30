@@ -402,16 +402,16 @@ function setup(){
 				let posMarker = new PIXI.Graphics();
 				if(j == 0){
 					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 1){
-						posMarker.beginFill(0x66cc66).drawRect(0, -12, 12, 12);
+						posMarker.beginFill(0x66cc66).drawRect(0, -14, 14, 14);
 					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -12, 12, 12);
+						posMarker.beginFill(0x636363).drawRect(0, -14, 14, 14);
 					}
 					posMarker.x = 25 * (j+k);
 				}else{
 					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 1){
-						posMarker.beginFill(0xFF6961).drawRect(0, -12, 12, 12);
+						posMarker.beginFill(0xFF6961).drawRect(0, -13, 13, 13);
 					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -12, 12, 12);
+						posMarker.beginFill(0x636363).drawRect(0, -13, 13, 13);
 					}
 					posMarker.x = 25 * (k+4) + 15;
 				}
