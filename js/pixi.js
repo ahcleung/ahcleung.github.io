@@ -304,9 +304,9 @@ function setup(){
 		moveContainer.posMarkerArray = posMarkerArray;
 		moveContainer.posMarkerContainer = posMarkerContainer;
 		
-		var elementID = Math.floor(Math.random() * 9) + 1;
+// 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
-		switch(elementID){
+		switch(movesList.data.moves[i].element){
 			case 1:
 				moveElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
