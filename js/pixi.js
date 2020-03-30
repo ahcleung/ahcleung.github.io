@@ -286,18 +286,35 @@ function setup(){
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
 		
-		for (var j = 0; j < 8; j++){
+// 		for (var j = 0; j < 8; j++){
+// 			let posMarker = new PIXI.Graphics();
+// 			posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+// 			posMarker.pivot.set(0.5);
+// 			posMarker.angle = 45;
+// 			if(j > 3){
+// 				posMarker.x = 25*j + 15;
+// 			}else{
+// 				posMarker.x = 25*j;
+// 			}			
+// 			posMarkerArray.push(posMarker);
+// 			posMarkerContainer.addChild(posMarker);
+// 		}
+		
+		for (var j = 0; j < 2; j++){
 			let posMarker = new PIXI.Graphics();
-			posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			if(j > 3){
-				posMarker.x = 25*j + 15;
-			}else{
-				posMarker.x = 25*j;
-			}			
-			posMarkerArray.push(posMarker);
-			posMarkerContainer.addChild(posMarker);
+			for (var k = 1; k < 5; k++){
+				if(j == 0){
+					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					posMarker.x = 25*k;
+				}else{
+					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					posMarker.x = 25*k*j + 15;
+				}
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+				posMarkerArray.push(posMarker);
+				posMarkerContainer.addChild(posMarker);
+			}
 		}
 		
 		moveContainer.addChild(posMarkerContainer);
