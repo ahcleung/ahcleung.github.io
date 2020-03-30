@@ -372,8 +372,6 @@ function setup(){
 	
 	const movesList = resources["js/moves.json"];
 	
-	console.log(arrayHero[1].moves[0]
-	
 	for(var i = 0; i < 4; i++){
 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
