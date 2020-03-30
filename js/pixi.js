@@ -304,14 +304,18 @@ function setup(){
 			for (var k = 0; k < 4; k++){
 				let posMarker = new PIXI.Graphics();
 				if(j == 0){
-					if(movesList.data.moves[i].position[k] == k+1){
+					if(movesList.data.moves[i].position[k] == 1){
 						posMarker.beginFill(0x66cc66).drawRect(0, -15, 15, 15);
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					}
-					
+					}					
 					posMarker.x = 25 * (j+k);
 				}else{
+					if(movesList.data.moves[i].position[k] == 1){
+						posMarker.beginFill(0xFF6961).drawRect(0, -15, 15, 15);
+					}else{
+						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					}	
 					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
 					posMarker.x = 25 * (k+4) + 15;
 				}
