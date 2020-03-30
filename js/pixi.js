@@ -266,7 +266,7 @@ function setup(){
 	for(var i = 0; i < 4; i++){
 		let moveRect = new PIXI.Graphics();
 		const moveContainer = new PIXI.Container();
-		let moveName = new Text(movesList[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+		let moveName = new Text(movesList.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
 		
 		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
