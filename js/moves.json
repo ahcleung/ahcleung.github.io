@@ -2,7 +2,7 @@
 	"moves" : [
 		{
 			"name": "Spike trap",
-			"element": "Earth",
+			"element": 1,
 			"type": "phy",
 			"power": 20,
 			"accuracy": 100,
@@ -26,7 +26,7 @@
 		},
 		{
 			"name": "Lightning strike",
-			"element": "Lightning",
+			"element": 4,
 			"type": "spe",
 			"power": 60,
 			"accuracy": 90,
@@ -50,7 +50,7 @@
 		},
 		{
 			"name": "Fire wall",
-			"element": "Fire",
+			"element": 2,
 			"type": "spe",
 			"power": 20,
 			"accuracy": 100,
@@ -74,7 +74,7 @@
 		},
 		{
 			"name": "Tectonic shift",
-			"element": "Earth",
+			"element": 1,
 			"type": "phy",
 			"power": 20,
 			"accuracy": 90,
@@ -98,7 +98,7 @@
 		},
 		{
 			"name": "Water geyser",
-			"element": "Water",
+			"element": 8,
 			"type": "spe",
 			"power": 40,
 			"accuracy": 80,
@@ -122,7 +122,7 @@
 		},
 		{
 			"name": "Aeropush",
-			"element": "Wind",
+			"element": 9,
 			"type": "spe",
 			"power": 30,
 			"accuracy": 80,
@@ -146,7 +146,7 @@
 		},
 		{
 			"name": "Uproot",
-			"element": "Flora",
+			"element": 3,
 			"type": "oth",
 			"power": 0,
 			"accuracy": 100,
@@ -170,7 +170,7 @@
 		},
 		{
 			"name": "Airburst",
-			"element": "Wind",
+			"element": 9,
 			"type": "spe",
 			"power": 60,
 			"accuracy": 100,
@@ -194,7 +194,7 @@
 		},
 		{
 			"name": "Wind rush",
-			"element": "Wind",
+			"element": 9,
 			"type": "spe",
 			"power": 40,
 			"accuracy": 80,
@@ -218,7 +218,7 @@
 		},
 		{
 			"name": "Volt punch",
-			"element": "Lightning",
+			"element": 4,
 			"type": "phy",
 			"power": 15,
 			"accuracy": 80,
