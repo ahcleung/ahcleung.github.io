@@ -7,10 +7,10 @@
 			"power": 20,
 			"accuracy": 100,
 			"position": [
-				2, 3
+				0,0,1,1
 			],
 			"target": [
-				1, 2, 3, 4
+				1,1,1,1
 			],
 			"tags":[
 				"hazard", "turns"
@@ -31,10 +31,10 @@
 			"power": 60,
 			"accuracy": 90,
 			"position": [
-				1, 3, 4
+				1,1,0,0
 			],
 			"target": [
-				1, 2, 3, 4
+				1,1,1,1
 			],
 			"tags":[
 				"splash"
@@ -55,10 +55,10 @@
 			"power": 20,
 			"accuracy": 100,
 			"position": [
-				2, 3
+				0,1,1,1
 			],
 			"target": [
-				1, 2, 3, 4
+				1,1,1,1
 			],
 			"tags":[
 				"hazard", "turns"
@@ -79,10 +79,10 @@
 			"power": 20,
 			"accuracy": 90,
 			"position": [
-				2, 3
+				0,1,1,0
 			],
 			"target": [
-				2, 3
+				0,1,1,0
 			],
 			"tags":[
 				"displace"
@@ -103,7 +103,7 @@
 			"power": 40,
 			"accuracy": 80,
 			"position": [
-				1, 2, 3, 4
+				1,1,1,1
 			],
 			"target": [
 
@@ -127,10 +127,10 @@
 			"power": 30,
 			"accuracy": 80,
 			"position": [
-				1, 2
+				0,0,1,1
 			],
 			"target": [
-				1, 2
+				1,1,0,0
 			],
 			"tags":[
 				"displace"
@@ -151,10 +151,10 @@
 			"power": 0,
 			"accuracy": 100,
 			"position": [
-				3, 4
+				1,1,0,0
 			],
 			"target": [
-				2, 3
+				0,1,1,0
 			],
 			"tags":[
 				"displace"
@@ -175,10 +175,10 @@
 			"power": 60,
 			"accuracy": 100,
 			"position": [
-				2, 3
+				0,1,1,0
 			],
 			"target": [
-				2, 3
+				0,1,1,0
 			],
 			"tags":[
 
@@ -199,10 +199,10 @@
 			"power": 40,
 			"accuracy": 80,
 			"position": [
-				1, 2
+				0,0,1,1
 			],
 			"target": [
-				1, 2
+				1,1,0,0
 			],
 			"tags":[
 				"statchange", "turns"
@@ -223,10 +223,10 @@
 			"power": 15,
 			"accuracy": 80,
 			"position": [
-				1, 2
+				0,0,1,1
 			],
 			"target": [
-				1, 2
+				1,1,0,0
 			],
 			"tags":[
 				"multiple", "statchange", "turns"
