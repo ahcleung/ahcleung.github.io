@@ -308,15 +308,14 @@ function setup(){
 						posMarker.beginFill(0x66cc66).drawRect(0, -15, 15, 15);
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					}					
+					}
 					posMarker.x = 25 * (j+k);
 				}else{
 					if(movesList.data.moves[i].target[k] == 1){
 						posMarker.beginFill(0xFF6961).drawRect(0, -15, 15, 15);
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					}	
-					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
+					}
 					posMarker.x = 25 * (k+4) + 15;
 				}
 				posMarker.pivot.set(0.5);
