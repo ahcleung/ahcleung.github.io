@@ -300,9 +300,9 @@ function setup(){
 // 			posMarkerContainer.addChild(posMarker);
 // 		}
 		
-		for (var j = 0; j < 2; j++){
-			let posMarker = new PIXI.Graphics();
+		for (var j = 0; j < 2; j++){			
 			for (var k = 0; k < 4; k++){
+				let posMarker = new PIXI.Graphics();
 				if(j == 0){
 					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
 					posMarker.x = 25 * (j+k);
