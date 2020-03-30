@@ -88,6 +88,7 @@ class Creature{
 		this.moves = moves;
 		this.pos = 0;
 		
+		this.vital = Math.floor(Math.random() * 50) + 10;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
@@ -612,7 +613,7 @@ function setPos(item, index, array){
 }
 
 function createSprite(direction, item, index){
-	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.statCalc[0] + "/" + item.EHP);
+	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.statCalc[0] + "/" + item.EHP + "|Vital: " + item.vital);
 			
 	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
 	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
