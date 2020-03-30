@@ -302,13 +302,13 @@ function setup(){
 		
 		for (var j = 0; j < 2; j++){
 			let posMarker = new PIXI.Graphics();
-			for (var k = 1; k < 5; k++){
+			for (var k = 0; k < 4; k++){
 				if(j == 0){
 					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					posMarker.x = 25*k;
+					posMarker.x = 25 * (j+k);
 				}else{
 					posMarker.beginFill(0x636363).drawRect(0, -15, 15, 15);
-					posMarker.x = 25*k*j + 15;
+					posMarker.x = 25 * (k+4) + 15;
 				}
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
