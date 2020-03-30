@@ -108,7 +108,7 @@ class Creature{
 
 		this.statCalc = [
 // 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
-			this.EHP - 50;
+			this.EHP - 25,
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
 			creatureList.data.creatures[this.id].pdef + this.statDis[3],
