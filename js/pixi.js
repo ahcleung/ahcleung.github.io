@@ -785,11 +785,11 @@ function createSprite(direction, item, index){
 		selected.selectedStart = selectedStart;
 		
 		let selectedMid = new PIXI.Graphics();
-		selectedStart.beginFill(0xFF392F);
-		selectedStart.drawRect(0, 0, 4, 20);
-		selectedStart.endFill();
-		selected.addChild(selectedStart);
-		selected.selectedStart = selectedStart;
+		selectedMid.beginFill(0xFF392F);
+		selectedMid.drawRect(0, 0, 4, 20);
+		selectedMid.endFill();
+		selected.addChild(selectedMid);
+		selected.selectedMid = selectedMid;
 
 		let selected1 = new PIXI.Graphics();
 		selected1.beginFill(0xFF392F);
