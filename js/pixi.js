@@ -909,7 +909,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected.width = resizeWidth * 2 + healthSpacing;
+			item.selected.width = resizeWidth * 2 + healthSpacing + 10;
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -927,7 +927,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected.width = resizeWidth;
+			item.selected.width = resizeWidth + 10;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1023,7 +1023,9 @@ function resizeHP(roster, item, index){
 	item.textHP.y = item.outer.height/2;
 	
 	item.turn.y = item.outer.height + 2;
+	
 	item.selected.y = -5;
+	item.selected.x = -5;
 	
 	item.selectedStart.x = -10;
 	item.selectedStart.y = -5;
