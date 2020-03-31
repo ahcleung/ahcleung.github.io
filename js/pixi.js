@@ -1210,7 +1210,7 @@ function onCreatureClicked(){
 
 
 function onHPClicked(){
-	console.log("HP:" + this.identifier);
+	console.log("HP:" + this.identifier[0]);
 }
 
 // function onButtonDown2(){
