@@ -670,14 +670,14 @@ function createSprite(direction, item, index){
 	
 	let selectedEnd = new PIXI.Graphics();
 	selectedEnd.beginFill(0xFF0000);
-	selectedEnd.drawRect(0, 0, 5, 25);
+	selectedEnd.drawRect(0, 0, 4, 25);
 	selectedEnd.endFill();
 	healthBar.addChild(selectedEnd);
 	healthBar.selectedEnd = selectedEnd;
 	
 	let selectedStart = new PIXI.Graphics();
 	selectedStart.beginFill(0x0000FF);
-	selectedStart.drawRect(0, 0, 5, 25);
+	selectedStart.drawRect(0, 0, 4, 25);
 	selectedStart.endFill();
 	healthBar.addChild(selectedStart);
 	healthBar.selectedStart = selectedStart;
@@ -691,7 +691,7 @@ function createSprite(direction, item, index){
 	
 	let selected2 = new PIXI.Graphics();
 	selected2.beginFill(0xFFD600);
-	selected2.drawRect(0, 0, (app.screen.width-320)/8, 5);
+	selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
 	selected2.endFill();
 	healthBar.addChild(selected2);
 	healthBar.selected2 = selected2;
@@ -1036,14 +1036,14 @@ function resizeHP(roster, item, index){
 	item.selected1.y = -6;
 	item.selected1.x = -5;
 	
-	item.selected2.y = -14;
+	item.selected2.y = -13;
 	item.selected2.x = -5;
 	
-	item.selectedStart.x = -8;
-	item.selectedStart.y = -10;
+	item.selectedStart.x = -7;
+	item.selectedStart.y = -15;
 	
 	item.selectedEnd.x = item.outer.width+3;
-	item.selectedEnd.y = -10;
+	item.selectedEnd.y = -15;
 }
 
 function resizeSprites(direction, item, index){
