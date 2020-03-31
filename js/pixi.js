@@ -1021,6 +1021,8 @@ function resizeHP(roster, item, index){
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected.selectedMid.x = ((resizeWidth * 2 + healthSpacing)/2)-2;
+			item.selected.selectedMid.y = -10;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1037,8 +1039,10 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected.selected1.width = resizeWidth;
-			item.selected.selected2.width = resizeWidth;
+			item.selected.selected1.width = resizeWidth + 10;
+			item.selected.selected2.width = resizeWidth + 10;
+			item.selected.selectedMid.x = (resizeWidth/2)-2;
+			item.selected.selectedMid.y = -10;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1054,9 +1058,6 @@ function resizeHP(roster, item, index){
 				}
 			});
 		}
-		
-		item.selected.selectedMid.x = (resizeWidth/2)-2;
-		item.selected.selectedMid.y = -10;
 		
 		switch(arrayEnemy[index].pos) {
 			case 1:
