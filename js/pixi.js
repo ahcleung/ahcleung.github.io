@@ -682,12 +682,19 @@ function createSprite(direction, item, index){
 	healthBar.addChild(selectedStart);
 	healthBar.selectedStart = selectedStart;
 	
-	let selected = new PIXI.Graphics();
-	selected.beginFill(0xFFD600);
-	selected.drawRect(0, 0, (app.screen.width-320)/8, 5);
-	selected.endFill();
-	healthBar.addChild(selected);
-	healthBar.selected = selected;
+	let selected1 = new PIXI.Graphics();
+	selected1.beginFill(0xFFD600);
+	selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
+	selected1.endFill();
+	healthBar.addChild(selected1);
+	healthBar.selected1 = selected1;
+	
+	let selected2 = new PIXI.Graphics();
+	selected2.beginFill(0xFFD600);
+	selected2.drawRect(0, 0, (app.screen.width-320)/8, 5);
+	selected2.endFill();
+	healthBar.addChild(selected2);
+	healthBar.selected2 = selected2;
 	
 	let statusEffect;
 	
@@ -909,7 +916,8 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected1.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected2.width = resizeWidth * 2 + healthSpacing + 10;
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -927,7 +935,8 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected.width = resizeWidth + 10;
+			item.selected1.width = resizeWidth + 10;
+			item.selected2.width = resizeWidth + 10;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1024,8 +1033,11 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected.y = -8;
-	item.selected.x = -5;
+	item.selected1.y = -8;
+	item.selected1.x = -5;
+	
+	item.selected2.y = -15;
+	item.selected2.x = -5;
 	
 	item.selectedStart.x = -8;
 	item.selectedStart.y = -5;
