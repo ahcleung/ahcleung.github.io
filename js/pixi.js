@@ -886,10 +886,10 @@ function resizeHP(roster, item, index){
 				element.height = element.width;
 				if(index < 8){
 					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing;
+					element.y = resizeHeight + statusSpacing*2;
 				}else{
 					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*2 + element.height;
+					element.y = resizeHeight + statusSpacing*3 + element.height;
 				}
 			});
 		}else{
@@ -901,13 +901,13 @@ function resizeHP(roster, item, index){
 				element.height = element.width;
 				if(index < 4){
 					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing;
+					element.y = resizeHeight + statusSpacing*2;
 				}else if(index < 8){
 					element.x = statusSpacing + ((statusSpacing + element.width)*(index-4));
-					element.y = resizeHeight + statusSpacing*2 + element.height;
+					element.y = resizeHeight + statusSpacing*3 + element.height;
 				}else{
 					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*3 + element.height*2;
+					element.y = resizeHeight + statusSpacing*4 + element.height*2;
 				}
 			});
 		}		
