@@ -387,8 +387,8 @@ function setup(){
 // 		let moveName = new Text(movesList.data.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
 		
-		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
-		moveNum.anchor.set(1, 0.5);
+// 		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
+// 		moveNum.anchor.set(1, 0.5);
 		
 		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		moveRect.x = 0;
@@ -398,8 +398,8 @@ function setup(){
 		moveContainer.rect = moveRect;
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
-		moveContainer.addChild(moveNum);
-		moveContainer.moveNum = moveNum;
+// 		moveContainer.addChild(moveNum);
+// 		moveContainer.moveNum = moveNum;
 		
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
@@ -788,15 +788,15 @@ function resize() {
 				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
-			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
+// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1000){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
-			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
+// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.5);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
-			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
+// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(1);
 		}
 		
@@ -806,8 +806,8 @@ function resize() {
 // 		element.moveName.x = element.rect.width;
 // 		element.moveName.y = 0;
 		
-		element.moveNum.x = (element.rect.width/15)*14;
-		element.moveNum.y = (element.rect.height/3)*2;
+// 		element.moveNum.x = (element.rect.width/15)*14;
+// 		element.moveNum.y = (element.rect.height/3)*2;
 		
 // 		element.posMarkerContainer.x = 0;
 // 		element.posMarkerContainer.y = 0;
