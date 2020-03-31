@@ -863,6 +863,7 @@ function resizeHP(roster, item, index){
 	
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
+	item.vital.height = resizeHeight;
 	item.outer.width = resizeWidth;
 // 	item.textHP.x = resizeWidth/2;
 	
