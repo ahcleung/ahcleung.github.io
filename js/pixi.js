@@ -670,14 +670,14 @@ function createSprite(direction, item, index){
 	
 	let selectedEnd = new PIXI.Graphics();
 	selectedEnd.beginFill(0xFF0000);
-	selectedEnd.drawRect(0, 0, 5, 20);
+	selectedEnd.drawRect(0, 0, 5, 25);
 	selectedEnd.endFill();
 	healthBar.addChild(selectedEnd);
 	healthBar.selectedEnd = selectedEnd;
 	
 	let selectedStart = new PIXI.Graphics();
 	selectedStart.beginFill(0x0000FF);
-	selectedStart.drawRect(0, 0, 5, 20);
+	selectedStart.drawRect(0, 0, 5, 25);
 	selectedStart.endFill();
 	healthBar.addChild(selectedStart);
 	healthBar.selectedStart = selectedStart;
@@ -976,7 +976,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected.width = resizeWidth * 2 + healthSpacing;
+			item.selected1.width = resizeWidth * 2 + healthSpacing;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -993,7 +993,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected.width = resizeWidth;
+			item.selected1.width = resizeWidth;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1033,17 +1033,17 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected1.y = -8;
+	item.selected1.y = -6;
 	item.selected1.x = -5;
 	
-	item.selected2.y = -15;
+	item.selected2.y = -14;
 	item.selected2.x = -5;
 	
 	item.selectedStart.x = -8;
-	item.selectedStart.y = -5;
+	item.selectedStart.y = -10;
 	
 	item.selectedEnd.x = item.outer.width+3;
-	item.selectedEnd.y = -5;
+	item.selectedEnd.y = -10;
 }
 
 function resizeSprites(direction, item, index){
