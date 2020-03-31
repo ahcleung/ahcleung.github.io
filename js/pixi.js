@@ -631,6 +631,12 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 	
+	creatureContainer.buttonMode = true;
+	creatureContainer.interactive = true;
+	creatureContainer
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onCreatureClicked(this));
+	
 	if(item.size == 2){		
 		creatureContainer.scale.set(direction * 0.5, 0.5);
 	}else{
@@ -1187,6 +1193,10 @@ function onButtonDown(){
 	if (screenfull.isEnabled) {
 		screenfull.toggle();
 	}
+}
+
+function onCreatureClicked(element){
+	console.log(element);
 }
 
 // function onButtonDown2(){
