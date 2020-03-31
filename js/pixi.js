@@ -631,7 +631,7 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 	
-	creatureContainer.identifier = [index, direction];
+	creatureContainer.identifier = [direction, index];
 	creatureContainer.buttonMode = true;
 	creatureContainer.interactive = true;
 	creatureContainer
@@ -646,7 +646,7 @@ function createSprite(direction, item, index){
 	
 	const healthBar = new PIXI.Container();
 	
-	healthBar.identifier = index * direction;
+	healthBar.identifier = [direction, index];
 	healthBar.buttonMode = true;
 	healthBar.interactive = true;
 	healthBar
