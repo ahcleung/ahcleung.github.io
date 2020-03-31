@@ -669,14 +669,14 @@ function createSprite(direction, item, index){
 	healthBar.turn = turnIndicator;
 	
 	let selectedEnd = new PIXI.Graphics();
-	selectedEnd.beginFill(0xFF0000);
+	selectedEnd.beginFill(0xFFD600);
 	selectedEnd.drawRect(0, 0, 4, 25);
 	selectedEnd.endFill();
 	healthBar.addChild(selectedEnd);
 	healthBar.selectedEnd = selectedEnd;
 	
 	let selectedStart = new PIXI.Graphics();
-	selectedStart.beginFill(0x0000FF);
+	selectedStart.beginFill(0xFFD600);
 	selectedStart.drawRect(0, 0, 4, 25);
 	selectedStart.endFill();
 	healthBar.addChild(selectedStart);
