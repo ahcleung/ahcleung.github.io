@@ -1205,12 +1205,12 @@ function onButtonDown(){
 }
 
 function onCreatureClicked(){
-	console.log(this.identifier);
+	console.log("Creature:" + this.identifier);
 }
 
 
 function onHPClicked(){
-	console.log(this.identifier);
+	console.log("HP:" + this.identifier);
 }
 
 // function onButtonDown2(){
