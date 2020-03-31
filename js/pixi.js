@@ -645,6 +645,14 @@ function createSprite(direction, item, index){
 	}
 	
 	const healthBar = new PIXI.Container();
+	
+	healthBar.identifier = index * direction;
+	healthBar.buttonMode = true;
+	healthBar.interactive = true;
+	healthBar
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onHPClicked);
+	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
 	outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
@@ -1197,6 +1205,11 @@ function onButtonDown(){
 }
 
 function onCreatureClicked(){
+	console.log(this.identifier);
+}
+
+
+function onHPClicked(){
 	console.log(this.identifier);
 }
 
