@@ -668,33 +668,38 @@ function createSprite(direction, item, index){
 	healthBar.addChild(turnIndicator);
 	healthBar.turn = turnIndicator;
 	
+	const selected = new PIXI.Container();
+	
 	let selectedEnd = new PIXI.Graphics();
 	selectedEnd.beginFill(0xFFD600);
 	selectedEnd.drawRect(0, 0, 4, 25);
 	selectedEnd.endFill();
-	healthBar.addChild(selectedEnd);
-	healthBar.selectedEnd = selectedEnd;
+	selected.addChild(selectedEnd);
+	selected.selectedEnd = selectedEnd;
 	
 	let selectedStart = new PIXI.Graphics();
 	selectedStart.beginFill(0xFFD600);
 	selectedStart.drawRect(0, 0, 4, 25);
 	selectedStart.endFill();
-	healthBar.addChild(selectedStart);
-	healthBar.selectedStart = selectedStart;
+	selected.addChild(selectedStart);
+	selected.selectedStart = selectedStart;
 	
 	let selected1 = new PIXI.Graphics();
 	selected1.beginFill(0xFFD600);
 	selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
 	selected1.endFill();
-	healthBar.addChild(selected1);
-	healthBar.selected1 = selected1;
+	selected.addChild(selected1);
+	selected.selected1 = selected1;
 	
 	let selected2 = new PIXI.Graphics();
 	selected2.beginFill(0xFFD600);
 	selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
 	selected2.endFill();
-	healthBar.addChild(selected2);
-	healthBar.selected2 = selected2;
+	selected.addChild(selected2);
+	selected.selected2 = selected2;
+	
+	healthBar.addChild(selected);
+	healthBar.selected = selected;
 	
 	let statusEffect;
 	
@@ -916,8 +921,8 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected1.width = resizeWidth * 2 + healthSpacing + 10;
-			item.selected2.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -935,8 +940,8 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected1.width = resizeWidth + 10;
-			item.selected2.width = resizeWidth + 10;
+			item.selected.selected1.width = resizeWidth + 10;
+			item.selected.selected2.width = resizeWidth + 10;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -976,7 +981,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -993,7 +998,7 @@ function resizeHP(roster, item, index){
 			item.vital.width = resizeWidth * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
-			item.selected1.width = resizeWidth;
+			item.selected.selected1.width = resizeWidth;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1033,17 +1038,17 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected1.y = -6;
-	item.selected1.x = -5;
+	item.selected.selected1.y = -6;
+	item.selected.selected1.x = -5;
 	
-	item.selected2.y = -13;
-	item.selected2.x = -5;
+	item.selected.selected2.y = -12;
+	item.selected.selected2.x = -5;
 	
-	item.selectedStart.x = -7;
-	item.selectedStart.y = -15;
+	item.selected.selectedStart.x = -7;
+	item.selected.selectedStart.y = -15;
 	
-	item.selectedEnd.x = item.outer.width+3;
-	item.selectedEnd.y = -15;
+	item.selected.selectedEnd.x = item.outer.width+3;
+	item.selected.selectedEnd.y = -15;
 }
 
 function resizeSprites(direction, item, index){
