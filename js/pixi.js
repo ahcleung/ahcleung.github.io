@@ -635,7 +635,7 @@ function createSprite(direction, item, index){
 	creatureContainer.interactive = true;
 	creatureContainer
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onCreatureClicked(this));
+        .on('pointerdown', onCreatureClicked);
 	
 	if(item.size == 2){		
 		creatureContainer.scale.set(direction * 0.5, 0.5);
@@ -1195,8 +1195,8 @@ function onButtonDown(){
 	}
 }
 
-function onCreatureClicked(element){
-	console.log(element);
+function onCreatureClicked(){
+	console.log(this);
 }
 
 // function onButtonDown2(){
