@@ -631,6 +631,7 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 	
+	creatureContainer.identifier = index;
 	creatureContainer.buttonMode = true;
 	creatureContainer.interactive = true;
 	creatureContainer
@@ -1196,7 +1197,7 @@ function onButtonDown(){
 }
 
 function onCreatureClicked(){
-	console.log(this);
+	console.log(this.identifier);
 }
 
 // function onButtonDown2(){
