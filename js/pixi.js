@@ -1024,13 +1024,13 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected.y = -5;
+	item.selected.y = -8;
 	item.selected.x = -5;
 	
-	item.selectedStart.x = -10;
+	item.selectedStart.x = -8;
 	item.selectedStart.y = -5;
 	
-	item.selectedEnd.x = item.outer.width+5;
+	item.selectedEnd.x = item.outer.width+3;
 	item.selectedEnd.y = -5;
 }
 
