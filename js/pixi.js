@@ -668,39 +668,6 @@ function createSprite(direction, item, index){
 	healthBar.addChild(turnIndicator);
 	healthBar.turn = turnIndicator;
 	
-	const selected = new PIXI.Container();
-	
-	let selectedEnd = new PIXI.Graphics();
-	selectedEnd.beginFill(0xFFD600);
-	selectedEnd.drawRect(0, 0, 4, 25);
-	selectedEnd.endFill();
-	selected.addChild(selectedEnd);
-	selected.selectedEnd = selectedEnd;
-	
-	let selectedStart = new PIXI.Graphics();
-	selectedStart.beginFill(0xFFD600);
-	selectedStart.drawRect(0, 0, 4, 25);
-	selectedStart.endFill();
-	selected.addChild(selectedStart);
-	selected.selectedStart = selectedStart;
-	
-	let selected1 = new PIXI.Graphics();
-	selected1.beginFill(0xFFD600);
-	selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
-	selected1.endFill();
-	selected.addChild(selected1);
-	selected.selected1 = selected1;
-	
-	let selected2 = new PIXI.Graphics();
-	selected2.beginFill(0xFFD600);
-	selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
-	selected2.endFill();
-	selected.addChild(selected2);
-	selected.selected2 = selected2;
-	
-	healthBar.addChild(selected);
-	healthBar.selected = selected;
-	
 	let statusEffect;
 	
 	item.statusEffect.forEach((element) => {
@@ -763,12 +730,83 @@ function createSprite(direction, item, index){
 	healthBar.textHP = textHP;
 
 	if(direction > 0){
+		const selected = new PIXI.Container();
+	
+		let selectedEnd = new PIXI.Graphics();
+		selectedEnd.beginFill(0xFFD600);
+		selectedEnd.drawRect(0, 0, 4, 25);
+		selectedEnd.endFill();
+		selected.addChild(selectedEnd);
+		selected.selectedEnd = selectedEnd;
+
+		let selectedStart = new PIXI.Graphics();
+		selectedStart.beginFill(0xFFD600);
+		selectedStart.drawRect(0, 0, 4, 25);
+		selectedStart.endFill();
+		selected.addChild(selectedStart);
+		selected.selectedStart = selectedStart;
+
+		let selected1 = new PIXI.Graphics();
+		selected1.beginFill(0xFFD600);
+		selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
+		selected1.endFill();
+		selected.addChild(selected1);
+		selected.selected1 = selected1;
+
+		let selected2 = new PIXI.Graphics();
+		selected2.beginFill(0xFFD600);
+		selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
+		selected2.endFill();
+		selected.addChild(selected2);
+		selected.selected2 = selected2;
+
+		healthBar.addChild(selected);
+		healthBar.selected = selected;
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
 	}else{
+		const selected = new PIXI.Container();
+	
+		let selectedEnd = new PIXI.Graphics();
+		selectedEnd.beginFill(0xFF392F);
+		selectedEnd.drawRect(0, 0, 4, 25);
+		selectedEnd.endFill();
+		selected.addChild(selectedEnd);
+		selected.selectedEnd = selectedEnd;
+
+		let selectedStart = new PIXI.Graphics();
+		selectedStart.beginFill(0xFF392F);
+		selectedStart.drawRect(0, 0, 4, 25);
+		selectedStart.endFill();
+		selected.addChild(selectedStart);
+		selected.selectedStart = selectedStart;
+		
+		let selectedMid = new PIXI.Graphics();
+		selectedStart.beginFill(0xFF392F);
+		selectedStart.drawRect(0, 0, 4, 20);
+		selectedStart.endFill();
+		selected.addChild(selectedStart);
+		selected.selectedStart = selectedStart;
+
+		let selected1 = new PIXI.Graphics();
+		selected1.beginFill(0xFF392F);
+		selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
+		selected1.endFill();
+		selected.addChild(selected1);
+		selected.selected1 = selected1;
+
+		let selected2 = new PIXI.Graphics();
+		selected2.beginFill(0xFF392F);
+		selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
+		selected2.endFill();
+		selected.addChild(selected2);
+		selected.selected2 = selected2;
+
+		healthBar.addChild(selected);
+		healthBar.selected = selected;
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
 		
@@ -981,7 +1019,8 @@ function resizeHP(roster, item, index){
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
-			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
+			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -999,6 +1038,7 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			item.selected.selected1.width = resizeWidth;
+			item.selected.selected2.width = resizeWidth;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -1014,6 +1054,10 @@ function resizeHP(roster, item, index){
 				}
 			});
 		}
+		
+		item.selected.selectedMid.x = (resizeWidth/2)-2;
+		item.selected.selectedMid.y = -10;
+		
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
