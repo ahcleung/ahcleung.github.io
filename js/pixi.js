@@ -661,6 +661,20 @@ function createSprite(direction, item, index){
 	healthBar.addChild(vitalBar);
 	healthBar.vital = vitalBar;
 	
+	let turnIndicator = new PIXI.Graphics();
+	turnIndicator.beginFill(0xFFB800);
+	turnIndicator.drawRect(0, 0, (app.screen.width-320)/8, 5);
+	turnIndicator.endFill();
+	healthBar.addChild(turnIndicator);
+	healthBar.turn = turnIndicator;
+	
+	let selected = new PIXI.Graphics();
+	selected.beginFill(0xFFD600);
+	selected.drawRect(0, 0, (app.screen.width-320)/8, 5);
+	selected.endFill();
+	healthBar.addChild(selected);
+	healthBar.selected = selected;
+	
 	let statusEffect;
 	
 	item.statusEffect.forEach((element) => {
@@ -880,6 +894,8 @@ function resizeHP(roster, item, index){
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
+			item.turn.width = resizeWidth * 2 + healthSpacing;
+			item.selected.width = resizeWidth * 2 + healthSpacing;
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -896,6 +912,8 @@ function resizeHP(roster, item, index){
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
 			item.vital.x = resizeWidth;
+			item.turn.width = resizeWidth;
+			item.selected.width = resizeWidth;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -934,6 +952,8 @@ function resizeHP(roster, item, index){
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth * 2 + healthSpacing;
+			item.turn.width = resizeWidth * 2 + healthSpacing;
+			item.selected.width = resizeWidth * 2 + healthSpacing;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
@@ -949,6 +969,8 @@ function resizeHP(roster, item, index){
 			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 			item.vital.width = resizeWidth * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
 			item.vital.x = resizeWidth;
+			item.turn.width = resizeWidth;
+			item.selected.width = resizeWidth;
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
 				element.height = element.width;
