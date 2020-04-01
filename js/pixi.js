@@ -914,6 +914,7 @@ function resize() {
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(1);
+			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
 			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
 		}
 		
