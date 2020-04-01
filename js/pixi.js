@@ -187,6 +187,14 @@ const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 
 const elementEarth = PIXI.Texture.from('img/element_earth.png');
+const elementFire = PIXI.Texture.from('img/element_fire.png');
+const elementFlora = PIXI.Texture.from('img/element_flora.png');
+const elementLightning = PIXI.Texture.from('img/element_lightning.png');
+const elementShadow = PIXI.Texture.from('img/element_shadow.png');
+const elementSpirit = PIXI.Texture.from('img/element_spirit.png');
+const elementToxic = PIXI.Texture.from('img/element_toxic.png');
+const elementWater = PIXI.Texture.from('img/element_water.png');
+const elementWind = PIXI.Texture.from('img/element_wind.png');
 
 const vita = [];
 vita[0] = {
@@ -1272,9 +1280,11 @@ function onButtonDown(){
 function onCreatureClicked(){
 // 	console.log("Creature:" + this.identifier);
 	if(this.identifier[0] < 0){
-		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves);
+		
+// 		movesList.data.moves[arrayEnemy[this.identifier[1]].moves[i]].element
+		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves.length);
 	}else{
-		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves);
+		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves.length);
 	}
 	moveArray[0].moveElement.texture = elementEarth;
 }
