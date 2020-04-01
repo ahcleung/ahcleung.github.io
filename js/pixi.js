@@ -439,9 +439,9 @@ function setup(){
 		for (var j = 0; j < 2; j++){			
 			for (var k = 0; k < 4; k++){
 				let defaultMarker = new PIXI.Graphics();
-				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				let posMarker = new PIXI.Graphics();
 				var w = 12.728;
+				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				let posMarker = new PIXI.Graphics();				
 				if(j == 0){
 					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 0){
@@ -463,7 +463,7 @@ function setup(){
 				posMarker.angle = 45;
 				posMarkerArray.push(posMarker);
 				posMarkerContainer.addChild(defaultMarker);
-				posMarkerContainer.addChild(posMarker);
+// 				posMarkerContainer.addChild(posMarker);
 			}
 		}
 		
