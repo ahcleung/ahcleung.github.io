@@ -1280,11 +1280,16 @@ function onButtonDown(){
 function onCreatureClicked(){
 // 	console.log("Creature:" + this.identifier);
 	if(this.identifier[0] < 0){
-		
+		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
+			console.log("Enemy moves: " + movesList.data.moves[element].element);
+		});
 // 		movesList.data.moves[arrayEnemy[this.identifier[1]].moves[i]].element
-		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves.length);
+// 		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves.length);
 	}else{
-		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves.length);
+		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
+			console.log("Hero moves: " + movesList.data.moves[element].element);
+		});		
+// 		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves.length);
 	}
 	moveArray[0].moveElement.texture = elementEarth;
 }
