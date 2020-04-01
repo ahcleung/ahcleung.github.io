@@ -900,8 +900,8 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
-// 		element.posMarkerContainer.width = element.rect.width/2;
-// 		element.posMarkerContainer.height = element.posMarkerContainer.width/11;
+		element.posMarkerContainer.width = element.rect.width/2;
+		element.posMarkerContainer.height = element.posMarkerContainer.width/12;
 // 		element.posMarkerContainer.scale.set(element.moveElement.width);
 		
 		if(app.screen.width < 860){
@@ -915,9 +915,9 @@ function resize() {
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
-			element.posMarkerContainer.scale.set(1);
-			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
-			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
+// 			element.posMarkerContainer.scale.set(1);
+// 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
+// 			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
 		}
 		
 		element.moveName.x = element.rect.width/6;
