@@ -193,17 +193,12 @@ vita[0] = {
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
 vita[1] = {
-	id: 9, level: 45, 
+	id: 2, level: 45, 
 	move1: 4, move2: 5, move3: 6, move4: 7,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
 vita[2] = {
 	id: 10, level: 47, 
-	move1: 8, move2: 0, move3: 1, move4: 2,
-	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
-};
-vita[3] = {
-	id: 12, level: 47, 
 	move1: 8, move2: 0, move3: 1, move4: 2,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
@@ -219,11 +214,11 @@ enemy[1] = {
 	move1: 0, move2: 1, move3: 5, move4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
 };
-// enemy[2] = {
-// 	id: 12, level: 45, 
-// 	move1: 4, move2: 6, move3: 7, move4: 3,
-// 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
-// };
+enemy[2] = {
+	id: 12, level: 45, 
+	move1: 4, move2: 6, move3: 7, move4: 3,
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+};
 
 //Write to firestore
 // db.collection("enemy").doc("004").set({
@@ -265,6 +260,18 @@ function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
+	
+	var elementEarth = PIXI.Texture.from('element_earth');
+	
+// 	{name:'element_earth', url:'img/element_earth.png'},
+// 		{name:'element_fire', url:'img/element_fire.png'},
+// 		{name:'element_flora', url:'img/element_flora.png'},
+// 		{name:'element_lightning', url:'img/element_lightning.png'},
+// 		{name:'element_shadow', url:'img/element_shadow.png'},
+// 		{name:'element_spirit', url:'img/element_spirit.png'},
+// 		{name:'element_toxic', url:'img/element_toxic.png'},
+// 		{name:'element_water', url:'img/element_water.png'},
+// 		{name:'element_wind', url:'img/element_wind.png'},
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
