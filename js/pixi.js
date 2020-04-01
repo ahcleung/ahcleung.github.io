@@ -444,16 +444,16 @@ function setup(){
 				let posMarker = new PIXI.Graphics();				
 				if(j == 0){
 					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// 					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 0){
-// 						posMarker.visible = false;
-// 					}
+					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 0){
+						posMarker.visible = false;
+					}
 					defaultMarker.x = 25 * (j+k);
 					posMarker.x = 25 * (j+k);
 				}else{
 					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-// 					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 0){
-// 						posMarker.visible = false;
-// 					}
+					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 0){
+						posMarker.visible = false;
+					}
 					defaultMarker.x = 25 * (k+4) + 23;
 					posMarker.x = 25 * (k+4) + 23;
 				}
