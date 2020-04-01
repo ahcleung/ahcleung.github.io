@@ -1316,7 +1316,7 @@ function onCreatureClicked(){
 					moveArray[index].moveElement.texture = elementFire;
 					break;
 			}
-			moveArray[index].moveName = movesList.data.moves[element].name;
+			moveArray[index].moveName.text = movesList.data.moves[element].name;
 		});
 // 		movesList.data.moves[arrayEnemy[this.identifier[1]].moves[i]].element
 // 		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves.length);
