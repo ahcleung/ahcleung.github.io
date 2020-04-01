@@ -440,7 +440,7 @@ function setup(){
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -13, 13, 13);
 					}
-					posMarker.x = 25 * (k+4) + 20;
+					posMarker.x = 25 * (k+4) + 15;
 				}
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
@@ -899,8 +899,8 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
-		element.posMarkerContainer.width = element.rect.width/2;
-		element.posMarkerContainer.height = element.posMarkerContainer.width/16;
+// 		element.posMarkerContainer.width = element.rect.width/2;
+// 		element.posMarkerContainer.height = element.posMarkerContainer.width/16;
 				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
@@ -913,7 +913,8 @@ function resize() {
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(1);
+			element.posMarkerContainer.scale.set(1);
+			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
 		}
 		
 		element.moveName.x = element.rect.width/6;
