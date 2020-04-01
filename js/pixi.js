@@ -262,6 +262,14 @@ function setup(){
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
 	
 	var elementEarth = PIXI.Texture.from('element_earth');
+	var elementFire = PIXI.Texture.from('element_fire');
+	var elementFlora = PIXI.Texture.from('element_flora');
+	var elementLightining = PIXI.Texture.from('element_lightning');
+	var elementShadow = PIXI.Texture.from('element_shadow');
+	var elementSpirit = PIXI.Texture.from('element_spirit');
+	var elementToxic = PIXI.Texture.from('element_toxic');
+	var elementWater = PIXI.Texture.from('element_water');
+	var elementWind = PIXI.Texture.from('element_wind');
 	
 // 	{name:'element_earth', url:'img/element_earth.png'},
 // 		{name:'element_fire', url:'img/element_fire.png'},
@@ -449,13 +457,13 @@ function setup(){
 		var moveElement;
 		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
 			case 1:
-				moveElement = new PIXI.Sprite(resources.element_earth.texture);
+				moveElement = new PIXI.Sprite(elementEarth);
 				break;
 			case 2:
-				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				moveElement = new PIXI.Sprite(elementFire);
 				break;
 			case 3:
-				moveElement = new PIXI.Sprite(resources.element_flora.texture);
+				moveElement = new PIXI.Sprite(elementFlora);
 				break;
 			case 4:
 				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
