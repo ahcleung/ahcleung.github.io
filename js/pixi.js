@@ -1084,7 +1084,7 @@ function resizeHP(roster, item, index){
 			
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
-			item.selected.selectedMid.x = ((resizeWidth * 2 + healthSpacing)/2)-(HPwidth/2);
+			item.selected.selectedMid.x = ((resizeWidth * 2 + healthSpacing)/2)-(HPWidth/2);
 			item.selected.selectedMid.y = -10;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
