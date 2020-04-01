@@ -438,26 +438,31 @@ function setup(){
 		
 		for (var j = 0; j < 2; j++){			
 			for (var k = 0; k < 4; k++){
+				let defaultMarker = new PIXI.Graphics();
+				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 				let posMarker = new PIXI.Graphics();
 				var w = 12.728;
 				if(j == 0){
-					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 1){
-						posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 0){
+						posMarker.visible = false;
 					}
+					defaultMarker.x = 25 * (j+k);
 					posMarker.x = 25 * (j+k);
 				}else{
-					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 1){
-						posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-					}else{
-						posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 0){
+						posMarker.visible = false;
 					}
+					defaultMarker.x = 25 * (k+4) + 23;
 					posMarker.x = 25 * (k+4) + 23;
 				}
+				defaultMarker.pivot.set(0.5);
+				defaultMarker.angle = 45;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
 				posMarkerArray.push(posMarker);
+				posMarkerContainer.addChild(defaultMarker);
 				posMarkerContainer.addChild(posMarker);
 			}
 		}
