@@ -933,7 +933,7 @@ function resize() {
 // 		element.posMarkerContainer.y = 0;
 		
 		element.posMarkerContainer.x = element.rect.width/6;
-		element.posMarkerContainer.y = (element.rect.height/3)*2;
+		element.posMarkerContainer.y = (element.rect.height/4)*3;
 	});
 	
 	
@@ -978,6 +978,7 @@ function resizeHP(roster, item, index){
 		HPSpacing = 1;
 		HPWidth = 2;
 		turnHeight = 2;
+		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
 		resizeHeight = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
@@ -985,6 +986,7 @@ function resizeHP(roster, item, index){
 		HPSpacing = 2;
 		HPWidth = 2;
 		turnHeight = 4;
+		item.turn.y = resizeHeight + 2;
 	}else{
 		resizeHeight = 40;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
@@ -992,6 +994,7 @@ function resizeHP(roster, item, index){
 		HPSpacing = 3;
 		HPWidth = 4;
 		turnHeight = 5;
+		item.turn.y = resizeHeight + 2;
 	}
 	
 	item.outer.height = resizeHeight;
@@ -1158,7 +1161,7 @@ function resizeHP(roster, item, index){
 	item.textHP.y = item.outer.height/2;
 	
 	item.turn.height = turnHeight;
-	item.turn.y = item.outer.height + 2;
+	
 	
 	item.selected.selected1.y = -6;
 	item.selected.selected1.x = -HPWidth;
