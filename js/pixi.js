@@ -441,7 +441,7 @@ function setup(){
 					}else{
 						posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 					}
-					posMarker.x = 25 * (k+4) + 24;
+					posMarker.x = 25 * (k+4) + 23;
 				}
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
