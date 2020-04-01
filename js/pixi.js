@@ -427,7 +427,7 @@ function setup(){
 		for (var j = 0; j < 2; j++){			
 			for (var k = 0; k < 4; k++){
 				let posMarker = new PIXI.Graphics();
-				var w = 12.72;
+				var w = 12.728;
 				if(j == 0){
 					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 1){
 						posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
