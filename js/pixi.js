@@ -1274,6 +1274,7 @@ function onCreatureClicked(){
 	}else{
 		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves);
 	}
+	moveArray[0].moveElement.texture = resources.status_poisoned.texture;
 }
 
 
