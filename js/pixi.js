@@ -899,20 +899,20 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
-		element.posMarkerContainer.width = (element.rect.width/4)*3;
+// 		element.posMarkerContainer.width = (element.rect.width/4)*3;
 				
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(0.45);
+			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(0.5);
+			element.posMarkerContainer.scale.set(0.5);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(1);
+			element.posMarkerContainer.scale.set(1);
 		}
 		
 		element.moveName.x = element.rect.width/6;
