@@ -1268,7 +1268,12 @@ function onButtonDown(){
 }
 
 function onCreatureClicked(){
-	console.log("Creature:" + this.identifier);
+// 	console.log("Creature:" + this.identifier);
+	if(this.identifier[0] < 0){
+		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves);
+	}else{
+		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves);
+	}
 }
 
 
