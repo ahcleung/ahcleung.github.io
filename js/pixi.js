@@ -1327,7 +1327,39 @@ function onCreatureClicked(){
 // 		console.log("Enemy moves: " + arrayEnemy[this.identifier[1]].moves.length);
 	}else{
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
-			console.log("Hero moves: " + movesList.data.moves[element].element);
+			switch(movesList.data.moves[element].element){
+				case 1:
+					moveArray[index].moveElement.texture = elementEarth;
+					break;
+				case 2:
+					moveArray[index].moveElement.texture = elementFire;
+					break;
+				case 3:
+					moveArray[index].moveElement.texture = elementFlora;
+					break;
+				case 4:
+					moveArray[index].moveElement.texture = elementLightning;
+					break;
+				case 5:
+					moveArray[index].moveElement.texture = elementShadow;
+					break;
+				case 6:
+					moveArray[index].moveElement.texture = elementSpirit;
+					break;
+				case 7:
+					moveArray[index].moveElement.texture = elementToxic;
+					break;
+				case 8:
+					moveArray[index].moveElement.texture = elementWater;
+					break;
+				case 9:
+					moveArray[index].moveElement.texture = elementWind;
+					break;
+				default:
+					moveArray[index].moveElement.texture = elementFire;
+					break;
+			}
+			moveArray[index].moveName.text = movesList.data.moves[element].name;
 		});		
 // 		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves.length);
 	}
