@@ -961,20 +961,26 @@ function resizeHP(roster, item, index){
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	var HPSpacing = 3;
-	var HPwidth = 4;
+	var HPWidth = 4;
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 2;
+		HPSpacing = 1;
+		HPWidth = 2;
 	}else if(app.screen.width < 1000){
 		resizeHeight = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
+		HPSpacing = 2;
+		HPWidth = 3;
 	}else{
 		resizeHeight = 40;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
 		statusSpacing = 5;
+		HPSpacing = 3;
+		HPWidth = 4;
 	}
 	
 	item.outer.height = resizeHeight;
@@ -998,10 +1004,10 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selected1.height = HPwidth-1;
-			item.selected.selected2.height = HPwidth;
-			item.selected.selectedStart.width = HPwidth;
-			item.selected.selectedEnd.width = HPwidth;
+			item.selected.selected1.height = HPWidth-1;
+			item.selected.selected2.height = HPWidth;
+			item.selected.selectedStart.width = HPWidth;
+			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
 			
@@ -1023,10 +1029,10 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selected1.height = HPwidth-1;
-			item.selected.selected2.height = HPwidth;
-			item.selected.selectedStart.width = HPwidth;
-			item.selected.selectedEnd.width = HPwidth;
+			item.selected.selected1.height = HPWidth-1;
+			item.selected.selected2.height = HPWidth;
+			item.selected.selectedStart.width = HPWidth;
+			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selected1.width = resizeWidth + 10;
 			item.selected.selected2.width = resizeWidth + 10;
 			
@@ -1070,11 +1076,11 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selected1.height = HPwidth-1;
-			item.selected.selected2.height = HPwidth;
-			item.selected.selectedStart.width = HPwidth;
-			item.selected.selectedEnd.width = HPwidth;
-			item.selected.selectedMid.width = HPwidth;
+			item.selected.selected1.height = HPWidth-1;
+			item.selected.selected2.height = HPWidth;
+			item.selected.selectedStart.width = HPWidth;
+			item.selected.selectedEnd.width = HPWidth;
+			item.selected.selectedMid.width = HPWidth;
 			
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + 10;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + 10;
@@ -1098,16 +1104,16 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selected1.height = HPwidth-1;
-			item.selected.selected2.height = HPwidth;
-			item.selected.selectedStart.width = HPwidth;
-			item.selected.selectedEnd.width = HPwidth;
-			item.selected.selectedMid.width = HPwidth;
+			item.selected.selected1.height = HPWidth-1;
+			item.selected.selected2.height = HPWidth;
+			item.selected.selectedStart.width = HPWidth;
+			item.selected.selectedEnd.width = HPWidth;
+			item.selected.selectedMid.width = HPWidth;
 			
 			item.selected.selected1.width = resizeWidth + 10;
 			item.selected.selected2.width = resizeWidth + 10;
-			item.selected.selectedMid.width = HPwidth;
-			item.selected.selectedMid.x = (resizeWidth/2)-(HPwidth/2);
+			item.selected.selectedMid.width = HPWidth;
+			item.selected.selectedMid.x = (resizeWidth/2)-(HPWidth/2);
 			item.selected.selectedMid.y = -10;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
@@ -1150,13 +1156,13 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected.selected1.y = -(HPwidth - 1 + HPSpacing);
+	item.selected.selected1.y = -(HPWidth - 1 + HPSpacing);
 	item.selected.selected1.x = -5;
 	
-	item.selected.selected2.y = -(HPwidth - 1 + HPSpacing + HPwidth + HPSpacing - 1);
+	item.selected.selected2.y = -(HPWidth - 1 + HPSpacing + HPWidth + HPSpacing - 1);
 	item.selected.selected2.x = -5;
 	
-	item.selected.selectedStart.x = -(HPSpacing + HPwidth);
+	item.selected.selectedStart.x = -(HPSpacing + HPWidth);
 	item.selected.selectedStart.y = -15;
 	
 	item.selected.selectedEnd.x = item.outer.width + HPSpacing;
