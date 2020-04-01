@@ -1331,7 +1331,7 @@ function onCreatureClicked(){
 		});		
 // 		console.log("Hero moves: " + arrayHero[this.identifier[1]].moves.length);
 	}
-// 	moveArray[0].moveElement.texture = elementEarth;
+	moveArray[0].posMarkerArray[0].visible = false;
 }
 
 
