@@ -1330,8 +1330,7 @@ function onCreatureClicked(){
 				break;
 		}
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
-		console.log(index + " Position: " + movesList.data.moves[element].position);
-		console.log(index + " Target: " + movesList.data.moves[element].target);
+		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
 	moveArray[0].posMarkerArray[0].visible = false;
