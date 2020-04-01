@@ -868,7 +868,7 @@ function resize() {
 		margin = 10;
 		healthSpacing = 10;
 		moveSpacer = 5;
-	}else if(app.screen.width < 1000){
+	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
 		moveSpacer = 8;
@@ -903,7 +903,7 @@ function resize() {
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.45);
-		}else if(app.screen.width < 1000){
+		}else if(app.screen.width < 1366){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 			element.posMarkerContainer.scale.set(0.5);
@@ -969,7 +969,7 @@ function resizeHP(roster, item, index){
 		statusSpacing = 2;
 		HPSpacing = 1;
 		HPWidth = 2;
-	}else if(app.screen.width < 1000){
+	}else if(app.screen.width < 1366){
 		resizeHeight = 30;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
@@ -1166,7 +1166,7 @@ function resizeSprites(direction, item, index){
 	if(direction > 0){
 		if(app.screen.width < 860){
 			item.scale.set(direction * 0.23, 0.23);
-		}else if(app.screen.width < 1000){
+		}else if(app.screen.width < 1366){
 			item.scale.set(direction * 0.3, 0.3); 
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
@@ -1210,7 +1210,7 @@ function resizeSprites(direction, item, index){
 	}else{
 		if(app.screen.width < 860){
 			item.scale.set(direction * 0.23, 0.23);
-		}else if(app.screen.width < 1000){
+		}else if(app.screen.width < 1366){
 			item.scale.set(direction * 0.3, 0.3); 
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
