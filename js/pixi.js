@@ -998,7 +998,7 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selected1.height = HPwidth;
+			item.selected.selected1.height = HPwidth-1;
 			item.selected.selected2.height = HPwidth;
 			item.selected.selectedStart.width = HPwidth;
 			item.selected.selectedEnd.width = HPwidth;
@@ -1023,7 +1023,7 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selected1.height = HPwidth;
+			item.selected.selected1.height = HPwidth-1;
 			item.selected.selected2.height = HPwidth;
 			item.selected.selectedStart.width = HPwidth;
 			item.selected.selectedEnd.width = HPwidth;
@@ -1070,7 +1070,7 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selected1.height = HPwidth;
+			item.selected.selected1.height = HPwidth-1;
 			item.selected.selected2.height = HPwidth;
 			item.selected.selectedStart.width = HPwidth;
 			item.selected.selectedEnd.width = HPwidth;
@@ -1098,7 +1098,7 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selected1.height = HPwidth;
+			item.selected.selected1.height = HPwidth-1;
 			item.selected.selected2.height = HPwidth;
 			item.selected.selectedStart.width = HPwidth;
 			item.selected.selectedEnd.width = HPwidth;
