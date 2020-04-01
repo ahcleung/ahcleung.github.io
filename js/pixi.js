@@ -974,7 +974,7 @@ function resizeHP(roster, item, index){
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
 		HPSpacing = 2;
-		HPWidth = 3;
+		HPWidth = 2;
 	}else{
 		resizeHeight = 40;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
