@@ -1330,6 +1330,13 @@ function onCreatureClicked(){
 				break;
 		}
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
+		movesList.data.moves[element].position.forEach((element2, index2) => {
+			if(element2 == 1){
+				moveArray[index].posMarkerArray[index2].visible = true;	
+			}else{
+				moveArray[index].posMarkerArray[index2].visible = false;
+			}
+		});
 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
