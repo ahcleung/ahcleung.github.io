@@ -155,6 +155,8 @@ class Creature{
 // 	}
 }
 
+const movesList = resources["js/moves.json"];
+
 let state, onScreenStats, consoleScreen, debug;
 // const container = new PIXI.Container();
 
