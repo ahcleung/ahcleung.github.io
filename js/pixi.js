@@ -960,6 +960,9 @@ function resizeHP(roster, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	var resizeHeight = 40;
 	var statusSpacing = 5;
+	var HPSpacing = 3;
+	var HPwidth = 4;
+	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};	
@@ -1118,16 +1121,16 @@ function resizeHP(roster, item, index){
 	
 	item.turn.y = item.outer.height + 2;
 	
-	item.selected.selected1.y = -6;
+	item.selected.selected1.y = -(HPwidth - 1 + HPSpacing);
 	item.selected.selected1.x = -5;
 	
-	item.selected.selected2.y = -12;
+	item.selected.selected2.y = -(HPwidth - 1 + HPSpacing + HPwidth + HPSpacing - 1);
 	item.selected.selected2.x = -5;
 	
-	item.selected.selectedStart.x = -7;
+	item.selected.selectedStart.x = -(HPSpacing + HPwidth);
 	item.selected.selectedStart.y = -15;
 	
-	item.selected.selectedEnd.x = item.outer.width+3;
+	item.selected.selectedEnd.x = item.outer.width + HPSpacing;
 	item.selected.selectedEnd.y = -15;
 }
 
