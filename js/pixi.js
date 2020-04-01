@@ -843,6 +843,7 @@ function createSprite(direction, item, index){
 
 		healthBar.addChild(selected);
 		healthBar.selected = selected;
+		healthBar.selected.visible = false;
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
 		
@@ -1272,6 +1273,8 @@ function onCreatureClicked(){
 
 function onHPClicked(){
 	console.log("HP:" + this.identifier[0]);
+	
+// 	hpHeroContainerArray[this.identifier[1]].selected = visible;
 }
 
 // function onButtonDown2(){
