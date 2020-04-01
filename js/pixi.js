@@ -186,7 +186,7 @@ const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 
-const elementEarth = PIXI.Texture.from('element_earth');
+const elementEarth = PIXI.Texture.from(resources[element_earth].texture);
 
 const vita = [];
 vita[0] = {
