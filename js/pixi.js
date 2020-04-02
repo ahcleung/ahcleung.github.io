@@ -910,14 +910,20 @@ function resize() {
 		margin = 10;
 		healthSpacing = 10;
 		moveSpacer = 5;
+		hpHero.position.set(margin, 30);
+		hpEnemy.position.set(app.screen.width/2+margin, 30);
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
 		moveSpacer = 8;
+		hpHero.position.set(margin, 40);
+		hpEnemy.position.set(app.screen.width/2+margin, 40);
 	}else{
 		margin = 50;
 		healthSpacing = 20;
 		moveSpacer = 10;
+		hpHero.position.set(margin, 40);
+		hpEnemy.position.set(app.screen.width/2+margin, 40);
 	}
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
@@ -981,8 +987,6 @@ function resize() {
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
-	hpHero.position.set(margin, 40);
-	hpEnemy.position.set(app.screen.width/2+margin, 40);
 	
 	hpHeroContainerArray.forEach(function (item, index){
 		resizeHP(0, item, index)	
