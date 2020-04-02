@@ -415,6 +415,16 @@ function setup(){
 // 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
 		const moveContainer = new PIXI.Container();
+		
+		// make the button interactive...
+		moveContainer.interactive = true;
+		moveContainer.accessible = true;
+		moveContainer
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onMoveDown);
+		
+		moveContainer.identifier = arrayHero[1].moves[i];
+		
 		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 // 		let moveName = new Text(movesList.data.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
@@ -674,7 +684,7 @@ function createSprite(direction, item, index){
 	creatureContainer.interactive = true;
 	creatureContainer
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onCreatureClicked);
+        .on('pointerdown', onCreatureDown);
 	
 	if(item.size == 2){		
 		creatureContainer.scale.set(direction * 0.5, 0.5);
@@ -689,7 +699,7 @@ function createSprite(direction, item, index){
 	healthBar.interactive = true;
 	healthBar
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onHPClicked);
+        .on('pointerdown', onHPDown);
 	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
@@ -1285,7 +1295,7 @@ function onButtonDown(){
 	}
 }
 
-function onCreatureClicked(){
+function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
 	var newMoves = [];
 	if(this.identifier[0] < 0){
@@ -1330,6 +1340,7 @@ function onCreatureClicked(){
 				moveArray[index].moveElement.texture = elementFire;
 				break;
 		}
+		moveArray[index].identifier = element + ": " + movesList.data.moves[element].name;
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){
@@ -1352,7 +1363,7 @@ function onCreatureClicked(){
 }
 
 
-function onHPClicked(){
+function onHPDown(){
 	console.log("HP:" + this.identifier[0]);
 	
 	hpHeroContainerArray.forEach(element=>{
@@ -1367,6 +1378,24 @@ function onHPClicked(){
 	}else{
 		hpHeroContainerArray[this.identifier[1]].turn.visible = true;
 	}
+// 	hpHeroContainerArray[this.identifier[1]].selected = visible;
+}
+
+function onMoveDown(){
+	console.log("Move name:" + this.identifier);
+	
+// 	hpHeroContainerArray.forEach(element=>{
+// 		element.turn.visible = false;
+// 	});
+// 	hpEnemyContainerArray.forEach(element=>{
+// 		element.turn.visible = false;
+// 	});
+	
+// 	if(this.identifier[0] < 0){
+// 		hpEnemyContainerArray[this.identifier].turn.visible = true;
+// 	}else{
+// 		hpHeroContainerArray[this.identifier].turn.visible = true;
+// 	}
 // 	hpHeroContainerArray[this.identifier[1]].selected = visible;
 }
 
