@@ -1200,9 +1200,9 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-	item.selected.selected1.y = -10;
+	item.selected.selected1.y = -15;
 	
-	item.selected.selected2.y = -15;
+	item.selected.selected2.y = -20;
 	
 	item.selected.selectedStart.y = -23;
 	
