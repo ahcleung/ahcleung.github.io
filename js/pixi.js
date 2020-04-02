@@ -34,7 +34,7 @@ loader
 	
 		{name:'element_earth', url:'img/element_earth.png'},
 		{name:'element_fire', url:'img/element_fire.png'},
-		{name:'element_flora', url:'img/element_flora.png'},
+		"img/element_flora.png",
 		{name:'element_lightning', url:'img/element_lightning.png'},
 		{name:'element_shadow', url:'img/element_shadow.png'},
 		{name:'element_spirit', url:'img/element_spirit.png'},
