@@ -1204,10 +1204,9 @@ function resizeHP(roster, item, index){
 	
 	item.selected.selected2.y = -12
 	
-	item.selected.selectedStart.x = -(HPSpacing + HPWidth);
 	item.selected.selectedStart.y = -15;
 	
-	item.selected.selectedEnd.x = item.outer.width + HPSpacing;
+	item.selected.selectedEnd.x = item.outer.width;
 	item.selected.selectedEnd.y = -15;
 }
 
