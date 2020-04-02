@@ -492,7 +492,7 @@ function setup(){
 				moveElement = new PIXI.Sprite(resources.element_fire.texture);
 				break;
 			case 3:
-				moveElement = new PIXI.Sprite(resources.element_flora.texture);
+				moveElement = new PIXI.Sprite(elementFlora);
 				break;
 			case 4:
 				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
