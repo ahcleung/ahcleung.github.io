@@ -1383,7 +1383,7 @@ function onHPDown(){
 }
 
 function onMoveDown(){
-	console.log("Move name:" + this.identifier);
+	console.log("Move targets:" + movesList.data.moves[this.identifier].target);
 	
 // 	hpHeroContainerArray.forEach(element=>{
 // 		element.turn.visible = false;
