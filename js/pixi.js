@@ -952,7 +952,7 @@ function resize() {
 // 		element.posMarkerContainer.y = 0;
 		
 		element.posMarkerContainer.x = element.rect.width/6;
-		element.posMarkerContainer.y = (element.rect.height/4)*3;
+		element.posMarkerContainer.y = element.rect.height*3/4;
 	});
 	
 	
