@@ -1395,6 +1395,9 @@ function onHPDown(){
 }
 
 function onMoveDown(){
+	hpEnemyContainerArray.forEach(element=>{
+		element.selected.visible = false;
+	});
 	movesList.data.moves[this.identifier].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
