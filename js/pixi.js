@@ -1398,7 +1398,7 @@ function onMoveDown(){
 			console.log(index);	
 		}
 	});
-// 	console.log("Move targets:" + movesList.data.moves[this.identifier].target);
+	console.log("Move targets:" + arrayHero[0].pos);
 	
 	
 // 	hpHeroContainerArray.forEach(element=>{
