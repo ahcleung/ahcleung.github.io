@@ -809,14 +809,14 @@ function createSprite(direction, item, index){
 	
 		let selectedEnd = new PIXI.Graphics();
 		selectedEnd.beginFill(0xFFD600);
-		selectedEnd.drawRect(0, 0, 4, 25);
+		selectedEnd.drawRect(0, 0, 4, 18);
 		selectedEnd.endFill();
 		selected.addChild(selectedEnd);
 		selected.selectedEnd = selectedEnd;
 
 		let selectedStart = new PIXI.Graphics();
 		selectedStart.beginFill(0xFFD600);
-		selectedStart.drawRect(0, 0, 4, 25);
+		selectedStart.drawRect(0, 0, 4, 18);
 		selectedStart.endFill();
 		selected.addChild(selectedStart);
 		selected.selectedStart = selectedStart;
@@ -848,14 +848,14 @@ function createSprite(direction, item, index){
 	
 		let selectedEnd = new PIXI.Graphics();
 		selectedEnd.beginFill(0xFF392F);
-		selectedEnd.drawRect(0, 0, 4, 25);
+		selectedEnd.drawRect(0, 0, 4, 18);
 		selectedEnd.endFill();
 		selected.addChild(selectedEnd);
 		selected.selectedEnd = selectedEnd;
 
 		let selectedStart = new PIXI.Graphics();
 		selectedStart.beginFill(0xFF392F);
-		selectedStart.drawRect(0, 0, 4, 25);
+		selectedStart.drawRect(0, 0, 4, 18);
 		selectedStart.endFill();
 		selected.addChild(selectedStart);
 		selected.selectedStart = selectedStart;
@@ -869,14 +869,14 @@ function createSprite(direction, item, index){
 
 		let selected1 = new PIXI.Graphics();
 		selected1.beginFill(0xFF392F);
-		selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
+		selected1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 		selected1.endFill();
 		selected.addChild(selected1);
 		selected.selected1 = selected1;
 
 		let selected2 = new PIXI.Graphics();
 		selected2.beginFill(0xFF392F);
-		selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
+		selected2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 		selected2.endFill();
 		selected.addChild(selected2);
 		selected.selected2 = selected2;
@@ -1200,14 +1200,14 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-	item.selected.selected1.y = -6;
+	item.selected.selected1.y = -10;
 	
-	item.selected.selected2.y = -12;
+	item.selected.selected2.y = -15;
 	
-	item.selected.selectedStart.y = -30;
+	item.selected.selectedStart.y = -23;
 	
 	item.selected.selectedEnd.x = item.outer.width - HPWidth;
-	item.selected.selectedEnd.y = -30;
+	item.selected.selectedEnd.y = -23;
 }
 
 function resizeSprites(direction, item, index){
