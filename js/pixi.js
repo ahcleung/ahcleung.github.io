@@ -502,7 +502,7 @@ function setup(){
 				moveElement = new PIXI.Sprite(resources.element_fire.texture);
 				break;
 			case 3:
-				moveElement = new PIXI.Sprite(elementFlora);
+				moveElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
 			case 4:
 				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
@@ -1321,34 +1321,34 @@ function onCreatureDown(){
 	newMoves.forEach((element, index) => {
 		switch(movesList.data.moves[element].element){
 			case 1:
-				moveArray[index].moveElement.texture = elementEarth;
+				moveArray[index].moveElement.texture = resources.element_earth.texture;
 				break;
 			case 2:
-				moveArray[index].moveElement.texture = elementFire;
+				moveArray[index].moveElement.texture = resources.element_fire.texture;
 				break;
 			case 3:
-				moveArray[index].moveElement.texture = elementFlora;
+				moveArray[index].moveElement.texture = resources.element_flora.texture;
 				break;
 			case 4:
-				moveArray[index].moveElement.texture = elementLightning;
+				moveArray[index].moveElement.texture = resources.element_lightning.texture;
 				break;
 			case 5:
-				moveArray[index].moveElement.texture = elementShadow;
+				moveArray[index].moveElement.texture = resources.element_shadow.texture;
 				break;
 			case 6:
-				moveArray[index].moveElement.texture = elementSpirit;
+				moveArray[index].moveElement.texture = resources.element_spirit.texture;
 				break;
 			case 7:
-				moveArray[index].moveElement.texture = elementToxic;
+				moveArray[index].moveElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				moveArray[index].moveElement.texture = elementWater;
+				moveArray[index].moveElement.texture = resources.element_water.texture;
 				break;
 			case 9:
-				moveArray[index].moveElement.texture = elementWind;
+				moveArray[index].moveElement.texture = resources.element_wind.texture;
 				break;
 			default:
-				moveArray[index].moveElement.texture = elementFire;
+				moveArray[index].moveElement.texture = resources.element_fire.texture;
 				break;
 		}
 		moveArray[index].identifier = element + ": " + movesList.data.moves[element].name;
