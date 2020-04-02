@@ -956,11 +956,11 @@ function resize() {
 	});
 	
 	
-	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*2/3);
-	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*2/3);
+	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*3/4);
+	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
-	hpHero.position.set(margin, 20);
-	hpEnemy.position.set(app.screen.width/2+margin, 20);
+	hpHero.position.set(margin, 40);
+	hpEnemy.position.set(app.screen.width/2+margin, 40);
 	
 	hpHeroContainerArray.forEach(function (item, index){
 		resizeHP(0, item, index)	
