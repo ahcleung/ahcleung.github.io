@@ -414,14 +414,8 @@ function setup(){
 	for(var i = 0; i < 4; i++){
 // 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
-		const moveContainer = new PIXI.Container();
 		
-		// make the button interactive...
-		moveContainer.interactive = true;
-		moveContainer.accessible = true;
-		moveContainer
-		// set the mousedown and touchstart callback...
-		.on('pointerdown', onMoveDown);
+		const moveContainer = new PIXI.Container();
 		
 		moveContainer.identifier = arrayHero[1].moves[i];
 		
@@ -442,6 +436,13 @@ function setup(){
 		moveContainer.moveName = moveName;
 // 		moveContainer.addChild(moveNum);
 // 		moveContainer.moveNum = moveNum;
+		
+		// make the button interactive...
+		moveContainer.interactive = true;
+		moveContainer.accessible = true;
+		moveContainer
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onMoveDown);
 		
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
