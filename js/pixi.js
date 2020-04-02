@@ -32,25 +32,25 @@ loader
 		{name:'status_stunned', url:'img/status_stunned.png'},
 		{name:'status_vital', url:'img/status_vital.png'},
 	
-// 		{name:'element_earth', url:'img/element_earth.png'},
-// 		{name:'element_fire', url:'img/element_fire.png'},
-// 		"img/element_flora.png",
-// 		{name:'element_lightning', url:'img/element_lightning.png'},
-// 		{name:'element_shadow', url:'img/element_shadow.png'},
-// 		{name:'element_spirit', url:'img/element_spirit.png'},
-// 		{name:'element_toxic', url:'img/element_toxic.png'},
-// 		{name:'element_water', url:'img/element_water.png'},
-// 		{name:'element_wind', url:'img/element_wind.png'},
+		{name:'element_earth', url:'img/element_earth.png'},
+		{name:'element_fire', url:'img/element_fire.png'},
+		{name:'element_fire', url:'img/element_flora.png'},
+		{name:'element_lightning', url:'img/element_lightning.png'},
+		{name:'element_shadow', url:'img/element_shadow.png'},
+		{name:'element_spirit', url:'img/element_spirit.png'},
+		{name:'element_toxic', url:'img/element_toxic.png'},
+		{name:'element_water', url:'img/element_water.png'},
+		{name:'element_wind', url:'img/element_wind.png'},
 	
-		"img/element_earth.png",
-		"img/element_fire.png",
-		"img/element_flora.png",
-		"img/element_lightning.png",
-		"img/element_shadow.png",
-		"img/element_spirit.png",
-		"img/element_toxic.png",
-		"img/element_water.png",
-		"img/element_wind.png",
+// 		"img/element_earth.png",
+// 		"img/element_fire.png",
+// 		"img/element_flora.png",
+// 		"img/element_lightning.png",
+// 		"img/element_shadow.png",
+// 		"img/element_spirit.png",
+// 		"img/element_toxic.png",
+// 		"img/element_water.png",
+// 		"img/element_wind.png",
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -198,15 +198,15 @@ const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 
-const elementEarth = PIXI.Texture.from('img/element_earth.png');
-const elementFire = PIXI.Texture.from('img/element_fire.png');
-const elementFlora = PIXI.Texture.from('img/element_flora.png');
-const elementLightning = PIXI.Texture.from('img/element_lightning.png');
-const elementShadow = PIXI.Texture.from('img/element_shadow.png');
-const elementSpirit = PIXI.Texture.from('img/element_spirit.png');
-const elementToxic = PIXI.Texture.from('img/element_toxic.png');
-const elementWater = PIXI.Texture.from('img/element_water.png');
-const elementWind = PIXI.Texture.from('img/element_wind.png');
+// const elementEarth = PIXI.Texture.from('img/element_earth.png');
+// const elementFire = PIXI.Texture.from('img/element_fire.png');
+// const elementFlora = PIXI.Texture.from('img/element_flora.png');
+// const elementLightning = PIXI.Texture.from('img/element_lightning.png');
+// const elementShadow = PIXI.Texture.from('img/element_shadow.png');
+// const elementSpirit = PIXI.Texture.from('img/element_spirit.png');
+// const elementToxic = PIXI.Texture.from('img/element_toxic.png');
+// const elementWater = PIXI.Texture.from('img/element_water.png');
+// const elementWind = PIXI.Texture.from('img/element_wind.png');
 
 const vita = [];
 vita[0] = {
