@@ -1395,10 +1395,10 @@ function onHPDown(){
 function onMoveDown(){
 	movesList.data.moves[this.identifier].target.forEach((element, index)=> {
 		if(element == 1){
-			console.log(index);	
+			console.log(index+1);	
 		}
 	});
-	arrayHero.forEach(element => {
+	arrayEnemy.forEach(element => {
 		console.log("Pos: " + element.pos);
 	});
 	
