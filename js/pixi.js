@@ -1351,7 +1351,9 @@ function onCreatureDown(){
 				moveArray[index].moveElement.texture = resources.element_fire.texture;
 				break;
 		}
-		moveArray[index].identifier = element + ": " + movesList.data.moves[element].name;
+// 		moveContainer.identifier = arrayHero[1].moves[i];
+		
+		moveArray[index].identifier = element;
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){
