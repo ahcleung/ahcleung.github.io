@@ -823,14 +823,14 @@ function createSprite(direction, item, index){
 
 		let selected1 = new PIXI.Graphics();
 		selected1.beginFill(0xFFD600);
-		selected1.drawRect(0, 0, (app.screen.width-320)/8, 3);
+		selected1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 		selected1.endFill();
 		selected.addChild(selected1);
 		selected.selected1 = selected1;
 
 		let selected2 = new PIXI.Graphics();
 		selected2.beginFill(0xFFD600);
-		selected2.drawRect(0, 0, (app.screen.width-320)/8, 4);
+		selected2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 		selected2.endFill();
 		selected.addChild(selected2);
 		selected.selected2 = selected2;
@@ -1016,7 +1016,7 @@ function resizeHP(roster, item, index){
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 2;
 		HPSpacing = 1;
-		HPWidth = 2;
+		HPWidth = 4;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
@@ -1024,7 +1024,7 @@ function resizeHP(roster, item, index){
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
 		HPSpacing = 2;
-		HPWidth = 2;
+		HPWidth = 4;
 		item.turn.height = 4;
 		item.turn.y = resizeHeight + 2;
 	}else{
@@ -1202,12 +1202,12 @@ function resizeHP(roster, item, index){
 	
 	item.selected.selected1.y = -6;
 	
-	item.selected.selected2.y = -12
+	item.selected.selected2.y = -12;
 	
-	item.selected.selectedStart.y = -15;
+	item.selected.selectedStart.y = -30;
 	
-	item.selected.selectedEnd.x = item.outer.width;
-	item.selected.selectedEnd.y = -15;
+	item.selected.selectedEnd.x = item.outer.width - HPWidth;
+	item.selected.selectedEnd.y = -30;
 }
 
 function resizeSprites(direction, item, index){
