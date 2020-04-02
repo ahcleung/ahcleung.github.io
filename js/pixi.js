@@ -417,6 +417,13 @@ function setup(){
 		
 		const moveContainer = new PIXI.Container();
 		
+		// make the button interactive...
+		moveContainer.buttonMode = true;
+		moveContainer.interactive = true;
+		moveContainer
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onMoveDown);
+		
 		moveContainer.identifier = arrayHero[1].moves[i];
 		
 		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
@@ -436,13 +443,6 @@ function setup(){
 		moveContainer.moveName = moveName;
 // 		moveContainer.addChild(moveNum);
 // 		moveContainer.moveNum = moveNum;
-		
-		// make the button interactive...
-		moveContainer.interactive = true;
-		moveContainer.accessible = true;
-		moveContainer
-		// set the mousedown and touchstart callback...
-		.on('pointerdown', onMoveDown);
 		
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
