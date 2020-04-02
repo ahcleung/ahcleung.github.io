@@ -720,6 +720,7 @@ function createSprite(direction, item, index){
 	turnIndicator.endFill();
 	healthBar.addChild(turnIndicator);
 	healthBar.turn = turnIndicator;
+	healthBar.turn.visible = false;
 	
 	let statusEffect;
 	
@@ -1355,16 +1356,16 @@ function onHPClicked(){
 	console.log("HP:" + this.identifier[0]);
 	
 	hpHeroContainerArray.forEach(element=>{
-		element.selected.visible = false;
+		element.turn.visible = false;
 	});
 	hpEnemyContainerArray.forEach(element=>{
-		element.selected.visible = false;
+		element.turn.visible = false;
 	});
 	
 	if(this.identifier[0] < 0){
-		hpEnemyContainerArray[this.identifier[1]].selected.visible = true;
+		hpEnemyContainerArray[this.identifier[1]].turn.visible = true;
 	}else{
-		hpHeroContainerArray[this.identifier[1]].selected.visible = true;
+		hpHeroContainerArray[this.identifier[1]].turn.visible = true;
 	}
 // 	hpHeroContainerArray[this.identifier[1]].selected = visible;
 }
