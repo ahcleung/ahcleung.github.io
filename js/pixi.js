@@ -1010,6 +1010,7 @@ function resizeHP(roster, item, index){
 	var statusSpacing = 5;
 	var HPSpacing = 3;
 	var HPWidth = 4;
+	var selectHeight = 7;
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
@@ -1017,6 +1018,7 @@ function resizeHP(roster, item, index){
 		statusSpacing = 2;
 		HPSpacing = 1;
 		HPWidth = 4;
+		selectHeight = 5;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
@@ -1025,6 +1027,7 @@ function resizeHP(roster, item, index){
 		statusSpacing = 4;
 		HPSpacing = 2;
 		HPWidth = 4;
+		selectHeight = 7;
 		item.turn.height = 4;
 		item.turn.y = resizeHeight + 2;
 	}else{
@@ -1033,6 +1036,7 @@ function resizeHP(roster, item, index){
 		statusSpacing = 5;
 		HPSpacing = 3;
 		HPWidth = 4;
+		selectHeight = 7;
 		item.turn.height = 5;
 		item.turn.y = resizeHeight + 2;
 	}
@@ -1200,6 +1204,7 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
+	item.selected.selected1.height = selectHeight;
 	item.selected.selected1.y = -15;
 	
 	item.selected.selected2.y = -20;
