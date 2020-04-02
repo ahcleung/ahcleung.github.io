@@ -1060,8 +1060,8 @@ function resizeHP(roster, item, index){
 			
 			item.selected.selectedStart.width = HPWidth;
 			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + HPWidth*2;
-			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + HPWidth*2;
+			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1083,8 +1083,8 @@ function resizeHP(roster, item, index){
 			
 			item.selected.selectedStart.width = HPWidth;
 			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selected1.width = resizeWidth + HPWidth*2;
-			item.selected.selected2.width = resizeWidth + HPWidth*2
+			item.selected.selected1.width = resizeWidth;
+			item.selected.selected2.width = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1130,8 +1130,8 @@ function resizeHP(roster, item, index){
 			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selectedMid.width = HPWidth;
 			
-			item.selected.selected1.width = resizeWidth * 2 + healthSpacing + HPWidth*2
-			item.selected.selected2.width = resizeWidth * 2 + healthSpacing + HPWidth*2
+			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
 			item.selected.selectedMid.x = ((resizeWidth * 2 + healthSpacing)/2)-(HPWidth/2);
 			item.selected.selectedMid.y = -10;
 			
@@ -1156,8 +1156,8 @@ function resizeHP(roster, item, index){
 			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selectedMid.width = HPWidth;
 			
-			item.selected.selected1.width = resizeWidth + HPWidth*2
-			item.selected.selected2.width = resizeWidth + HPWidth*2
+			item.selected.selected1.width = resizeWidth;
+			item.selected.selected2.width = resizeWidth;
 			item.selected.selectedMid.width = HPWidth;
 			item.selected.selectedMid.x = (resizeWidth/2)-(HPWidth/2);
 			item.selected.selectedMid.y = -10;
@@ -1201,10 +1201,8 @@ function resizeHP(roster, item, index){
 	item.textHP.y = item.outer.height/2;
 	
 	item.selected.selected1.y = -6;
-	item.selected.selected1.x = -HPWidth;
 	
 	item.selected.selected2.y = -12
-	item.selected.selected2.x = -HPWidth;
 	
 	item.selected.selectedStart.x = -(HPSpacing + HPWidth);
 	item.selected.selectedStart.y = -15;
