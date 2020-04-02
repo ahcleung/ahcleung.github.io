@@ -1398,7 +1398,9 @@ function onMoveDown(){
 			console.log(index);	
 		}
 	});
-	console.log("Move targets:" + arrayHero[0].pos);
+	arrayHero.forEach(element => {
+		console.log("Pos: " + element.pos);
+	});
 	
 	
 // 	hpHeroContainerArray.forEach(element=>{
