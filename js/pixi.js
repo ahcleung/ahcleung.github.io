@@ -1395,12 +1395,17 @@ function onHPDown(){
 function onMoveDown(){
 	movesList.data.moves[this.identifier].target.forEach((element, index)=> {
 		if(element == 1){
-			console.log(index+1);	
+			var posTracker = index + 1;
+			arrayEnemy.forEach(element => {
+				if(posTracker == element.pos){
+					console.log("Targeted: " + element.name);
+				}
+				
+			});
+// 			console.log(index+1);	
 		}
 	});
-	arrayEnemy.forEach(element => {
-		console.log("Pos: " + element.pos);
-	});
+	
 	
 	
 // 	hpHeroContainerArray.forEach(element=>{
