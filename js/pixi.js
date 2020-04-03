@@ -1024,7 +1024,7 @@ function resizeHP(roster, item, index){
 		HPSpacing = 1;
 		selectBarHeight = 5;
 		selectEndHeight = 11;
-		selectEndY = -26;
+		selectEndY = -16;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
