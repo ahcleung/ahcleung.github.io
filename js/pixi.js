@@ -1027,8 +1027,8 @@ function resizeHP(roster, item, index){
 		selectBarHeight = 5;
 		selectBar1Y = -10;
 		selectBar2Y = -13;
-		selectEndHeight = 11;
-		selectEndY = -14;
+		selectEndHeight = 12;
+		selectEndY = -15;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
