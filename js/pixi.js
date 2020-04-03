@@ -385,6 +385,7 @@ function setup(){
 	for(var i = 0; i < 4; i++){
 // 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
+		let moveSelect = new PIXI.Graphics();
 		
 		const moveContainer = new PIXI.Container();
 		
@@ -404,8 +405,15 @@ function setup(){
 		moveRect.x = 0;
 		moveRect.y = 0;
 		
+		moveSelect.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		moveSelect.x = 0;
+		moveSelect.y = 0;
+		
 		moveContainer.addChild(moveRect);
 		moveContainer.rect = moveRect;
+		moveContainer.addChild(moveSelect);
+		moveContainer.selected = moveSelect;
+		moveContainer.selected.visible = false;
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
 		
@@ -888,6 +896,8 @@ function resize() {
 	moveArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.rect.height = element.rect.width/4;
+		element.selected.width = ((2*app.screen.width - 4*margin - 10*healthSpacing)/9);
+		element.selected.height = element.rect.width/4;
 		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
 		element.y = app.screen.height - element.rect.height - margin;
 		
@@ -1333,6 +1343,11 @@ function onMoveDown(){
 	hpEnemyContainerArray.forEach(element=>{
 		element.selected.visible = false;
 	});
+	moveArray.forEach(element=>{
+		element.selected.visible = false;
+	});
+	moveArray[this.identifier].selected.visible = true;
+	
 	movesList.data.moves[this.identifier].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
