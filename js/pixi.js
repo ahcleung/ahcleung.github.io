@@ -1014,6 +1014,8 @@ function resizeHP(roster, item, index){
 	var statusSpacing = 5;
 	var HPSpacing = 3;
 	var selectBarHeight = 7;
+	var selectBar1Y = -15;
+	var selectBar2Y = -20;
 	var selectEndHeight = 18;
 	var selectEndY = -23;
 	
@@ -1023,6 +1025,8 @@ function resizeHP(roster, item, index){
 		statusSpacing = 2;
 		HPSpacing = 1;
 		selectBarHeight = 5;
+		selectBar1Y = -8;
+		selectBar2Y = -11;
 		selectEndHeight = 11;
 		selectEndY = -16;
 		item.turn.height = 3;
@@ -1033,6 +1037,8 @@ function resizeHP(roster, item, index){
 		statusSpacing = 4;
 		HPSpacing = 2;
 		selectBarHeight = 7;
+		selectBar1Y = -15;
+		selectBar2Y = -20;
 		selectEndHeight = 18;
 		selectEndY = -23;
 		item.turn.height = 4;
@@ -1043,6 +1049,8 @@ function resizeHP(roster, item, index){
 		statusSpacing = 5;
 		HPSpacing = 3;
 		selectBarHeight = 7;
+		selectBar1Y = -15;
+		selectBar2Y = -20;
 		selectEndHeight = 18;
 		selectEndY = -23;
 		item.turn.height = 5;
@@ -1213,17 +1221,16 @@ function resizeHP(roster, item, index){
 	item.textHP.y = item.outer.height/2;
 	
 	item.selected.selected1.height = selectBarHeight;
-	item.selected.selected1.y = -15;
+	item.selected.selected1.y = selectBar1Y;
 	
-	item.selected.selected2.y = -20;
+	item.selected.selected2.y = selectBar2Y;
 	
 	item.selected.selectedStart.height = selectEndHeight;
-	item.selected.selectedStart.y = selectEndY;;
+	item.selected.selectedStart.y = selectEndY;
 	
 	item.selected.selectedEnd.height = selectEndHeight;	
 	item.selected.selectedEnd.y = selectEndY;	
 	item.selected.selectedEnd.x = item.outer.width - 4;
-	
 }
 
 function resizeSprites(direction, item, index){
