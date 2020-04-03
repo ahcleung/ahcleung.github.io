@@ -876,22 +876,27 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 	rect.position.set(app.screen.width/2, app.screen.height/2);
 	
+	var moveSelectPadding = 5;
+	
 	if(app.screen.width < 860){
 		margin = 10;
 		healthSpacing = 10;
 		moveSpacer = 5;
+		moveSelectPadding = 2;
 		hpHero.position.set(margin, 20);
 		hpEnemy.position.set(app.screen.width/2+margin, 20);
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
 		moveSpacer = 8;
+		moveSelectPadding = 3;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
 	}else{
 		margin = 50;
 		healthSpacing = 20;
 		moveSpacer = 10;
+		moveSelectPadding = 5;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
 	}
@@ -911,11 +916,11 @@ function resize() {
 		element.rect.height = element.rect.width/4;
 		element.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.selected.stroke.height = element.rect.width/4;
-		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - 10;
-		element.selected.fill.height = (element.rect.width/4) - 10;
+		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - moveSelectPadding*2;
+		element.selected.fill.height = (element.rect.width/4) - moveSelectPadding*2;
 		
-		element.selected.fill.x = 5;
-		element.selected.fill.y = 5;
+		element.selected.fill.x = moveSelectPadding;
+		element.selected.fill.y = moveSelectPadding;
 		
 		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
 		element.y = app.screen.height - element.rect.height - margin;
