@@ -1248,7 +1248,7 @@ function onCreatureDown(){
 		hpHeroContainerArray.forEach(element=>{
 			element.selected.visible = false;
 		});
-		hpEnemyContainerArray[this.identifier[1]].selected.visible = true;
+		hpHeroContainerArray[this.identifier[1]].selected.visible = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
