@@ -385,9 +385,11 @@ function setup(){
 	for(var i = 0; i < 4; i++){
 // 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
-		let moveSelect = new PIXI.Graphics();
+		let moveSelectFill = new PIXI.Graphics();
+		let moveSelectStroke = new PIXI.Graphics();
 		
 		const moveContainer = new PIXI.Container();
+		const moveSelect = new PIXI.Container();
 		
 		// make the button interactive...
 		moveContainer.buttonMode = true;
@@ -405,15 +407,26 @@ function setup(){
 		moveRect.x = 0;
 		moveRect.y = 0;
 		
-		moveSelect.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-		moveSelect.x = 0;
-		moveSelect.y = 0;
-		
 		moveContainer.addChild(moveRect);
 		moveContainer.rect = moveRect;
+		
+		moveSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		moveSelectStroke.x = 0;
+		moveSelectStroke.y = 0;		
+		moveSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveSelectFill.x = 0;
+		moveSelectFill.y = 0;
+		
+		moveSelect.addChild(moveSelectStroke);
+		moveSelect.addChild(moveSelectFill);
+		moveSelect.stroke = moveSelectStroke;
+		moveSelect.fill = moveSelectFill);
+				
 		moveContainer.addChild(moveSelect);
 		moveContainer.selected = moveSelect;
-		moveContainer.selected.visible = false;
+		
+// 		moveContainer.selected.visible = false;
+		
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
 		
@@ -896,8 +909,14 @@ function resize() {
 	moveArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.rect.height = element.rect.width/4;
-		element.selected.width = ((2*app.screen.width - 4*margin - 10*healthSpacing)/9);
-		element.selected.height = element.rect.width/4;
+		element.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		element.selected.stroke.height = element.rect.width/4;
+		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - 10;
+		element.selected.fill.height = (element.rect.width/4) - 10;
+		
+		element.selected.fill.x = 5;
+		element.selected.fill.y = 5;
+		
 		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
 		element.y = app.screen.height - element.rect.height - margin;
 		
