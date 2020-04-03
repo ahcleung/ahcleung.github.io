@@ -1273,6 +1273,9 @@ function onButtonDown(){
 
 function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
+	moveArray.forEach(element=>{
+		element.selected.visible = false;
+	});
 	var newMoves = [];
 	if(this.identifier[0] < 0){
 		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
