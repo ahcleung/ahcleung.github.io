@@ -420,7 +420,7 @@ function setup(){
 		moveSelect.addChild(moveSelectStroke);
 		moveSelect.addChild(moveSelectFill);
 		moveSelect.stroke = moveSelectStroke;
-		moveSelect.fill = moveSelectFill);
+		moveSelect.fill = moveSelectFill;
 				
 		moveContainer.addChild(moveSelect);
 		moveContainer.selected = moveSelect;
