@@ -860,12 +860,12 @@ function createSprite(direction, item, index){
 		selected.addChild(selectedStart);
 		selected.selectedStart = selectedStart;
 		
-		let selectedMid = new PIXI.Graphics();
-		selectedMid.beginFill(0xFF392F);
-		selectedMid.drawRect(0, 0, 4, 20);
-		selectedMid.endFill();
-		selected.addChild(selectedMid);
-		selected.selectedMid = selectedMid;
+// 		let selectedMid = new PIXI.Graphics();
+// 		selectedMid.beginFill(0xFF392F);
+// 		selectedMid.drawRect(0, 0, 4, 20);
+// 		selectedMid.endFill();
+// 		selected.addChild(selectedMid);
+// 		selected.selectedMid = selectedMid;
 
 		let selected1 = new PIXI.Graphics();
 		selected1.beginFill(0xFF392F);
@@ -1013,16 +1013,18 @@ function resizeHP(roster, item, index){
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	var HPSpacing = 3;
-	var HPWidth = 4;
-	var selectHeight = 7;
+	var selectBarHeight = 7;
+	var selectEndHeight = 18;
+	var selectEndY = -23;
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 2;
 		HPSpacing = 1;
-		HPWidth = 4;
-		selectHeight = 5;
+		selectBarHeight = 5;
+		selectEndHeight = 11;
+		selectEndY = -26;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
@@ -1030,8 +1032,9 @@ function resizeHP(roster, item, index){
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};	
 		statusSpacing = 4;
 		HPSpacing = 2;
-		HPWidth = 4;
-		selectHeight = 7;
+		selectBarHeight = 7;
+		selectEndHeight = 18;
+		selectEndY = -23;
 		item.turn.height = 4;
 		item.turn.y = resizeHeight + 2;
 	}else{
@@ -1039,8 +1042,9 @@ function resizeHP(roster, item, index){
 		item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
 		statusSpacing = 5;
 		HPSpacing = 3;
-		HPWidth = 4;
-		selectHeight = 7;
+		selectBarHeight = 7;
+		selectEndHeight = 18;
+		selectEndY = -23;
 		item.turn.height = 5;
 		item.turn.y = resizeHeight + 2;
 	}
@@ -1066,8 +1070,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selectedStart.width = HPWidth;
-			item.selected.selectedEnd.width = HPWidth;
+// 			item.selected.selectedStart.width = HPWidth;
+// 			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
 			
@@ -1089,8 +1093,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selectedStart.width = HPWidth;
-			item.selected.selectedEnd.width = HPWidth;
+// 			item.selected.selectedStart.width = HPWidth;
+// 			item.selected.selectedEnd.width = HPWidth;
 			item.selected.selected1.width = resizeWidth;
 			item.selected.selected2.width = resizeWidth;
 			
@@ -1134,9 +1138,9 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.selected.selectedStart.width = HPWidth;
-			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selectedMid.width = HPWidth;
+// 			item.selected.selectedStart.width = HPWidth;
+// 			item.selected.selectedEnd.width = HPWidth;
+// 			item.selected.selectedMid.width = HPWidth;
 			
 			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
 			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
@@ -1160,15 +1164,15 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.selected.selectedStart.width = HPWidth;
-			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selectedMid.width = HPWidth;
+// 			item.selected.selectedStart.width = HPWidth;
+// 			item.selected.selectedEnd.width = HPWidth;
+// 			item.selected.selectedMid.width = HPWidth;
 			
 			item.selected.selected1.width = resizeWidth;
 			item.selected.selected2.width = resizeWidth;
-			item.selected.selectedMid.width = HPWidth;
-			item.selected.selectedMid.x = (resizeWidth/2)-(HPWidth/2);
-			item.selected.selectedMid.y = -10;
+// 			item.selected.selectedMid.width = HPWidth;
+// 			item.selected.selectedMid.x = (resizeWidth/2)-2;
+// 			item.selected.selectedMid.y = -10;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1208,15 +1212,18 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-	item.selected.selected1.height = selectHeight;
+	item.selected.selected1.height = selectBarHeight;
 	item.selected.selected1.y = -15;
 	
 	item.selected.selected2.y = -20;
 	
-	item.selected.selectedStart.y = -23;
+	item.selected.selectedStart.height = selectEndHeight;
+	item.selected.selectedStart.y = selectEndY;;
 	
-	item.selected.selectedEnd.x = item.outer.width - HPWidth;
-	item.selected.selectedEnd.y = -23;
+	item.selected.selectedEnd.height = selectEndHeight;	
+	item.selected.selectedEnd.y = selectEndY;	
+	item.selected.selectedEnd.x = item.outer.width - 4;
+	
 }
 
 function resizeSprites(direction, item, index){
