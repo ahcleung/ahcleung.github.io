@@ -41,16 +41,6 @@ loader
 		{name:'element_toxic', url:'img/element_toxic.png'},
 		{name:'element_water', url:'img/element_water.png'},
 		{name:'element_wind', url:'img/element_wind.png'},
-	
-// 		"img/element_earth.png",
-// 		"img/element_fire.png",
-// 		"img/element_flora.png",
-// 		"img/element_lightning.png",
-// 		"img/element_shadow.png",
-// 		"img/element_spirit.png",
-// 		"img/element_toxic.png",
-// 		"img/element_water.png",
-// 		"img/element_wind.png",
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -198,16 +188,6 @@ const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 
-// const elementEarth = PIXI.Texture.from('img/element_earth.png');
-// const elementFire = PIXI.Texture.from('img/element_fire.png');
-// const elementFlora = PIXI.Texture.from('img/element_flora.png');
-// const elementLightning = PIXI.Texture.from('img/element_lightning.png');
-// const elementShadow = PIXI.Texture.from('img/element_shadow.png');
-// const elementSpirit = PIXI.Texture.from('img/element_spirit.png');
-// const elementToxic = PIXI.Texture.from('img/element_toxic.png');
-// const elementWater = PIXI.Texture.from('img/element_water.png');
-// const elementWind = PIXI.Texture.from('img/element_wind.png');
-
 const vita = [];
 vita[0] = {
 	id: 11, level: 50, 
@@ -288,26 +268,6 @@ function setup(){
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
 	
-// 	var elementEarth = PIXI.Texture.from('element_earth');
-// 	var elementFire = PIXI.Texture.from('element_fire');
-// 	var elementFlora = PIXI.Texture.from('element_flora');
-// 	var elementLightining = PIXI.Texture.from('element_lightning');
-// 	var elementShadow = PIXI.Texture.from('element_shadow');
-// 	var elementSpirit = PIXI.Texture.from('element_spirit');
-// 	var elementToxic = PIXI.Texture.from('element_toxic');
-// 	var elementWater = PIXI.Texture.from('element_water');
-// 	var elementWind = PIXI.Texture.from('element_wind');
-	
-// 	{name:'element_earth', url:'img/element_earth.png'},
-// 		{name:'element_fire', url:'img/element_fire.png'},
-// 		{name:'element_flora', url:'img/element_flora.png'},
-// 		{name:'element_lightning', url:'img/element_lightning.png'},
-// 		{name:'element_shadow', url:'img/element_shadow.png'},
-// 		{name:'element_spirit', url:'img/element_spirit.png'},
-// 		{name:'element_toxic', url:'img/element_toxic.png'},
-// 		{name:'element_water', url:'img/element_water.png'},
-// 		{name:'element_wind', url:'img/element_wind.png'},
-	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
 	rect.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
@@ -335,8 +295,6 @@ function setup(){
 	hpHero.y = 10;
 	hpEnemy.x = app.screen.width/2;
 	hpEnemy.y = 10;
-	
-// 	const movesList = resources["js/moves.json"];	
 	
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
@@ -424,8 +382,6 @@ function setup(){
 		createSprite(-1, item, index)	
 	});
 	
-	const movesList = resources["js/moves.json"];
-	
 	for(var i = 0; i < 4; i++){
 // 		console.log(arrayHero[1].moves[i]);
 		let moveRect = new PIXI.Graphics();
@@ -442,11 +398,7 @@ function setup(){
 		moveContainer.identifier = arrayHero[1].moves[i];
 		
 		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
-// 		let moveName = new Text(movesList.data.moves[i].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
-		
-// 		let moveNum = new Text("8/10", {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'});
-// 		moveNum.anchor.set(1, 0.5);
 		
 		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		moveRect.x = 0;
@@ -456,8 +408,6 @@ function setup(){
 		moveContainer.rect = moveRect;
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
-// 		moveContainer.addChild(moveNum);
-// 		moveContainer.moveNum = moveNum;
 		
 		const posMarkerArray = [];		
 		const posMarkerContainer = new PIXI.Container();
@@ -497,7 +447,6 @@ function setup(){
 		moveContainer.posMarkerArray = posMarkerArray;
 		moveContainer.posMarkerContainer = posMarkerContainer;
 		
-// 		var elementID = Math.floor(Math.random() * 9) + 1;
 		var moveElement;
 		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
 			case 1:
@@ -605,6 +554,11 @@ function setup(){
 	
 	button2 = new PIXI.Sprite(textureButtonDown);
 	button2.anchor.set(0,1);
+	button2.buttonMode = true;
+    	button2.interactive = true;
+	button2
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onAdditionalDown);
 	
 	app.stage.addChild(button);	
 	app.stage.addChild(button2);	
@@ -720,7 +674,6 @@ function createSprite(direction, item, index){
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
 	outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
-// 	outerBar.drawRoundedRect(0, 0, 120, 20, 5);
 	outerBar.endFill();
 	healthBar.addChild(outerBar);
 	healthBar.outer = outerBar;
@@ -728,7 +681,6 @@ function createSprite(direction, item, index){
 	let innerBar = new PIXI.Graphics();
 	innerBar.beginFill(0x2C8A2C);
 	innerBar.drawRect(0, 0, (app.screen.width-320)/8 * (item.statCalc[0]/item.EHP), 40);
-// 	innerBar.drawRoundedRect(0, 0, 80, 20, 5);
 	innerBar.endFill();
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
@@ -751,7 +703,6 @@ function createSprite(direction, item, index){
 	let statusEffect;
 	
 	item.statusEffect.forEach((element) => {
-// 		console.log(element[0]);
 		switch(element[0]){
 			case 1:
 				statusEffect = new PIXI.Sprite(resources.status_bleed.texture);
@@ -826,19 +777,19 @@ function createSprite(direction, item, index){
 		selected.addChild(selectedStart);
 		selected.selectedStart = selectedStart;
 
-		let selected1 = new PIXI.Graphics();
-		selected1.beginFill(0xFFD600);
-		selected1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-		selected1.endFill();
-		selected.addChild(selected1);
-		selected.selected1 = selected1;
+		let selectedBar1 = new PIXI.Graphics();
+		selectedBar1.beginFill(0xFFD600);
+		selectedBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+		selectedBar1.endFill();
+		selected.addChild(selectedBar1);
+		selected.selectedBar1 = selectedBar1;
 
-		let selected2 = new PIXI.Graphics();
-		selected2.beginFill(0xFFD600);
-		selected2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-		selected2.endFill();
-		selected.addChild(selected2);
-		selected.selected2 = selected2;
+		let selectedBar2 = new PIXI.Graphics();
+		selectedBar2.beginFill(0xFFD600);
+		selectedBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+		selectedBar2.endFill();
+		selected.addChild(selectedBar2);
+		selected.selectedBar2 = selectedBar2;
 
 		healthBar.addChild(selected);
 		healthBar.selected = selected;
@@ -864,27 +815,20 @@ function createSprite(direction, item, index){
 		selectedStart.endFill();
 		selected.addChild(selectedStart);
 		selected.selectedStart = selectedStart;
-		
-// 		let selectedMid = new PIXI.Graphics();
-// 		selectedMid.beginFill(0xFF392F);
-// 		selectedMid.drawRect(0, 0, 4, 20);
-// 		selectedMid.endFill();
-// 		selected.addChild(selectedMid);
-// 		selected.selectedMid = selectedMid;
 
-		let selected1 = new PIXI.Graphics();
-		selected1.beginFill(0xFF392F);
-		selected1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-		selected1.endFill();
-		selected.addChild(selected1);
-		selected.selected1 = selected1;
+		let selectedBar1 = new PIXI.Graphics();
+		selectedBar1.beginFill(0xFF392F);
+		selectedBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+		selectedBar1.endFill();
+		selected.addChild(selectedBar1);
+		selected.selectedBar1 = selectedBar1;
 
-		let selected2 = new PIXI.Graphics();
-		selected2.beginFill(0xFF392F);
-		selected2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-		selected2.endFill();
-		selected.addChild(selected2);
-		selected.selected2 = selected2;
+		let selectedBar2 = new PIXI.Graphics();
+		selectedBar2.beginFill(0xFF392F);
+		selectedBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+		selectedBar2.endFill();
+		selected.addChild(selectedBar2);
+		selected.selectedBar2 = selectedBar2;
 
 		healthBar.addChild(selected);
 		healthBar.selected = selected;
@@ -1083,10 +1027,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-// 			item.selected.selectedStart.width = HPWidth;
-// 			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
-			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selectedBar1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selectedBar2.width = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1106,10 +1048,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-// 			item.selected.selectedStart.width = HPWidth;
-// 			item.selected.selectedEnd.width = HPWidth;
-			item.selected.selected1.width = resizeWidth;
-			item.selected.selected2.width = resizeWidth;
+			item.selected.selectedBar1.width = resizeWidth;
+			item.selected.selectedBar2.width = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1151,14 +1091,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-// 			item.selected.selectedStart.width = HPWidth;
-// 			item.selected.selectedEnd.width = HPWidth;
-// 			item.selected.selectedMid.width = HPWidth;
-			
-			item.selected.selected1.width = resizeWidth * 2 + healthSpacing;
-			item.selected.selected2.width = resizeWidth * 2 + healthSpacing;
-// 			item.selected.selectedMid.x = ((resizeWidth * 2 + healthSpacing)/2)-4;
-// 			item.selected.selectedMid.y = -10;
+			item.selected.selectedBar1.width = resizeWidth * 2 + healthSpacing;
+			item.selected.selectedBar2.width = resizeWidth * 2 + healthSpacing;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1177,15 +1111,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-// 			item.selected.selectedStart.width = HPWidth;
-// 			item.selected.selectedEnd.width = HPWidth;
-// 			item.selected.selectedMid.width = HPWidth;
-			
-			item.selected.selected1.width = resizeWidth;
-			item.selected.selected2.width = resizeWidth;
-// 			item.selected.selectedMid.width = HPWidth;
-// 			item.selected.selectedMid.x = (resizeWidth/2)-2;
-// 			item.selected.selectedMid.y = -10;
+			item.selected.selectedBar1.width = resizeWidth;
+			item.selected.selectedBar2.width = resizeWidth;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1225,10 +1152,10 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-	item.selected.selected1.height = selectBarHeight;
-	item.selected.selected1.y = selectBar1Y;
+	item.selected.selectedBar1.height = selectBarHeight;
+	item.selected.selectedBar1.y = selectBar1Y;
 	
-	item.selected.selected2.y = selectBar2Y;
+	item.selected.selectedBar2.y = selectBar2Y;
 	
 	item.selected.selectedStart.height = selectEndHeight;
 	item.selected.selectedStart.y = selectEndY;
@@ -1248,25 +1175,6 @@ function resizeSprites(direction, item, index){
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
-// 		if(app.screen.width < 860){
-// 			if(arrayHero[index].size == 2){		
-// 				item.scale.set(direction * 0.22, 0.22);
-// 			}else{
-// 				item.scale.set(direction * 0.15, 0.15);
-// 			}
-// 		}else if(app.screen.width < 1000){
-// 			if(arrayHero[index].size == 2){		
-// 				item.scale.set(direction * 0.3, 0.3);
-// 			}else{
-// 				item.scale.set(direction * 0.22, 0.22);
-// 			} 
-// 		}else{
-// 			if(arrayHero[index].size == 2){		
-// 				item.scale.set(direction * 0.5, 0.5);
-// 			}else{
-// 				item.scale.set(direction * 0.33, 0.33);
-// 			}
-// 		}
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = 0;
@@ -1281,8 +1189,7 @@ function resizeSprites(direction, item, index){
 				item.x = -((resizeWidth + healthSpacing) * 3);
 				break;
 			default:
-				item.x = 0;
-				
+				item.x = 0;	
 		}
 	}else{
 		if(app.screen.width < 860){
@@ -1307,7 +1214,6 @@ function resizeSprites(direction, item, index){
 				break;
 			default:
 				item.x = 0;
-				
 		}
 	}
 }
@@ -1444,25 +1350,13 @@ function onMoveDown(){
 					}
 				}				
 			});
-// 			console.log(index+1);	
 		}
 	});
-	
-	
-	
-// 	hpHeroContainerArray.forEach(element=>{
-// 		element.turn.visible = false;
-// 	});
-// 	hpEnemyContainerArray.forEach(element=>{
-// 		element.turn.visible = false;
-// 	});
-	
-// 	if(this.identifier[0] < 0){
-// 		hpEnemyContainerArray[this.identifier].turn.visible = true;
-// 	}else{
-// 		hpHeroContainerArray[this.identifier].turn.visible = true;
-// 	}
-// 	hpHeroContainerArray[this.identifier[1]].selected = visible;
+}
+
+function onAdditionalDown(){
+	onScreenStats.visible = false;
+	consoleScreen.visible = false;
 }
 
 // function onButtonDown2(){
