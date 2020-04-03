@@ -1025,8 +1025,8 @@ function resizeHP(roster, item, index){
 		statusSpacing = 2;
 		HPSpacing = 1;
 		selectBarHeight = 5;
-		selectBar1Y = -10;
-		selectBar2Y = -13;
+		selectBar1Y = -12;
+		selectBar2Y = -15;
 		selectEndHeight = 11;
 		selectEndY = -16;
 		item.turn.height = 3;
