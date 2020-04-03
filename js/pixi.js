@@ -241,7 +241,7 @@ enemy[2] = {
 	move1: 4, move2: 6, move3: 7, move4: 3,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
 };
-enemy[2] = {
+enemy[3] = {
 	id: 11, level: 45, 
 	move1: 4, move2: 6, move3: 7, move4: 3,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
