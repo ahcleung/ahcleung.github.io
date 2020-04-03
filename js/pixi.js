@@ -910,8 +910,8 @@ function resize() {
 		margin = 10;
 		healthSpacing = 10;
 		moveSpacer = 5;
-		hpHero.position.set(margin, 30);
-		hpEnemy.position.set(app.screen.width/2+margin, 30);
+		hpHero.position.set(margin, 20);
+		hpEnemy.position.set(app.screen.width/2+margin, 20);
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
