@@ -396,7 +396,7 @@ function setup(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onMoveDown);
 		
-		moveContainer.identifier = arrayHero[1].moves[i];
+		moveContainer.identifier = [i , arrayHero[1].moves[i]];
 		
 		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
@@ -1298,7 +1298,7 @@ function onCreatureDown(){
 		}
 // 		moveContainer.identifier = arrayHero[1].moves[i];
 		
-		moveArray[index].identifier = element;
+		moveArray[index].identifier = [index, element];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){
@@ -1346,9 +1346,9 @@ function onMoveDown(){
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
 	});
-	moveArray[this.identifier].selected.visible = true;
+	moveArray[this.identifier[0]].selected.visible = true;
 	
-	movesList.data.moves[this.identifier].target.forEach((element1, index1)=> {
+	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
 			arrayEnemy.forEach((element2, index2) => {
