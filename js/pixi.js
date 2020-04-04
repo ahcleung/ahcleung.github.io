@@ -550,12 +550,15 @@ function setup(){
 	onScreenStats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight);
-	app.stage.addChild(onScreenStats);	
+	
 
 	//Console text printout
 	consoleScreen = new Text("Console: ");
-	app.stage.addChild(consoleScreen);
+	
 	consoleScreen.x = 300;
+	
+	onScreenStats.visible = false;
+	consoleScreen.visible = false;
 	
 	//Resize button
 	button = new PIXI.Sprite(textureButton);
@@ -626,6 +629,9 @@ function setup(){
 // 	hero4.play();	
 // 	hero4Container.addChild(hero4);
 // 	app.stage.addChild(anim);
+	
+	app.stage.addChild(onScreenStats);	
+	app.stage.addChild(consoleScreen);
 }
 
 function gameLoop(delta){
@@ -1401,8 +1407,8 @@ function onMoveDown(){
 }
 
 function onAdditionalDown(){
-	onScreenStats.visible = false;
-	consoleScreen.visible = false;
+	onScreenStats.visible = true;
+	consoleScreen.visible = true;
 }
 
 // function onButtonDown2(){
