@@ -814,7 +814,7 @@ function createSprite(direction, item, index){
 
 		healthBar.addChild(selected);
 		healthBar.selected = selected;
-// 		healthBar.selected.visible = false;
+		healthBar.selected.visible = false;
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
 		
@@ -853,7 +853,7 @@ function createSprite(direction, item, index){
 
 		healthBar.addChild(selected);
 		healthBar.selected = selected;
-// 		healthBar.selected.visible = false;
+		healthBar.selected.visible = false;
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
 		
