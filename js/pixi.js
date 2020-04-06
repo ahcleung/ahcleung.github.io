@@ -640,7 +640,7 @@ function gameLoop(delta){
 
 let phase = 0.0;
 function play(delta){
-	phase += delta / 30.0;
+	phase += delta / 25.0;
 	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
