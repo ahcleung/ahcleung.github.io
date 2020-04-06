@@ -1441,7 +1441,7 @@ function onCreatureDown(){
 		}
 // 		moveContainer.identifier = arrayHero[1].moves[i];
 		
-		moveArray[index].identifier = [index, element];
+		moveArray[index].identifier = [index, element, this.identifier[0]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){
@@ -1493,7 +1493,7 @@ function onMoveDown(){
 		element.selected.visible = false;
 	});
 	moveArray[this.identifier[0]].selected.visible = true;
-	
+	console.log(this.identifier);
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
