@@ -1084,7 +1084,9 @@ function resizeHP(roster, item, index){
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
 			item.select.selectBar1.width = resizeWidth * 2 + healthSpacing;
-			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;
+			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
+			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
+			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1106,6 +1108,8 @@ function resizeHP(roster, item, index){
 			
 			item.select.selectBar1.width = resizeWidth;
 			item.select.selectBar2.width = resizeWidth;
+			item.target.targetBar1.width = resizeWidth;
+			item.target.targetBar2.width = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1139,21 +1143,6 @@ function resizeHP(roster, item, index){
 				item.x = 0;
 				
 		}
-		
-		item.select.selectBar1.height = selectBarHeight;
-		item.select.selectBar1.y = selectBar1Y;
-
-		item.select.selectBar2.y = selectBar2Y;
-
-		item.select.selectStart.height = selectEndHeight;
-		item.select.selectStart.y = selectEndY;
-
-		item.select.selectEnd.height = selectEndHeight;	
-		item.select.selectEnd.y = selectEndY;	
-		item.select.selectEnd.x = item.outer.width - 4;
-		
-		item.select.pivot.x = item.select.width/2;
-		item.select.x = item.select.width/2;
 	}else{	
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
@@ -1162,6 +1151,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
+			item.select.selectBar1.width = resizeWidth * 2 + healthSpacing;
+			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
 			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
 			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
 			
@@ -1182,6 +1173,8 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
+			item.select.selectBar1.width = resizeWidth;
+			item.select.selectBar2.width = resizeWidth;
 			item.target.targetBar1.width = resizeWidth;
 			item.target.targetBar2.width = resizeWidth;
 			
@@ -1218,33 +1211,35 @@ function resizeHP(roster, item, index){
 				item.x = 0;
 				
 		}
-		item.target.targetBar1.height = selectBarHeight;
-		item.target.targetBar1.y = selectBar1Y;
 
-		item.target.targetBar2.y = selectBar2Y;
-
-		item.target.targetStart.height = selectEndHeight;
-		item.target.targetStart.y = selectEndY;
-
-		item.target.targetEnd.height = selectEndHeight;	
-		item.target.targetEnd.y = selectEndY;	
-		item.target.targetEnd.x = item.outer.width - 4;
 	}
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-// 	item.select.selectBar1.height = selectBarHeight;
-// 	item.select.selectBar1.y = selectBar1Y;
+	item.select.selectBar1.height = selectBarHeight;
+	item.select.selectBar1.y = selectBar1Y;
 	
-// 	item.select.selectBar2.y = selectBar2Y;
+	item.select.selectBar2.y = selectBar2Y;
 	
-// 	item.select.selectStart.height = selectEndHeight;
-// 	item.select.selectStart.y = selectEndY;
+	item.select.selectStart.height = selectEndHeight;
+	item.select.selectStart.y = selectEndY;
 	
-// 	item.select.selectEnd.height = selectEndHeight;	
-// 	item.select.selectEnd.y = selectEndY;	
-// 	item.select.selectEnd.x = item.outer.width - 4;
+	item.select.selectEnd.height = selectEndHeight;	
+	item.select.selectEnd.y = selectEndY;	
+	item.select.selectEnd.x = item.outer.width - 4;
+	
+	item.target.targetBar1.height = selectBarHeight;
+	item.target.targetBar1.y = selectBar1Y;
+
+	item.target.targetBar2.y = selectBar2Y;
+
+	item.target.targetStart.height = selectEndHeight;
+	item.target.targetStart.y = selectEndY;
+
+	item.target.targetEnd.height = selectEndHeight;	
+	item.target.targetEnd.y = selectEndY;	
+	item.target.targetEnd.x = item.outer.width - 4;
 }
 
 function resizeSprites(direction, item, index){
