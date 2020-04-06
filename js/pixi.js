@@ -609,6 +609,7 @@ function setup(){
 
 	state = play;
 	
+	app.ticker.add(delta => gameLoop(delta));
 // 	document.addEventListener('fullscreenerror', (event) => {
 // 		alert('an error occurred changing into fullscreen');
 // 		alert(event);
