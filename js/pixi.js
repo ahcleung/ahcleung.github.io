@@ -646,10 +646,10 @@ function play(delta){
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height +
-		"\nScale: " + (Math.cos(phase) + 1) * 20 + 1;
+		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
 	hpHeroContainerArray.forEach(element => {
 		if(element.select.play == true){
-			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 20 + 1;
+			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 10 + 1;
 // 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
