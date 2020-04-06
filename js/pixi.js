@@ -648,7 +648,7 @@ function play(delta){
 		"\nAppScreen Height: " + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 0.04 + 1;
 	hpHeroContainerArray.forEach(element => {
-		if(element.play == true){
+		if(element.select.play == true){
 			element.select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
 		}
 	});
@@ -1329,10 +1329,10 @@ function onCreatureDown(){
 	}else{
 		hpHeroContainerArray.forEach(element=>{
 			element.select.visible = false;
-			element.play = false;
+			element.select.play = false;
 		});
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
-		hpHeroContainerArray[this.identifier[1]].play = true;
+		hpHeroContainerArray[this.identifier[1]].select.play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
