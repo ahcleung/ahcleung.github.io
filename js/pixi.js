@@ -640,7 +640,7 @@ function gameLoop(delta){
 
 let phase = 0.0;
 function play(delta){
-	phase += delta / 20.0;
+	phase += delta / 30.0;
 	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
@@ -823,7 +823,9 @@ function createSprite(direction, item, index){
 		selectBar2.endFill();
 		select.addChild(selectBar2);
 		select.selectBar2 = selectBar2;
-
+		
+		select.pivot.x = 0.5;
+		
 		healthBar.addChild(select);
 		healthBar.select = select;
 // 		healthBar.select.visible = false;
