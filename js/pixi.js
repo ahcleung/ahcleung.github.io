@@ -608,7 +608,6 @@ function setup(){
 	resize();
 
 	state = play;
-	app.ticker.add(delta => gameLoop(delta));
 	
 // 	document.addEventListener('fullscreenerror', (event) => {
 // 		alert('an error occurred changing into fullscreen');
@@ -1375,6 +1374,7 @@ function onCreatureDown(){
 	});	
 	
 	moveArray[0].posMarkerArray[0].visible = false;
+	app.ticker.add(delta => gameLoop(delta));
 }
 
 
