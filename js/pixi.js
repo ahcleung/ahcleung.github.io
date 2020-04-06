@@ -1410,19 +1410,35 @@ function onCreatureDown(){
 		element.select.play = false;
 	});
 	var newMoves = [];
+	var currPos = [];
 	if(this.identifier[0] < 0){		
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
 		hpEnemyContainerArray[this.identifier[1]].select.play = true;
 		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
+		if(arrayEnemy[this.identifier[1]].size == 1){
+			currPos.push(arrayEnemy[this.identifier[1]].pos);
+		}else if(arrayEnemy[this.identifier[1]].size == 2){
+			currPos.push(arrayEnemy[this.identifier[1]].pos);
+			currPos.push(arrayEnemy[this.identifier[1]].pos+1);
+		}
 	}else{
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
+		if(arrayHero[this.identifier[1]].size == 1){
+			currPos.push(arrayHero[this.identifier[1]].pos);
+		}else if(arrayHero[this.identifier[1]].size == 2){
+			currPos.push(arrayHero[this.identifier[1]].pos);
+			currPos.push(arrayHero[this.identifier[1]].pos+1);
+		}
 	}
+	
+	console.log(currPos);
+	
 	newMoves.forEach((element, index) => {
 		switch(movesList.data.moves[element].element){
 			case 1:
@@ -1460,7 +1476,7 @@ function onCreatureDown(){
 		
 		moveArray[index].identifier = [index, element, this.identifier[0]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
-		movesList.data.moves[element].position.forEach((element2, index2) => {
+		movesList.data.moves[element].position.forEach((element2, index2) => {			
 			if(element2 == 1){
 				moveArray[index].posMarkerArray[index2].visible = true;	
 			}else{
@@ -1474,7 +1490,7 @@ function onCreatureDown(){
 				moveArray[index].posMarkerArray[index3+4].visible = false;
 			}
 		});
-		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
+// 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
 	moveArray[0].posMarkerArray[0].visible = false;
