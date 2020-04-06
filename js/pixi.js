@@ -1476,7 +1476,12 @@ function onCreatureDown(){
 		
 		moveArray[index].identifier = [index, element, this.identifier[0]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
-		movesList.data.moves[element].position.forEach((element2, index2) => {			
+		movesList.data.moves[element].position.forEach((element2, index2) => {
+			currPos.forEach(element => {
+				if(element == index2+1){
+					console.log("On position");
+				}
+			});
 			if(element2 == 1){
 				moveArray[index].posMarkerArray[index2].visible = true;	
 			}else{
