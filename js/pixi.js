@@ -195,7 +195,7 @@ vita[0] = {
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
 vita[1] = {
-	id: 12, level: 45, 
+	id: 2, level: 45, 
 	move1: 4, move2: 5, move3: 6, move4: 7,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
@@ -204,11 +204,11 @@ vita[2] = {
 	move1: 8, move2: 0, move3: 1, move4: 2,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
-vita[3] = {
-	id: 9, level: 47, 
-	move1: 8, move2: 0, move3: 1, move4: 2,
-	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
-};
+// vita[3] = {
+// 	id: 9, level: 47, 
+// 	move1: 8, move2: 0, move3: 1, move4: 2,
+// 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
+// };
 
 const enemy = [];
 enemy[0] = {
