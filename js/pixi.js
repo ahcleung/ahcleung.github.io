@@ -890,7 +890,7 @@ function createSprite(direction, item, index){
 	healBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 	healBar1.endFill();
 	heal.addChild(healBar1);
-	heal.targetBar1 = healBar1;
+	heal.healBar1 = healBar1;
 
 	let healBar2 = new PIXI.Graphics();
 	healBar2.beginFill(0x28F828);
