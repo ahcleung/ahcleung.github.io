@@ -1497,27 +1497,51 @@ function onMoveDown(){
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
-			arrayEnemy.forEach((element2, index2) => {
-				if(element2.size == 1){
-					if(posTracker == element2.pos){
-						console.log("Targeted: " + element2.name);
-						hpEnemyContainerArray[index2].target.visible = true;
-						hpHeroContainerArray[index2].target.visible = true;
-					}
-				}else if(element2.size == 2){
-					var pos1 = element2.pos;
-					var pos2 = element2.pos + 1;
-					if(posTracker == pos1){
-						console.log("Targeted: " + element2.name);
-						hpEnemyContainerArray[index2].target.visible = true;
-						hpHeroContainerArray[index2].target.visible = true;
-					}else if(posTracker == pos2){
-						console.log("Targeted: " + element2.name);
-						hpEnemyContainerArray[index2].target.visible = true;
-						hpHeroContainerArray[index2].target.visible = true;
-					}
-				}				
-			});
+			if(this.identifier[2] < 0){
+				arrayEnemy.forEach((element2, index2) => {
+					if(element2.size == 1){
+						if(posTracker == element2.pos){
+							console.log("Targeted: " + element2.name);
+							hpEnemyContainerArray[index2].target.visible = true;
+// 							hpHeroContainerArray[index2].target.visible = true;
+						}
+					}else if(element2.size == 2){
+						var pos1 = element2.pos;
+						var pos2 = element2.pos + 1;
+						if(posTracker == pos1){
+							console.log("Targeted: " + element2.name);
+							hpEnemyContainerArray[index2].target.visible = true;
+// 							hpHeroContainerArray[index2].target.visible = true;
+						}else if(posTracker == pos2){
+							console.log("Targeted: " + element2.name);
+							hpEnemyContainerArray[index2].target.visible = true;
+// 							hpHeroContainerArray[index2].target.visible = true;
+						}
+					}				
+				});
+			}else{
+				arrayHero.forEach((element2, index2) => {
+					if(element2.size == 1){
+						if(posTracker == element2.pos){
+							console.log("Targeted: " + element2.name);
+// 							hpEnemyContainerArray[index2].target.visible = true;
+							hpHeroContainerArray[index2].target.visible = true;
+						}
+					}else if(element2.size == 2){
+						var pos1 = element2.pos;
+						var pos2 = element2.pos + 1;
+						if(posTracker == pos1){
+							console.log("Targeted: " + element2.name);
+// 							hpEnemyContainerArray[index2].target.visible = true;
+							hpHeroContainerArray[index2].target.visible = true;
+						}else if(posTracker == pos2){
+							console.log("Targeted: " + element2.name);
+// 							hpEnemyContainerArray[index2].target.visible = true;
+							hpHeroContainerArray[index2].target.visible = true;
+						}
+					}				
+				});
+			}
 		}
 	});
 }
