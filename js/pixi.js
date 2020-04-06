@@ -1384,10 +1384,12 @@ function onCreatureDown(){
 	});
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
+		element.target.visible = false;
 		element.select.play = false;
 	});
 	hpHeroContainerArray.forEach(element=>{
 		element.select.visible = false;
+		element.target.visible = false;
 		element.select.play = false;
 	});
 	var newMoves = [];
@@ -1482,6 +1484,9 @@ function onHPDown(){
 
 function onMoveDown(){
 	hpEnemyContainerArray.forEach(element=>{
+		element.target.visible = false;
+	});
+	hpHeroContainerArray.forEach(element=>{
 		element.target.visible = false;
 	});
 	moveArray.forEach(element=>{
