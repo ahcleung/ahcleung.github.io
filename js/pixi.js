@@ -869,6 +869,40 @@ function createSprite(direction, item, index){
 	healthBar.target = target;
 // 	healthBar.target.visible = false;
 	
+	const heal = new PIXI.Container();
+	
+	let healEnd = new PIXI.Graphics();
+	healEnd.beginFill(0x28F828);
+	healEnd.drawRect(0, 0, 4, 18);
+	healEnd.endFill();
+	heal.addChild(healEnd);
+	heal.healEnd = healEnd;
+
+	let healStart = new PIXI.Graphics();
+	healStart.beginFill(0x28F828);
+	healStart.drawRect(0, 0, 4, 18);
+	healStart.endFill();
+	heal.addChild(healStart);
+	heal.healStart = healStart;
+
+	let healBar1 = new PIXI.Graphics();
+	healBar1.beginFill(0x28F828);
+	healBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	healBar1.endFill();
+	heal.addChild(healBar1);
+	heal.targetBar1 = healBar1;
+
+	let healBar2 = new PIXI.Graphics();
+	healBar2.beginFill(0x28F828);
+	healBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	healBar2.endFill();
+	heal.addChild(healBar2);
+	heal.healBar2 = healBar2;
+
+	healthBar.addChild(heal);
+	healthBar.heal = heal;
+// 	healthBar.target.visible = false;
+	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
@@ -1087,6 +1121,8 @@ function resizeHP(roster, item, index){
 			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
 			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
 			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
+			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
+			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1110,6 +1146,8 @@ function resizeHP(roster, item, index){
 			item.select.selectBar2.width = resizeWidth;
 			item.target.targetBar1.width = resizeWidth;
 			item.target.targetBar2.width = resizeWidth;
+			item.heal.healBar1.width = resizeWidth;
+			item.heal.healBar2.width = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1155,6 +1193,8 @@ function resizeHP(roster, item, index){
 			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
 			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
 			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
+			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
+			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1177,6 +1217,8 @@ function resizeHP(roster, item, index){
 			item.select.selectBar2.width = resizeWidth;
 			item.target.targetBar1.width = resizeWidth;
 			item.target.targetBar2.width = resizeWidth;
+			item.heal.healBar1.width = resizeWidth;
+			item.heal.healBar2.width = resizeWidth;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1243,6 +1285,18 @@ function resizeHP(roster, item, index){
 	item.target.targetEnd.height = selectEndHeight;	
 	item.target.targetEnd.y = selectEndY;	
 	item.target.targetEnd.x = item.outer.width - 4;
+	
+	item.heal.healBar1.height = selectBarHeight;
+	item.heal.healBar1.y = selectBar1Y;
+
+	item.heal.healBar2.y = selectBar2Y;
+
+	item.heal.healStart.height = selectEndHeight;
+	item.heal.healStart.y = selectEndY;
+
+	item.heal.healEnd.height = selectEndHeight;	
+	item.heal.healEnd.y = selectEndY;	
+	item.heal.thealEnd.x = item.outer.width - 4;
 }
 
 function resizeSprites(direction, item, index){
