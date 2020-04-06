@@ -1229,6 +1229,9 @@ function resizeHP(roster, item, index){
 	item.select.selectEnd.y = selectEndY;	
 	item.select.selectEnd.x = item.outer.width - 4;
 	
+	item.select.pivot.x = item.select.width/2;
+	item.select.x = item.select.width/2;
+	
 	item.target.targetBar1.height = selectBarHeight;
 	item.target.targetBar1.y = selectBar1Y;
 
