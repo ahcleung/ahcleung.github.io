@@ -1398,6 +1398,7 @@ function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
+		element.disable.visible = false;
 	});
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
@@ -1480,6 +1481,7 @@ function onCreatureDown(){
 			currPos.forEach(element3 => {
 				var posTracker = index2 + 1;
 				if(element3 == posTracker){
+					moveArray[index].disable.visible = true;
 					console.log(element3 + ", " + posTracker + " :on position");
 				}
 			});
