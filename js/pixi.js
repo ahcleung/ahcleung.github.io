@@ -392,6 +392,7 @@ function setup(){
 		let moveRect = new PIXI.Graphics();
 		let moveSelectFill = new PIXI.Graphics();
 		let moveSelectStroke = new PIXI.Graphics();
+		let moveDisable = new PIXI.Graphics();
 		
 		const moveContainer = new PIXI.Container();
 		const moveSelect = new PIXI.Container();
@@ -421,6 +422,11 @@ function setup(){
 		moveSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		moveSelectFill.x = 0;
 		moveSelectFill.y = 0;
+		
+		moveDisable.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveDisable.alpha = 0.75;
+		moveDisable.x = 0;
+		moveDisable.y = 0;
 		
 		moveSelect.addChild(moveSelectStroke);
 		moveSelect.addChild(moveSelectFill);
@@ -509,7 +515,10 @@ function setup(){
 		moveElement.anchor.set(0, 0.5);
 		moveContainer.addChild(moveElement);
 		moveContainer.moveElement = moveElement;
-	
+		
+		moveContainer.addChild(moveDisable);
+		moveContainer.disable = moveDisable;
+		
 		moveArray.push(moveContainer);
 		app.stage.addChild(moveContainer);
 	}
@@ -985,6 +994,9 @@ function resize() {
 		element.selected.stroke.height = element.rect.width/4;
 		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - moveSelectPadding*2;
 		element.selected.fill.height = (element.rect.width/4) - moveSelectPadding*2;
+		
+		element.disable.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		element.disable.height = element.rect.width/4;
 		
 		element.selected.fill.x = moveSelectPadding;
 		element.selected.fill.y = moveSelectPadding;
