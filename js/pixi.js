@@ -646,8 +646,13 @@ function play(delta){
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height +
-		"\nScale: " + (Math.cos(phase) + 1) * 0.04 + 1;	
-	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
+		"\nScale: " + (Math.cos(phase) + 1) * 0.04 + 1;
+	hpHeroContainerArray.forEach(element => {
+		if(element.play == true){
+			element.select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
+		}
+	});
+// 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
 }
 
 // Listen for animate update
@@ -795,6 +800,8 @@ function createSprite(direction, item, index){
 
 	if(direction > 0){
 		const select = new PIXI.Container();
+		
+		select.play = false;
 	
 		let selectEnd = new PIXI.Graphics();
 		selectEnd.beginFill(0xFFD600);
@@ -1322,8 +1329,10 @@ function onCreatureDown(){
 	}else{
 		hpHeroContainerArray.forEach(element=>{
 			element.select.visible = false;
+			element.play = false;
 		});
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
+		hpHeroContainerArray[this.identifier[1]].play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
