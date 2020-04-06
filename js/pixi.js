@@ -824,8 +824,6 @@ function createSprite(direction, item, index){
 		select.addChild(selectBar2);
 		select.selectBar2 = selectBar2;
 		
-		select.pivot.x = 0.5;
-		
 		healthBar.addChild(select);
 		healthBar.select = select;
 // 		healthBar.select.visible = false;
@@ -1131,6 +1129,7 @@ function resizeHP(roster, item, index){
 				item.x = 0;
 				
 		}
+		
 		item.select.selectBar1.height = selectBarHeight;
 		item.select.selectBar1.y = selectBar1Y;
 
@@ -1142,6 +1141,9 @@ function resizeHP(roster, item, index){
 		item.select.selectEnd.height = selectEndHeight;	
 		item.select.selectEnd.y = selectEndY;	
 		item.select.selectEnd.x = item.outer.width - 4;
+		
+		item.select.pivot.x = item.select.width/2;
+		item.select.x = item.select.width/2;
 	}else{	
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
