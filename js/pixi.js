@@ -1478,14 +1478,14 @@ function onCreatureDown(){
 		moveArray[index].identifier = [index, element, this.identifier[0]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
-			currPos.forEach(element3 => {
-				var posTracker = index2 + 1;
-				if(element3 == posTracker){
-// 					moveArray[index].disable.visible = true;
-					console.log(element3 + ", " + posTracker + " :on position, move:" + index);
-				}
-			});
 			if(element2 == 1){
+				currPos.forEach(element3 => {
+					var posTracker = index2 + 1;
+					if(element3 == posTracker){
+	// 					moveArray[index].disable.visible = true;
+						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
+					}
+				});
 				moveArray[index].posMarkerArray[index2].visible = true;	
 			}else{
 				moveArray[index].posMarkerArray[index2].visible = false;
