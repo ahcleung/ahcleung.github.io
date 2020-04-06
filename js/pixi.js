@@ -1324,6 +1324,12 @@ function onCreatureDown(){
 	});
 	var newMoves = [];
 	if(this.identifier[0] < 0){
+		hpEnemyContainerArray.forEach(element=>{
+			element.select.visible = false;
+			element.select.play = false;
+		});
+		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
+		hpEnemyContainerArray[this.identifier[1]].select.play = true;
 		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
