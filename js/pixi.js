@@ -557,8 +557,8 @@ function setup(){
 	
 	consoleScreen.x = 300;
 	
-// 	onScreenStats.visible = false;
-// 	consoleScreen.visible = false;
+	onScreenStats.visible = false;
+	consoleScreen.visible = false;
 	
 	//Resize button
 	button = new PIXI.Sprite(textureButton);
@@ -834,7 +834,7 @@ function createSprite(direction, item, index){
 		
 		healthBar.addChild(select);
 		healthBar.select = select;
-// 		healthBar.select.visible = false;
+		healthBar.select.visible = false;
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
 		
