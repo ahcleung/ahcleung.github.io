@@ -1296,7 +1296,7 @@ function resizeHP(roster, item, index){
 
 	item.heal.healEnd.height = selectEndHeight;	
 	item.heal.healEnd.y = selectEndY;	
-	item.heal.thealEnd.x = item.outer.width - 4;
+	item.heal.healEnd.x = item.outer.width - 4;
 }
 
 function resizeSprites(direction, item, index){
