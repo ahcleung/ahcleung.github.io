@@ -809,14 +809,14 @@ function createSprite(direction, item, index){
 		selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 		selectBar1.endFill();
 		select.addChild(selectBar1);
-		select.selectedBar1 = selectBar1;
+		select.selectBar1 = selectBar1;
 
 		let selectBar2 = new PIXI.Graphics();
 		selectBar2.beginFill(0xFFD600);
 		selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 		selectBar2.endFill();
 		select.addChild(selectBar2);
-		select.selectedBar2 = selectBar2;
+		select.selectBar2 = selectBar2;
 
 		healthBar.addChild(select);
 		healthBar.select = select;
