@@ -557,8 +557,8 @@ function setup(){
 	
 	consoleScreen.x = 300;
 	
-	onScreenStats.visible = false;
-	consoleScreen.visible = false;
+// 	onScreenStats.visible = false;
+// 	consoleScreen.visible = false;
 	
 	//Resize button
 	button = new PIXI.Sprite(textureButton);
@@ -649,7 +649,8 @@ function play(delta){
 		"\nScale: " + (Math.cos(phase) + 1) * 0.03 + 1;
 	hpHeroContainerArray.forEach(element => {
 		if(element.select.play == true){
-			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
+			element.select.width = element.select.width + (Math.cos(phase) + 1) * 0.03 + 1;
+// 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
@@ -1328,10 +1329,10 @@ function onCreatureDown(){
 		});
 	}else{
 		hpHeroContainerArray.forEach(element=>{
-			element.select.visible = false;
+// 			element.select.visible = false;
 			element.select.play = false;
 		});
-		hpHeroContainerArray[this.identifier[1]].select.visible = true;
+// 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
