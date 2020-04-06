@@ -799,81 +799,83 @@ function createSprite(direction, item, index){
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
-	if(direction > 0){
-		const select = new PIXI.Container();
+	const select = new PIXI.Container();
 		
-		select.play = false;
+	select.play = false;
+
+	let selectEnd = new PIXI.Graphics();
+	selectEnd.beginFill(0xFFD600);
+	selectEnd.drawRect(0, 0, 4, 18);
+	selectEnd.endFill();
+	select.addChild(selectEnd);
+	select.selectEnd = selectEnd;
+
+	let selectStart = new PIXI.Graphics();
+	selectStart.beginFill(0xFFD600);
+	selectStart.drawRect(0, 0, 4, 18);
+	selectStart.endFill();
+	select.addChild(selectStart);
+	select.selectStart = selectStart;
+
+	let selectBar1 = new PIXI.Graphics();
+	selectBar1.beginFill(0xFFD600);
+	selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	selectBar1.endFill();
+	select.addChild(selectBar1);
+	select.selectBar1 = selectBar1;
+
+	let selectBar2 = new PIXI.Graphics();
+	selectBar2.beginFill(0xFFD600);
+	selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	selectBar2.endFill();
+	select.addChild(selectBar2);
+	select.selectBar2 = selectBar2;
+
+	healthBar.addChild(select);
+	healthBar.select = select;
+	healthBar.select.visible = false;
 	
-		let selectEnd = new PIXI.Graphics();
-		selectEnd.beginFill(0xFFD600);
-		selectEnd.drawRect(0, 0, 4, 18);
-		selectEnd.endFill();
-		select.addChild(selectEnd);
-		select.selectEnd = selectEnd;
+	const target = new PIXI.Container();
+	
+	let targetEnd = new PIXI.Graphics();
+	targetEnd.beginFill(0xFF392F);
+	targetEnd.drawRect(0, 0, 4, 18);
+	targetEnd.endFill();
+	target.addChild(targetEnd);
+	target.targetEnd = targetEnd;
 
-		let selectStart = new PIXI.Graphics();
-		selectStart.beginFill(0xFFD600);
-		selectStart.drawRect(0, 0, 4, 18);
-		selectStart.endFill();
-		select.addChild(selectStart);
-		select.selectStart = selectStart;
+	let targetStart = new PIXI.Graphics();
+	targetStart.beginFill(0xFF392F);
+	targetStart.drawRect(0, 0, 4, 18);
+	targetStart.endFill();
+	target.addChild(targetStart);
+	target.targetStart = targetStart;
 
-		let selectBar1 = new PIXI.Graphics();
-		selectBar1.beginFill(0xFFD600);
-		selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-		selectBar1.endFill();
-		select.addChild(selectBar1);
-		select.selectBar1 = selectBar1;
+	let targetBar1 = new PIXI.Graphics();
+	targetBar1.beginFill(0xFF392F);
+	targetBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	targetBar1.endFill();
+	target.addChild(targetBar1);
+	target.targetBar1 = targetBar1;
 
-		let selectBar2 = new PIXI.Graphics();
-		selectBar2.beginFill(0xFFD600);
-		selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-		selectBar2.endFill();
-		select.addChild(selectBar2);
-		select.selectBar2 = selectBar2;
-		
-		healthBar.addChild(select);
-		healthBar.select = select;
-		healthBar.select.visible = false;
+	let targetBar2 = new PIXI.Graphics();
+	targetBar2.beginFill(0xFF392F);
+	targetBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	targetBar2.endFill();
+	target.addChild(targetBar2);
+	target.targetBar2 = targetBar2;
+
+	healthBar.addChild(target);
+	healthBar.target = target;
+// 	healthBar.target.visible = false;
+	
+	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
 	}else{
-		const target = new PIXI.Container();
-	
-		let targetEnd = new PIXI.Graphics();
-		targetEnd.beginFill(0xFF392F);
-		targetEnd.drawRect(0, 0, 4, 18);
-		targetEnd.endFill();
-		target.addChild(targetEnd);
-		target.targetEnd = targetEnd;
-
-		let targetStart = new PIXI.Graphics();
-		targetStart.beginFill(0xFF392F);
-		targetStart.drawRect(0, 0, 4, 18);
-		targetStart.endFill();
-		target.addChild(targetStart);
-		target.targetStart = targetStart;
-
-		let targetBar1 = new PIXI.Graphics();
-		targetBar1.beginFill(0xFF392F);
-		targetBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-		targetBar1.endFill();
-		target.addChild(targetBar1);
-		target.targetBar1 = targetBar1;
-
-		let targetBar2 = new PIXI.Graphics();
-		targetBar2.beginFill(0xFF392F);
-		targetBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-		targetBar2.endFill();
-		target.addChild(targetBar2);
-		target.targetBar2 = targetBar2;
-
-		healthBar.addChild(target);
-		healthBar.target = target;
-		healthBar.target.visible = false;
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
 		
