@@ -649,7 +649,7 @@ function play(delta){
 		"\nScale: " + Math.cos(phase);
 	hpHeroContainerArray.forEach(element => {
 		if(element.select.play == true){
-// 			element.select.width += (Math.cos(phase) + 1) * 0.03 + 1;
+			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 0.03 + 1;
 // 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
