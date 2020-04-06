@@ -907,7 +907,7 @@ function createSprite(direction, item, index){
 
 	healthBar.addChild(heal);
 	healthBar.heal = heal;
-	healthBar.target.visible = false;
+	healthBar.heal.visible = false;
 	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
