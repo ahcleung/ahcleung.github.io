@@ -1375,7 +1375,6 @@ function onCreatureDown(){
 	});	
 	
 	moveArray[0].posMarkerArray[0].visible = false;
-	app.ticker.add(delta => gameLoop(delta));
 }
 
 
