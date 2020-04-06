@@ -1313,7 +1313,7 @@ function onCreatureDown(){
 		hpHeroContainerArray.forEach(element=>{
 			element.select.visible = false;
 		});
-		hpHeroContainerArray[this.identifier[1]].selected.visible = true;
+		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
@@ -1399,7 +1399,7 @@ function onMoveDown(){
 		element.target.visible = false;
 	});
 	moveArray.forEach(element=>{
-		element.target.visible = false;
+		element.selected.visible = false;
 	});
 	moveArray[this.identifier[0]].selected.visible = true;
 	
