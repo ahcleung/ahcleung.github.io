@@ -1481,8 +1481,8 @@ function onCreatureDown(){
 			currPos.forEach(element3 => {
 				var posTracker = index2 + 1;
 				if(element3 == posTracker){
-					moveArray[index].disable.visible = true;
-					console.log(element3 + ", " + posTracker + " :on position");
+// 					moveArray[index].disable.visible = true;
+					console.log(element3 + ", " + posTracker + " :on position, move:" + moveArray[index]);
 				}
 			});
 			if(element2 == 1){
