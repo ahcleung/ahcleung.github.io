@@ -646,12 +646,14 @@ function play(delta){
 		"\nAppScreen Height: " + app.screen.height;
 }
 
-// // Listen for animate update
-// app.ticker.add((delta) => {
-// 	// rotate the container!
-// 	// use delta to create frame-independent transform
-// 	container.rotation -= 0.01 * delta;
-// });
+// Listen for animate update
+app.ticker.add((delta) => {
+	// rotate the container!
+	// use delta to create frame-independent transform
+	
+	//container.rotation -= 0.01 * delta;
+	hpHeroContainerArray[0].select.scale *= 0.01 * delta;
+});
 
 function setPos(item, index, array){
 	if(index == 0){
