@@ -653,6 +653,12 @@ function play(delta){
 // 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
+	hpEnemyContainerArray.forEach(element => {
+		if(element.select.play == true){
+			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+// 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
+		}
+	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
 }
 
@@ -867,7 +873,7 @@ function createSprite(direction, item, index){
 
 	healthBar.addChild(target);
 	healthBar.target = target;
-// 	healthBar.target.visible = false;
+	healthBar.target.visible = false;
 	
 	const heal = new PIXI.Container();
 	
@@ -901,7 +907,7 @@ function createSprite(direction, item, index){
 
 	healthBar.addChild(heal);
 	healthBar.heal = heal;
-// 	healthBar.target.visible = false;
+	healthBar.target.visible = false;
 	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
@@ -1376,22 +1382,22 @@ function onCreatureDown(){
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
 	});
+	hpEnemyContainerArray.forEach(element=>{
+		element.select.visible = false;
+		element.select.play = false;
+	});
+	hpHeroContainerArray.forEach(element=>{
+		element.select.visible = false;
+		element.select.play = false;
+	});
 	var newMoves = [];
-	if(this.identifier[0] < 0){
-		hpEnemyContainerArray.forEach(element=>{
-			element.select.visible = false;
-			element.select.play = false;
-		});
+	if(this.identifier[0] < 0){		
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
 		hpEnemyContainerArray[this.identifier[1]].select.play = true;
 		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
 	}else{
-		hpHeroContainerArray.forEach(element=>{
-			element.select.visible = false;
-			element.select.play = false;
-		});
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
