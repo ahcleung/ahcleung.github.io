@@ -1328,10 +1328,10 @@ function onCreatureDown(){
 		});
 	}else{
 		hpHeroContainerArray.forEach(element=>{
-			element.select.visible = false;
+// 			element.select.visible = false;
 			element.select.play = false;
 		});
-		hpHeroContainerArray[this.identifier[1]].select.visible = true;
+// 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.play = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
