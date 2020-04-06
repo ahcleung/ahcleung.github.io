@@ -643,8 +643,9 @@ function play(delta){
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: " + app.screen.height;
-	hpHeroContainerArray[0].select.scale = 0.5 * delta;
+		"\nAppScreen Height: " + app.screen.height +
+		"Scale: " + 0.5 * delta;
+// 	hpHeroContainerArray[0].select.scale = 0.5 * delta;
 }
 
 // Listen for animate update
