@@ -638,14 +638,16 @@ function gameLoop(delta){
 	state(delta);
 }
 
+let phase = 0.0;
 function play(delta){
+	phase += delta / 20.0;
 	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height +
-		"\nScale: " + 0.01 * delta;
-	hpHeroContainerArray[0].select.scale.x *= 0.01 * delta;
+		"\nScale: " + (Math.cos(phase) + 1) * 5 + 1;	
+	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 5 + 1;
 }
 
 // Listen for animate update
