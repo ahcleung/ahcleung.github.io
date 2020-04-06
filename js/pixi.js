@@ -398,7 +398,7 @@ function setup(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onMoveDown);
 		
-		moveContainer.identifier = [i , arrayHero[1].moves[i]];
+		moveContainer.identifier = [i , arrayHero[1].moves[i], 1];
 		
 		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
 		moveName.anchor.set(0, 0.5);
@@ -425,7 +425,7 @@ function setup(){
 		moveContainer.addChild(moveSelect);
 		moveContainer.selected = moveSelect;
 		
-// 		moveContainer.selected.visible = false;
+		moveContainer.selected.visible = false;
 		
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
