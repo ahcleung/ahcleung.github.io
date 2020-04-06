@@ -1482,7 +1482,7 @@ function onCreatureDown(){
 				var posTracker = index2 + 1;
 				if(element3 == posTracker){
 // 					moveArray[index].disable.visible = true;
-					console.log(element3 + ", " + posTracker + " :on position, move:" + moveArray[index]);
+					console.log(element3 + ", " + posTracker + " :on position, move:" + index);
 				}
 			});
 			if(element2 == 1){
