@@ -557,8 +557,8 @@ function setup(){
 	
 	consoleScreen.x = 300;
 	
-	onScreenStats.visible = false;
-	consoleScreen.visible = false;
+// 	onScreenStats.visible = false;
+// 	consoleScreen.visible = false;
 	
 	//Resize button
 	button = new PIXI.Sprite(textureButton);
