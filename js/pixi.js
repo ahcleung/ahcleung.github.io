@@ -1091,8 +1091,8 @@ function resize() {
 		element.moveElement.x = moveSpacer;
 		element.moveElement.y = element.rect.height/2;
 		
-		element.posMarkerContainer.width = (element.rect.width/3)*2;
-		element.posMarkerContainer.height = element.posMarkerContainer.width/12;
+		element.markerContainer.width = (element.rect.width/3)*2;
+		element.markerContainer.height = element.markerContainer.width/12;
 // 		element.posMarkerContainer.scale.set(element.moveElement.width);
 		
 		if(app.screen.width < 860){
@@ -1123,8 +1123,8 @@ function resize() {
 // 		element.posMarkerContainer.x = 0;
 // 		element.posMarkerContainer.y = 0;
 		
-		element.posMarkerContainer.x = element.rect.width/6;
-		element.posMarkerContainer.y = element.rect.height*3/4;
+		element.markerContainer.x = element.rect.width/6;
+		element.markerContainer.y = element.rect.height*3/4;
 	});
 	
 	
