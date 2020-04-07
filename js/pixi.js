@@ -1592,7 +1592,8 @@ function onCreatureDown(){
 		var column = false;
 		movesList.data.moves[element].tags.forEach(tagName =>{
 			if(tagName == "column"){
-				column = true;	
+				column = true;
+				moveArray[index].targetText.text = movesList.data.moves[element][tagName][0];
 			}
 			console.log(movesList.data.moves[element][tagName]);
 		});
@@ -1600,7 +1601,6 @@ function onCreatureDown(){
 		if(column){
 			moveArray[index].markerTargetEnemyContainer.visible = false;
 			moveArray[index].targetText.visible = true;
-			moveArray[index].targetText.text = movesList.data.moves[element][tagName][0];
 		}else{
 			moveArray[index].markerTargetEnemyContainer.visible = true;
 			moveArray[index].targetText.visible = false;
