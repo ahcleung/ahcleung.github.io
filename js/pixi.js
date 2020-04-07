@@ -1594,9 +1594,11 @@ function onCreatureDown(){
 			if(tagName == "column"){
 				column = true;
 				if(movesList.data.moves[element][tagName][2] > 0){
-					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + "►";
+					moveArray[index].targetText.style = {fontFamily : 'Arial', fontSize: targetTextSize, fill : 0xFF6961, align : 'left'};
+					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + " ►";
 				}else{
-					moveArray[index].targetText.text = "◄" + movesList.data.moves[element][tagName][0];
+					moveArray[index].targetText.style = {fontFamily : 'Arial', fontSize: targetTextSize, fill : 0x66cc66, align : 'left'};
+					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
 				}
 			}
 			console.log(movesList.data.moves[element][tagName]);
