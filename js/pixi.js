@@ -562,7 +562,7 @@ function setup(){
 		moveContainer.markerTargetHeroContainer = markerTargetHeroContainer;
 		moveContainer.markerTargetHeroContainer.visible = false;
 		
-		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0xFF6961});
+		let targetText = new Text("1►", {fontFamily : 'Arial', fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
 		moveContainer.addChild(targetText);
 		moveContainer.targetText = targetText;
@@ -1600,6 +1600,7 @@ function onCreatureDown(){
 		if(column){
 			moveArray[index].markerTargetEnemyContainer.visible = false;
 			moveArray[index].targetText.visible = true;
+			moveArray[index].targetText.text = movesList.data.moves[element][tagName][0];
 		}else{
 			moveArray[index].markerTargetEnemyContainer.visible = true;
 			moveArray[index].targetText.visible = false;
