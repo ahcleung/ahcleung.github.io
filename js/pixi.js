@@ -1439,7 +1439,7 @@ function onCreatureDown(){
 			currPos.push(arrayHero[this.identifier[1]].pos+1);
 		}
 	}
-	
+	console.log("///////////////////////////////////////////////");
 	console.log(currPos);
 	
 	newMoves.forEach((element, index) => {
@@ -1500,6 +1500,8 @@ function onCreatureDown(){
 				moveArray[index].posMarkerArray[index3+4].visible = false;
 			}
 		});
+		
+		console.log(index + ": " + movesList.data.moves[element].tags);
 // 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
