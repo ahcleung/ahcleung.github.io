@@ -1132,8 +1132,8 @@ function resize() {
 		element.markerContainer.x = element.rect.width/6;
 		element.markerContainer.y = element.rect.height*3/4;
 		
-// 		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.wdith * 0.569);
-		element.targetText.x =  element.rect.width/6;
+		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.width * 0.569);
+// 		element.targetText.x =  element.rect.width/6;
 		element.targetText.y = element.rect.height*3/4;
 		
 		console.log("WIDTH: " + element.targetText.x);
