@@ -423,8 +423,8 @@ function setup(){
 		moveSelectFill.x = 0;
 		moveSelectFill.y = 0;
 		
-		moveDisable.beginFill(0x000000).drawRect(0, 0, 50, 50);
-		moveDisable.alpha = 0.75;
+		moveDisable.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveDisable.alpha = 0.95;
 		moveDisable.x = 0;
 		moveDisable.y = 0;
 		
