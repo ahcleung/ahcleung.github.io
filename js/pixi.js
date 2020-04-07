@@ -1399,6 +1399,8 @@ function onCreatureDown(){
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
 		element.disable.visible = true;
+		element.buttonMode = false;
+		element.interactive = false;
 	});
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
@@ -1482,6 +1484,8 @@ function onCreatureDown(){
 					var posTracker = Math.abs(index2 - 4);			
 					if(element3 == posTracker){
 						moveArray[index].disable.visible = false;
+						moveArray[index].buttonMode = true;
+						moveArray[index].interactive = true;
 					}
 				});
 				moveArray[index].posMarkerArray[index2].visible = true;
