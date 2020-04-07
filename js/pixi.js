@@ -549,13 +549,13 @@ function setup(){
 		
 		moveContainer.posHeroMarkerArray = posHeroMarkerArray;
 		moveContainer.posHeroMarkerContainer = posHeroMarkerContainer;
-		moveContainer.posHeroMarkerContainer.visible = false;
 		
 		moveContainer.posTargetEnemyMarkerArray = posTargetEnemyMarkerArray;
 		moveContainer.posTargetEnemyMarkerContainer = posTargetEnemyMarkerContainer;
 		
 		moveContainer.posTargetHeroMarkerArray = posTargetHeroMarkerArray;
 		moveContainer.posTargetHeroMarkerContainer = posTargetHeroMarkerContainer;
+		moveContainer.posTargetHeroMarkerContainer.visible = false;
 		
 		moveContainer.addChild(posMarkerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
