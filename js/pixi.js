@@ -547,19 +547,19 @@ function setup(){
 		markerContainer.addChild(markerTargetEnemyContainer);
 		markerContainer.addChild(markerTargetHeroContainer);
 		
-		moveContainer.markerHeroMarkerArray = markerHeroArray;
-		moveContainer.markerHeroMarkerContainer = markerHeroContainer;
-		
-		moveContainer.markerTargetEnemyMarkerArray = markerTargetEnemyArray;
-		moveContainer.markerTargetEnemyMarkerContainer = markerTargetEnemyContainer;
-		
-		moveContainer.markerTargetHeroMarkerArray = markerTargetHeroArray;
-		moveContainer.markerTargetHeroMarkerContainer = markerTargetHeroContainer;
-		moveContainer.markerTargetHeroMarkerContainer.visible = false;
-		
 		moveContainer.addChild(markerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
 		moveContainer.markerContainer = markerContainer;
+		
+		moveContainer.markerHeroArray = markerHeroArray;
+		moveContainer.markerHeroContainer = markerHeroContainer;
+		
+		moveContainer.markerTargetEnemyArray = markerTargetEnemyArray;
+		moveContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
+		
+		moveContainer.markerTargetHeroArray = markerTargetHeroArray;
+		moveContainer.markerTargetHeroContainer = markerTargetHeroContainer;
+		moveContainer.markerTargetHeroContainer.visible = false;
 		
 		var moveElement;
 		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
