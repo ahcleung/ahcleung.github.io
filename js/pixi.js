@@ -1483,18 +1483,18 @@ function onCreatureDown(){
 			console.log("///////////////////////////////////////////////");
 			console.log("movepos: " + index2);
 			if(element2 == 1){				
-				currPos.forEach(element3 => {
-					var posTracker = Math.abs(index2 - 4);
-					console.log("creature pos: " + element3);
-					console.log("checked move pos: " + posTracker);					
-					if(element3 == posTracker){
-						console.log("==============MATCH============== set visible");
-						console.log("creature pos: " + element3);
-						console.log("checked move pos: " + posTracker);	
-						moveArray[index].disable.visible = false;
-// 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
-					}
-				});
+// 				currPos.forEach(element3 => {
+// 					var posTracker = Math.abs(index2 - 4);
+// 					console.log("creature pos: " + element3);
+// 					console.log("checked move pos: " + posTracker);					
+// 					if(element3 == posTracker){
+// 						console.log("==============MATCH============== set visible");
+// 						console.log("creature pos: " + element3);
+// 						console.log("checked move pos: " + posTracker);	
+// 						moveArray[index].disable.visible = false;
+// // 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
+// 					}
+// 				});
 				moveArray[index].posMarkerArray[index2].visible = true;	
 			}else{
 				moveArray[index].posMarkerArray[index2].visible = false;
