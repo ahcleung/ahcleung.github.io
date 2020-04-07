@@ -659,7 +659,7 @@ function play(delta){
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: " + app.screen.height +
+		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
 	hpHeroContainerArray.forEach(element => {
 		if(element.select.play == true){
