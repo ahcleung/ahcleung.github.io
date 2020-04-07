@@ -1550,16 +1550,16 @@ function onCreatureDown(){
 						moveArray[index].interactive = true;
 					}
 				});
-				moveArray[index].posMarkerArray[index2].visible = true;
+				moveArray[index].posHeroMarkerArray[index2].visible = true;
 			}else{
-				moveArray[index].posMarkerArray[index2].visible = false;
+				moveArray[index].posHeroMarkerArray[index2].visible = false;
 			}
 		});
 		movesList.data.moves[element].target.forEach((element3, index3) => {
 			if(element3 == 1){
-				moveArray[index].posMarkerArray[index3+4].visible = true;
+				moveArray[index].posTargetMarkerArray[index3].visible = true;
 			}else{
-				moveArray[index].posMarkerArray[index3+4].visible = false;
+				moveArray[index].posTargetMarkerArray[index3].visible = false;
 			}
 		});
 		
