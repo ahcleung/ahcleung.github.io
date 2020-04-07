@@ -547,7 +547,7 @@ function setup(){
 		
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+			posMarker.beginFill(0x444444).drawRect(0, -w, w, w);
 // 			posMarker.visible = false;
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
@@ -1123,7 +1123,6 @@ function resize() {
 		
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
-// 			element.targetText.style = {fontFamily : 'Arial', fontSize: 12};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
