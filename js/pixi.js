@@ -547,7 +547,7 @@ function setup(){
 		
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x444444).drawRect(0, -w, w, w);
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
 // 			posMarker.visible = false;
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
@@ -582,6 +582,7 @@ function setup(){
 		targetText.anchor.set(0, 0.5);
 		moveContainer.addChild(targetText);
 		moveContainer.targetText = targetText;
+		moveContainer.targetText.visible = false;
 // 		targetText.x = 123;
 		
 		var moveElement;
