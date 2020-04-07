@@ -549,6 +549,7 @@ function setup(){
 		
 		moveContainer.posHeroMarkerArray = posHeroMarkerArray;
 		moveContainer.posHeroMarkerContainer = posHeroMarkerContainer;
+		moveContainer.posHeroMarkerContainer.visible = false;
 		
 		moveContainer.posTargetEnemyMarkerArray = posTargetEnemyMarkerArray;
 		moveContainer.posTargetEnemyMarkerContainer = posTargetEnemyMarkerContainer;
