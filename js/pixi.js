@@ -1495,16 +1495,20 @@ function onCreatureDown(){
 // // 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
 // 					}
 // 				});
-				moveArray[index].posMarkerArray[index2].visible = true;	
+				moveArray[index].posMarkerArray[index2].visible = true;
+				console.log("self " + index2 + " visible");
 			}else{
 				moveArray[index].posMarkerArray[index2].visible = false;
+				console.log("self " + index2 + " hide");
 			}
 		});
 		movesList.data.moves[element].target.forEach((element3, index3) => {
 			if(element3 == 1){
-				moveArray[index].posMarkerArray[index3+4].visible = true;	
+				moveArray[index].posMarkerArray[index3+4].visible = true;
+				console.log("enemy " + index3+4 + " visible");
 			}else{
 				moveArray[index].posMarkerArray[index3+4].visible = false;
+				console.log("enemy " + index3+4 + " hide");
 			}
 		});
 // 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
