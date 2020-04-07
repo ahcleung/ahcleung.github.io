@@ -544,8 +544,9 @@ function setup(){
 		markerTargetHeroContainer.x = 123;
 		
 		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
-		markerContainer.addChild(targetText);
-		targetText.x = 123;
+		moveContainer.addChild(targetText);
+		moveContainer.targetText = targetText;
+// 		targetText.x = 123;
 		
 		markerContainer.addChild(markerHeroContainer);
 		markerContainer.addChild(markerTargetEnemyContainer);
@@ -1129,6 +1130,9 @@ function resize() {
 		
 		element.markerContainer.x = element.rect.width/6;
 		element.markerContainer.y = element.rect.height*3/4;
+		
+		element.targetText.x =  element.rect.width/6;
+		element.targetText.y = element.rect.height*3/4;
 	});
 	
 	
