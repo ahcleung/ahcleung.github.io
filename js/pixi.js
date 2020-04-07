@@ -1482,13 +1482,13 @@ function onCreatureDown(){
 			console.log("index2: " + index2);
 			if(element2 == 1){				
 				currPos.forEach(element3 => {
-					var posTracker = index2 + 1;
-					console.log("element3: " + element3);
-					console.log("posTracker: " + posTracker);					
+					var posTracker = Math.abs(index2 - 4);
+					console.log("creature pos: " + element3);
+					console.log("checked move pos: " + posTracker);					
 					if(element3 == posTracker){
 						console.log("==============MATCH============== set visible");
-						console.log("element3: " + element3);
-						console.log("posTracker: " + posTracker);
+						console.log("creature pos: " + element3);
+						console.log("checked move pos: " + posTracker);	
 // 						moveArray[index].disable.visible = false;
 // 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
 					}
