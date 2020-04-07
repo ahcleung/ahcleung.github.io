@@ -1122,15 +1122,18 @@ function resize() {
 // 		element.posMarkerContainer.scale.set(element.moveElement.width);
 		
 		if(app.screen.width < 860){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
+			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
+			element.targetText.style.fontSize = 12;
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
+			element.targetText.style.fontSize = 16;
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.5);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			element.targetText.style.fontSize = 26;
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(1);
 // 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
@@ -1609,10 +1612,10 @@ function onCreatureDown(){
 			if(tagName == "column"){
 				column = true;
 				if(movesList.data.moves[element][tagName][2] > 0){
-					moveArray[index].targetText.style = {fontFamily : 'Arial', fontSize: targetTextSize, fill : 0xFF6961, align : 'left'};
+					moveArray[index].targetText.style.fill = '0xFF6961';
 					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + " ►";
 				}else{
-					moveArray[index].targetText.style = {fontFamily : 'Arial', fontSize: targetTextSize, fill : 0x66cc66, align : 'left'};
+					moveArray[index].targetText.style.fill = '0x66cc66';
 					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
 				}
 			}
