@@ -1479,7 +1479,7 @@ function onCreatureDown(){
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			console.log("///////////////////////////////////////////////");
-			console.log(element);
+			console.log(index);
 			console.log("///////////////////////////////////////////////");
 			console.log("movepos: " + index2);
 			if(element2 == 1){				
