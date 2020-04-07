@@ -543,6 +543,10 @@ function setup(){
 		markerTargetEnemyContainer.x = 123;
 		markerTargetHeroContainer.x = 123;
 		
+		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
+		markerContainer.addChild(targetText);
+		targetText.x = 123;
+		
 		markerContainer.addChild(markerHeroContainer);
 		markerContainer.addChild(markerTargetEnemyContainer);
 		markerContainer.addChild(markerTargetHeroContainer);
