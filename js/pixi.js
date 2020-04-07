@@ -423,7 +423,7 @@ function setup(){
 		moveSelectFill.x = 0;
 		moveSelectFill.y = 0;
 		
-		moveDisable.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		moveDisable.beginFill(0x000000).drawRect(0, 0, 50, 50);
 		moveDisable.alpha = 0.75;
 		moveDisable.x = 0;
 		moveDisable.y = 0;
@@ -1473,42 +1473,27 @@ function onCreatureDown(){
 				moveArray[index].moveElement.texture = resources.element_fire.texture;
 				break;
 		}
-// 		moveContainer.identifier = arrayHero[1].moves[i];
 		
 		moveArray[index].identifier = [index, element, this.identifier[0]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;
 		movesList.data.moves[element].position.forEach((element2, index2) => {
-			console.log("///////////////////////////////////////////////");
-			console.log(index);
-			console.log("///////////////////////////////////////////////");
-			console.log("movepos: " + index2);
 			if(element2 == 1){				
 				currPos.forEach(element3 => {
-					var posTracker = Math.abs(index2 - 4);
-					console.log("creature pos: " + element3);
-					console.log("checked move pos: " + posTracker);					
+					var posTracker = Math.abs(index2 - 4);			
 					if(element3 == posTracker){
-						console.log("==============MATCH============== set visible");
-						console.log("creature pos: " + element3);
-						console.log("checked move pos: " + posTracker);	
 						moveArray[index].disable.visible = false;
-// 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
 					}
 				});
 				moveArray[index].posMarkerArray[index2].visible = true;
-				console.log("self " + index2 + " visible");
 			}else{
 				moveArray[index].posMarkerArray[index2].visible = false;
-				console.log("self " + index2 + " hide");
 			}
 		});
 		movesList.data.moves[element].target.forEach((element3, index3) => {
 			if(element3 == 1){
 				moveArray[index].posMarkerArray[index3+4].visible = true;
-				console.log("enemy " + index3+4 + " visible");
 			}else{
 				moveArray[index].posMarkerArray[index3+4].visible = false;
-				console.log("enemy " + index3+4 + " hide");
 			}
 		});
 // 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
@@ -1601,7 +1586,6 @@ function onMoveDown(){
 }
 
 function onAdditionalDown(){
-	moveArray[0].posMarkerArray[0].visible = true;
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
 }
