@@ -1593,7 +1593,11 @@ function onCreatureDown(){
 		movesList.data.moves[element].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				moveArray[index].targetText.text = movesList.data.moves[element][tagName][0];
+				if(movesList.data.moves[element][tagName][2] > 0){
+					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + "►";
+				}else{
+					moveArray[index].targetText.text = "◄" + movesList.data.moves[element][tagName][0];
+				}
 			}
 			console.log(movesList.data.moves[element][tagName]);
 		});
