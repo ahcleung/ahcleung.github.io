@@ -1599,7 +1599,10 @@ function onCreatureDown(){
 		
 		if(column){
 			moveArray[index].markerTargetEnemyContainer.visible = false;
+			moveArray[index].targetText.visible = true;
 		}else{
+			moveArray[index].markerTargetEnemyContainer.visible = true;
+			moveArray[index].targetText.visible = false;
 			movesList.data.moves[element].target.forEach((element3, index3) => {
 				if(element3 == 1){
 					moveArray[index].markerTargetEnemyArray[index3].visible = true;
