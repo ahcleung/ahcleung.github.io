@@ -441,10 +441,10 @@ function setup(){
 		moveContainer.addChild(moveName);
 		moveContainer.moveName = moveName;
 		
-		const posMarkerContainer = new PIXI.Container();
+		const markerContainer = new PIXI.Container();
 		
-		const posHeroMarkerArray = [];
-		const posHeroMarkerContainer = new PIXI.Container();
+		const markerHeroArray = [];
+		const markerHeroContainer = new PIXI.Container();
 		
 // 		for (var j = 0; j < 2; j++){			
 // 			for (var k = 0; k < 4; k++){
@@ -497,16 +497,16 @@ function setup(){
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			posHeroMarkerArray.push(posMarker);
-			posHeroMarkerContainer.addChild(defaultMarker);
-			posHeroMarkerContainer.addChild(posMarker);
+			markerHeroArray.push(posMarker);
+			markerHeroContainer.addChild(defaultMarker);
+			markerHeroContainer.addChild(posMarker);
 			
 		}
 		
 // 		posMarkerContainer.addChild(posHeroMarkerContainer);
 		
-		const posTargetEnemyMarkerArray = [];
-		const posTargetEnemyMarkerContainer = new PIXI.Container();
+		const markerTargetEnemyArray = [];
+		const markerTargetEnemyContainer = new PIXI.Container();
 		
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
@@ -522,13 +522,13 @@ function setup(){
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			posTargetEnemyMarkerArray.push(posMarker);
-			posTargetEnemyMarkerContainer.addChild(defaultMarker);
-			posTargetEnemyMarkerContainer.addChild(posMarker);
+			markerTargetEnemyArray.push(posMarker);
+			markerTargetEnemyContainer.addChild(defaultMarker);
+			markerTargetEnemyContainer.addChild(posMarker);
 		}
 		
-		const posTargetHeroMarkerArray = [];
-		const posTargetHeroMarkerContainer = new PIXI.Container();
+		const markerTargetHeroArray = [];
+		const markerTargetHeroContainer = new PIXI.Container();
 		
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
@@ -537,29 +537,29 @@ function setup(){
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			posTargetHeroMarkerArray.push(posMarker);
-			posTargetHeroMarkerContainer.addChild(posMarker);
+			markerTargetHeroArray.push(posMarker);
+			markerTargetHeroContainer.addChild(posMarker);
 		}
-		posTargetEnemyMarkerContainer.x = 123;
-		posTargetHeroMarkerContainer.x = 123;
+		markerTargetEnemyContainer.x = 123;
+		markerTargetHeroContainer.x = 123;
 		
-		posMarkerContainer.addChild(posHeroMarkerContainer);
-		posMarkerContainer.addChild(posTargetEnemyMarkerContainer);
-		posMarkerContainer.addChild(posTargetHeroMarkerContainer);
+		markerContainer.addChild(markerHeroContainer);
+		markerContainer.addChild(markerTargetEnemyContainer);
+		markerContainer.addChild(markerTargetHeroContainer);
 		
-		moveContainer.posHeroMarkerArray = posHeroMarkerArray;
-		moveContainer.posHeroMarkerContainer = posHeroMarkerContainer;
+		moveContainer.markerHeroMarkerArray = markerHeroArray;
+		moveContainer.markerHeroMarkerContainer = markerHeroContainer;
 		
-		moveContainer.posTargetEnemyMarkerArray = posTargetEnemyMarkerArray;
-		moveContainer.posTargetEnemyMarkerContainer = posTargetEnemyMarkerContainer;
+		moveContainer.markerTargetEnemyMarkerArray = markerTargetEnemyArray;
+		moveContainer.markerTargetEnemyMarkerContainer = markerTargetEnemyContainer;
 		
-		moveContainer.posTargetHeroMarkerArray = posTargetHeroMarkerArray;
-		moveContainer.posTargetHeroMarkerContainer = posTargetHeroMarkerContainer;
-		moveContainer.posTargetHeroMarkerContainer.visible = false;
+		moveContainer.markerTargetHeroMarkerArray = markerTargetHeroArray;
+		moveContainer.markerTargetHeroMarkerContainer = markerTargetHeroContainer;
+		moveContainer.markerTargetHeroMarkerContainer.visible = false;
 		
-		moveContainer.addChild(posMarkerContainer);
+		moveContainer.addChild(markerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
-		moveContainer.posMarkerContainer = posMarkerContainer;
+		moveContainer.markerContainer = markerContainer;
 		
 		var moveElement;
 		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
@@ -1570,16 +1570,16 @@ function onCreatureDown(){
 						moveArray[index].interactive = true;
 					}
 				});
-				moveArray[index].posHeroMarkerArray[index2].visible = true;
+				moveArray[index].markerHeroArray[index2].visible = true;
 			}else{
-				moveArray[index].posHeroMarkerArray[index2].visible = false;
+				moveArray[index].markerHeroArray[index2].visible = false;
 			}
 		});
 		movesList.data.moves[element].target.forEach((element3, index3) => {
 			if(element3 == 1){
-				moveArray[index].posTargetEnemyMarkerArray[index3].visible = true;
+				moveArray[index].markerTargetEnemyArray[index3].visible = true;
 			}else{
-				moveArray[index].posTargetEnemyMarkerArray[index3].visible = false;
+				moveArray[index].markerTargetEnemyArray[index3].visible = false;
 			}
 		});
 		
