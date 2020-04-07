@@ -543,6 +543,12 @@ function setup(){
 		markerTargetEnemyContainer.x = 123;
 		markerTargetHeroContainer.x = 123;
 		
+		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
+		targetText.anchor.set(0, 0.5);
+		moveContainer.addChild(targetText);
+		moveContainer.targetText = targetText;
+// 		targetText.x = 123;
+		
 		markerContainer.addChild(markerHeroContainer);
 		markerContainer.addChild(markerTargetEnemyContainer);
 		markerContainer.addChild(markerTargetHeroContainer);
@@ -561,11 +567,7 @@ function setup(){
 		moveContainer.markerTargetHeroContainer = markerTargetHeroContainer;
 		moveContainer.markerTargetHeroContainer.visible = false;
 		
-		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
-		targetText.anchor.set(0, 0.5);
-		moveContainer.addChild(targetText);
-		moveContainer.targetText = targetText;
-// 		targetText.x = 123;
+
 		
 		var moveElement;
 		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
@@ -1132,7 +1134,8 @@ function resize() {
 		element.markerContainer.x = element.rect.width/6;
 		element.markerContainer.y = element.rect.height*3/4;
 		
-		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.wdith * 0.569);
+// 		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.wdith * 0.569);
+		element.targetText.x =  element.rect.width/6;
 		element.targetText.y = element.rect.height*3/4;
 		
 		console.log("WIDTH: " + element.targetText.x);
