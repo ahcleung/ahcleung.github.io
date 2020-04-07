@@ -109,7 +109,7 @@
 				0,0,0,0
 			],
 			"tags":[
-				"column"
+				'column'
 			],
 			"multiple": [0,0],
 			"status": 0,
