@@ -544,6 +544,7 @@ function setup(){
 		markerTargetHeroContainer.x = 123;
 		
 		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
+		targetText.anchor.set(0, 0.5);
 		moveContainer.addChild(targetText);
 		moveContainer.targetText = targetText;
 // 		targetText.x = 123;
