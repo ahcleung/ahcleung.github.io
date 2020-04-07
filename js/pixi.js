@@ -526,12 +526,16 @@ function setup(){
 			posTargetMarkerContainer.addChild(defaultMarker);
 			posTargetMarkerContainer.addChild(posMarker);
 		}
-		posTargetMarkerContainer.x = 23;
+		posTargetMarkerContainer.x = 123;
 		
 		posMarkerContainer.addChild(posHeroMarkerContainer);
 		posMarkerContainer.addChild(posTargetMarkerContainer);
 		
+		moveContainer.posHeroMarkerArray = posHeroMarkerArray;
+		moveContainer.posHeroMarkerContainer = posHeroMarkerContainer;
 		
+		moveContainer.posTargetMarkerArray = posTargetMarkerArray;
+		moveContainer.posTargetMarkerContainer = posTargetMarkerContainer;
 		
 		moveContainer.addChild(posMarkerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
