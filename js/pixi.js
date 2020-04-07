@@ -477,9 +477,10 @@ function setup(){
 // 			}
 // 		}
 		
+		var w = 12.728;
+		
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
-			var w = 12.728;
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 			
 			let posMarker = new PIXI.Graphics();			
@@ -504,12 +505,11 @@ function setup(){
 		
 // 		posMarkerContainer.addChild(posHeroMarkerContainer);
 		
-		const posTargetMarkerArray = [];
-		const posTargetMarkerContainer = new PIXI.Container();
+		const posTargetEnemyMarkerArray = [];
+		const posTargetEnemyMarkerContainer = new PIXI.Container();
 		
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
-			var w = 12.728;
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
@@ -522,20 +522,39 @@ function setup(){
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			posTargetMarkerArray.push(posMarker);
-			posTargetMarkerContainer.addChild(defaultMarker);
-			posTargetMarkerContainer.addChild(posMarker);
+			posTargetEnemyMarkerArray.push(posMarker);
+			posTargetEnemyMarkerContainer.addChild(defaultMarker);
+			posTargetEnemyMarkerContainer.addChild(posMarker);
 		}
-		posTargetMarkerContainer.x = 123;
+		
+		const posTargetHeroMarkerArray = [];
+		const posTargetHeroMarkerContainer = new PIXI.Container();
+		
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+// 			posMarker.visible = false;
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			posTargetHeroMarkerArray.push(posMarker);
+			posTargetHeroMarkerContainer.addChild(posMarker);
+		}
+		posTargetEnemyMarkerContainer.x = 123;
+		posTargetHeroMarkerContainer.x = 123;
 		
 		posMarkerContainer.addChild(posHeroMarkerContainer);
-		posMarkerContainer.addChild(posTargetMarkerContainer);
+		posMarkerContainer.addChild(posTargetEnemyMarkerContainer);
+		posMarkerContainer.addChild(posTargetHeroMarkerContainer);
 		
 		moveContainer.posHeroMarkerArray = posHeroMarkerArray;
 		moveContainer.posHeroMarkerContainer = posHeroMarkerContainer;
 		
-		moveContainer.posTargetMarkerArray = posTargetMarkerArray;
-		moveContainer.posTargetMarkerContainer = posTargetMarkerContainer;
+		moveContainer.posTargetEnemyMarkerArray = posTargetEnemyMarkerArray;
+		moveContainer.posTargetEnemyMarkerContainer = posTargetEnemyMarkerContainer;
+		
+		moveContainer.posTargetHeroMarkerArray = posTargetHeroMarkerArray;
+		moveContainer.posTargetHeroMarkerContainer = posTargetHeroMarkerContainer;
 		
 		moveContainer.addChild(posMarkerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
@@ -1557,9 +1576,9 @@ function onCreatureDown(){
 		});
 		movesList.data.moves[element].target.forEach((element3, index3) => {
 			if(element3 == 1){
-				moveArray[index].posTargetMarkerArray[index3].visible = true;
+				moveArray[index].posTargetEnemyMarkerArray[index3].visible = true;
 			}else{
-				moveArray[index].posTargetMarkerArray[index3].visible = false;
+				moveArray[index].posTargetEnemyMarkerArray[index3].visible = false;
 			}
 		});
 		
