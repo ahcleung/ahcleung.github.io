@@ -513,7 +513,7 @@ function setup(){
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-			if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 0){
+			if(movesList.data.moves[arrayHero[1].moves[i]].target[j] == 0){
 				posMarker.visible = false;
 			}
 			defaultMarker.x = 25 * j;
