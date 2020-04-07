@@ -534,7 +534,7 @@ function setup(){
 		
 		
 		moveContainer.addChild(posMarkerContainer);
-		moveContainer.posMarkerArray = posMarkerArray;
+// 		moveContainer.posMarkerArray = posMarkerArray;
 		moveContainer.posMarkerContainer = posMarkerContainer;
 		
 		var moveElement;
