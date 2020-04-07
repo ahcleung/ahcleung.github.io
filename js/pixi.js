@@ -561,7 +561,7 @@ function setup(){
 		moveContainer.markerTargetHeroContainer = markerTargetHeroContainer;
 		moveContainer.markerTargetHeroContainer.visible = false;
 		
-		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0x66cc66});
+		let targetText = new Text("3►", {fontFamily : 'Arial', fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
 		moveContainer.addChild(targetText);
 		moveContainer.targetText = targetText;
@@ -1103,14 +1103,17 @@ function resize() {
 		
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
+			element.targetText.style = {fontFamily : 'Arial', fontSize: 12};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
+			element.targetText.style = {fontFamily : 'Arial', fontSize: 16};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.5);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			element.targetText.style = {fontFamily : 'Arial', fontSize: 26};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(1);
 // 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
