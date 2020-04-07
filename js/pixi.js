@@ -1489,7 +1489,7 @@ function onCreatureDown(){
 						console.log("==============MATCH============== set visible");
 						console.log("creature pos: " + element3);
 						console.log("checked move pos: " + posTracker);	
-// 						moveArray[index].disable.visible = false;
+						moveArray[index].disable.visible = false;
 // 						console.log(element3 + ", " + posTracker + " :on position, move:" + index);
 					}
 				});
