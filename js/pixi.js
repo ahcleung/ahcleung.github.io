@@ -1601,6 +1601,7 @@ function onMoveDown(){
 }
 
 function onAdditionalDown(){
+	moveArray[0].posMarkerArray[0].visible = true;
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
 }
