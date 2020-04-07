@@ -1502,6 +1502,9 @@ function onCreatureDown(){
 		});
 		
 		console.log(index + ": " + movesList.data.moves[element].tags);
+		movesList.data.moves[element].tags.forEach(tagName =>{
+			console.log(movesList.data.moves[element].tagName);
+		});
 // 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
