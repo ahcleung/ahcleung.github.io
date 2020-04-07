@@ -175,6 +175,7 @@ var button, button2, textureButton, textureButtonDown;
 var healthSpacing = 20;
 var margin = 50;
 var moveSpacer = 10;
+var targetTextSize = 28;
 
 // var db = firebase.firestore();
 
@@ -1049,6 +1050,7 @@ function resize() {
 		moveSelectPadding = 2;
 		hpHero.position.set(margin, 20);
 		hpEnemy.position.set(app.screen.width/2+margin, 20);
+		targetTextSize = 12;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
@@ -1056,6 +1058,7 @@ function resize() {
 		moveSelectPadding = 3;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
+		targetTextSize = 16;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
@@ -1063,6 +1066,7 @@ function resize() {
 		moveSelectPadding = 5;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
+		targetTextSize = 26;
 	}
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
@@ -1103,17 +1107,15 @@ function resize() {
 		
 		if(app.screen.width < 860){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};	
-			element.targetText.style = {fontFamily : 'Arial', fontSize: 12};	
+// 			element.targetText.style = {fontFamily : 'Arial', fontSize: 12};	
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
-			element.targetText.style = {fontFamily : 'Arial', fontSize: 16};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.5);
 		}else{
 			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
-			element.targetText.style = {fontFamily : 'Arial', fontSize: 26};
 // 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(1);
 // 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
@@ -1136,16 +1138,11 @@ function resize() {
 		element.markerContainer.y = element.rect.height*3/4;
 		
 		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.width * 0.569);
-// 		element.targetText.x =  element.rect.width/6;
 		element.targetText.y = element.rect.height*3/4;
-		
-		console.log("WIDTH: " + element.targetText.x);
 	});
-	
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	rosterEnemy.position.set(app.screen.width/2+margin, app.screen.height*3/4);
-	
 	
 	hpHeroContainerArray.forEach(function (item, index){
 		resizeHP(0, item, index)	
@@ -1574,7 +1571,7 @@ function onCreatureDown(){
 		}
 		
 		moveArray[index].identifier = [index, element, this.identifier[0]];
-		moveArray[index].moveName.text = movesList.data.moves[element].name;
+		moveArray[index].moveName.text = movesList.data.moves[element].name;		
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){				
 				currPos.forEach(element3 => {
@@ -1590,18 +1587,27 @@ function onCreatureDown(){
 				moveArray[index].markerHeroArray[index2].visible = false;
 			}
 		});
-		movesList.data.moves[element].target.forEach((element3, index3) => {
-			if(element3 == 1){
-				moveArray[index].markerTargetEnemyArray[index3].visible = true;
-			}else{
-				moveArray[index].markerTargetEnemyArray[index3].visible = false;
-			}
-		});
 		
 		console.log(index + ": " + movesList.data.moves[element].tags);
+		var column = false;
 		movesList.data.moves[element].tags.forEach(tagName =>{
+			if(tagName == "column"){
+				column = true;	
+			}
 			console.log(movesList.data.moves[element][tagName]);
 		});
+		
+		if(column){
+			moveArray[index].markerTargetEnemyContainer.visible = false;
+		}else{
+			movesList.data.moves[element].target.forEach((element3, index3) => {
+				if(element3 == 1){
+					moveArray[index].markerTargetEnemyArray[index3].visible = true;
+				}else{
+					moveArray[index].markerTargetEnemyArray[index3].visible = false;
+				}
+			});
+		}
 // 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
 	});	
 	
