@@ -1715,7 +1715,7 @@ function onMoveDown(){
 	
 	if(column){
 		//Ahead
-		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
+		if(movesList.data.moves[this.identifier[1]].column[2] > 0){
 			var targetArray = [];
 			var switchSide = false;
 			if(this.identifier[2] > 0){
