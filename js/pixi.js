@@ -1525,11 +1525,13 @@ function onButtonDown(){
 
 function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
+	//Reset the moveContainers
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
 		element.disable.visible = true;
 		element.buttonMode = false;
 		element.interactive = false;
+		element.markerTargetEnemySeveralContainer.visible = true;
 	});
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
@@ -1640,6 +1642,8 @@ function onCreatureDown(){
 				movesList.data.moves[element][tagName].forEach((position, index3) => {
 					if(position == 1){
 						moveArray[index].markerTargetEnemySeveralArray[index3].visible = true;
+					}else{
+						moveArray[index].markerTargetEnemySeveralArray[index3].visible = false;
 					}
 				});
 			}
