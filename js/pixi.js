@@ -1714,9 +1714,9 @@ function onMoveDown(){
 		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
 			var targetArray = [];
 			if(this.identifier[2] > 0){
-				var temp = arrayEnemy[this.identifier[3]].pos;
-			}else{
 				var temp = arrayHero[this.identifier[3]].pos;
+			}else{
+				var temp = arrayEnemy[this.identifier[3]].pos;
 			}
 			var switchSide = false;
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
