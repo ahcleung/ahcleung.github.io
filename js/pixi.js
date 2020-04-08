@@ -1705,7 +1705,7 @@ function onMoveDown(){
 	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
-			console.log("column => from: " + arrayHero[this.identifier[3]].pos + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+			console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
 		}
 	});
 	
@@ -1713,7 +1713,7 @@ function onMoveDown(){
 		//Ahead
 		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
 			var targetArray = [];
-			var temp = arrayHero[this.identifier[3]].pos;
+			var temp = arrayHero[this.identifier[3]].pos-1;
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
 				if(temp > -1){
 					temp--;
