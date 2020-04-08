@@ -530,12 +530,8 @@ function setup(){
 		
 		for (var j = 0; j < 3; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0xffffff).drawRect(-10, -5, 10, 5);
-			if(movesList.data.moves[arrayHero[1].moves[i]].target[j] == 0){
-				posMarker.visible = false;
-			}
+			posMarker.beginFill(0xffffff).drawRect(0, 0, 10, 5);
 			posMarker.x = 25 * j;
-			posMarker.pivot.set(0.5);
 			markerTargetEnemySeveralArray.push(posMarker);
 			markerTargetEnemySeveralContainer.addChild(posMarker);
 		}
@@ -571,8 +567,8 @@ function setup(){
 		markerTargetHeroContainer.x = 123;
 		markerTargetContainer.x = 123;
 		
-		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerHeroContainer);
+		markerContainer.addChild(markerTargetContainer);		
 		markerContainer.addChild(markerTargetEnemyContainer);
 		markerContainer.addChild(markerTargetHeroContainer);		
 		
