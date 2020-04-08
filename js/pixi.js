@@ -1744,7 +1744,7 @@ function onMoveDown(){
 						arrayEnemy.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-								hpHeroContainerArray[index].target.visible = true;
+								hpEnemyContainerArray[index].target.visible = true;
 							}
 						});
 					}
