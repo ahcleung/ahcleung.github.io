@@ -1531,7 +1531,7 @@ function onCreatureDown(){
 		element.disable.visible = true;
 		element.buttonMode = false;
 		element.interactive = false;
-		element.markerTargetEnemySeveralContainer.visible = true;
+		element.markerTargetEnemySeveralContainer.visible = false;
 	});
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
