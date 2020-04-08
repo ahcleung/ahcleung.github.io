@@ -501,10 +501,7 @@ function setup(){
 			markerHeroArray.push(posMarker);
 			markerHeroContainer.addChild(defaultMarker);
 			markerHeroContainer.addChild(posMarker);
-			
 		}
-		
-// 		posMarkerContainer.addChild(posHeroMarkerContainer);
 		
 		const markerTargetEnemyArray = [];
 		const markerTargetEnemyContainer = new PIXI.Container();
@@ -526,6 +523,21 @@ function setup(){
 			markerTargetEnemyArray.push(posMarker);
 			markerTargetEnemyContainer.addChild(defaultMarker);
 			markerTargetEnemyContainer.addChild(posMarker);
+		}
+		
+		const markerTargetEnemySeveralArray = [];
+		const markerTargetEnemySeveralContainer = new PIXI.Container();
+		
+		for (var j = 0; j < 3; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0xffffff).drawRect(-10, -5, 10, 5);
+			if(movesList.data.moves[arrayHero[1].moves[i]].target[j] == 0){
+				posMarker.visible = false;
+			}
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			markerTargetEnemySeveralArray.push(posMarker);
+			markerTargetEnemySeveralContainer.addChild(posMarker);
 		}
 		
 		const markerTargetHeroArray = [];
@@ -563,6 +575,8 @@ function setup(){
 		markerContainer.addChild(markerHeroContainer);
 		markerContainer.addChild(markerTargetEnemyContainer);
 		markerContainer.addChild(markerTargetHeroContainer);		
+		
+		markerContainer.addChild(markerTargetEnemySeveralContainer);
 		
 		moveContainer.addChild(markerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
