@@ -197,7 +197,7 @@ vita[0] = {
 };
 vita[1] = {
 	id: 2, level: 45, 
-	move1: 4, move2: 10, move3: 11, move4: 7,
+	move1: 4, move2: 10, move3: 11, move4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
 vita[2] = {
