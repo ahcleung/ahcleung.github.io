@@ -1718,9 +1718,9 @@ function onMoveDown(){
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
-				}else if(temp == 1){
+				}else if(temp == 1 && !switchSide){
 					switchSide = true;	
-				}else if(switchSide){
+				}else{
 					temp++;
 				}				
 				targetArray.push(temp);
