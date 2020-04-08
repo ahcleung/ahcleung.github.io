@@ -1770,6 +1770,34 @@ function onMoveDown(){
 			console.log("Targets: " + targetArray);
 		}
 		//Behind
+		else{
+			var targetArray = [];
+			if(this.identifier[2] > 0){
+				var temp = arrayHero[this.identifier[3]].pos;
+			}else{
+				var temp = arrayEnemy[this.identifier[3]].pos;
+			}			
+			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
+				temp++;
+				if(this.identifier[2] > 0){
+					arrayHero.forEach((element,index) => {
+						if(element.pos == temp){
+							console.log(element.name);
+							hpHeroContainerArray[index].target.visible = true;
+						}
+					});
+				}else{
+					arrayEnemy.forEach((element,index) => {
+						if(element.pos == temp){
+							console.log(element.name);
+							hpEnemyContainerArray[index].target.visible = true;
+						}
+					});
+				}
+				targetArray.push(temp);
+			}
+			console.log("Targets: " + targetArray);
+		}
 	}
 	
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
