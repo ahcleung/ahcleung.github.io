@@ -1705,7 +1705,11 @@ function onMoveDown(){
 	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
-			console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+			if(this.identifier[2] > 0){
+				console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+			}else{
+				console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+			}
 		}
 	});
 	
