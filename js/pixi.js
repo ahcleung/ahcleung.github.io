@@ -1737,14 +1737,14 @@ function onMoveDown(){
 						arrayHero.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-	// 							hpHeroContainerArray[index].target.visible = true;
+								hpHeroContainerArray[index].target.visible = true;
 							}
 						});
 					}else{
 						arrayEnemy.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-	// 							hpHeroContainerArray[index].target.visible = true;
+								hpHeroContainerArray[index].target.visible = true;
 							}
 						});
 					}
@@ -1753,14 +1753,14 @@ function onMoveDown(){
 						arrayEnemy.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-	// 							hpEnemyContainerArray[index].target.visible = true;
+								hpEnemyContainerArray[index].target.visible = true;
 							}
 						});
 					}else{
 						arrayHero.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-	// 							hpHeroContainerArray[index].target.visible = true;
+								hpHeroContainerArray[index].target.visible = true;
 							}
 						});
 					}
