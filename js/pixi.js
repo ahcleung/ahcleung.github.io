@@ -566,7 +566,7 @@ function setup(){
 		markerTargetEnemyContainer.x = 123;
 		markerTargetHeroContainer.x = 123;
 		markerTargetContainer.x = 123;
-		markerTargetEnemySeveralContainer.x = 25;
+		markerTargetEnemySeveralContainer.x = 150;
 		
 		markerContainer.addChild(markerHeroContainer);
 		markerContainer.addChild(markerTargetContainer);		
