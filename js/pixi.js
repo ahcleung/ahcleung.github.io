@@ -575,8 +575,9 @@ function setup(){
 		markerContainer.addChild(markerTargetHeroContainer);		
 		
 		markerContainer.addChild(markerTargetEnemySeveralContainer);
+		moveContainer.markerTargetEnemySeveralContainer = moveContainer.markerTargetEnemySeveralContainer;
 		
-		moveContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;
+		moveContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;		
 		moveContainer.markerTargetEnemySeveralContainer.visible = false;
 		
 		moveContainer.addChild(markerContainer);
