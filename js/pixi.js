@@ -1735,14 +1735,14 @@ function onMoveDown(){
 				if(this.identifier[2] > 0 && !switchSide){
 					arrayHero.forEach((element,index) => {
 						if(element.pos == temp){
-							console.log(arrayHero.name);
+							console.log(element.name);
 // 							hpHeroContainerArray[index].target.visible = true;
 						}
 					});
 				}else{
 					arrayEnemy.forEach((element,index) => {
 						if(element.pos == temp){
-							console.log(arrayEnemy.name);
+							console.log(element.name);
 // 							hpEnemyContainerArray[index].target.visible = true;
 						}
 					});
