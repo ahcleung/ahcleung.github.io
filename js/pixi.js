@@ -1717,23 +1717,40 @@ function onMoveDown(){
 		//Ahead
 		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
 			var targetArray = [];
+			var switchSide = false;
 			if(this.identifier[2] > 0){
 				var temp = arrayHero[this.identifier[3]].pos;
 			}else{
 				var temp = arrayEnemy[this.identifier[3]].pos;
-			}
-			var switchSide = false;
+			}			
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
 				}else if(temp == 1 && !switchSide){
-					switchSide = true;	
+					switchSide = true;
 				}else{
 					temp++;
-				}				
+				}
+				
+				if(this.identifier[2] > 0 && !switchSide){
+					arrayHero.forEach((element,index) => {
+						if(element.pos == temp){
+							console.log(arrayHero.name);
+// 							hpHeroContainerArray[index].target.visible = true;
+						}
+					});
+				}else{
+					arrayEnemy.forEach((element,index) => {
+						if(element.pos == temp){
+							console.log(arrayEnemy.name);
+// 							hpEnemyContainerArray[index].target.visible = true;
+						}
+					});
+				}
 				targetArray.push(temp);
 			}
 			console.log("Targets: " + targetArray);
+			
 		}
 		//Behind
 	}
