@@ -1715,7 +1715,7 @@ function onMoveDown(){
 			var targetArray = [];
 			var temp = arrayHero[this.identifier[3]].pos-1;
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
-				if(temp > -1){
+				if(temp > 0){
 					temp--;
 				}else{
 					temp++;
