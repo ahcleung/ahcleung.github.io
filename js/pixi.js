@@ -1692,9 +1692,11 @@ function onHPDown(){
 function onMoveDown(){
 	hpEnemyContainerArray.forEach(element=>{
 		element.target.visible = false;
+		element.heal.visible = false;
 	});
 	hpHeroContainerArray.forEach(element=>{
 		element.target.visible = false;
+		element.heal.visible = false;
 	});
 	moveArray.forEach(element=>{
 		element.selected.visible = false;
@@ -1783,14 +1785,14 @@ function onMoveDown(){
 					arrayHero.forEach((element,index) => {
 						if(element.pos == temp){
 							console.log(element.name);
-							hpHeroContainerArray[index].target.visible = true;
+							hpHeroContainerArray[index].heal.visible = true;
 						}
 					});
 				}else{
 					arrayEnemy.forEach((element,index) => {
 						if(element.pos == temp){
 							console.log(element.name);
-							hpEnemyContainerArray[index].target.visible = true;
+							hpEnemyContainerArray[index].heal.visible = true;
 						}
 					});
 				}
