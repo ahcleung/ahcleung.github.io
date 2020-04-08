@@ -197,12 +197,12 @@ vita[0] = {
 };
 vita[1] = {
 	id: 2, level: 45, 
-	move1: 4, move2: 5, move3: 6, move4: 7,
+	move1: 4, move2: 10, move3: 11, move4: 7,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
 vita[2] = {
 	id: 10, level: 47, 
-	move1: 8, move2: 0, move3: 1, move4: 2,
+	move1: 8, move2: 0, move3: 6, move4: 5,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
 // vita[3] = {
@@ -219,12 +219,12 @@ enemy[0] = {
 };
 enemy[1] = {
 	id: 8, level: 46, 
-	move1: 0, move2: 1, move3: 5, move4: 8,
+	move1: 0, move2: 10, move3: 11, move4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
 };
 enemy[2] = {
 	id: 12, level: 45, 
-	move1: 4, move2: 6, move3: 7, move4: 3,
+	move1: 4, move2: 1, move3: 5, move4: 3,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
 };
 // enemy[3] = {
