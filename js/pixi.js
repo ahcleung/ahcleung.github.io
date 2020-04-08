@@ -1711,10 +1711,10 @@ function onMoveDown(){
 	
 	if(column){
 		//Ahead
-		if(movesList.data.moves[this.identifier[1]][tagName][0] > 0){
+		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
 			var targetArray = [];
-			var temp = this.identifier[3];
-			for(var i = 0; i < movesList.data.moves[this.identifier[1]][tagName][0]; i++){
+			var temp = arrayHero[this.identifier[3]].pos;
+			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
 				if(temp > -1){
 					temp--;
 				}else{
