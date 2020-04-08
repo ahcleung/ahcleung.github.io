@@ -1732,25 +1732,42 @@ function onMoveDown(){
 					temp++;
 				}
 				
-				if(this.identifier[2] > 0 && !switchSide){
-					arrayHero.forEach((element,index) => {
-						if(element.pos == temp){
-							console.log(element.name);
-// 							hpHeroContainerArray[index].target.visible = true;
-						}
-					});
+				if(this.identifier[2] > 0){
+					if(temp > 0 && !switchSide){
+						arrayHero.forEach((element,index) => {
+							if(element.pos == temp){
+								console.log(element.name);
+	// 							hpHeroContainerArray[index].target.visible = true;
+							}
+						});
+					}else{
+						arrayEnemy.forEach((element,index) => {
+							if(element.pos == temp){
+								console.log(element.name);
+	// 							hpHeroContainerArray[index].target.visible = true;
+							}
+						});
+					}
 				}else{
-					arrayEnemy.forEach((element,index) => {
-						if(element.pos == temp){
-							console.log(element.name);
-// 							hpEnemyContainerArray[index].target.visible = true;
-						}
-					});
+					if(temp > 0 && !switchSide){
+						arrayEnemy.forEach((element,index) => {
+							if(element.pos == temp){
+								console.log(element.name);
+	// 							hpEnemyContainerArray[index].target.visible = true;
+							}
+						});
+					}else{
+						arrayHero.forEach((element,index) => {
+							if(element.pos == temp){
+								console.log(element.name);
+	// 							hpHeroContainerArray[index].target.visible = true;
+							}
+						});
+					}
 				}
 				targetArray.push(temp);
 			}
 			console.log("Targets: " + targetArray);
-			
 		}
 		//Behind
 	}
