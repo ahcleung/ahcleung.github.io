@@ -530,7 +530,7 @@ function setup(){
 		
 		for (var j = 0; j < 3; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0xffffff).drawRect(0, -4, 20, 6);
+			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 			posMarker.x = 25 * j;
 			markerTargetEnemySeveralArray.push(posMarker);
 			markerTargetEnemySeveralContainer.addChild(posMarker);
