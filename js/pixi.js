@@ -1705,7 +1705,7 @@ function onMoveDown(){
 	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
-			console.log("column => from: " + this.identifier[3] + " to: ");
+			console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: ");
 		}
 	});
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
