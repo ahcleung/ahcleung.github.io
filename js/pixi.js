@@ -1708,6 +1708,25 @@ function onMoveDown(){
 			console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
 		}
 	});
+	
+	if(column){
+		//Ahead
+		if(movesList.data.moves[this.identifier[1]][tagName][0] > 0){
+			var targetArray = [];
+			var temp = this.identifier[3];
+			for(var i = 0; i < movesList.data.moves[this.identifier[1]][tagName][0]; i++){
+				if(temp > -1){
+					temp--;
+				}else{
+					temp++;
+				}				
+				targetArray.push(temp);
+			}
+			console.log("Targets: " + targetArray);
+		}
+		//Behind
+	}
+	
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
