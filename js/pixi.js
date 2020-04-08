@@ -1607,7 +1607,7 @@ function onCreatureDown(){
 				break;
 		}
 		
-		moveArray[index].identifier = [index, element, this.identifier[0]];
+		moveArray[index].identifier = [index, element, this.identifier[0], this.identifier[1]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;		
 		movesList.data.moves[element].position.forEach((element2, index2) => {
 			if(element2 == 1){				
@@ -1701,6 +1701,13 @@ function onMoveDown(){
 	});
 	moveArray[this.identifier[0]].selected.visible = true;
 	console.log(this.identifier);
+	var column = false;
+	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
+		if(tagName == "column"){
+			column = true;
+			console.log("column => from: " + this.identifier[3] + " to: ");
+		}
+	});
 	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
