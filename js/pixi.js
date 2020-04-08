@@ -1713,11 +1713,14 @@ function onMoveDown(){
 		//Ahead
 		if(movesList.data.moves[this.identifier[1]].column[0] > 0){
 			var targetArray = [];
-			var temp = arrayHero[this.identifier[3]].pos-1;
+			var temp = arrayHero[this.identifier[3]].pos;
+			var switchSide = false;
 			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
-				if(temp > 0){
+				if(temp > 1 && !switchSide){
 					temp--;
-				}else{
+				}else if(temp == 1){
+					switchSide = true;	
+				}else if(switchSide){
 					temp++;
 				}				
 				targetArray.push(temp);
