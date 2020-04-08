@@ -532,6 +532,7 @@ function setup(){
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 			posMarker.x = 25 * j;
+			posMarker.visible = false;
 			markerTargetEnemySeveralArray.push(posMarker);
 			markerTargetEnemySeveralContainer.addChild(posMarker);
 		}
@@ -574,6 +575,9 @@ function setup(){
 		markerContainer.addChild(markerTargetHeroContainer);		
 		
 		markerContainer.addChild(markerTargetEnemySeveralContainer);
+		
+		moveContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;
+		moveContainer.markerTargetEnemySeveralContainer.visible = false;
 		
 		moveContainer.addChild(markerContainer);
 // 		moveContainer.posMarkerArray = posMarkerArray;
@@ -1630,6 +1634,13 @@ function onCreatureDown(){
 					moveArray[index].targetText.style.fill = '0x66cc66';
 					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
 				}
+			}else if(tagName == "several"){
+				moveArray[index].markerTargetEnemySeveralContainer.visible = true;
+				movesList.data.moves[element][tagName].forEach((position, index3) => {
+					if(position == 1){
+						moveArray[index].markerTargetEnemySeveralArray[index3].visible = true;
+					}
+				});
 			}
 			console.log(movesList.data.moves[element][tagName]);
 		});
