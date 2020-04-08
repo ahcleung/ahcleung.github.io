@@ -23,7 +23,7 @@
 			"displace": [0,0],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Lightning strike",
@@ -48,7 +48,7 @@
 			"displace": [0,0],
 			"column": [2,2,-1],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Fire wall",
@@ -73,7 +73,7 @@
 			"displace": [0,0],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Tectonic shift",
@@ -98,7 +98,7 @@
 			"displace": [1,1],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Water geyser",
@@ -123,7 +123,7 @@
 			"displace": [0,0],
 			"column": [3,0.5,1],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Aeropush",
@@ -148,7 +148,7 @@
 			"displace": [-2,0],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Uproot",
@@ -173,7 +173,7 @@
 			"displace": [1,1],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Airburst",
@@ -198,7 +198,7 @@
 			"displace": [0,0],
 			"column": [0,0,0],
 			"statchange" : [0, 0],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Wind rush",
@@ -223,7 +223,7 @@
 			"displace": [0,0],
 			"column": [0,0,0],
 			"statchange" : ["spd", 1],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Volt punch",
@@ -248,7 +248,7 @@
 			"displace": [0,0],
 			"column": [0,0,0],
 			"statchange" : ["spd", -1],
-			"several":[0,0,0,0]
+			"several":[0,0,0]
 		},
 		{
 			"name": "Soul punch",
@@ -272,8 +272,8 @@
 			"splash": 0,
 			"displace": [0,0],
 			"column": [0,0,0],
-			"statchange" : [0, 0],
-			"several":[1,1,0,0]
+			"statchange" : [0,0],
+			"several":[1,0,0]
 		},
 		{
 			"name": "Void slash",
@@ -297,8 +297,8 @@
 			"splash": 0,
 			"displace": [0,0],
 			"column": [0,0,0],
-			"statchange" : [0, 0],
-			"several":[0,1,1,0]
+			"statchange" : [0,0],
+			"several":[0,1,0]
 		}
 	]
 }
