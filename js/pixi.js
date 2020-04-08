@@ -1536,11 +1536,13 @@ function onCreatureDown(){
 	hpEnemyContainerArray.forEach(element=>{
 		element.select.visible = false;
 		element.target.visible = false;
+		element.heal.visible = false;
 		element.select.play = false;
 	});
 	hpHeroContainerArray.forEach(element=>{
 		element.select.visible = false;
 		element.target.visible = false;
+		element.heal.visible = false;
 		element.select.play = false;
 	});
 	var newMoves = [];
