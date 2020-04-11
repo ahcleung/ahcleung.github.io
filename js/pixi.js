@@ -1857,7 +1857,7 @@ function onMoveDown(){
 }
 
 function onAdditionalDown(){
-	moveArray[0].targetText.style.fill = '0x66cc66';	
+// 	moveArray[0].targetText.style.fill = '0x66cc66';	
 	
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
