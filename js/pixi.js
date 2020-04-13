@@ -14,6 +14,7 @@ loader
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
+		"img/ui_move.png",
 		"js/creatures.json",
 		"js/moves.json",
 	
