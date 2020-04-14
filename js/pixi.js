@@ -1419,6 +1419,8 @@ function resizeHP(roster, item, index){
 
 	}
 	
+	shiftHeroContainerArray[index].y = app.screen.height * 3/4;
+	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
