@@ -1317,15 +1317,19 @@ function resizeHP(roster, item, index){
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
 				break;
 			case 2:
 				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
 				item.x = resizeWidth + healthSpacing * (1 - switcher);
+				shiftHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
 				item.x = 0;
+				shiftHeroContainerArray[index].x = 0;
 				break;
 			default:
 				item.x = 0;
@@ -1393,18 +1397,23 @@ function resizeHP(roster, item, index){
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
+				shiftEnemyContainerArray[index].x = 0;
 				break;
 			case 2:
 				item.x = resizeWidth + healthSpacing;
+				shiftEnemyContainerArray[index].x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
 				item.x = (resizeWidth + healthSpacing) * 2;
+				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
 				item.x = (resizeWidth + healthSpacing) * 3;
+				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
 				item.x = 0;
+				shiftEnemyContainerArray[index].x = 0;
 				
 		}
 
