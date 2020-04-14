@@ -14,7 +14,7 @@ loader
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
-		"img/ui_shift.png",
+// 		"img/ui_shift.png",
 		"js/creatures.json",
 		"js/moves.json",
 	
@@ -189,8 +189,8 @@ const enemyContainerArray = [];		//Array of enemy sprite containers
 const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
-const shiftHeroContainerArray = [];
-const shiftEnemyContainerArray = [];
+// const shiftHeroContainerArray = [];
+// const shiftEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
@@ -276,7 +276,7 @@ function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
-	textureShift = PIXI.Texture.from('img/ui_shift.png');
+// 	textureShift = PIXI.Texture.from('img/ui_shift.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
@@ -816,22 +816,22 @@ function createSprite(direction, item, index){
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 	}
 	
-	const shiftContainer = new PIXI.Container();
-	let shiftLeft = new PIXI.Sprite(textureShift);
-	let shiftRight = new PIXI.Sprite(textureShift);
+// 	const shiftContainer = new PIXI.Container();
+// 	let shiftLeft = new PIXI.Sprite(textureShift);
+// 	let shiftRight = new PIXI.Sprite(textureShift);
 	
-	shiftLeft.pivot.x = shiftLeft.width;
-	shiftLeft.pivot.y = shiftLeft.height/2;
+// 	shiftLeft.pivot.x = shiftLeft.width;
+// 	shiftLeft.pivot.y = shiftLeft.height/2;
 	
-	shiftRight.pivot.x = shiftRight.width;
-	shiftRight.pivot.y = shiftRight.height/2;
-	shiftRight.angle = 180;
-// 	shiftRight.x = 50;
+// 	shiftRight.pivot.x = shiftRight.width;
+// 	shiftRight.pivot.y = shiftRight.height/2;
+// 	shiftRight.angle = 180;
+// // 	shiftRight.x = 50;
 	
-	shiftContainer.addChild(shiftLeft);
-	shiftContainer.addChild(shiftRight);
-	shiftContainer.left = shiftLeft;
-	shiftContainer.right = shiftRight;
+// 	shiftContainer.addChild(shiftLeft);
+// 	shiftContainer.addChild(shiftRight);
+// 	shiftContainer.left = shiftLeft;
+// 	shiftContainer.right = shiftRight;
 	
 	const healthBar = new PIXI.Container();
 	
@@ -1038,19 +1038,19 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
-		shiftHeroContainerArray.push(shiftContainer);
+// 		shiftHeroContainerArray.push(shiftContainer);
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
-		hpHero.addChild(shiftContainer);
+// 		hpHero.addChild(shiftContainer);
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
-		shiftEnemyContainerArray.push(shiftContainer);
+// 		shiftEnemyContainerArray.push(shiftContainer);
 		
 		rosterEnemy.addChild(creatureContainer);
 		hpEnemy.addChild(healthBar);
-		hpEnemy.addChild(shiftContainer);
+// 		hpEnemy.addChild(shiftContainer);
 	}	
 }
 
@@ -1256,7 +1256,7 @@ function resizeHP(roster, item, index){
 	
 	if(roster == 0){
 		var switcher = 0;
-		shiftHeroContainerArray[index].y = app.screen.height * 1/2;
+// 		shiftHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
@@ -1271,7 +1271,7 @@ function resizeHP(roster, item, index){
 			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
 			
-			shiftHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
+// 			shiftHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1298,7 +1298,7 @@ function resizeHP(roster, item, index){
 			item.heal.healBar1.width = resizeWidth;
 			item.heal.healBar2.width = resizeWidth;
 			
-			shiftHeroContainerArray[index].right.x = resizeWidth;
+// 			shiftHeroContainerArray[index].right.x = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1318,26 +1318,26 @@ function resizeHP(roster, item, index){
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
+// 				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
 				break;
 			case 2:
 				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
+// 				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
 				item.x = resizeWidth + healthSpacing * (1 - switcher);
-				shiftHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
+// 				shiftHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
 				item.x = 0;
-				shiftHeroContainerArray[index].x = 0;
+// 				shiftHeroContainerArray[index].x = 0;
 				break;
 			default:
 				item.x = 0;
 				
 		}
 	}else{	
-		shiftEnemyContainerArray[index].y = app.screen.height * 1/2;
+// 		shiftEnemyContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
@@ -1352,7 +1352,7 @@ function resizeHP(roster, item, index){
 			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
 			
-			shiftEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
+// 			shiftEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1378,7 +1378,7 @@ function resizeHP(roster, item, index){
 			item.heal.healBar1.width = resizeWidth;
 			item.heal.healBar2.width = resizeWidth;
 			
-			shiftEnemyContainerArray[index].right.x = resizeWidth;
+// 			shiftEnemyContainerArray[index].right.x = resizeWidth;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1399,23 +1399,23 @@ function resizeHP(roster, item, index){
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
-				shiftEnemyContainerArray[index].x = 0;
+// 				shiftEnemyContainerArray[index].x = 0;
 				break;
 			case 2:
 				item.x = resizeWidth + healthSpacing;
-				shiftEnemyContainerArray[index].x = resizeWidth + healthSpacing;
+// 				shiftEnemyContainerArray[index].x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
 				item.x = (resizeWidth + healthSpacing) * 2;
-				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
+// 				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
 				item.x = (resizeWidth + healthSpacing) * 3;
-				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
+// 				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
 				item.x = 0;
-				shiftEnemyContainerArray[index].x = 0;
+// 				shiftEnemyContainerArray[index].x = 0;
 				
 		}
 
