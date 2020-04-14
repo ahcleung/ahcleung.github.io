@@ -1256,6 +1256,7 @@ function resizeHP(roster, item, index){
 	
 	if(roster == 0){
 		var switcher = 0;
+		shiftHeroContainerArray[index].y = app.screen.height * 3/5;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
@@ -1336,6 +1337,7 @@ function resizeHP(roster, item, index){
 				
 		}
 	}else{	
+		shiftEnemyContainerArray[index].y = app.screen.height * 3/5;
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
@@ -1418,8 +1420,6 @@ function resizeHP(roster, item, index){
 		}
 
 	}
-	
-	shiftHeroContainerArray[index].y = app.screen.height * 3/4;
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
