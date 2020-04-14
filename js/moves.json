@@ -21,7 +21,7 @@
 			"turns": 5,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -46,7 +46,7 @@
 			"turns": 0,
 			"splash": 0.5,
 			"displace": [0,0],
-			"column": [2,2,-1],
+			"column": [2,2,-1,1],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -71,7 +71,7 @@
 			"turns": 5,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -96,7 +96,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [1,1],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -121,7 +121,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [3,0.5,1],
+			"column": [3,0.5,1,-1],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -146,7 +146,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [-2,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -171,7 +171,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [1,1],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -196,7 +196,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
@@ -221,7 +221,7 @@
 			"turns": 5,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : ["spd", 1],
 			"several":[0,0,0]
 		},
@@ -246,7 +246,7 @@
 			"turns": 5,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : ["spd", -1],
 			"several":[0,0,0]
 		},
@@ -271,7 +271,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0,0],
 			"several":[1,0,0]
 		},
@@ -296,7 +296,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [0,0,0],
+			"column": [0,0,0,0],
 			"statchange" : [0,0],
 			"several":[0,1,0]
 		}
