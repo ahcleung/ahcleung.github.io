@@ -1630,6 +1630,7 @@ function onCreatureDown(){
 				break;
 		}
 		
+		//identifier = [movePos, moveIndex, stageSide, creaturePos]
 		moveArray[index].identifier = [index, element, this.identifier[0], this.identifier[1]];
 		moveArray[index].moveName.text = movesList.data.moves[element].name;		
 		movesList.data.moves[element].position.forEach((element2, index2) => {
@@ -1731,6 +1732,7 @@ function onMoveDown(){
 	moveArray[this.identifier[0]].selected.visible = true;
 	console.log(this.identifier);
 	var column = false;
+	var heal = false;
 	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
@@ -1738,6 +1740,12 @@ function onMoveDown(){
 				console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
 			}else{
 				console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+			}
+			
+			if(movesList.data.moves[this.identifier[1]].column[3] > 0){
+				heal = true;
+			}else{
+				heal = false;	
 			}
 		}
 	});
@@ -1766,14 +1774,24 @@ function onMoveDown(){
 						arrayHero.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-								hpHeroContainerArray[index].target.visible = true;
+								if(heal){
+									hpHeroContainerArray[index].heal.visible = true;
+								}else{
+									hpHeroContainerArray[index].target.visible = true;
+								}
+								
 							}
 						});
 					}else{
 						arrayEnemy.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-								hpEnemyContainerArray[index].target.visible = true;
+								if(heal){
+									hpEnemyContainerArray[index].heal.visible = true;
+								}else{
+									hpEnemyContainerArray[index].target.visible = true;
+								}
+								
 							}
 						});
 					}
@@ -1782,14 +1800,22 @@ function onMoveDown(){
 						arrayEnemy.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-								hpEnemyContainerArray[index].target.visible = true;
+								if(heal){
+									hpEnemyContainerArray[index].heal.visible = true;
+								}else{
+									hpEnemyContainerArray[index].target.visible = true;
+								}
 							}
 						});
 					}else{
 						arrayHero.forEach((element,index) => {
 							if(element.pos == temp){
 								console.log(element.name);
-								hpHeroContainerArray[index].target.visible = true;
+								if(heal){
+									hpHeroContainerArray[index].heal.visible = true;
+								}else{
+									hpHeroContainerArray[index].target.visible = true;
+								}
 							}
 						});
 					}
@@ -1812,14 +1838,22 @@ function onMoveDown(){
 					arrayHero.forEach((element,index) => {
 						if(element.pos == temp){
 							console.log(element.name);
-							hpHeroContainerArray[index].heal.visible = true;
+							if(heal){
+								hpHeroContainerArray[index].heal.visible = true;
+							}else{
+								hpHeroContainerArray[index].target.visible = true;
+							}
 						}
 					});
 				}else{
 					arrayEnemy.forEach((element,index) => {
 						if(element.pos == temp){
 							console.log(element.name);
-							hpEnemyContainerArray[index].heal.visible = true;
+							if(heal){
+								hpEnemyContainerArray[index].heal.visible = true;
+							}else{
+								hpEnemyContainerArray[index].target.visible = true;
+							}
 						}
 					});
 				}
