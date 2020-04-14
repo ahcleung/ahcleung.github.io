@@ -1654,11 +1654,15 @@ function onCreatureDown(){
 			if(tagName == "column"){
 				column = true;
 				if(movesList.data.moves[element][tagName][2] > 0){
-					moveArray[index].targetText.style.fill = '0xFF6961';
 					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + " ►";
 				}else{
-					moveArray[index].targetText.style.fill = '0x66cc66';
 					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
+				}
+				
+				if(movesList.data.moves[element][tagName][3] > 0){
+					moveArray[index].targetText.style.fill = '0xFF6961';
+				}else{
+					moveArray[index].targetText.style.fill = '0x66cc66';
 				}
 			}else if(tagName == "several"){
 				moveArray[index].markerTargetEnemySeveralContainer.visible = true;
