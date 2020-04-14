@@ -171,7 +171,7 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-var button, button2, textureButton, textureButtonDown, textureMove;
+var button, button2, textureButton, textureButtonDown, textureShift;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -274,7 +274,7 @@ function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
-	textureMove = PIXI.Texture.from('img/ui_move.png');
+	textureShift = PIXI.Texture.from('img/ui_move.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
@@ -815,13 +815,11 @@ function createSprite(direction, item, index){
 	}
 	
 	const shiftContainer = new PIXI.Container();
-	let shiftLeft = new PIXI.Sprite(textureButton);
-	let shiftRight = new PIXI.Sprite(textureButton);
+	let shiftLeft = new PIXI.Sprite(textureShift);
+	let shiftRight = new PIXI.Sprite(textureShift);
 	
 	shiftContainer.addChild(shiftLeft);
-	shiftContainer.addChild(shiftRight);
-	
-	
+	shiftContainer.addChild(shiftRight);	
 	
 	const healthBar = new PIXI.Container();
 	
