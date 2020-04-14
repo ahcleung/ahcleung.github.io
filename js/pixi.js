@@ -1569,7 +1569,7 @@ function onCreatureDown(){
 	if(this.identifier[0] < 0){		
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
 		hpEnemyContainerArray[this.identifier[1]].select.play = true;
-		shiftEnemyContainerArray.[this.identifier[1]].visible = true;
+		shiftEnemyContainerArray[this.identifier[1]].visible = true;
 		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
@@ -1582,7 +1582,7 @@ function onCreatureDown(){
 	}else{
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.play = true;
-		shiftHeroContainerArray.[this.identifier[1]].visible = true;
+		shiftHeroContainerArray[this.identifier[1]].visible = true;
 		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
 			newMoves.push(element);
 		});
