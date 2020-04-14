@@ -819,7 +819,7 @@ function createSprite(direction, item, index){
 	let shiftRight = new PIXI.Sprite(textureShift);
 	
 // 	shiftRight.pivot.set(0.5);
-	shiftRight.angle = 90;
+	shiftRight.angle = 180;
 // 	shiftRight.x = 50;
 	
 	shiftContainer.addChild(shiftLeft);
