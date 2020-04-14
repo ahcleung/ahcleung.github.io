@@ -190,7 +190,7 @@ const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 const shiftHeroContainerArray = [];
-const shiftHEnemyContainerArray = [];
+const shiftEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
