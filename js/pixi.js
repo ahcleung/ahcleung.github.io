@@ -171,7 +171,7 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-var button, button2, textureButton, textureButtonDown;
+var button, button2, textureButton, textureButtonDown, textureMove;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -274,6 +274,7 @@ function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
+	textureMove = PIXI.Texture.from('img/ui_move.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
@@ -447,37 +448,6 @@ function setup(){
 		
 		const markerHeroArray = [];
 		const markerHeroContainer = new PIXI.Container();
-		
-// 		for (var j = 0; j < 2; j++){			
-// 			for (var k = 0; k < 4; k++){
-// 				let defaultMarker = new PIXI.Graphics();
-// 				var w = 12.728;
-// 				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-// 				let posMarker = new PIXI.Graphics();				
-// 				if(j == 0){
-// 					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// 					if(movesList.data.moves[arrayHero[1].moves[i]].position[k] == 0){
-// 						posMarker.visible = false;
-// 					}
-// 					defaultMarker.x = 25 * (j+k);
-// 					posMarker.x = 25 * (j+k);
-// 				}else{
-// 					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-// 					if(movesList.data.moves[arrayHero[1].moves[i]].target[k] == 0){
-// 						posMarker.visible = false;
-// 					}
-// 					defaultMarker.x = 25 * (k+4) + 23;
-// 					posMarker.x = 25 * (k+4) + 23;
-// 				}
-// 				defaultMarker.pivot.set(0.5);
-// 				defaultMarker.angle = 45;
-// 				posMarker.pivot.set(0.5);
-// 				posMarker.angle = 45;
-// 				posMarkerArray.push(posMarker);
-// 				posMarkerContainer.addChild(defaultMarker);
-// 				posMarkerContainer.addChild(posMarker);
-// 			}
-// 		}
 		
 		var w = 12.728;
 		
@@ -844,6 +814,15 @@ function createSprite(direction, item, index){
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 	}
 	
+	const shiftContainer = new PIXI.Container();
+	let shiftLeft = new PIXI.Sprite(textureButton);
+	let shiftRight = new PIXI.Sprite(textureButton);
+	
+	shiftContainer.addChild(shiftLeft);
+	shiftContainer.addChild(shiftRight);
+	
+	
+	
 	const healthBar = new PIXI.Container();
 	
 	healthBar.identifier = [direction, index];
@@ -1052,12 +1031,14 @@ function createSprite(direction, item, index){
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
+		hpHero.addChild(shiftContainer);
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
 		
 		rosterEnemy.addChild(creatureContainer);
 		hpEnemy.addChild(healthBar);
+		hpEnemy.addChild(shiftContainer);
 	}	
 }
 
