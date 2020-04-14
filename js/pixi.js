@@ -1659,10 +1659,10 @@ function onCreatureDown(){
 					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
 				}
 				
-				if(movesList.data.moves[element][tagName][3] > 0){
-					moveArray[index].targetText.style.fill = '0xFF6961';
-				}else{
+				if(movesList.data.moves[element][tagName][3] > 0){					
 					moveArray[index].targetText.style.fill = '0x66cc66';
+				}else{
+					moveArray[index].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
 				moveArray[index].markerTargetEnemySeveralContainer.visible = true;
