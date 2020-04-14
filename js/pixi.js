@@ -14,7 +14,7 @@ loader
 		"img/ability_move.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
-		"img/ui_move.png",
+		"img/ui_shift.png",
 		"js/creatures.json",
 		"js/moves.json",
 	
@@ -276,7 +276,7 @@ function setup(){
 	
 	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
-	textureShift = PIXI.Texture.from('img/ui_move.png');
+	textureShift = PIXI.Texture.from('img/ui_shift.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
