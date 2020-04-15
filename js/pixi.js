@@ -12,6 +12,10 @@ document.querySelector('#frame').appendChild(app.view);
 loader
 	.add([
 		"img/ability_move.png",
+		"img/extras.png",
+		"img/extra_cancel.png",
+		"img/extra_item.png",
+		"img/extra_skip.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
 // 		"img/ui_shift.png",
@@ -274,7 +278,7 @@ enemy[3] = {
 
 function setup(){
 	
-	textureButtonDown = PIXI.Texture.from('img/ability_move.png');
+	textureButtonDown = PIXI.Texture.from('img/extras.png');
 	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
 // 	textureShift = PIXI.Texture.from('img/ui_shift.png');
 	
