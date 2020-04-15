@@ -1197,7 +1197,7 @@ function resize() {
 	btnExtras.height = btnSettings.width;
 	btnExtras.position.set(margin, app.screen.height - margin);
 	
-	extrasArray.forEach(extraBtn => {
+	extrasArray.forEach((extraBtn, index) => {
 		extraBtn.width = btnSettings.width;
 		extraBtn.height = btnSettings.width;
 		extraBtn.y = -index * btnSettings.width;
