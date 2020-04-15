@@ -1142,11 +1142,11 @@ function resize() {
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
 	btnSettings.width = calcWidth/4;
-	btnSettings.height = button.width;
+	btnSettings.height = btnSettings.width;
 	btnSettings.position.set(app.screen.width - margin, app.screen.height - margin);
 	
-	btnExtras.width = button.width;
-	btnExtras.height = button.width;
+	btnExtras.width = btnSettings.width;
+	btnExtras.height = btnSettings.width;
 	btnExtras.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
