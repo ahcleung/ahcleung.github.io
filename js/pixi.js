@@ -719,7 +719,7 @@ function setup(){
 	btnExtrasItem = new PIXI.Sprite(textureExtrasItem);
 	btnExtrasItem.anchor.set(0,1);
 	btnExtrasItem.buttonMode = true;
-    	btnExtrsaItem.interactive = true;
+    	btnExtrasItem.interactive = true;
 	btnExtrasItem
         // set the mousedown and touchstart callback...
         .on('pointerdown', onExtrasItemDown);
