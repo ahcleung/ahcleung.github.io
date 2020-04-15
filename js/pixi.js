@@ -1035,6 +1035,40 @@ function createSprite(direction, item, index){
 	healthBar.heal = heal;
 	healthBar.heal.visible = false;
 	
+	const shift = new PIXI.Container();
+	
+	let shiftEnd = new PIXI.Graphics();
+	shiftEnd.beginFill(0x47b7ff);
+	shiftEnd.drawRect(0, 0, 4, 18);
+	shiftEnd.endFill();
+	shift.addChild(shiftEnd);
+	shift.shiftEnd = shiftEnd;
+
+	let shiftStart = new PIXI.Graphics();
+	shiftStart.beginFill(0x47b7ff);
+	shiftStart.drawRect(0, 0, 4, 18);
+	shiftStart.endFill();
+	shift.addChild(shiftStart);
+	shift.shiftStart = shiftStart;
+
+	let shiftBar1 = new PIXI.Graphics();
+	shiftBar1.beginFill(0x47b7ff);
+	shiftBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	shiftBar1.endFill();
+	shift.addChild(shiftBar1);
+	shift.shiftBar1 = shiftBar1;
+
+	let shiftBar2 = new PIXI.Graphics();
+	shiftBar2.beginFill(0x47b7ff);
+	shiftBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	shiftBar2.endFill();
+	shift.addChild(shiftBar2);
+	shift.shiftBar2 = shiftBar2;
+
+	healthBar.addChild(shift);
+	healthBar.shift = shift;
+// 	healthBar.shift.visible = false;
+	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
