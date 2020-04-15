@@ -121,7 +121,7 @@
 			"turns": 0,
 			"splash": 0,
 			"displace": [0,0],
-			"column": [3,0.5,1,1],
+			"column": [3,0.5,1,-1],
 			"statchange" : [0, 0],
 			"several":[0,0,0]
 		},
