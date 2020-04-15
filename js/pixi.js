@@ -1304,6 +1304,8 @@ function resizeHP(roster, item, index){
 			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
+			item.shift.shiftBar1.width = resizeWidth * 2 + healthSpacing;
+			item.shift.shiftBar2.width = resizeWidth * 2 + healthSpacing;
 			
 // 			shiftHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1331,6 +1333,8 @@ function resizeHP(roster, item, index){
 			item.target.targetBar2.width = resizeWidth;
 			item.heal.healBar1.width = resizeWidth;
 			item.heal.healBar2.width = resizeWidth;
+			item.shift.shiftBar1.width = resizeWidth;
+			item.shift.shiftBar2.width = resizeWidth;
 			
 // 			shiftHeroContainerArray[index].right.x = resizeWidth;
 			
@@ -1385,6 +1389,8 @@ function resizeHP(roster, item, index){
 			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
 			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
+			item.shift.shiftBar1.width = resizeWidth * 2 + healthSpacing;
+			item.shift.shiftBar2.width = resizeWidth * 2 + healthSpacing;
 			
 // 			shiftEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1411,6 +1417,8 @@ function resizeHP(roster, item, index){
 			item.target.targetBar2.width = resizeWidth;
 			item.heal.healBar1.width = resizeWidth;
 			item.heal.healBar2.width = resizeWidth;
+			item.shift.shiftBar1.width = resizeWidth;
+			item.shift.shiftBar2.width = resizeWidth;
 			
 // 			shiftEnemyContainerArray[index].right.x = resizeWidth;
 			
@@ -1496,6 +1504,18 @@ function resizeHP(roster, item, index){
 	item.heal.healEnd.height = selectEndHeight;	
 	item.heal.healEnd.y = selectEndY;	
 	item.heal.healEnd.x = item.outer.width - 4;
+	
+	item.shift.shiftBar1.height = selectBarHeight;
+	item.shift.shiftBar1.y = selectBar1Y;
+
+	item.shift.shiftBar2.y = selectBar2Y;
+
+	item.shift.shiftStart.height = selectEndHeight;
+	item.shift.shiftStart.y = selectEndY;
+
+	item.shift.shiftEnd.height = selectEndHeight;	
+	item.shift.shiftEnd.y = selectEndY;	
+	item.shift.shiftEnd.x = item.outer.width - 4;
 }
 
 function resizeSprites(direction, item, index){
