@@ -704,7 +704,7 @@ function setup(){
     	btnExtras.interactive = true;
 	btnExtras
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onAdditionalDown);
+        .on('pointerdown', onExtrasDown);
 	
 	btnExtrasCancel = new PIXI.Sprite(textureExtrasCancel);
 	btnExtrasCancel.anchor.set(0,1);
@@ -792,7 +792,8 @@ function setup(){
 // 	hero4.play();	
 // 	hero4Container.addChild(hero4);
 // 	app.stage.addChild(anim);
-	app.stage.addChild(extrasContainer);	
+	app.stage.addChild(extrasContainer);
+	extrasContainer.visible = false;
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
@@ -2036,15 +2037,15 @@ function onMoveDown(){
 	});
 }
 
-function onAdditionalDown(){
-// 	moveArray[0].targetText.style.fill = '0x66cc66';	
-	
-	onScreenStats.visible = true;
-	consoleScreen.visible = true;
+function onExtrasDown(){
+// 	moveArray[0].targetText.style.fill = '0x66cc66';
+	console.log("Extras");
+	extrasContainer.visible = true;	
 }
 
 function onExtrasCancelDown(){
 	console.log("Extras Cancel");
+	extrasContainer.visible = false;
 }
 
 function onExtrasMoveDown(){
@@ -2053,6 +2054,8 @@ function onExtrasMoveDown(){
 
 function onExtrasItemDown(){
 	console.log("Extras Item");
+	onScreenStats.visible = true;
+	consoleScreen.visible = true;
 }
 
 function onExtrasSkipDown(){
