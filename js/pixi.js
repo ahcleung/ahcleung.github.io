@@ -177,8 +177,8 @@ const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
 var btnExtras, btnSettings, textureExtras, textureSettings, textureShift;
-var textureExtraCancel, textureExtraMove, textureExtraItem, textureExtraSkip;
-var btnExtraCancel, btnExtraMove, btnExtraItem, btnExtraSkip;
+var textureExtrasCancel, textureExtrasMove, textureExtrasItem, textureExtrasSkip;
+var btnExtrasCancel, btnExtrasMove, btnExtrasItem, btnExtrasSkip;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -197,7 +197,7 @@ const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
 const moveArray = [];			//Array of move containers
 
-const extraArray = [];	
+const extrasArray = [];	
 // const shiftHeroContainerArray = [];
 // const shiftEnemyContainerArray = [];
 
@@ -285,10 +285,10 @@ function setup(){
 	
 	textureExtras = PIXI.Texture.from('img/extras.png');
 	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
-	textureExtraCancel = PIXI.Texture.from('img/extra_cancel.png');
-	textureExtraMove = PIXI.Texture.from('img/ability_move.png');
-	textureExtraItem = PIXI.Texture.from('img/extra_item.png');
-	textureExtraSkip = PIXI.Texture.from('img/extra_skip.png');
+	textureExtrasCancel = PIXI.Texture.from('img/extra_cancel.png');
+	textureExtrasMove = PIXI.Texture.from('img/ability_move.png');
+	textureExtrasItem = PIXI.Texture.from('img/extra_item.png');
+	textureExtrasSkip = PIXI.Texture.from('img/extra_skip.png');
 // 	textureShift = PIXI.Texture.from('img/ui_shift.png');
 	
 	consolePrint("SETUP");
@@ -706,47 +706,47 @@ function setup(){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onAdditionalDown);
 	
-	btnExtraCancel = new PIXI.Sprite(textureExtraCancel);
-	btnExtraCancel.anchor.set(0,1);
-	btnExtraCancel.buttonMode = true;
-    	btnExtraCancel.interactive = true;
-	btnExtraCancel
+	btnExtrasCancel = new PIXI.Sprite(textureExtrasCancel);
+	btnExtrasCancel.anchor.set(0,1);
+	btnExtrasCancel.buttonMode = true;
+    	btnExtrasCancel.interactive = true;
+	btnExtrasCancel
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onExtraCancelDown);	
-	extraContainer.addChild(btnExtraCancel);
-	extraArray.push(btnExtraCancel);
+        .on('pointerdown', onExtrasCancelDown);	
+	extrasContainer.addChild(btnExtrasCancel);
+	extrasArray.push(btnExtrasCancel);
 	
-	btnExtraItem = new PIXI.Sprite(textureExtraItem);
-	btnExtraItem.anchor.set(0,1);
-	btnExtraItem.buttonMode = true;
-    	btnExtraItem.interactive = true;
-	btnExtraItem
+	btnExtrasItem = new PIXI.Sprite(textureExtrasItem);
+	btnExtrasItem.anchor.set(0,1);
+	btnExtrasItem.buttonMode = true;
+    	btnExtrsaItem.interactive = true;
+	btnExtrasItem
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onExtraItemDown);
-	extraContainer.addChild(btnExtraItem);
-	extraArray.push(btnExtraItem);
+        .on('pointerdown', onExtrasItemDown);
+	extrasContainer.addChild(btnExtrasItem);
+	extrasArray.push(btnExtrasItem);
 	
-	btnExtraMove = new PIXI.Sprite(textureExtraMove);
-	btnExtraMove.anchor.set(0,1);
-	btnExtraMove.buttonMode = true;
-    	btnExtraMove.interactive = true;
-	btnExtraMove
+	btnExtrasMove = new PIXI.Sprite(textureExtrasMove);
+	btnExtrasMove.anchor.set(0,1);
+	btnExtrasMove.buttonMode = true;
+    	btnExtrasMove.interactive = true;
+	btnExtrasMove
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onExtraMoveDown);
-	extraContainer.addChild(btnExtraMove);
-	extraArray.push(btnExtraMove);
+        .on('pointerdown', onExtrasMoveDown);
+	extrasContainer.addChild(btnExtrasMove);
+	extrasArray.push(btnExtrasMove);
 	
-	btnExtraSkip = new PIXI.Sprite(textureExtraSkip);
-	btnExtraSkip.anchor.set(0,1);
-	btnExtraSkip.buttonMode = true;
-    	btnExtraSkip.interactive = true;
-	btnExtraSkip
+	btnExtrasSkip = new PIXI.Sprite(textureExtrasSkip);
+	btnExtrasSkip.anchor.set(0,1);
+	btnExtrasSkip.buttonMode = true;
+    	btnExtrasSkip.interactive = true;
+	btnExtrasSkip
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onExtraSkipDown);
-	extraContainer.addChild(btnExtraSkip);
-	extraArray.push(btnExtraSkip);
+        .on('pointerdown', onExtrasSkipDown);
+	extrasContainer.addChild(btnExtrasSkip);
+	extrasArray.push(btnExtrasSkip);
 	
-	app.stage.addChild(extraContainer);
+	app.stage.addChild(extrasContainer);
 	app.stage.addChild(btnSettings);	
 	app.stage.addChild(btnExtras);	
 	
@@ -1197,13 +1197,13 @@ function resize() {
 	btnExtras.height = btnSettings.width;
 	btnExtras.position.set(margin, app.screen.height - margin);
 	
-	extraArray.forEach(extraBtn => {
+	extrasArray.forEach(extraBtn => {
 		extraBtn.width = btnSettings.width;
 		extraBtn.height = btnSettings.width;
 		extraBtn.y = -index * btnSettings.width;
 	});
 	
-	extraContainer.position.set(margin, app.screen.height - margin);
+	extrasContainer.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
@@ -2041,20 +2041,20 @@ function onAdditionalDown(){
 	consoleScreen.visible = true;
 }
 
-function onExtraCancelDown(){
-	console.log("Extra Cancel");
+function onExtrasCancelDown(){
+	console.log("Extras Cancel");
 }
 
-function onExtraMoveDown(){
-	console.log("Extra Move");
+function onExtrasMoveDown(){
+	console.log("Extras Move");
 }
 
-function onExtraItemDown(){
-	console.log("Extra Item");
+function onExtrasItemDown(){
+	console.log("Extras Item");
 }
 
-function onExtraSkipDown(){
-	console.log("Extra Skip");
+function onExtrasSkipDown(){
+	console.log("Extras Skip");
 }
 
 
