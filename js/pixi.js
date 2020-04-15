@@ -175,7 +175,9 @@ const rect = new PIXI.Graphics();
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-var button, button2, textureButton, textureButtonDown, textureShift;
+var btnExtras, btnSettings, textureExtras, textureSettings, textureShift;
+var textureExtraCancel, textureExtraMove, textureExtraItem, textureExtraSkip;
+var btnExtraCancel, btnExtraMove, btnExtraItem, btnExtraSkip;
 
 var healthSpacing = 20;
 var margin = 50;
@@ -278,8 +280,8 @@ enemy[3] = {
 
 function setup(){
 	
-	textureButtonDown = PIXI.Texture.from('img/extras.png');
-	textureButton = PIXI.Texture.from('img/leper.ability.five.png');
+	textureExtras = PIXI.Texture.from('img/extras.png');
+	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
 // 	textureShift = PIXI.Texture.from('img/ui_shift.png');
 	
 	consolePrint("SETUP");
@@ -674,31 +676,31 @@ function setup(){
 	consoleScreen.visible = false;
 	
 	//Resize button
-	button = new PIXI.Sprite(textureButton);
-    	button.buttonMode = true;
-    	button.anchor.set(1,1);
-    	button.position.x = 50;
-    	button.position.y = 50;
-	button.width = 50;
-	button.height = 50;
+	btnSettings = new PIXI.Sprite(textureSettings);
+    	btnSettings.buttonMode = true;
+    	btnSettings.anchor.set(1,1);
+    	btnSettings.position.x = 50;
+    	btnSettings.position.y = 50;
+	btnSettings.width = 50;
+	btnSettings.height = 50;
     	// make the button interactive...
-    	button.interactive = true;
-	button.accessible = true;
-	button.accessibleTitle = "Fullscreen button";
-	button
+    	btnSettings.interactive = true;
+	btnSettings.accessible = true;
+	btnSettings.accessibleTitle = "Fullscreen button";
+	btnSettings
         // set the mousedown and touchstart callback...
         .on('pointerdown', onButtonDown);
 	
-	button2 = new PIXI.Sprite(textureButtonDown);
-	button2.anchor.set(0,1);
-	button2.buttonMode = true;
-    	button2.interactive = true;
-	button2
+	btnExtras = new PIXI.Sprite(textureExtras);
+	btnExtras.anchor.set(0,1);
+	btnExtras.buttonMode = true;
+    	btnExtras.interactive = true;
+	btnExtras
         // set the mousedown and touchstart callback...
         .on('pointerdown', onAdditionalDown);
 	
-	app.stage.addChild(button);	
-	app.stage.addChild(button2);	
+	app.stage.addChild(btnSettings);	
+	app.stage.addChild(btnExtras);	
 	
 	var anchorX1 = 1;
 	var anchorY1 = 1;
@@ -1139,13 +1141,13 @@ function resize() {
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
-	button.width = calcWidth/4;
-	button.height = button.width;
-	button.position.set(app.screen.width - margin, app.screen.height - margin);
+	btnSettings.width = calcWidth/4;
+	btnSettings.height = button.width;
+	btnSettings.position.set(app.screen.width - margin, app.screen.height - margin);
 	
-	button2.width = button.width;
-	button2.height = button.width;
-	button2.position.set(margin, app.screen.height - margin);
+	btnExtras.width = button.width;
+	btnExtras.height = button.width;
+	btnExtras.position.set(margin, app.screen.height - margin);
 	
 	moveArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
