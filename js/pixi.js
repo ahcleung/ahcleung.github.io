@@ -746,7 +746,7 @@ function setup(){
 	extrasContainer.addChild(btnExtrasSkip);
 	extrasArray.push(btnExtrasSkip);
 	
-	app.stage.addChild(extrasContainer);
+	
 	app.stage.addChild(btnSettings);	
 	app.stage.addChild(btnExtras);	
 	
@@ -792,9 +792,11 @@ function setup(){
 // 	hero4.play();	
 // 	hero4Container.addChild(hero4);
 // 	app.stage.addChild(anim);
+	app.stage.addChild(extrasContainer);	
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
+	
 }
 
 function gameLoop(delta){
