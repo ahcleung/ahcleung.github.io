@@ -932,32 +932,32 @@ function createSprite(direction, item, index){
 	healthBar.textHP = textHP;
 
 	const select = new PIXI.Container();
-		
+	var selectColour = 0xFFD600;
 	select.play = false;
 
 	let selectEnd = new PIXI.Graphics();
-	selectEnd.beginFill(0xFFD600);
+	selectEnd.beginFill(selectColour);
 	selectEnd.drawRect(0, 0, 4, 18);
 	selectEnd.endFill();
 	select.addChild(selectEnd);
 	select.selectEnd = selectEnd;
 
 	let selectStart = new PIXI.Graphics();
-	selectStart.beginFill(0xFFD600);
+	selectStart.beginFill(selectColour);
 	selectStart.drawRect(0, 0, 4, 18);
 	selectStart.endFill();
 	select.addChild(selectStart);
 	select.selectStart = selectStart;
 
 	let selectBar1 = new PIXI.Graphics();
-	selectBar1.beginFill(0xFFD600);
+	selectBar1.beginFill(selectColour);
 	selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 	selectBar1.endFill();
 	select.addChild(selectBar1);
 	select.selectBar1 = selectBar1;
 
 	let selectBar2 = new PIXI.Graphics();
-	selectBar2.beginFill(0xFFD600);
+	selectBar2.beginFill(selectColour);
 	selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 	selectBar2.endFill();
 	select.addChild(selectBar2);
@@ -968,30 +968,31 @@ function createSprite(direction, item, index){
 	healthBar.select.visible = false;
 	
 	const target = new PIXI.Container();
+	var targetColour = 0xFF392F;
 	
 	let targetEnd = new PIXI.Graphics();
-	targetEnd.beginFill(0xFF392F);
+	targetEnd.beginFill(targetColour);
 	targetEnd.drawRect(0, 0, 4, 18);
 	targetEnd.endFill();
 	target.addChild(targetEnd);
 	target.targetEnd = targetEnd;
 
 	let targetStart = new PIXI.Graphics();
-	targetStart.beginFill(0xFF392F);
+	targetStart.beginFill(targetColour);
 	targetStart.drawRect(0, 0, 4, 18);
 	targetStart.endFill();
 	target.addChild(targetStart);
 	target.targetStart = targetStart;
 
 	let targetBar1 = new PIXI.Graphics();
-	targetBar1.beginFill(0xFF392F);
+	targetBar1.beginFill(targetColour);
 	targetBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 	targetBar1.endFill();
 	target.addChild(targetBar1);
 	target.targetBar1 = targetBar1;
 
 	let targetBar2 = new PIXI.Graphics();
-	targetBar2.beginFill(0xFF392F);
+	targetBar2.beginFill(targetColour);
 	targetBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 	targetBar2.endFill();
 	target.addChild(targetBar2);
@@ -1002,30 +1003,31 @@ function createSprite(direction, item, index){
 	healthBar.target.visible = false;
 	
 	const heal = new PIXI.Container();
+	var healColour = 0x28F828;
 	
 	let healEnd = new PIXI.Graphics();
-	healEnd.beginFill(0x28F828);
+	healEnd.beginFill(healColour);
 	healEnd.drawRect(0, 0, 4, 18);
 	healEnd.endFill();
 	heal.addChild(healEnd);
 	heal.healEnd = healEnd;
 
 	let healStart = new PIXI.Graphics();
-	healStart.beginFill(0x28F828);
+	healStart.beginFill(healColour);
 	healStart.drawRect(0, 0, 4, 18);
 	healStart.endFill();
 	heal.addChild(healStart);
 	heal.healStart = healStart;
 
 	let healBar1 = new PIXI.Graphics();
-	healBar1.beginFill(0x28F828);
+	healBar1.beginFill(healColour);
 	healBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 	healBar1.endFill();
 	heal.addChild(healBar1);
 	heal.healBar1 = healBar1;
 
 	let healBar2 = new PIXI.Graphics();
-	healBar2.beginFill(0x28F828);
+	healBar2.beginFill(healColour);
 	healBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 	healBar2.endFill();
 	heal.addChild(healBar2);
@@ -1036,7 +1038,7 @@ function createSprite(direction, item, index){
 	healthBar.heal.visible = false;
 	
 	const shift = new PIXI.Container();
-	var shiftColour = 0x47b7ff;
+	var shiftColour = 0x6ee4ff;
 	
 	let shiftEnd = new PIXI.Graphics();
 	shiftEnd.beginFill(shiftColour);
