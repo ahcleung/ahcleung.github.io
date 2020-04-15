@@ -2060,6 +2060,8 @@ function onExtrasItemDown(){
 
 function onExtrasSkipDown(){
 	console.log("Extras Skip");
+	onScreenStats.visible = false;
+	consoleScreen.visible = false;
 }
 
 
