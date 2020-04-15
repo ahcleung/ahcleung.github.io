@@ -1036,30 +1036,31 @@ function createSprite(direction, item, index){
 	healthBar.heal.visible = false;
 	
 	const shift = new PIXI.Container();
+	var shiftColour = 0x47b7ff;
 	
 	let shiftEnd = new PIXI.Graphics();
-	shiftEnd.beginFill(0x47b7ff);
+	shiftEnd.beginFill(shiftColour);
 	shiftEnd.drawRect(0, 0, 4, 18);
 	shiftEnd.endFill();
 	shift.addChild(shiftEnd);
 	shift.shiftEnd = shiftEnd;
 
 	let shiftStart = new PIXI.Graphics();
-	shiftStart.beginFill(0x47b7ff);
+	shiftStart.beginFill(shiftColour);
 	shiftStart.drawRect(0, 0, 4, 18);
 	shiftStart.endFill();
 	shift.addChild(shiftStart);
 	shift.shiftStart = shiftStart;
 
 	let shiftBar1 = new PIXI.Graphics();
-	shiftBar1.beginFill(0x47b7ff);
+	shiftBar1.beginFill(shiftColour);
 	shiftBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
 	shiftBar1.endFill();
 	shift.addChild(shiftBar1);
 	shift.shiftBar1 = shiftBar1;
 
 	let shiftBar2 = new PIXI.Graphics();
-	shiftBar2.beginFill(0x47b7ff);
+	shiftBar2.beginFill(shiftColour);
 	shiftBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
 	shiftBar2.endFill();
 	shift.addChild(shiftBar2);
