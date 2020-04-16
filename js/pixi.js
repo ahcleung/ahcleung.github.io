@@ -1689,14 +1689,14 @@ function onCreatureDown(){
 				currPos.forEach(posNum => {
 					var posTracker = Math.abs(skillPosIndex - 4);			
 					if(posNum == posTracker){
-						skillArray[skillPos].disable.visible = false;
-						skillArray[skillPos].buttonMode = true;
-						skillArray[skillPos].interactive = true;
+						skillArray[skillRectPos].disable.visible = false;
+						skillArray[skillRectPos].buttonMode = true;
+						skillArray[skillRectPos].interactive = true;
 					}
 				});
-				skillArray[skillPos].markerHeroArray[skillPosIndex].visible = true;
+				skillArray[skillRectPos].markerHeroArray[skillPosIndex].visible = true;
 			}else{
-				skillArray[skillPos].markerHeroArray[skillPosIndex].visible = false;
+				skillArray[skillRectPos].markerHeroArray[skillPosIndex].visible = false;
 			}
 		});
 		
