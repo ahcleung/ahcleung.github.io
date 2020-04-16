@@ -1127,7 +1127,7 @@ function createSprite(direction, item, index){
 
 	healthBar.addChild(shift);
 	healthBar.shift = shift;
-// 	healthBar.shift.visible = false;
+	healthBar.shift.visible = false;
 	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
@@ -1672,12 +1672,14 @@ function onCreatureDown(){
 		element.select.visible = false;
 		element.target.visible = false;
 		element.heal.visible = false;
+		element.shift.visible = false;
 		element.select.play = false;
 	});
 	hpHeroContainerArray.forEach(element=>{
 		element.select.visible = false;
 		element.target.visible = false;
 		element.heal.visible = false;
+		element.shift.visible = false;
 		element.select.play = false;
 	});
 // 	shiftHeroContainerArray.forEach(element=>{
@@ -2050,6 +2052,12 @@ function onExtrasCancelDown(){
 
 function onExtrasMoveDown(){
 	console.log("Extras Move");
+	 hpHeroContainerArray.forEach(container => {
+	 	container.shift.visible =  true;
+	 });
+	hpEnemyContainerArray.forEach(container => {
+	 	container.shift.visible =  true;
+	 });
 }
 
 function onExtrasItemDown(){
