@@ -18,9 +18,8 @@ loader
 		"img/extra_skip.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
-// 		"img/ui_shift.png",
 		"js/creatures.json",
-		"js/moves.json",
+		"js/skills.json",
 	
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
@@ -86,11 +85,11 @@ function loadProgressHandler(loader, resource) {
 }
 
 class Creature{
-	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], moves=[0,0,0,0]}){
+	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skills=[0,0,0,0]}){
 		this.id = id;
 		this.level = level;
 		this.statDis = statDis;
-		this.moves = moves;
+		this.skills = skills;
 		this.pos = 0;
 		
 		this.vital = Math.floor(Math.random() * 50) + 10;
@@ -160,9 +159,9 @@ class Creature{
 // 	}
 }
 
-const movesList = resources["js/moves.json"];
+const skillsList = resources["js/skills.json"];
 
-let state, onScreenStats, consoleScreen, debug;
+let state, onScreenStats, consoleScreen;
 // const container = new PIXI.Container();
 
 const rosterHero = new PIXI.Container();
@@ -171,18 +170,18 @@ const hpHero = new PIXI.Container();
 const hpEnemy = new PIXI.Container();
 const extrasContainer = new PIXI.Container();
 
-const rect = new PIXI.Graphics();
+const rectTemp = new PIXI.Graphics();
 
 const rectHero = new PIXI.Graphics();
 const rectEnemy = new PIXI.Graphics();
 
-var btnExtras, btnSettings, textureExtras, textureSettings, textureShift;
+var btnExtras, btnSettings, textureExtras, textureSettings;
 var textureExtrasCancel, textureExtrasMove, textureExtrasItem, textureExtrasSkip;
 var btnExtrasCancel, btnExtrasMove, btnExtrasItem, btnExtrasSkip;
 
 var healthSpacing = 20;
 var margin = 50;
-var moveSpacer = 10;
+var skillSpacer = 10;
 var targetTextSize = 28;
 
 // var db = firebase.firestore();
@@ -191,57 +190,58 @@ const factory = dragonBones.PixiFactory.factory;
 
 const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
+
 const heroContainerArray = [];		//Array of hero sprite containers
 const enemyContainerArray = [];		//Array of enemy sprite containers
 const hpHeroContainerArray = [];	//Array of hero HP containers
 const hpEnemyContainerArray = [];	//Array of enemy HP containers
-const moveArray = [];			//Array of move containers
+const skillArray = [];			//Array of skill containers
 
 const extrasArray = [];	
-// const shiftHeroContainerArray = [];
-// const shiftEnemyContainerArray = [];
+// const moveHeroContainerArray = [];
+// const moveEnemyContainerArray = [];
 
 const vita = [];
 vita[0] = {
 	id: 11, level: 50, 
-	move1: 4, move2: 1, move3: 2, move4: 1,
+	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
 vita[1] = {
 	id: 2, level: 45, 
-	move1: 4, move2: 10, move3: 11, move4: 1,
+	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
 vita[2] = {
 	id: 10, level: 47, 
-	move1: 4, move2: 0, move3: 6, move4: 1,
+	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
 // vita[3] = {
 // 	id: 9, level: 47, 
-// 	move1: 8, move2: 0, move3: 1, move4: 2,
+// 	skill1: 8, skill2: 0, skill3: 1, skill4: 2,
 // 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 // };
 
 const enemy = [];
 enemy[0] = {
 	id: 9, level: 49, 
-	move1: 4, move2: 6, move3: 1, move4: 3,
+	skill1: 4, skill2: 6, skill3: 1, skill4: 3,
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 67, statSDEF: 0, statSPD: 0
 };
 enemy[1] = {
 	id: 10, level: 46, 
-	move1: 4, move2: 10, move3: 1, move4: 8,
+	skill1: 4, skill2: 10, skill3: 1, skill4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
 };
 enemy[2] = {
 	id: 12, level: 45, 
-	move1: 4, move2: 1, move3: 5, move4: 3,
+	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
 };
 enemy[3] = {
 	id: 11, level: 45, 
-	move1: 4, move2: 1, move3: 7, move4: 3,
+	skill1: 4, skill2: 1, skill3: 7, skill4: 3,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
 };
 
@@ -249,10 +249,10 @@ enemy[3] = {
 // db.collection("enemy").doc("004").set({
 // 	id: 10,
 // 	level: 45,
-// 	move1: 1,
-// 	move2: 1,
-// 	move3: 2,
-// 	move4: 2,
+// 	skill1: 1,
+// 	skill2: 1,
+// 	skill3: 2,
+// 	skill4: 2,
 // 	statDODG: 10,
 // 	statHP: 20,
 // 	statPATK: 0,
@@ -289,14 +289,14 @@ function setup(){
 	textureExtrasMove = PIXI.Texture.from('img/ability_move.png');
 	textureExtrasItem = PIXI.Texture.from('img/extra_item.png');
 	textureExtrasSkip = PIXI.Texture.from('img/extra_skip.png');
-// 	textureShift = PIXI.Texture.from('img/ui_shift.png');
+// 	textureShift = PIXI.Texture.from('img/ui_move.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
-	rect.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-	rect.alpha = 0.1;
+	rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
+	rectTemp.alpha = 0.1;
 	// Add it to the stage
-	app.stage.addChild(rect);
+	app.stage.addChild(rectTemp);
 	
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
@@ -334,11 +334,11 @@ function setup(){
 // 					doc.data().statSATK, 
 // 					doc.data().statSDEF, 
 // 					doc.data().statSPD
-// 				], moves:[
-// 					doc.data().move1, 
-// 					doc.data().move2, 
-// 					doc.data().move3, 
-// 					doc.data().move4
+// 				], skills:[
+// 					doc.data().skill1, 
+// 					doc.data().skill2, 
+// 					doc.data().skill3, 
+// 					doc.data().skill4
 // 				]});
 // 			arrayHero.push(creature);
 // 		});
@@ -363,11 +363,11 @@ function setup(){
 				item.statSATK,
 				item.statSDEF,
 				item.statSPD
-			], moves:[
-				item.move1,
-				item.move2,
-				item.move3,
-				item.move4
+			], skills:[
+				item.skill1,
+				item.skill2,
+				item.skill3,
+				item.skill4
 			]
 		});
 		arrayHero.push(creature);
@@ -390,11 +390,11 @@ function setup(){
 				item.statSATK,
 				item.statSDEF,
 				item.statSPD
-			], moves:[
-				item.move1,
-				item.move2,
-				item.move3,
-				item.move4
+			], skills:[
+				item.skill1,
+				item.skill2,
+				item.skill3,
+				item.skill4
 			]
 		});
 		arrayEnemy.push(creature);
@@ -406,58 +406,58 @@ function setup(){
 	});
 	
 	for(var i = 0; i < 4; i++){
-// 		console.log(arrayHero[1].moves[i]);
-		let moveRect = new PIXI.Graphics();
-		let moveSelectFill = new PIXI.Graphics();
-		let moveSelectStroke = new PIXI.Graphics();
-		let moveDisable = new PIXI.Graphics();
+// 		console.log(arrayHero[1].skills[i]);
+		let skillRect = new PIXI.Graphics();
+		let skillSelectFill = new PIXI.Graphics();
+		let skillSelectStroke = new PIXI.Graphics();
+		let skillDisable = new PIXI.Graphics();
 		
-		const moveContainer = new PIXI.Container();
-		const moveSelect = new PIXI.Container();
+		const skillContainer = new PIXI.Container();
+		const skillSelect = new PIXI.Container();
 		
 		// make the button interactive...
-		moveContainer.buttonMode = true;
-		moveContainer.interactive = true;
-		moveContainer
+		skillContainer.buttonMode = true;
+		skillContainer.interactive = true;
+		skillContainer
 		// set the mousedown and touchstart callback...
-		.on('pointerdown', onMoveDown);
+		.on('pointerdown', onSkillDown);
 		
-		moveContainer.identifier = [i , arrayHero[1].moves[i], 1];
+		skillContainer.identifier = [i , arrayHero[1].skills[i], 1];
 		
-		let moveName = new Text(movesList.data.moves[arrayHero[1].moves[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
-		moveName.anchor.set(0, 0.5);
+		let skillName = new Text(skillsList.data.skills[arrayHero[1].skills[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+		skillName.anchor.set(0, 0.5);
 		
-		moveRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		moveRect.x = 0;
-		moveRect.y = 0;
+		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		skillRect.x = 0;
+		skillRect.y = 0;
 		
-		moveContainer.addChild(moveRect);
-		moveContainer.rect = moveRect;
+		skillContainer.addChild(skillRect);
+		skillContainer.rect = skillRect;
 		
-		moveSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-		moveSelectStroke.x = 0;
-		moveSelectStroke.y = 0;		
-		moveSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		moveSelectFill.x = 0;
-		moveSelectFill.y = 0;
+		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		skillSelectStroke.x = 0;
+		skillSelectStroke.y = 0;		
+		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		skillSelectFill.x = 0;
+		skillSelectFill.y = 0;
 		
-		moveDisable.beginFill(0x636363).drawRect(0, 0, 50, 50);
-		moveDisable.alpha = 0.5;
-		moveDisable.x = 0;
-		moveDisable.y = 0;
+		skillDisable.beginFill(0x636363).drawRect(0, 0, 50, 50);
+		skillDisable.alpha = 0.5;
+		skillDisable.x = 0;
+		skillDisable.y = 0;
 		
-		moveSelect.addChild(moveSelectStroke);
-		moveSelect.addChild(moveSelectFill);
-		moveSelect.stroke = moveSelectStroke;
-		moveSelect.fill = moveSelectFill;
+		skillSelect.addChild(skillSelectStroke);
+		skillSelect.addChild(skillSelectFill);
+		skillSelect.stroke = skillSelectStroke;
+		skillSelect.fill = skillSelectFill;
 				
-		moveContainer.addChild(moveSelect);
-		moveContainer.selected = moveSelect;
+		skillContainer.addChild(skillSelect);
+		skillContainer.selected = skillSelect;
 		
-		moveContainer.selected.visible = false;
+		skillContainer.selected.visible = false;
 		
-		moveContainer.addChild(moveName);
-		moveContainer.moveName = moveName;
+		skillContainer.addChild(skillName);
+		skillContainer.skillName = skillName;
 		
 		const markerContainer = new PIXI.Container();
 		
@@ -473,7 +473,7 @@ function setup(){
 			let posMarker = new PIXI.Graphics();			
 			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 			
-			if(movesList.data.moves[arrayHero[1].moves[i]].position[j] == 0){
+			if(skillsList.data.skills[arrayHero[1].skills[i]].position[j] == 0){
 				posMarker.visible = false;
 			}
 			
@@ -497,7 +497,7 @@ function setup(){
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-			if(movesList.data.moves[arrayHero[1].moves[i]].target[j] == 0){
+			if(skillsList.data.skills[arrayHero[1].skills[i]].target[j] == 0){
 				posMarker.visible = false;
 			}
 			defaultMarker.x = 25 * j;
@@ -561,74 +561,74 @@ function setup(){
 		markerContainer.addChild(markerTargetHeroContainer);		
 		
 		markerContainer.addChild(markerTargetEnemySeveralContainer);
-		moveContainer.markerTargetEnemySeveralContainer = markerTargetEnemySeveralContainer;
+		skillContainer.markerTargetEnemySeveralContainer = markerTargetEnemySeveralContainer;
 		
-		moveContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;		
-		moveContainer.markerTargetEnemySeveralContainer.visible = false;
+		skillContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;		
+		skillContainer.markerTargetEnemySeveralContainer.visible = false;
 		
-		moveContainer.addChild(markerContainer);
-// 		moveContainer.posMarkerArray = posMarkerArray;
-		moveContainer.markerContainer = markerContainer;
+		skillContainer.addChild(markerContainer);
+// 		skillContainer.posMarkerArray = posMarkerArray;
+		skillContainer.markerContainer = markerContainer;
 		
-		moveContainer.markerHeroArray = markerHeroArray;
-		moveContainer.markerHeroContainer = markerHeroContainer;
+		skillContainer.markerHeroArray = markerHeroArray;
+		skillContainer.markerHeroContainer = markerHeroContainer;
 		
-		moveContainer.markerTargetEnemyArray = markerTargetEnemyArray;
-		moveContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
+		skillContainer.markerTargetEnemyArray = markerTargetEnemyArray;
+		skillContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
 		
-		moveContainer.markerTargetHeroArray = markerTargetHeroArray;
-		moveContainer.markerTargetHeroContainer = markerTargetHeroContainer;
-		moveContainer.markerTargetHeroContainer.visible = false;
+		skillContainer.markerTargetHeroArray = markerTargetHeroArray;
+		skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
+		skillContainer.markerTargetHeroContainer.visible = false;
 		
 		let targetText = new Text("1►", {fontFamily : 'Arial', fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
-		moveContainer.addChild(targetText);
-		moveContainer.targetText = targetText;
-		moveContainer.targetText.visible = false;
+		skillContainer.addChild(targetText);
+		skillContainer.targetText = targetText;
+		skillContainer.targetText.visible = false;
 // 		targetText.x = 123;
 		
-		var moveElement;
-		switch(movesList.data.moves[arrayHero[1].moves[i]].element){
+		var skillElement;
+		switch(skillsList.data.skills[arrayHero[1].skills[i]].element){
 			case 1:
-				moveElement = new PIXI.Sprite(resources.element_earth.texture);
+				skillElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
 			case 2:
-				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				skillElement = new PIXI.Sprite(resources.element_fire.texture);
 				break;
 			case 3:
-				moveElement = new PIXI.Sprite(resources.element_flora.texture);
+				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
 			case 4:
-				moveElement = new PIXI.Sprite(resources.element_lightning.texture);
+				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
 				break;
 			case 5:
-				moveElement = new PIXI.Sprite(resources.element_shadow.texture);
+				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
 				break;
 			case 6:
-				moveElement = new PIXI.Sprite(resources.element_spirit.texture);
+				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
 				break;
 			case 7:
-				moveElement = new PIXI.Sprite(resources.element_toxic.texture);
+				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
 				break;
 			case 8:
-				moveElement = new PIXI.Sprite(resources.element_water.texture);
+				skillElement = new PIXI.Sprite(resources.element_water.texture);
 				break;
 			case 9:
-				moveElement = new PIXI.Sprite(resources.element_wind.texture);
+				skillElement = new PIXI.Sprite(resources.element_wind.texture);
 				break;
 			default:
-				moveElement = new PIXI.Sprite(resources.element_fire.texture);
+				skillElement = new PIXI.Sprite(resources.element_fire.texture);
 				break;
 		}
-		moveElement.anchor.set(0, 0.5);
-		moveContainer.addChild(moveElement);
-		moveContainer.moveElement = moveElement;
+		skillElement.anchor.set(0, 0.5);
+		skillContainer.addChild(skillElement);
+		skillContainer.skillElement = skillElement;
 		
-		moveContainer.addChild(moveDisable);
-		moveContainer.disable = moveDisable;
+		skillContainer.addChild(skillDisable);
+		skillContainer.disable = skillDisable;
 		
-		moveArray.push(moveContainer);
-		app.stage.addChild(moveContainer);
+		skillArray.push(skillContainer);
+		app.stage.addChild(skillContainer);
 	}
 	//Read from firestore
 // 	db.collection("enemy").get().then((querySnapshot) => {
@@ -645,11 +645,11 @@ function setup(){
 // 					doc.data().statSATK, 
 // 					doc.data().statSDEF, 
 // 					doc.data().statSPD
-// 				], moves:[
-// 					doc.data().move1, 
-// 					doc.data().move2, 
-// 					doc.data().move3, 
-// 					doc.data().move4
+// 				], skills:[
+// 					doc.data().skill1, 
+// 					doc.data().skill2, 
+// 					doc.data().skill3, 
+// 					doc.data().skill4
 // 				]});
 // 			arrayEnemy.push(creature);
 // 		});
@@ -664,9 +664,6 @@ function setup(){
 	
 	//const obj = resources["js/creatures.json"];
 	
-// 	debug = new Text("Creature element: " + creature1.name);
-// 	debug.x = 100;
-// 	debug.y = 200;
 	
 	//Current display stats
 	onScreenStats = new Text("Resolution: " + app.renderer.resolution +
@@ -814,14 +811,14 @@ function play(delta){
 		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
 	hpHeroContainerArray.forEach(element => {
-		if(element.select.play == true){
-			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+		if(element.select.animate == true){
+			element.select.width = element.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
 // 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
 	hpEnemyContainerArray.forEach(element => {
-		if(element.select.play == true){
-			element.select.width = element.select.selectBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+		if(element.select.animate == true){
+			element.select.width = element.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
 // 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
@@ -872,23 +869,6 @@ function createSprite(direction, item, index){
 	}else{
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 	}
-	
-// 	const shiftContainer = new PIXI.Container();
-// 	let shiftLeft = new PIXI.Sprite(textureShift);
-// 	let shiftRight = new PIXI.Sprite(textureShift);
-	
-// 	shiftLeft.pivot.x = shiftLeft.width;
-// 	shiftLeft.pivot.y = shiftLeft.height/2;
-	
-// 	shiftRight.pivot.x = shiftRight.width;
-// 	shiftRight.pivot.y = shiftRight.height/2;
-// 	shiftRight.angle = 180;
-// // 	shiftRight.x = 50;
-	
-// 	shiftContainer.addChild(shiftLeft);
-// 	shiftContainer.addChild(shiftRight);
-// 	shiftContainer.left = shiftLeft;
-// 	shiftContainer.right = shiftRight;
 	
 	const healthBar = new PIXI.Container();
 	
@@ -988,163 +968,260 @@ function createSprite(direction, item, index){
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
+	// const select = new PIXI.Container();
+	// var selectColour = 0xFFD600;
+	// select.animate = false;
+
+	// let selectEnd = new PIXI.Graphics();
+	// selectEnd.beginFill(selectColour);
+	// selectEnd.drawRect(0, 0, 4, 18);
+	// selectEnd.endFill();
+	// select.addChild(selectEnd);
+	// select.selectEnd = selectEnd;
+
+	// let selectStart = new PIXI.Graphics();
+	// selectStart.beginFill(selectColour);
+	// selectStart.drawRect(0, 0, 4, 18);
+	// selectStart.endFill();
+	// select.addChild(selectStart);
+	// select.selectStart = selectStart;
+
+	// let selectBar1 = new PIXI.Graphics();
+	// selectBar1.beginFill(selectColour);
+	// selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	// selectBar1.endFill();
+	// select.addChild(selectBar1);
+	// select.selectBar1 = selectBar1;
+
+	// let selectBar2 = new PIXI.Graphics();
+	// selectBar2.beginFill(selectColour);
+	// selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	// selectBar2.endFill();
+	// select.addChild(selectBar2);
+	// select.selectBar2 = selectBar2;
+
+	// healthBar.addChild(select);
+	// healthBar.select = select;
+	// healthBar.select.visible = false;
+
 	const select = new PIXI.Container();
-	var selectColour = 0xFFD600;
-	select.play = false;
-
-	let selectEnd = new PIXI.Graphics();
-	selectEnd.beginFill(selectColour);
-	selectEnd.drawRect(0, 0, 4, 18);
-	selectEnd.endFill();
-	select.addChild(selectEnd);
-	select.selectEnd = selectEnd;
-
-	let selectStart = new PIXI.Graphics();
-	selectStart.beginFill(selectColour);
-	selectStart.drawRect(0, 0, 4, 18);
-	selectStart.endFill();
-	select.addChild(selectStart);
-	select.selectStart = selectStart;
-
-	let selectBar1 = new PIXI.Graphics();
-	selectBar1.beginFill(selectColour);
-	selectBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	selectBar1.endFill();
-	select.addChild(selectBar1);
-	select.selectBar1 = selectBar1;
-
-	let selectBar2 = new PIXI.Graphics();
-	selectBar2.beginFill(selectColour);
-	selectBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	selectBar2.endFill();
-	select.addChild(selectBar2);
-	select.selectBar2 = selectBar2;
-
-	healthBar.addChild(select);
-	healthBar.select = select;
-	healthBar.select.visible = false;
-	
 	const target = new PIXI.Container();
-	var targetColour = 0xFF392F;
-	
-	let targetEnd = new PIXI.Graphics();
-	targetEnd.beginFill(targetColour);
-	targetEnd.drawRect(0, 0, 4, 18);
-	targetEnd.endFill();
-	target.addChild(targetEnd);
-	target.targetEnd = targetEnd;
-
-	let targetStart = new PIXI.Graphics();
-	targetStart.beginFill(targetColour);
-	targetStart.drawRect(0, 0, 4, 18);
-	targetStart.endFill();
-	target.addChild(targetStart);
-	target.targetStart = targetStart;
-
-	let targetBar1 = new PIXI.Graphics();
-	targetBar1.beginFill(targetColour);
-	targetBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	targetBar1.endFill();
-	target.addChild(targetBar1);
-	target.targetBar1 = targetBar1;
-
-	let targetBar2 = new PIXI.Graphics();
-	targetBar2.beginFill(targetColour);
-	targetBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	targetBar2.endFill();
-	target.addChild(targetBar2);
-	target.targetBar2 = targetBar2;
-
-	healthBar.addChild(target);
-	healthBar.target = target;
-	healthBar.target.visible = false;
-	
 	const heal = new PIXI.Container();
-	var healColour = 0x28F828;
+	const move = new PIXI.Container();
 	
-	let healEnd = new PIXI.Graphics();
-	healEnd.beginFill(healColour);
-	healEnd.drawRect(0, 0, 4, 18);
-	healEnd.endFill();
-	heal.addChild(healEnd);
-	heal.healEnd = healEnd;
+	for(var i = 0; i < 4; i++){
+		var colour;
+		if(i == 0){
+			//Select
+			colour = 0xFFD600;		
+		}else if(i == 1){
+			//Target
+			colour = 0xFF392F;
+		}else if(i == 2){
+			//Heal
+			colour = 0x28F828;
+		}else if(i == 3){
+			//Move
+			colour = 0x6ee4ff;
+		}
+		let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
 
-	let healStart = new PIXI.Graphics();
-	healStart.beginFill(healColour);
-	healStart.drawRect(0, 0, 4, 18);
-	healStart.endFill();
-	heal.addChild(healStart);
-	heal.healStart = healStart;
+		indicatorEnd = new PIXI.Graphics();
+		indicatorEnd.beginFill(colour);
+		indicatorEnd.drawRect(0, 0, 4, 18);
+		indicatorEnd.endFill();
 
-	let healBar1 = new PIXI.Graphics();
-	healBar1.beginFill(healColour);
-	healBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	healBar1.endFill();
-	heal.addChild(healBar1);
-	heal.healBar1 = healBar1;
+		indicatorStart = new PIXI.Graphics();
+		indicatorStart.beginFill(colour);
+		indicatorStart.drawRect(0, 0, 4, 18);
+		indicatorStart.endFill();
 
-	let healBar2 = new PIXI.Graphics();
-	healBar2.beginFill(healColour);
-	healBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	healBar2.endFill();
-	heal.addChild(healBar2);
-	heal.healBar2 = healBar2;
+		indicatorBar1 = new PIXI.Graphics();
+		indicatorBar1.beginFill(colour);
+		indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+		indicatorBar1.endFill();
 
-	healthBar.addChild(heal);
-	healthBar.heal = heal;
-	healthBar.heal.visible = false;
+		indicatorBar2 = new PIXI.Graphics();
+		indicatorBar2.beginFill(colour);
+		indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+		indicatorBar2.endFill();
+
+		if(i == 0){
+			//Select
+			select.addChild(indicatorEnd);
+			select.indicatorEnd = indicatorEnd;
+			select.addChild(indicatorStart);
+			select.indicatorStart = indicatorStart;
+			select.addChild(indicatorBar1);
+			select.indicatorBar1 = indicatorBar1;
+			select.addChild(indicatorBar2);
+			select.indicatorBar2 = indicatorBar2;
+			healthBar.addChild(select);
+			healthBar.select = select;
+			healthBar.select.visible = false;
+		}else if(i == 1){
+			//Target
+			target.addChild(indicatorEnd);
+			target.indicatorEnd = indicatorEnd;
+			target.addChild(indicatorStart);
+			target.indicatorStart = indicatorStart;
+			target.addChild(indicatorBar1);
+			target.indicatorBar1 = indicatorBar1;
+			target.addChild(indicatorBar2);
+			target.indicatorBar2 = indicatorBar2;
+			healthBar.addChild(target);
+			healthBar.target = target;
+			healthBar.target.visible = false;
+		}else if(i == 2){
+			//Heal
+			heal.addChild(indicatorEnd);
+			heal.indicatorEnd = indicatorEnd;
+			heal.addChild(indicatorStart);
+			heal.indicatorStart = indicatorStart;
+			heal.addChild(indicatorBar1);
+			heal.indicatorBar1 = indicatorBar1;
+			heal.addChild(indicatorBar2);
+			heal.indicatorBar2 = indicatorBar2;
+			healthBar.addChild(heal);
+			healthBar.heal = heal;
+			healthBar.heal.visible = false;
+		}else if(i == 3){
+			//Move
+			move.addChild(indicatorEnd);
+			move.indicatorEnd = indicatorEnd;
+			move.addChild(indicatorStart);
+			move.indicatorStart = indicatorStart;
+			move.addChild(indicatorBar1);
+			move.indicatorBar1 = indicatorBar1;
+			move.addChild(indicatorBar2);
+			move.indicatorBar2 = indicatorBar2;
+			healthBar.addChild(move);
+			healthBar.move = move;
+			healthBar.move.visible = false;
+		}
+	}
+
+	// const target = new PIXI.Container();
+	// var targetColour = 0xFF392F;
 	
-	const shift = new PIXI.Container();
-	var shiftColour = 0x6ee4ff;
+	// let targetEnd = new PIXI.Graphics();
+	// targetEnd.beginFill(targetColour);
+	// targetEnd.drawRect(0, 0, 4, 18);
+	// targetEnd.endFill();
+	// target.addChild(targetEnd);
+	// target.targetEnd = targetEnd;
+
+	// let targetStart = new PIXI.Graphics();
+	// targetStart.beginFill(targetColour);
+	// targetStart.drawRect(0, 0, 4, 18);
+	// targetStart.endFill();
+	// target.addChild(targetStart);
+	// target.targetStart = targetStart;
+
+	// let targetBar1 = new PIXI.Graphics();
+	// targetBar1.beginFill(targetColour);
+	// targetBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	// targetBar1.endFill();
+	// target.addChild(targetBar1);
+	// target.targetBar1 = targetBar1;
+
+	// let targetBar2 = new PIXI.Graphics();
+	// targetBar2.beginFill(targetColour);
+	// targetBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	// targetBar2.endFill();
+	// target.addChild(targetBar2);
+	// target.targetBar2 = targetBar2;
+
+	// healthBar.addChild(target);
+	// healthBar.target = target;
+	// healthBar.target.visible = false;
 	
-	let shiftEnd = new PIXI.Graphics();
-	shiftEnd.beginFill(shiftColour);
-	shiftEnd.drawRect(0, 0, 4, 18);
-	shiftEnd.endFill();
-	shift.addChild(shiftEnd);
-	shift.shiftEnd = shiftEnd;
+	// const heal = new PIXI.Container();
+	// var healColour = 0x28F828;
+	
+	// let healEnd = new PIXI.Graphics();
+	// healEnd.beginFill(healColour);
+	// healEnd.drawRect(0, 0, 4, 18);
+	// healEnd.endFill();
+	// heal.addChild(healEnd);
+	// heal.healEnd = healEnd;
 
-	let shiftStart = new PIXI.Graphics();
-	shiftStart.beginFill(shiftColour);
-	shiftStart.drawRect(0, 0, 4, 18);
-	shiftStart.endFill();
-	shift.addChild(shiftStart);
-	shift.shiftStart = shiftStart;
+	// let healStart = new PIXI.Graphics();
+	// healStart.beginFill(healColour);
+	// healStart.drawRect(0, 0, 4, 18);
+	// healStart.endFill();
+	// heal.addChild(healStart);
+	// heal.healStart = healStart;
 
-	let shiftBar1 = new PIXI.Graphics();
-	shiftBar1.beginFill(shiftColour);
-	shiftBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	shiftBar1.endFill();
-	shift.addChild(shiftBar1);
-	shift.shiftBar1 = shiftBar1;
+	// let healBar1 = new PIXI.Graphics();
+	// healBar1.beginFill(healColour);
+	// healBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	// healBar1.endFill();
+	// heal.addChild(healBar1);
+	// heal.healBar1 = healBar1;
 
-	let shiftBar2 = new PIXI.Graphics();
-	shiftBar2.beginFill(shiftColour);
-	shiftBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	shiftBar2.endFill();
-	shift.addChild(shiftBar2);
-	shift.shiftBar2 = shiftBar2;
+	// let healBar2 = new PIXI.Graphics();
+	// healBar2.beginFill(healColour);
+	// healBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	// healBar2.endFill();
+	// heal.addChild(healBar2);
+	// heal.healBar2 = healBar2;
 
-	healthBar.addChild(shift);
-	healthBar.shift = shift;
-	healthBar.shift.visible = false;
+	// healthBar.addChild(heal);
+	// healthBar.heal = heal;
+	// healthBar.heal.visible = false;
+	
+	// const move = new PIXI.Container();
+	// var moveColour = 0x6ee4ff;
+	
+	// let moveEnd = new PIXI.Graphics();
+	// moveEnd.beginFill(moveColour);
+	// moveEnd.drawRect(0, 0, 4, 18);
+	// moveEnd.endFill();
+	// move.addChild(moveEnd);
+	// move.moveEnd = moveEnd;
+
+	// let moveStart = new PIXI.Graphics();
+	// moveStart.beginFill(moveColour);
+	// moveStart.drawRect(0, 0, 4, 18);
+	// moveStart.endFill();
+	// move.addChild(moveStart);
+	// move.moveStart = moveStart;
+
+	// let moveBar1 = new PIXI.Graphics();
+	// moveBar1.beginFill(moveColour);
+	// moveBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	// moveBar1.endFill();
+	// move.addChild(moveBar1);
+	// move.moveBar1 = moveBar1;
+
+	// let moveBar2 = new PIXI.Graphics();
+	// moveBar2.beginFill(moveColour);
+	// moveBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	// moveBar2.endFill();
+	// move.addChild(moveBar2);
+	// move.moveBar2 = moveBar2;
+
+	// healthBar.addChild(move);
+	// healthBar.move = move;
+	// healthBar.move.visible = false;
 	
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
-// 		shiftHeroContainerArray.push(shiftContainer);
+// 		moveHeroContainerArray.push(moveContainer);
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
-// 		hpHero.addChild(shiftContainer);
+// 		hpHero.addChild(moveContainer);
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
-// 		shiftEnemyContainerArray.push(shiftContainer);
+// 		moveEnemyContainerArray.push(moveContainer);
 		
 		rosterEnemy.addChild(creatureContainer);
 		hpEnemy.addChild(healthBar);
-// 		hpEnemy.addChild(shiftContainer);
+// 		hpEnemy.addChild(moveContainer);
 	}	
 }
 
@@ -1160,31 +1237,31 @@ function resize() {
 		);
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
-	rect.position.set(app.screen.width/2, app.screen.height/2);
+	rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	
-	var moveSelectPadding = 5;
+	var skillSelectPadding = 5;
 	
 	if(app.screen.width < 860){
 		margin = 10;
 		healthSpacing = 10;
-		moveSpacer = 5;
-		moveSelectPadding = 2;
+		skillSpacer = 5;
+		skillSelectPadding = 2;
 		hpHero.position.set(margin, 20);
 		hpEnemy.position.set(app.screen.width/2+margin, 20);
 		targetTextSize = 12;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
-		moveSpacer = 8;
-		moveSelectPadding = 3;
+		skillSpacer = 8;
+		skillSelectPadding = 3;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
 		targetTextSize = 16;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
-		moveSpacer = 10;
-		moveSelectPadding = 5;
+		skillSpacer = 10;
+		skillSelectPadding = 5;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
 		targetTextSize = 26;
@@ -1208,59 +1285,59 @@ function resize() {
 	
 	extrasContainer.position.set(margin, app.screen.height - margin);
 	
-	moveArray.forEach((element, index) => {
+	skillArray.forEach((element, index) => {
 		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.rect.height = element.rect.width/4;
 		element.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.selected.stroke.height = element.rect.width/4;
-		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - moveSelectPadding*2;
-		element.selected.fill.height = (element.rect.width/4) - moveSelectPadding*2;
+		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
+		element.selected.fill.height = (element.rect.width/4) - skillSelectPadding*2;
 		
 		element.disable.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 		element.disable.height = element.rect.width/4;
 		
-		element.selected.fill.x = moveSelectPadding;
-		element.selected.fill.y = moveSelectPadding;
+		element.selected.fill.x = skillSelectPadding;
+		element.selected.fill.y = skillSelectPadding;
 		
 		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
 		element.y = app.screen.height - element.rect.height - margin;
 		
-		element.moveElement.width = element.rect.width/11;
-		element.moveElement.height = element.moveElement.width * 2.3;
-		element.moveElement.x = moveSpacer;
-		element.moveElement.y = element.rect.height/2;
+		element.skillElement.width = element.rect.width/11;
+		element.skillElement.height = element.skillElement.width * 2.3;
+		element.skillElement.x = skillSpacer;
+		element.skillElement.y = element.rect.height/2;
 		
 		element.markerContainer.width = (element.rect.width/3)*2;
 		element.markerContainer.height = element.markerContainer.width/12;
-// 		element.posMarkerContainer.scale.set(element.moveElement.width);
+// 		element.posMarkerContainer.scale.set(element.skillElement.width);
 		
 		if(app.screen.width < 860){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
+			element.skillName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
 			element.targetText.style.fontSize = 12;
-// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
+// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
+			element.skillName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
 			element.targetText.style.fontSize = 16;
-// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
+// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(0.5);
 		}else{
-			element.moveName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			element.skillName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 			element.targetText.style.fontSize = 26;
-// 			element.moveNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
+// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 // 			element.posMarkerContainer.scale.set(1);
 // 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
 // 			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
 		}
 		
-		element.moveName.x = element.rect.width/6;
-		element.moveName.y = element.rect.height/3;
+		element.skillName.x = element.rect.width/6;
+		element.skillName.y = element.rect.height/3;
 		
-// 		element.moveName.x = element.rect.width;
-// 		element.moveName.y = 0;
+// 		element.skillName.x = element.rect.width;
+// 		element.skillName.y = 0;
 		
-// 		element.moveNum.x = (element.rect.width/15)*14;
-// 		element.moveNum.y = (element.rect.height/3)*2;
+// 		element.skillNum.x = (element.rect.width/15)*14;
+// 		element.skillNum.y = (element.rect.height/3)*2;
 		
 // 		element.posMarkerContainer.x = 0;
 // 		element.posMarkerContainer.y = 0;
@@ -1301,10 +1378,10 @@ function resizeHP(roster, item, index){
 	var statusSpacing = 5;
 	var HPSpacing = 3;
 	var selectBarHeight = 7;
-	var selectBar1Y = -15;
-	var selectBar2Y = -20;
-	var selectEndHeight = 18;
-	var selectEndY = -23;
+	var indicatorBar1Y = -15;
+	var indicatorBar2Y = -20;
+	var indicatorEndHeight = 18;
+	var indicatorEndY = -23;
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
@@ -1312,10 +1389,10 @@ function resizeHP(roster, item, index){
 		statusSpacing = 2;
 		HPSpacing = 1;
 		selectBarHeight = 5;
-		selectBar1Y = -10;
-		selectBar2Y = -13;
-		selectEndHeight = 12;
-		selectEndY = -15;
+		indicatorBar1Y = -10;
+		indicatorBar2Y = -13;
+		indicatorEndHeight = 12;
+		indicatorEndY = -15;
 		item.turn.height = 3;
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
@@ -1324,10 +1401,10 @@ function resizeHP(roster, item, index){
 		statusSpacing = 4;
 		HPSpacing = 2;
 		selectBarHeight = 7;
-		selectBar1Y = -15;
-		selectBar2Y = -20;
-		selectEndHeight = 18;
-		selectEndY = -23;
+		indicatorBar1Y = -15;
+		indicatorBar2Y = -20;
+		indicatorEndHeight = 18;
+		indicatorEndY = -23;
 		item.turn.height = 4;
 		item.turn.y = resizeHeight + 2;
 	}else{
@@ -1336,10 +1413,10 @@ function resizeHP(roster, item, index){
 		statusSpacing = 5;
 		HPSpacing = 3;
 		selectBarHeight = 7;
-		selectBar1Y = -15;
-		selectBar2Y = -20;
-		selectEndHeight = 18;
-		selectEndY = -23;
+		indicatorBar1Y = -15;
+		indicatorBar2Y = -20;
+		indicatorEndHeight = 18;
+		indicatorEndY = -23;
 		item.turn.height = 5;
 		item.turn.y = resizeHeight + 2;
 	}
@@ -1358,7 +1435,7 @@ function resizeHP(roster, item, index){
 	
 	if(roster == 0){
 		var switcher = 0;
-// 		shiftHeroContainerArray[index].y = app.screen.height * 1/2;
+// 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
@@ -1366,16 +1443,16 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.select.selectBar1.width = resizeWidth * 2 + healthSpacing;
-			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
-			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
-			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
-			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
-			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
-			item.shift.shiftBar1.width = resizeWidth * 2 + healthSpacing;
-			item.shift.shiftBar2.width = resizeWidth * 2 + healthSpacing;
+			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
+			item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			
-// 			shiftHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
+// 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
@@ -1395,16 +1472,16 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.select.selectBar1.width = resizeWidth;
-			item.select.selectBar2.width = resizeWidth;
-			item.target.targetBar1.width = resizeWidth;
-			item.target.targetBar2.width = resizeWidth;
-			item.heal.healBar1.width = resizeWidth;
-			item.heal.healBar2.width = resizeWidth;
-			item.shift.shiftBar1.width = resizeWidth;
-			item.shift.shiftBar2.width = resizeWidth;
+			item.select.indicatorBar1.width = resizeWidth;
+			item.select.indicatorBar2.width = resizeWidth;
+			item.target.indicatorBar1.width = resizeWidth;
+			item.target.indicatorBar2.width = resizeWidth;
+			item.heal.indicatorBar1.width = resizeWidth;
+			item.heal.indicatorBar2.width = resizeWidth;
+			item.move.indicatorBar1.width = resizeWidth;
+			item.move.indicatorBar2.width = resizeWidth;
 			
-// 			shiftHeroContainerArray[index].right.x = resizeWidth;
+// 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
 			arrayHero[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1424,26 +1501,26 @@ function resizeHP(roster, item, index){
 		switch(arrayHero[index].pos) {
 			case 1:
 				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-// 				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
+// 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
 				break;
 			case 2:
 				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-// 				shiftHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
+// 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
 				item.x = resizeWidth + healthSpacing * (1 - switcher);
-// 				shiftHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
+// 				moveHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
 				item.x = 0;
-// 				shiftHeroContainerArray[index].x = 0;
+// 				moveHeroContainerArray[index].x = 0;
 				break;
 			default:
 				item.x = 0;
 				
 		}
 	}else{	
-// 		shiftEnemyContainerArray[index].y = app.screen.height * 1/2;
+// 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
@@ -1451,16 +1528,16 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.select.selectBar1.width = resizeWidth * 2 + healthSpacing;
-			item.select.selectBar2.width = resizeWidth * 2 + healthSpacing;			
-			item.target.targetBar1.width = resizeWidth * 2 + healthSpacing;
-			item.target.targetBar2.width = resizeWidth * 2 + healthSpacing;
-			item.heal.healBar1.width = resizeWidth * 2 + healthSpacing;
-			item.heal.healBar2.width = resizeWidth * 2 + healthSpacing;
-			item.shift.shiftBar1.width = resizeWidth * 2 + healthSpacing;
-			item.shift.shiftBar2.width = resizeWidth * 2 + healthSpacing;
+			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
+			item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			
-// 			shiftEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
+// 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1479,16 +1556,16 @@ function resizeHP(roster, item, index){
 			item.vital.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
-			item.select.selectBar1.width = resizeWidth;
-			item.select.selectBar2.width = resizeWidth;
-			item.target.targetBar1.width = resizeWidth;
-			item.target.targetBar2.width = resizeWidth;
-			item.heal.healBar1.width = resizeWidth;
-			item.heal.healBar2.width = resizeWidth;
-			item.shift.shiftBar1.width = resizeWidth;
-			item.shift.shiftBar2.width = resizeWidth;
+			item.select.indicatorBar1.width = resizeWidth;
+			item.select.indicatorBar2.width = resizeWidth;
+			item.target.indicatorBar1.width = resizeWidth;
+			item.target.indicatorBar2.width = resizeWidth;
+			item.heal.indicatorBar1.width = resizeWidth;
+			item.heal.indicatorBar2.width = resizeWidth;
+			item.move.indicatorBar1.width = resizeWidth;
+			item.move.indicatorBar2.width = resizeWidth;
 			
-// 			shiftEnemyContainerArray[index].right.x = resizeWidth;
+// 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
 			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
 				element.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1509,23 +1586,23 @@ function resizeHP(roster, item, index){
 		switch(arrayEnemy[index].pos) {
 			case 1:
 				item.x = 0;
-// 				shiftEnemyContainerArray[index].x = 0;
+// 				moveEnemyContainerArray[index].x = 0;
 				break;
 			case 2:
 				item.x = resizeWidth + healthSpacing;
-// 				shiftEnemyContainerArray[index].x = resizeWidth + healthSpacing;
+// 				moveEnemyContainerArray[index].x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
 				item.x = (resizeWidth + healthSpacing) * 2;
-// 				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
+// 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
 				item.x = (resizeWidth + healthSpacing) * 3;
-// 				shiftEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
+// 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
 				item.x = 0;
-// 				shiftEnemyContainerArray[index].x = 0;
+// 				moveEnemyContainerArray[index].x = 0;
 				
 		}
 
@@ -1534,56 +1611,56 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 	
-	item.select.selectBar1.height = selectBarHeight;
-	item.select.selectBar1.y = selectBar1Y;
+	item.select.indicatorBar1.height = selectBarHeight;
+	item.select.indicatorBar1.y = indicatorBar1Y;
 	
-	item.select.selectBar2.y = selectBar2Y;
+	item.select.indicatorBar2.y = indicatorBar2Y;
 	
-	item.select.selectStart.height = selectEndHeight;
-	item.select.selectStart.y = selectEndY;
+	item.select.indicatorStart.height = indicatorEndHeight;
+	item.select.indicatorStart.y = indicatorEndY;
 	
-	item.select.selectEnd.height = selectEndHeight;	
-	item.select.selectEnd.y = selectEndY;	
-	item.select.selectEnd.x = item.outer.width - 4;
+	item.select.indicatorEnd.height = indicatorEndHeight;	
+	item.select.indicatorEnd.y = indicatorEndY;	
+	item.select.indicatorEnd.x = item.outer.width - 4;
 	
 	item.select.pivot.x = item.select.width/2;
 	item.select.x = item.select.width/2;
 	
-	item.target.targetBar1.height = selectBarHeight;
-	item.target.targetBar1.y = selectBar1Y;
+	item.target.indicatorBar1.height = selectBarHeight;
+	item.target.indicatorBar1.y = indicatorBar1Y;
 
-	item.target.targetBar2.y = selectBar2Y;
+	item.target.indicatorBar2.y = indicatorBar2Y;
 
-	item.target.targetStart.height = selectEndHeight;
-	item.target.targetStart.y = selectEndY;
+	item.target.indicatorStart.height = indicatorEndHeight;
+	item.target.indicatorStart.y = indicatorEndY;
 
-	item.target.targetEnd.height = selectEndHeight;	
-	item.target.targetEnd.y = selectEndY;	
-	item.target.targetEnd.x = item.outer.width - 4;
+	item.target.indicatorEnd.height = indicatorEndHeight;	
+	item.target.indicatorEnd.y = indicatorEndY;	
+	item.target.indicatorEnd.x = item.outer.width - 4;
 	
-	item.heal.healBar1.height = selectBarHeight;
-	item.heal.healBar1.y = selectBar1Y;
+	item.heal.indicatorBar1.height = selectBarHeight;
+	item.heal.indicatorBar1.y = indicatorBar1Y;
 
-	item.heal.healBar2.y = selectBar2Y;
+	item.heal.indicatorBar2.y = indicatorBar2Y;
 
-	item.heal.healStart.height = selectEndHeight;
-	item.heal.healStart.y = selectEndY;
+	item.heal.indicatorStart.height = indicatorEndHeight;
+	item.heal.indicatorStart.y = indicatorEndY;
 
-	item.heal.healEnd.height = selectEndHeight;	
-	item.heal.healEnd.y = selectEndY;	
-	item.heal.healEnd.x = item.outer.width - 4;
+	item.heal.indicatorEnd.height = indicatorEndHeight;	
+	item.heal.indicatorEnd.y = indicatorEndY;	
+	item.heal.indicatorEnd.x = item.outer.width - 4;
 	
-	item.shift.shiftBar1.height = selectBarHeight;
-	item.shift.shiftBar1.y = selectBar1Y;
+	item.move.indicatorBar1.height = selectBarHeight;
+	item.move.indicatorBar1.y = indicatorBar1Y;
 
-	item.shift.shiftBar2.y = selectBar2Y;
+	item.move.indicatorBar2.y = indicatorBar2Y;
 
-	item.shift.shiftStart.height = selectEndHeight;
-	item.shift.shiftStart.y = selectEndY;
+	item.move.indicatorStart.height = indicatorEndHeight;
+	item.move.indicatorStart.y = indicatorEndY;
 
-	item.shift.shiftEnd.height = selectEndHeight;	
-	item.shift.shiftEnd.y = selectEndY;	
-	item.shift.shiftEnd.x = item.outer.width - 4;
+	item.move.indicatorEnd.height = indicatorEndHeight;	
+	item.move.indicatorEnd.y = indicatorEndY;	
+	item.move.indicatorEnd.x = item.outer.width - 4;
 }
 
 function resizeSprites(direction, item, index){
@@ -1639,10 +1716,6 @@ function resizeSprites(direction, item, index){
 	}
 }
 
-function resizeMove(element){
-	
-}
-
 function consolePrint(fromText){
 	console.log(
 		fromText + 
@@ -1660,8 +1733,8 @@ function onButtonDown(){
 
 function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
-	//Reset the moveContainers
-	moveArray.forEach(element=>{
+	//Reset the skillContainers
+	skillArray.forEach(element=>{
 		element.selected.visible = false;
 		element.disable.visible = true;
 		element.buttonMode = false;
@@ -1672,30 +1745,30 @@ function onCreatureDown(){
 		element.select.visible = false;
 		element.target.visible = false;
 		element.heal.visible = false;
-		element.shift.visible = false;
-		element.select.play = false;
+		element.move.visible = false;
+		element.select.animate = false;
 	});
 	hpHeroContainerArray.forEach(element=>{
 		element.select.visible = false;
 		element.target.visible = false;
 		element.heal.visible = false;
-		element.shift.visible = false;
-		element.select.play = false;
+		element.move.visible = false;
+		element.select.animate = false;
 	});
-// 	shiftHeroContainerArray.forEach(element=>{
+// 	moveHeroContainerArray.forEach(element=>{
 // 		element.visible = false;
 // 	});
-// 	shiftEnemyContainerArray.forEach(element=>{
+// 	moveEnemyContainerArray.forEach(element=>{
 // 		element.visible = false;
 // 	});
-	var newMoves = [];
+	var newSkills = [];
 	var currPos = [];
 	if(this.identifier[0] < 0){		
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
-		hpEnemyContainerArray[this.identifier[1]].select.play = true;
-// 		shiftEnemyContainerArray[this.identifier[1]].visible = true;
-		arrayEnemy[this.identifier[1]].moves.forEach((element, index) => {
-			newMoves.push(element);
+		hpEnemyContainerArray[this.identifier[1]].select.animate = true;
+// 		moveEnemyContainerArray[this.identifier[1]].visible = true;
+		arrayEnemy[this.identifier[1]].skills.forEach((element, index) => {
+			newSkills.push(element);
 		});
 		if(arrayEnemy[this.identifier[1]].size == 1){
 			currPos.push(arrayEnemy[this.identifier[1]].pos);
@@ -1705,10 +1778,10 @@ function onCreatureDown(){
 		}
 	}else{
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
-		hpHeroContainerArray[this.identifier[1]].select.play = true;
-// 		shiftHeroContainerArray[this.identifier[1]].visible = true;
-		arrayHero[this.identifier[1]].moves.forEach((element, index) => {
-			newMoves.push(element);
+		hpHeroContainerArray[this.identifier[1]].select.animate = true;
+// 		moveHeroContainerArray[this.identifier[1]].visible = true;
+		arrayHero[this.identifier[1]].skills.forEach((element, index) => {
+			newSkills.push(element);
 		});
 		if(arrayHero[this.identifier[1]].size == 1){
 			currPos.push(arrayHero[this.identifier[1]].pos);
@@ -1720,106 +1793,106 @@ function onCreatureDown(){
 	console.log("///////////////////////////////////////////////");
 	console.log(currPos);
 	
-	newMoves.forEach((element, index) => {
-		switch(movesList.data.moves[element].element){
+	newSkills.forEach((element, index) => {
+		switch(skillsList.data.skills[element].element){
 			case 1:
-				moveArray[index].moveElement.texture = resources.element_earth.texture;
+				skillArray[index].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 2:
-				moveArray[index].moveElement.texture = resources.element_fire.texture;
+				skillArray[index].skillElement.texture = resources.element_fire.texture;
 				break;
 			case 3:
-				moveArray[index].moveElement.texture = resources.element_flora.texture;
+				skillArray[index].skillElement.texture = resources.element_flora.texture;
 				break;
 			case 4:
-				moveArray[index].moveElement.texture = resources.element_lightning.texture;
+				skillArray[index].skillElement.texture = resources.element_lightning.texture;
 				break;
 			case 5:
-				moveArray[index].moveElement.texture = resources.element_shadow.texture;
+				skillArray[index].skillElement.texture = resources.element_shadow.texture;
 				break;
 			case 6:
-				moveArray[index].moveElement.texture = resources.element_spirit.texture;
+				skillArray[index].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 7:
-				moveArray[index].moveElement.texture = resources.element_toxic.texture;
+				skillArray[index].skillElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				moveArray[index].moveElement.texture = resources.element_water.texture;
+				skillArray[index].skillElement.texture = resources.element_water.texture;
 				break;
 			case 9:
-				moveArray[index].moveElement.texture = resources.element_wind.texture;
+				skillArray[index].skillElement.texture = resources.element_wind.texture;
 				break;
 			default:
-				moveArray[index].moveElement.texture = resources.element_fire.texture;
+				skillArray[index].skillElement.texture = resources.element_fire.texture;
 				break;
 		}
 		
-		//identifier = [movePos, moveIndex, stageSide, creaturePos]
-		moveArray[index].identifier = [index, element, this.identifier[0], this.identifier[1]];
-		moveArray[index].moveName.text = movesList.data.moves[element].name;		
-		movesList.data.moves[element].position.forEach((element2, index2) => {
+		//identifier = [skillPos, skillIndex, stageSide, creaturePos]
+		skillArray[index].identifier = [index, element, this.identifier[0], this.identifier[1]];
+		skillArray[index].skillName.text = skillsList.data.skills[element].name;		
+		skillsList.data.skills[element].position.forEach((element2, index2) => {
 			if(element2 == 1){				
 				currPos.forEach(element3 => {
 					var posTracker = Math.abs(index2 - 4);			
 					if(element3 == posTracker){
-						moveArray[index].disable.visible = false;
-						moveArray[index].buttonMode = true;
-						moveArray[index].interactive = true;
+						skillArray[index].disable.visible = false;
+						skillArray[index].buttonMode = true;
+						skillArray[index].interactive = true;
 					}
 				});
-				moveArray[index].markerHeroArray[index2].visible = true;
+				skillArray[index].markerHeroArray[index2].visible = true;
 			}else{
-				moveArray[index].markerHeroArray[index2].visible = false;
+				skillArray[index].markerHeroArray[index2].visible = false;
 			}
 		});
 		
-		console.log(index + ": " + movesList.data.moves[element].tags);
+		console.log(index + ": " + skillsList.data.skills[element].tags);
 		var column = false;
-		movesList.data.moves[element].tags.forEach(tagName =>{
+		skillsList.data.skills[element].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				if(movesList.data.moves[element][tagName][2] > 0){
-					moveArray[index].targetText.text = movesList.data.moves[element][tagName][0] + " ►";
+				if(skillsList.data.skills[element][tagName][2] > 0){
+					skillArray[index].targetText.text = skillsList.data.skills[element][tagName][0] + " ►";
 				}else{
-					moveArray[index].targetText.text = "◄ " + movesList.data.moves[element][tagName][0];
+					skillArray[index].targetText.text = "◄ " + skillsList.data.skills[element][tagName][0];
 				}
 				
-				if(movesList.data.moves[element][tagName][3] > 0){					
-					moveArray[index].targetText.style.fill = '0x66cc66';
+				if(skillsList.data.skills[element][tagName][3] > 0){					
+					skillArray[index].targetText.style.fill = '0x66cc66';
 				}else{
-					moveArray[index].targetText.style.fill = '0xFF6961';
+					skillArray[index].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
-				moveArray[index].markerTargetEnemySeveralContainer.visible = true;
-				movesList.data.moves[element][tagName].forEach((position, index3) => {
+				skillArray[index].markerTargetEnemySeveralContainer.visible = true;
+				skillsList.data.skills[element][tagName].forEach((position, index3) => {
 					if(position == 1){
-						moveArray[index].markerTargetEnemySeveralArray[index3].visible = true;
+						skillArray[index].markerTargetEnemySeveralArray[index3].visible = true;
 					}else{
-						moveArray[index].markerTargetEnemySeveralArray[index3].visible = false;
+						skillArray[index].markerTargetEnemySeveralArray[index3].visible = false;
 					}
 				});
 			}
-			console.log(movesList.data.moves[element][tagName]);
+			console.log(skillsList.data.skills[element][tagName]);
 		});
 		
 		if(column){
-			moveArray[index].markerTargetEnemyContainer.visible = false;
-			moveArray[index].targetText.visible = true;
+			skillArray[index].markerTargetEnemyContainer.visible = false;
+			skillArray[index].targetText.visible = true;
 		}else{
-			moveArray[index].markerTargetEnemyContainer.visible = true;
-			moveArray[index].targetText.visible = false;
-			movesList.data.moves[element].target.forEach((element3, index3) => {
+			skillArray[index].markerTargetEnemyContainer.visible = true;
+			skillArray[index].targetText.visible = false;
+			skillsList.data.skills[element].target.forEach((element3, index3) => {
 				if(element3 == 1){
-					moveArray[index].markerTargetEnemyArray[index3].visible = true;
+					skillArray[index].markerTargetEnemyArray[index3].visible = true;
 				}else{
-					moveArray[index].markerTargetEnemyArray[index3].visible = false;
+					skillArray[index].markerTargetEnemyArray[index3].visible = false;
 				}
 			});
 		}
-// 		console.log(index + " Position: " + movesList.data.moves[element].position + " |Target: " + movesList.data.moves[element].target);
+// 		console.log(index + " Position: " + skillsList.data.skills[element].position + " |Target: " + skillsList.data.skills[element].target);
 	});	
 	
-// 	moveArray[0].posMarkerArray[0].visible = false;
+// 	skillArray[0].posMarkerArray[0].visible = false;
 }
 
 
@@ -1841,7 +1914,7 @@ function onHPDown(){
 // 	hpHeroContainerArray[this.identifier[1]].selected = visible;
 }
 
-function onMoveDown(){
+function onSkillDown(){
 	hpEnemyContainerArray.forEach(element=>{
 		element.target.visible = false;
 		element.heal.visible = false;
@@ -1850,23 +1923,23 @@ function onMoveDown(){
 		element.target.visible = false;
 		element.heal.visible = false;
 	});
-	moveArray.forEach(element=>{
+	skillArray.forEach(element=>{
 		element.selected.visible = false;
 	});
-	moveArray[this.identifier[0]].selected.visible = true;
+	skillArray[this.identifier[0]].selected.visible = true;
 	console.log(this.identifier);
 	var column = false;
 	var heal = false;
-	movesList.data.moves[this.identifier[1]].tags.forEach(tagName =>{
+	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
 			if(this.identifier[2] > 0){
-				console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+				console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
 			}else{
-				console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + movesList.data.moves[this.identifier[1]][tagName][0]);
+				console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
 			}
 			
-			if(movesList.data.moves[this.identifier[1]].column[3] > 0){
+			if(skillsList.data.skills[this.identifier[1]].column[3] > 0){
 				heal = true;
 			}else{
 				heal = false;	
@@ -1876,7 +1949,7 @@ function onMoveDown(){
 	
 	if(column){
 		//Ahead
-		if(movesList.data.moves[this.identifier[1]].column[2] > 0){
+		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
 			var targetArray = [];
 			var switchSide = false;
 			if(this.identifier[2] > 0){
@@ -1884,7 +1957,7 @@ function onMoveDown(){
 			}else{
 				var temp = arrayEnemy[this.identifier[3]].pos;
 			}			
-			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
+			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
 				}else if(temp == 1 && !switchSide){
@@ -1956,7 +2029,7 @@ function onMoveDown(){
 			}else{
 				var temp = arrayEnemy[this.identifier[3]].pos;
 			}			
-			for(var i = 0; i < movesList.data.moves[this.identifier[1]].column[0]; i++){
+			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
 				if(this.identifier[2] > 0){
 					arrayHero.forEach((element,index) => {
@@ -1987,7 +2060,7 @@ function onMoveDown(){
 		}
 	}
 	
-	movesList.data.moves[this.identifier[1]].target.forEach((element1, index1)=> {
+	skillsList.data.skills[this.identifier[1]].target.forEach((element1, index1)=> {
 		if(element1 == 1){
 			var posTracker = index1 + 1;
 			if(this.identifier[2] > 0){
@@ -2040,7 +2113,7 @@ function onMoveDown(){
 }
 
 function onExtrasDown(){
-// 	moveArray[0].targetText.style.fill = '0x66cc66';
+// 	skillArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;	
 }
@@ -2053,10 +2126,10 @@ function onExtrasCancelDown(){
 function onExtrasMoveDown(){
 	console.log("Extras Move");
 	 hpHeroContainerArray.forEach(container => {
-	 	container.shift.visible =  true;
+	 	container.move.visible =  true;
 	 });
 	hpEnemyContainerArray.forEach(container => {
-	 	container.shift.visible =  true;
+	 	container.move.visible =  true;
 	 });
 }
 
@@ -2071,38 +2144,3 @@ function onExtrasSkipDown(){
 	onScreenStats.visible = false;
 	consoleScreen.visible = false;
 }
-
-
-// function onButtonDown2(){
-// 	//var elem = document.getElementById("frame");
-// 	var elem = document.documentElement;
-// 	if(!document.fullscreenElement && !document.mozFullScreenElement && !document.msFullScreenElement && !document.webkitFullScreenElement){
-// 		//isFullScreen = true;
-// 		this.texture = textureButtonDown;
-// 		if (elem.requestFullscreen) {
-// 			elem.requestFullscreen();
-// 		} else if (elem.mozRequestFullScreen) { /* Firefox */
-// 			elem.mozRequestFullScreen();
-// 		} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-// 			elem.webkitRequestFullscreen();
-// 		} else if (elem.msRequestFullscreen) { /* IE/Edge */
-// 			elem.msRequestFullscreen();
-// 		}
-// 		console.log("setFullScreen5");
-// 		consoleScreen.text = "setFullScreen4\n" + consoleScreen.text;
-// 	}else{
-// 		//isFullScreen = false;
-// 		this.texture = textureButton;
-// 		if (document.exitFullscreen) {
-// 			document.exitFullscreen();
-// 		} else if (document.mozCancelFullScreen) { /* Firefox */
-// 			document.mozCancelFullScreen();
-// 		} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-// 			document.webkitExitFullscreen();
-// 		} else if (document.msExitFullscreen) { /* IE/Edge */
-// 			document.msExitFullscreen();
-// 		}
-// 		console.log("exitFullScreen5");
-// 		consoleScreen.text = "exitFullScreen4\n" + consoleScreen.text;
-// 	}
-// }
