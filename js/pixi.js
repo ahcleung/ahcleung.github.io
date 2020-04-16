@@ -122,7 +122,7 @@ class Creature{
 		];
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
-		this.statusEffect = [
+		this.statusArray = [
 			[Math.floor(Math.random() * 14) + 1, 1],
 			[Math.floor(Math.random() * 14) + 1, 3, 5],
 			[Math.floor(Math.random() * 14) + 1, 2],
@@ -135,7 +135,7 @@ class Creature{
 			[Math.floor(Math.random() * 14) + 1, 2],
 			[Math.floor(Math.random() * 14) + 1, 2],
 		];
-		this.statusEffectSprite = [];
+		this.statusSpriteArray = [];
 	}
 	
 	heal(){
@@ -201,23 +201,23 @@ const extrasArray = [];
 // const moveHeroContainerArray = [];
 // const moveEnemyContainerArray = [];
 
-const vita = [];
-vita[0] = {
+const hero = [];
+hero[0] = {
 	id: 11, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
 };
-vita[1] = {
+hero[1] = {
 	id: 2, level: 45, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
 };
-vita[2] = {
+hero[2] = {
 	id: 10, level: 47, 
 	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
-// vita[3] = {
+// hero[3] = {
 // 	id: 9, level: 47, 
 // 	skill1: 8, skill2: 0, skill3: 1, skill4: 2,
 // 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
@@ -351,7 +351,7 @@ function setup(){
 // 		});
 // 	});
 	
-	vita.forEach(function(item, index){
+	hero.forEach(function(item, index){
 		const creature = new Creature({
 			id: item.id,
 			level: item.level,
@@ -810,16 +810,16 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
-	hpHeroContainerArray.forEach(element => {
-		if(element.select.animate == true){
-			element.select.width = element.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-// 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
+	hpHeroContainerArray.forEach(hpContainer => {
+		if(hpContainer.select.animate == true){
+			hpContainer.select.width = hpContainer.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+// 			hpContainer.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
-	hpEnemyContainerArray.forEach(element => {
-		if(element.select.animate == true){
-			element.select.width = element.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-// 			element.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
+	hpEnemyContainerArray.forEach(hpContainer => {
+		if(hpContainer.select.animate == true){
+			hpContainer.select.width = hpContainer.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+// 			hpContainer.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
@@ -910,8 +910,8 @@ function createSprite(direction, item, index){
 	
 	let statusEffect;
 	
-	item.statusEffect.forEach((element) => {
-		switch(element[0]){
+	item.statusArray.forEach(status => {
+		switch(status[0]){
 			case 1:
 				statusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 				break;
@@ -959,7 +959,7 @@ function createSprite(direction, item, index){
 				
 		}
 		healthBar.addChild(statusEffect);
-		item.statusEffectSprite.push(statusEffect);
+		item.statusSpriteArray.push(statusEffect);
 	});	
 	
 	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'});
@@ -1144,68 +1144,68 @@ function resize() {
 	
 	extrasContainer.position.set(margin, app.screen.height - margin);
 	
-	skillArray.forEach((element, index) => {
-		element.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
-		element.rect.height = element.rect.width/4;
-		element.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
-		element.selected.stroke.height = element.rect.width/4;
-		element.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
-		element.selected.fill.height = (element.rect.width/4) - skillSelectPadding*2;
+	skillArray.forEach((skillContainer, index) => {
+		skillContainer.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.rect.height = skillContainer.rect.width/4;
+		skillContainer.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.selected.stroke.height = skillContainer.rect.width/4;
+		skillContainer.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
+		skillContainer.selected.fill.height = (skillContainer.rect.width/4) - skillSelectPadding*2;
 		
-		element.disable.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
-		element.disable.height = element.rect.width/4;
+		skillContainer.disable.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.disable.height = skillContainer.rect.width/4;
 		
-		element.selected.fill.x = skillSelectPadding;
-		element.selected.fill.y = skillSelectPadding;
+		skillContainer.selected.fill.x = skillSelectPadding;
+		skillContainer.selected.fill.y = skillSelectPadding;
 		
-		element.x = margin + element.rect.height + healthSpacing + (element.rect.width + healthSpacing)*index;
-		element.y = app.screen.height - element.rect.height - margin;
+		skillContainer.x = margin + skillContainer.rect.height + healthSpacing + (skillContainer.rect.width + healthSpacing)*index;
+		skillContainer.y = app.screen.height - skillContainer.rect.height - margin;
 		
-		element.skillElement.width = element.rect.width/11;
-		element.skillElement.height = element.skillElement.width * 2.3;
-		element.skillElement.x = skillSpacer;
-		element.skillElement.y = element.rect.height/2;
+		skillContainer.skillElement.width = skillContainer.rect.width/11;
+		skillContainer.skillElement.height = skillContainer.skillElement.width * 2.3;
+		skillContainer.skillElement.x = skillSpacer;
+		skillContainer.skillElement.y = skillContainer.rect.height/2;
 		
-		element.markerContainer.width = (element.rect.width/3)*2;
-		element.markerContainer.height = element.markerContainer.width/12;
-// 		element.posMarkerContainer.scale.set(element.skillElement.width);
+		skillContainer.markerContainer.width = (skillContainer.rect.width/3)*2;
+		skillContainer.markerContainer.height = skillContainer.markerContainer.width/12;
+// 		skillContainer.posMarkerContainer.scale.set(skillContainer.skillElement.width);
 		
 		if(app.screen.width < 860){
-			element.skillName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
-			element.targetText.style.fontSize = 12;
-// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(0.45);
+			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
+			skillContainer.targetText.style.fontSize = 12;
+// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
+// 			skillContainer.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
-			element.skillName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
-			element.targetText.style.fontSize = 16;
-// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(0.5);
+			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
+			skillContainer.targetText.style.fontSize = 16;
+// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
+// 			skillContainer.posMarkerContainer.scale.set(0.5);
 		}else{
-			element.skillName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
-			element.targetText.style.fontSize = 26;
-// 			element.skillNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
-// 			element.posMarkerContainer.scale.set(1);
-// 			console.log(element.posMarkerContainer.width + ", " + element.posMarkerContainer.height);
-// 			console.log("Ratio: " + element.posMarkerContainer.width / element.posMarkerContainer.height);
+			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
+			skillContainer.targetText.style.fontSize = 26;
+// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
+// 			skillContainer.posMarkerContainer.scale.set(1);
+// 			console.log(skillContainer.posMarkerContainer.width + ", " + skillContainer.posMarkerContainer.height);
+// 			console.log("Ratio: " + skillContainer.posMarkerContainer.width / skillContainer.posMarkerContainer.height);
 		}
 		
-		element.skillName.x = element.rect.width/6;
-		element.skillName.y = element.rect.height/3;
+		skillContainer.skillName.x = skillContainer.rect.width/6;
+		skillContainer.skillName.y = skillContainer.rect.height/3;
 		
-// 		element.skillName.x = element.rect.width;
-// 		element.skillName.y = 0;
+// 		skillContainer.skillName.x = skillContainer.rect.width;
+// 		skillContainer.skillName.y = 0;
 		
-// 		element.skillNum.x = (element.rect.width/15)*14;
-// 		element.skillNum.y = (element.rect.height/3)*2;
+// 		skillContainer.skillNum.x = (skillContainer.rect.width/15)*14;
+// 		skillContainer.skillNum.y = (skillContainer.rect.height/3)*2;
 		
-// 		element.posMarkerContainer.x = 0;
-// 		element.posMarkerContainer.y = 0;
+// 		skillContainer.posMarkerContainer.x = 0;
+// 		skillContainer.posMarkerContainer.y = 0;
 		
-		element.markerContainer.x = element.rect.width/6;
-		element.markerContainer.y = element.rect.height*3/4;
+		skillContainer.markerContainer.x = skillContainer.rect.width/6;
+		skillContainer.markerContainer.y = skillContainer.rect.height*3/4;
 		
-		element.targetText.x =  (element.rect.width/6) + (element.markerContainer.width * 0.569);
-		element.targetText.y = element.rect.height*3/4;
+		skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+		skillContainer.targetText.y = skillContainer.rect.height*3/4;
 	});
 	
 	rosterHero.position.set(app.screen.width/2-margin, app.screen.height*3/4);
@@ -1314,15 +1314,15 @@ function resizeHP(roster, item, index){
 // 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
-			arrayHero[index].statusEffectSprite.forEach((element, index) => {
-				element.width = (resizeWidth - (statusSpacing * 5))/4;
-				element.height = element.width;
+			arrayHero[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
 				if(index < 8){
-					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
 				}else{
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*3 + element.height;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
 				}
 			});
 		}else{
@@ -1342,18 +1342,18 @@ function resizeHP(roster, item, index){
 			
 // 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
-			arrayHero[index].statusEffectSprite.forEach((element, index) => {
-				element.width = (resizeWidth - (statusSpacing * 5))/4;
-				element.height = element.width;
+			arrayHero[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
 				if(index < 4){
-					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
 				}else if(index < 8){
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-4));
-					element.y = resizeHeight + statusSpacing*3 + element.height;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
 				}else{
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*4 + element.height*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
 				}
 			});
 		}		
@@ -1398,15 +1398,15 @@ function resizeHP(roster, item, index){
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
-			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
-				element.width = (resizeWidth - (statusSpacing * 5))/4;
-				element.height = element.width;
+			arrayEnemy[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
 				if(index < 8){
-					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
 				}else{
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*3 + element.height;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
 				}
 			});
 		}else{
@@ -1426,18 +1426,18 @@ function resizeHP(roster, item, index){
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
-			arrayEnemy[index].statusEffectSprite.forEach((element, index) => {
-				element.width = (resizeWidth - (statusSpacing * 5))/4;
-				element.height = element.width;
+			arrayEnemy[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
 				if(index < 4){
-					element.x = statusSpacing + ((statusSpacing + element.width)*index);
-					element.y = resizeHeight + statusSpacing*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
 				}else if(index < 8){
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-4));
-					element.y = resizeHeight + statusSpacing*3 + element.height;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
 				}else{
-					element.x = statusSpacing + ((statusSpacing + element.width)*(index-8));
-					element.y = resizeHeight + statusSpacing*4 + element.height*2;
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
 				}
 			});
 		}
@@ -1593,41 +1593,36 @@ function onButtonDown(){
 function onCreatureDown(){
 // 	console.log("Creature:" + this.identifier);
 	//Reset the skillContainers
-	skillArray.forEach(element=>{
-		element.selected.visible = false;
-		element.disable.visible = true;
-		element.buttonMode = false;
-		element.interactive = false;
-		element.markerTargetEnemySeveralContainer.visible = false;
+	skillArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+		skillContainer.disable.visible = true;
+		skillContainer.buttonMode = false;
+		skillContainer.interactive = false;
+		skillContainer.markerTargetEnemySeveralContainer.visible = false;
 	});
-	hpEnemyContainerArray.forEach(element=>{
-		element.select.visible = false;
-		element.target.visible = false;
-		element.heal.visible = false;
-		element.move.visible = false;
-		element.select.animate = false;
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.select.visible = false;
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
+		hpContainer.select.animate = false;
 	});
-	hpHeroContainerArray.forEach(element=>{
-		element.select.visible = false;
-		element.target.visible = false;
-		element.heal.visible = false;
-		element.move.visible = false;
-		element.select.animate = false;
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.select.visible = false;
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
+		hpContainer.select.animate = false;
 	});
-// 	moveHeroContainerArray.forEach(element=>{
-// 		element.visible = false;
-// 	});
-// 	moveEnemyContainerArray.forEach(element=>{
-// 		element.visible = false;
-// 	});
+
 	var newSkills = [];
 	var currPos = [];
 	if(this.identifier[0] < 0){		
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
 		hpEnemyContainerArray[this.identifier[1]].select.animate = true;
 // 		moveEnemyContainerArray[this.identifier[1]].visible = true;
-		arrayEnemy[this.identifier[1]].skills.forEach((element, index) => {
-			newSkills.push(element);
+		arrayEnemy[this.identifier[1]].skills.forEach(skillNum => {
+			newSkills.push(skillNum);
 		});
 		if(arrayEnemy[this.identifier[1]].size == 1){
 			currPos.push(arrayEnemy[this.identifier[1]].pos);
@@ -1639,8 +1634,8 @@ function onCreatureDown(){
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.animate = true;
 // 		moveHeroContainerArray[this.identifier[1]].visible = true;
-		arrayHero[this.identifier[1]].skills.forEach((element, index) => {
-			newSkills.push(element);
+		arrayHero[this.identifier[1]].skills.forEach(skillNum => {
+			newSkills.push(skillNum);
 		});
 		if(arrayHero[this.identifier[1]].size == 1){
 			currPos.push(arrayHero[this.identifier[1]].pos);
@@ -1652,103 +1647,104 @@ function onCreatureDown(){
 	console.log("///////////////////////////////////////////////");
 	console.log(currPos);
 	
-	newSkills.forEach((element, index) => {
-		switch(skillsList.data.skills[element].element){
+	newSkills.forEach((skillNum, skillPos) => {
+		switch(skillsList.data.skills[skillNum].element){
 			case 1:
-				skillArray[index].skillElement.texture = resources.element_earth.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 2:
-				skillArray[index].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_fire.texture;
 				break;
 			case 3:
-				skillArray[index].skillElement.texture = resources.element_flora.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_flora.texture;
 				break;
 			case 4:
-				skillArray[index].skillElement.texture = resources.element_lightning.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_lightning.texture;
 				break;
 			case 5:
-				skillArray[index].skillElement.texture = resources.element_shadow.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_shadow.texture;
 				break;
 			case 6:
-				skillArray[index].skillElement.texture = resources.element_spirit.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 7:
-				skillArray[index].skillElement.texture = resources.element_toxic.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				skillArray[index].skillElement.texture = resources.element_water.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_water.texture;
 				break;
 			case 9:
-				skillArray[index].skillElement.texture = resources.element_wind.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_wind.texture;
 				break;
 			default:
-				skillArray[index].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillPos].skillElement.texture = resources.element_fire.texture;
 				break;
 		}
 		
-		//identifier = [skillPos, skillIndex, stageSide, creaturePos]
-		skillArray[index].identifier = [index, element, this.identifier[0], this.identifier[1]];
-		skillArray[index].skillName.text = skillsList.data.skills[element].name;		
-		skillsList.data.skills[element].position.forEach((element2, index2) => {
-			if(element2 == 1){				
-				currPos.forEach(element3 => {
-					var posTracker = Math.abs(index2 - 4);			
-					if(element3 == posTracker){
-						skillArray[index].disable.visible = false;
-						skillArray[index].buttonMode = true;
-						skillArray[index].interactive = true;
+		//identifier = [skillPos, skillNum, stageSide, creaturePos]
+		skillArray[skillPos].identifier = [skillPos, skillNum, this.identifier[0], this.identifier[1]];
+		skillArray[skillPos].skillName.text = skillsList.data.skills[skillNum].name;		
+		skillsList.data.skills[skillNum].position.forEach((skillPos, skillPosIndex) => {
+			if(skillPos == 1){				
+				currPos.forEach(posNum => {
+					var posTracker = Math.abs(skillPosIndex - 4);			
+					if(posNum == posTracker){
+						skillArray[skillPos].disable.visible = false;
+						skillArray[skillPos].buttonMode = true;
+						skillArray[skillPos].interactive = true;
 					}
 				});
-				skillArray[index].markerHeroArray[index2].visible = true;
+				skillArray[skillPos].markerHeroArray[skillPosIndex].visible = true;
 			}else{
-				skillArray[index].markerHeroArray[index2].visible = false;
+				skillArray[skillPos].markerHeroArray[skillPosIndex].visible = false;
 			}
 		});
 		
-		console.log(index + ": " + skillsList.data.skills[element].tags);
+		console.log(skillPos + ": " + skillsList.data.skills[skillNum].tags);
 		var column = false;
-		skillsList.data.skills[element].tags.forEach(tagName =>{
+		skillsList.data.skills[skillNum].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				if(skillsList.data.skills[element][tagName][2] > 0){
-					skillArray[index].targetText.text = skillsList.data.skills[element][tagName][0] + " ►";
+				if(skillsList.data.skills[skillNum][tagName][2] > 0){
+					skillArray[skillPos].targetText.text = skillsList.data.skills[skillNum][tagName][0] + " ►";
 				}else{
-					skillArray[index].targetText.text = "◄ " + skillsList.data.skills[element][tagName][0];
+					skillArray[skillPos].targetText.text = "◄ " + skillsList.data.skills[skillNum][tagName][0];
 				}
 				
-				if(skillsList.data.skills[element][tagName][3] > 0){					
-					skillArray[index].targetText.style.fill = '0x66cc66';
+				if(skillsList.data.skills[skillNum][tagName][3] > 0){					
+					skillArray[skillPos].targetText.style.fill = '0x66cc66';
 				}else{
-					skillArray[index].targetText.style.fill = '0xFF6961';
+					skillArray[skillPos].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
-				skillArray[index].markerTargetEnemySeveralContainer.visible = true;
-				skillsList.data.skills[element][tagName].forEach((position, index3) => {
-					if(position == 1){
-						skillArray[index].markerTargetEnemySeveralArray[index3].visible = true;
+				skillArray[skillPos].markerTargetEnemySeveralContainer.visible = true;
+				//Show target dashes if 1
+				skillsList.data.skills[skillNum][tagName].forEach((dash, dashIndex) => {
+					if(dash == 1){
+						skillArray[skillPos].markerTargetEnemySeveralArray[dashIndex].visible = true;
 					}else{
-						skillArray[index].markerTargetEnemySeveralArray[index3].visible = false;
+						skillArray[skillPos].markerTargetEnemySeveralArray[dashIndex].visible = false;
 					}
 				});
 			}
-			console.log(skillsList.data.skills[element][tagName]);
+			console.log(skillsList.data.skills[skillNum][tagName]);
 		});
 		
 		if(column){
-			skillArray[index].markerTargetEnemyContainer.visible = false;
-			skillArray[index].targetText.visible = true;
+			skillArray[skillPos].markerTargetEnemyContainer.visible = false;
+			skillArray[skillPos].targetText.visible = true;
 		}else{
-			skillArray[index].markerTargetEnemyContainer.visible = true;
-			skillArray[index].targetText.visible = false;
-			skillsList.data.skills[element].target.forEach((element3, index3) => {
-				if(element3 == 1){
-					skillArray[index].markerTargetEnemyArray[index3].visible = true;
+			skillArray[skillPos].markerTargetEnemyContainer.visible = true;
+			skillArray[skillPos].targetText.visible = false;
+			skillsList.data.skills[skillNum].target.forEach((skillTarget, targetIndex) => {
+				if(skillTarget == 1){
+					skillArray[skillPos].markerTargetEnemyArray[targetIndex].visible = true;
 				}else{
-					skillArray[index].markerTargetEnemyArray[index3].visible = false;
+					skillArray[skillPos].markerTargetEnemyArray[targetIndex].visible = false;
 				}
 			});
 		}
-// 		console.log(index + " Position: " + skillsList.data.skills[element].position + " |Target: " + skillsList.data.skills[element].target);
+// 		console.log(index + " Position: " + skillsList.data.skills[skillNum].position + " |Target: " + skillsList.data.skills[skillNum].target);
 	});	
 	
 // 	skillArray[0].posMarkerArray[0].visible = false;
@@ -1972,6 +1968,7 @@ function onSkillDown(){
 }
 
 function onExtrasDown(){
+// 	skillArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;	
 }
