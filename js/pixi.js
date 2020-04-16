@@ -1647,43 +1647,43 @@ function onCreatureDown(){
 	console.log("///////////////////////////////////////////////");
 	console.log(currPos);
 	
-	newSkills.forEach((skillNum, skillPos) => {
+	newSkills.forEach((skillNum, skillRectPos) => {
 		switch(skillsList.data.skills[skillNum].element){
 			case 1:
-				skillArray[skillPos].skillElement.texture = resources.element_earth.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 2:
-				skillArray[skillPos].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_fire.texture;
 				break;
 			case 3:
-				skillArray[skillPos].skillElement.texture = resources.element_flora.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_flora.texture;
 				break;
 			case 4:
-				skillArray[skillPos].skillElement.texture = resources.element_lightning.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_lightning.texture;
 				break;
 			case 5:
-				skillArray[skillPos].skillElement.texture = resources.element_shadow.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_shadow.texture;
 				break;
 			case 6:
-				skillArray[skillPos].skillElement.texture = resources.element_spirit.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 7:
-				skillArray[skillPos].skillElement.texture = resources.element_toxic.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				skillArray[skillPos].skillElement.texture = resources.element_water.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_water.texture;
 				break;
 			case 9:
-				skillArray[skillPos].skillElement.texture = resources.element_wind.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_wind.texture;
 				break;
 			default:
-				skillArray[skillPos].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillRectPos].skillElement.texture = resources.element_fire.texture;
 				break;
 		}
 		
-		//identifier = [skillPos, skillNum, stageSide, creaturePos]
-		skillArray[skillPos].identifier = [skillPos, skillNum, this.identifier[0], this.identifier[1]];
-		skillArray[skillPos].skillName.text = skillsList.data.skills[skillNum].name;		
+		//identifier = [skillRectPos, skillNum, stageSide, creaturePos]
+		skillArray[skillRectPos].identifier = [skillRectPos, skillNum, this.identifier[0], this.identifier[1]];
+		skillArray[skillRectPos].skillName.text = skillsList.data.skills[skillNum].name;		
 		skillsList.data.skills[skillNum].position.forEach((skillPos, skillPosIndex) => {
 			if(skillPos == 1){				
 				currPos.forEach(posNum => {
@@ -1700,30 +1700,30 @@ function onCreatureDown(){
 			}
 		});
 		
-		console.log(skillPos + ": " + skillsList.data.skills[skillNum].tags);
+		console.log(skillRectPos + ": " + skillsList.data.skills[skillNum].tags);
 		var column = false;
 		skillsList.data.skills[skillNum].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
 				if(skillsList.data.skills[skillNum][tagName][2] > 0){
-					skillArray[skillPos].targetText.text = skillsList.data.skills[skillNum][tagName][0] + " ►";
+					skillArray[skillRectPos].targetText.text = skillsList.data.skills[skillNum][tagName][0] + " ►";
 				}else{
-					skillArray[skillPos].targetText.text = "◄ " + skillsList.data.skills[skillNum][tagName][0];
+					skillArray[skillRectPos].targetText.text = "◄ " + skillsList.data.skills[skillNum][tagName][0];
 				}
 				
 				if(skillsList.data.skills[skillNum][tagName][3] > 0){					
-					skillArray[skillPos].targetText.style.fill = '0x66cc66';
+					skillArray[skillRectPos].targetText.style.fill = '0x66cc66';
 				}else{
-					skillArray[skillPos].targetText.style.fill = '0xFF6961';
+					skillArray[skillRectPos].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
-				skillArray[skillPos].markerTargetEnemySeveralContainer.visible = true;
+				skillArray[skillRectPos].markerTargetEnemySeveralContainer.visible = true;
 				//Show target dashes if 1
 				skillsList.data.skills[skillNum][tagName].forEach((dash, dashIndex) => {
 					if(dash == 1){
-						skillArray[skillPos].markerTargetEnemySeveralArray[dashIndex].visible = true;
+						skillArray[skillRectPos].markerTargetEnemySeveralArray[dashIndex].visible = true;
 					}else{
-						skillArray[skillPos].markerTargetEnemySeveralArray[dashIndex].visible = false;
+						skillArray[skillRectPos].markerTargetEnemySeveralArray[dashIndex].visible = false;
 					}
 				});
 			}
@@ -1731,16 +1731,16 @@ function onCreatureDown(){
 		});
 		
 		if(column){
-			skillArray[skillPos].markerTargetEnemyContainer.visible = false;
-			skillArray[skillPos].targetText.visible = true;
+			skillArray[skillRectPos].markerTargetEnemyContainer.visible = false;
+			skillArray[skillRectPos].targetText.visible = true;
 		}else{
-			skillArray[skillPos].markerTargetEnemyContainer.visible = true;
-			skillArray[skillPos].targetText.visible = false;
+			skillArray[skillRectPos].markerTargetEnemyContainer.visible = true;
+			skillArray[skillRectPos].targetText.visible = false;
 			skillsList.data.skills[skillNum].target.forEach((skillTarget, targetIndex) => {
 				if(skillTarget == 1){
-					skillArray[skillPos].markerTargetEnemyArray[targetIndex].visible = true;
+					skillArray[skillRectPos].markerTargetEnemyArray[targetIndex].visible = true;
 				}else{
-					skillArray[skillPos].markerTargetEnemyArray[targetIndex].visible = false;
+					skillArray[skillRectPos].markerTargetEnemyArray[targetIndex].visible = false;
 				}
 			});
 		}
