@@ -1173,17 +1173,17 @@ function resize() {
 		if(app.screen.width < 860){
 			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe};
 			skillContainer.targetText.style.fontSize = 12;
-// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
+// 			skillContainer.skillID.style = {fontFamily : 'Arial', fontSize: 14, fill : 0x636363, align : 'right'};	
 // 			skillContainer.posMarkerContainer.scale.set(0.45);
 		}else if(app.screen.width < 1366){
 			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe};	
 			skillContainer.targetText.style.fontSize = 16;
-// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
+// 			skillContainer.skillID.style = {fontFamily : 'Arial', fontSize: 17, fill : 0x636363, align : 'right'};	
 // 			skillContainer.posMarkerContainer.scale.set(0.5);
 		}else{
 			skillContainer.skillName.style = {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe};
 			skillContainer.targetText.style.fontSize = 26;
-// 			skillContainer.skillNum.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
+// 			skillContainer.skillID.style = {fontFamily : 'Arial', fontSize: 24, fill : 0x636363, align : 'right'};	
 // 			skillContainer.posMarkerContainer.scale.set(1);
 // 			console.log(skillContainer.posMarkerContainer.width + ", " + skillContainer.posMarkerContainer.height);
 // 			console.log("Ratio: " + skillContainer.posMarkerContainer.width / skillContainer.posMarkerContainer.height);
@@ -1195,8 +1195,8 @@ function resize() {
 // 		skillContainer.skillName.x = skillContainer.rect.width;
 // 		skillContainer.skillName.y = 0;
 		
-// 		skillContainer.skillNum.x = (skillContainer.rect.width/15)*14;
-// 		skillContainer.skillNum.y = (skillContainer.rect.height/3)*2;
+// 		skillContainer.skillID.x = (skillContainer.rect.width/15)*14;
+// 		skillContainer.skillID.y = (skillContainer.rect.height/3)*2;
 		
 // 		skillContainer.posMarkerContainer.x = 0;
 // 		skillContainer.posMarkerContainer.y = 0;
@@ -1621,8 +1621,8 @@ function onCreatureDown(){
 		hpEnemyContainerArray[this.identifier[1]].select.visible = true;
 		hpEnemyContainerArray[this.identifier[1]].select.animate = true;
 // 		moveEnemyContainerArray[this.identifier[1]].visible = true;
-		arrayEnemy[this.identifier[1]].skills.forEach(skillNum => {
-			newSkills.push(skillNum);
+		arrayEnemy[this.identifier[1]].skills.forEach(skillID => {
+			newSkills.push(skillID);
 		});
 		if(arrayEnemy[this.identifier[1]].size == 1){
 			currPos.push(arrayEnemy[this.identifier[1]].pos);
@@ -1634,8 +1634,8 @@ function onCreatureDown(){
 		hpHeroContainerArray[this.identifier[1]].select.visible = true;
 		hpHeroContainerArray[this.identifier[1]].select.animate = true;
 // 		moveHeroContainerArray[this.identifier[1]].visible = true;
-		arrayHero[this.identifier[1]].skills.forEach(skillNum => {
-			newSkills.push(skillNum);
+		arrayHero[this.identifier[1]].skills.forEach(skillID => {
+			newSkills.push(skillID);
 		});
 		if(arrayHero[this.identifier[1]].size == 1){
 			currPos.push(arrayHero[this.identifier[1]].pos);
@@ -1647,104 +1647,104 @@ function onCreatureDown(){
 	console.log("///////////////////////////////////////////////");
 	console.log(currPos);
 	
-	newSkills.forEach((skillNum, skillRectPos) => {
-		switch(skillsList.data.skills[skillNum].element){
+	newSkills.forEach((skillID, skillContainerIndex) => {
+		switch(skillsList.data.skills[skillID].element){
 			case 1:
-				skillArray[skillRectPos].skillElement.texture = resources.element_earth.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 2:
-				skillArray[skillRectPos].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
 				break;
 			case 3:
-				skillArray[skillRectPos].skillElement.texture = resources.element_flora.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
 				break;
 			case 4:
-				skillArray[skillRectPos].skillElement.texture = resources.element_lightning.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_lightning.texture;
 				break;
 			case 5:
-				skillArray[skillRectPos].skillElement.texture = resources.element_shadow.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_shadow.texture;
 				break;
 			case 6:
-				skillArray[skillRectPos].skillElement.texture = resources.element_spirit.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 7:
-				skillArray[skillRectPos].skillElement.texture = resources.element_toxic.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				skillArray[skillRectPos].skillElement.texture = resources.element_water.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
 				break;
 			case 9:
-				skillArray[skillRectPos].skillElement.texture = resources.element_wind.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
 				break;
 			default:
-				skillArray[skillRectPos].skillElement.texture = resources.element_fire.texture;
+				skillArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
 				break;
 		}
 		
-		//identifier = [skillRectPos, skillNum, stageSide, creaturePos]
-		skillArray[skillRectPos].identifier = [skillRectPos, skillNum, this.identifier[0], this.identifier[1]];
-		skillArray[skillRectPos].skillName.text = skillsList.data.skills[skillNum].name;		
-		skillsList.data.skills[skillNum].position.forEach((skillPos, skillPosIndex) => {
+		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
+		skillArray[skillContainerIndex].identifier = [skillContainerIndex, skillID, this.identifier[0], this.identifier[1]];
+		skillArray[skillContainerIndex].skillName.text = skillsList.data.skills[skillID].name;		
+		skillsList.data.skills[skillID].position.forEach((skillPos, skillPosIndex) => {
 			if(skillPos == 1){				
 				currPos.forEach(posNum => {
 					var posTracker = Math.abs(skillPosIndex - 4);			
 					if(posNum == posTracker){
-						skillArray[skillRectPos].disable.visible = false;
-						skillArray[skillRectPos].buttonMode = true;
-						skillArray[skillRectPos].interactive = true;
+						skillArray[skillContainerIndex].disable.visible = false;
+						skillArray[skillContainerIndex].buttonMode = true;
+						skillArray[skillContainerIndex].interactive = true;
 					}
 				});
-				skillArray[skillRectPos].markerHeroArray[skillPosIndex].visible = true;
+				skillArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = true;
 			}else{
-				skillArray[skillRectPos].markerHeroArray[skillPosIndex].visible = false;
+				skillArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = false;
 			}
 		});
 		
-		console.log(skillRectPos + ": " + skillsList.data.skills[skillNum].tags);
+		console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
 		var column = false;
-		skillsList.data.skills[skillNum].tags.forEach(tagName =>{
+		skillsList.data.skills[skillID].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				if(skillsList.data.skills[skillNum][tagName][2] > 0){
-					skillArray[skillRectPos].targetText.text = skillsList.data.skills[skillNum][tagName][0] + " ►";
+				if(skillsList.data.skills[skillID][tagName][2] > 0){
+					skillArray[skillContainerIndex].targetText.text = skillsList.data.skills[skillID][tagName][0] + " ►";
 				}else{
-					skillArray[skillRectPos].targetText.text = "◄ " + skillsList.data.skills[skillNum][tagName][0];
+					skillArray[skillContainerIndex].targetText.text = "◄ " + skillsList.data.skills[skillID][tagName][0];
 				}
 				
-				if(skillsList.data.skills[skillNum][tagName][3] > 0){					
-					skillArray[skillRectPos].targetText.style.fill = '0x66cc66';
+				if(skillsList.data.skills[skillID][tagName][3] > 0){					
+					skillArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
 				}else{
-					skillArray[skillRectPos].targetText.style.fill = '0xFF6961';
+					skillArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
-				skillArray[skillRectPos].markerTargetEnemySeveralContainer.visible = true;
+				skillArray[skillContainerIndex].markerTargetEnemySeveralContainer.visible = true;
 				//Show target dashes if 1
-				skillsList.data.skills[skillNum][tagName].forEach((dash, dashIndex) => {
+				skillsList.data.skills[skillID][tagName].forEach((dash, dashIndex) => {
 					if(dash == 1){
-						skillArray[skillRectPos].markerTargetEnemySeveralArray[dashIndex].visible = true;
+						skillArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = true;
 					}else{
-						skillArray[skillRectPos].markerTargetEnemySeveralArray[dashIndex].visible = false;
+						skillArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = false;
 					}
 				});
 			}
-			console.log(skillsList.data.skills[skillNum][tagName]);
+			console.log(skillsList.data.skills[skillID][tagName]);
 		});
 		
 		if(column){
-			skillArray[skillRectPos].markerTargetEnemyContainer.visible = false;
-			skillArray[skillRectPos].targetText.visible = true;
+			skillArray[skillContainerIndex].markerTargetEnemyContainer.visible = false;
+			skillArray[skillContainerIndex].targetText.visible = true;
 		}else{
-			skillArray[skillRectPos].markerTargetEnemyContainer.visible = true;
-			skillArray[skillRectPos].targetText.visible = false;
-			skillsList.data.skills[skillNum].target.forEach((skillTarget, targetIndex) => {
+			skillArray[skillContainerIndex].markerTargetEnemyContainer.visible = true;
+			skillArray[skillContainerIndex].targetText.visible = false;
+			skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
 				if(skillTarget == 1){
-					skillArray[skillRectPos].markerTargetEnemyArray[targetIndex].visible = true;
+					skillArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = true;
 				}else{
-					skillArray[skillRectPos].markerTargetEnemyArray[targetIndex].visible = false;
+					skillArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = false;
 				}
 			});
 		}
-// 		console.log(index + " Position: " + skillsList.data.skills[skillNum].position + " |Target: " + skillsList.data.skills[skillNum].target);
+// 		console.log(index + " Position: " + skillsList.data.skills[skillID].position + " |Target: " + skillsList.data.skills[skillID].target);
 	});	
 	
 // 	skillArray[0].posMarkerArray[0].visible = false;
