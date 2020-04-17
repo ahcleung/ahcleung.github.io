@@ -146,6 +146,14 @@ class Creature{
 	}
 
 	get speed(){
+		var mathSpeed;
+		if(this.statMod[6] > 0){
+			mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
+		}else{
+			mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
+		}
+		
+		this.statCalc[6] = mathSpeed;
 		return this.statCalc[6];
 	}
 	
