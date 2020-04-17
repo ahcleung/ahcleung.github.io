@@ -1994,7 +1994,7 @@ function onExtrasMoveDown(){
 			hpEnemyContainerArray[temp].move.visible = true;
 		}
 		var temp2 = Math.abs(selectedVita);
-		if(temp2 < hpEnemyoContainerArray.length){
+		if(temp2 < hpEnemyContainerArray.length){
 			hpEnemyContainerArray[temp2].move.visible = true;
 		}
 
