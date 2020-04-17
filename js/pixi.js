@@ -192,7 +192,7 @@ var skillSpacer = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 
-var selected = 0;
+var selectedVita = 0;
 
 // var db = firebase.firestore();
 
@@ -1570,6 +1570,7 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	console.log("Creature:" + this.identifier);
+	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
@@ -1957,7 +1958,7 @@ function onExtrasCancelDown(){
 }
 
 function onExtrasMoveDown(){
-	console.log("Extras Move");
+	console.log("Extras Move " + selectedVita);
 	extrasContainer.visible = false;
 	hpEnemyContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
