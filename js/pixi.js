@@ -1569,11 +1569,6 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){	
-// 	if(this.statMod[6] > 0){
-// 		mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
-// 	}else{
-// 		mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
-// 	}
 	console.log("Creature speed:" + arrayHero[this.identifier[1]].statMod[6]);
 	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	//Reset the skillContainers
@@ -1956,7 +1951,22 @@ function onSkillDown(){
 function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
-	extrasContainer.visible = true;	
+	extrasContainer.visible = true;
+
+
+	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+		console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
+	});
+
+	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+		console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
+	});
+	// arrayHero[this.identifier[1]].statMod[6];
+	// 	if(this.statMod[6] > 0){
+	// mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
+	// }else{
+	// 	mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
+	// }
 }
 
 function onExtrasCancelDown(){
