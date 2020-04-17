@@ -352,7 +352,7 @@ function setup(){
 // 	});
 	
 	hero.forEach(function(item, index){
-		const creature = new Creature({
+		const newCreature = new Creature({
 			id: item.id,
 			level: item.level,
 			statDis:[
@@ -370,7 +370,7 @@ function setup(){
 				item.skill4
 			]
 		});
-		arrayHero.push(creature);
+		arrayHero.push(newCreature);
 	});
 
 	arrayHero.forEach(setPos);
@@ -379,7 +379,7 @@ function setup(){
 	});
 	
 	enemy.forEach(function(item, index){
-		const creature = new Creature({
+		const newCreature = new Creature({
 			id: item.id,
 			level: item.level,
 			statDis:[
@@ -397,7 +397,7 @@ function setup(){
 				item.skill4
 			]
 		});
-		arrayEnemy.push(creature);
+		arrayEnemy.push(newCreature);
 	});
 
 	arrayEnemy.forEach(setPos);
@@ -1754,11 +1754,11 @@ function onCreatureDown(){
 function onHPDown(){
 	console.log("HP:" + this.identifier[0]);
 	
-	hpHeroContainerArray.forEach(element=>{
-		element.turn.visible = false;
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.turn.visible = false;
 	});
-	hpEnemyContainerArray.forEach(element=>{
-		element.turn.visible = false;
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.turn.visible = false;
 	});
 	
 	if(this.identifier[0] < 0){
@@ -1770,16 +1770,16 @@ function onHPDown(){
 }
 
 function onSkillDown(){
-	hpEnemyContainerArray.forEach(element=>{
-		element.target.visible = false;
-		element.heal.visible = false;
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
 	});
-	hpHeroContainerArray.forEach(element=>{
-		element.target.visible = false;
-		element.heal.visible = false;
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
 	});
-	skillArray.forEach(element=>{
-		element.selected.visible = false;
+	skillArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
 	});
 	skillArray[this.identifier[0]].selected.visible = true;
 	console.log(this.identifier);
@@ -1823,25 +1823,25 @@ function onSkillDown(){
 				
 				if(this.identifier[2] > 0){
 					if(temp > 0 && !switchSide){
-						arrayHero.forEach((element,index) => {
-							if(element.pos == temp){
-								console.log(element.name);
+						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								console.log(arrayCreature.name);
 								if(heal){
-									hpHeroContainerArray[index].heal.visible = true;
+									hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
-									hpHeroContainerArray[index].target.visible = true;
+									hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								
 							}
 						});
 					}else{
-						arrayEnemy.forEach((element,index) => {
-							if(element.pos == temp){
-								console.log(element.name);
+						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								console.log(arrayCreature.name);
 								if(heal){
-									hpEnemyContainerArray[index].heal.visible = true;
+									hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
-									hpEnemyContainerArray[index].target.visible = true;
+									hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								
 							}
@@ -1849,24 +1849,24 @@ function onSkillDown(){
 					}
 				}else{
 					if(temp > 0 && !switchSide){
-						arrayEnemy.forEach((element,index) => {
-							if(element.pos == temp){
-								console.log(element.name);
+						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								console.log(arrayCreature.name);
 								if(heal){
-									hpEnemyContainerArray[index].heal.visible = true;
+									hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
-									hpEnemyContainerArray[index].target.visible = true;
+									hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 							}
 						});
 					}else{
-						arrayHero.forEach((element,index) => {
-							if(element.pos == temp){
-								console.log(element.name);
+						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								console.log(arrayCreature.name);
 								if(heal){
-									hpHeroContainerArray[index].heal.visible = true;
+									hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
-									hpHeroContainerArray[index].target.visible = true;
+									hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 							}
 						});
@@ -1887,24 +1887,24 @@ function onSkillDown(){
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
 				if(this.identifier[2] > 0){
-					arrayHero.forEach((element,index) => {
-						if(element.pos == temp){
-							console.log(element.name);
+					arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+						if(arrayCreature.pos == temp){
+							console.log(arrayCreature.name);
 							if(heal){
-								hpHeroContainerArray[index].heal.visible = true;
+								hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 							}else{
-								hpHeroContainerArray[index].target.visible = true;
+								hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							}
 						}
 					});
 				}else{
-					arrayEnemy.forEach((element,index) => {
-						if(element.pos == temp){
-							console.log(element.name);
+					arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+						if(arrayCreature.pos == temp){
+							console.log(arrayCreature.name);
 							if(heal){
-								hpEnemyContainerArray[index].heal.visible = true;
+								hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 							}else{
-								hpEnemyContainerArray[index].target.visible = true;
+								hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							}
 						}
 					});
@@ -1915,50 +1915,50 @@ function onSkillDown(){
 		}
 	}
 	
-	skillsList.data.skills[this.identifier[1]].target.forEach((element1, index1)=> {
-		if(element1 == 1){
-			var posTracker = index1 + 1;
+	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+		if(skillTarget == 1){
+			var posTracker = skillTargetIndex + 1;
 			if(this.identifier[2] > 0){
-				arrayEnemy.forEach((element2, index2) => {
-					if(element2.size == 1){
-						if(posTracker == element2.pos){
-							console.log("Targeted: " + element2.name);
-							hpEnemyContainerArray[index2].target.visible = true;
-// 							hpHeroContainerArray[index2].target.visible = true;
+				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(posTracker == arrayCreature.pos){
+							console.log("Targeted: " + arrayCreature.name);
+							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+// 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}
-					}else if(element2.size == 2){
-						var pos1 = element2.pos;
-						var pos2 = element2.pos + 1;
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1){
-							console.log("Targeted: " + element2.name);
-							hpEnemyContainerArray[index2].target.visible = true;
-// 							hpHeroContainerArray[index2].target.visible = true;
+							console.log("Targeted: " + arrayCreature.name);
+							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+// 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}else if(posTracker == pos2){
-							console.log("Targeted: " + element2.name);
-							hpEnemyContainerArray[index2].target.visible = true;
-// 							hpHeroContainerArray[index2].target.visible = true;
+							console.log("Targeted: " + arrayCreature.name);
+							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+// 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}
 					}				
 				});
 			}else{
-				arrayHero.forEach((element2, index2) => {
-					if(element2.size == 1){
-						if(posTracker == element2.pos){
-							console.log("Targeted: " + element2.name);
-// 							hpEnemyContainerArray[index2].target.visible = true;
-							hpHeroContainerArray[index2].target.visible = true;
+				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(posTracker == arrayCreature.pos){
+							console.log("Targeted: " + arrayCreature.name);
+// 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}
-					}else if(element2.size == 2){
-						var pos1 = element2.pos;
-						var pos2 = element2.pos + 1;
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1){
-							console.log("Targeted: " + element2.name);
-// 							hpEnemyContainerArray[index2].target.visible = true;
-							hpHeroContainerArray[index2].target.visible = true;
+							console.log("Targeted: " + arrayCreature.name);
+// 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}else if(posTracker == pos2){
-							console.log("Targeted: " + element2.name);
-// 							hpEnemyContainerArray[index2].target.visible = true;
-							hpHeroContainerArray[index2].target.visible = true;
+							console.log("Targeted: " + arrayCreature.name);
+// 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 						}
 					}				
 				});
@@ -1980,11 +1980,11 @@ function onExtrasCancelDown(){
 
 function onExtrasMoveDown(){
 	console.log("Extras Move");
-	 hpHeroContainerArray.forEach(container => {
-	 	container.move.visible =  true;
+	 hpHeroContainerArray.forEach(hpContainer => {
+	 	hpContainer.move.visible =  true;
 	 });
-	hpEnemyContainerArray.forEach(container => {
-	 	container.move.visible =  true;
+	hpEnemyContainerArray.forEach(hpContainer => {
+	 	hpContainer.move.visible =  true;
 	 });
 }
 
