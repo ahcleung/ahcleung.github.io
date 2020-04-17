@@ -145,9 +145,9 @@ class Creature{
 		this.statCalc[0] = this.EHP;	
 	}
 
-// 	get hp(){
-// 		return this.calcHP();
-// 	}
+	get speed(){
+		return this.statCalc[6];
+	}
 	
 // 	get PAtk(){
 // 		return this.calcPAtk();	
@@ -1569,7 +1569,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	console.log("Creature:" + this.identifier);
+	console.log("Creature speed:" + heroArray[this.identifier[1]].speed);
 	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
