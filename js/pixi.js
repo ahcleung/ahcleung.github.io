@@ -146,14 +146,6 @@ class Creature{
 	}
 
 	get speed(){
-		var mathSpeed;
-		if(this.statMod[6] > 0){
-			mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
-		}else{
-			mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
-		}
-		
-		this.statCalc[6] = mathSpeed;
 		return this.statCalc[6];
 	}
 	
@@ -1576,8 +1568,13 @@ function onButtonDown(){
 	}
 }
 
-function onCreatureDown(){
-	console.log("Creature speed:" + arrayHero[this.identifier[1]].speed);
+function onCreatureDown(){	
+// 	if(this.statMod[6] > 0){
+// 		mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
+// 	}else{
+// 		mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
+// 	}
+	console.log("Creature speed:" + arrayHero[this.identifier[1]].statMod[6]);
 	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
