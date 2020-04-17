@@ -1953,13 +1953,25 @@ function onExtrasDown(){
 	console.log("Extras");
 	extrasContainer.visible = true;
 
-
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
-		console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
+		var calcSpeed;
+		if(arrayCreature.statMod[6]>0){
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
+		}else{
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
+		}
+		console.log(arrayCreatureIndex + " Speed: " + calcSpeed);
 	});
 
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
-		console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
+		// console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
+		var calcSpeed;
+		if(arrayCreature.statMod[6]>0){
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
+		}else{
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
+		}
+		console.log(arrayCreatureIndex + " Speed: " + calcSpeed);
 	});
 	// arrayHero[this.identifier[1]].statMod[6];
 	// 	if(this.statMod[6] > 0){
