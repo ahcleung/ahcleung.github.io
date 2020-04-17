@@ -1960,7 +1960,7 @@ function onExtrasDown(){
 		}else{
 			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
-		console.log(arrayCreatureIndex + " Speed: " + calcSpeed);
+		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 	});
 
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1971,7 +1971,7 @@ function onExtrasDown(){
 		}else{
 			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
-		console.log(arrayCreatureIndex + " Speed: " + calcSpeed);
+		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 	});
 	// arrayHero[this.identifier[1]].statMod[6];
 	// 	if(this.statMod[6] > 0){
