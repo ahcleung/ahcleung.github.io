@@ -1569,7 +1569,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	console.log("Creature speed:" + heroArray[this.identifier[1]].speed);
+	console.log("Creature speed:" + arrayHero[this.identifier[1]].speed);
 	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
