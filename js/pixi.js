@@ -192,6 +192,8 @@ var skillSpacer = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 
+var selected = 0;
+
 // var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
@@ -1567,7 +1569,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-// 	console.log("Creature:" + this.identifier);
+	console.log("Creature:" + this.identifier);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
@@ -1956,6 +1958,19 @@ function onExtrasCancelDown(){
 
 function onExtrasMoveDown(){
 	console.log("Extras Move");
+	extrasContainer.visible = false;
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+	});
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+	});
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+	});
+
 	 hpHeroContainerArray.forEach(hpContainer => {
 	 	hpContainer.move.visible =  true;
 	 });
