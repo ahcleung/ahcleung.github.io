@@ -1972,12 +1972,33 @@ function onExtrasMoveDown(){
 		skillContainer.selected.visible = false;
 	});
 
-	 hpHeroContainerArray.forEach(hpContainer => {
-	 	hpContainer.move.visible =  true;
-	 });
-	hpEnemyContainerArray.forEach(hpContainer => {
-	 	hpContainer.move.visible =  true;
-	 });
+	// hpHeroContainerArray.forEach(hpContainer => {
+	//  	hpContainer.move.visible =  true;
+	//  });
+	// hpEnemyContainerArray.forEach(hpContainer => {
+	//  	hpContainer.move.visible =  true;
+	//  });
+
+	if(selectedVita > 0){
+		var temp = Math.abs(selectedVita) - 2;
+		if(temp > -1){
+			hpHeroContainerArray[temp].move.visible = true;
+		}
+		var temp2 = Math.abs(selectedVita);
+		if(temp2 < hpHeroContainerArray.length){
+			hpHeroContainerArray[temp2].move.visible = true;
+		}
+	}else{
+		var temp = Math.abs(selectedVita) - 2;
+		if(temp > -1){
+			hpEnemyContainerArray[temp].move.visible = true;
+		}
+		var temp2 = Math.abs(selectedVita);
+		if(temp2 < hpEnemyoContainerArray.length){
+			hpEnemyContainerArray[temp2].move.visible = true;
+		}
+
+	}
 }
 
 function onExtrasItemDown(){
