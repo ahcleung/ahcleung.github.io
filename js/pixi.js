@@ -1752,10 +1752,12 @@ function onSkillDown(){
 	hpEnemyContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
 		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
 	});
 	hpHeroContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
 		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
 	});
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
