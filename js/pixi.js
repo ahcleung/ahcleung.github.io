@@ -1999,6 +1999,8 @@ function onExtrasDown(){
 					if(speedNum == element){
 						tracker = true;
 						console.log("already here");
+					}else{
+						console.log("nope, not here");
 					}
 				});
 				if(!tracker){
