@@ -1960,9 +1960,9 @@ function onExtrasDown(){
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 15) + 1);
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2);
 		}else{
-			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 15) + 1);
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2));
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
@@ -1970,9 +1970,10 @@ function onExtrasDown(){
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 15) + 1);
+			// calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 15) + 1);
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2);
 		}else{
-			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 15) + 1);
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2));
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
