@@ -1978,7 +1978,7 @@ function onExtrasDown(){
 		speedTracker.push(calcSpeed);
 	});
 
-	console.log(speedTracker);
+	console.log(speedTracker.sort(function(a, b){return a - b}));
 }
 
 function onExtrasCancelDown(){
