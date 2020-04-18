@@ -1993,9 +1993,10 @@ function onExtrasDown(){
 				indexTracker = index2;
 			}
 		});
+		console.log(speedTracker);
 		console.log(temp + "," + indexTracker);
 		turnArray.push(indexTracker);
-		speedTracker.splice(indexTracker);		
+		speedTracker.splice(indexTracker,1);		
 	}
 
 	console.log(turnArray);
