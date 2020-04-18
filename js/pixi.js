@@ -1998,6 +1998,7 @@ function onExtrasDown(){
 				turnArray.forEach(element =>{
 					if(speedNum == element){
 						tracker = true;
+						console.log("already here");
 					}
 				});
 				if(!tracker){
