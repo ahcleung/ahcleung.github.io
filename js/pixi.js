@@ -212,12 +212,12 @@ const hero = [];
 hero[0] = {
 	id: 11, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 10
+	statDODG: 20, statHP: 35, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 40
 };
 hero[1] = {
 	id: 2, level: 45, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 20, statSATK: 0, statSDEF: 3, statSPD: 17
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 27
 };
 hero[2] = {
 	id: 10, level: 47, 
@@ -239,7 +239,7 @@ enemy[0] = {
 enemy[1] = {
 	id: 10, level: 46, 
 	skill1: 4, skill2: 10, skill3: 1, skill4: 8,
-	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 68, statSDEF: 0, statSPD: 20
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 53, statSDEF: 0, statSPD: 35
 };
 enemy[2] = {
 	id: 12, level: 45, 
