@@ -234,17 +234,17 @@ const enemy = [];
 enemy[0] = {
 	id: 9, level: 49, 
 	skill1: 4, skill2: 6, skill3: 1, skill4: 3,
-	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 67, statSDEF: 0, statSPD: 0
+	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 7
 };
 enemy[1] = {
 	id: 10, level: 46, 
 	skill1: 4, skill2: 10, skill3: 1, skill4: 8,
-	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 68, statSDEF: 0, statSPD: 0
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 68, statSDEF: 0, statSPD: 20
 };
 enemy[2] = {
 	id: 12, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
-	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+	statDODG: 0, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 10
 };
 enemy[3] = {
 	id: 11, level: 45, 
@@ -1960,9 +1960,9 @@ function onExtrasDown(){
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2);
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
 		}else{
-			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2));
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
@@ -1970,10 +1970,9 @@ function onExtrasDown(){
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			// calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 15) + 1);
-			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2);
+			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
 		}else{
-			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2));
+			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
