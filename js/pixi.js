@@ -1991,6 +1991,7 @@ function onExtrasDown(){
 		}
 	});
 
+	console.log(turnArray);
 	// console.log(speedTracker.sort(function(a, b){return a - b}));
 }
 
