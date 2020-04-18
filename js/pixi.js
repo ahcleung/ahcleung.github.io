@@ -1948,6 +1948,9 @@ function onSkillDown(){
 	});
 }
 
+var speedTracker = [];
+var turnArray = [];
+
 function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
@@ -1961,10 +1964,9 @@ function onExtrasDown(){
 			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
+		speedTracker.push(calcSpeed);
 	});
-
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
-		// console.log(arrayCreatureIndex + " Speed: " + arrayCreature.speed + "," + arrayCreature.statMod[6]);
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
 			calcSpeed = (arrayCreature.speed/5)*((Math.abs(arrayCreature.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
@@ -1972,13 +1974,10 @@ function onExtrasDown(){
 			calcSpeed = (arrayCreature.speed/5)*(2/(Math.abs(arrayCreature.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
+		speedTracker.push(calcSpeed);
 	});
-	// arrayHero[this.identifier[1]].statMod[6];
-	// 	if(this.statMod[6] > 0){
-	// mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*((Math.abs(this.statMod[6])+2)/2)+(Math.floor(Math.random() * 20) + 1);
-	// }else{
-	// 	mathSpeed= ((creatureList.data.creatures[this.id].spd + this.statDis[6])/5)*(2/(Math.abs(this.statMod[6])+2))+(Math.floor(Math.random() * 20) + 1);
-	// }
+
+	console.log(speedTracker);
 }
 
 function onExtrasCancelDown(){
