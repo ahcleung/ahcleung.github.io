@@ -1955,6 +1955,7 @@ function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
+	speedTracker = [];
 
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
