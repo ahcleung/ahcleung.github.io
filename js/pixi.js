@@ -1991,9 +1991,11 @@ function onExtrasDown(){
 	console.log("2: " + tempArray);
 
 	speedTracker.forEach((speedNum,index) => {
-		if(speedNum == tempArray[index]){			
-			turnArray.push(index);
-		}
+		tempArray.forEach((speedNum2,index2) => {
+			if(speedNum == speedNum2){			
+				turnArray.push(index2);
+			}
+		});
 	});
 
 
