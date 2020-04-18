@@ -1982,7 +1982,7 @@ function onExtrasDown(){
 	console.log(speedTracker);
 	var length = speedTracker.length;
 
-	for(var i = 0; i < speedTracker.length; i++){
+	for(var i = 0; i < length; i++){
 		var temp = 100;
 		var temp2 = 0;
 		var indexTracker = 0;
