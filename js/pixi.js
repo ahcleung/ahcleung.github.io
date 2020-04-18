@@ -1989,6 +1989,14 @@ function onExtrasDown(){
 	speedTracker.sort(function(a, b){return a - b});
 	console.log("1: " + speedTracker);
 	console.log("2: " + tempArray);
+
+	speedTracker.forEach((speedNum,index) => {
+		if(speedNum2 == tempArray[index]){			
+			turnArray.push(index);
+		}
+	});
+
+
 	// var length = speedTracker.length;
 
 	// for(var i = 0; i < length; i++){
