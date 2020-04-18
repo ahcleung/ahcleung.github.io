@@ -1958,6 +1958,7 @@ function onExtrasDown(){
 	extrasContainer.visible = true;
 	speedTracker = [];
 	turnArray = [];
+	tempArray = [];
 
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
