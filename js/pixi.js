@@ -1980,18 +1980,23 @@ function onExtrasDown(){
 	});
 
 	console.log(speedTracker);
-	var temp = 0;
 
-	// speedTracker.forEach((speedNum,index) => {
-	// 	if(speedNum > temp){
-			
-	// 		turnArray.push(index);
-	// 		temp = speedNum;
-	// 	}else{
-	// 		turnArray.unshift(index);
-	// 		temp = speedNum;
-	// 	}
-	// });
+
+	speedTracker.forEach((speedNum1,index1) => {
+		var temp = 100;
+		var temp2 = 0;
+		var indexTracker = 0;
+		speedTracker.forEach((speedNum2,index2) => {
+			if(speedNum2 < temp){			
+				temp = speedNum2;
+				indexTracker = index2;
+			}
+		});
+		console.log(temp + "," + indexTracker);
+		turnArray.push(indexTracker);
+		speedTracker.splice(indexTracker);
+
+	});
 
 	console.log(turnArray);
 	// console.log(speedTracker.sort(function(a, b){return a - b}));
