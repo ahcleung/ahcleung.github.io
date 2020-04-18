@@ -1950,6 +1950,7 @@ function onSkillDown(){
 
 var speedTracker = [];
 var turnArray = [];
+var tempArray = [];
 
 function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
@@ -1967,6 +1968,7 @@ function onExtrasDown(){
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
+		tempArray.push(calcSpeed);
 	});
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
@@ -1978,11 +1980,12 @@ function onExtrasDown(){
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
 		speedTracker.push(calcSpeed);
+		tempArray.push(calcSpeed);
 	});
 
 	console.log(speedTracker);
 
-	var tempArray = speedTracker;
+	
 	speedTracker.sort(function(a, b){return a - b});
 	console.log("1: " + speedTracker);
 	console.log("2: " + tempArray);
