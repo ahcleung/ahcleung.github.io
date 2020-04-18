@@ -1997,7 +1997,7 @@ function onExtrasDown(){
 				if(index2 < arrayHero.length+1){
 					turnArray.push(index2+1);
 				}else{
-					turnArray.push(-(index2-arrayHero.length);
+					turnArray.push(-(index2-arrayHero.length));
 				}
 				
 			}
