@@ -1980,9 +1980,9 @@ function onExtrasDown(){
 	});
 
 	console.log(speedTracker);
+	var length = speedTracker.length;
 
-
-	speedTracker.forEach((speedNum1,index1) => {
+	for(var i = 0; i < speedTracker.length; i++){
 		var temp = 100;
 		var temp2 = 0;
 		var indexTracker = 0;
@@ -1994,9 +1994,8 @@ function onExtrasDown(){
 		});
 		console.log(temp + "," + indexTracker);
 		turnArray.push(indexTracker);
-		speedTracker.splice(indexTracker);
-
-	});
+		speedTracker.splice(indexTracker);		
+	}
 
 	console.log(turnArray);
 	// console.log(speedTracker.sort(function(a, b){return a - b}));
