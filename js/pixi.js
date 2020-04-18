@@ -1956,6 +1956,7 @@ function onExtrasDown(){
 	console.log("Extras");
 	extrasContainer.visible = true;
 	speedTracker = [];
+	turnArray = [];
 
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
