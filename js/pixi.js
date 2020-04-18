@@ -1981,15 +1981,17 @@ function onExtrasDown(){
 
 	console.log(speedTracker);
 	var temp = 0;
-	speedTracker.forEach((speedNum, index) =>{
-		if(speedNum > temp){
-			turnArray.push(index);
-			temp = speedNum;
-		}else{
-			turnArray.unshift(index);
-			temp = speedNum;
-		}
-	});
+
+	// speedTracker.forEach((speedNum,index) => {
+	// 	if(speedNum > temp){
+			
+	// 		turnArray.push(index);
+	// 		temp = speedNum;
+	// 	}else{
+	// 		turnArray.unshift(index);
+	// 		temp = speedNum;
+	// 	}
+	// });
 
 	console.log(turnArray);
 	// console.log(speedTracker.sort(function(a, b){return a - b}));
