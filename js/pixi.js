@@ -1982,7 +1982,8 @@ function onExtrasDown(){
 
 	console.log(speedTracker);
 
-	var tempArray = speedTracker.sort(function(a, b){return a - b});
+	var tempArray = speedTracker;
+	speedTracker.sort(function(a, b){return a - b});
 	console.log("1: " + speedTracker);
 	console.log("2: " + tempArray);
 	// var length = speedTracker.length;
