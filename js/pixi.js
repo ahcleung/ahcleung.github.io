@@ -1994,22 +1994,30 @@ function onExtrasDown(){
 	speedTracker.forEach((speedNum,index) => {
 		tempArray.forEach((speedNum2,index2) => {
 			if(speedNum == speedNum2){
-				var tracker = false;
-				turnArray.forEach(element =>{
-					if(speedNum2 == element){
-						tracker = true;
-						console.log("already here");
-					}else{
-						console.log("nope, not here");
-					}
-				});
-				if(!tracker){
+				// var tracker = false;
+				// turnArray.forEach(element =>{
+				// 	if(speedNum2 == element){
+				// 		tracker = true;
+				// 		console.log("already here");
+				// 	}else{
+				// 		console.log("nope, not here");
+				// 	}
+				// });
+				// if(!tracker){
 					if(index2 < arrayHero.length){
-						turnArray.push(index2+1);
+						var temp1 = index2+1;
+						var index = a.findIndex(x => x.name==temp1);
+						if (index === -1){
+							turnArray.push(temp1);
+						}else console.log("object already exists")
 					}else{
-						turnArray.push(-(index2+1-arrayHero.length));
+						var temp1 = -(index2+1-arrayHero.length);
+						var index = a.findIndex(x => x.name==temp1);
+						if (index === -1){
+							turnArray.push(temp1);
+						}else console.log("object already exists")
 					}
-				}
+				// }
 				
 			}
 		});
