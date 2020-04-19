@@ -2017,6 +2017,7 @@ function onExtrasDown(){
 		identifier[1] = Math.abs(turnArray[0]-1);
 		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 	}
+	console.log(identifier);
 	selectCreature(identifier);
 }
 
