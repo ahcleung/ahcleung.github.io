@@ -2007,11 +2007,17 @@ function onExtrasDown(){
 	});
 
 	console.log(turnArray);
+	var identifier = [];
 	if(turnArray[0] > 0){
-		console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+		identifier[0] = 1;
+		identifier[1] = Math.abs(turnArray[0]-1);
+		// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
 	}else{
-		console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+		identifier[0] = -1;
+		identifier[1] = Math.abs(turnArray[0]-1);
+		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 	}
+	selectCreature(identifier);
 }
 
 function onExtrasCancelDown(){
@@ -2073,4 +2079,166 @@ function onExtrasSkipDown(){
 	console.log("Extras Skip");
 	onScreenStats.visible = false;
 	consoleScreen.visible = false;
+}
+
+
+function selectCreature(identifier){	
+	console.log("Creature speed:" + arrayHero[identifier[1]].statMod[6]);
+	selectedVita = identifier[0] * (identifier[1]+1);
+	//Reset the skillContainers
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+		skillContainer.disable.visible = true;
+		skillContainer.buttonMode = false;
+		skillContainer.interactive = false;
+		skillContainer.markerTargetEnemySeveralContainer.visible = false;
+	});
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.select.visible = false;
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
+		hpContainer.select.animate = false;
+	});
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.select.visible = false;
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+		hpContainer.move.visible = false;
+		hpContainer.select.animate = false;
+	});
+
+	var newSkills = [];
+	var currPos = [];
+	if(identifier[0] < 0){		
+		hpEnemyContainerArray[identifier[1]].select.visible = true;
+		hpEnemyContainerArray[identifier[1]].select.animate = true;
+// 		moveEnemyContainerArray[identifier[1]].visible = true;
+		arrayEnemy[identifier[1]].skills.forEach(skillID => {
+			newSkills.push(skillID);
+		});
+		if(arrayEnemy[identifier[1]].size == 1){
+			currPos.push(arrayEnemy[identifier[1]].pos);
+		}else if(arrayEnemy[identifier[1]].size == 2){
+			currPos.push(arrayEnemy[identifier[1]].pos);
+			currPos.push(arrayEnemy[identifier[1]].pos+1);
+		}
+	}else{
+		hpHeroContainerArray[identifier[1]].select.visible = true;
+		hpHeroContainerArray[identifier[1]].select.animate = true;
+// 		moveHeroContainerArray[identifier[1]].visible = true;
+		arrayHero[identifier[1]].skills.forEach(skillID => {
+			newSkills.push(skillID);
+		});
+		if(arrayHero[identifier[1]].size == 1){
+			currPos.push(arrayHero[identifier[1]].pos);
+		}else if(arrayHero[identifier[1]].size == 2){
+			currPos.push(arrayHero[identifier[1]].pos);
+			currPos.push(arrayHero[identifier[1]].pos+1);
+		}
+	}
+	console.log("///////////////////////////////////////////////");
+	console.log(currPos);
+	
+	newSkills.forEach((skillID, skillContainerIndex) => {
+		switch(skillsList.data.skills[skillID].element){
+			case 1:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
+				break;
+			case 2:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
+				break;
+			case 3:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
+				break;
+			case 4:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_lightning.texture;
+				break;
+			case 5:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_shadow.texture;
+				break;
+			case 6:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
+				break;
+			case 7:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
+				break;
+			case 8:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
+				break;
+			case 9:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
+				break;
+			default:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
+				break;
+		}
+		
+		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
+		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID, identifier[0], identifier[1]];
+		skillContainerArray[skillContainerIndex].skillName.text = skillsList.data.skills[skillID].name;		
+		skillsList.data.skills[skillID].position.forEach((skillPos, skillPosIndex) => {
+			if(skillPos == 1){				
+				currPos.forEach(posNum => {
+					var posTracker = Math.abs(skillPosIndex - 4);			
+					if(posNum == posTracker){
+						skillContainerArray[skillContainerIndex].disable.visible = false;
+						skillContainerArray[skillContainerIndex].buttonMode = true;
+						skillContainerArray[skillContainerIndex].interactive = true;
+					}
+				});
+				skillContainerArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = true;
+			}else{
+				skillContainerArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = false;
+			}
+		});
+		
+		console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
+		var column = false;
+		skillsList.data.skills[skillID].tags.forEach(tagName =>{
+			if(tagName == "column"){
+				column = true;
+				if(skillsList.data.skills[skillID][tagName][2] > 0){
+					skillContainerArray[skillContainerIndex].targetText.text = skillsList.data.skills[skillID][tagName][0] + " ►";
+				}else{
+					skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillsList.data.skills[skillID][tagName][0];
+				}
+				
+				if(skillsList.data.skills[skillID][tagName][3] > 0){					
+					skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
+				}else{
+					skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
+				}
+			}else if(tagName == "several"){
+				skillContainerArray[skillContainerIndex].markerTargetEnemySeveralContainer.visible = true;
+				//Show target dashes if 1
+				skillsList.data.skills[skillID][tagName].forEach((dash, dashIndex) => {
+					if(dash == 1){
+						skillContainerArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = true;
+					}else{
+						skillContainerArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = false;
+					}
+				});
+			}
+			console.log(skillsList.data.skills[skillID][tagName]);
+		});
+		
+		if(column){
+			skillContainerArray[skillContainerIndex].markerTargetEnemyContainer.visible = false;
+			skillContainerArray[skillContainerIndex].targetText.visible = true;
+		}else{
+			skillContainerArray[skillContainerIndex].markerTargetEnemyContainer.visible = true;
+			skillContainerArray[skillContainerIndex].targetText.visible = false;
+			skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
+				if(skillTarget == 1){
+					skillContainerArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = true;
+				}else{
+					skillContainerArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = false;
+				}
+			});
+		}
+// 		console.log(index + " Position: " + skillsList.data.skills[skillID].position + " |Target: " + skillsList.data.skills[skillID].target);
+	});	
+	
+// 	skillContainerArray[0].posMarkerArray[0].visible = false;
 }
