@@ -2007,6 +2007,11 @@ function onExtrasDown(){
 	});
 
 	console.log(turnArray);
+	if(turnArray[0] > 0){
+		console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+	}else{
+		console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+	}
 }
 
 function onExtrasCancelDown(){
