@@ -2006,13 +2006,13 @@ function onExtrasDown(){
 				// if(!tracker){
 					if(index2 < arrayHero.length){
 						var temp1 = index2+1;
-						var index = a.findIndex(x => x.name==temp1);
+						var index = turnArray.findIndex(x => x==temp1);
 						if (index === -1){
 							turnArray.push(temp1);
 						}else console.log("object already exists")
 					}else{
 						var temp1 = -(index2+1-arrayHero.length);
-						var index = a.findIndex(x => x.name==temp1);
+						var index = turnArray.findIndex(x => x==temp1);
 						if (index === -1){
 							turnArray.push(temp1);
 						}else console.log("object already exists")
