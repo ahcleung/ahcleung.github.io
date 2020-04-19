@@ -166,7 +166,6 @@ class Creature{
 /*
 *	Declare  variables
 */
-
 const skillsList = resources["js/skills.json"];
 
 let state, onScreenStats, consoleScreen;
@@ -201,6 +200,7 @@ const factory = dragonBones.PixiFactory.factory;
 const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
 const extrasArray = [];			//Array of extras menu buttons
+var turnArray = [];
 
 const heroContainerArray = [];			//Array of hero sprite containers
 const enemyContainerArray = [];			//Array of enemy sprite containers
@@ -215,7 +215,7 @@ hero[0] = {
 	statDODG: 20, statHP: 35, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 40
 };
 hero[1] = {
-	id: 12, level: 45, 
+	id: 2, level: 45, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 27
 };
@@ -224,11 +224,11 @@ hero[2] = {
 	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
 };
-hero[3] = {
-	id: 9, level: 47, 
-	skill1: 8, skill2: 0, skill3: 1, skill4: 2,
-	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
-};
+// hero[3] = {
+// 	id: 9, level: 47, 
+// 	skill1: 8, skill2: 0, skill3: 1, skill4: 2,
+// 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 19
+// };
 
 const enemy = [];
 enemy[0] = {
@@ -237,7 +237,7 @@ enemy[0] = {
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 7
 };
 enemy[1] = {
-	id: 10, level: 46, 
+	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 1, skill4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 53, statSDEF: 0, statSPD: 35
 };
@@ -246,11 +246,11 @@ enemy[2] = {
 	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
 	statDODG: 0, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 10
 };
-enemy[3] = {
-	id: 11, level: 45, 
-	skill1: 4, skill2: 1, skill3: 7, skill4: 3,
-	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
-};
+// enemy[3] = {
+// 	id: 11, level: 45, 
+// 	skill1: 4, skill2: 1, skill3: 7, skill4: 3,
+// 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+// };
 
 //Write to firestore
 // db.collection("enemy").doc("004").set({
@@ -1948,17 +1948,14 @@ function onSkillDown(){
 	});
 }
 
-var speedTracker = [];
-var turnArray = [];
-var tempArray = [];
-
 function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
-	speedTracker = [];
-	turnArray = [];
-	tempArray = [];
+	var arrayCalcSpeedSorted = [];
+	var arrayCalcSpeedPositions = [];
+
+	turnArray = [];	
 
 	arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
@@ -1968,72 +1965,48 @@ function onExtrasDown(){
 			calcSpeed = (arrayCreature.speed/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
-		speedTracker.push(calcSpeed);
-		tempArray.push(calcSpeed);
+		arrayCalcSpeedSorted.push(calcSpeed);
+		arrayCalcSpeedPositions.push(calcSpeed);
 	});
 	arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			// +(Math.floor(Math.random() * 20) + 1)
 			calcSpeed = (arrayCreature.speed/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
 		}else{
 			calcSpeed = (arrayCreature.speed/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
 		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
-		speedTracker.push(calcSpeed);
-		tempArray.push(calcSpeed);
+		arrayCalcSpeedSorted.push(calcSpeed);
+		arrayCalcSpeedPositions.push(calcSpeed);
 	});
 
-	console.log(speedTracker);
-
+	console.log(arrayCalcSpeedSorted);
 	
-	speedTracker.sort(function(a, b){return b - a});
-	console.log("1: " + speedTracker);
-	console.log("2: " + tempArray);
+	arrayCalcSpeedSorted.sort(function(a, b){return b - a});
+	console.log("1: " + arrayCalcSpeedSorted);
+	console.log("2: " + arrayCalcSpeedPositions);
 
-	speedTracker.forEach((speedNum,index) => {
-		tempArray.forEach((speedNum2,index2) => {
+	arrayCalcSpeedSorted.forEach((speedNum,index) => {
+		arrayCalcSpeedPositions.forEach((speedNum2,index2) => {
 			if(speedNum == speedNum2){
-					if(index2 < arrayHero.length){
-						var temp1 = index2+1;
-						var index = turnArray.findIndex(x => x==temp1);
-						if (index === -1){
-							turnArray.push(temp1);
-						}else console.log("object already exists")
-					}else{
-						var temp1 = -(index2+1-arrayHero.length);
-						var index = turnArray.findIndex(x => x==temp1);
-						if (index === -1){
-							turnArray.push(temp1);
-						}else console.log("object already exists")
-					}
-				// }
-				
+				if(index2 < arrayHero.length){
+					var tempVar = index2+1;
+					var index = turnArray.findIndex(x => x==tempVar);
+					if (index === -1){
+						turnArray.push(tempVar);
+					}else console.log("object already exists")
+				}else{
+					var tempVar = -(index2+1-arrayHero.length);
+					var index = turnArray.findIndex(x => x==tempVar);
+					if (index === -1){
+						turnArray.push(tempVar);
+					}else console.log("object already exists")
+				}
 			}
 		});
 	});
 
-
-	// var length = speedTracker.length;
-
-	// for(var i = 0; i < length; i++){
-	// 	var temp = 100;
-	// 	var temp2 = 0;
-	// 	var indexTracker = 0;
-	// 	speedTracker.forEach((speedNum2,index2) => {
-	// 		if(speedNum2 < temp){			
-	// 			temp = speedNum2;
-	// 			indexTracker = index2;
-	// 		}
-	// 	});
-	// 	console.log(speedTracker);
-	// 	console.log(temp + "," + indexTracker);
-	// 	turnArray.push(indexTracker);
-	// 	speedTracker.splice(indexTracker,1);		
-	// }
-
 	console.log(turnArray);
-	// console.log(speedTracker.sort(function(a, b){return a - b}));
 }
 
 function onExtrasCancelDown(){
