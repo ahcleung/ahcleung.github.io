@@ -866,7 +866,7 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 	
-	creatureContainer.identifier = [direction, index];
+	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
 	creatureContainer.interactive = true;
 	creatureContainer
@@ -1570,7 +1570,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	selectedVita = this.identifier[0] * (this.identifier[1]+1);
+	selectedVita = this.identifier[0] * (this.identifier[2]);
 	console.log(selectedVita);
 	var correctTarget = false;
 	targetArray.forEach(targeted => {
