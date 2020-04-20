@@ -1828,7 +1828,7 @@ function onSkillDown(){
 						targetArray.forEach(targeted => {
 							if(targeted == arrayCreature.pos*1)	alreadyAdded = true
 						});
-						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*-1)
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*1)
 					}			
 				});
 			}
