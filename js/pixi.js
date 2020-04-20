@@ -1662,6 +1662,7 @@ function onSkillDown(){
 				if(this.identifier[2] > 0){
 					if(temp > 0 && !switchSide){
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+							var addTarget = false;
 							if(arrayCreature.pos == temp){
 								console.log(arrayCreature.name);
 								if(heal){
@@ -1670,10 +1671,11 @@ function onSkillDown(){
 									hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								stageSide = 1;
-							}
+							}else{stageSide = 0;}
 						});
 					}else{
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+							var addTarget = false;
 							if(arrayCreature.pos == temp){
 								console.log(arrayCreature.name);
 								if(heal){
@@ -1682,12 +1684,13 @@ function onSkillDown(){
 									hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								stageSide = -1;
-							}
+							}else{stageSide = 0;}
 						});
 					}
 				}else{
 					if(temp > 0 && !switchSide){
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
+							var addTarget = false;
 							if(arrayCreature.pos == temp){
 								console.log(arrayCreature.name);
 								if(heal){
@@ -1696,10 +1699,11 @@ function onSkillDown(){
 									hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								stageSide = -1;
-							}
+							}else{stageSide = 0;}
 						});
 					}else{
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
+							var addTarget = false;
 							if(arrayCreature.pos == temp){
 								console.log(arrayCreature.name);
 								if(heal){
@@ -1708,11 +1712,11 @@ function onSkillDown(){
 									hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 								}
 								stageSide = 1;
-							}
+							}else{stageSide = 0;}
 						});
 					}
 				}
-				targetArray.push(temp*stageSide);
+				if(stageSide != 0)	targetArray.push(temp*stageSide);
 			}
 			// console.log("Targets: " + targetArray);
 		}
@@ -1736,7 +1740,7 @@ function onSkillDown(){
 								hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							}
 							stageSide = 1;
-						}
+						}else{stageSide = 0;}
 					});
 				}else{
 					arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1748,7 +1752,7 @@ function onSkillDown(){
 								hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							}
 							stageSide = -1;
-						}
+						}else{stageSide = 0;}
 					});
 				}
 				targetArray.push(temp*stageSide);
@@ -1761,15 +1765,16 @@ function onSkillDown(){
 			var posTracker = skillTargetIndex + 1;
 			if(this.identifier[2] > 0){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
-					var addTarget = false;
+					// var addTarget = false;
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*-1);
-							addTarget = true;
-						}
+							// addTarget = true;
+							stageSide = -1;
+						}else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
@@ -1778,21 +1783,23 @@ function onSkillDown(){
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*-1);
-							addTarget = true;
+							// addTarget = true;
+							stageSide = -1;
 						}else if(posTracker == pos2){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*-1);
-							addTarget = true;
-						}
+							// addTarget = true;
+							stageSide = -1;
+						}else{stageSide = 0;}
 					}
-					if(addTarget){
+					if(stageSide != 0){
 						var alreadyAdded = false;
 						targetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*-1)	alreadyAdded = true
+							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
 						});
-						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*-1)
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
 					}					
 				});
 			}else{
@@ -1804,8 +1811,9 @@ function onSkillDown(){
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*1);	
-							addTarget = true;
-						}
+							// addTarget = true;
+							stageSide = 1;
+						}else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
@@ -1814,21 +1822,23 @@ function onSkillDown(){
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*1);	
-							addTarget = true;
+							// addTarget = true;
+							stageSide = 1;
 						}else if(posTracker == pos2){
 							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							// targetArray.push(arrayCreature.pos*1);	
-							addTarget = true;
-						}
+							// addTarget = true;
+							stageSide = 1;
+						}else{stageSide = 0;}
 					}
-					if(addTarget){
+					if(stageSide != 0){
 						var alreadyAdded = false;
 						targetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*1)	alreadyAdded = true
+							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
 						});
-						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*1)
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
 					}			
 				});
 			}
