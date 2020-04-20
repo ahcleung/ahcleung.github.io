@@ -1619,6 +1619,7 @@ function onSkillDown(){
 	skillContainerArray[this.identifier[0]].selected.visible = true;
 	console.log(this.identifier);
 	var column = false;
+	var several = false;
 	var heal = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
@@ -1634,6 +1635,9 @@ function onSkillDown(){
 			}else{
 				heal = false;	
 			}
+		}
+		if(tagName == "several"){
+			several = true;
 		}
 	});
 	
@@ -1759,7 +1763,7 @@ function onSkillDown(){
 		}
 		targetArray.push(columnArray);
 	}
-	
+
 	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 		if(skillTarget == 1){
 			var posTracker = skillTargetIndex + 1;
@@ -1785,11 +1789,12 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
-						var alreadyAdded = false;
-						targetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						});
-						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+						// var alreadyAdded = false;
+						// targetArray.forEach(targeted => {
+						// 	if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+						// });
+						// if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+						targetArray.push(arrayCreature.pos*stageSide);
 					}					
 				});
 			}else{
@@ -1814,16 +1819,27 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
-						var alreadyAdded = false;
-						targetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						});
-						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+						// var alreadyAdded = false;
+						// targetArray.forEach(targeted => {
+						// 	if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+						// });
+						// if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+
+						targetArray.push(arrayCreature.pos*stageSide);
 					}			
 				});
 			}
 		}
 	});
+
+
+	// if(several){
+	// 	skillsList.data.skills[this.identifier[1]].several.forEach(severalTargets => {
+	// 		if(severalTargets == 1){
+
+	// 		}
+	// 	});
+	// }
 
 	console.log(targetArray);
 }
