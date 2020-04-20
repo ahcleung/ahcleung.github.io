@@ -2019,6 +2019,7 @@ function onExtrasDown(){
 	}
 	console.log(identifier);
 	selectCreature(identifier);
+	turnArray.shift();
 }
 
 function onExtrasCancelDown(){
@@ -2078,8 +2079,22 @@ function onExtrasItemDown(){
 
 function onExtrasSkipDown(){
 	console.log("Extras Skip");
-	onScreenStats.visible = false;
-	consoleScreen.visible = false;
+	// onScreenStats.visible = false;
+	// consoleScreen.visible = false;
+
+	var identifier = [];
+	if(turnArray[0] > 0){
+		identifier[0] = 1;
+		identifier[1] = Math.abs(turnArray[0])-1;
+		// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+	}else{
+		identifier[0] = -1;
+		identifier[1] = Math.abs(turnArray[0])-1;
+		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+	}
+	console.log(identifier);
+	selectCreature(identifier);
+	turnArray.shift();
 }
 
 
