@@ -1751,12 +1751,14 @@ function onSkillDown(){
 			var posTracker = skillTargetIndex + 1;
 			if(this.identifier[2] > 0){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
+					var addTarget = false;
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*-1);
+							// targetArray.push(arrayCreature.pos*-1);
+							addTarget = true;
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -1765,24 +1767,34 @@ function onSkillDown(){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*-1);
+							// targetArray.push(arrayCreature.pos*-1);
+							addTarget = true;
 						}else if(posTracker == pos2){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*-1);
+							// targetArray.push(arrayCreature.pos*-1);
+							addTarget = true;
 						}
 					}
-					
+					if(addTarget){
+						var alreadyAdded = false;
+						targetArray.forEach(targeted => {
+							if(targeted == arrayCreature.pos*-1)	alreadyAdded = true
+						});
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*-1)
+					}					
 				});
 			}else{
 				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+					var addTarget = false;
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*1);	
+							// targetArray.push(arrayCreature.pos*1);	
+							addTarget = true;
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -1791,15 +1803,23 @@ function onSkillDown(){
 							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*1);	
+							// targetArray.push(arrayCreature.pos*1);	
+							addTarget = true;
 						}else if(posTracker == pos2){
 							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							targetArray.push(arrayCreature.pos*1);	
+							// targetArray.push(arrayCreature.pos*1);	
+							addTarget = true;
 						}
 					}
-								
+					if(addTarget){
+						var alreadyAdded = false;
+						targetArray.forEach(targeted => {
+							if(targeted == arrayCreature.pos*1)	alreadyAdded = true
+						});
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*-1)
+					}			
 				});
 			}
 		}
