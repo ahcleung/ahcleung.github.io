@@ -1825,7 +1825,7 @@ function onSkillDown(){
 		}
 	});
 
-	console.log("Targets: " + targetArray);
+	console.log(targetArray);
 }
 
 function onExtrasDown(){
