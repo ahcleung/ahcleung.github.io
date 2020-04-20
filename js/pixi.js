@@ -1672,6 +1672,7 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
+							if(stageSide != 0)	targetArray.push(temp*stageSide);
 						});
 					}else{
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1685,6 +1686,7 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
+							if(stageSide != 0)	targetArray.push(temp*stageSide);
 						});
 					}
 				}else{
@@ -1700,6 +1702,7 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
+							if(stageSide != 0)	targetArray.push(temp*stageSide);
 						});
 					}else{
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1713,10 +1716,11 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
+							if(stageSide != 0)	targetArray.push(temp*stageSide);
 						});
 					}
 				}
-				if(stageSide != 0)	targetArray.push(temp*stageSide);
+				
 			}
 			// console.log("Targets: " + targetArray);
 		}
@@ -1741,6 +1745,7 @@ function onSkillDown(){
 							}
 							stageSide = 1;
 						}else{stageSide = 0;}
+						if(stageSide != 0)	targetArray.push(temp*stageSide);
 					});
 				}else{
 					arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1753,9 +1758,10 @@ function onSkillDown(){
 							}
 							stageSide = -1;
 						}else{stageSide = 0;}
+						if(stageSide != 0)	targetArray.push(temp*stageSide);
 					});
 				}
-				targetArray.push(temp*stageSide);
+				// targetArray.push(temp*stageSide);
 			}			
 		}
 	}
