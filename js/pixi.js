@@ -201,6 +201,7 @@ const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
 const extrasArray = [];			//Array of extras menu buttons
 var turnArray = [];
+var targetArray = [];
 
 const heroContainerArray = [];			//Array of hero sprite containers
 const enemyContainerArray = [];			//Array of enemy sprite containers
@@ -1638,7 +1639,7 @@ function onSkillDown(){
 		}
 	});
 	
-	var targetArray = [];
+	targetArray = [];
 	var stageSide = 0;
 	if(column){
 		//Ahead
