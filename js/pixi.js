@@ -1571,6 +1571,15 @@ function onButtonDown(){
 function onCreatureDown(){
 	selectedVita = this.identifier[0] * (this.identifier[1]+1);
 	console.log(selectedVita);
+	var correctTarget = false;
+	targetArray.forEach(targeted => {
+		if(targeted == selectedVita)	correctTarget = true
+	});
+	if(correctTarget){
+		console.log("Yep, correct target");
+	}else{
+		console.log("Invalid target");
+	}
 }
 
 
