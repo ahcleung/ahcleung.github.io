@@ -2092,7 +2092,7 @@ function onExtrasSkipDown(){
 		identifier[1] = Math.abs(turnArray[0])-1;
 		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 	}
-	console.log(identifier);
+	// console.log(identifier);
 	selectCreature(identifier);
 	turnArray.shift();
 }
@@ -2154,7 +2154,7 @@ function selectCreature(identifier){
 		}
 	}
 	console.log("///////////////////////////////////////////////");
-	console.log(currPos);
+	console.log(identifier);
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
@@ -2209,7 +2209,7 @@ function selectCreature(identifier){
 			}
 		});
 		
-		console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
+		// console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
 		var column = false;
 		skillsList.data.skills[skillID].tags.forEach(tagName =>{
 			if(tagName == "column"){
@@ -2236,7 +2236,7 @@ function selectCreature(identifier){
 					}
 				});
 			}
-			console.log(skillsList.data.skills[skillID][tagName]);
+			// console.log(skillsList.data.skills[skillID][tagName]);
 		});
 		
 		if(column){
@@ -2253,8 +2253,5 @@ function selectCreature(identifier){
 				}
 			});
 		}
-// 		console.log(index + " Position: " + skillsList.data.skills[skillID].position + " |Target: " + skillsList.data.skills[skillID].target);
 	});	
-	
-// 	skillContainerArray[0].posMarkerArray[0].visible = false;
 }
