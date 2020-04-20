@@ -1753,47 +1753,53 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*-1);
 						}else if(posTracker == pos2){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 // 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*-1);
 						}
 					}
-					targetArray.push(arrayCreature.pos*-1);
+					
 				});
 			}else{
 				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*1);	
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*1);	
 						}else if(posTracker == pos2){
-							// console.log("Targeted: " + arrayCreature.name);
+							console.log(arrayCreature.name);
 // 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+							targetArray.push(arrayCreature.pos*1);	
 						}
 					}
-					targetArray.push(arrayCreature.pos*1);				
+								
 				});
 			}
 		}
