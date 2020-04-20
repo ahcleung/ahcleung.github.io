@@ -1360,7 +1360,8 @@ function resizeHP(roster, item, index){
 // 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
-				item.x = resizeWidth + healthSpacing * (1 - switcher);
+				if(arrayHero[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+				else 	item.x = 0
 // 				moveHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
