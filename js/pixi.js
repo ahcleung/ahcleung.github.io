@@ -211,7 +211,7 @@ const skillContainerArray = [];			//Array of skill containers
 
 const hero = [];
 hero[0] = {
-	id: 11, level: 50, 
+	id: 2, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 40
 };
@@ -221,7 +221,7 @@ hero[1] = {
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 39
 };
 hero[2] = {
-	id: 2, level: 45, 
+	id: 11, level: 45, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47
 };
@@ -1360,7 +1360,7 @@ function resizeHP(roster, item, index){
 // 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
 				break;
 			case 3:
-				item.x = resizeWidth + healthSpacing;
+				item.x = resizeWidth + healthSpacing * (1 - switcher);
 // 				moveHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
 				break;
 			case 4:
