@@ -1640,9 +1640,10 @@ function onSkillDown(){
 	targetArray = [];
 	var stageSide = 0;
 	if(column){
+		var columnArray = [];
 		//Ahead
-		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){			
-			var switchSide = false;			
+		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
+			var switchSide = false;
 			if(this.identifier[2] > 0){
 				var temp = arrayHero[this.identifier[3]].pos;
 			}else{
@@ -1669,7 +1670,7 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+							if(stageSide != 0)	columnArray.push(temp*stageSide);
 						});
 					}else{
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1682,7 +1683,7 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+							if(stageSide != 0)	columnArray.push(temp*stageSide);
 						});
 					}
 				}else{
@@ -1697,7 +1698,7 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+							if(stageSide != 0)	columnArray.push(temp*stageSide);
 						});
 					}else{
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1710,12 +1711,13 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+							if(stageSide != 0)	columnArray.push(temp*stageSide);
 						});
 					}
 				}
 				
 			}
+			
 		}
 		//Behind
 		else{
@@ -1737,7 +1739,7 @@ function onSkillDown(){
 							}
 							stageSide = 1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+						if(stageSide != 0)	columnArray.push(temp*stageSide);
 					});
 				}else{
 					arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -1750,11 +1752,12 @@ function onSkillDown(){
 							}
 							stageSide = -1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	targetArray[0].push(temp*stageSide);
+						if(stageSide != 0)	columnArray.push(temp*stageSide);
 					});
 				}
 			}			
 		}
+		targetArray.push(columnArray);
 	}
 	
 	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
