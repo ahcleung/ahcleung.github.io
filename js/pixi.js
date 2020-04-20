@@ -1791,12 +1791,12 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
-						// var alreadyAdded = false;
-						// targetArray.forEach(targeted => {
-						// 	if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						// });
-						// if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
-						targetArray.push(arrayCreature.pos*stageSide);
+						var alreadyAdded = false;
+						targetArray.forEach(targeted => {
+							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+						});
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+						// targetArray.push(arrayCreature.pos*stageSide);
 					}					
 				});
 			}else{
@@ -1821,13 +1821,13 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
-						// var alreadyAdded = false;
-						// targetArray.forEach(targeted => {
-						// 	if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						// });
-						// if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
+						var alreadyAdded = false;
+						targetArray.forEach(targeted => {
+							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+						});
+						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
 
-						targetArray.push(arrayCreature.pos*stageSide);
+						// targetArray.push(arrayCreature.pos*stageSide);
 					}			
 				});
 			}
