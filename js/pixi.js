@@ -240,7 +240,7 @@ enemy[0] = {
 };
 enemy[1] = {
 	id: 8, level: 46, 
-	skill1: 4, skill2: 10, skill3: 1, skill4: 8,
+	skill1: 4, skill2: 10, skill3: 11, skill4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 53, statSDEF: 0, statSPD: 55
 };
 enemy[2] = {
