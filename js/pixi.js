@@ -1841,6 +1841,7 @@ function onSkillDown(){
 		}
 	});
 
+	console.log(targetArray);
 	//targetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
 	//[001]
