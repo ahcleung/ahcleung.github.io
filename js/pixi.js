@@ -1858,8 +1858,40 @@ function onSkillDown(){
 		// 	}
 		// });
 		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
-
-		if(joinedSeveral == "1,0,1"){
+		if(joinedSeveral == "0,0,1"){
+			var array1 = [];
+			if(selectedVita > 0){
+				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+							array1.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+							array1.push(arrayCreature.pos);
+						}
+					}
+				});
+			}else{
+				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+							array1.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+							array1.push(arrayCreature.pos);
+						}
+					}
+				});
+			}
+			targetArray = [];
+			targetArray = [array1];
+		}else if(joinedSeveral == "1,0,1"){
 			// console.log("it worky");
 			var array1 = [];
 			var array2 = [];
