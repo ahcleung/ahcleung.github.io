@@ -285,7 +285,7 @@
 				1,1,1,1
 			],
 			"target": [
-				1,1,1,0
+				1,1,1,1
 			],
 			"tags":[
 				"several"
@@ -298,7 +298,7 @@
 			"displace": [0,0],
 			"column": [0,0,0,0],
 			"statchange" : [0,0],
-			"several":[1,1,0]
+			"several":[1,0,1]
 		}
 	]
 }
