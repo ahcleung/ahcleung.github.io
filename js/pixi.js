@@ -1841,7 +1841,7 @@ function onSkillDown(){
 		}
 	});
 
-	console.log(targetArray);
+	// console.log(targetArray);
 	//targetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
 	//[001]
@@ -1858,43 +1858,74 @@ function onSkillDown(){
 		// 	}
 		// });
 		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
+
 		if(joinedSeveral == "1,0,1"){
-			console.log("it worky");
+			// console.log("it worky");
 			var array1 = [];
-			arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
-				if(arrayCreature.size == 1){
-					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-						array1.push(arrayCreature.pos);
-					}
-				}else if(arrayCreature.size == 2){
-					var pos1 = arrayCreature.pos;
-					var pos2 = arrayCreature.pos + 1;
-					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-						array1.push(arrayCreature.pos);
-					}
-				}
-			});
-			severalArray.push(array1);
-
 			var array2 = [];
-			arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
-				if(arrayCreature.size == 1){
-					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-						array2.push(arrayCreature.pos);
+			if(selectedVita > 0){
+				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+							array1.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+							array1.push(arrayCreature.pos);
+						}
 					}
-				}else if(arrayCreature.size == 2){
-					var pos1 = arrayCreature.pos;
-					var pos2 = arrayCreature.pos + 1;
-					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-						array2.push(arrayCreature.pos);
+				});
+				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+							array2.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+							array2.push(arrayCreature.pos);
+						}
 					}
-				}
-			});
+				});
+			}else{
+				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+							array1.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+							array1.push(arrayCreature.pos);
+						}
+					}
+				});
+				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+					if(arrayCreature.size == 1){
+						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+							array2.push(arrayCreature.pos);
+						}
+					}else if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+							array2.push(arrayCreature.pos);
+						}
+					}
+				});
+			}
+			severalArray.push(array1);
 			severalArray.push(array2);
-
+			targetArray = [];
+			targetArray = [array1, array2];
 		}
-		console.log(severalArray);
 	}
+
+	console.log(targetArray);
 }
 
 function onExtrasDown(){
@@ -2050,6 +2081,7 @@ function onExtrasSkipDown(){
 function selectCreature(identifier){	
 	// console.log("Creature speed:" + arrayHero[identifier[1]].statMod[6]);
 	selectedVita = identifier[0] * (identifier[1]+1);
+	console.log("Turn: " + selectedVita);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
