@@ -1593,7 +1593,7 @@ function onCreatureDown(){
 		}
 	});
 	if(correctTarget){
-		console.log("Yep, correct target");
+		console.log(selectedVita + "attacks: " + targetArray[targetedIndex]);
 	}else{
 		console.log("Invalid target");
 	}
