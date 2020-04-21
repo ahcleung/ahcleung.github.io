@@ -1857,6 +1857,7 @@ function onSkillDown(){
 			if(severalTargets == 1){
 			}
 		});
+		console.log(skillsList.data.skills[this.identifier[1]].several.join());
 	}
 }
 
