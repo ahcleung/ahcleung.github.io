@@ -1872,13 +1872,13 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}
 				});
@@ -1905,13 +1905,13 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}
 				});
@@ -1938,13 +1938,13 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}
 				});
@@ -1973,26 +1973,26 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push(arrayCreature.pos);
+							array1.push(arrayCreature.pos*-1);
 						}
 					}
 				});
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array2.push(arrayCreature.pos);
+							array2.push(arrayCreature.pos*-1);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array2.push(arrayCreature.pos);
+							array2.push(arrayCreature.pos*-1);
 						}
 					}
 				});
