@@ -1852,7 +1852,7 @@ function onSkillDown(){
 	//[110]
 	//[111]
 	if(several){
-		// var severalArray = [];
+		var severalArray = [];
 		// skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
 		// 	if(severalTargets == 1){
 		// 	}
@@ -1860,8 +1860,40 @@ function onSkillDown(){
 		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
 		if(joinedSeveral == "1,0,1"){
 			console.log("it worky");
+			var array1 = [];
+			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+				if(arrayCreature.size == 1){
+					if(arrayCreatire.pos == 1 || arrayCreatire.pos == 2){
+						array1.push(arrayCreature.pos);
+					}
+				}else if(arrayCreature.size == 2){
+					var pos1 = arrayCreature.pos;
+					var pos2 = arrayCreature.pos + 1;
+					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+						array1.push(arrayCreature.pos);
+					}
+				}
+			});
+			severalArray.push(array1);
+
+			var array2 = [];
+			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+				if(arrayCreature.size == 1){
+					if(arrayCreatire.pos == 3 || arrayCreatire.pos == 4){
+						array2.push(arrayCreature.pos);
+					}
+				}else if(arrayCreature.size == 2){
+					var pos1 = arrayCreature.pos;
+					var pos2 = arrayCreature.pos + 1;
+					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+						array2.push(arrayCreature.pos);
+					}
+				}
+			});
+			severalArray.push(array2);
+
 		}
-		// console.log(skillsList.data.skills[this.identifier[1]].several.join());
+		console.log(severalArray);
 	}
 }
 
