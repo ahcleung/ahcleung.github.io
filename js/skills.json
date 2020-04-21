@@ -298,7 +298,7 @@
 			"displace": [0,0],
 			"column": [0,0,0,0],
 			"statchange" : [0,0],
-			"several":[1,0,1]
+			"several":[0,0,1]
 		}
 	]
 }
