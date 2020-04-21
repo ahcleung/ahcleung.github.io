@@ -192,6 +192,7 @@ var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 
 var selectedVita = 0;
+var selectedSkill = 0;
 
 // var db = firebase.firestore();
 
@@ -1596,7 +1597,7 @@ function onCreatureDown(){
 		}
 	});
 	if(correctTarget){
-		console.log(selectedVita + " attacks: " + targetArray[clickedTarget]);
+		console.log(selectedVita + " attacks: " + targetArray[clickedTarget] + " with: " + skillsList.data.skills[selectedSkill].name);
 		var identifier = [];
 		if(turnArray[0] > 0){
 			identifier[0] = 1;
@@ -1649,6 +1650,7 @@ function onSkillDown(){
 		skillContainer.selected.visible = false;
 	});
 	skillContainerArray[this.identifier[0]].selected.visible = true;
+	selectedSkill = this.identifier[1];
 	console.log(this.identifier);
 	var column = false;
 	var several = false;
