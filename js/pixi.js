@@ -1596,7 +1596,20 @@ function onCreatureDown(){
 		}
 	});
 	if(correctTarget){
-		console.log(selectedVita + "attacks: " + targetArray[clickedTarget]);
+		console.log(selectedVita + " attacks: " + targetArray[clickedTarget]);
+		var identifier = [];
+		if(turnArray[0] > 0){
+			identifier[0] = 1;
+			identifier[1] = Math.abs(turnArray[0])-1;
+			// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+		}else{
+			identifier[0] = -1;
+			identifier[1] = Math.abs(turnArray[0])-1;
+			// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+		}
+		// console.log(identifier);
+		selectCreature(identifier);
+		turnArray.shift();
 	}else{
 		console.log("Invalid target");
 	}
@@ -2195,19 +2208,7 @@ function onExtrasSkipDown(){
 	// onScreenStats.visible = false;
 	// consoleScreen.visible = false;
 
-	var identifier = [];
-	if(turnArray[0] > 0){
-		identifier[0] = 1;
-		identifier[1] = Math.abs(turnArray[0])-1;
-		// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
-	}else{
-		identifier[0] = -1;
-		identifier[1] = Math.abs(turnArray[0])-1;
-		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
-	}
-	// console.log(identifier);
-	selectCreature(identifier);
-	turnArray.shift();
+	
 }
 
 
