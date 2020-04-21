@@ -1764,17 +1764,23 @@ function onSkillDown(){
 		targetArray.push(columnArray);
 	}
 
+	var severalArray1 = [];
+	var severalArray2 = [];
+	//for each target in the skill
 	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+		//if the position is a valid target
 		if(skillTarget == 1){
 			var posTracker = skillTargetIndex + 1;
+			//if targeting enemies or heroes
 			if(this.identifier[2] > 0){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							console.log(arrayCreature.name);
-							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;						
 							stageSide = -1;
-						}else{stageSide = 0;}
+						}
+						else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
@@ -1837,55 +1843,20 @@ function onSkillDown(){
 
 	//targetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
-	// if(several){
-	// 	var severalArray = [];
-	// 	skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
-	// 		if(severalTargets == 1){
-				// targetArray.forEach(targeted => {
-				// 	if(targeted > 0){
-				// 		if(arrayHero[Math.abs(targeted)-1].size == 2){
-				// 			if(targetIndex == 0){
-				// 				// 1&2
-				// 			}else if(targetIndex == 1){
-				// 				// 2&3
-				// 			}else{
-				// 				// 3&4
-				// 			}
-				// 		}else{
-				// 			if(targetIndex == 0){
-				// 				// 1&2
-				// 			}else if(targetIndex == 1){
-				// 				// 2&3
-				// 			}else{
-				// 				// 3&4
-				// 			}
-				// 		}
-				// 	}else{
-				// 		if(arrayEnemy[Math.abs(targeted)-1].size == 2){
-				// 			if(targetIndex == 0){
-				// 				// 1&2
-				// 			}else if(targetIndex == 1){
-				// 				// 2&3
-				// 			}else{
-				// 				// 3&4
-				// 			}
-				// 		}else{
-				// 			if(targetIndex == 0){
-				// 				// 1&2
-				// 			}else if(targetIndex == 1){
-				// 				// 2&3
-				// 			}else{
-				// 				// 3&4
-				// 			}
-				// 		}
-				// 	}
-				// });
-				// console.log(targetIndex);
-	// 		}
-	// 	});
-	// }
-
-	console.log(targetArray);
+	//[001]
+	//[010]
+	//[011]
+	//[100]
+	//[101]
+	//[110]
+	//[111]
+	if(several){
+		var severalArray = [];
+		skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
+			if(severalTargets == 1){
+			}
+		});
+	}
 }
 
 function onExtrasDown(){
