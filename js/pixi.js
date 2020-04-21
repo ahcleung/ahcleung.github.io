@@ -1852,12 +1852,16 @@ function onSkillDown(){
 	//[110]
 	//[111]
 	if(several){
-		var severalArray = [];
-		skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
-			if(severalTargets == 1){
-			}
-		});
-		console.log(skillsList.data.skills[this.identifier[1]].several.join());
+		// var severalArray = [];
+		// skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
+		// 	if(severalTargets == 1){
+		// 	}
+		// });
+		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
+		if(joinedSeveral == "1,0,1"){
+			console.log("it worky");
+		}
+		// console.log(skillsList.data.skills[this.identifier[1]].several.join());
 	}
 }
 
