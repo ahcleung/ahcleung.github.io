@@ -1576,8 +1576,11 @@ function onCreatureDown(){
 	console.log(selectedVita);
 	var correctTarget = false;
 	targetArray.forEach(targeted => {
+		console.log("Checking targeted");
 		if(Array.isArray(targeted)){
+			console.log("Is Array");
 			targeted.forEach(arrayElement => {
+				console.log("Each array element");
 				if(arrayElement == selectedVita)	correctTarget = true
 			});
 		}
