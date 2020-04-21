@@ -1863,7 +1863,7 @@ function onSkillDown(){
 			var array1 = [];
 			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
 				if(arrayCreature.size == 1){
-					if(arrayCreatire.pos == 1 || arrayCreatire.pos == 2){
+					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
 						array1.push(arrayCreature.pos);
 					}
 				}else if(arrayCreature.size == 2){
@@ -1879,7 +1879,7 @@ function onSkillDown(){
 			var array2 = [];
 			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
 				if(arrayCreature.size == 1){
-					if(arrayCreatire.pos == 3 || arrayCreatire.pos == 4){
+					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
 						array2.push(arrayCreature.pos);
 					}
 				}else if(arrayCreature.size == 2){
