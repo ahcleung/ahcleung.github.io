@@ -1572,8 +1572,8 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	// selectedVita = this.identifier[0] * (this.identifier[2]);
-	// console.log(selectedVita);
+	attackedVita = this.identifier[0] * (this.identifier[2]);
+	console.log(attackedVita);
 	var correctTarget = false;
 	targetArray.forEach((targeted, targetedIndex) => {
 		console.log("Checking targeted");
@@ -1581,13 +1581,13 @@ function onCreatureDown(){
 			console.log("Is Array");
 			targeted.forEach(arrayElement => {
 				console.log("Each array element");
-				if(arrayElement == selectedVita){
+				if(arrayElement == attackedVita){
 					correctTarget = true;
 					console.log("Target index: " + targetedIndex);
 				}	
 			});
 		}
-		if(targeted == selectedVita){
+		if(targeted == attackedVita){
 			correctTarget = true;
 			console.log("Target index: " + targetedIndex);
 		}
