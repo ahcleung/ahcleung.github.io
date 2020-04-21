@@ -1861,7 +1861,7 @@ function onSkillDown(){
 		if(joinedSeveral == "1,0,1"){
 			console.log("it worky");
 			var array1 = [];
-			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+			arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 				if(arrayCreature.size == 1){
 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
 						array1.push(arrayCreature.pos);
@@ -1877,7 +1877,7 @@ function onSkillDown(){
 			severalArray.push(array1);
 
 			var array2 = [];
-			arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
+			arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 				if(arrayCreature.size == 1){
 					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
 						array2.push(arrayCreature.pos);
