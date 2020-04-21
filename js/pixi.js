@@ -1573,46 +1573,49 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	attackedVita = this.identifier[0] * (this.identifier[2]);
-	console.log(attackedVita);
-	var correctTarget = false;
-	var clickedTarget = 0;
-	targetArray.forEach((targeted, targetedIndex) => {
-		// console.log("Checking targeted");
-		if(Array.isArray(targeted)){
-			// console.log("Is Array");
-			targeted.forEach(arrayElement => {
-				// console.log("Each array element");
-				if(arrayElement == attackedVita){
-					correctTarget = true;
-					console.log("Target index: " + targetedIndex);
-					clickedTarget = targetedIndex;
-				}	
-			});
-		}
-		if(targeted == attackedVita){
-			correctTarget = true;
-			clickedTarget = targetedIndex;
-			// console.log("Target index: " + targetedIndex);
-		}
-	});
-	if(correctTarget){
-		console.log(selectedVita + " attacks: " + targetArray[clickedTarget] + " with: " + skillsList.data.skills[selectedSkill].name);
-		var identifier = [];
-		if(turnArray[0] > 0){
-			identifier[0] = 1;
-			identifier[1] = Math.abs(turnArray[0])-1;
-			// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+	if(selectedSkill > -1){
+		attackedVita = this.identifier[0] * (this.identifier[2]);
+		console.log(attackedVita);
+		var correctTarget = false;
+		var clickedTarget = 0;
+		targetArray.forEach((targeted, targetedIndex) => {
+			// console.log("Checking targeted");
+			if(Array.isArray(targeted)){
+				// console.log("Is Array");
+				targeted.forEach(arrayElement => {
+					// console.log("Each array element");
+					if(arrayElement == attackedVita){
+						correctTarget = true;
+						console.log("Target index: " + targetedIndex);
+						clickedTarget = targetedIndex;
+					}	
+				});
+			}
+			if(targeted == attackedVita){
+				correctTarget = true;
+				clickedTarget = targetedIndex;
+				// console.log("Target index: " + targetedIndex);
+			}
+		});
+		if(correctTarget){
+			console.log(selectedVita + " attacks: " + targetArray[clickedTarget] + " with: " + skillsList.data.skills[selectedSkill].name);
+			var identifier = [];
+			if(turnArray[0] > 0){
+				identifier[0] = 1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+				// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			}else{
+				identifier[0] = -1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			}
+			// console.log(identifier);
+			selectCreature(identifier);
+			turnArray.shift();
+			selectedSkill = -1;
 		}else{
-			identifier[0] = -1;
-			identifier[1] = Math.abs(turnArray[0])-1;
-			// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			console.log("Invalid target");
 		}
-		// console.log(identifier);
-		selectCreature(identifier);
-		turnArray.shift();
-	}else{
-		console.log("Invalid target");
 	}
 }
 
