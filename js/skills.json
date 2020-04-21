@@ -282,7 +282,7 @@
 			"power": 60,
 			"accuracy": 70,
 			"position": [
-				0,0,1,1
+				1,1,1,1
 			],
 			"target": [
 				1,1,1,1
