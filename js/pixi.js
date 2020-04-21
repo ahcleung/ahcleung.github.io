@@ -1721,9 +1721,7 @@ function onSkillDown(){
 						});
 					}
 				}
-				
 			}
-			
 		}
 		//Behind
 		else{
@@ -1780,15 +1778,17 @@ function onSkillDown(){
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
-						if(posTracker == pos1){
+						if(posTracker == pos1 || posTracker == pos2){
 							console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = -1;
-						}else if(posTracker == pos2){
-							console.log(arrayCreature.name);
-							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
-							stageSide = -1;
-						}else{stageSide = 0;}
+						}
+						// else if(posTracker == pos2){
+						// 	console.log(arrayCreature.name);
+						// 	hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
+						// 	stageSide = -1;
+						// }
+						else{stageSide = 0;}
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
@@ -1810,15 +1810,17 @@ function onSkillDown(){
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
-						if(posTracker == pos1){
+						if(posTracker == pos1 || posTracker == pos2){
 							console.log(arrayCreature.name);
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = 1;
-						}else if(posTracker == pos2){
-							console.log(arrayCreature.name);
-							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-							stageSide = 1;
-						}else{stageSide = 0;}
+						}
+						// else if(posTracker == pos2){
+						// 	console.log(arrayCreature.name);
+						// 	hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
+						// 	stageSide = 1;
+						// }
+						else{stageSide = 0;}
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
@@ -1826,7 +1828,6 @@ function onSkillDown(){
 							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
 						});
 						if(!alreadyAdded)	targetArray.push(arrayCreature.pos*stageSide)
-
 						// targetArray.push(arrayCreature.pos*stageSide);
 					}			
 				});
@@ -1834,11 +1835,52 @@ function onSkillDown(){
 		}
 	});
 
-
+	//targetArray [1, 2, 4] = [[1,2],[2,4]]
+	//several [1, 0, 1]
 	// if(several){
-	// 	skillsList.data.skills[this.identifier[1]].several.forEach(severalTargets => {
+	// 	var severalArray = [];
+	// 	skillsList.data.skills[this.identifier[1]].several.forEach((severalTargets, targetIndex) => {
 	// 		if(severalTargets == 1){
-
+				// targetArray.forEach(targeted => {
+				// 	if(targeted > 0){
+				// 		if(arrayHero[Math.abs(targeted)-1].size == 2){
+				// 			if(targetIndex == 0){
+				// 				// 1&2
+				// 			}else if(targetIndex == 1){
+				// 				// 2&3
+				// 			}else{
+				// 				// 3&4
+				// 			}
+				// 		}else{
+				// 			if(targetIndex == 0){
+				// 				// 1&2
+				// 			}else if(targetIndex == 1){
+				// 				// 2&3
+				// 			}else{
+				// 				// 3&4
+				// 			}
+				// 		}
+				// 	}else{
+				// 		if(arrayEnemy[Math.abs(targeted)-1].size == 2){
+				// 			if(targetIndex == 0){
+				// 				// 1&2
+				// 			}else if(targetIndex == 1){
+				// 				// 2&3
+				// 			}else{
+				// 				// 3&4
+				// 			}
+				// 		}else{
+				// 			if(targetIndex == 0){
+				// 				// 1&2
+				// 			}else if(targetIndex == 1){
+				// 				// 2&3
+				// 			}else{
+				// 				// 3&4
+				// 			}
+				// 		}
+				// 	}
+				// });
+				// console.log(targetIndex);
 	// 		}
 	// 	});
 	// }
