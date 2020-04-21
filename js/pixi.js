@@ -1572,8 +1572,8 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	selectedVita = this.identifier[0] * (this.identifier[2]);
-	console.log(selectedVita);
+	// selectedVita = this.identifier[0] * (this.identifier[2]);
+	// console.log(selectedVita);
 	var correctTarget = false;
 	targetArray.forEach((targeted, targetedIndex) => {
 		console.log("Checking targeted");
