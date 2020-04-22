@@ -1625,6 +1625,7 @@ function onCreatureDown(){
 					var attack = 0;
 					var defense = 0;
 					var defendElements = [];
+					var effectiveness = 1;
 					if(selectedVita > 0){
 						level = arrayHero[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -1704,18 +1705,22 @@ function onCreatureDown(){
 							defendElements.push(element);
 						});
 					}
+					defendElements.forEach(defendElement=>{
+						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+						// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
+					});
+
 					console.log("Level: " + level);
 					console.log("Attack: " + attack);
 					console.log("Defense: " + defense);
 					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
 					console.log("Defender element: " + defendElements);
-					defendElements.forEach(defendElement=>{
-						console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
-					});
+					console.log("Effectiveness: " + effectiveness);
+					
 					// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1].name);
 					//var effectiveness = targetElement1[skillElement] * targetElement2[skillElement];
 					// elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][]
-					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2));
+					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 					// damage = (((((2*level)/5)+2*skillsList.data.skills[selectedSkill].power*(attack/defense))/150)+2);
 					console.log(targeted + " takes " + damage + " damage");
 				});
