@@ -1638,7 +1638,7 @@ function onCreatureDown(){
 							attack = arrayEnemy[selectedIndex].statCalc[4];
 						}
 					}
-
+					
 					if(targeted > 0){
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = arrayHero[targetedIndex].statCalc[3];
@@ -1654,7 +1654,10 @@ function onCreatureDown(){
 							defense = arrayEnemy[targetedIndex].statCalc[5];
 						}
 					}
-
+					console.log("Level: " + level);
+					console.log("Attack: " + attack);
+					console.log("Defense: " + defense);
+					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
 					damage = (((((2*level)/5) + 2 * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2) * (Math.random() * (1 - 0.85) + 0.85);
 					console.log(targeted + " takes " + damage + " damage");
 				});
