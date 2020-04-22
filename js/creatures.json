@@ -4,7 +4,9 @@
          "name": "Apock",
          "code": "gorilla1",
          "frames": 60,
-         "elements": [4],
+         "elements": [
+            "earth"
+         ],
          "hp": 60,
          "dodge": 7,
          "patk": 68,
@@ -18,7 +20,9 @@
          "name": "Goroka",
          "code": "gorilla2",
          "frames": 60,
-         "elements": [4],
+         "elements": [
+            "earth"
+         ],
          "hp": 75,
          "dodge": 8,
          "patk": 80,
@@ -32,7 +36,10 @@
          "name": "Gorillder",
          "code": "gorilla3",
          "frames": 46,
-         "elements": [4,8],
+         "elements": [
+            "earth",
+            "spirit"
+         ],
          "hp": 99,
          "dodge": 8,
          "patk": 95,
@@ -46,7 +53,9 @@
          "name": "Litoon",
          "code": "racoon1",
          "frames": 60,
-         "elements": [5],
+         "elements": [
+            "lightning"
+         ],
          "hp": 57,
          "dodge": 10,
          "patk": 61,
@@ -60,7 +69,10 @@
          "name": "Lynite",
          "code": "racoon2",
          "frames": 60,
-         "elements": [5,9],
+         "elements": [
+            "lightning",
+            "shadow"
+         ],
          "hp": 64,
          "dodge": 12,
          "patk": 78,
@@ -74,7 +86,10 @@
          "name": "Lyncoon",
          "code": "racoon3",
          "frames": 60,
-         "elements": [5,9],
+         "elements": [
+            "lightning",
+            "shadow"
+         ],
          "hp": 75,
          "dodge": 15,
          "patk": 90,
@@ -88,7 +103,9 @@
          "name": "Zeppole",
          "code": "toad1",
          "frames": 60,
-         "elements": [6],
+         "elements": [
+            "wind"
+         ],
          "hp": 55,
          "dodge": 8,
          "patk": 43,
@@ -102,7 +119,9 @@
          "name": "Zepplet",
          "code": "toad2",
          "frames": 60,
-         "elements": [6],
+         "elements": [
+            "wind"
+         ],
          "hp": 70,
          "dodge": 9,
          "patk": 53,
@@ -133,7 +152,10 @@
          "name": "Veehel",
          "code": "hel1",
          "frames": 48,
-         "elements": [9,7],
+         "elements": [
+            "shadow",
+            "toxic"
+         ],
          "hp": 59,
          "dodge": 7,
          "patk": 70,
@@ -147,7 +169,10 @@
          "name": "Umbrahel",
          "code": "hel2",
          "frames": 55,
-         "elements": [9,7],
+         "elements": [
+            "shadow",
+            "toxic"
+         ],
          "hp": 76,
          "dodge": 8,
          "patk": 89,
@@ -161,7 +186,10 @@
          "name": "Tannjoltr",
          "code": "goat2_1",
          "frames": 90,
-         "elements": [6,5],
+         "elements": [
+            "wind",
+            "lightning"
+         ],
          "hp": 86,
          "dodge": 9,
          "patk": 74,
@@ -175,7 +203,10 @@
          "name": "Tannrisear",
          "code": "goat2_2",
          "frames": 90,
-         "elements": [6,3],
+         "elements": [
+            "wind",
+            "fire"
+         ],
          "hp": 86,
          "dodge": 9,
          "patk": 74,
