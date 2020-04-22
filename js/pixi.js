@@ -1658,7 +1658,7 @@ function onCreatureDown(){
 					console.log("Attack: " + attack);
 					console.log("Defense: " + defense);
 					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-					damage = (((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2);
+					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2));
 					// damage = (((((2*level)/5)+2*skillsList.data.skills[selectedSkill].power*(attack/defense))/150)+2);
 					console.log(targeted + " takes " + damage + " damage");
 				});
