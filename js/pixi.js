@@ -1,3 +1,16 @@
+/*======================================================================================
+*
+*FileName:        pixi.js
+*Project:         Project Elements
+*Version:         1.02
+*
+*Author:          Alvin Leung <hello@ahcleung.com>
+*Created on:      2019/12/06
+*
+*Description:     Project Elements production code
+*
+======================================================================================*/
+
 let Application = PIXI.Application,
 	loader = PIXI.Loader.shared,
 	resources = PIXI.Loader.shared.resources,
@@ -1611,6 +1624,8 @@ function onCreatureDown(){
 				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 			}
 			// console.log(identifier);
+
+			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
 				selectCreature(identifier);	
 			}else{
