@@ -1612,7 +1612,18 @@ function onCreatureDown(){
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + " attacks index: " + validPositionTargetArray[clickedTarget] + " with: " + skillsList.data.skills[selectedSkill].name);
+			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validPositionTargetArray[clickedTarget]);
+
+			if(Array.isArray(validPositionTargetArray[clickedTarget])){
+				validPositionTargetArray[clickedTarget].forEach(element => {
+					console.log(element +  + " takes ## damage");
+				});
+			}else{
+				console.log(validPositionTargetArray[clickedTarget] + " takes ## damage");
+			}
+
+
+
 			var identifier = [];
 			if(turnArray[0] > 0){
 				identifier[0] = 1;
