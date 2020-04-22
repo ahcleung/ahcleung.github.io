@@ -926,7 +926,7 @@ function createSprite(direction, item, index){
 	healthBar.vital = vitalBar;
 	
 	let turnIndicator = new PIXI.Graphics();
-	turnIndicator.beginFill(0xFFB800);
+	turnIndicator.beginFill(0x0fffd5);
 	turnIndicator.drawRect(0, 0, (app.screen.width-320)/8, 5);
 	turnIndicator.endFill();
 	healthBar.addChild(turnIndicator);
@@ -1641,20 +1641,20 @@ function onCreatureDown(){
 
 
 function onHPDown(){
-	console.log("HP:" + this.identifier[0]);
+	console.log("HP:" + this.identifier[0] * (this.identifier[1]+1));
 	
-	hpHeroContainerArray.forEach(hpContainer=>{
-		hpContainer.turn.visible = false;
-	});
-	hpEnemyContainerArray.forEach(hpContainer=>{
-		hpContainer.turn.visible = false;
-	});
+	// hpHeroContainerArray.forEach(hpContainer=>{
+	// 	hpContainer.turn.visible = false;
+	// });
+	// hpEnemyContainerArray.forEach(hpContainer=>{
+	// 	hpContainer.turn.visible = false;
+	// });
 	
-	if(this.identifier[0] < 0){
-		hpEnemyContainerArray[this.identifier[1]].turn.visible = true;
-	}else{
-		hpHeroContainerArray[this.identifier[1]].turn.visible = true;
-	}
+	// if(this.identifier[0] < 0){
+	// 	hpEnemyContainerArray[this.identifier[1]].turn.visible = true;
+	// }else{
+	// 	hpHeroContainerArray[this.identifier[1]].turn.visible = true;
+	// }
 // 	hpHeroContainerArray[this.identifier[1]].selected = visible;
 }
 
