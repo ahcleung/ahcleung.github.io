@@ -48,16 +48,16 @@ loader
 		{name:'status_silenced', url:'img/status_silenced.png'},
 		{name:'status_stunned', url:'img/status_stunned.png'},
 		{name:'status_vital', url:'img/status_vital.png'},
-	
-		{name:'element_earth', url:'img/element_earth.png'},
-		{name:'element_fire', url:'img/element_fire.png'},
+		
 		{name:'element_flora', url:'img/element_flora.png'},
-		{name:'element_lightning', url:'img/element_lightning.png'},
-		{name:'element_shadow', url:'img/element_shadow.png'},
-		{name:'element_spirit', url:'img/element_spirit.png'},
-		{name:'element_toxic', url:'img/element_toxic.png'},
 		{name:'element_water', url:'img/element_water.png'},
+		{name:'element_fire', url:'img/element_fire.png'},
+		{name:'element_earth', url:'img/element_earth.png'},
+		{name:'element_lightning', url:'img/element_lightning.png'},
 		{name:'element_wind', url:'img/element_wind.png'},
+		{name:'element_toxic', url:'img/element_toxic.png'},
+		{name:'element_spirit', url:'img/element_spirit.png'},
+		{name:'element_shadow', url:'img/element_shadow.png'},
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -137,7 +137,7 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
-		this.statMod = [0, 0, 0, 0, 6, -6, 0];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
 			// [Math.floor(Math.random() * 14) + 1, 1],
 			// [Math.floor(Math.random() * 14) + 1, 3, 5],
@@ -180,6 +180,7 @@ class Creature{
 *	Declare  variables
 */
 const skillsList = resources["js/skills.json"];
+const elementList = resources["js/elements.json"];
 
 let state, onScreenStats, consoleScreen;
 
@@ -1622,6 +1623,7 @@ function onCreatureDown(){
 					var level = 0;
 					var attack = 0;
 					var defense = 0;
+					var defendElements = [];
 					if(selectedVita > 0){
 						level = arrayHero[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -1675,6 +1677,10 @@ function onCreatureDown(){
 								defense = defense * (2/(Math.abs(arrayHero[selectedIndex].statMod[5])+2));
 							}
 						}
+
+						arrayHero[targetedIndex].elements.forEach(element =>{
+							defendElements.push(element);
+						});
 						//else other
 					}else{
 						level = arrayEnemy[selectedIndex].level;
@@ -1693,11 +1699,18 @@ function onCreatureDown(){
 								defense = defense * (2/(Math.abs(arrayEnemy[selectedIndex].statMod[5])+2));
 							}
 						}
+						arrayEnemy[targetedIndex].elements.forEach(element =>{
+							defendElements.push(element);
+						});
 					}
 					console.log("Level: " + level);
 					console.log("Attack: " + attack);
 					console.log("Defense: " + defense);
 					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
+					console.log("Defender element: " + defendElements);
+					console.log("Skill element on water: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][2]);
+					//var effectiveness = targetElement1[skillElement] * targetElement2[skillElement];
+					//elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][]
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2));
 					// damage = (((((2*level)/5)+2*skillsList.data.skills[selectedSkill].power*(attack/defense))/150)+2);
 					console.log(targeted + " takes " + damage + " damage");
@@ -2392,31 +2405,31 @@ function selectCreature(identifier){
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
 			case 1:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
-				break;
-			case 2:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
-				break;
-			case 3:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
 				break;
+			case 2:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
+				break;
+			case 3:
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
+				break;
 			case 4:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_lightning.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 5:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_shadow.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_lightning.texture;
 				break;
 			case 6:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
 				break;
 			case 7:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
 				break;
 			case 8:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 9:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_shadow.texture;
 				break;
 			default:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
