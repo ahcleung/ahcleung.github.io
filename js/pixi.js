@@ -1616,7 +1616,47 @@ function onCreatureDown(){
 
 			if(Array.isArray(validPositionTargetArray[clickedTarget])){
 				validPositionTargetArray[clickedTarget].forEach(targeted => {
-					console.log(targeted + " takes ## damage");
+					var selectedIndex = Math.abs(selectedVita)-1;
+					var targetedIndex = Math.abs(targeted)-1;
+					var damage = 0;
+					var level = 0;
+					var attack = 0;
+					var defense = 0;
+					if(selectedVita > 0){
+						level = arrayHero[selectedIndex].level;
+						if(skillsList.data.skills[selectedSkill].type == "phy"){
+							attack = arrayHero[selectedIndex].statCalc[2];
+						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+							attack = arrayHero[selectedIndex].statCalc[4];
+						}
+						//else other
+					}else{
+						level = arrayEnemy[selectedIndex].level;
+						if(skillsList.data.skills[selectedSkill].type == "phy"){
+							attack = arrayEnemy[selectedIndex].statCalc[2];
+						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+							attack = arrayEnemy[selectedIndex].statCalc[4];
+						}
+					}
+
+					if(targeted > 0){
+						if(skillsList.data.skills[selectedSkill].type == "phy"){
+							defense = arrayHero[targetedIndex].statCalc[3];
+						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+							defense = arrayHero[targetedIndex].statCalc[5];
+						}
+						//else other
+					}else{
+						level = arrayEnemy[selectedIndex].level;
+						if(skillsList.data.skills[selectedSkill].type == "phy"){
+							defense = arrayEnemy[targetedIndex].statCalc[3];
+						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+							defense = arrayEnemy[targetedIndex].statCalc[5];
+						}
+					}
+
+					damage = (((((2*level)/5) + 2 * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2) * (Math.random() * (1 - 0.85) + 0.85);
+					console.log(targeted + " takes " + damage + " damage");
 				});
 			}else{
 				console.log(validPositionTargetArray[clickedTarget] + " takes ## damage");
