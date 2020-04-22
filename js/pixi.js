@@ -1589,7 +1589,7 @@ function onButtonDown(){
 function onCreatureDown(){
 	if(selectedSkill > -1){
 		attackedVita = this.identifier[0] * (this.identifier[2]);
-		console.log(attackedVita);
+		// console.log(attackedVita);
 		var correctTarget = false;
 		var clickedTarget = 0;
 		targetArray.forEach((targeted, targetedIndex) => {
@@ -1600,7 +1600,7 @@ function onCreatureDown(){
 					// console.log("Each array element");
 					if(arrayElement == attackedVita){
 						correctTarget = true;
-						console.log("Target index: " + targetedIndex);
+						// console.log("Target index: " + targetedIndex);
 						clickedTarget = targetedIndex;
 					}	
 				});
@@ -1674,7 +1674,7 @@ function onSkillDown(){
 	});
 	skillContainerArray[this.identifier[0]].selected.visible = true;
 	selectedSkill = this.identifier[1];
-	console.log(this.identifier);
+	// console.log(this.identifier);
 	var column = false;
 	var several = false;
 	var heal = false;
@@ -2195,11 +2195,11 @@ function calculateTurnOrder(){
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
 
-	console.log(arrayCalcSpeedSorted);
+	// console.log(arrayCalcSpeedSorted);
 	
 	arrayCalcSpeedSorted.sort(function(a, b){return b - a});
-	console.log("1: " + arrayCalcSpeedSorted);
-	console.log("2: " + arrayCalcSpeedPositions);
+	// console.log("1: " + arrayCalcSpeedSorted);
+	// console.log("2: " + arrayCalcSpeedPositions);
 
 	arrayCalcSpeedSorted.forEach((speedNum,index) => {
 		arrayCalcSpeedPositions.forEach((speedNum2,index2) => {
@@ -2221,7 +2221,7 @@ function calculateTurnOrder(){
 		});
 	});
 
-	console.log(turnArray);
+	// console.log(turnArray);
 	var identifier = [];
 	if(turnArray[0] > 0){
 		identifier[0] = 1;
@@ -2232,7 +2232,7 @@ function calculateTurnOrder(){
 		identifier[1] = Math.abs(turnArray[0])-1;
 		// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 	}
-	console.log(identifier);
+	// console.log(identifier);
 	selectCreature(identifier);
 	turnArray.shift();
 }
@@ -2240,6 +2240,7 @@ function calculateTurnOrder(){
 function selectCreature(identifier){	
 	// console.log("Creature speed:" + arrayHero[identifier[1]].statMod[6]);
 	selectedVita = identifier[0] * (identifier[1]+1);
+	console.log("///////////////////////////////////////////////");
 	console.log("Turn: " + selectedVita);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
@@ -2293,8 +2294,8 @@ function selectCreature(identifier){
 			currPos.push(arrayHero[identifier[1]].pos+1);
 		}
 	}
-	console.log("///////////////////////////////////////////////");
-	console.log(identifier);
+	
+	// console.log(identifier);
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
