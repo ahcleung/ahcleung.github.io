@@ -1615,8 +1615,8 @@ function onCreatureDown(){
 			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validPositionTargetArray[clickedTarget]);
 
 			if(Array.isArray(validPositionTargetArray[clickedTarget])){
-				validPositionTargetArray[clickedTarget].forEach(element => {
-					console.log(element +  + " takes ## damage");
+				validPositionTargetArray[clickedTarget].forEach(targeted => {
+					console.log(targeted + " takes ## damage");
 				});
 			}else{
 				console.log(validPositionTargetArray[clickedTarget] + " takes ## damage");
