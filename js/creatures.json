@@ -135,10 +135,7 @@
          "name": "Fload",
          "code": "toad3",
          "frames": 62,
-         "elements": [
-           "wind",
-           "toxic"
-           ],
+         "elements": [6,7],
          "hp": 85,
          "dodge": 10,
          "patk": 74,
