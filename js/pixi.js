@@ -1709,7 +1709,7 @@ function onCreatureDown(){
 					console.log("Defense: " + defense);
 					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
 					console.log("Defender element: " + defendElements);
-					console.log("Skill element on water: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][2]);
+					console.log("Skill element on water: " + elementList.data.elements[0].name);
 					//var effectiveness = targetElement1[skillElement] * targetElement2[skillElement];
 					//elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][]
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2));
