@@ -1588,8 +1588,8 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	if(selectedSkill > -1){
-		attackedVita = this.identifier[0] * (this.identifier[1]);
-		// console.log(attackedVita);
+		attackedVita = this.identifier[0] * (this.identifier[1]+1);
+		console.log("Clicked target index: " + attackedVita);
 		var correctTarget = false;
 		var clickedTarget = 0;
 		validPositionTargetArray.forEach((targeted, targetedIndex) => {
