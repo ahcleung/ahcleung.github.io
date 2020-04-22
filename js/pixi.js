@@ -139,17 +139,17 @@ class Creature{
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
-			[Math.floor(Math.random() * 14) + 1, 1],
-			[Math.floor(Math.random() * 14) + 1, 3, 5],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 1],
+			// [Math.floor(Math.random() * 14) + 1, 3, 5],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
+			// [Math.floor(Math.random() * 14) + 1, 2],
 		];
 		this.statusSpriteArray = [];
 	}
