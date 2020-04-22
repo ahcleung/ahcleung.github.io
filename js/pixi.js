@@ -1646,6 +1646,11 @@ function onCreatureDown(){
 							attack = arrayEnemy[selectedIndex].statCalc[2];
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = arrayEnemy[selectedIndex].statCalc[4];
+							if(arrayEnemy[selectedIndex].statMod[4] > 0){
+								attack = attack * ((arrayEnemy[selectedIndex].statMod[4]+2)/2);
+							}else if(arrayEnemy[selectedIndex].statMod[4] < 0){
+								attack = attack * (2/(Math.abs(arrayEnemy[selectedIndex].statMod[4])+2));
+							}
 						}
 					}
 					
