@@ -931,7 +931,7 @@ function createSprite(direction, item, index){
 	turnIndicator.endFill();
 	healthBar.addChild(turnIndicator);
 	healthBar.turn = turnIndicator;
-	healthBar.turn.visible = false;
+	// healthBar.turn.visible = false;
 	
 	let statusEffect;
 	
@@ -2154,6 +2154,13 @@ function onExtrasSkipDown(){
 }
 
 function calculateTurnOrder(){
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.turn.visible = true;
+	});
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.turn.visible = true;
+	});
+
 	var arrayCalcSpeedSorted = [];
 	var arrayCalcSpeedPositions = [];
 
@@ -2226,6 +2233,11 @@ function calculateTurnOrder(){
 
 function selectCreature(identifier){	
 	// console.log("Creature speed:" + arrayHero[identifier[1]].statMod[6]);
+	if(identifier[0] > 0){
+		hpHeroContainerArray[identifier[1]].turn.visible = false;
+	}else{
+		hpEnemyContainerArray[identifier[1]].turn.visible = false;
+	}
 	selectedVita = identifier[0] * (identifier[1]+1);
 	console.log("///////////////////////////////////////////////");
 	console.log("Turn: " + selectedVita);
