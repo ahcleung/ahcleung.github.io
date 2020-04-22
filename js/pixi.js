@@ -137,7 +137,7 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
-		this.statMod = [0, 0, 0, 0, 0, 0, 0];
+		this.statMod = [0, 0, 0, 1, 0, 0, 0];
 		this.statusArray = [
 			// [Math.floor(Math.random() * 14) + 1, 1],
 			// [Math.floor(Math.random() * 14) + 1, 3, 5],
@@ -1626,8 +1626,18 @@ function onCreatureDown(){
 						level = arrayHero[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = arrayHero[selectedIndex].statCalc[2];
+							if(arrayHero[selectedIndex].statMod[2] > 0){
+
+							}else if(arrayHero[selectedIndex].statMod[2] < 0){
+
+							}
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = arrayHero[selectedIndex].statCalc[4];
+							if(arrayHero[selectedIndex].statMod[4] > 0){
+								attack = attack * ((arrayHero[selectedIndex].statMod[4]+2)/2);
+							}else if(arrayHero[selectedIndex].statMod[4] < 0){
+								attack = attack * (2/(Math.abs(arrayHero[selectedIndex].statMod[4])+2));
+							}
 						}
 						//else other
 					}else{
