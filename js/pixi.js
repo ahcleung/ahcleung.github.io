@@ -1710,7 +1710,7 @@ function onCreatureDown(){
 					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
 					console.log("Defender element: " + defendElements);
 					defendElements.forEach(defendElement=>{
-						console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]);
+						console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][0]);
 					});
 					// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1].name);
 					//var effectiveness = targetElement1[skillElement] * targetElement2[skillElement];
