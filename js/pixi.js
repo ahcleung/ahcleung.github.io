@@ -805,7 +805,7 @@ function setup(){
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
-	
+
 	calculateTurnOrder();
 }
 
@@ -1611,7 +1611,11 @@ function onCreatureDown(){
 				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 			}
 			// console.log(identifier);
-			selectCreature(identifier);
+			if(turnArray.length != 0){
+				selectCreature(identifier);	
+			}else{
+				calculateTurnOrder();
+			}
 			turnArray.shift();
 			selectedSkill = -1;
 		}else{
