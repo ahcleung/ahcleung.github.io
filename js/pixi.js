@@ -33,6 +33,7 @@ loader
 		"img/flygon.json",
 		"js/creatures.json",
 		"js/skills.json",
+		"js/elements.json",
 	
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
