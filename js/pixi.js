@@ -1829,25 +1829,18 @@ function onSkillDown(){
 				arrayEnemy.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;						
 							stageSide = -1;
-						}
-						else{stageSide = 0;}
+						}else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = -1;
-						}
-						// else if(posTracker == pos2){
-						// 	console.log(arrayCreature.name);
-						// 	hpEnemyContainerArray[arrayCreatureIndex].target.visible = true;
-						// 	stageSide = -1;
-						// }
-						else{stageSide = 0;}
+						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
@@ -1862,7 +1855,7 @@ function onSkillDown(){
 				arrayHero.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = 1;
 						}else{stageSide = 0;}
@@ -1870,16 +1863,10 @@ function onSkillDown(){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = 1;
-						}
-						// else if(posTracker == pos2){
-						// 	console.log(arrayCreature.name);
-						// 	hpHeroContainerArray[arrayCreatureIndex].target.visible = true;
-						// 	stageSide = 1;
-						// }
-						else{stageSide = 0;}
+						}else{stageSide = 0;}
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
