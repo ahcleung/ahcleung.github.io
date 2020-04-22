@@ -806,6 +806,7 @@ function setup(){
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
 	
+	calculateTurnOrder();
 }
 
 function gameLoop(delta){
@@ -2083,6 +2084,70 @@ function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
+}
+
+function onExtrasCancelDown(){
+	console.log("Extras Cancel");
+	extrasContainer.visible = false;
+}
+
+function onExtrasMoveDown(){
+	console.log("Extras Move " + selectedVita);
+	extrasContainer.visible = false;
+	hpEnemyContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+	});
+	hpHeroContainerArray.forEach(hpContainer=>{
+		hpContainer.target.visible = false;
+		hpContainer.heal.visible = false;
+	});
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+	});
+
+	// hpHeroContainerArray.forEach(hpContainer => {
+	//  	hpContainer.move.visible =  true;
+	//  });
+	// hpEnemyContainerArray.forEach(hpContainer => {
+	//  	hpContainer.move.visible =  true;
+	//  });
+
+	if(selectedVita > 0){
+		var temp = Math.abs(selectedVita) - 2;
+		if(temp > -1){
+			hpHeroContainerArray[temp].move.visible = true;
+		}
+		var temp2 = Math.abs(selectedVita);
+		if(temp2 < hpHeroContainerArray.length){
+			hpHeroContainerArray[temp2].move.visible = true;
+		}
+	}else{
+		var temp = Math.abs(selectedVita) - 2;
+		if(temp > -1){
+			hpEnemyContainerArray[temp].move.visible = true;
+		}
+		var temp2 = Math.abs(selectedVita);
+		if(temp2 < hpEnemyContainerArray.length){
+			hpEnemyContainerArray[temp2].move.visible = true;
+		}
+
+	}
+}
+
+function onExtrasItemDown(){
+	console.log("Extras Item");
+	onScreenStats.visible = true;
+	consoleScreen.visible = true;
+}
+
+function onExtrasSkipDown(){
+	console.log("Extras Skip");
+	// onScreenStats.visible = false;
+	// consoleScreen.visible = false;
+}
+
+function calculateTurnOrder(){
 	var arrayCalcSpeedSorted = [];
 	var arrayCalcSpeedPositions = [];
 
@@ -2152,70 +2217,6 @@ function onExtrasDown(){
 	selectCreature(identifier);
 	turnArray.shift();
 }
-
-function onExtrasCancelDown(){
-	console.log("Extras Cancel");
-	extrasContainer.visible = false;
-}
-
-function onExtrasMoveDown(){
-	console.log("Extras Move " + selectedVita);
-	extrasContainer.visible = false;
-	hpEnemyContainerArray.forEach(hpContainer=>{
-		hpContainer.target.visible = false;
-		hpContainer.heal.visible = false;
-	});
-	hpHeroContainerArray.forEach(hpContainer=>{
-		hpContainer.target.visible = false;
-		hpContainer.heal.visible = false;
-	});
-	skillContainerArray.forEach(skillContainer=>{
-		skillContainer.selected.visible = false;
-	});
-
-	// hpHeroContainerArray.forEach(hpContainer => {
-	//  	hpContainer.move.visible =  true;
-	//  });
-	// hpEnemyContainerArray.forEach(hpContainer => {
-	//  	hpContainer.move.visible =  true;
-	//  });
-
-	if(selectedVita > 0){
-		var temp = Math.abs(selectedVita) - 2;
-		if(temp > -1){
-			hpHeroContainerArray[temp].move.visible = true;
-		}
-		var temp2 = Math.abs(selectedVita);
-		if(temp2 < hpHeroContainerArray.length){
-			hpHeroContainerArray[temp2].move.visible = true;
-		}
-	}else{
-		var temp = Math.abs(selectedVita) - 2;
-		if(temp > -1){
-			hpEnemyContainerArray[temp].move.visible = true;
-		}
-		var temp2 = Math.abs(selectedVita);
-		if(temp2 < hpEnemyContainerArray.length){
-			hpEnemyContainerArray[temp2].move.visible = true;
-		}
-
-	}
-}
-
-function onExtrasItemDown(){
-	console.log("Extras Item");
-	onScreenStats.visible = true;
-	consoleScreen.visible = true;
-}
-
-function onExtrasSkipDown(){
-	console.log("Extras Skip");
-	// onScreenStats.visible = false;
-	// consoleScreen.visible = false;
-
-	
-}
-
 
 function selectCreature(identifier){	
 	// console.log("Creature speed:" + arrayHero[identifier[1]].statMod[6]);
