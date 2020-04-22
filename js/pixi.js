@@ -1674,18 +1674,18 @@ function onSkillDown(){
 	});
 	skillContainerArray[this.identifier[0]].selected.visible = true;
 	selectedSkill = this.identifier[1];
-	// console.log(this.identifier);
+	console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
 	var column = false;
 	var several = false;
 	var heal = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			column = true;
-			if(this.identifier[2] > 0){
-				console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			}else{
-				console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			}
+			// if(this.identifier[2] > 0){
+			// 	console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
+			// }else{
+			// 	console.log("column => from: " + arrayEnemy[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
+			// }
 			
 			if(skillsList.data.skills[this.identifier[1]].column[3] > 0){
 				heal = true;
@@ -1723,7 +1723,7 @@ function onSkillDown(){
 					if(temp > 0 && !switchSide){
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								console.log(arrayCreature.name);
+								// console.log(arrayCreature.name);
 								if(heal){
 									hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
@@ -1736,7 +1736,7 @@ function onSkillDown(){
 					}else{
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								console.log(arrayCreature.name);
+								// console.log(arrayCreature.name);
 								if(heal){
 									hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
@@ -1751,7 +1751,7 @@ function onSkillDown(){
 					if(temp > 0 && !switchSide){
 						arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								console.log(arrayCreature.name);
+								// console.log(arrayCreature.name);
 								if(heal){
 									hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
@@ -1764,7 +1764,7 @@ function onSkillDown(){
 					}else{
 						arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								console.log(arrayCreature.name);
+								// console.log(arrayCreature.name);
 								if(heal){
 									hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 								}else{
@@ -1790,7 +1790,7 @@ function onSkillDown(){
 				if(this.identifier[2] > 0){
 					arrayHero.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							if(heal){
 								hpHeroContainerArray[arrayCreatureIndex].heal.visible = true;
 							}else{
@@ -1803,7 +1803,7 @@ function onSkillDown(){
 				}else{
 					arrayEnemy.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
-							console.log(arrayCreature.name);
+							// console.log(arrayCreature.name);
 							if(heal){
 								hpEnemyContainerArray[arrayCreatureIndex].heal.visible = true;
 							}else{
@@ -2096,7 +2096,7 @@ function onSkillDown(){
 			targetArray = [array1, array2];
 		}
 	}
-	console.log(targetArray);
+	console.log("Targets: " + targetArray);
 }
 
 function onExtrasDown(){
