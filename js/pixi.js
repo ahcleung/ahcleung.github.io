@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Yatra One']
+		families: ['Unica One']
 	}
 };
 
@@ -201,6 +201,8 @@ const elementList = resources["js/elements.json"];
 
 let state, onScreenStats, consoleScreen;
 let damageText;
+
+var styleFontFamily = 'Unica One';
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
@@ -497,7 +499,7 @@ function setup(){
 		//
 		skillContainer.identifier = [i , arrayHero[1].skills[i], 1];
 		
-		let skillName = new Text(skillsList.data.skills[arrayHero[1].skills[i]].name, {fontFamily : 'Yatra One', fontSize: 28, fill : 0xfefefe});
+		let skillName = new Text(skillsList.data.skills[arrayHero[1].skills[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
 		skillName.anchor.set(0, 0.5);
 		
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
@@ -653,7 +655,7 @@ function setup(){
 		skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
 		skillContainer.markerTargetHeroContainer.visible = false;
 		
-		let targetText = new Text("1►", {fontFamily : 'Yatra One', fontSize: 28, fill : 0xFF6961});
+		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
 		skillContainer.addChild(targetText);
 		skillContainer.targetText = targetText;
@@ -1037,7 +1039,7 @@ function createSprite(direction, item, index){
 		item.statusSpriteArray.push(statusEffect);
 	});	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Yatra One', fontSize: 24, fill : 0xfefefe, align : 'center'});
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'center'});
 	textHP.anchor.set(0.5);
 
 	healthBar.addChild(textHP);
