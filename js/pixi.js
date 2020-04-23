@@ -357,6 +357,7 @@ function setup(){
 	tempContainer.damageText = damageText;
 
 	tween = TweenMax.to(damageText, 1, {y: -100, alpha: 0, paused: true});
+	tween.duration(10);
 
 	app.stage.addChild(tempContainer);
 
@@ -2355,6 +2356,7 @@ function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
+	tween.invalidate();
 	tween.play(0);
 }
 
