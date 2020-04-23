@@ -22,22 +22,6 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-window.WebFontConfig = {
-	google: {
-		families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Arvo:700italic']
-	}
-};
-
-(function() {
-	const wf = document.createElement('script');
-	wf.src = `${document.location.protocol === 'https:' ? 'https' : 'http'
-	}://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
-	wf.type = 'text/javascript';
-	wf.async = 'true';
-	const s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(wf, s);
-}());
-
 loader
 	.add([
 		"img/ability_move.png",
@@ -330,6 +314,22 @@ enemy[2] = {
 // const framesIdleFlygon = [];
 
 function setup(){
+
+	window.WebFontConfig = {
+		google: {
+			families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Arvo:700italic']
+		}
+	};
+
+	(function() {
+		const wf = document.createElement('script');
+		wf.src = `${document.location.protocol === 'https:' ? 'https' : 'http'
+		}://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		const s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	}());
 	
 	textureExtras = PIXI.Texture.from('img/extras.png');
 	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
@@ -373,7 +373,7 @@ function setup(){
 	tempContainer.addChild(damageText);
 	tempContainer.damageText = damageText;
 
-	tween = TweenMax.to(damageText, 1, {y: -100, paused: true});
+	tween = TweenMax.to(damageText, 1, {y: -100, opacity: 0, paused: true});
 
 	app.stage.addChild(tempContainer);
 
