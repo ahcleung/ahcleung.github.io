@@ -350,8 +350,8 @@ function setup(){
 	const style = new PIXI.TextStyle({
         fontFamily: styleFontFamily,
         fontSize: 36,
-        fontStyle: 'italic',
-        fontWeight: 800,
+//         fontStyle: 'italic',
+//         fontWeight: 800,
 //         fill: ['#ff0000', '#D80000'], // gradient
 	fill: '#D80000',	
 //         stroke: '#222222',
