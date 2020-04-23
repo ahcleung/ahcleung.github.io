@@ -348,10 +348,10 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: 'Arvo:700italic',
+        fontFamily: 'Arvo',
         fontSize: 36,
-//         fontStyle: 'italic',
-//         fontWeight: 800,
+        fontStyle: 'italic',
+        fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 	fill: '#D80000',	
 //         stroke: '#222222',
