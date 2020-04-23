@@ -348,14 +348,14 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: 'Arial',
+        fontFamily: 'Bangers',
         fontSize: 36,
-        fontStyle: 'italic',
+//         fontStyle: 'italic',
         fontWeight: 'bold',
         fill: ['#ff0000', '#D80000'], // gradient
 // 	fill: '#ff0000',	
-        stroke: '#222222',
-        strokeThickness: 5,
+//         stroke: '#222222',
+//         strokeThickness: 5,
 //         dropShadow: true,
 //         dropShadowColor: '#000000',
 //         dropShadowBlur: 4,
