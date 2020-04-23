@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Squada One']
+		families: ['Ropa Sans']
 	}
 };
 
@@ -202,7 +202,7 @@ const elementList = resources["js/elements.json"];
 let state, onScreenStats, consoleScreen;
 let damageText;
 
-var styleFontFamily = 'Squada One';
+var styleFontFamily = 'Ropa Sans';
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
