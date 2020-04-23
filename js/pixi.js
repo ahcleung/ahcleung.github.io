@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Baloo 2:500']
+		families: ['Baloo 2:500', 'Carter One']
 	}
 };
 
@@ -202,7 +202,7 @@ const elementList = resources["js/elements.json"];
 let state, onScreenStats, consoleScreen;
 let damageText;
 
-var styleFontFamily = 'Baloo 2';
+var styleFontFamily = 'Carter One';
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
