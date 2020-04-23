@@ -361,8 +361,8 @@ function setup(){
 //         dropShadowBlur: 2,
 //         dropShadowAngle: Math.PI / 6,
 //         dropShadowDistance: 2,
-        wordWrap: true,
-        wordWrapWidth: 440,
+//         wordWrap: true,
+//         wordWrapWidth: 440,
     });
 
 	damageText = new Text("50", style);
