@@ -1710,12 +1710,12 @@ function onCreatureDown(){
 						// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 					});
 
-					console.log("Level: " + level);
-					console.log("Attack: " + attack);
-					console.log("Defense: " + defense);
-					console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-					console.log("Defender element: " + defendElements);
-					console.log("Effectiveness: " + effectiveness);
+					// console.log("Level: " + level);
+					// console.log("Attack: " + attack);
+					// console.log("Defense: " + defense);
+					// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
+					// console.log("Defender element: " + defendElements);
+					// console.log("Effectiveness: " + effectiveness);
 
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 					console.log(targeted + " takes " + damage + " damage");
@@ -1815,12 +1815,12 @@ function onCreatureDown(){
 					// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 				});
 
-				console.log("Level: " + level);
-				console.log("Attack: " + attack);
-				console.log("Defense: " + defense);
-				console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-				console.log("Defender element: " + defendElements);
-				console.log("Effectiveness: " + effectiveness);
+				// console.log("Level: " + level);
+				// console.log("Attack: " + attack);
+				// console.log("Defense: " + defense);
+				// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
+				// console.log("Defender element: " + defendElements);
+				// console.log("Effectiveness: " + effectiveness);
 				
 				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 				console.log(targeted + " takes " + damage + " damage");
