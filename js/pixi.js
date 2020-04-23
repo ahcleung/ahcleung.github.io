@@ -356,7 +356,7 @@ function setup(){
 	tempContainer.addChild(damageText);
 	tempContainer.damageText = damageText;
 
-	tween = TweenMax.to(damageText, 1, {y: -100, opacity: 0, paused: true});
+	tween = TweenMax.to(damageText, 1, {y: -100, alpha: 0, paused: true});
 
 	app.stage.addChild(tempContainer);
 
