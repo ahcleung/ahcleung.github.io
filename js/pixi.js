@@ -230,6 +230,8 @@ var skillNameFontSize = 28;
 var selectedVita = 0;
 var selectedSkill = 0;
 
+var tween;
+
 // var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
@@ -370,6 +372,8 @@ function setup(){
 
 	tempContainer.addChild(damageText);
 	tempContainer.damageText = damageText;
+
+	tween = TweenMax.to(damageText, 1, {y: -100, paused: true});
 
 	app.stage.addChild(tempContainer);
 
@@ -2368,6 +2372,7 @@ function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
+	tween.play(0);
 }
 
 function onExtrasCancelDown(){
