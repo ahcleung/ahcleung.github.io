@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Baloo 2:500', 'Carter One', 'Arvo:700']
+		families: ['Baloo 2:500', 'Carter One', 'Arvo']
 	}
 };
 
