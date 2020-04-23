@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Bangers']
+		families: ['Carter One']
 	}
 };
 
@@ -497,7 +497,7 @@ function setup(){
 		//
 		skillContainer.identifier = [i , arrayHero[1].skills[i], 1];
 		
-		let skillName = new Text(skillsList.data.skills[arrayHero[1].skills[i]].name, {fontFamily : 'Arial', fontSize: 28, fill : 0xfefefe});
+		let skillName = new Text(skillsList.data.skills[arrayHero[1].skills[i]].name, {fontFamily : 'Carter One', fontSize: 28, fill : 0xfefefe});
 		skillName.anchor.set(0, 0.5);
 		
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
@@ -1037,7 +1037,7 @@ function createSprite(direction, item, index){
 		item.statusSpriteArray.push(statusEffect);
 	});	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Bangers', fontSize: 24, fill : 0xfefefe, align : 'center'});
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Carter One', fontSize: 24, fill : 0xfefefe, align : 'center'});
 	textHP.anchor.set(0.5);
 
 	healthBar.addChild(textHP);
