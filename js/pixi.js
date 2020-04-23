@@ -347,8 +347,10 @@ function setup(){
     });
 
 	damageText = new Text("50", style);
+	damageText.animate = false;
 
 	tempContainer.addChild(damageText);
+	tempContainer.damageText = damageText;
 
 	app.stage.addChild(tempContainer);
 
@@ -879,7 +881,7 @@ function play(delta){
 	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
 
-
+	tempContainer.damageText.y -= 5;
 }
 
 // Listen for animate update
