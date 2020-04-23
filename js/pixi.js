@@ -356,8 +356,7 @@ function setup(){
 	tempContainer.addChild(damageText);
 	tempContainer.damageText = damageText;
 
-	tween = TweenMax.to(damageText, 1, {ease: SlowMo.ease.config(0.7, 0.7, false), y: -100, alpha: 0, paused: true});
-	tween.duration(10);
+	tween = TweenMax.to(damageText, 5, {ease: Expo.easeInOut, y: -100, alpha: 0, paused: true});
 
 	app.stage.addChild(tempContainer);
 
