@@ -348,19 +348,19 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: 'Bangers',
+        fontFamily: styleFontFamily,
         fontSize: 36,
-//         fontStyle: 'italic',
-        fontWeight: 'bold',
-        fill: ['#ff0000', '#D80000'], // gradient
-// 	fill: '#ff0000',	
+        fontStyle: 'italic',
+        fontWeight: 800,
+//         fill: ['#ff0000', '#D80000'], // gradient
+	fill: '#D80000',	
 //         stroke: '#222222',
 //         strokeThickness: 5,
-        dropShadow: true,
-        dropShadowColor: '#000000',
-        dropShadowBlur: 2,
-        dropShadowAngle: Math.PI / 6,
-        dropShadowDistance: 2,
+//         dropShadow: true,
+//         dropShadowColor: '#000000',
+//         dropShadowBlur: 2,
+//         dropShadowAngle: Math.PI / 6,
+//         dropShadowDistance: 2,
         wordWrap: true,
         wordWrapWidth: 440,
     });
