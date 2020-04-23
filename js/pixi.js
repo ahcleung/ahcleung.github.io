@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Ropa Sans']
+		families: ['Montserrat']
 	}
 };
 
@@ -202,7 +202,7 @@ const elementList = resources["js/elements.json"];
 let state, onScreenStats, consoleScreen;
 let damageText;
 
-var styleFontFamily = 'Ropa Sans';
+var styleFontFamily = 'Montserrat';
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
