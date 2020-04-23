@@ -899,7 +899,7 @@ function play(delta){
 	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
 
-	tempContainer.damageText.y -= 5;
+// 	tempContainer.damageText.y -= 5;
 }
 
 // Listen for animate update
