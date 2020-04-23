@@ -357,7 +357,7 @@ function setup(){
 	tempContainer.damageText = damageText;
 
 	// tween = TweenMax.to(damageText, 1, {ease: Expo.easeInOut, y: -100, alpha: 0, paused: true});
-	tween = gsap.to(damageText, { duration: 1, ease: "slow(0.7, 0.7, false)", y: -100, paused: true });
+	tween = gsap.to(damageText, { duration: 5, ease: "slow(0.7, 0.7, false)", y: -100, paused: true });
 
 	app.stage.addChild(tempContainer);
 
