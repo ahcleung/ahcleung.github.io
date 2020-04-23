@@ -22,6 +22,22 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
+window.WebFontConfig = {
+	google: {
+		families: ['Bangers']
+	}
+};
+
+(function() {
+	const wf = document.createElement('script');
+	wf.src = `${document.location.protocol === 'https:' ? 'https' : 'http'
+	}://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
+	wf.type = 'text/javascript';
+	wf.async = 'true';
+	const s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(wf, s);
+}());
+
 loader
 	.add([
 		"img/ability_move.png",
@@ -1021,7 +1037,7 @@ function createSprite(direction, item, index){
 		item.statusSpriteArray.push(statusEffect);
 	});	
 	
-	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'});
+	let textHP = new Text(item.statCalc[0] + " / " + item.EHP, {fontFamily : 'Bangers', fontSize: 24, fill : 0xfefefe, align : 'center'});
 	textHP.anchor.set(0.5);
 
 	healthBar.addChild(textHP);
