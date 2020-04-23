@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Baloo 2:500', 'Carter One', 'Arvo']
+		families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Bangers']
 	}
 };
 
@@ -348,18 +348,19 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: styleFontFamily,
+        fontFamily: 'Bangers',
         fontSize: 36,
         fontStyle: 'italic',
         fontWeight: 'bold',
-        fill: ['#ff0000', '#760000'], // gradient
+        fill: ['#ff0000', '#D80000'], // gradient
+// 	fill: '#ff0000',	
         stroke: '#222222',
         strokeThickness: 5,
-        dropShadow: true,
-        dropShadowColor: '#000000',
-        dropShadowBlur: 4,
-        dropShadowAngle: Math.PI / 6,
-        dropShadowDistance: 2,
+//         dropShadow: true,
+//         dropShadowColor: '#000000',
+//         dropShadowBlur: 4,
+//         dropShadowAngle: Math.PI / 6,
+//         dropShadowDistance: 2,
         wordWrap: true,
         wordWrapWidth: 440,
     });
