@@ -348,7 +348,7 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: styleFontFamily,
+        fontFamily: 'Bangers',
         fontSize: 36,
 //         fontStyle: 'italic',
         fontWeight: 'bold',
