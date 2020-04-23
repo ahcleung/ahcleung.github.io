@@ -1827,10 +1827,10 @@ function onCreatureDown(){
 
 				if(targeted > 0){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
-					hpHeroContainerArray[targetedIndex].healthBar.inner.width = hpHeroContainerArray[targetedIndex].healthBar.outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
-					hpEnemyContainerArray[targetedIndex].healthBar.inner.width = hpEnemyContainerArray[targetedIndex].healthBar.outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 				}
 			}
 
