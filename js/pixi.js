@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Baloo 2:800']
+		families: ['Baloo 2:500']
 	}
 };
 
