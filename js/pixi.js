@@ -184,12 +184,15 @@ const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 
 let state, onScreenStats, consoleScreen;
+let damageText;
 
 const rosterHero = new PIXI.Container();
 const rosterEnemy = new PIXI.Container();
 const hpHero = new PIXI.Container();
 const hpEnemy = new PIXI.Container();
 const extrasContainer = new PIXI.Container();
+
+const tempContainer = new PIXI.Container();
 
 const rectTemp = new PIXI.Graphics();
 
@@ -321,8 +324,34 @@ function setup(){
 	rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
 	rectTemp.alpha = 0.1;
 	// Add it to the stage
-	app.stage.addChild(rectTemp);
-	
+
+	tempContainer.addChild(rectTemp);
+
+	// app.stage.addChild(rectTemp);
+
+	const style = new PIXI.TextStyle({
+        fontFamily: 'Arial',
+        fontSize: 36,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        fill: ['#ffffff', '#00ff99'], // gradient
+        stroke: '#4a1850',
+        strokeThickness: 5,
+        dropShadow: true,
+        dropShadowColor: '#000000',
+        dropShadowBlur: 4,
+        dropShadowAngle: Math.PI / 6,
+        dropShadowDistance: 6,
+        wordWrap: true,
+        wordWrapWidth: 440,
+    });
+
+	damageText = new Text("50", style);
+
+	tempContainer.addChild(damageText);
+
+	app.stage.addChild(tempContainer);
+
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
 // 	rectHero.y = 0;
@@ -690,7 +719,6 @@ function setup(){
 	
 	//const obj = resources["js/creatures.json"];
 	
-	
 	//Current display stats
 	onScreenStats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
@@ -850,6 +878,8 @@ function play(delta){
 		}
 	});
 // 	hpHeroContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
+
+
 }
 
 // Listen for animate update
@@ -1123,7 +1153,9 @@ function resize() {
 		);
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
-	rectTemp.position.set(app.screen.width/2, app.screen.height/2);
+
+	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
+	tempContainer.position.set(app.screen.width/2, app.screen.height/2);
 	
 	var skillSelectPadding = 5;
 	
