@@ -313,24 +313,7 @@ enemy[2] = {
 
 // const framesIdleFlygon = [];
 
-function setup(){
-
-	window.WebFontConfig = {
-		google: {
-			families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Arvo:700italic']
-		}
-	};
-
-	(function() {
-		const wf = document.createElement('script');
-		wf.src = `${document.location.protocol === 'https:' ? 'https' : 'http'
-		}://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
-		wf.type = 'text/javascript';
-		wf.async = 'true';
-		const s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(wf, s);
-	}());
-	
+function setup(){	
 	textureExtras = PIXI.Texture.from('img/extras.png');
 	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
 	textureExtrasCancel = PIXI.Texture.from('img/extra_cancel.png');
