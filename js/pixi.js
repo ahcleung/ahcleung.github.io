@@ -24,7 +24,7 @@ document.querySelector('#frame').appendChild(app.view);
 
 window.WebFontConfig = {
 	google: {
-		families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Bangers']
+		families: ['Baloo 2:500', 'Carter One', 'Arvo', 'Arvo:700italic']
 	}
 };
 
@@ -348,7 +348,7 @@ function setup(){
 	// app.stage.addChild(rectTemp);
 
 	const style = new PIXI.TextStyle({
-        fontFamily: styleFontFamily,
+        fontFamily: 'Arvo:700italic',
         fontSize: 36,
 //         fontStyle: 'italic',
 //         fontWeight: 800,
