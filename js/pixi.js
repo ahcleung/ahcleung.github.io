@@ -2356,7 +2356,7 @@ function onExtrasDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Extras");
 	extrasContainer.visible = true;
-	tween.invalidate();
+	// tween.invalidate();
 	tween.play(0);
 }
 
