@@ -1788,7 +1788,7 @@ function onCreatureDown(){
 					arrayHero[targetedIndex].elements.forEach(element =>{
 						defendElements.push(element);
 					});
-					//else other				
+					//else other
 				}else{
 					level = arrayEnemy[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -1832,7 +1832,6 @@ function onCreatureDown(){
 					arrayEnemy[targetIndex].statCalc[0] -= damage;
 					hpEnemyContainerArray[targetIndex].healthBar.inner = hpEnemyContainerArray[targetIndex].healthBar.outer * (arrayEnemy[targetIndex].statCalc[0]/arrayEnemy[targetIndex].overallHP);
 				}
-					
 			}
 
 			var identifier = [];
@@ -1859,7 +1858,6 @@ function onCreatureDown(){
 			}
 			turnArray.shift();
 			selectedSkill = -1;
-				}
 		}else{
 			console.log("Invalid target");
 		}
@@ -2364,14 +2362,6 @@ function onExtrasMoveDown(){
 		if(temp2 < hpEnemyContainerArray.length){
 			hpEnemyContainerArray[temp2].move.visible = true;
 		}
-
-	}
-}
-
-function updateHP(vitaIndex, hpNum){
-	if(vitaIndex > 0){
-
-	}else{
 
 	}
 }
