@@ -947,10 +947,11 @@ function createSprite(direction, item, index){
 	
 	const healthBar = new PIXI.Container();
 
+
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 36,
-        fontStyle: 'italic',
+        // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
@@ -971,7 +972,6 @@ function createSprite(direction, item, index){
 	dmgCounter.tween = tween2;
 	healthBar.addChild(dmgCounter);
 	healthBar.dmgCounter = dmgCounter;
-
 
 	
 	healthBar.identifier = [direction, index];
@@ -1400,7 +1400,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 
-			item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
+			// item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1431,7 +1431,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
 
-			item.dmgCounter.x = (resizeWidth)/2;
+			// item.dmgCounter.x = (resizeWidth)/2;
 
 // 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
@@ -1490,7 +1490,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 
-			item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
+			// item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1520,7 +1520,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
 
-			item.dmgCounter.x = (resizeWidth)/2;
+			// item.dmgCounter.x = (resizeWidth)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
@@ -1565,7 +1565,7 @@ function resizeHP(roster, item, index){
 
 	}
 
-	item.dmgCounter.y = app.screen.height/2;
+	// item.dmgCounter.y = app.screen.height/2;
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
