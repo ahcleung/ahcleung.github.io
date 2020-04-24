@@ -368,11 +368,11 @@ function setup(){
 	tween = gsap.timeline({paused: true});
 	// tween = gsap.to(damageText, {duration:10, scale:0.5, ease:"expo.out", transformOrigin:"50% 50%", paused: true});
 	tween
-		.to(damageText, { duration: 0.1, alpha: 1})
+		.to(damageText, { duration: 0.1, ease:"expo.out", alpha: 1})
 		.to(damageText.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
 	tween
 		.to(damageText, { duration: 2, ease:"expo.out", y: -100, alpha: 0})
-		.to(damageText.scale, { duration: 2, ease:"expo.out", x: 0.5, y: 0.5}, 0.1);
+		.to(damageText.scale, { duration: 2, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
 
 	damageText.alpha = 0;
 
