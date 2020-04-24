@@ -359,7 +359,12 @@ function setup(){
 
 	// tween = TweenMax.to(damageText, 1, {ease: Expo.easeInOut, y: -100, alpha: 0, paused: true});
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
-	tween = gsap.fromTo(damageText, {alpha:1}, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
+	// tween = gsap.fromTo(damageText, {alpha:1}, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
+
+	tween = gsap.timeline({paused: true});
+	tween.fromTo(damageText, {alpha:1}, { duration:1, ease:"expo.out", scaleX:2, scaleY:2, alpha:1});
+	tween.to(damageText, { duration:2.5, ease:"expo.out", y:-100, alpha:0});
+
 	damageText.alpha = 0;
 
 	app.stage.addChild(tempContainer);
