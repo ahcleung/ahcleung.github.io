@@ -910,7 +910,7 @@ function createSprite(direction, item, index){
 
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
-        fontSize: 36,
+        fontSize: 50,
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
@@ -925,10 +925,10 @@ function createSprite(direction, item, index){
 	var tween2 = gsap.timeline({paused: true});
 	tween2
 		.to(dmgCounter, { duration: 0.1, ease:"expo.in", alpha: 1})
-		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
+		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.in", x: 1.5, y: 1.5}, 0);
 	tween2
-		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -150, alpha: 0})
-		.to(dmgCounter.scale, { duration: 1, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -200, alpha: 0})
+		.to(dmgCounter.scale, { duration: 1, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 	dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
