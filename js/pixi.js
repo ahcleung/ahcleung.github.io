@@ -351,6 +351,7 @@ function setup(){
     });
 
 	damageText = new Text("50", style);
+	damageText.anchor.set(0.5, 0.5);
 	// damageText.animate = false;
 
 	tempContainer.addChild(damageText);
@@ -359,8 +360,10 @@ function setup(){
 	// tween = TweenMax.to(damageText, 2.5, {ease: Expo.easeInOut, y: -100, alpha: 0, scale: 2, paused: true});
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
 	// tween = TweenMax.fromTo(damageText, {alpha:1}, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, scale: 2, paused: true });
-	tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
-	// tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
+
+	
+	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
+	tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
 
 	// tween = gsap.timeline({paused: true});
 	// tween = gsap.to(damageText, {duration:10, scale:0.5, ease:"expo.out", transformOrigin:"50% 50%", paused: true});
