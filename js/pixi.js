@@ -372,7 +372,7 @@ function setup(){
 		.to(damageText.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
 	tween
 		.to(damageText, { duration: 2, ease:"expo.out", y: -100, alpha: 0})
-		.to(damageText.scale, { duration: 2, ease:"expo.out", x: 0.5, y: 0.5}, 1);
+		.to(damageText.scale, { duration: 2, ease:"expo.out", x: 0.5, y: 0.5}, 0.1);
 
 	damageText.alpha = 0;
 
