@@ -223,6 +223,8 @@ const factory = dragonBones.PixiFactory.factory;
 const arrayHero = [];			//Array of hero vitas
 const arrayEnemy = [];			//Array of enemy vitas
 const extrasArray = [];			//Array of extras menu buttons
+const arrayHeroDmg = [];
+const arrayEnemyDmg = [];
 var turnArray = [];
 var validPositionTargetArray = [];
 
@@ -332,30 +334,23 @@ function setup(){
 
 	// app.stage.addChild(rectTemp);
 
-	const style = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 36,
-        fontStyle: 'italic',
-        fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
-	fill: '#D80000',	
-//         stroke: '#222222',
-//         strokeThickness: 5,
-//         dropShadow: true,
-//         dropShadowColor: '#000000',
-//         dropShadowBlur: 2,
-//         dropShadowAngle: Math.PI / 6,
-//         dropShadowDistance: 2,
-//         wordWrap: true,
-//         wordWrapWidth: 440,
-    });
+// 	const style = new PIXI.TextStyle({
+//         fontFamily: 'Arvo',
+//         fontSize: 36,
+//         fontStyle: 'italic',
+//         fontWeight: 700,
+// //         fill: ['#ff0000', '#D80000'], // gradient
+// 		fill: '#D80000',	
+//     });
 
-	damageText = new Text("50", style);
-	damageText.anchor.set(0.5, 0.5);
+// 	dmgCounter = new Text("50", style);
+// 	dmgCounter.anchor.set(0.5, 0.5);
+
+
 	// damageText.animate = false;
 
-	tempContainer.addChild(damageText);
-	tempContainer.damageText = damageText;
+	// tempContainer.addChild(damageText);
+	// tempContainer.damageText = damageText;
 
 	// tween = TweenMax.to(damageText, 2.5, {ease: Expo.easeInOut, y: -100, alpha: 0, scale: 2, paused: true});
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
@@ -365,18 +360,16 @@ function setup(){
 	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
 	// tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
 
-	tween = gsap.timeline({paused: true});
-	// tween = gsap.to(damageText, {duration:10, scale:0.5, ease:"expo.out", transformOrigin:"50% 50%", paused: true});
-	tween
-		.to(damageText, { duration: 0.1, ease:"expo.out", alpha: 1})
-		.to(damageText.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
-	tween
-		.to(damageText, { duration: 1, ease:"expo.inOut", y: -100, alpha: 0})
-		.to(damageText.scale, { duration: 1, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+	// tween = gsap.timeline({paused: true});
+	// tween
+	// 	.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
+	// 	.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
+	// tween
+	// 	.to(dmgCounter, { duration: 1.5, ease:"expo.inOut", y: -100, alpha: 0})
+	// 	.to(dmgCounter.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+	// dmgCounter.alpha = 0;
 
-	damageText.alpha = 0;
-
-	app.stage.addChild(tempContainer);
+	// app.stage.addChild(tempContainer);
 
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
@@ -954,6 +947,38 @@ function createSprite(direction, item, index){
 	}
 	
 	const healthBar = new PIXI.Container();
+
+
+
+
+	const style = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 36,
+        fontStyle: 'italic',
+        fontWeight: 700,
+//         fill: ['#ff0000', '#D80000'], // gradient
+		fill: '#D80000',	
+    });
+
+	dmgCounter = new Text("50", style);
+	dmgCounter.anchor.set(0.5, 0.5);
+
+	var tween2 = gsap.timeline({paused: true});
+	tween2
+		.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
+		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
+	tween2
+		.to(dmgCounter, { duration: 1.5, ease:"expo.inOut", y: -100, alpha: 0})
+		.to(dmgCounter.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+	// dmgCounter.alpha = 0;
+
+	healthBar.addChild(dmgCounter);
+	healthBar.dmgCounter = dmgCounter;
+
+
+
+
+
 	
 	healthBar.identifier = [direction, index];
 	healthBar.buttonMode = true;
@@ -1151,6 +1176,7 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
+		arrayHeroDmg.push(dmgCounter);
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		rosterHero.addChild(creatureContainer);
@@ -1159,6 +1185,7 @@ function createSprite(direction, item, index){
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
+		arrayEnemyDmg.push(dmgCounter);
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		rosterEnemy.addChild(creatureContainer);
@@ -1378,6 +1405,8 @@ function resizeHP(roster, item, index){
 			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+
+			item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1407,7 +1436,9 @@ function resizeHP(roster, item, index){
 			item.heal.indicatorBar2.width = resizeWidth;
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
-			
+
+			item.dmgCounter.x = (resizeWidth)/2;
+
 // 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
 			arrayHero[index].statusSpriteArray.forEach((statusSprite, index) => {
@@ -1464,6 +1495,8 @@ function resizeHP(roster, item, index){
 			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+
+			item.dmgCounter.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1492,6 +1525,8 @@ function resizeHP(roster, item, index){
 			item.heal.indicatorBar2.width = resizeWidth;
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
+
+			item.dmgCounter.x = (resizeWidth)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
@@ -1535,6 +1570,8 @@ function resizeHP(roster, item, index){
 		}
 
 	}
+
+	item.dmgCounter.y = app.screen.height/2;
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
