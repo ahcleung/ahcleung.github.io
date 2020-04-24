@@ -361,13 +361,15 @@ function setup(){
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
 	// tween = TweenMax.fromTo(damageText, {alpha:1}, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, scale: 2, paused: true });
 
-	
-	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
-	tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
 
-	// tween = gsap.timeline({paused: true});
+	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
+	// tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
+
+	tween = gsap.timeline({paused: true});
 	// tween = gsap.to(damageText, {duration:10, scale:0.5, ease:"expo.out", transformOrigin:"50% 50%", paused: true});
-	// tween.to(damageText, { duration:2.5, ease:"expo.out", y:-100, alpha:0});
+	tween.to(damageText, { duration: 1, alpha: 1});
+	tween.to(damageText.scale, { duration: 1, x: 2.0, y: 2.0});
+	tween.to(damageText, { duration: 2.5, y: -100, alpha: 0});
 
 	// damageText.alpha = 0;
 
