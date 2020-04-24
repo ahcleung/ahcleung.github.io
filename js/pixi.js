@@ -365,7 +365,7 @@ function setup(){
 	tween.fromTo(damageText, {alpha:0}, {duration:1, ease:"expo.out", scale:2, alpha:1});
 	// tween.to(damageText, { duration:2.5, ease:"expo.out", y:-100, alpha:0});
 
-	damageText.alpha = 0;
+	// damageText.alpha = 0;
 
 	app.stage.addChild(tempContainer);
 
