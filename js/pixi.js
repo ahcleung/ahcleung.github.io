@@ -348,8 +348,8 @@ function setup(){
 
 	// damageText.animate = false;
 
-	tempContainer.addChild(damageText);
-	tempContainer.damageText = damageText;
+	tempContainer.addChild(dmgCounter2);
+	tempContainer.damageText = dmgCounter2;
 
 	// tween = TweenMax.to(damageText, 2.5, {ease: Expo.easeInOut, y: -100, alpha: 0, scale: 2, paused: true});
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
@@ -361,11 +361,11 @@ function setup(){
 
 	tween = gsap.timeline({paused: true});
 	tween
-		.to(dmgCounter2, { duration: 0.1, ease:"expo.out", alpha: 1})
-		.to(dmgCounter2.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
+		.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1})
+		.to(dmgCounter2.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
 	tween
-		.to(dmgCounter2, { duration: 1.5, ease:"expo.inOut", y: -100, alpha: 0})
-		.to(dmgCounter2.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+		.to(dmgCounter2, { duration: 1.5, ease:"expo.out", y: -100, alpha: 0})
+		.to(dmgCounter2.scale, { duration: 1.5, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
 	dmgCounter2.alpha = 0;
 
 	app.stage.addChild(tempContainer);
@@ -961,11 +961,11 @@ function createSprite(direction, item, index){
 
 	var tween2 = gsap.timeline({paused: true});
 	tween2
-		.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
-		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
+		.to(dmgCounter, { duration: 0.1, ease:"expo.in", alpha: 1})
+		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
 	tween2
-		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -1, alpha: 0})
-		.to(dmgCounter.scale, { duration: 1, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+		.to(dmgCounter, { duration: 1, ease:"expo.out", y: -1, alpha: 0})
+		.to(dmgCounter.scale, { duration: 1, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
 	// dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
