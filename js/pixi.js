@@ -968,9 +968,9 @@ function createSprite(direction, item, index){
 		.to(dmgCounter, { duration: 0.1, ease:"expo.in", alpha: 1})
 		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
 	tween2
-		.to(dmgCounter, { duration: 1, ease:"expo.out", y: -100, alpha: 0})
-		.to(dmgCounter.scale, { duration: 1, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
-	// dmgCounter.alpha = 0;
+		.to(dmgCounter, { duration: 2, ease:"expo.out", y: -150, alpha: 0})
+		.to(dmgCounter.scale, { duration: 2, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
+	dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
 
