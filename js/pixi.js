@@ -948,9 +948,6 @@ function createSprite(direction, item, index){
 	
 	const healthBar = new PIXI.Container();
 
-
-
-
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 36,
@@ -972,11 +969,9 @@ function createSprite(direction, item, index){
 		.to(dmgCounter.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
 	// dmgCounter.alpha = 0;
 
+	dmgCounter.tween = tween2;
 	healthBar.addChild(dmgCounter);
 	healthBar.dmgCounter = dmgCounter;
-
-
-
 
 
 	
@@ -1819,14 +1814,22 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
 						hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
-						damageText.text = damage;
-						tween.play(0);
+
+						hpHeroContainerArray[targetedIndex].dmgCounter.text = damage;
+						hpHeroContainerArray[targetedIndex].dmgCounter.tween.play(0);
+
+						// damageText.text = damage;
+						// tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 						hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
-						damageText.text = damage;
-						tween.play(0);
+
+						hpEnemyContainerArray[targetedIndex].dmgCounter.text = damage;
+						hpEnemyContainerArray[targetedIndex].dmgCounter.tween.play(0);
+
+						// damageText.text = damage;
+						// tween.play(0);
 					}
 				});
 			}else{
@@ -1938,14 +1941,21 @@ function onCreatureDown(){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
-					damageText.text = damage;
-					tween.play(0);
+					
+					hpHeroContainerArray[targetedIndex].dmgCounter.text = damage;
+					hpHeroContainerArray[targetedIndex].dmgCounter.tween.play(0);
+
+					// damageText.text = damage;
+					// tween.play(0);
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
-					damageText.text = damage;
-					tween.play(0);
+
+					hpEnemyContainerArray[targetedIndex].dmgCounter.text = damage;
+					hpEnemyContainerArray[targetedIndex].dmgCounter.tween.play(0);
+					// damageText.text = damage;
+					// tween.play(0);
 				}
 			}
 
