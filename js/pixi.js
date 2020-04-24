@@ -336,7 +336,7 @@ function setup(){
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 36,
-        fontStyle: 'italic',
+        // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
@@ -366,7 +366,7 @@ function setup(){
 	tween
 		.to(dmgCounter2, { duration: 1.5, ease:"expo.out", y: -100, alpha: 0})
 		.to(dmgCounter2.scale, { duration: 1.5, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
-	dmgCounter2.alpha = 0;
+	// dmgCounter2.alpha = 0;
 
 	app.stage.addChild(tempContainer);
 
