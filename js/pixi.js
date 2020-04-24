@@ -183,7 +183,7 @@ class Creature{
 const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 
-let state, onScreenStats, consoleScreen;
+let state, onScreenStats, consoleScreen, dmgCounter2;
 
 var styleFontFamily = 'Arvo';
 
@@ -333,23 +333,23 @@ function setup(){
 
 	// app.stage.addChild(rectTemp);
 
-// 	const style = new PIXI.TextStyle({
-//         fontFamily: 'Arvo',
-//         fontSize: 36,
-//         fontStyle: 'italic',
-//         fontWeight: 700,
-// //         fill: ['#ff0000', '#D80000'], // gradient
-// 		fill: '#D80000',	
-//     });
+	const style = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 36,
+        fontStyle: 'italic',
+        fontWeight: 700,
+//         fill: ['#ff0000', '#D80000'], // gradient
+		fill: '#D80000',	
+    });
 
-// 	dmgCounter = new Text("50", style);
-// 	dmgCounter.anchor.set(0.5, 0.5);
+	dmgCounter2 = new Text("50", style);
+	dmgCounter2.anchor.set(0.5, 0.5);
 
 
 	// damageText.animate = false;
 
-	// tempContainer.addChild(damageText);
-	// tempContainer.damageText = damageText;
+	tempContainer.addChild(damageText);
+	tempContainer.damageText = damageText;
 
 	// tween = TweenMax.to(damageText, 2.5, {ease: Expo.easeInOut, y: -100, alpha: 0, scale: 2, paused: true});
 	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
@@ -359,16 +359,16 @@ function setup(){
 	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
 	// tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
 
-	// tween = gsap.timeline({paused: true});
-	// tween
-	// 	.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
-	// 	.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
-	// tween
-	// 	.to(dmgCounter, { duration: 1.5, ease:"expo.inOut", y: -100, alpha: 0})
-	// 	.to(dmgCounter.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
-	// dmgCounter.alpha = 0;
+	tween = gsap.timeline({paused: true});
+	tween
+		.to(dmgCounter2, { duration: 0.1, ease:"expo.out", alpha: 1})
+		.to(dmgCounter2.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
+	tween
+		.to(dmgCounter2, { duration: 1.5, ease:"expo.inOut", y: -100, alpha: 0})
+		.to(dmgCounter2.scale, { duration: 1.5, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+	dmgCounter2.alpha = 0;
 
-	// app.stage.addChild(tempContainer);
+	app.stage.addChild(tempContainer);
 
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
@@ -964,7 +964,7 @@ function createSprite(direction, item, index){
 		.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
 		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
 	tween2
-		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -10, alpha: 0})
+		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -1, alpha: 0})
 		.to(dmgCounter.scale, { duration: 1, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
 	// dmgCounter.alpha = 0;
 
