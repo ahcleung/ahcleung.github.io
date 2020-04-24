@@ -371,8 +371,8 @@ function setup(){
 		.to(damageText, { duration: 0.1, ease:"expo.out", alpha: 1})
 		.to(damageText.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
 	tween
-		.to(damageText, { duration: 3, ease:"expo.inOut", y: -100, alpha: 0})
-		.to(damageText.scale, { duration: 3, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
+		.to(damageText, { duration: 2, ease:"expo.inOut", y: -100, alpha: 0})
+		.to(damageText.scale, { duration: 2, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
 
 	damageText.alpha = 0;
 
