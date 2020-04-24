@@ -959,8 +959,8 @@ function createSprite(direction, item, index){
 
 	let dmgCounter = new Text("50", style);
 	dmgCounter.anchor.set(0.5, 0.5);
-	dmgCounter.x = 50;
-	dmgCounter.y = 200;
+	dmgCounter.x = 100;
+	dmgCounter.y = 500;
 
 	var tween2 = gsap.timeline({paused: true});
 	tween2
