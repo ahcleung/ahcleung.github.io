@@ -914,8 +914,8 @@ function createSprite(direction, item, index){
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
-		fill: '#D80000',	
-		stroke: '#ff0000',
+		fill: '#ff0000',	
+		stroke: '#D80000',
    		strokeThickness: 3,
     });
 
