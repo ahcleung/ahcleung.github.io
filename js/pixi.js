@@ -1764,6 +1764,21 @@ function onCreatureDown(){
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 					console.log(targeted + " takes " + damage + " damage");
 				});
+
+				// Math.abs(validPositionTargetArray[clickedTarget])-1
+
+				var targetedIndex = Math.abs(validPositionTargetArray[clickedTarget])-1;
+				if(validPositionTargetArray[clickedTarget] > 0){
+					arrayHero[targetedIndex].statCalc[0] -= damage;
+					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+					damageText.text = damage;
+					tween.play(0);
+				}else{
+					arrayEnemy[targetedIndex].statCalc[0] -= damage;
+					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+					damageText.text = damage;
+					tween.play(0);
+				}
 			}else{
 				// console.log(validPositionTargetArray[clickedTarget] + " takes ## damage");
 				var targeted = validPositionTargetArray[clickedTarget];
