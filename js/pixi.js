@@ -370,9 +370,8 @@ function setup(){
 	tween
 		.to(damageText, { duration: 0.01, alpha: 1})
 		.to(damageText.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2});
-	tween
-		.to(damageText, { duration: 3, ease:"expo.out", y: -100, alpha: 0})
-		.to(damageText.scale, { duration: 3, ease:"expo.out", x: 1.2, y: 1.2});
+	tween.to(damageText, { duration: 3, ease:"expo.out", y: -100, alpha: 0});
+	tween.add(gsap.to(damageText.scale, { duration: 3, ease:"expo.out", x: 1.2, y: 1.2}));
 
 	damageText.alpha = 0;
 
