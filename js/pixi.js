@@ -1767,8 +1767,8 @@ function onCreatureDown(){
 
 				// Math.abs(validPositionTargetArray[clickedTarget])-1
 
-				var targetedIndex = Math.abs(validPositionTargetArray[clickedTarget])-1;
-				if(validPositionTargetArray[clickedTarget] > 0){
+				var targetedIndex = Math.abs(validPositionTargetArray[clickedTarget][0])-1;
+				if(validPositionTargetArray[clickedTarget][0] > 0){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 					damageText.text = damage;
