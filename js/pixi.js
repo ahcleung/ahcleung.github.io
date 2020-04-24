@@ -342,7 +342,7 @@ function setup(){
 		fill: '#D80000',	
     });
 
-	dmgCounter2 = new Text(9, style);
+	dmgCounter2 = new Text("9", style);
 	dmgCounter2.anchor.set(0.5, 0.5);
 
 
