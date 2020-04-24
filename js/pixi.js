@@ -184,7 +184,6 @@ const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 
 let state, onScreenStats, consoleScreen;
-let damageText;
 
 var styleFontFamily = 'Arvo';
 
@@ -957,7 +956,7 @@ function createSprite(direction, item, index){
 		fill: '#D80000',	
     });
 
-	dmgCounter = new Text("50", style);
+	let dmgCounter = new Text("50", style);
 	dmgCounter.anchor.set(0.5, 0.5);
 
 	var tween2 = gsap.timeline({paused: true});
@@ -965,7 +964,7 @@ function createSprite(direction, item, index){
 		.to(dmgCounter, { duration: 0.1, ease:"expo.out", alpha: 1})
 		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.out", x: 2, y: 2}, 0);
 	tween2
-		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -2, alpha: 0})
+		.to(dmgCounter, { duration: 1, ease:"expo.inOut", y: -10, alpha: 0})
 		.to(dmgCounter.scale, { duration: 1, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
 	// dmgCounter.alpha = 0;
 
