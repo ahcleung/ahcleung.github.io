@@ -329,47 +329,6 @@ function setup(){
 	rectTemp.alpha = 0.1;
 	// Add it to the stage
 
-	tempContainer.addChild(rectTemp);
-
-	// app.stage.addChild(rectTemp);
-
-	const style = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 36,
-        // fontStyle: 'italic',
-        fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
-		fill: '#D80000',	
-    });
-
-	dmgCounter2 = new Text("9", style);
-	dmgCounter2.anchor.set(0.5, 0.5);
-
-
-	// damageText.animate = false;
-
-	tempContainer.addChild(dmgCounter2);
-	tempContainer.damageText = dmgCounter2;
-
-	// tween = TweenMax.to(damageText, 2.5, {ease: Expo.easeInOut, y: -100, alpha: 0, scale: 2, paused: true});
-	// tween = gsap.to(damageText, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, paused: true });
-	// tween = TweenMax.fromTo(damageText, {alpha:1}, { duration: 2.5, ease: "expo.out", y: -100, alpha: 0, scale: 2, paused: true });
-
-
-	// tween = gsap.to(damageText.style, { duration: 2.5, fontSize: 50, paused: true });
-	// tween = gsap.to(damageText.scale, { duration: 2.5, x: 2.0, y: 2.0, paused: true });
-
-	tween = gsap.timeline({paused: true});
-	tween
-		.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1})
-		.to(dmgCounter2.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
-	tween
-		.to(dmgCounter2, { duration: 1.5, ease:"expo.out", y: -100, alpha: 0})
-		.to(dmgCounter2.scale, { duration: 1.5, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
-	// dmgCounter2.alpha = 0;
-
-	app.stage.addChild(tempContainer);
-
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
 // 	rectHero.y = 0;
@@ -968,8 +927,8 @@ function createSprite(direction, item, index){
 		.to(dmgCounter, { duration: 0.1, ease:"expo.in", alpha: 1})
 		.to(dmgCounter.scale, { duration: 0.1, ease:"expo.in", x: 2, y: 2}, 0);
 	tween2
-		.to(dmgCounter, { duration: 2, ease:"expo.out", y: -150, alpha: 0})
-		.to(dmgCounter.scale, { duration: 2, ease:"expo.out", x: 1.2, y: 1.2}, 0.1);
+		.to(dmgCounter, { duration: 2, ease:"expo.inOut", y: -150, alpha: 0})
+		.to(dmgCounter.scale, { duration: 2, ease:"expo.inOut", x: 1.2, y: 1.2}, 0.1);
 	dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
@@ -2448,7 +2407,7 @@ function onExtrasDown(){
 	console.log("Extras");
 	extrasContainer.visible = true;
 	// tween.invalidate();
-	tween.play(0);
+	// tween.play(0);
 }
 
 function onExtrasCancelDown(){
