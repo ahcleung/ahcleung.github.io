@@ -915,6 +915,8 @@ function createSprite(direction, item, index){
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
+		stroke: '#ffffff',
+   		strokeThickness: 5,
     });
 
 	let dmgCounter = new Text("50", style);
