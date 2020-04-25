@@ -1021,9 +1021,9 @@ function createSprite(direction, item, index){
 	// dmgBar.visible = false;
 
 	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
-	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
-		dmgBar.visible = false;
-	}});
+	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
+	// 	dmgBar.visible = false;
+	// }});
 
 	dmgBar.tween = tweenDmg;
 
@@ -1965,18 +1965,26 @@ function onCreatureDown(){
 
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 
-					damage = 25;
+					// damage = 25;
 
 					console.log(targeted + " takes " + damage + " damage");
 
 					if(targeted > 0){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
 
-						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
+						// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
 
-						// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+						var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+
+						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
 						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						TweenMax.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {
+								width: newWidth
+							}, {delay:1, ease:Expo.easeIn, width:0, onComplete: function(){
+							dmgBar.visible = false;
+						}});
+						// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 						arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
 						hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
@@ -1991,11 +1999,19 @@ function onCreatureDown(){
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
+						// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
 
-						// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+						var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {
+								width: newWidth
+							}, {delay:1, ease:Expo.easeIn, width:0, onComplete: function(){
+							dmgBar.visible = false;
+						}});
+						// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
 						hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
@@ -2113,18 +2129,28 @@ function onCreatureDown(){
 				
 				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 
-				damage = 25;
+				// damage = 25;
 
 				console.log(targeted + " takes " + damage + " damage");
 
 				if(targeted > 0){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					
-					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
+					// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
+					var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+
+					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					TweenMax.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+						, 1, {
+							width: newWidth
+						}, {delay:1, ease:Expo.easeIn, width:0, onComplete: function(){
+						dmgBar.visible = false;
+					}});
 
 					// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 					arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
 					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
@@ -2139,11 +2165,21 @@ function onCreatureDown(){
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
-					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
-					
-					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = 100;
+
+					var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+
+					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+						, 1, {
+							width: newWidth
+						}, {delay:1, ease:Expo.easeIn, width:0, onComplete: function(){
+						dmgBar.visible = false;
+					}});
+					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
 					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
