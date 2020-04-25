@@ -835,6 +835,8 @@ function setup(){
 	app.stage.addChild(rosterEnemy);
 	app.stage.addChild(hpHero);
 	app.stage.addChild(hpEnemy);
+	app.stage.addChild(dmgHero);
+	app.stage.addChild(dmgEnemy);
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
@@ -1268,6 +1270,8 @@ function resize() {
 		skillSelectPadding = 2;
 		hpHero.position.set(margin, 20);
 		hpEnemy.position.set(app.screen.width/2+margin, 20);
+		dmgHero.position.set(margin, 20);
+		dmgEnemy.position.set(app.screen.width/2+margin, 20);
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
 	}else if(app.screen.width < 1366){
@@ -1277,6 +1281,8 @@ function resize() {
 		skillSelectPadding = 3;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
+		dmgHero.position.set(margin, 40);
+		dmgEnemy.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
 	}else{
@@ -1286,6 +1292,8 @@ function resize() {
 		skillSelectPadding = 5;
 		hpHero.position.set(margin, 40);
 		hpEnemy.position.set(app.screen.width/2+margin, 40);
+		dmgHero.position.set(margin, 40);
+		dmgEnemy.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
 	}
