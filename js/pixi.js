@@ -371,7 +371,7 @@ function setup(){
 	tempContainer.addChild(dmgCounter2);
 	tempContainer.dmgCounter = dmgCounter2;
 
-
+	app.stage.addChild(tempContainer);
 
 
 	rosterHero.x = app.screen.width/2;
