@@ -339,6 +339,41 @@ function setup(){
 // 	rectEnemy.y = 0;
 // 	hpEnemy.addChild(rectEnemy);
 	
+	// const dmgContainer = new PIXI.Container();
+
+	const style = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        // fontStyle: 'italic',
+        fontWeight: 700,
+//         fill: ['#ff0000', '#D80000'], // gradient
+		fill: '#D80000',	
+		stroke: '#ff0000',
+   		strokeThickness: 3,
+    });
+
+	let dmgCounter2 = new Text("50", style);
+	dmgCounter2.anchor.set(0.5, 0.5);
+	// dmgCounter.x = 100;
+	// dmgCounter.y = 500;
+
+	var tween = gsap.timeline({paused: true});
+	tween
+		.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1})
+		.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2}, 0);
+	tween
+		.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
+		.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+	// dmgCounter2.alpha = 0;
+
+	dmgCounter2.tween = tween;
+
+	tempContainer.addChild(dmgCounter2);
+	tempContainer.dmgCounter = dmgCounter2;
+
+
+
+
 	rosterHero.x = app.screen.width/2;
 	rosterHero.y = app.screen.height/2;
 	
@@ -2409,7 +2444,7 @@ function onExtrasDown(){
 	console.log("Extras");
 	extrasContainer.visible = true;
 	// tween.invalidate();
-	// tween.play(0);
+	tween.play(0);
 }
 
 function onExtrasCancelDown(){
