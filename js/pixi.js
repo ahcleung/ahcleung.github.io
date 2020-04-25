@@ -1398,6 +1398,14 @@ function resizeDmg(roster, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	var resizeHeight = 40;
 
+	if(app.screen.width < 860){
+		resizeHeight = 20;
+	}else if(app.screen.width < 1366){
+		resizeHeight = 30;
+	}else{
+		resizeHeight = 40;
+	}
+
 	item.dmgBarContainer.dmgBar.height = resizeHeight;
 
 	if(roster == 0){
