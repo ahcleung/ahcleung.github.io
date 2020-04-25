@@ -354,7 +354,7 @@ function setup(){
    		strokeThickness: 3,
     });
 
-	let dmgCounter2 = new Text("50", style);
+	dmgCounter2 = new Text("50", style);
 	dmgCounter2.anchor.set(0.5, 0.5);
 	// dmgCounter.x = 100;
 	// dmgCounter.y = 500;
