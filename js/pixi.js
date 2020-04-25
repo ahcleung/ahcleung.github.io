@@ -979,7 +979,9 @@ function createSprite(direction, item, index){
 	// 	.to(dmgCounter.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
 	//GSAP2
-	var tween2 = new TimelineMax({paused: true});
+	var tween2 = new TimelineMax({paused: true onComplete: function(){
+		dmgCounter.visible = false;
+	}});
 	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
 	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
 	tween2.to(dmgCounter, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
@@ -1031,10 +1033,10 @@ function createSprite(direction, item, index){
 	dmgBar.beginFill(0xEEEEEE);
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
-	dmgBar.visible = false;
+	// dmgBar.visible = false;
 
 	var tweenDmg = TweenMax.to(dmgBar, 0.5, {ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
-		this.visible = false;
+		dmgBar.visible = false;
 	}});
 
 	dmgBar.tween = tweenDmg;
