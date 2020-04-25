@@ -1025,7 +1025,7 @@ function createSprite(direction, item, index){
 	// 	dmgBar.visible = false;
 	// }});
 
-	dmgBar.tween = tweenDmg;
+	// dmgBar.tween = tweenDmg;
 
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
