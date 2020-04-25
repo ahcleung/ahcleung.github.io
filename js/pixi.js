@@ -1387,14 +1387,6 @@ function resize() {
 	arrayEnemyDmg.forEach(function (item, index){
 		resizeDmg(1, item, index)
 	});
-	
-	arrayHeroDmg.forEach(dmgContainer => {
-		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
-	});
-
-	arrayEnemyDmg.forEach(dmgContainer => {
-		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
-	});
 
 	//Console log RESIZE
 	consolePrint("RESIZE");
@@ -1473,6 +1465,8 @@ function resizeDmg(roster, item, index){
 	// item.dmgBarContainer.x = item.inner.width;
 
 	item.dmgText.y = app.screen.height/2;
+
+	item.dmgBarContainer.dmgBar.tween.play(0);
 }
 
 function resizeHP(roster, item, index){
