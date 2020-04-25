@@ -984,9 +984,10 @@ function createSprite(direction, item, index){
 	// 	.to(dmgCounter.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
 	//GSAP2
-	var tween2 = new TimelineMax({paused: true, onComplete: function(){
-		dmgCounter.visible = false;
-	}});
+	var tween2 = new TimelineMax({paused: true});
+	// var tween2 = new TimelineMax({paused: true, onComplete: function(){
+	// 	dmgCounter.visible = false;
+	// }});
 	tween2.to(dmgCounter, 0.3, {ease:Expo.easeIn, alpha: 1});
 	tween2.to(dmgCounter.scale, 0.3, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
 	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
@@ -1000,12 +1001,31 @@ function createSprite(direction, item, index){
 	dmgText.dmgCounter = dmgCounter;
 	dmgContainer.addChild(dmgText);
 	dmgContainer.dmgText = dmgText;
-	// dmgText.tween = tween2;
 
-	// healthBar.addChild(dmgContainer);
-	// healthBar.dmgContainer = dmgContainer;
+	var dmgBarContainer = new PIXI.Container();
 
+	let dmgBar = new PIXI.Graphics();
+	dmgBar.beginFill(0xEEEEEE);
+	dmgBar.drawRect(0, 0, 10, 40);
+	dmgBar.endFill();
+	// dmgBar.visible = false;
+
+	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
+	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
+	// 	dmgBar.visible = false;
+	// }});
+
+	dmgBar.tween = tweenDmg;
+
+	dmgBarContainer.addChild(dmgBar);
+	dmgBarContainer.dmgBar = dmgBar;
+
+	dmgContainer.addChild(dmgBarContainer);
+	dmgContainer.dmgBarContainer = dmgBarContainer;
+	// healthBar.addChild(dmgBarContainer);
+	// healthBar.dmgBarContainer = dmgBarContainer;	
 	
+
 	healthBar.identifier = [direction, index];
 	healthBar.buttonMode = true;
 	healthBar.interactive = true;
@@ -1033,28 +1053,6 @@ function createSprite(direction, item, index){
 	vitalBar.endFill();
 	healthBar.addChild(vitalBar);
 	healthBar.vital = vitalBar;
-
-	var dmgBarContainer = new PIXI.Container();
-
-	let dmgBar = new PIXI.Graphics();
-	dmgBar.beginFill(0xEEEEEE);
-	dmgBar.drawRect(0, 0, 10, 40);
-	dmgBar.endFill();
-	// dmgBar.visible = false;
-
-	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
-		dmgBar.visible = false;
-	}});
-
-	dmgBar.tween = tweenDmg;
-
-	dmgBarContainer.addChild(dmgBar);
-	dmgBarContainer.dmgBar = dmgBar;
-
-	dmgContainer.addChild(dmgBarContainer);
-	dmgContainer.dmgBarContainer = dmgBarContainer;
-	// healthBar.addChild(dmgBarContainer);
-	// healthBar.dmgBarContainer = dmgBarContainer;	
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xffa500);
@@ -1964,7 +1962,7 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
 
 						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 						arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
@@ -1972,7 +1970,7 @@ function onCreatureDown(){
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.visible = true;
+						// arrayHeroDmg[targetedIndex].dmgText.dmgCounter.visible = true;
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 
 						// damageText.text = damage;
@@ -1981,7 +1979,7 @@ function onCreatureDown(){
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
@@ -1989,7 +1987,7 @@ function onCreatureDown(){
 						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.visible = true;
+						// arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.visible = true;
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 
 						// damageText.text = damage;
@@ -2108,7 +2106,7 @@ function onCreatureDown(){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					
 					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 					arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
@@ -2116,7 +2114,7 @@ function onCreatureDown(){
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 					
 					arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-					arrayHeroDmg[targetedIndex].dmgText.dmgCounter.visible = true;
+					// arrayHeroDmg[targetedIndex].dmgText.dmgCounter.visible = true;
 					arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 
 					// damageText.text = damage;
@@ -2125,7 +2123,7 @@ function onCreatureDown(){
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
@@ -2133,7 +2131,7 @@ function onCreatureDown(){
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 					arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-					arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.visible = true;
+					// arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.visible = true;
 					arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					// damageText.text = damage;
 					// tween.play(0);
