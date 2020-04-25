@@ -360,11 +360,11 @@ function setup(){
 	// dmgCounter.y = 500;
 
 	tween = gsap.timeline({paused: true});
-	tween.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1},0);
-	tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2},0);
+	tween.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1});
+	tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2},"<");
 	tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
 	tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
-	
+
 	// dmgCounter2.alpha = 0;
 
 
