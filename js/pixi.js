@@ -979,7 +979,7 @@ function createSprite(direction, item, index){
 	// 	.to(dmgCounter.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
 	//GSAP2
-	var tween2 = new TimelineMax({paused: true onComplete: function(){
+	var tween2 = new TimelineMax({paused: true, onComplete: function(){
 		dmgCounter.visible = false;
 	}});
 	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
