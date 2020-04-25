@@ -361,7 +361,7 @@ function setup(){
 
 	tween = gsap.timeline({paused: true});
 	tween
-		.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1});
+		.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1},0);
 	tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2},0);
 	tween
 		.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
