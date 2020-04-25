@@ -240,12 +240,12 @@ const skillContainerArray = [];			//Array of skill containers
 
 const hero = [];
 hero[0] = {
-	id: 2, level: 50, 
+	id: 11, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 40
 };
 hero[1] = {
-	id: 11, level: 47, 
+	id: 2, level: 47, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 39
 };
