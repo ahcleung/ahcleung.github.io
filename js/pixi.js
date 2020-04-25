@@ -998,11 +998,11 @@ function createSprite(direction, item, index){
 
 	
 	healthBar.identifier = [direction, index];
-	// healthBar.buttonMode = true;
-	// healthBar.interactive = true;
-	// healthBar
- //        // set the mousedown and touchstart callback...
- //        .on('pointerdown', onHPDown);
+	healthBar.buttonMode = true;
+	healthBar.interactive = true;
+	healthBar
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onHPDown);
 	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
