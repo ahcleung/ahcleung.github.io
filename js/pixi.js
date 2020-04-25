@@ -978,10 +978,10 @@ function createSprite(direction, item, index){
 
 	//GSAP2
 	var tween2 = new TimelineMax({paused: true});
-	tween2.to(dmgCounter, 0.5, {ease:Expo.easeIn, alpha: 1});
-	tween2.to(dmgCounter.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
+	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
+	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
 	tween2.to(dmgCounter, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween2.to(dmgCounter.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
+	tween2.to(dmgCounter.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
 
 	dmgCounter.alpha = 0;
 
