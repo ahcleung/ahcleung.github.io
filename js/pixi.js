@@ -183,7 +183,7 @@ class Creature{
 const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 
-let state, onScreenStats, consoleScreen, dmgCounter2;
+let state, onScreenStats, consoleScreen;
 
 var styleFontFamily = 'Arvo';
 
@@ -193,7 +193,9 @@ const hpHero = new PIXI.Container();
 const hpEnemy = new PIXI.Container();
 const extrasContainer = new PIXI.Container();
 
+let dmgCounter2;
 const tempContainer = new PIXI.Container();
+var tween;
 
 const rectTemp = new PIXI.Graphics();
 
@@ -357,7 +359,7 @@ function setup(){
 	// dmgCounter.x = 100;
 	// dmgCounter.y = 500;
 
-	var tween = gsap.timeline({paused: true});
+	tween = gsap.timeline({paused: true});
 	tween
 		.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1})
 		.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2}, 0);
