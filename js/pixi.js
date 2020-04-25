@@ -1005,9 +1005,10 @@ function createSprite(direction, item, index){
 	var dmgBarContainer = new PIXI.Container();
 
 	let dmgBar = new PIXI.Graphics();
-	dmgBar.beginFill(0xDDDDDD);
+	dmgBar.beginFill(0xFFFFFF);
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
+	dmgBar.alpha = 0.9;
 	// dmgBar.visible = false;
 
 	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
