@@ -1033,7 +1033,7 @@ function createSprite(direction, item, index){
 	dmgBar.endFill();
 	dmgBar.visible = false;
 
-	var tweenDmg = TweenMax.to(dmgBar, 1, {ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
+	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:2, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
 		dmgBar.visible = false;
 	}});
 
