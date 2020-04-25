@@ -1853,6 +1853,9 @@ function onCreatureDown(){
 					// console.log("Effectiveness: " + effectiveness);
 
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+
+					damage = 25;
+
 					console.log(targeted + " takes " + damage + " damage");
 
 					if(targeted > 0){
@@ -1994,6 +1997,9 @@ function onCreatureDown(){
 				// console.log("Effectiveness: " + effectiveness);
 				
 				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+
+				damage = 25;
+
 				console.log(targeted + " takes " + damage + " damage");
 
 				if(targeted > 0){
