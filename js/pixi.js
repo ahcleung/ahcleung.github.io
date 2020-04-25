@@ -1963,10 +1963,10 @@ function onCreatureDown(){
 					if(targeted > 0){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
 
-						hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-						hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
-						hpHeroContainerArray[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
 						hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
@@ -1980,10 +1980,10 @@ function onCreatureDown(){
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
-						hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-						hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
-						hpEnemyContainerArray[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
 						hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
@@ -2107,10 +2107,10 @@ function onCreatureDown(){
 				if(targeted > 0){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					
-					hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-					hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-					hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
-					hpHeroContainerArray[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
 					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
@@ -2124,10 +2124,10 @@ function onCreatureDown(){
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
-					hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-					hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-					hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
-					hpEnemyContainerArray[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
 					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
