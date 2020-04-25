@@ -193,6 +193,9 @@ const hpHero = new PIXI.Container();
 const hpEnemy = new PIXI.Container();
 const additionalContainer = new PIXI.Container();
 
+const dmgHero = new PIXI.Container();
+const dmgEnemy = new PIXI.Container();
+
 let dmgCounter2;
 const tempContainer = new PIXI.Container();
 var tween;
@@ -951,6 +954,8 @@ function createSprite(direction, item, index){
 
 	const dmgContainer = new PIXI.Container();
 
+	const dmgText = new PIXI.Container();
+
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 50,
@@ -985,16 +990,18 @@ function createSprite(direction, item, index){
 	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
 	tween2.to(dmgCounter.scale, 1.5, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
 
-	dmgCounter.alpha = 0;
+	// dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
 
-	dmgContainer.addChild(dmgCounter);
-	dmgContainer.dmgCounter = dmgCounter;
-	// dmgContainer.tween = tween2;
+	dmgText.addChild(dmgCounter);
+	dmgText.dmgCounter = dmgCounter;
+	dmgContainer.addChild(dmgText);
+	dmgContainer.dmgText = dmgText;
+	// dmgText.tween = tween2;
 
-	healthBar.addChild(dmgContainer);
-	healthBar.dmgContainer = dmgContainer;
+	// healthBar.addChild(dmgContainer);
+	// healthBar.dmgContainer = dmgContainer;
 
 	
 	healthBar.identifier = [direction, index];
@@ -1031,7 +1038,7 @@ function createSprite(direction, item, index){
 	dmgBar.beginFill(0xEEEEEE);
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
-	dmgBar.visible = false;
+	// dmgBar.visible = false;
 
 	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
 		dmgBar.visible = false;
@@ -1042,8 +1049,10 @@ function createSprite(direction, item, index){
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
 
-	healthBar.addChild(dmgBarContainer);
-	healthBar.dmgBarContainer = dmgBarContainer;	
+	dmgContainer.addChild(dmgBarContainer);
+	dmgContainer.dmgBarContainer = dmgBarContainer;
+	// healthBar.addChild(dmgBarContainer);
+	// healthBar.dmgBarContainer = dmgBarContainer;	
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xffa500);
@@ -1213,20 +1222,23 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		hpHeroContainerArray.push(healthBar);
-		arrayHeroDmg.push(dmgCounter);
+		arrayHeroDmg.push(dmgContainer);
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		rosterHero.addChild(creatureContainer);
 		hpHero.addChild(healthBar);
+		dmgHero.addChild(dmgContainer);
 // 		hpHero.addChild(moveContainer);
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		hpEnemyContainerArray.push(healthBar);
-		arrayEnemyDmg.push(dmgCounter);
+		arrayEnemyDmg.push(dmgContainer);
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		rosterEnemy.addChild(creatureContainer);
 		hpEnemy.addChild(healthBar);
+
+		dmgEnemy.addChild(dmgContainer);
 // 		hpEnemy.addChild(moveContainer);
 	}	
 }
@@ -1360,10 +1372,45 @@ function resize() {
 	enemyContainerArray.forEach(function (item, index){
 		resizeSprites(-1, item, index)	
 	});
+
+	arrayHeroDmg.forEach(function (item, index){
+		resizeDmg(1, item, index)
+	});
+
+	arrayEnemyDmg.forEach(function (item, index){
+		resizeDmg(1, item, index)
+	});
 	
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
+}
+
+function resizeDmg(roster, item, index){
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	var resizeHeight = 40;
+
+	item.dmgBarContainer.dmgBar.height = resizeHeight;
+
+	if(roster == 0){
+		var switcher = 0;
+// 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
+		if(arrayHero[index].size > 1){
+			item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
+		}else{
+			item.dmgContainer.x = resizeWidth/2;
+		}
+	}else{
+		if(arrayEnemy[index].size > 1){
+			item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
+		}else{
+			item.dmgContainer.x = resizeWidth/2;
+		}
+	}
+
+	item.dmgBarContainer.x = item.inner.width;
+
+	item.dmgContainer.y = app.screen.height/2;
 }
 
 function resizeHP(roster, item, index){
@@ -1422,7 +1469,7 @@ function resizeHP(roster, item, index){
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
 	item.vital.height = resizeHeight;
-	item.dmgBarContainer.dmgBar.height = resizeHeight;
+	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.outer.width = resizeWidth;
 	
 	if(roster == 0){
@@ -1444,7 +1491,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 
-			item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
+			// item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1475,7 +1522,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
 
-			item.dmgContainer.x = (resizeWidth)/2;
+			// item.dmgContainer.x = (resizeWidth)/2;
 
 // 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
@@ -1534,7 +1581,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 
-			item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
+			// item.dmgContainer.x = (resizeWidth * 2 + healthSpacing)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1564,7 +1611,7 @@ function resizeHP(roster, item, index){
 			item.move.indicatorBar1.width = resizeWidth;
 			item.move.indicatorBar2.width = resizeWidth;
 
-			item.dmgContainer.x = (resizeWidth)/2;
+			// item.dmgContainer.x = (resizeWidth)/2;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
@@ -1609,9 +1656,9 @@ function resizeHP(roster, item, index){
 
 	}
 
-	item.dmgBarContainer.x = item.inner.width;
+	// item.dmgBarContainer.x = item.inner.width;
 
-	item.dmgContainer.y = app.screen.height/2;
+	// item.dmgContainer.y = app.screen.height/2;
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
