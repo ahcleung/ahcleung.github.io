@@ -482,6 +482,14 @@ function setup(){
 		createSprite(-1, item, index)	
 	});
 	
+	arrayHeroDmg.forEach(dmgContainer => {
+		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
+	});
+
+	arrayEnemyDmg.forEach(dmgContainer => {
+		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
+	});
+
 	for(var i = 0; i < 4; i++){
 // 		console.log(arrayHero[1].skills[i]);
 		let skillRect = new PIXI.Graphics();
