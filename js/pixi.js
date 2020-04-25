@@ -1397,18 +1397,22 @@ function resizeDmg(roster, item, index){
 // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayHero[index].size > 1){
 			item.dmgText.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 		}else{
 			item.dmgText.x = resizeWidth/2;
+			item.dmgBarContainer.x = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 		}
 	}else{
 		if(arrayEnemy[index].size > 1){
 			item.dmgText.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 		}else{
 			item.dmgText.x = resizeWidth/2;
+			item.dmgBarContainer.x = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 		}
 	}
 
-	item.dmgBarContainer.x = item.inner.width;
+	// item.dmgBarContainer.x = item.inner.width;
 
 	item.dmgText.y = app.screen.height/2;
 }
