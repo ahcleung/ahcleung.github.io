@@ -1019,9 +1019,16 @@ function createSprite(direction, item, index){
 	let vitalBar = new PIXI.Graphics();
 	vitalBar.beginFill(0xCE0000);
 	vitalBar.drawRect(0, 0, -(app.screen.width-320)/8 * (item.statCalc[0]/item.vital), 40);
-	innerBar.endFill();
+	vitalBar.endFill();
 	healthBar.addChild(vitalBar);
 	healthBar.vital = vitalBar;
+
+	let dmgBar = new PIXI.Graphics();
+	dmgBar.beginFill(0xEEEEEE);
+	dmgBar.drawRect(0, 0, 10, 40);
+	dmgBar.endFill();
+	healthBar.addChild(dmgBar);
+	healthBar.dmg = dmgBar;
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xffa500);
@@ -1400,6 +1407,7 @@ function resizeHP(roster, item, index){
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
 	item.vital.height = resizeHeight;
+	item.dmg.height = resizeHeight;
 	item.outer.width = resizeWidth;
 	
 	if(roster == 0){
@@ -1585,6 +1593,8 @@ function resizeHP(roster, item, index){
 		}
 
 	}
+
+	item.dmg.x = item.inner.width;
 
 	item.dmgContainer.y = app.screen.height/2;
 	
