@@ -1418,6 +1418,23 @@ function resizeDmg(roster, item, index){
 			item.dmgText.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 		}
+		switch(arrayHero[index].pos) {
+			case 1:
+				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+				break;
+			case 2:
+				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+				break;
+			case 3:
+				if(arrayHero[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+				else 	item.x = 0
+				break;
+			case 4:
+				item.x = 0;
+				break;
+			default:
+				item.x = 0;
+		}
 	}else{
 		if(arrayEnemy[index].size > 1){
 			item.dmgText.x = (resizeWidth * 2 + healthSpacing)/2;
@@ -1426,6 +1443,23 @@ function resizeDmg(roster, item, index){
 			item.dmgText.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 		}
+		switch(arrayEnemy[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;				
+		}
+
 	}
 
 	// item.dmgBarContainer.x = item.inner.width;
