@@ -1030,7 +1030,7 @@ function createSprite(direction, item, index){
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
 
-	var tweenDmg = TweenMax.to(dmgBar.scale, 0.5, {ease:Expo.easeIn, x:0, paused:true});
+	var tweenDmg = TweenMax.to(dmgBar, 0.5, {ease:Expo.easeIn, width:0, paused:true});
 
 	dmgBar.tween = tweenDmg;
 
