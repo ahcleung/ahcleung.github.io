@@ -996,11 +996,11 @@ function createSprite(direction, item, index){
 
 	
 	healthBar.identifier = [direction, index];
-	healthBar.buttonMode = true;
-	healthBar.interactive = true;
-	healthBar
-        // set the mousedown and touchstart callback...
-        .on('pointerdown', onHPDown);
+	// healthBar.buttonMode = true;
+	// healthBar.interactive = true;
+	// healthBar
+ //        // set the mousedown and touchstart callback...
+ //        .on('pointerdown', onHPDown);
 	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
@@ -1854,7 +1854,7 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
 
 						hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-						// hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 
 						hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
@@ -1868,7 +1868,7 @@ function onCreatureDown(){
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
 						hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-						// hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+						hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 
 						hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
@@ -1989,7 +1989,7 @@ function onCreatureDown(){
 					arrayHero[targetedIndex].statCalc[0] -= damage;
 					
 					hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
-					// hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					hpHeroContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 
 					hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
@@ -2003,7 +2003,7 @@ function onCreatureDown(){
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 
 					hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
-					// hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
+					hpEnemyContainerArray[targetedIndex].dmgBarContainer.dmgBar.tween.play(0);
 
 					hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
