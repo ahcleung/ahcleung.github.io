@@ -993,7 +993,7 @@ function createSprite(direction, item, index){
 	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
 	tween2.to(dmgCounter.scale, 1.5, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
 
-	// dmgCounter.alpha = 0;
+	dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
 
@@ -1006,7 +1006,7 @@ function createSprite(direction, item, index){
 
 	let dmgBar = new PIXI.Graphics();
 	dmgBar.beginFill(0xEEEEEE);
-	dmgBar.drawRect(0, 0, 10, 40);
+	dmgBar.drawRect(0, 0, 0, 40);
 	dmgBar.endFill();
 	// dmgBar.visible = false;
 
@@ -1024,7 +1024,7 @@ function createSprite(direction, item, index){
 	dmgContainer.dmgBarContainer = dmgBarContainer;
 	// healthBar.addChild(dmgBarContainer);
 	// healthBar.dmgBarContainer = dmgBarContainer;	
-	
+
 
 	healthBar.identifier = [direction, index];
 	healthBar.buttonMode = true;
