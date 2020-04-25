@@ -1012,7 +1012,7 @@ function createSprite(direction, item, index){
 	dmgBar.visible = false;
 
 	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
-	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, onComplete: function(){
+	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
 		dmgBar.visible = false;
 	}});
 
