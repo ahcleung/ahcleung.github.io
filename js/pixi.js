@@ -359,13 +359,19 @@ function setup(){
 	// dmgCounter.x = 100;
 	// dmgCounter.y = 500;
 
-	tween = gsap.timeline({paused: true});
-	tween.to(dmgCounter2, { duration: 0.5, ease:"expo.in", alpha: 1});
-	tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2},"<");
-	tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-	tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+	// tween = gsap.timeline({paused: true});
+	// tween.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1});
+	// tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
+	// tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
+	// tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
 	// dmgCounter2.alpha = 0;
+
+	tween = new TimelineMax({paused: true});
+	tween.to(dmgCounter2, 0.5, {alpha: 1});
+	tween.to(dmgCounter2.scale, 0.5, {x: 2, y: 2});
+	tween.to(dmgCounter2, 1.25, {y: -300, alpha: 0})
+	tween.to(dmgCounter2.scale, 1.25, {x: 1, y: 1});
 
 
 	dmgCounter2.tween = tween;
