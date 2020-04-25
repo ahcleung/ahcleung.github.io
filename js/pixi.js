@@ -367,7 +367,9 @@ function setup(){
 
 	// dmgCounter2.alpha = 0;
 
-	tween = new TimelineMax({paused: true});
+	tween = new TimelineMax({paused: true, onComplete: function(){
+		this.visible = false;
+	}});
 	tween.to(dmgCounter2, 0.5, {ease:Expo.easeIn, alpha: 1});
 	tween.to(dmgCounter2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
 	tween.to(dmgCounter2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
@@ -1029,8 +1031,11 @@ function createSprite(direction, item, index){
 	dmgBar.beginFill(0xEEEEEE);
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
+	dmgBar.visible = false;
 
-	var tweenDmg = TweenMax.to(dmgBar, 0.5, {ease:Expo.easeIn, width:0, paused:true});
+	var tweenDmg = TweenMax.to(dmgBar, 0.5, {ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
+		this.visible = false;
+	}});
 
 	dmgBar.tween = tweenDmg;
 
