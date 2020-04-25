@@ -1965,7 +1965,7 @@ function onCreatureDown(){
 							, 1, {
 								width: newWidth
 							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-							dmgBar.visible = false;
+							arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
 						arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
@@ -1988,7 +1988,7 @@ function onCreatureDown(){
 							, 1, {
 								width: newWidth
 							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-							dmgBar.visible = false;
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
 						arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
@@ -2121,7 +2121,7 @@ function onCreatureDown(){
 						, 1, {
 							width: newWidth
 						}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-						dmgBar.visible = false;
+						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 					}});
 					arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 
@@ -2144,7 +2144,7 @@ function onCreatureDown(){
 						, 1, {
 							width: newWidth
 						}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-						dmgBar.visible = false;
+						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
 					}});
 					arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 
