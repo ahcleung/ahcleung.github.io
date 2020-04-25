@@ -1005,8 +1005,8 @@ function createSprite(direction, item, index){
 	var dmgBarContainer = new PIXI.Container();
 
 	let dmgBar = new PIXI.Graphics();
-	dmgBar.beginFill(0xEEEEEE);
-	dmgBar.drawRect(0, 0, 1, 40);
+	dmgBar.beginFill(0xDDDDDD);
+	dmgBar.drawRect(0, 0, 0, 40);
 	dmgBar.endFill();
 	// dmgBar.visible = false;
 
