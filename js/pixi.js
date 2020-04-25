@@ -967,6 +967,7 @@ function createSprite(direction, item, index){
 	// dmgCounter.x = 100;
 	// dmgCounter.y = 500;
 
+	//GSAP3 version, not working?
 	// var tween2 = gsap.timeline({paused: true});
 	// tween2
 	// 	.to(dmgCounter, { duration: 0.5, ease:"expo.in", alpha: 1})
@@ -975,13 +976,12 @@ function createSprite(direction, item, index){
 	// 	.to(dmgCounter, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
 	// 	.to(dmgCounter.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
+	//GSAP2
 	var tween2 = new TimelineMax({paused: true});
-	tween2.to(dmgCounter2, 0.5, {ease:Expo.easeIn, alpha: 1});
-	tween2.to(dmgCounter2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
-	tween2.to(dmgCounter2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween2.to(dmgCounter2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
-
-
+	tween2.to(dmgCounter, 0.5, {ease:Expo.easeIn, alpha: 1});
+	tween2.to(dmgCounter.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
+	tween2.to(dmgCounter, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
+	tween2.to(dmgCounter.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
 
 	dmgCounter.alpha = 0;
 
