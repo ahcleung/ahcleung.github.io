@@ -1006,14 +1006,14 @@ function createSprite(direction, item, index){
 
 	let dmgBar = new PIXI.Graphics();
 	dmgBar.beginFill(0xDDDDDD);
-	dmgBar.drawRect(0, 0, 0, 40);
+	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
 	// dmgBar.visible = false;
 
-	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
-	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
-	// 	dmgBar.visible = false;
-	// }});
+	// var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true});
+	var tweenDmg = TweenMax.to(dmgBar, 1, {delay:1, ease:Expo.easeIn, width:0, paused:true, onComplete: function(){
+		dmgBar.visible = false;
+	}});
 
 	dmgBar.tween = tweenDmg;
 
