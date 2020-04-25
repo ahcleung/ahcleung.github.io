@@ -343,45 +343,43 @@ function setup(){
 	
 	// const dmgContainer = new PIXI.Container();
 
-	const style = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        // fontStyle: 'italic',
-        fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
-		fill: '#D80000',	
-		stroke: '#ff0000',
-   		strokeThickness: 3,
-    });
+// 	const style = new PIXI.TextStyle({
+//         fontFamily: 'Arvo',
+//         fontSize: 50,
+//         // fontStyle: 'italic',
+//         fontWeight: 700,
+// //         fill: ['#ff0000', '#D80000'], // gradient
+// 		fill: '#D80000',	
+// 		stroke: '#ff0000',
+//    		strokeThickness: 3,
+//     });
 
-	dmgCounter2 = new Text("50", style);
-	dmgCounter2.anchor.set(0.5, 0.5);
-	// dmgCounter.x = 100;
-	// dmgCounter.y = 500;
+// 	dmgCounter2 = new Text("50", style);
+// 	dmgCounter2.anchor.set(0.5, 0.5);
 
-	// tween = gsap.timeline({paused: true});
-	// tween.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1});
-	// tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
-	// tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-	// tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+// 	// tween = gsap.timeline({paused: true});
+// 	// tween.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1});
+// 	// tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
+// 	// tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
+// 	// tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
-	// dmgCounter2.alpha = 0;
+// 	// dmgCounter2.alpha = 0;
 
-	tween = new TimelineMax({paused: true, onComplete: function(){
-		this.visible = false;
-	}});
-	tween.to(dmgCounter2, 0.5, {ease:Expo.easeIn, alpha: 1});
-	tween.to(dmgCounter2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
-	tween.to(dmgCounter2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween.to(dmgCounter2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
+// 	tween = new TimelineMax({paused: true, onComplete: function(){
+// 		this.visible = false;
+// 	}});
+// 	tween.to(dmgCounter2, 0.5, {ease:Expo.easeIn, alpha: 1});
+// 	tween.to(dmgCounter2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
+// 	tween.to(dmgCounter2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
+// 	tween.to(dmgCounter2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
 
 
-	dmgCounter2.tween = tween;
+// 	dmgCounter2.tween = tween;
 
-	tempContainer.addChild(dmgCounter2);
-	tempContainer.dmgCounter = dmgCounter2;
+// 	tempContainer.addChild(dmgCounter2);
+// 	tempContainer.dmgCounter = dmgCounter2;
 
-	app.stage.addChild(tempContainer);
+// 	app.stage.addChild(tempContainer);
 
 
 	rosterHero.x = app.screen.width/2;
@@ -982,8 +980,8 @@ function createSprite(direction, item, index){
 	var tween2 = new TimelineMax({paused: true, onComplete: function(){
 		dmgCounter.visible = false;
 	}});
-	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
-	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
+	tween2.to(dmgCounter, 0.3, {ease:Expo.easeIn, alpha: 1});
+	tween2.to(dmgCounter.scale, 0.3, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
 	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
 	tween2.to(dmgCounter.scale, 1.5, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
 
@@ -2516,7 +2514,7 @@ function onExtrasDown(){
 	console.log("Extras");
 	extrasContainer.visible = true;
 	// tween.invalidate();
-	tween.play(0);
+	// tween.play(0);
 }
 
 function onExtrasCancelDown(){
