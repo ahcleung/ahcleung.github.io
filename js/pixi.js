@@ -2020,8 +2020,8 @@ function onCreatureDown(){
 						
 						if(crit > 1){
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#ff7b00';
-							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#4E2600';
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
@@ -2057,8 +2057,8 @@ function onCreatureDown(){
 
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#D80000';
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#3B0000';						
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';						
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2076,8 +2076,8 @@ function onCreatureDown(){
 
 						if(crit > 1){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#ff7b00';
-							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#4E2600';
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
@@ -2228,8 +2228,8 @@ function onCreatureDown(){
 
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#D80000';
-					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#3B0000';
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2249,8 +2249,8 @@ function onCreatureDown(){
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					if(crit > 1){
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#ff7b00';
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#4E2600';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
@@ -2284,8 +2284,8 @@ function onCreatureDown(){
 
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#D80000';
-					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#3B0000';
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2303,8 +2303,8 @@ function onCreatureDown(){
 
 					if(crit > 1){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#ff7b00';
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#4E2600';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
