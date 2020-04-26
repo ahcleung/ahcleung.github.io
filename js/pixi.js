@@ -989,6 +989,10 @@ function createSprite(direction, item, index){
 	let dmgCrit = new Text ("CRIT!", style2);
 	dmgCrit.anchor.set(0.5, 0.5);
 	dmgCrit.y = 50;
+
+	let dmgEffective = new Text ("Poor  x0.25", style2);
+	dmgEffective.anchor.set(0.5, 0.5);
+	dmgEffective.y = -50;
 	//GSAP3 version, not working?
 	// var tween2 = gsap.timeline({paused: true});
 	// tween2
