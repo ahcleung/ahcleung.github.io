@@ -48,7 +48,7 @@ loader
 		{name:'status_secured', url:'img/status_secured.png'},
 		{name:'status_silenced', url:'img/status_silenced.png'},
 		{name:'status_stunned', url:'img/status_stunned.png'},
-		{name:'status_vital', url:'img/status_vital.png'},
+		{name:'status_critical', url:'img/status_critical.png'},
 		
 		{name:'element_flora', url:'img/element_flora.png'},
 		{name:'element_water', url:'img/element_water.png'},
@@ -140,17 +140,17 @@ class Creature{
 		
 		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
-			// [Math.floor(Math.random() * 14) + 1, 1],
-			// [Math.floor(Math.random() * 14) + 1, 3, 5],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
-			// [Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 1],
+			[Math.floor(Math.random() * 14) + 1, 3, 5],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
+			[Math.floor(Math.random() * 14) + 1, 2],
 		];
 		this.statusSpriteArray = [];
 	}
@@ -1137,7 +1137,7 @@ function createSprite(direction, item, index){
 				statusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 				break;
 			case 14:
-				statusEffect = new PIXI.Sprite(resources.status_vital.texture);
+				statusEffect = new PIXI.Sprite(resources.status_critical.texture);
 				break;
 			default:
 				statusEffect = new PIXI.Sprite(resources.status_buff.texture);
@@ -2101,8 +2101,8 @@ function onCreatureDown(){
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#00d800';
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#003B00';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 						arrayEnemyDmg[targetedIndex].dmgPopup.tween.play(0);
 					}
 				});
