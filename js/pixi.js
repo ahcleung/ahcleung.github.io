@@ -2926,8 +2926,8 @@ function onAdditionalDown(){
 	// 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
 	// 				}});
 
-
-	hpHeroContainerArray[0].critDmgBar.width = 50;
+	arrayHeroDmg[0].critDmgBar.width = 50;
+	// hpHeroContainerArray[0].critDmgBar.width = 50;
 }
 
 function onAdditionalCancelDown(){
