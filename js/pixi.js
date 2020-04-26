@@ -961,7 +961,7 @@ function createSprite(direction, item, index){
 
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
-        fontSize: 64,
+        fontSize: 70,
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
