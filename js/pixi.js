@@ -1011,11 +1011,11 @@ function createSprite(direction, item, index){
 	// var tween2 = new TimelineMax({paused: true, onComplete: function(){
 	// 	dmgNum.visible = false;
 	// }});
-	tween2.to(dmgNum, 0.2, {ease:Expo.easeIn, alpha: 1});
-	// tween2.fromTo(dmgNum.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	tween2.to(dmgNum.scale, 0.2, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	tween2.to(dmgNum, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween2.to(dmgNum.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+	tween2.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
+	tween2.fromTo(dmgNum.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	// tween2.to(dmgPopup.scale, 0.2, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
+	tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
 	// dmgNum.alpha = 0;
 
