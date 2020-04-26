@@ -1079,7 +1079,7 @@ function createSprite(direction, item, index){
 	
 	let critDmgBar = new PIXI.Graphics();
 	critDmgBar.beginFill(0xff7b00);
-	critDmgBar.drawRect(0, 0, -(app.screen.width-320)/8 * (item.statCalc[0]/item.critDmg), 40);
+	critDmgBar.drawRect(0, 0, 0, 40);
 	critDmgBar.endFill();
 	dmgContainer.addChild(critDmgBar);
 	dmgContainer.critDmgBar = critDmgBar;
