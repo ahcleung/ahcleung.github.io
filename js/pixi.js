@@ -960,10 +960,10 @@ function createSprite(direction, item, index){
 	const dmgText = new PIXI.Container();
 
 	const style = new PIXI.TextStyle({
-        fontFamily: 'Arvo:700',
+        fontFamily: 'Arvo',
         fontSize: 45,
         // fontStyle: 'italic',
-        // fontWeight: 700,
+        fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#3B0000',
