@@ -961,13 +961,13 @@ function createSprite(direction, item, index){
 
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
-        fontSize: 45,
+        fontSize: 64,
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#3B0000',
-   		strokeThickness: 4,
+   		strokeThickness: 5,
     });
 
 	let dmgCounter = new Text("50", style);
