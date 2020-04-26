@@ -2664,7 +2664,9 @@ function onAdditionalDown(){
 
 	var newX = -(resizeWidth + healthSpacing);
 
-	TweenMax.to(arrayHero[0], 1, {x: newX});
+	// tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
+
+	TweenMax.to(heroContainerArray[0], 1, {x: newX});
 
 
 	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
