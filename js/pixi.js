@@ -2660,13 +2660,19 @@ function onAdditionalDown(){
 	// tween.invalidate();
 	// tween.play(0);
 
-	arrayHeroDmg.forEach(dmgContainer => {
-		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
-	});
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-	arrayEnemyDmg.forEach(dmgContainer => {
-		dmgContainer.dmgBarContainer.dmgBar.tween.play(0);
-	});
+	var newX = -(resizeWidth + healthSpacing);
+
+	TweenMax.to(arrayHero[0], 1, {x: newX});
+
+
+	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+	// 					, 1, {
+	// 						width: newWidth
+	// 					}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+	// 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
+	// 				}});
 }
 
 function onAdditionalCancelDown(){
