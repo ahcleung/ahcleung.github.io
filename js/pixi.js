@@ -989,8 +989,8 @@ function createSprite(direction, item, index){
 	// var tween2 = new TimelineMax({paused: true, onComplete: function(){
 	// 	dmgCounter.visible = false;
 	// }});
-	tween2.to(dmgCounter, 0.3, {ease:Expo.easeIn, alpha: 1});
-	tween2.to(dmgCounter.scale, 0.3, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
+	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
+	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
 	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
 	tween2.to(dmgCounter.scale, 1.5, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
 
@@ -1978,8 +1978,8 @@ function onCreatureDown(){
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00D800';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00ff00';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#e6c200';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#ffd700';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
