@@ -981,12 +981,24 @@ function createSprite(direction, item, index){
    		strokeThickness: 5,
     });
 
+    const style3 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 24,
+        // fontStyle: 'italic',
+        fontWeight: 700,
+//         fill: ['#ff0000', '#D80000'], // gradient
+		fill: '#ff7b00',	
+		stroke: '#4E2600',
+   		strokeThickness: 5,
+    });
+
+
 	let dmgNum = new Text("50", style);
 	dmgNum.anchor.set(0.5, 0.5);
 	// dmgNum.x = 100;
 	// dmgNum.y = 500;
 
-	let dmgCrit = new Text ("CRIT!", style2);
+	let dmgCrit = new Text ("CRIT!", style3);
 	dmgCrit.anchor.set(0.5, 0.5);
 	dmgCrit.y = 50;
 	dmgPopup.addChild(dmgCrit);
@@ -1983,12 +1995,15 @@ function onCreatureDown(){
 
 					if(targeted > 0){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
-
 						if(arrayHero[targetedIndex].statCalc[0] < 0){
 							arrayHero[targetedIndex].statCalc[0] = 0;
 						}
 
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
+						
 						if(effectiveness == 0.25){
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
 						}else if(effectiveness == 0.5){
@@ -2000,10 +2015,11 @@ function onCreatureDown(){
 						}else{
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
-
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+						
 						if(crit > 1){
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
 						var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
@@ -2026,16 +2042,20 @@ function onCreatureDown(){
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;						
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+						// arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						// arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						arrayHeroDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
-						arrayEnemy[targetedIndex].statCalc[0] -= damage;
+						arrayEnemy[targetedIndex].statCalc[0] -= damage;						
 						if(arrayEnemy[targetedIndex].statCalc[0] < 0){
 							arrayEnemy[targetedIndex].statCalc[0] = 0;
 						}
 
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
+
 						if(effectiveness == 0.25){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
 						}else if(effectiveness == 0.5){
@@ -2048,9 +2068,10 @@ function onCreatureDown(){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
 
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						if(crit > 1){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
 						var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
@@ -2197,6 +2218,11 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].statCalc[0] = 0;
 					}
 
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
+
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					if(effectiveness == 0.25){
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
@@ -2242,7 +2268,11 @@ function onCreatureDown(){
 						arrayEnemy[targetedIndex].statCalc[0] = 0;
 					}
 
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
+
 					if(effectiveness == 0.25){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
 					}else if(effectiveness == 0.5){
@@ -2255,7 +2285,6 @@ function onCreatureDown(){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 
-					arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					if(crit > 1){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 					}
