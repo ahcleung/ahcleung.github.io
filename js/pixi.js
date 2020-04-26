@@ -2039,11 +2039,14 @@ function onCreatureDown(){
 						if(crit > 1){
 							arrayHero[targetedIndex].critDmg += Math.floor(damage/3);
 
-							hpHeroContainerArray[targetedIndex].critDmgBar.width = -(hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP));
-							// var newCritWidth = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP);
+							// hpHeroContainerArray[targetedIndex].critDmgBar.width = -(hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP));
 
-							// hpHeroContainerArray[targetedIndex].critDmgBar.width = 50;
-							// console.log("Critical width: " + newCritWidth);
+							var newCritWidth = -(hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP));
+
+							TweenMax.fromTo(hpHeroContainerArray[targetedIndex].critDmgBar
+								, 1, {
+									width: hpHeroContainerArray[targetedIndex].critDmgBar.width
+								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
@@ -2104,10 +2107,7 @@ function onCreatureDown(){
 							arrayEnemy[targetedIndex].critDmg += Math.floor(damage/3);
 
 							hpEnemyContainerArray[targetedIndex].critDmgBar.width = -(hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP));
-							// var newCritWidth = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP);
-							
-							// hpEnemyContainerArray[targetedIndex].critDmgBar.width = 50;
-							// console.log("Critical width: " + newCritWidth);
+
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
@@ -2287,11 +2287,7 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].critDmg += Math.floor(damage/3);
 
 						hpHeroContainerArray[targetedIndex].critDmgBar.width = -(hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP));
-						
-						// var newCritWidth = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP);
 
-						// hpHeroContainerArray[targetedIndex].critDmgBar.width = newCritWidth;
-						// console.log("Critical width: " + newCritWidth);
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
@@ -2350,10 +2346,6 @@ function onCreatureDown(){
 
 						hpEnemyContainerArray[targetedIndex].critDmgBar.width = -(hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP));
 						
-						// var newCritWidth = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP);
-							
-						// hpEnemyContainerArray[targetedIndex].critDmgBar.width = 50;
-						// console.log("Critical width: " + newCritWidth);
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
