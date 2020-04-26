@@ -1081,8 +1081,8 @@ function createSprite(direction, item, index){
 	critDmgBar.beginFill(0xff7b00);
 	critDmgBar.drawRect(0, 0, 10, 40);
 	critDmgBar.endFill();
-	healthBar.addChild(critDmgBar);
-	healthBar.critDmgBar = critDmgBar;
+	dmgContainer.addChild(critDmgBar);
+	dmgContainer.critDmgBar = critDmgBar;
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xFFD600);
@@ -1434,6 +1434,7 @@ function resizeDmg(roster, item, index){
 	}
 
 	item.dmgBarContainer.dmgBar.height = resizeHeight;
+	item.critDmgBar.height = resizeHeight;
 
 	if(roster == 0){
 		var switcher = 0;
@@ -1441,10 +1442,14 @@ function resizeDmg(roster, item, index){
 		if(arrayHero[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
 			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
+			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			switcher = 1;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
+			item.critDmgBar.width = resizeWidth * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmgBar.x = resizeWidth;
 		}
 		switch(arrayHero[index].pos) {
 			case 1:
@@ -1467,9 +1472,13 @@ function resizeDmg(roster, item, index){
 		if(arrayEnemy[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
 			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
+			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
+			item.critDmgBar.width = resizeWidth * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmgBar.x = resizeWidth;
 		}
 		switch(arrayEnemy[index].pos) {
 			case 1:
@@ -1549,7 +1558,7 @@ function resizeHP(roster, item, index){
 	
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
-	item.critDmgBar.height = resizeHeight;
+	// item.critDmgBar.height = resizeHeight;
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.outer.width = resizeWidth;
 	
