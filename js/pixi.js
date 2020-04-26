@@ -989,10 +989,14 @@ function createSprite(direction, item, index){
 	let dmgCrit = new Text ("CRIT!", style2);
 	dmgCrit.anchor.set(0.5, 0.5);
 	dmgCrit.y = 50;
+	dmgPopup.addChild(dmgCrit);
 
 	let dmgEffective = new Text ("Poor  x0.25", style2);
 	dmgEffective.anchor.set(0.5, 0.5);
 	dmgEffective.y = -50;
+	dmgPopup.addChild(dmgEffective);
+
+
 	//GSAP3 version, not working?
 	// var tween2 = gsap.timeline({paused: true});
 	// tween2
@@ -1016,8 +1020,7 @@ function createSprite(direction, item, index){
 	// dmgNum.alpha = 0;
 
 	dmgNum.tween = tween2;
-
-	dmgPopup.addChild(dmgCrit);
+	
 	dmgPopup.addChild(dmgNum);
 	dmgPopup.dmgNum = dmgNum;
 	dmgContainer.addChild(dmgPopup);
