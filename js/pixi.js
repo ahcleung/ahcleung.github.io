@@ -1568,8 +1568,8 @@ function resizeHP(roster, item, index){
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
-			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].critDmg/arrayHero[index].overallHP);
-			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
+			// item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			// item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
 			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
@@ -1599,8 +1599,8 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
-			item.critDmgBar.width = resizeWidth * (arrayHero[index].critDmg/arrayHero[index].overallHP);
-			item.critDmgBar.x = resizeWidth;
+			// item.critDmgBar.width = resizeWidth * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			// item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
 			item.select.indicatorBar1.width = resizeWidth;
@@ -1658,8 +1658,8 @@ function resizeHP(roster, item, index){
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
-			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
-			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
+			// item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
+			// item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
 			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
@@ -1688,8 +1688,8 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
-			item.critDmgBar.width = resizeWidth * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
-			item.critDmgBar.x = resizeWidth;
+			// item.critDmgBar.width = resizeWidth * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
+			// item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
 			item.select.indicatorBar1.width = resizeWidth;
