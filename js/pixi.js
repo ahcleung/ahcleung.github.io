@@ -994,7 +994,7 @@ function createSprite(direction, item, index){
 	tween2.to(dmgCounter, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
 	tween2.to(dmgCounter.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 1, y: 1}, 0.2);
 
-	dmgCounter.alpha = 0;
+	// dmgCounter.alpha = 0;
 
 	dmgCounter.tween = tween2;
 
@@ -1010,7 +1010,7 @@ function createSprite(direction, item, index){
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
 	dmgBar.alpha = 0.9;
-	dmgBar.visible = false;
+	// dmgBar.visible = false;
 
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
@@ -2705,10 +2705,12 @@ function onAdditionalDown(){
 	var hpX = resizeWidth + healthSpacing * 1;
 	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
 
-	TweenMax.to(heroContainerArray[0], 1, {x: newX});
-	TweenMax.to(heroContainerArray[1], 1, {x: newX2});
-	TweenMax.to(hpHeroContainerArray[0], 1, {x: hpX});
-	TweenMax.to(hpHeroContainerArray[1], 1, {x: hpX2});
+	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
+	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+	TweenMax.to(hpHeroContainerArray[0], 0.5, {x: hpX});
+	TweenMax.to(hpHeroContainerArray[1], 0.5, {x: hpX2});
+	TweenMax.to(arrayHeroDmg[0], 0.5, {x: hpX});
+	TweenMax.to(arrayHeroDmg[1], 0.5, {x: hpX2});
 
 
 	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
