@@ -1978,8 +1978,8 @@ function onCreatureDown(){
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ffd700';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#b39700';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ff7b00';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#b35600';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
