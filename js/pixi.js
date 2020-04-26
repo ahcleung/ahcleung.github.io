@@ -1980,6 +1980,19 @@ function onCreatureDown(){
 							arrayHero[targetedIndex].statCalc[0] = 0;
 						}
 
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+						if(effectiveness == 0.25){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+						}else if(effectiveness == 0.5){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+						}else if(effectiveness == 2){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+						}else if(effectiveness == 4){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+						}else{
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+						}
+
 						var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
 
 						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
@@ -2007,6 +2020,19 @@ function onCreatureDown(){
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 						if(arrayEnemy[targetedIndex].statCalc[0] < 0){
 							arrayEnemy[targetedIndex].statCalc[0] = 0;
+						}
+
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+						if(effectiveness == 0.25){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+						}else if(effectiveness == 0.5){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+						}else if(effectiveness == 2){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+						}else if(effectiveness == 4){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+						}else{
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
 
 						var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
@@ -2147,6 +2173,19 @@ function onCreatureDown(){
 						arrayHero[targetedIndex].statCalc[0] = 0;
 					}
 
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					if(effectiveness == 0.25){
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+					}else if(effectiveness == 0.5){
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+					}else if(effectiveness == 2){
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+					}else if(effectiveness == 4){
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+					}else{
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					}
+					
 					var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
 
 					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
@@ -2172,6 +2211,19 @@ function onCreatureDown(){
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 					if(arrayEnemy[targetedIndex].statCalc[0] < 0){
 						arrayEnemy[targetedIndex].statCalc[0] = 0;
+					}
+
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					if(effectiveness == 0.25){
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+					}else if(effectiveness == 0.5){
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+					}else if(effectiveness == 2){
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+					}else if(effectiveness == 4){
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+					}else{
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 
 					var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
