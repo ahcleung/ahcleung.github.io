@@ -1953,6 +1953,7 @@ function onCreatureDown(){
 
 					if(targeted > 0){
 						arrayHero[targetedIndex].statCalc[0] -= damage;
+
 						if(arrayHero[targetedIndex].statCalc[0] < 0){
 							arrayHero[targetedIndex].statCalc[0] = 0;
 						}
@@ -2003,6 +2004,8 @@ function onCreatureDown(){
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill ='#00D800';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke: '#00ff00';
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}
 				});
