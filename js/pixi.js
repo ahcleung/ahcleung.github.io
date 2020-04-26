@@ -961,13 +961,13 @@ function createSprite(direction, item, index){
 
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
-        fontSize: 50,
+        fontSize: 45,
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
-		fill: '#ff0000',	
-		stroke: '#D80000',
-   		strokeThickness: 3,
+		fill: '#D80000',	
+		stroke: '#8c0000',
+   		strokeThickness: 5,
     });
 
 	let dmgCounter = new Text("50", style);
@@ -2006,8 +2006,8 @@ function onCreatureDown(){
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00ff00';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00D800';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00d800';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#008c00';
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}
 				});
