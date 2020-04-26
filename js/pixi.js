@@ -2274,7 +2274,7 @@ function onCreatureDown(){
 						
 						var newCritWidth = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP);
 
-						// hpHeroContainerArray[targetedIndex].critDmgBar.width = 50;
+						hpHeroContainerArray[targetedIndex].critDmgBar.width = newCritWidth;
 						console.log("Critical width: " + newCritWidth);
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
@@ -2853,7 +2853,7 @@ function onAdditionalDown(){
 	// tween.invalidate();
 	// tween.play(0);
 
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
 	// switch(arrayHero[index].pos) {
 	// 	case 1:
@@ -2892,21 +2892,22 @@ function onAdditionalDown(){
 			
 	// }
 
-	var newX = -((resizeWidth + healthSpacing) * 2);
-	var newX2 = 0;
 
-	var hpX = resizeWidth + healthSpacing * 1;
-	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
+	// var newX = -((resizeWidth + healthSpacing) * 2);
+	// var newX2 = 0;
 
-	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
-	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
-	TweenMax.to(hpHeroContainerArray[0], 0.5, {x: hpX});
-	TweenMax.to(hpHeroContainerArray[1], 0.5, {x: hpX2});
-	TweenMax.to(arrayHeroDmg[0], 0.5, {x: hpX});
-	TweenMax.to(arrayHeroDmg[1], 0.5, {x: hpX2});
+	// var hpX = resizeWidth + healthSpacing * 1;
+	// var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
 
-	arrayHero[0].pos = 3;
-	arrayHero[1].pos = 1;
+	// TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
+	// TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+	// TweenMax.to(hpHeroContainerArray[0], 0.5, {x: hpX});
+	// TweenMax.to(hpHeroContainerArray[1], 0.5, {x: hpX2});
+	// TweenMax.to(arrayHeroDmg[0], 0.5, {x: hpX});
+	// TweenMax.to(arrayHeroDmg[1], 0.5, {x: hpX2});
+
+	// arrayHero[0].pos = 3;
+	// arrayHero[1].pos = 1;
 
 
 	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
@@ -2915,6 +2916,9 @@ function onAdditionalDown(){
 	// 					}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
 	// 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
 	// 				}});
+
+
+	hpHeroContainerArray[0].critDmgBar.width = 50;
 }
 
 function onAdditionalCancelDown(){
