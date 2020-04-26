@@ -2662,11 +2662,53 @@ function onAdditionalDown(){
 
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-	var newX = -(resizeWidth + healthSpacing);
+	// switch(arrayHero[index].pos) {
+	// 	case 1:
+	// 		item.x = 0;
+	// 		break;
+	// 	case 2:
+	// 		item.x = -(resizeWidth + healthSpacing);
+	// 		break;
+	// 	case 3:				
+	// 		item.x = -((resizeWidth + healthSpacing) * 2);
+	// 		break;
+	// 	case 4:
+	// 		item.x = -((resizeWidth + healthSpacing) * 3);
+	// 		break;
+	// 	default:
+	// 		item.x = 0;	
+	// }
 
-	// tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
+
+	// switch(arrayHero[index].pos) {
+	// 	case 1:
+	// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+	// 		break;
+	// 	case 2:
+	// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+	// 		break;
+	// 	case 3:
+	// 		if(arrayHero[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+	// 		else 	item.x = 0
+	// 		break;
+	// 	case 4:
+	// 		item.x = 0;
+	// 		break;
+	// 	default:
+	// 		item.x = 0;
+			
+	// }
+
+	var newX = -((resizeWidth + healthSpacing) * 2);
+	var newX2 = 0;
+
+	var hpX = resizeWidth + healthSpacing * 1;
+	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
 
 	TweenMax.to(heroContainerArray[0], 1, {x: newX});
+	TweenMax.to(heroContainerArray[1], 1, {x: newX2});
+	TweenMax.to(hpHeroContainerArray[0], 1, {x: hpX});
+	TweenMax.to(hpHeroContainerArray[1], 1, {x: hpX2});
 
 
 	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
