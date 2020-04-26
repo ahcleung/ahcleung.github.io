@@ -1441,7 +1441,7 @@ function resizeDmg(roster, item, index){
 	}
 
 	item.dmgBarContainer.dmgBar.height = resizeHeight;
-	item.critDmgBar.height = resizeHeight;
+	// item.critDmgBar.height = resizeHeight;
 
 	if(roster == 0){
 		var switcher = 0;
