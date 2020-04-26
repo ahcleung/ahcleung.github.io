@@ -1086,7 +1086,7 @@ function createSprite(direction, item, index){
 	healthBar.critDmg = critDmgBar;
 	
 	let turnIndicator = new PIXI.Graphics();
-	turnIndicator.beginFill(0xffa500);
+	turnIndicator.beginFill(0xFFD600);
 	turnIndicator.drawRect(0, 0, (app.screen.width-320)/8, 5);
 	turnIndicator.endFill();
 	healthBar.addChild(turnIndicator);
