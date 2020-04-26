@@ -1047,15 +1047,13 @@ function createSprite(direction, item, index){
 	dmgBar.drawRect(0, 0, 10, 40);
 	dmgBar.endFill();
 	dmgBar.alpha = 0.9;
-	// dmgBar.visible = false;
+	dmgBar.visible = false;
 
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
 
 	dmgContainer.addChild(dmgBarContainer);
 	dmgContainer.dmgBarContainer = dmgBarContainer;
-
-
 
 	healthBar.identifier = [direction, index];
 	healthBar.buttonMode = true;
