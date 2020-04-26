@@ -2712,6 +2712,9 @@ function onAdditionalDown(){
 	TweenMax.to(arrayHeroDmg[0], 0.5, {x: hpX});
 	TweenMax.to(arrayHeroDmg[1], 0.5, {x: hpX2});
 
+	arrayHero[0].pos = 3;
+	arrayHero[1].pos = 1;
+
 
 	// TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
 	// 					, 1, {
