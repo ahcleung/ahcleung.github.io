@@ -960,7 +960,7 @@ function createSprite(direction, item, index){
 	const dmgText = new PIXI.Container();
 
 	const style = new PIXI.TextStyle({
-        fontFamily: 'Ceviche One',
+        fontFamily: 'Bevan',
         fontSize: 45,
         // fontStyle: 'italic',
         fontWeight: 700,
