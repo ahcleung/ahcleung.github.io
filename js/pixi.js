@@ -110,7 +110,7 @@ class Creature{
 		this.skills = skills;
 		this.pos = 0;
 		
-		this.vital = Math.floor(Math.random() * 25) + 10;
+		this.critDmg = Math.floor(Math.random() * 25) + 10;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
@@ -125,7 +125,7 @@ class Creature{
 		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
 			
-		this.EHP = this.overallHP - this.vital;
+		this.EHP = this.overallHP - this.critDmg;
 
 		this.statCalc = [
 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
@@ -928,7 +928,7 @@ function setPos(item, index, array){
 }
 
 function createSprite(direction, item, index){
-	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.statCalc[0] + "/" + item.EHP + "|Vital: " + item.vital);
+	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.statCalc[0] + "/" + item.EHP + "|Vital: " + item.critDmg);
 			
 	factory.parseDragonBonesData(resources[item.code + '_skeleton'].data);
 	factory.parseTextureAtlasData(resources[item.code + '_texture_json'].data, resources[item.code + '_texture_png'].texture);
@@ -1078,12 +1078,12 @@ function createSprite(direction, item, index){
 	healthBar.addChild(innerBar);
 	healthBar.inner = innerBar;
 	
-	let vitalBar = new PIXI.Graphics();
-	vitalBar.beginFill(0xCE0000);
-	vitalBar.drawRect(0, 0, -(app.screen.width-320)/8 * (item.statCalc[0]/item.vital), 40);
-	vitalBar.endFill();
-	healthBar.addChild(vitalBar);
-	healthBar.vital = vitalBar;
+	let critDmgBar = new PIXI.Graphics();
+	critDmgBar.beginFill(0xff7b00);
+	critDmgBar.drawRect(0, 0, -(app.screen.width-320)/8 * (item.statCalc[0]/item.critDmg), 40);
+	critDmgBar.endFill();
+	healthBar.addChild(critDmgBar);
+	healthBar.critDmg = critDmgBar;
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xffa500);
@@ -1550,7 +1550,7 @@ function resizeHP(roster, item, index){
 	
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
-	item.vital.height = resizeHeight;
+	item.critDmg.height = resizeHeight;
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.outer.width = resizeWidth;
 	
@@ -1560,8 +1560,8 @@ function resizeHP(roster, item, index){
 		if(arrayHero[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
-			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].vital/arrayHero[index].overallHP);
-			item.vital.x = resizeWidth * 2 + healthSpacing;
+			item.critDmg.width = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmg.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
 			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
@@ -1591,8 +1591,8 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
-			item.vital.width = resizeWidth * (arrayHero[index].vital/arrayHero[index].overallHP);
-			item.vital.x = resizeWidth;
+			item.critDmg.width = resizeWidth * (arrayHero[index].critDmg/arrayHero[index].overallHP);
+			item.critDmg.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
 			item.select.indicatorBar1.width = resizeWidth;
@@ -1650,8 +1650,8 @@ function resizeHP(roster, item, index){
 		if(arrayEnemy[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
-			item.vital.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
-			item.vital.x = resizeWidth * 2 + healthSpacing;
+			item.critDmg.width = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
+			item.critDmg.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
 			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
@@ -1680,8 +1680,8 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
-			item.vital.width = resizeWidth * (arrayEnemy[index].vital/arrayEnemy[index].overallHP);
-			item.vital.x = resizeWidth;
+			item.critDmg.width = resizeWidth * (arrayEnemy[index].critDmg/arrayEnemy[index].overallHP);
+			item.critDmg.x = resizeWidth;
 			item.turn.width = resizeWidth;
 			
 			item.select.indicatorBar1.width = resizeWidth;
@@ -2001,8 +2001,8 @@ function onCreatureDown(){
 
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.fill = '#D80000';
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.stroke = '#3B0000';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
 						
