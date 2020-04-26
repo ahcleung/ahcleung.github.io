@@ -196,7 +196,7 @@ const additionalContainer = new PIXI.Container();
 const dmgHero = new PIXI.Container();
 const dmgEnemy = new PIXI.Container();
 
-let dmgCounter2;
+let dmgNum2;
 const tempContainer = new PIXI.Container();
 var tween;
 
@@ -357,30 +357,30 @@ function setup(){
 //    		strokeThickness: 3,
 //     });
 
-// 	dmgCounter2 = new Text("50", style);
-// 	dmgCounter2.anchor.set(0.5, 0.5);
+// 	dmgNum2 = new Text("50", style);
+// 	dmgNum2.anchor.set(0.5, 0.5);
 
 // 	// tween = gsap.timeline({paused: true});
-// 	// tween.to(dmgCounter2, { duration: 0.1, ease:"expo.in", alpha: 1});
-// 	// tween.to(dmgCounter2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
-// 	// tween.to(dmgCounter2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-// 	// tween.to(dmgCounter2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+// 	// tween.to(dmgNum2, { duration: 0.1, ease:"expo.in", alpha: 1});
+// 	// tween.to(dmgNum2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
+// 	// tween.to(dmgNum2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
+// 	// tween.to(dmgNum2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
-// 	// dmgCounter2.alpha = 0;
+// 	// dmgNum2.alpha = 0;
 
 // 	tween = new TimelineMax({paused: true, onComplete: function(){
 // 		this.visible = false;
 // 	}});
-// 	tween.to(dmgCounter2, 0.5, {ease:Expo.easeIn, alpha: 1});
-// 	tween.to(dmgCounter2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
-// 	tween.to(dmgCounter2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
-// 	tween.to(dmgCounter2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
+// 	tween.to(dmgNum2, 0.5, {ease:Expo.easeIn, alpha: 1});
+// 	tween.to(dmgNum2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
+// 	tween.to(dmgNum2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
+// 	tween.to(dmgNum2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
 
 
-// 	dmgCounter2.tween = tween;
+// 	dmgNum2.tween = tween;
 
-// 	tempContainer.addChild(dmgCounter2);
-// 	tempContainer.dmgCounter = dmgCounter2;
+// 	tempContainer.addChild(dmgNum2);
+// 	tempContainer.dmgNum = dmgNum2;
 
 // 	app.stage.addChild(tempContainer);
 
@@ -957,7 +957,7 @@ function createSprite(direction, item, index){
 
 	const dmgContainer = new PIXI.Container();
 
-	const dmgText = new PIXI.Container();
+	const dmgPopup = new PIXI.Container();
 
 	const style = new PIXI.TextStyle({
         fontFamily: 'Arvo',
@@ -970,39 +970,54 @@ function createSprite(direction, item, index){
    		strokeThickness: 10,
     });
 
-	let dmgCounter = new Text("50", style);
-	dmgCounter.anchor.set(0.5, 0.5);
-	// dmgCounter.x = 100;
-	// dmgCounter.y = 500;
+    const style2 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 24,
+        // fontStyle: 'italic',
+        fontWeight: 700,
+//         fill: ['#ff0000', '#D80000'], // gradient
+		fill: '#D80000',	
+		stroke: '#3B0000',
+   		strokeThickness: 10,
+    });
 
+	let dmgNum = new Text("50", style);
+	dmgNum.anchor.set(0.5, 0.5);
+	// dmgNum.x = 100;
+	// dmgNum.y = 500;
+
+	let dmgCrit = new Text ("CRIT!", style2);
+	dmgNum.anchor.set(0.5, 0.5);
+	dmgCrit.y = 100;
 	//GSAP3 version, not working?
 	// var tween2 = gsap.timeline({paused: true});
 	// tween2
-	// 	.to(dmgCounter, { duration: 0.5, ease:"expo.in", alpha: 1})
-	// 	.to(dmgCounter.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2}, 0);
+	// 	.to(dmgNum, { duration: 0.5, ease:"expo.in", alpha: 1})
+	// 	.to(dmgNum.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2}, 0);
 	// tween2
-	// 	.to(dmgCounter, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-	// 	.to(dmgCounter.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+	// 	.to(dmgNum, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
+	// 	.to(dmgNum.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
 
 	//GSAP2
 	var tween2 = new TimelineMax({paused: true});
 	// var tween2 = new TimelineMax({paused: true, onComplete: function(){
-	// 	dmgCounter.visible = false;
+	// 	dmgNum.visible = false;
 	// }});
-	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
-	// tween2.fromTo(dmgCounter.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	tween2.to(dmgCounter, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween2.to(dmgCounter.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+	tween2.to(dmgNum, 0.2, {ease:Expo.easeIn, alpha: 1});
+	// tween2.fromTo(dmgNum.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	tween2.to(dmgNum.scale, 0.2, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	tween2.to(dmgNum, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
+	tween2.to(dmgNum.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	// dmgCounter.alpha = 0;
+	// dmgNum.alpha = 0;
 
-	dmgCounter.tween = tween2;
+	dmgNum.tween = tween2;
 
-	dmgText.addChild(dmgCounter);
-	dmgText.dmgCounter = dmgCounter;
-	dmgContainer.addChild(dmgText);
-	dmgContainer.dmgText = dmgText;
+	dmgPopup.addChild(dmgCrit);
+	dmgPopup.addChild(dmgNum);
+	dmgPopup.dmgNum = dmgNum;
+	dmgContainer.addChild(dmgPopup);
+	dmgContainer.dmgPopup = dmgPopup;
 
 	var dmgBarContainer = new PIXI.Container();
 
@@ -1404,11 +1419,11 @@ function resizeDmg(roster, item, index){
 		var switcher = 0;
 // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(arrayHero[index].size > 1){
-			item.dmgText.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
 			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 			switcher = 1;
 		}else{
-			item.dmgText.x = resizeWidth/2;
+			item.dmgPopup.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayHero[index].statCalc[0]/arrayHero[index].overallHP);
 		}
 		switch(arrayHero[index].pos) {
@@ -1430,10 +1445,10 @@ function resizeDmg(roster, item, index){
 		}
 	}else{
 		if(arrayEnemy[index].size > 1){
-			item.dmgText.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
 			item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 		}else{
-			item.dmgText.x = resizeWidth/2;
+			item.dmgPopup.x = resizeWidth/2;
 			item.dmgBarContainer.x = resizeWidth * (arrayEnemy[index].statCalc[0]/arrayEnemy[index].overallHP);
 		}
 		switch(arrayEnemy[index].pos) {
@@ -1456,8 +1471,7 @@ function resizeDmg(roster, item, index){
 	}
 
 	// item.dmgBarContainer.x = item.inner.width;
-
-	item.dmgText.y = app.screen.height/2;
+	item.dmgPopup.y = app.screen.height/2;
 }
 
 function resizeHP(roster, item, index){
@@ -1978,10 +1992,10 @@ function onCreatureDown(){
 						}
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ff7b00';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#4E2600';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;						
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 						if(arrayEnemy[targetedIndex].statCalc[0] < 0){
@@ -2006,10 +2020,10 @@ function onCreatureDown(){
 							hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00d800';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#003B00';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#00d800';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#003B00';
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
 					}
 				});
 			}else{
@@ -2145,8 +2159,8 @@ function onCreatureDown(){
 					}
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 					
-					arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-					arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 					if(arrayEnemy[targetedIndex].statCalc[0] < 0){
@@ -2172,8 +2186,8 @@ function onCreatureDown(){
 					}
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
-					arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-					arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
 				}
 			}
 
