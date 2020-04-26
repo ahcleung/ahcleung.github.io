@@ -110,7 +110,8 @@ class Creature{
 		this.skills = skills;
 		this.pos = 0;
 		
-		this.critDmg = Math.floor(Math.random() * 25) + 10;
+		// this.critDmg = Math.floor(Math.random() * 25) + 10;
+		this.critDmg = 0;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
@@ -1987,6 +1988,9 @@ function onCreatureDown(){
 
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
+					if(crit > 1){
+						console.log("Critical damage: " + Math.floor(damage/3));
+					}
 					// damage = 25;
 
 					console.log(targeted + " takes " + damage + " damage");
@@ -2017,6 +2021,10 @@ function onCreatureDown(){
 						}
 						
 						if(crit > 1){
+							arrayHero[targetedIndex].critDmg += Math.floor(damage/3);
+
+							hpHeroContainerArray[targetedIndex].critDmg.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP);
+
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
@@ -2073,6 +2081,10 @@ function onCreatureDown(){
 						}
 
 						if(crit > 1){
+							arrayEnemy[targetedIndex].critDmg += Math.floor(damage/3);
+
+							hpEnemyContainerArray[targetedIndex].critDmg.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP);
+
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
@@ -2214,6 +2226,9 @@ function onCreatureDown(){
 				
 				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
+				if(crit > 1){
+					console.log("Critical damage: " + Math.floor(damage/3));
+				}
 				// damage = 25;
 
 				console.log(targeted + " takes " + damage + " damage");
@@ -2246,6 +2261,10 @@ function onCreatureDown(){
 
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					if(crit > 1){
+						arrayHero[targetedIndex].critDmg += Math.floor(damage/3);
+
+						hpHeroContainerArray[targetedIndex].critDmg.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].critDmg/arrayHero[targetedIndex].overallHP);
+
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
@@ -2300,6 +2319,10 @@ function onCreatureDown(){
 					}
 
 					if(crit > 1){
+						arrayEnemy[targetedIndex].critDmg += Math.floor(damage/3);
+
+						hpEnemyContainerArray[targetedIndex].critDmg.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].critDmg/arrayEnemy[targetedIndex].overallHP);
+
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
