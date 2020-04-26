@@ -978,7 +978,7 @@ function createSprite(direction, item, index){
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#3B0000',
-   		strokeThickness: 10,
+   		strokeThickness: 5,
     });
 
 	let dmgNum = new Text("50", style);
@@ -987,8 +987,8 @@ function createSprite(direction, item, index){
 	// dmgNum.y = 500;
 
 	let dmgCrit = new Text ("CRIT!", style2);
-	dmgNum.anchor.set(0.5, 0.5);
-	dmgCrit.y = 100;
+	dmgCrit.anchor.set(0.5, 0.5);
+	dmgCrit.y = 50;
 	//GSAP3 version, not working?
 	// var tween2 = gsap.timeline({paused: true});
 	// tween2
