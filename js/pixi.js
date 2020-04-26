@@ -966,7 +966,7 @@ function createSprite(direction, item, index){
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
-		stroke: '#8c0000',
+		stroke: '#3B0000',
    		strokeThickness: 4,
     });
 
@@ -1979,7 +1979,7 @@ function onCreatureDown(){
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ff7b00';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#b35600';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#4E2600';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
@@ -2007,7 +2007,7 @@ function onCreatureDown(){
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00d800';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#008c00';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#003B00';
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}
 				});
