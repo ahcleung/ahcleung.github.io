@@ -1977,7 +1977,9 @@ function onCreatureDown(){
 						}
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00D800';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00ff00';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
@@ -2004,8 +2006,8 @@ function onCreatureDown(){
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill ='#00D800';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke: '#00ff00';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00D800';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00ff00';
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}
 				});
