@@ -110,8 +110,8 @@ class Creature{
 		this.skills = skills;
 		this.pos = 0;
 		
-		this.critDmg = Math.floor(Math.random() * 25) + 10;
-		// this.critDmg = 0;
+		// this.critDmg = Math.floor(Math.random() * 25) + 10;
+		this.critDmg = 0;
 		
 		const creatureList = resources["js/creatures.json"];	
 // 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
