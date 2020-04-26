@@ -965,8 +965,8 @@ function createSprite(direction, item, index){
         // fontStyle: 'italic',
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
-		fill: '#D80000',	
-		stroke: '#ff0000',
+		fill: '#ff0000',	
+		stroke: '#D80000',
    		strokeThickness: 3,
     });
 
@@ -991,8 +991,8 @@ function createSprite(direction, item, index){
 	// }});
 	tween2.to(dmgCounter, 0.2, {ease:Expo.easeIn, alpha: 1});
 	tween2.to(dmgCounter.scale, 0.2, {ease:Expo.easeIn, x: 1.5, y: 1.5}, 0);
-	tween2.to(dmgCounter, 1.5, {ease:Expo.easeInOut, y: -300, alpha: 0})
-	tween2.to(dmgCounter.scale, 1.5, {ease:Expo.easeInOut, x: 1, y: 1}, 0.5);
+	tween2.to(dmgCounter, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: -300, alpha: 0})
+	tween2.to(dmgCounter.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 1, y: 1}, 0.2);
 
 	dmgCounter.alpha = 0;
 
@@ -1978,8 +1978,8 @@ function onCreatureDown(){
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#e6c200';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#ffd700';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ffd700';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#e6c200';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
@@ -2006,8 +2006,8 @@ function onCreatureDown(){
 						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00D800';
-						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00ff00';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#00ff00';
+						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#00D800';
 						arrayEnemyDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}
 				});
