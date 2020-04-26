@@ -967,7 +967,7 @@ function createSprite(direction, item, index){
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#8c0000',
-   		strokeThickness: 5,
+   		strokeThickness: 4,
     });
 
 	let dmgCounter = new Text("50", style);
@@ -1979,7 +1979,7 @@ function onCreatureDown(){
 
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.text = damage;						
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.fill = '#ffd700';
-						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#e6c200';
+						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.style.stroke = '#b39700';
 						arrayHeroDmg[targetedIndex].dmgText.dmgCounter.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
