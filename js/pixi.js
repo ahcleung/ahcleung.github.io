@@ -1962,6 +1962,12 @@ function onCreatureDown(){
 						// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 					});
 
+					var criticalChance = Math.floor(Math.random() * 10000);
+					var crit = 1;
+					if(criticalChance > 5000){
+						crit = 1.5;
+					}
+
 					// console.log("Level: " + level);
 					// console.log("Attack: " + attack);
 					// console.log("Defense: " + defense);
@@ -1969,7 +1975,7 @@ function onCreatureDown(){
 					// console.log("Defender element: " + defendElements);
 					// console.log("Effectiveness: " + effectiveness);
 
-					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
 					// damage = 25;
 
@@ -1993,6 +1999,11 @@ function onCreatureDown(){
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
 						}else{
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+						}
+
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+						if(crit > 1){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						}
 
 						var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
@@ -2035,6 +2046,11 @@ function onCreatureDown(){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
 						}else{
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+						}
+
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+						if(crit > 1){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						}
 
 						var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
@@ -2156,6 +2172,12 @@ function onCreatureDown(){
 					// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 				});
 
+				var criticalChance = Math.floor(Math.random() * 10000);
+				var crit = 1;
+				if(criticalChance > 5000){
+					crit = 1.5;
+				}
+
 				// console.log("Level: " + level);
 				// console.log("Attack: " + attack);
 				// console.log("Defense: " + defense);
@@ -2163,7 +2185,7 @@ function onCreatureDown(){
 				// console.log("Defender element: " + defendElements);
 				// console.log("Effectiveness: " + effectiveness);
 				
-				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
 				// damage = 25;
 
@@ -2186,6 +2208,11 @@ function onCreatureDown(){
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
 					}else{
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					}
+
+					arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					if(crit > 1){
+						arrayHeroDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 					}
 
 					var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
@@ -2226,6 +2253,11 @@ function onCreatureDown(){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
 					}else{
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					}
+
+					arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					if(crit > 1){
+						arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 					}
 
 					var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
