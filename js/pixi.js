@@ -990,11 +990,13 @@ function createSprite(direction, item, index){
 	dmgCrit.anchor.set(0.5, 0.5);
 	dmgCrit.y = 50;
 	dmgPopup.addChild(dmgCrit);
+	dmgPopup.dmgCrit = dmgCrit;
 
 	let dmgEffective = new Text ("Poor  x0.25", style2);
 	dmgEffective.anchor.set(0.5, 0.5);
 	dmgEffective.y = -50;
 	dmgPopup.addChild(dmgEffective);
+	dmgPopup.dmgEffective = dmgEffective;
 
 
 	//GSAP3 version, not working?
@@ -1019,7 +1021,7 @@ function createSprite(direction, item, index){
 
 	dmgPopup.alpha = 0;
 
-	dmgNum.tween = tween2;
+	dmgPopup.tween = tween2;
 	
 	dmgPopup.addChild(dmgNum);
 	dmgPopup.dmgNum = dmgNum;
@@ -2015,7 +2017,7 @@ function onCreatureDown(){
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;						
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
+						arrayHeroDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
 						arrayEnemy[targetedIndex].statCalc[0] -= damage;
 						if(arrayEnemy[targetedIndex].statCalc[0] < 0){
@@ -2056,7 +2058,7 @@ function onCreatureDown(){
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#00d800';
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#003B00';
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
+						arrayEnemyDmg[targetedIndex].dmgPopup.tween.play(0);
 					}
 				});
 			}else{
@@ -2185,7 +2187,7 @@ function onCreatureDown(){
 					}else{
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
-					
+
 					var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
 
 					arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
@@ -2206,7 +2208,7 @@ function onCreatureDown(){
 					hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 					
 					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
-					arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
+					arrayHeroDmg[targetedIndex].dmgPopup.tween.play(0);
 				}else{
 					arrayEnemy[targetedIndex].statCalc[0] -= damage;
 					if(arrayEnemy[targetedIndex].statCalc[0] < 0){
@@ -2246,7 +2248,7 @@ function onCreatureDown(){
 					hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
-					arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.tween.play(0);
+					arrayEnemyDmg[targetedIndex].dmgPopup.tween.play(0);
 				}
 			}
 
