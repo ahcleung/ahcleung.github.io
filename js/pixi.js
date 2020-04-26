@@ -129,7 +129,8 @@ class Creature{
 		this.EHP = this.overallHP - this.critDmg;
 
 		this.statCalc = [
-			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
+			// this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
+			this.EHP, 
 // 			this.EHP - 25,
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
@@ -2114,7 +2115,7 @@ function onCreatureDown(){
 								, 1, {
 									width: hpEnemyContainerArray[targetedIndex].critDmgBar.width
 								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
-							
+
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
