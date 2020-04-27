@@ -26,10 +26,10 @@
 			"several":[0,0,0]
 		},
 		{
-			"name": "Lightning strike",
-			"element": 5,
-			"type": "spe",
-			"power": 60,
+			"name": "Heal wave",
+			"element": 2,
+			"type": "oth",
+			"power": 0,
 			"accuracy": 90,
 			"position": [
 				1,1,1,1
