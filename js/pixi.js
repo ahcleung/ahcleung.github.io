@@ -1996,6 +1996,12 @@ function onCreatureDown(){
 						crit = 1.5;
 					}
 
+					if(attack == 0 && defense == 0){
+						//calculate how much to heal
+						damage = 25;
+						effectiveness = 1;
+						crit = 1;
+					}
 					// console.log("Level: " + level);
 					// console.log("Attack: " + attack);
 					// console.log("Defense: " + defense);
@@ -2013,7 +2019,14 @@ function onCreatureDown(){
 					console.log(targeted + " takes " + damage + " damage");
 
 					if(targeted > 0){
-						arrayHero[targetedIndex].statCalc[0] -= damage;
+						if(attack == 0 && defense == 0){
+							//add heal
+							arrayHero[targetedIndex].statCalc[0] += damage;
+						}else{
+							//subtract damage
+							arrayHero[targetedIndex].statCalc[0] -= damage;
+						}
+						
 						if(arrayHero[targetedIndex].statCalc[0] < 0){
 							arrayHero[targetedIndex].statCalc[0] = 0;
 						}
@@ -2056,17 +2069,38 @@ function onCreatureDown(){
 							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
-						var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
 
-						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-						arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						TweenMax.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
-							, 1, {
-								width: newWidth
-							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-							arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-						}});
-						arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+						if(attack == 0 && defense == 0){
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+							arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+
+							var newWidth = (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP)) - hpHeroContainerArray[targetedIndex].inner.width;
+
+							arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].inner.width;
+							arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+							var tween = new TimelineMax({onComplete: function(){
+								arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;	
+								arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
+							}});
+							tween.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+								, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+									hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+								}});
+							tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
+								, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
+						}else{
+							var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
+
+							arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+							arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+							TweenMax.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+								, 1, {
+									width: newWidth
+								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+								arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+							}});
+							arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+						}
 
 						if(arrayHero[targetedIndex].statCalc[0] == 0){
 							hpHeroContainerArray[targetedIndex].inner.visible = false;
@@ -2951,8 +2985,7 @@ function onAdditionalDown(){
 
 	arrayHero[0].statCalc[0] += 25;
 	hpHeroContainerArray[0].textHP.text = arrayHero[0].statCalc[0] + " / " + arrayHero[0].EHP;
-	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
-	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = true;
+	
 	// TweenMax.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
 	// 	, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
 
@@ -2962,6 +2995,8 @@ function onAdditionalDown(){
 	// tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
+	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
+	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = true;
 	var tween = new TimelineMax({onComplete: function(){
 		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;	
 		arrayHeroDmg[0].dmgBarContainer.dmgBar.alpha = 0.9;
