@@ -2949,7 +2949,7 @@ function onAdditionalDown(){
 	// 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
 	// 				}});
 
-	arrayHero.statCalc[0] += 25;
+	arrayHero[0].statCalc[0] += 25;
 	hpHeroContainerArray[0].textHP.text = arrayHero[0].statCalc[0] + " / " + arrayHero[0].EHP;
 	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
 	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = true;
