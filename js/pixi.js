@@ -977,7 +977,7 @@ function createSprite(direction, item, index){
         fontWeight: 700,
 //         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
-		stroke: '#3B0000',
+		stroke: '#222222',
    		strokeThickness: 5,
     });
 
@@ -2040,12 +2040,16 @@ function onCreatureDown(){
 						
 						if(effectiveness == 0.25){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
 						}else if(effectiveness == 0.5){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 						}else if(effectiveness == 2){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#BE5EFF';
 						}else if(effectiveness == 4){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#E6CC80';
 						}else{
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
@@ -2135,12 +2139,16 @@ function onCreatureDown(){
 
 						if(effectiveness == 0.25){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
 						}else if(effectiveness == 0.5){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 						}else if(effectiveness == 2){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#BE5EFF';
 						}else if(effectiveness == 4){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#E6CC80';
 						}else{
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
