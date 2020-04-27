@@ -1996,12 +1996,7 @@ function onCreatureDown(){
 						crit = 1.5;
 					}
 
-					if(attack == 0 && defense == 0){
-						//calculate how much to heal
-						damage = 25;
-						effectiveness = 1;
-						crit = 1;
-					}
+					
 					// console.log("Level: " + level);
 					// console.log("Attack: " + attack);
 					// console.log("Defense: " + defense);
@@ -2011,6 +2006,13 @@ function onCreatureDown(){
 
 					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
+					if(attack == 0 && defense == 0){
+						//calculate how much to heal
+						damage = 25;
+						effectiveness = 1;
+						crit = 1;
+					}
+					
 					if(crit > 1){
 						console.log("Critical damage: " + Math.floor(damage/3));
 					}
