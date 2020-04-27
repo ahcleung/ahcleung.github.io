@@ -165,6 +165,9 @@ class Creature{
 		return this.statCalc[6];
 	}
 	
+	updateEHP(){
+		this.EHP = this.overallHP - this.critDmg;
+	}
 // 	get PAtk(){
 // 		return this.calcPAtk();	
 // 	}
@@ -2057,6 +2060,7 @@ function onCreatureDown(){
 						if(crit > 1){
 							heroArray[targetedIndex].critDmg += Math.floor(damage/3);
 
+							heroArray[targetedIndex].updateEHP();
 							// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 							var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2156,6 +2160,7 @@ function onCreatureDown(){
 						if(crit > 1){
 							enemyArray[targetedIndex].critDmg += Math.floor(damage/3);
 
+							enemyArray[targetedIndex].updateEHP();
 							// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 							var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
@@ -2369,6 +2374,7 @@ function onCreatureDown(){
 					if(crit > 1){
 						heroArray[targetedIndex].critDmg += Math.floor(damage/3);
 
+						heroArray[targetedIndex].updateEHP();
 						// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 						var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2437,7 +2443,7 @@ function onCreatureDown(){
 
 					if(crit > 1){
 						enemyArray[targetedIndex].critDmg += Math.floor(damage/3);
-
+						enemyArray[targetedIndex].updateEHP();
 						// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 						
 						var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
