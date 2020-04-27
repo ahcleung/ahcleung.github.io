@@ -2046,10 +2046,10 @@ function onCreatureDown(){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 						}else if(effectiveness == 2){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#BE5EFF';
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
 						}else if(effectiveness == 4){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#E6CC80';
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
 						}else{
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
@@ -2145,10 +2145,10 @@ function onCreatureDown(){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 						}else if(effectiveness == 2){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#BE5EFF';
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
 						}else if(effectiveness == 4){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#E6CC80';
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
 						}else{
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
