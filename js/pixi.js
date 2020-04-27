@@ -2961,7 +2961,8 @@ function onAdditionalDown(){
 	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
 	var tween = new TimelineMax({onComplete: function(){
-		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;		
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;	
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.alpha = 1;
 	}});
 	tween.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:25, onComplete:function(){
