@@ -2039,13 +2039,13 @@ function onCreatureDown(){
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
 						
 						if(effectiveness == 0.25){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						}else if(effectiveness == 0.5){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						}else if(effectiveness == 2){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						}else if(effectiveness == 4){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						}else{
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
@@ -2134,13 +2134,13 @@ function onCreatureDown(){
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
 						if(effectiveness == 0.25){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Poor  x0.25";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						}else if(effectiveness == 0.5){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Bad  x0.5";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						}else if(effectiveness == 2){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Great  x2";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						}else if(effectiveness == 4){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Super  x4";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						}else{
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
