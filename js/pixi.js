@@ -244,7 +244,7 @@ const hero = [];
 hero[0] = {
 	id: 11, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
-	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 75
+	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 125
 };
 hero[1] = {
 	id: 2, level: 47, 
