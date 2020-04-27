@@ -167,7 +167,7 @@ class Creature{
 	damage(dmgAmount){
 		this.statCalc[0] -= dmgAmount;
 		if(this.statCalc[0] < 0){
-			this.statCalc[0] = this.EHP;
+			this.statCalc[0] = 0;
 		}
 	}
 
