@@ -2470,6 +2470,8 @@ function onSkillDown(){
 	var heal = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
+			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]
+
 			column = true;
 			// if(this.identifier[2] > 0){
 			// 	console.log("column => from: " + arrayHero[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
@@ -2947,7 +2949,24 @@ function onAdditionalDown(){
 	// 					arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar = false;
 	// 				}});
 
-	hpHeroContainerArray[0].critDmgBar.width = -(Math.floor(Math.random() * 50) + 10);
+	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
+
+	// var tween2 = new TimelineMax({paused: true});
+	// tween2.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
+	// tween2.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	// tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
+	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+
+	var tween = new TimelineMax({onComplete: function(){
+		arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+		arrayHeroDmg[0].dmgBarContainer.inner.width = hpHeroContainerArray[0].inner.width + 50;
+	}});
+	tween.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
+	tween.to(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
+
+
 	// hpHeroContainerArray[0].critDmgBar.width = 50;
 }
 
