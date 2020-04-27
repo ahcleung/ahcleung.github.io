@@ -2964,7 +2964,7 @@ function onAdditionalDown(){
 		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;		
 	}});
 	tween.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
-		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:25 onComplete:(){
+		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:25, onComplete:function(){
 			hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 25;
 		}});
 	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
