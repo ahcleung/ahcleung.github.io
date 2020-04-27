@@ -157,17 +157,33 @@ class Creature{
 		this.statusSpriteArray = [];
 	}
 	
-	heal(){
+	heal(healAmount){
+		this.statCalc[0] += healAmount;
+		if(this.statCalc[0] > this.EHP){
+			this.statCalc[0] = this.EHP;
+		}
+	}
+
+	damage(dmgAmount){
+		this.statCalc[0] -= dmgAmount;
+		if(this.statCalc[0] < 0){
+			this.statCalc[0] = this.EHP;
+		}
+	}
+
+	criticalHit(critAmount){
+		this.critDmg += critAmount;
+		this.EHP = this.overallHP - this.critDmg;
+	}
+
+	fullHeal(){
 		this.statCalc[0] = this.EHP;	
 	}
 
 	get speed(){
 		return this.statCalc[6];
 	}
-	
-	updateEHP(){
-		this.EHP = this.overallHP - this.critDmg;
-	}
+
 // 	get PAtk(){
 // 		return this.calcPAtk();	
 // 	}
@@ -1901,7 +1917,7 @@ function onCreatureDown(){
 				validPositionTargetArray[clickedTarget].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
 					var targetedIndex = Math.abs(targeted)-1;
-					var damage = 0;
+					var deltaHP = 0;
 					var level = 0;
 					var attack = 0;
 					var defense = 0;
@@ -2007,32 +2023,34 @@ function onCreatureDown(){
 
 					if(attack == 0 && defense == 0){
 						//calculate how much to heal
-						damage = 25;
+						deltaHP = 25;
 						effectiveness = 1;
 						crit = 1;
 					}else{
-						damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 					}
 
 					if(crit > 1){
-						console.log("Critical damage: " + Math.floor(damage/3));
+						console.log("Critical damage: " + Math.floor(deltaHP/3));
 					}
-					// damage = 25;
+					// deltaHP = 25;
 
-					console.log(targeted + " takes " + damage + " damage");
+					console.log(targeted + " takes " + deltaHP + " damage");
 
 					if(targeted > 0){
 						if(attack == 0 && defense == 0){
 							//add heal
-							heroArray[targetedIndex].statCalc[0] += damage;
+							heroArray[targetedIndex].heal(deltaHP);
+							// heroArray[targetedIndex].statCalc[0] += deltaHP;
 						}else{
 							//subtract damage
-							heroArray[targetedIndex].statCalc[0] -= damage;
+							heroArray[targetedIndex].damage(deltaHP);
+							// heroArray[targetedIndex].statCalc[0] -= deltaHP;
 						}
 						
-						if(heroArray[targetedIndex].statCalc[0] < 0){
-							heroArray[targetedIndex].statCalc[0] = 0;
-						}
+						// if(heroArray[targetedIndex].statCalc[0] < 0){
+						// 	heroArray[targetedIndex].statCalc[0] = 0;
+						// }
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
@@ -2058,9 +2076,11 @@ function onCreatureDown(){
 						}
 						
 						if(crit > 1){
-							heroArray[targetedIndex].critDmg += Math.floor(damage/3);
 
-							heroArray[targetedIndex].updateEHP();
+							heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
+							// heroArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
+							// heroArray[targetedIndex].updateEHP();
+
 							// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 							var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2118,21 +2138,23 @@ function onCreatureDown(){
 						
 						heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
 
-						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = damage;						
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;						
 						// heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						// heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
 						if(attack == 0 && defense == 0){
 							//add heal
-							enemyArray[targetedIndex].statCalc[0] += damage;
+							enemyArray[targetedIndex].heal(deltaHP);
+							// enemyArray[targetedIndex].statCalc[0] += deltaHP;
 						}else{
-							enemyArray[targetedIndex].statCalc[0] -= damage;
+							enemyArray[targetedIndex].damage(deltaHP);
+							// enemyArray[targetedIndex].statCalc[0] -= deltaHP;
 						}
 
-						if(enemyArray[targetedIndex].statCalc[0] < 0){
-							enemyArray[targetedIndex].statCalc[0] = 0;
-						}
+						// if(enemyArray[targetedIndex].statCalc[0] < 0){
+						// 	enemyArray[targetedIndex].statCalc[0] = 0;
+						// }
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
@@ -2158,9 +2180,11 @@ function onCreatureDown(){
 						}
 
 						if(crit > 1){
-							enemyArray[targetedIndex].critDmg += Math.floor(damage/3);
+							enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-							enemyArray[targetedIndex].updateEHP();
+							// enemyArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
+							// enemyArray[targetedIndex].updateEHP();
+
 							// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 							var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
@@ -2217,18 +2241,18 @@ function onCreatureDown(){
 
 						enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
 
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 						// enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
 						// enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 						enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}
 				});
 			}else{
-				// console.log(validPositionTargetArray[clickedTarget] + " takes ## damage");
+				// console.log(validPositionTargetArray[clickedTarget] + " takes ## deltaHP");
 				var targeted = validPositionTargetArray[clickedTarget];
 				var selectedIndex = Math.abs(selectedVita)-1;
 				var targetedIndex = Math.abs(targeted)-1;
-				var damage = 0;
+				var deltaHP = 0;
 				var level = 0;
 				var attack = 0;
 				var defense = 0;
@@ -2331,20 +2355,28 @@ function onCreatureDown(){
 				// console.log("Defender element: " + defendElements);
 				// console.log("Effectiveness: " + effectiveness);
 				
-				damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+				deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 
 				if(crit > 1){
-					console.log("Critical damage: " + Math.floor(damage/3));
+					console.log("Critical damage: " + Math.floor(deltaHP/3));
 				}
-				// damage = 25;
+				// deltaHP = 25;
 
-				console.log(targeted + " takes " + damage + " damage");
+				console.log(targeted + " takes " + deltaHP + " damage");
 
 				if(targeted > 0){
-					heroArray[targetedIndex].statCalc[0] -= damage;
-					if(heroArray[targetedIndex].statCalc[0] < 0){
-						heroArray[targetedIndex].statCalc[0] = 0;
+					if(attack == 0 && defense == 0){
+						//add heal
+						heroArray[targetedIndex].heal(deltaHP);
+					}else{
+						//subtract damage
+						heroArray[targetedIndex].damage(deltaHP);
+						// heroArray[targetedIndex].statCalc[0] -= deltaHP;
 					}
+
+					// if(heroArray[targetedIndex].statCalc[0] < 0){
+					// 	heroArray[targetedIndex].statCalc[0] = 0;
+					// }
 
 					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
@@ -2372,9 +2404,11 @@ function onCreatureDown(){
 
 					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					if(crit > 1){
-						heroArray[targetedIndex].critDmg += Math.floor(damage/3);
+						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-						heroArray[targetedIndex].updateEHP();
+						// heroArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
+						// heroArray[targetedIndex].updateEHP();
+
 						// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 						var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2410,13 +2444,21 @@ function onCreatureDown(){
 					}
 					heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
 					
-					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 				}else{
-					enemyArray[targetedIndex].statCalc[0] -= damage;
-					if(enemyArray[targetedIndex].statCalc[0] < 0){
-						enemyArray[targetedIndex].statCalc[0] = 0;
+					if(attack == 0 && defense == 0){
+						//add heal
+						enemyArray[targetedIndex].heal(deltaHP);
+						// enemyArray[targetedIndex].statCalc[0] += deltaHP;
+					}else{
+						heroArray[targetedIndex].damage(deltaHP);
+						// enemyArray[targetedIndex].statCalc[0] -= deltaHP;
 					}
+
+					// if(enemyArray[targetedIndex].statCalc[0] < 0){
+					// 	enemyArray[targetedIndex].statCalc[0] = 0;
+					// }
 
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
@@ -2442,8 +2484,11 @@ function onCreatureDown(){
 					}
 
 					if(crit > 1){
-						enemyArray[targetedIndex].critDmg += Math.floor(damage/3);
-						enemyArray[targetedIndex].updateEHP();
+						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
+
+						// enemyArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
+						// enemyArray[targetedIndex].updateEHP();
+
 						// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 						
 						var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
@@ -2479,7 +2524,7 @@ function onCreatureDown(){
 					}
 					enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
 
-					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 				}
 			}
