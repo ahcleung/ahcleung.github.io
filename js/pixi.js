@@ -2962,10 +2962,10 @@ function onAdditionalDown(){
 
 	var tween = new TimelineMax({onComplete: function(){
 		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;
-		hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 50;
+		hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 25;
 	}});
 	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
-		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
+		, 1, {delay:0.5, ease:Expo.easeIn, width:25});
 	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
 
