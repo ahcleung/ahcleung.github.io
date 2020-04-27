@@ -2552,7 +2552,7 @@ function onCreatureDown(){
 							, 1, {
 								width: newWidth
 							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-							enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar = false;
+							enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
 						enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 
