@@ -2088,7 +2088,7 @@ function onCreatureDown(){
 								, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 									hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 								}});
-							tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
+							tween.to(arrayHeroDmg[argetedIndex].dmgBarContainer.dmgBar
 								, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
 						}else{
 							var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
