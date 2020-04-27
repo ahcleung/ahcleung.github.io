@@ -129,8 +129,8 @@ class Creature{
 		this.EHP = this.overallHP - this.critDmg;
 
 		this.statCalc = [
-			// this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
-			this.EHP, 
+			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
+			// this.EHP, 
 // 			this.EHP - 25,
 			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
 			creatureList.data.creatures[this.id].patk + this.statDis[2],
@@ -2958,12 +2958,12 @@ function onAdditionalDown(){
 	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
 	var tween = new TimelineMax({onComplete: function(){
-		arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;
 		arrayHeroDmg[0].dmgBarContainer.inner.width = hpHeroContainerArray[0].inner.width + 50;
 	}});
-	tween.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+	tween.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
-	tween.to(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
+	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
 
 
