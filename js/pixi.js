@@ -2004,15 +2004,15 @@ function onCreatureDown(){
 					// console.log("Defender element: " + defendElements);
 					// console.log("Effectiveness: " + effectiveness);
 
-					damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-
 					if(attack == 0 && defense == 0){
 						//calculate how much to heal
 						damage = 25;
 						effectiveness = 1;
 						crit = 1;
+					}else{
+						damage = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 					}
-					
+
 					if(crit > 1){
 						console.log("Critical damage: " + Math.floor(damage/3));
 					}
@@ -2102,13 +2102,14 @@ function onCreatureDown(){
 								arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 							}});
 							arrayHeroDmg[targetedIndex].dmgBarContainer.x = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
+						
+							if(arrayHero[targetedIndex].statCalc[0] == 0){
+								hpHeroContainerArray[targetedIndex].inner.visible = false;
+							}else{
+								hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);	
+							}
 						}
-
-						if(arrayHero[targetedIndex].statCalc[0] == 0){
-							hpHeroContainerArray[targetedIndex].inner.visible = false;
-						}else{
-							hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);	
-						}
+						
 						hpHeroContainerArray[targetedIndex].textHP.text = arrayHero[targetedIndex].statCalc[0] + " / " + arrayHero[targetedIndex].EHP;
 
 						arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.text = damage;						
