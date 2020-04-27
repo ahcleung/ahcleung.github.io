@@ -2129,11 +2129,11 @@ function onCreatureDown(){
 							}});
 							heroArrayDmg[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);
 						
-							if(heroArray[targetedIndex].statCalc[0] == 0){
-								heroHPContainerArray[targetedIndex].inner.visible = false;
-							}else{
+							// if(heroArray[targetedIndex].statCalc[0] == 0){
+							// 	heroHPContainerArray[targetedIndex].inner.visible = false;
+							// }else{
 								heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
-							}
+							// }
 						}
 						
 						heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
@@ -2232,11 +2232,11 @@ function onCreatureDown(){
 							}});
 							enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 
-							if(enemyArray[targetedIndex].statCalc[0] == 0){
-								enemyHPContainerArray[targetedIndex].inner.visible = false;
-							}else{
+							// if(enemyArray[targetedIndex].statCalc[0] == 0){
+							// 	enemyHPContainerArray[targetedIndex].inner.visible = false;
+							// }else{
 								enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
-							}					
+							// }					
 						}	
 
 						enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
@@ -2455,11 +2455,11 @@ function onCreatureDown(){
 						}});
 						heroArrayDmg[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);
 
-						if(heroArray[targetedIndex].statCalc[0] == 0){
-							heroHPContainerArray[targetedIndex].inner.visible = false;
-						}else{
+						// if(heroArray[targetedIndex].statCalc[0] == 0){
+						// 	heroHPContainerArray[targetedIndex].inner.visible = false;
+						// }else{
 							heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
-						}
+						// }
 					}
 					heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
 					
@@ -2556,11 +2556,11 @@ function onCreatureDown(){
 						}});
 						enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 
-						if(enemyArray[targetedIndex].statCalc[0] == 0){
-							enemyHPContainerArray[targetedIndex].inner.visible = false;
-						}else{
+						// if(enemyArray[targetedIndex].statCalc[0] == 0){
+						// 	enemyHPContainerArray[targetedIndex].inner.visible = false;
+						// }else{
 							enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
-						}
+						// }
 					}
 					enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
 
