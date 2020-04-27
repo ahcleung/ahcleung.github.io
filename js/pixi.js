@@ -2961,11 +2961,12 @@ function onAdditionalDown(){
 	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
 	var tween = new TimelineMax({onComplete: function(){
-		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;
-		hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 25;
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;		
 	}});
-	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
-		, 1, {delay:0.5, ease:Expo.easeIn, width:25});
+	tween.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
+		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:25 onComplete:(){
+			hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 25;
+		}});
 	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
 
