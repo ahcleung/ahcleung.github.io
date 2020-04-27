@@ -2033,8 +2033,8 @@ function onCreatureDown(){
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
+						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
 						
@@ -2132,8 +2132,8 @@ function onCreatureDown(){
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';						
+						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';						
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2343,8 +2343,8 @@ function onCreatureDown(){
 
 					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
+					// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2414,8 +2414,8 @@ function onCreatureDown(){
 
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
+					// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
