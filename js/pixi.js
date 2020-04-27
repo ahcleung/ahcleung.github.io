@@ -270,7 +270,7 @@ enemy[0] = {
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 50
 };
 enemy[1] = {
-	id: 8, level: 46, 
+	id: 10, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 8,
 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 20, statSATK: 53, statSDEF: 0, statSPD: 55
 };
@@ -279,11 +279,11 @@ enemy[2] = {
 	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 95
 };
-// enemy[3] = {
-// 	id: 11, level: 45, 
-// 	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
-// 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
-// };
+enemy[3] = {
+	id: 11, level: 45, 
+	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
+	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+};
 
 //Write to firestore
 // db.collection("enemy").doc("004").set({
@@ -2117,7 +2117,13 @@ function onCreatureDown(){
 						// arrayHeroDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						arrayHeroDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
-						arrayEnemy[targetedIndex].statCalc[0] -= damage;						
+						if(attack == 0 && defense == 0){
+							//add heal
+							arrayEnemy[targetedIndex].statCalc[0] += damage;
+						}else{
+							arrayEnemy[targetedIndex].statCalc[0] -= damage;
+						}
+
 						if(arrayEnemy[targetedIndex].statCalc[0] < 0){
 							arrayEnemy[targetedIndex].statCalc[0] = 0;
 						}
@@ -2160,27 +2166,49 @@ function onCreatureDown(){
 							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
-						var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+						if(attack == 0 && defense == 0){
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+							arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
-							, 1, {
-								width: newWidth
-							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-							arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-						}});
-						arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+							var newWidth = (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP)) - hpEnemyContainerArray[targetedIndex].inner.width;
 
-						if(arrayEnemy[targetedIndex].statCalc[0] == 0){
-							hpEnemyContainerArray[targetedIndex].inner.visible = false;
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].inner.width;
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+							var tween = new TimelineMax({onComplete: function(){
+								arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;	
+								arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
+							}});
+							tween.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+								, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+									hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+								}});
+							tween.to(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+								, 1, {ease:Expo.easeIn, alpha:0});
 						}else{
-							hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
-						}						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
+							var newWidth = hpEnemyContainerArray[targetedIndex].inner.width - (hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP));
+
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+							TweenMax.fromTo(arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar
+								, 1, {
+									width: newWidth
+								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+								arrayEnemyDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+							}});
+							arrayEnemyDmg[targetedIndex].dmgBarContainer.x = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+
+							if(arrayEnemy[targetedIndex].statCalc[0] == 0){
+								hpEnemyContainerArray[targetedIndex].inner.visible = false;
+							}else{
+								hpEnemyContainerArray[targetedIndex].inner.width = hpEnemyContainerArray[targetedIndex].outer.width * (arrayEnemy[targetedIndex].statCalc[0]/arrayEnemy[targetedIndex].overallHP);
+							}					
+						}	
+
+						hpEnemyContainerArray[targetedIndex].textHP.text = arrayEnemy[targetedIndex].statCalc[0] + " / " + arrayEnemy[targetedIndex].EHP;
 
 						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.text = damage;
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-						arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+						// arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						// arrayEnemyDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 						arrayEnemyDmg[targetedIndex].dmgPopup.tween.play(0);
 					}
 				});
