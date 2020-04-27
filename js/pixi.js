@@ -244,7 +244,7 @@ const hero = [];
 hero[0] = {
 	id: 11, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 1,
-	statDODG: 20, statHP: 35, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 40
+	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 50, statSATK: 0, statSDEF: 0, statSPD: 75
 };
 hero[1] = {
 	id: 2, level: 47, 
@@ -2085,11 +2085,11 @@ function onCreatureDown(){
 								arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
 							}});
 							tween.fromTo(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+								, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 									hpHeroContainerArray[targetedIndex].inner.width = hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP);
 								}});
 							tween.to(arrayHeroDmg[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
+								, 1, {ease:Expo.easeIn, alpha:0});
 						}else{
 							var newWidth = hpHeroContainerArray[targetedIndex].inner.width - (hpHeroContainerArray[targetedIndex].outer.width * (arrayHero[targetedIndex].statCalc[0]/arrayHero[targetedIndex].overallHP));
 
