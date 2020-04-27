@@ -2951,8 +2951,8 @@ function onAdditionalDown(){
 
 	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
 	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = true;
-	TweenMax.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
-		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
+	// TweenMax.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
+	// 	, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
 
 	// var tween2 = new TimelineMax({paused: true});
 	// tween2.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
@@ -2960,14 +2960,14 @@ function onAdditionalDown(){
 	// tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	// var tween = new TimelineMax({onComplete: function(){
-	// 	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;
-	// 	hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 50;
-	// }});
-	// tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
-	// 	, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
-	// tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
-	// 	, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
+	var tween = new TimelineMax({onComplete: function(){
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;
+		hpHeroContainerArray[0].inner.width = hpHeroContainerArray[0].inner.width + 50;
+	}});
+	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
+		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
+	tween.to(arrayHeroDmg[0].dmgBarContainer.dmgBar
+		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
 
 
 	// hpHeroContainerArray[0].critDmgBar.width = 50;
