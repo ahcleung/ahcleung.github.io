@@ -2950,7 +2950,7 @@ function onAdditionalDown(){
 	// 				}});
 
 	arrayHeroDmg[0].dmgBarContainer.x = hpHeroContainerArray[0].inner.width;
-
+	arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = true;
 	TweenMax.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
 
