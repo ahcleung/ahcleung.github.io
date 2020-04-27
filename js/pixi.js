@@ -2962,7 +2962,7 @@ function onAdditionalDown(){
 
 	var tween = new TimelineMax({onComplete: function(){
 		arrayHeroDmg[0].dmgBarContainer.dmgBar.visible = false;	
-		arrayHeroDmg[0].dmgBarContainer.dmgBar.alpha = 1;
+		arrayHeroDmg[0].dmgBarContainer.dmgBar.alpha = 0.9;
 	}});
 	tween.fromTo(arrayHeroDmg[0].dmgBarContainer.dmgBar
 		, 1, {width: 0}, {ease:Expo.easeIn, width:25, onComplete:function(){
