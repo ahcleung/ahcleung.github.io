@@ -2575,6 +2575,7 @@ function onSkillDown(){
 		//Ahead
 		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
 			var switchSide = false;
+			//Get position to increment from
 			if(this.identifier[2] > 0){
 				var temp = heroArray[this.identifier[3]].pos;
 			}else{
@@ -2650,10 +2651,19 @@ function onSkillDown(){
 		}
 		//Behind
 		else{
+			//Get position to increment from
 			if(this.identifier[2] > 0){
-				var temp = heroArray[this.identifier[3]].pos;
+				if(heroArray[this.identifier[3]].size == 2){
+					var temp = heroArray[this.identifier[3]].pos+1;
+				}else{
+					var temp = heroArray[this.identifier[3]].pos;
+				}				
 			}else{
-				var temp = enemyArray[this.identifier[3]].pos;
+				if(enemyArray[this.identifier[3]].size == 2){
+					var temp = enemyArray[this.identifier[3]].pos+1;
+				}else{
+					var temp = enemyArray[this.identifier[3]].pos;
+				}				
 			}			
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
