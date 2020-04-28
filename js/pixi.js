@@ -3002,7 +3002,7 @@ function onAdditionalMoveDown(){
 	//  });
 
 	if(selectedVita > 0){
-		var temp = heroArray[Math.abs(selectedVita-1)].pos;
+		var temp = heroArray[Math.abs(selectedVita)-1].pos;
 
 		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+1){
@@ -3027,7 +3027,7 @@ function onAdditionalMoveDown(){
 		// 	heroHPContainerArray[temp2].move.visible = true;
 		// }
 	}else{
-		var temp = enemyArray[Math.abs(selectedVita-1)].pos;
+		var temp = enemyArray[Math.abs(selectedVita)-1].pos;
 
 		enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+1){
