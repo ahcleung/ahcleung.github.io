@@ -3004,7 +3004,7 @@ function onAdditionalDown(){
 	var newX2 = 0;
 	var newX3 = -((resizeWidth + healthSpacing) * 2);
 
-	var hpX = item.x = 0;
+	var hpX = 0;
 	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
 	var hpX3 = resizeWidth + healthSpacing * 1;
 
