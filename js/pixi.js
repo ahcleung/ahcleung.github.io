@@ -1583,7 +1583,8 @@ function resizeHP(roster, item, index){
 	
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
-	// item.critDmgBar.height = resizeHeight;
+	
+	item.critDmgBar.height = resizeHeight;
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.outer.width = resizeWidth;
 	
