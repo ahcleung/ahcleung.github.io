@@ -3004,8 +3004,13 @@ function onAdditionalMoveDown(){
 	if(selectedVita > 0){
 		var temp = heroArray[Math.abs(selectedVita)-1].pos;
 
+		var sizeDelta = 1;
+		if(heroArray[Math.abs(selectedVita)-1].size == 2){
+			sizeDelta = 2;
+		}
+
 		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
-			if(arrayCreature.pos == temp+1){
+			if(arrayCreature.pos == temp+sizeDelta){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
 			}else if(arrayCreature.pos == temp-1){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
@@ -3029,8 +3034,13 @@ function onAdditionalMoveDown(){
 	}else{
 		var temp = enemyArray[Math.abs(selectedVita)-1].pos;
 
+		var sizeDelta = 1;
+		if(enemyArray[Math.abs(selectedVita)-1].size == 2){
+			sizeDelta = 2;
+		}
+
 		enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
-			if(arrayCreature.pos == temp+1){
+			if(arrayCreature.pos == temp+sizeDelta){
 				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
 			}else if(arrayCreature.pos == temp-1){
 				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
