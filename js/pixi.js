@@ -1892,14 +1892,10 @@ function onCreatureDown(){
 		var correctTarget = false;
 		var clickedTarget = 0;
 		validPositionTargetArray.forEach((targeted, targetedIndex) => {
-			// console.log("Checking targeted");
 			if(Array.isArray(targeted)){
-				// console.log("Is Array");
 				targeted.forEach(arrayElement => {
-					// console.log("Each array element");
 					if(arrayElement == attackedVita){
 						correctTarget = true;
-						// console.log("Target index: " + targetedIndex);
 						clickedTarget = targetedIndex;
 					}	
 				});
@@ -1907,7 +1903,6 @@ function onCreatureDown(){
 			if(targeted == attackedVita){
 				correctTarget = true;
 				clickedTarget = targetedIndex;
-				// console.log("Target index: " + targetedIndex);
 			}
 		});
 		if(correctTarget){
@@ -1940,7 +1935,6 @@ function onCreatureDown(){
 								attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
 							}
 						}
-						//else other
 					}else{
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -1980,7 +1974,6 @@ function onCreatureDown(){
 						heroArray[targetedIndex].elements.forEach(element =>{
 							defendElements.push(element);
 						});
-						//else other
 					}else{
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -2041,21 +2034,13 @@ function onCreatureDown(){
 						if(attack == 0 && defense == 0){
 							//add heal
 							heroArray[targetedIndex].heal(deltaHP);
-							// heroArray[targetedIndex].statCalc[0] += deltaHP;
 						}else{
 							//subtract damage
 							heroArray[targetedIndex].damage(deltaHP);
-							// heroArray[targetedIndex].statCalc[0] -= deltaHP;
 						}
-						
-						// if(heroArray[targetedIndex].statCalc[0] < 0){
-						// 	heroArray[targetedIndex].statCalc[0] = 0;
-						// }
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
 						
@@ -2076,12 +2061,7 @@ function onCreatureDown(){
 						}
 						
 						if(crit > 1){
-
 							heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
-							// heroArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
-							// heroArray[targetedIndex].updateEHP();
-
-							// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 							var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
@@ -2091,12 +2071,9 @@ function onCreatureDown(){
 								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 							heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
-							// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
-
 
 						if(attack == 0 && defense == 0){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
@@ -2127,39 +2104,26 @@ function onCreatureDown(){
 								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
 								heroArrayDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 							}});
+
 							heroArrayDmg[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);
-						
-							// if(heroArray[targetedIndex].statCalc[0] == 0){
-							// 	heroHPContainerArray[targetedIndex].inner.visible = false;
-							// }else{
-								heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
-							// }
+							heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
 						}
 						
 						heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
 
-						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;						
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
 						if(attack == 0 && defense == 0){
 							//add heal
 							enemyArray[targetedIndex].heal(deltaHP);
-							// enemyArray[targetedIndex].statCalc[0] += deltaHP;
 						}else{
+							//subtract damage
 							enemyArray[targetedIndex].damage(deltaHP);
-							// enemyArray[targetedIndex].statCalc[0] -= deltaHP;
 						}
 
-						// if(enemyArray[targetedIndex].statCalc[0] < 0){
-						// 	enemyArray[targetedIndex].statCalc[0] = 0;
-						// }
-
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';						
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;					
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2182,11 +2146,6 @@ function onCreatureDown(){
 						if(crit > 1){
 							enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-							// enemyArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
-							// enemyArray[targetedIndex].updateEHP();
-
-							// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
-
 							var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 							TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
@@ -2195,8 +2154,6 @@ function onCreatureDown(){
 								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
-							// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
@@ -2230,20 +2187,14 @@ function onCreatureDown(){
 								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
 								enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 							}});
-							enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 
-							// if(enemyArray[targetedIndex].statCalc[0] == 0){
-							// 	enemyHPContainerArray[targetedIndex].inner.visible = false;
-							// }else{
-								enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
-							// }					
+							enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
+							enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);					
 						}	
 
 						enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 						enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}
 				});
@@ -2275,7 +2226,6 @@ function onCreatureDown(){
 							attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
 						}
 					}
-					//else other
 				}else{
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -2315,7 +2265,6 @@ function onCreatureDown(){
 					heroArray[targetedIndex].elements.forEach(element =>{
 						defendElements.push(element);
 					});
-					//else other
 				}else{
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -2371,17 +2320,10 @@ function onCreatureDown(){
 					}else{
 						//subtract damage
 						heroArray[targetedIndex].damage(deltaHP);
-						// heroArray[targetedIndex].statCalc[0] -= deltaHP;
 					}
-
-					// if(heroArray[targetedIndex].statCalc[0] < 0){
-					// 	heroArray[targetedIndex].statCalc[0] = 0;
-					// }
 
 					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2406,11 +2348,6 @@ function onCreatureDown(){
 					if(crit > 1){
 						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-						// heroArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
-						// heroArray[targetedIndex].updateEHP();
-
-						// heroHPContainerArray[targetedIndex].critDmgBar.width = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
-
 						var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
 						TweenMax.fromTo(heroHPContainerArray[targetedIndex].critDmgBar
@@ -2419,8 +2356,6 @@ function onCreatureDown(){
 							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
-						// heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
@@ -2453,13 +2388,9 @@ function onCreatureDown(){
 							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
 							heroArrayDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
-						heroArrayDmg[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);
 
-						// if(heroArray[targetedIndex].statCalc[0] == 0){
-						// 	heroHPContainerArray[targetedIndex].inner.visible = false;
-						// }else{
-							heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
-						// }
+						heroArrayDmg[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);
+						heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].statCalc[0]/heroArray[targetedIndex].overallHP);	
 					}
 					heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].statCalc[0] + " / " + heroArray[targetedIndex].EHP;
 					
@@ -2469,20 +2400,13 @@ function onCreatureDown(){
 					if(attack == 0 && defense == 0){
 						//add heal
 						enemyArray[targetedIndex].heal(deltaHP);
-						// enemyArray[targetedIndex].statCalc[0] += deltaHP;
 					}else{
+						//subtract damage
 						enemyArray[targetedIndex].damage(deltaHP);
-						// enemyArray[targetedIndex].statCalc[0] -= deltaHP;
 					}
-
-					// if(enemyArray[targetedIndex].statCalc[0] < 0){
-					// 	enemyArray[targetedIndex].statCalc[0] = 0;
-					// }
 
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#3B0000';
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2505,11 +2429,6 @@ function onCreatureDown(){
 					if(crit > 1){
 						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-						// enemyArray[targetedIndex].critDmg += Math.floor(deltaHP/3);
-						// enemyArray[targetedIndex].updateEHP();
-
-						// enemyHPContainerArray[targetedIndex].critDmgBar.width = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
-						
 						var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 						TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
@@ -2518,8 +2437,6 @@ function onCreatureDown(){
 							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#ff7b00';
-						// enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.stroke = '#4E2600';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
@@ -2543,7 +2460,6 @@ function onCreatureDown(){
 						tween.to(enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar
 							, 1, {ease:Expo.easeIn, alpha:0});
 					}else{
-
 						var newWidth = enemyHPContainerArray[targetedIndex].inner.width - (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP));
 
 						enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
@@ -2554,13 +2470,9 @@ function onCreatureDown(){
 							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
 							enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
-						enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 
-						// if(enemyArray[targetedIndex].statCalc[0] == 0){
-						// 	enemyHPContainerArray[targetedIndex].inner.visible = false;
-						// }else{
-							enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
-						// }
+						enemyArrayDmg[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
+						enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].statCalc[0]/enemyArray[targetedIndex].overallHP);
 					}
 					enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].statCalc[0] + " / " + enemyArray[targetedIndex].EHP;
 
@@ -2580,10 +2492,6 @@ function onCreatureDown(){
 				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 			}
 			// console.log(identifier);
-
-			//Animate HP going down
-			//Show battle scene
-			//
 
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
@@ -3055,7 +2963,7 @@ function onAdditionalDown(){
 	// tween.invalidate();
 	// tween.play(0);
 
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
 	// switch(heroArray[index].pos) {
 	// 	case 1:
@@ -3074,7 +2982,6 @@ function onAdditionalDown(){
 	// 		item.x = 0;	
 	// }
 
-
 	// switch(heroArray[index].pos) {
 	// 	case 1:
 	// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
@@ -3090,62 +2997,25 @@ function onAdditionalDown(){
 	// 		item.x = 0;
 	// 		break;
 	// 	default:
-	// 		item.x = 0;
-			
+	// 		item.x = 0;	
 	// }
 
 
-	// var newX = -((resizeWidth + healthSpacing) * 2);
-	// var newX2 = 0;
+	var newX = -((resizeWidth + healthSpacing) * 2);
+	var newX2 = 0;
 
-	// var hpX = resizeWidth + healthSpacing * 1;
-	// var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
+	var hpX = resizeWidth + healthSpacing * 1;
+	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
 
-	// TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
-	// TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
-	// TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
-	// TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
-	// TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
-	// TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
+	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
+	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+	TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
+	TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
+	TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
+	TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
 
-	// heroArray[0].pos = 3;
-	// heroArray[1].pos = 1;
-
-
-	// TweenMax.fromTo(enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar
-	// 					, 1, {
-	// 						width: newWidth
-	// 					}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-	// 					enemyArrayDmg[targetedIndex].dmgBarContainer.dmgBar = false;
-	// 				}});
-
-	heroArray[0].statCalc[0] += 25;
-	heroHPContainerArray[0].textHP.text = heroArray[0].statCalc[0] + " / " + heroArray[0].EHP;
-	
-	// TweenMax.fromTo(heroArrayDmg[0].dmgBarContainer.dmgBar
-	// 	, 1, {width: 0}, {delay:0.5, ease:Expo.easeIn, width:50});
-
-	// var tween2 = new TimelineMax({paused: true});
-	// tween2.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
-	// tween2.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	// tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
-	// tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
-
-	heroArrayDmg[0].dmgBarContainer.x = heroHPContainerArray[0].inner.width;
-	heroArrayDmg[0].dmgBarContainer.dmgBar.visible = true;
-	var tween = new TimelineMax({onComplete: function(){
-		heroArrayDmg[0].dmgBarContainer.dmgBar.visible = false;	
-		heroArrayDmg[0].dmgBarContainer.dmgBar.alpha = 0.9;
-	}});
-	tween.fromTo(heroArrayDmg[0].dmgBarContainer.dmgBar
-		, 1, {width: 0}, {ease:Expo.easeIn, width:25, onComplete:function(){
-			heroHPContainerArray[0].inner.width = heroHPContainerArray[0].inner.width + 25;
-		}});
-	tween.to(heroArrayDmg[0].dmgBarContainer.dmgBar
-		, 1, {delay:0.5, ease:Expo.easeIn, alpha:0});
-
-
-	// heroHPContainerArray[0].critDmgBar.width = 50;
+	heroArray[0].pos = 3;
+	heroArray[1].pos = 1;
 }
 
 function onAdditionalCancelDown(){
@@ -3193,7 +3063,6 @@ function onAdditionalMoveDown(){
 		if(temp2 < enemyHPContainerArray.length){
 			enemyHPContainerArray[temp2].move.visible = true;
 		}
-
 	}
 }
 
