@@ -3002,23 +3002,53 @@ function onAdditionalMoveDown(){
 	//  });
 
 	if(selectedVita > 0){
-		var temp = Math.abs(selectedVita) - 2;
-		if(temp > -1){
-			heroHPContainerArray[temp].move.visible = true;
-		}
-		var temp2 = Math.abs(selectedVita);
-		if(temp2 < heroHPContainerArray.length){
-			heroHPContainerArray[temp2].move.visible = true;
-		}
+		var temp = heroArray[Math.abs(selectedVita-1)].pos;
+
+		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+			if(arrayCreature.pos == temp+1){
+				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+			}else if(arrayCreature.pos == temp-1){
+				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+			}
+			if(arrayCreature.size == 2){
+				if(arrayCreature.pos == temp-2){
+					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+				}
+			}
+		});
+
+
+		// var temp = Math.abs(selectedVita) - 2;
+		// if(temp > -1){
+		// 	heroHPContainerArray[temp].move.visible = true;
+		// }
+		// var temp2 = Math.abs(selectedVita);
+		// if(temp2 < heroHPContainerArray.length){
+		// 	heroHPContainerArray[temp2].move.visible = true;
+		// }
 	}else{
-		var temp = Math.abs(selectedVita) - 2;
-		if(temp > -1){
-			enemyHPContainerArray[temp].move.visible = true;
-		}
-		var temp2 = Math.abs(selectedVita);
-		if(temp2 < enemyHPContainerArray.length){
-			enemyHPContainerArray[temp2].move.visible = true;
-		}
+		var temp = enemyArray[Math.abs(selectedVita-1)].pos;
+
+		enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+			if(arrayCreature.pos == temp+1){
+				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+			}else if(arrayCreature.pos == temp-1){
+				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+			}
+			if(arrayCreature.size == 2){
+				if(arrayCreature.pos == temp-2){
+					enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+				}
+			}
+		});
+		// var temp = Math.abs(selectedVita) - 2;
+		// if(temp > -1){
+		// 	enemyHPContainerArray[temp].move.visible = true;
+		// }
+		// var temp2 = Math.abs(selectedVita);
+		// if(temp2 < enemyHPContainerArray.length){
+		// 	enemyHPContainerArray[temp2].move.visible = true;
+		// }
 	}
 }
 
