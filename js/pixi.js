@@ -2972,65 +2972,6 @@ function onAdditionalDown(){
 	additionalContainer.visible = true;
 	// tween.invalidate();
 	// tween.play(0);
-
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-
-	// switch(heroArray[index].pos) {
-	// 	case 1:
-	// 		item.x = 0;
-	// 		break;
-	// 	case 2:
-	// 		item.x = -(resizeWidth + healthSpacing);
-	// 		break;
-	// 	case 3:				
-	// 		item.x = -((resizeWidth + healthSpacing) * 2);
-	// 		break;
-	// 	case 4:
-	// 		item.x = -((resizeWidth + healthSpacing) * 3);
-	// 		break;
-	// 	default:
-	// 		item.x = 0;	
-	// }
-
-	// switch(heroArray[index].pos) {
-	// 	case 1:
-	// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-	// 		break;
-	// 	case 2:
-	// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-	// 		break;
-	// 	case 3:
-	// 		if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-	// 		else 	item.x = 0
-	// 		break;
-	// 	case 4:
-	// 		item.x = 0;
-	// 		break;
-	// 	default:
-	// 		item.x = 0;	
-	// }
-
-	var newX = -((resizeWidth + healthSpacing) * 3);
-	var newX2 = 0;
-	var newX3 = -((resizeWidth + healthSpacing) * 2);
-
-	var hpX = 0;
-	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
-	var hpX3 = resizeWidth + healthSpacing * 1;
-
-	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
-	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
-	TweenMax.to(heroContainerArray[2], 0.5, {x: newX3});
-	TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
-	TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
-	TweenMax.to(heroHPContainerArray[2], 0.5, {x: hpX3});
-	TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
-	TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
-	TweenMax.to(heroArrayDmg[2], 0.5, {x: hpX3});
-
-	heroArray[0].pos = 4;
-	heroArray[1].pos = 1;
-	heroArray[2].pos = 3;
 }
 
 function onAdditionalCancelDown(){
@@ -3091,6 +3032,67 @@ function onAdditionalSkipDown(){
 	console.log("Additional Skip");
 	// onScreenStats.visible = false;
 	// consoleScreen.visible = false;
+
+	//Hero Creature
+	// switch(heroArray[index].pos) {
+	// 	case 1:
+	// 		item.x = 0;
+	// 		break;
+	// 	case 2:
+	// 		item.x = -(resizeWidth + healthSpacing);
+	// 		break;
+	// 	case 3:				
+	// 		item.x = -((resizeWidth + healthSpacing) * 2);
+	// 		break;
+	// 	case 4:
+	// 		item.x = -((resizeWidth + healthSpacing) * 3);
+	// 		break;
+	// 	default:
+	// 		item.x = 0;	
+	// }
+
+	//Hero HP and dmg containers
+	// switch(heroArray[index].pos) {
+	// 	case 1:
+	// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+	// 		break;
+	// 	case 2:
+	// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+	// 		break;
+	// 	case 3:
+	// 		if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+	// 		else 	item.x = 0
+	// 		break;
+	// 	case 4:
+	// 		item.x = 0;
+	// 		break;
+	// 	default:
+	// 		item.x = 0;	
+	// }
+
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+	var newX = -((resizeWidth + healthSpacing) * 3);
+	var newX2 = 0;
+	var newX3 = -((resizeWidth + healthSpacing) * 2);
+
+	var hpX = 0;
+	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
+	var hpX3 = resizeWidth + healthSpacing * 1;
+
+	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
+	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+	TweenMax.to(heroContainerArray[2], 0.5, {x: newX3});
+	TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
+	TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
+	TweenMax.to(heroHPContainerArray[2], 0.5, {x: hpX3});
+	TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
+	TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
+	TweenMax.to(heroArrayDmg[2], 0.5, {x: hpX3});
+
+	heroArray[0].pos = 4;
+	heroArray[1].pos = 1;
+	heroArray[2].pos = 3;
 }
 
 function calculateTurnOrder(){
