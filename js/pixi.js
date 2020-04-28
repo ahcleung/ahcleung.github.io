@@ -3000,22 +3000,27 @@ function onAdditionalDown(){
 	// 		item.x = 0;	
 	// }
 
-
-	var newX = -((resizeWidth + healthSpacing) * 2);
+	var newX = -((resizeWidth + healthSpacing) * 3);
 	var newX2 = 0;
+	var newX3 = -((resizeWidth + healthSpacing) * 2);
 
-	var hpX = resizeWidth + healthSpacing * 1;
+	var hpX = item.x = 0;
 	var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
+	var hpX3 = resizeWidth + healthSpacing * 1;
 
 	TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
 	TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+	TweenMax.to(heroContainerArray[2], 0.5, {x: newX3});
 	TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
 	TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
+	TweenMax.to(heroHPContainerArray[2], 0.5, {x: hpX3});
 	TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
 	TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
+	TweenMax.to(heroArrayDmg[2], 0.5, {x: hpX3});
 
-	heroArray[0].pos = 3;
+	heroArray[0].pos = 4;
 	heroArray[1].pos = 1;
+	heroArray[2].pos = 3;
 }
 
 function onAdditionalCancelDown(){
