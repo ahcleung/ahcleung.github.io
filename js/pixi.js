@@ -522,7 +522,7 @@ function setup(){
 			for (var k = 0; k < 4; k++){
 				let defaultMarker = new PIXI.Graphics();
 				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				defaultMarker.x = 25 * j;
+				defaultMarker.x = 25 * k;
 				defaultMarker.pivot.set(0.5);
 				defaultMarker.angle = 45;
 
@@ -530,6 +530,7 @@ function setup(){
 				if(j == 0)		posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 				else 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
 
+				posMarker.x = 25 * k;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
 
