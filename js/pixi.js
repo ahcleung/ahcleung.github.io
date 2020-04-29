@@ -1732,7 +1732,7 @@ function onButtonDown(){
 function onCreatureDown(){
 	if(selectedSkill > -1){
 		attackedVita = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-		console.log("Clicked target index: " + attackedVita);
+		console.log("Clicked skill target index: " + attackedVita);
 		var correctTarget = false;
 		var clickedTarget = 0;
 		validSkillTargetArray.forEach((targeted, targetedIndex) => {
@@ -2262,7 +2262,40 @@ function onCreatureDown(){
 			turnArray.shift();
 			selectedSkill = -1;
 		}else{
-			console.log("Invalid target");
+			console.log("Invalid skill target");
+		}
+	}else if(validMoveTargetArray.length > 0){
+		attackedVita = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+		console.log("Clicked move target index: " + attackedVita);
+		var correctTarget = false;
+		var clickedTarget = 0;
+		validMoveTargetArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(arrayElement == attackedVita){
+						correctTarget = true;
+						clickedTarget = targetedIndex;
+					}	
+				});
+			}
+			if(targeted == attackedVita){
+				correctTarget = true;
+				clickedTarget = targetedIndex;
+			}
+		});
+		if(correctTarget){
+			console.log(selectedVita + "moves to: " + validMoveTargetArray[clickedTarget]);
+
+			//If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				selectCreature(identifier);
+			}else{
+				calculateTurnOrder();
+			}
+			turnArray.shift();
+			selectedSkill = -1;
+		}else{
+			console.log("Invalid move target");
 		}
 	}
 }
