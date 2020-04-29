@@ -179,6 +179,10 @@ class Creature{
 		this.statCalc[0] = this.EHP;	
 	}
 
+	get speed(){
+		return this.statCalc[6];
+	}
+
 // 	get PAtk(){
 // 		return this.calcPAtk();	
 // 	}
