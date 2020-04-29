@@ -2269,6 +2269,8 @@ function onCreatureDown(){
 		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
 		var targetedVita = 0;
+
+		var movePositions = [];
 		validMoveTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
@@ -2286,11 +2288,31 @@ function onCreatureDown(){
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			if(selectedVita > 0){
-				console.log(heroArray[selectedVita-1].pos + " moves to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);				
+				console.log(heroArray[selectedVita-1].pos + " moves to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);
+				movePositions.push(heroArray[selectedVita-1].pos);
+				movePositions.push(heroArray[validMoveTargetArray[targetedVita]-1].pos);
+				if(heroArray[selectedVita-1].size == 2){
+					movePositions.push(heroArray[selectedVita-1].pos+1);
+				}
+
+				if(heroArray[validMoveTargetArray[targetedVita]-1].size == 2){
+					movePositions.push(heroArray[validMoveTargetArray[targetedVita]-1].pos+1);
+				}
 			}else{
 				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " moves to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
+				movePositions.push(enemyArray[Math.abs(selectedVita)-1].pos);
+				movePositions.push(enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
+
+				if(enemyArray[selectedVita-1].size == 2){
+					movePositions.push(enemyArray[selectedVita-1].pos+1);
+				}
+
+				if(enemyArray[validMoveTargetArray[targetedVita]-1].size == 2){
+					movePositions.push(enemyArray[validMoveTargetArray[targetedVita]-1].pos+1);
+				}
 			}
 
+			console.log(movePositions);
 
 			//Get next turn Vita
 			var identifier = [];
