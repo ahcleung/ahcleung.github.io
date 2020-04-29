@@ -139,7 +139,7 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
-		this.statMod = [0, 0, 2, 0, 0, 0, 0];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
 			[Math.floor(Math.random() * 14) + 1, 1],
 			[Math.floor(Math.random() * 14) + 1, 3, 5],
@@ -188,7 +188,6 @@ class Creature{
 	}
 
 	get patk(){
-		// var attack = this.statCalc[2];
 		if(this.statMod[2] > 0){
 			return this.statCalc[2] * ((this.statMod[2]+2)/2);
 		}else if(this.statMod[2] < 0){
@@ -196,20 +195,36 @@ class Creature{
 		}else{
 			return this.statCalc[2];
 		}
-
-		// return this.statCalc[2];
 	}
 
 	get pdef(){
-		return this.statCalc[3];
+		if(this.statMod[3] > 0){
+			return this.statCalc[3] * ((this.statMod[3]+2)/2);
+		}else if(this.statMod[3] < 0){
+			return this.statCalc[3] * (2/(Math.abs(this.statMod[3])+2));
+		}else{
+			return this.statCalc[3];
+		}
 	}
 
 	get satk(){
-		return this.statCalc[4];
+		if(this.statMod[4] > 0){
+			return this.statCalc[4] * ((this.statMod[4]+2)/2);
+		}else if(this.statMod[4] < 0){
+			return this.statCalc[4] * (2/(Math.abs(this.statMod[4])+2));
+		}else{
+			return this.statCalc[4];
+		}
 	}
 
 	get sdef(){
-		return this.statCalc[5];
+		if(this.statMod[5] > 0){
+			return this.statCalc[5] * ((this.statMod[5]+2)/2);
+		}else if(this.statMod[5] < 0){
+			return this.statCalc[5] * (2/(Math.abs(this.statMod[5])+2));
+		}else{
+			return this.statCalc[5];
+		}
 	}
 
 	get spd(){
@@ -1781,11 +1796,11 @@ function onCreatureDown(){
 							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = heroArray[selectedIndex].satk;
-							if(heroArray[selectedIndex].statMod[4] > 0){
-								attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
-							}else if(heroArray[selectedIndex].statMod[4] < 0){
-								attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
-							}
+							// if(heroArray[selectedIndex].statMod[4] > 0){
+							// 	attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
+							// }else if(heroArray[selectedIndex].statMod[4] < 0){
+							// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
+							// }
 						}
 					}else{
 						level = enemyArray[selectedIndex].level;
@@ -1798,11 +1813,11 @@ function onCreatureDown(){
 							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = enemyArray[selectedIndex].satk;
-							if(enemyArray[selectedIndex].statMod[4] > 0){
-								attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
-							}else if(enemyArray[selectedIndex].statMod[4] < 0){
-								attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
-							}
+							// if(enemyArray[selectedIndex].statMod[4] > 0){
+							// 	attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
+							// }else if(enemyArray[selectedIndex].statMod[4] < 0){
+							// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
+							// }
 						}
 					}
 
@@ -1810,18 +1825,18 @@ function onCreatureDown(){
 					if(targeted > 0){
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = heroArray[targetedIndex].pdef;
-							if(heroArray[selectedIndex].statMod[3] > 0){
-								defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
-							}else if(heroArray[selectedIndex].statMod[3] < 0){
-								defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
-							}
+							// if(heroArray[selectedIndex].statMod[3] > 0){
+							// 	defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
+							// }else if(heroArray[selectedIndex].statMod[3] < 0){
+							// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
+							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							defense = heroArray[targetedIndex].sdef;
-							if(heroArray[selectedIndex].statMod[5] > 0){
-								defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
-							}else if(heroArray[selectedIndex].statMod[5] < 0){
-								defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
-							}
+							// if(heroArray[selectedIndex].statMod[5] > 0){
+							// 	defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
+							// }else if(heroArray[selectedIndex].statMod[5] < 0){
+							// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
+							// }
 						}
 
 						heroArray[targetedIndex].elements.forEach(element =>{
@@ -1831,18 +1846,18 @@ function onCreatureDown(){
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = enemyArray[targetedIndex].pdef;
-							if(enemyArray[selectedIndex].statMod[3] > 0){
-								defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
-							}else if(enemyArray[selectedIndex].statMod[3] < 0){
-								defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
-							}
+							// if(enemyArray[selectedIndex].statMod[3] > 0){
+							// 	defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
+							// }else if(enemyArray[selectedIndex].statMod[3] < 0){
+							// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
+							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							defense = enemyArray[targetedIndex].sdef;
-							if(enemyArray[selectedIndex].statMod[5] > 0){
-								defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
-							}else if(enemyArray[selectedIndex].statMod[5] < 0){
-								defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
-							}
+							// if(enemyArray[selectedIndex].statMod[5] > 0){
+							// 	defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
+							// }else if(enemyArray[selectedIndex].statMod[5] < 0){
+							// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
+							// }
 						}
 						enemyArray[targetedIndex].elements.forEach(element =>{
 							defendElements.push(element);
@@ -2077,11 +2092,11 @@ function onCreatureDown(){
 						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = heroArray[selectedIndex].satk;
-						if(heroArray[selectedIndex].statMod[4] > 0){
-							attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
-						}else if(heroArray[selectedIndex].statMod[4] < 0){
-							attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
-						}
+						// if(heroArray[selectedIndex].statMod[4] > 0){
+						// 	attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
+						// }else if(heroArray[selectedIndex].statMod[4] < 0){
+						// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
+						// }
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
@@ -2094,29 +2109,29 @@ function onCreatureDown(){
 						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = enemyArray[selectedIndex].satk;
-						if(enemyArray[selectedIndex].statMod[4] > 0){
-							attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
-						}else if(enemyArray[selectedIndex].statMod[4] < 0){
-							attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
-						}
+						// if(enemyArray[selectedIndex].statMod[4] > 0){
+						// 	attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
+						// }else if(enemyArray[selectedIndex].statMod[4] < 0){
+						// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
+						// }
 					}
 				}
 				
 				if(targeted > 0){
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = heroArray[targetedIndex].pdef;
-						if(heroArray[selectedIndex].statMod[3] > 0){
-							defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
-						}else if(heroArray[selectedIndex].statMod[3] < 0){
-							defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
-						}
+						// if(heroArray[selectedIndex].statMod[3] > 0){
+						// 	defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
+						// }else if(heroArray[selectedIndex].statMod[3] < 0){
+						// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
+						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						defense = heroArray[targetedIndex].sdef;
-						if(heroArray[selectedIndex].statMod[5] > 0){
-							defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
-						}else if(heroArray[selectedIndex].statMod[5] < 0){
-							defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
-						}
+						// if(heroArray[selectedIndex].statMod[5] > 0){
+						// 	defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
+						// }else if(heroArray[selectedIndex].statMod[5] < 0){
+						// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
+						// }
 					}
 
 					heroArray[targetedIndex].elements.forEach(element =>{
@@ -2126,18 +2141,18 @@ function onCreatureDown(){
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = enemyArray[targetedIndex].pdef;
-						if(enemyArray[selectedIndex].statMod[3] > 0){
-							defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
-						}else if(enemyArray[selectedIndex].statMod[3] < 0){
-							defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
-						}
+						// if(enemyArray[selectedIndex].statMod[3] > 0){
+						// 	defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
+						// }else if(enemyArray[selectedIndex].statMod[3] < 0){
+						// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
+						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						defense = enemyArray[targetedIndex].sdef;
-						if(enemyArray[selectedIndex].statMod[5] > 0){
-							defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
-						}else if(enemyArray[selectedIndex].statMod[5] < 0){
-							defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
-						}
+						// if(enemyArray[selectedIndex].statMod[5] > 0){
+						// 	defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
+						// }else if(enemyArray[selectedIndex].statMod[5] < 0){
+						// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
+						// }
 					}
 					enemyArray[targetedIndex].elements.forEach(element =>{
 						defendElements.push(element);
