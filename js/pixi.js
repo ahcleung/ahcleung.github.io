@@ -2324,20 +2324,20 @@ function onCreatureDown(){
 					}
 					switch(arrayCreature.pos) {
 						case 1:
-							item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+							newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
 							break;
 						case 2:
-							item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+							newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
 							break;
 						case 3:
-							if(arrayCreature.size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-							else 	item.x = 0
+							if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+							else 	newHPX = 0
 							break;
 						case 4:
-							item.x = 0;
+							newHPX = 0;
 							break;
 						default:
-							item.x = 0;
+							newHPX = 0;
 					}
 
 					// var newX = -((resizeWidth + healthSpacing) * 3);
