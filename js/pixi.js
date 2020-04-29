@@ -2290,7 +2290,7 @@ function onCreatureDown(){
 			if(selectedVita > 0){
 				console.log(heroArray[selectedVita-1].pos + " wants to move to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);
 
-				heroArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1)[0]);
+				heroArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
 				// var temp = heroArray[selectedVita-1].pos;
 				// heroArray[selectedVita-1].pos = heroArray[validMoveTargetArray[targetedVita]-1].pos;
 				// heroArray[validMoveTargetArray[targetedVita]-1].pos = temp;
