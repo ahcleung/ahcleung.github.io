@@ -279,7 +279,7 @@ var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 
 var selectedVita = 0;
-var selectedSkill = 0;
+var selectedSkill = -1;
 
 // var db = firebase.firestore();
 
@@ -2320,7 +2320,7 @@ function onSkillDown(){
 		skillContainer.selected.visible = false;
 	});
 	skillContainerArray[this.identifier[0]].selected.visible = true;
-	selectedSkill = this.identifier[1];
+	selectedSkill = this.identifier[1];						//Skill ID
 	console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
 	var column = false;
 	var several = false;
