@@ -113,15 +113,14 @@ class Creature{
 		// this.critDmg = Math.floor(Math.random() * 25) + 10;
 		this.critDmg = 0;
 		
-		const creatureList = resources["js/creatures.json"];	
-// 		console.log("Creature name: " + creatureList.data.creatures[this.id].name);
+		const creatureList = resources["js/creatures.json"];				//Load creature JSON list
 		
-		this.frames = creatureList.data.creatures[this.id].frames;
-		this.code = creatureList.data.creatures[this.id].code;
-		this.size = creatureList.data.creatures[this.id].size;
+		this.frames = creatureList.data.creatures[this.id].frames;			//Number of frames for creature animation
+		this.code = creatureList.data.creatures[this.id].code;				//Creature code
+		this.size = creatureList.data.creatures[this.id].size;				//Creature size
 		
-		this.name = creatureList.data.creatures[this.id].name;
-		this.elements = creatureList.data.creatures[this.id].elements;
+		this.name = creatureList.data.creatures[this.id].name;				//Creature name
+		this.elements = creatureList.data.creatures[this.id].elements;		//Creature element
 		
 		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
@@ -180,10 +179,6 @@ class Creature{
 		this.statCalc[0] = this.EHP;	
 	}
 
-	get speed(){
-		return this.statCalc[6];
-	}
-
 // 	get PAtk(){
 // 		return this.calcPAtk();	
 // 	}
@@ -213,7 +208,6 @@ const enemyRoster = new PIXI.Container();
 const heroHP = new PIXI.Container();
 const enemyHP = new PIXI.Container();
 const additionalContainer = new PIXI.Container();
-
 const heroDMG = new PIXI.Container();
 const enemyDMG = new PIXI.Container();
 
@@ -243,20 +237,21 @@ var selectedSkill = 0;
 
 const factory = dragonBones.PixiFactory.factory;
 
-const heroArray = [];			//Array of hero vitas
-const enemyArray = [];			//Array of enemy vitas
-const additionalArray = [];			//Array of additional menu buttons
-const heroArrayDmg = [];
-const enemyArrayDmg = [];
-var turnArray = [];
-var validPositionTargetArray = [];
-var validMoveTargetArray = [];
+const heroArray = [];					//Array of hero vitas
+const enemyArray = [];					//Array of enemy vitas
+const additionalArray = [];				//Array of additional menu buttons
+
+var turnArray = [];						//Array for turn order
+var validSkillTargetArray = [];			//Array of valid skill targets
+var validMoveTargetArray = [];			//Array of vaild move targets
 
 const heroContainerArray = [];			//Array of hero sprite containers
 const enemyContainerArray = [];			//Array of enemy sprite containers
 const heroHPContainerArray = [];		//Array of hero HP containers
 const enemyHPContainerArray = [];		//Array of enemy HP containers
 const skillContainerArray = [];			//Array of skill containers
+const heroArrayDmg = [];				//Array of hero dmg containers
+const enemyArrayDmg = [];				//Array of enemy dmg containers
 
 const hero = [];
 hero[0] = {
@@ -274,7 +269,6 @@ hero[2] = {
 	skill1: 4, skill2: 10, skill3: 11, skill4: 1,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47
 };
-
 // hero[3] = {
 // 	id: 9, level: 47, 
 // 	skill1: 4, skill2: 0, skill3: 6, skill4: 1,
@@ -337,7 +331,7 @@ enemy[2] = {
 // 	console.error("Error updating document: ", error);
 // });
 
-// const framesIdleFlygon = [];
+// const framesIdleFlygon = [];				//Flygon spritesheet
 
 function setup(){	
 	textureAdditional = PIXI.Texture.from('img/additional.png');
@@ -502,6 +496,7 @@ function setup(){
 		createSprite(-1, item, index)	
 	});
 
+	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
 // 		console.log(heroArray[1].skills[i]);
 		let skillRect = new PIXI.Graphics();
@@ -519,7 +514,7 @@ function setup(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onSkillDown);
 		
-		//
+		//Identifier = [skill index, skill id, ]
 		skillContainer.identifier = [i , heroArray[1].skills[i], 1];
 		
 		let skillName = new Text(skillsList.data.skills[heroArray[1].skills[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
@@ -559,11 +554,11 @@ function setup(){
 		
 		const markerContainer = new PIXI.Container();
 		
-		const markerHeroArray = [];
-		const markerHeroContainer = new PIXI.Container();
-		
 		var w = 12.728;
 		
+		//Default position markers
+		const markerHeroArray = [];
+		const markerHeroContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -587,19 +582,23 @@ function setup(){
 			markerHeroContainer.addChild(posMarker);
 		}
 		
+		//Default target markers
 		const markerTargetEnemyArray = [];
 		const markerTargetEnemyContainer = new PIXI.Container();
-		
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+
 			if(skillsList.data.skills[heroArray[1].skills[i]].target[j] == 0){
 				posMarker.visible = false;
 			}
+
 			defaultMarker.x = 25 * j;
 			posMarker.x = 25 * j;
+
 			defaultMarker.pivot.set(0.5);
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
@@ -609,9 +608,9 @@ function setup(){
 			markerTargetEnemyContainer.addChild(posMarker);
 		}
 		
+		//Target several markers
 		const markerTargetEnemySeveralArray = [];
-		const markerTargetEnemySeveralContainer = new PIXI.Container();
-		
+		const markerTargetEnemySeveralContainer = new PIXI.Container();		
 		for (var j = 0; j < 3; j++){
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
@@ -621,42 +620,43 @@ function setup(){
 			markerTargetEnemySeveralContainer.addChild(posMarker);
 		}
 		
-		const markerTargetHeroArray = [];
-		const markerTargetHeroContainer = new PIXI.Container();
-		
-		for (var j = 0; j < 4; j++){
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// 			posMarker.visible = false;
-			posMarker.x = 25 * j;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			markerTargetHeroArray.push(posMarker);
-			markerTargetHeroContainer.addChild(posMarker);
-		}
-		
-		const markerTargetArray = [];
-		const markerTargetContainer = new PIXI.Container();
-		
-		for (var j = 0; j < 4; j++){
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-// 			posMarker.visible = false;
-			posMarker.x = 25 * j;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
+		//Position markers
+// 		const markerTargetHeroArray = [];
+// 		const markerTargetHeroContainer = new PIXI.Container();
+// 		for (var j = 0; j < 4; j++){
+// 			let posMarker = new PIXI.Graphics();				
+// 			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+// // 			posMarker.visible = false;
+// 			posMarker.x = 25 * j;
+// 			posMarker.pivot.set(0.5);
+// 			posMarker.angle = 45;
 // 			markerTargetHeroArray.push(posMarker);
-			markerTargetContainer.addChild(posMarker);
-		}
+// 			markerTargetHeroContainer.addChild(posMarker);
+// 		}
+		
+		//Target markers
+// 		const markerTargetArray = [];
+// 		const markerTargetContainer = new PIXI.Container();
+// 		for (var j = 0; j < 4; j++){
+// 			let posMarker = new PIXI.Graphics();				
+// 			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+// // 			posMarker.visible = false;
+// 			posMarker.x = 25 * j;
+// 			posMarker.pivot.set(0.5);
+// 			posMarker.angle = 45;
+// // 			markerTargetHeroArray.push(posMarker);
+// 			markerTargetContainer.addChild(posMarker);
+// 		}
+		
 		markerTargetEnemyContainer.x = 123;
-		markerTargetHeroContainer.x = 123;
-		markerTargetContainer.x = 123;
+		// markerTargetHeroContainer.x = 123;
+		// markerTargetContainer.x = 123;
 		markerTargetEnemySeveralContainer.x = 135;
 		
 		markerContainer.addChild(markerHeroContainer);
-		markerContainer.addChild(markerTargetContainer);		
+		// markerContainer.addChild(markerTargetContainer);		
 		markerContainer.addChild(markerTargetEnemyContainer);
-		markerContainer.addChild(markerTargetHeroContainer);		
+		// markerContainer.addChild(markerTargetHeroContainer);		
 		
 		markerContainer.addChild(markerTargetEnemySeveralContainer);
 		skillContainer.markerTargetEnemySeveralContainer = markerTargetEnemySeveralContainer;
@@ -674,9 +674,9 @@ function setup(){
 		skillContainer.markerTargetEnemyArray = markerTargetEnemyArray;
 		skillContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
 		
-		skillContainer.markerTargetHeroArray = markerTargetHeroArray;
-		skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
-		skillContainer.markerTargetHeroContainer.visible = false;
+		// skillContainer.markerTargetHeroArray = markerTargetHeroArray;
+		// skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
+		// skillContainer.markerTargetHeroContainer.visible = false;
 		
 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
@@ -1893,7 +1893,7 @@ function onCreatureDown(){
 		console.log("Clicked target index: " + attackedVita);
 		var correctTarget = false;
 		var clickedTarget = 0;
-		validPositionTargetArray.forEach((targeted, targetedIndex) => {
+		validSkillTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
 					if(arrayElement == attackedVita){
@@ -1908,10 +1908,10 @@ function onCreatureDown(){
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validPositionTargetArray[clickedTarget]);
+			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[clickedTarget]);
 
-			if(Array.isArray(validPositionTargetArray[clickedTarget])){
-				validPositionTargetArray[clickedTarget].forEach(targeted => {
+			if(Array.isArray(validSkillTargetArray[clickedTarget])){
+				validSkillTargetArray[clickedTarget].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
 					var targetedIndex = Math.abs(targeted)-1;
 					var deltaHP = 0;
@@ -1920,6 +1920,8 @@ function onCreatureDown(){
 					var defense = 0;
 					var defendElements = [];
 					var effectiveness = 1;
+
+					//Get attack stat based on skill used
 					if(selectedVita > 0){
 						level = heroArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -1955,7 +1957,8 @@ function onCreatureDown(){
 							}
 						}
 					}
-					
+
+					//Get defense stat based on skill used					
 					if(targeted > 0){
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = heroArray[targetedIndex].statCalc[3];
@@ -1997,11 +2000,14 @@ function onCreatureDown(){
 							defendElements.push(element);
 						});
 					}
+
+					//Get defenders elements to calculate effectiveness
 					defendElements.forEach(defendElement=>{
 						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
 						// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 					});
 
+					//Critical hit chance
 					var criticalChance = Math.floor(Math.random() * 10000);
 					var crit = 1;
 					if(criticalChance > 5000){
@@ -2016,6 +2022,7 @@ function onCreatureDown(){
 					// console.log("Defender element: " + defendElements);
 					// console.log("Effectiveness: " + effectiveness);
 
+					//Calculate heal amount or damage amount
 					if(attack == 0 && defense == 0){
 						//calculate how much to heal
 						deltaHP = 25;
@@ -2201,8 +2208,8 @@ function onCreatureDown(){
 					}
 				});
 			}else{
-				// console.log(validPositionTargetArray[clickedTarget] + " takes ## deltaHP");
-				var targeted = validPositionTargetArray[clickedTarget];
+				// console.log(validSkillTargetArray[clickedTarget] + " takes ## deltaHP");
+				var targeted = validSkillTargetArray[clickedTarget];
 				var selectedIndex = Math.abs(selectedVita)-1;
 				var targetedIndex = Math.abs(targeted)-1;
 				var deltaHP = 0;
@@ -2571,7 +2578,7 @@ function onSkillDown(){
 	});
 	
 	validMoveTargetArray = [];
-	validPositionTargetArray = [];
+	validSkillTargetArray = [];
 	var stageSide = 0;
 	if(column){
 		var columnArray = [];
@@ -2699,7 +2706,7 @@ function onSkillDown(){
 				}
 			}			
 		}
-		validPositionTargetArray.push(columnArray);
+		validSkillTargetArray.push(columnArray);
 	}
 
 	//for each target in the skill
@@ -2727,11 +2734,11 @@ function onSkillDown(){
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
-						validPositionTargetArray.forEach(targeted => {
+						validSkillTargetArray.forEach(targeted => {
 							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
 						});
-						if(!alreadyAdded)	validPositionTargetArray.push((arrayCreatureIndex+1)*stageSide)
-						// validPositionTargetArray.push(arrayCreature.pos*stageSide);
+						if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
+						// validSkillTargetArray.push(arrayCreature.pos*stageSide);
 					}					
 				});
 			}else{
@@ -2753,19 +2760,19 @@ function onSkillDown(){
 					}
 					if(stageSide != 0){
 						var alreadyAdded = false;
-						validPositionTargetArray.forEach(targeted => {
+						validSkillTargetArray.forEach(targeted => {
 							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
 						});
-						if(!alreadyAdded)	validPositionTargetArray.push((arrayCreatureIndex+1)*stageSide)
-						// validPositionTargetArray.push(arrayCreature.pos*stageSide);
+						if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
+						// validSkillTargetArray.push(arrayCreature.pos*stageSide);
 					}			
 				});
 			}
 		}
 	});
 
-	// console.log(validPositionTargetArray);
-	//validPositionTargetArray [1, 2, 4] = [[1,2],[2,4]]
+	// console.log(validSkillTargetArray);
+	//validSkillTargetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
 	//[001]
 	//[010]
@@ -2799,8 +2806,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "0,1,0"){
 			if(selectedVita > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2823,8 +2830,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "1,0,0"){
 			if(selectedVita > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2847,8 +2854,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "1,1,0"){
 			if(selectedVita > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2871,8 +2878,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "0,1,1"){
 			if(selectedVita > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2895,8 +2902,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "1,1,1"){
 			if(selectedVita > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2919,8 +2926,8 @@ function onSkillDown(){
 					}
 				});
 			}
-			validPositionTargetArray = [];
-			validPositionTargetArray = [array1];
+			validSkillTargetArray = [];
+			validSkillTargetArray = [array1];
 		}else if(joinedSeveral == "1,0,1"){
 			var array2 = [];
 			if(selectedVita > 0){
@@ -2962,11 +2969,11 @@ function onSkillDown(){
 					}
 				});
 			}
-			// validPositionTargetArray = [];
-			validPositionTargetArray = [array1, array2];
+			// validSkillTargetArray = [];
+			validSkillTargetArray = [array1, array2];
 		}
 	}
-	console.log("Targets: " + validPositionTargetArray);
+	console.log("Targets: " + validSkillTargetArray);
 }
 
 function onAdditionalDown(){
@@ -2985,7 +2992,7 @@ function onAdditionalCancelDown(){
 function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
 	validMoveTargetArray = [];
-	validPositionTargetArray = [];
+	validSkillTargetArray = [];
 	additionalContainer.visible = false;
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
