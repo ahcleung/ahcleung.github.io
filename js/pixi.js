@@ -2303,12 +2303,12 @@ function onCreatureDown(){
 				movePositions.push(enemyArray[Math.abs(selectedVita)-1].pos);
 				movePositions.push(enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
 
-				if(enemyArray[selectedVita-1].size == 2){
-					movePositions.push(enemyArray[selectedVita-1].pos+1);
+				if(enemyArray[Math.abs(selectedVita)-1].size == 2){
+					movePositions.push(enemyArray[Math.abs(selectedVita)-1].pos+1);
 				}
 
-				if(enemyArray[validMoveTargetArray[targetedVita]-1].size == 2){
-					movePositions.push(enemyArray[validMoveTargetArray[targetedVita]-1].pos+1);
+				if(enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].size == 2){
+					movePositions.push(enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos+1);
 				}
 			}
 
