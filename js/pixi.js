@@ -2570,6 +2570,7 @@ function onSkillDown(){
 		}
 	});
 	
+	validMoveTargetArray = [];
 	validPositionTargetArray = [];
 	var stageSide = 0;
 	if(column){
@@ -2984,6 +2985,7 @@ function onAdditionalCancelDown(){
 function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
 	validMoveTargetArray = [];
+	validPositionTargetArray = [];
 	additionalContainer.visible = false;
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
@@ -2996,13 +2998,6 @@ function onAdditionalMoveDown(){
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
 	});
-
-	// heroHPContainerArray.forEach(hpContainer => {
-	//  	hpContainer.move.visible =  true;
-	//  });
-	// enemyHPContainerArray.forEach(hpContainer => {
-	//  	hpContainer.move.visible =  true;
-	//  });
 
 	if(selectedVita > 0){
 		var temp = heroArray[Math.abs(selectedVita)-1].pos;
@@ -3027,16 +3022,6 @@ function onAdditionalMoveDown(){
 				}
 			}
 		});
-
-
-		// var temp = Math.abs(selectedVita) - 2;
-		// if(temp > -1){
-		// 	heroHPContainerArray[temp].move.visible = true;
-		// }
-		// var temp2 = Math.abs(selectedVita);
-		// if(temp2 < heroHPContainerArray.length){
-		// 	heroHPContainerArray[temp2].move.visible = true;
-		// }
 	}else{
 		var temp = enemyArray[Math.abs(selectedVita)-1].pos;
 
@@ -3060,14 +3045,6 @@ function onAdditionalMoveDown(){
 				}
 			}
 		});
-		// var temp = Math.abs(selectedVita) - 2;
-		// if(temp > -1){
-		// 	enemyHPContainerArray[temp].move.visible = true;
-		// }
-		// var temp2 = Math.abs(selectedVita);
-		// if(temp2 < enemyHPContainerArray.length){
-		// 	enemyHPContainerArray[temp2].move.visible = true;
-		// }
 	}
 
 	console.log(validMoveTargetArray);
