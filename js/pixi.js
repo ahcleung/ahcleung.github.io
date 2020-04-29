@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.02
+*Version:         1.03
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -207,17 +207,13 @@ let state, onScreenStats, consoleScreen;
 
 var styleFontFamily = 'Arvo';
 
-const heroRoster = new PIXI.Container();
-const enemyRoster = new PIXI.Container();
-const heroHP = new PIXI.Container();
-const enemyHP = new PIXI.Container();
-const additionalContainer = new PIXI.Container();
-const heroDMG = new PIXI.Container();
-const enemyDMG = new PIXI.Container();
-
-// let dmgNum2;
-// const tempContainer = new PIXI.Container();
-// var tween;
+const heroRoster = new PIXI.Container();			//Hero stage
+const enemyRoster = new PIXI.Container();			//Enemy stage
+const heroHP = new PIXI.Container();				//Hero HP
+const enemyHP = new PIXI.Container();				//Enemy HP
+const heroDMG = new PIXI.Container();				//Hero damage UI
+const enemyDMG = new PIXI.Container();				//Enemy damage UI
+const additionalContainer = new PIXI.Container();	//Additional actions
 
 const rectTemp = new PIXI.Graphics();
 
@@ -344,13 +340,12 @@ function setup(){
 	textureAdditionalMove = PIXI.Texture.from('img/ability_move.png');
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
-// 	textureShift = PIXI.Texture.from('img/ui_move.png');
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
 	rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
 	rectTemp.alpha = 0.1;
-	// Add it to the stage
+	// app.stage.add(rectTemp);
 
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
 // 	rectHero.x = 0;
@@ -361,47 +356,6 @@ function setup(){
 // 	rectEnemy.x = 0;
 // 	rectEnemy.y = 0;
 // 	enemyHP.addChild(rectEnemy);
-	
-	// const dmgContainer = new PIXI.Container();
-
-// 	const style = new PIXI.TextStyle({
-//         fontFamily: 'Arvo',
-//         fontSize: 50,
-//         // fontStyle: 'italic',
-//         fontWeight: 700,
-// //         fill: ['#ff0000', '#D80000'], // gradient
-// 		fill: '#D80000',	
-// 		stroke: '#ff0000',
-//    		strokeThickness: 3,
-//     });
-
-// 	dmgNum2 = new Text("50", style);
-// 	dmgNum2.anchor.set(0.5, 0.5);
-
-// 	// tween = gsap.timeline({paused: true});
-// 	// tween.to(dmgNum2, { duration: 0.1, ease:"expo.in", alpha: 1});
-// 	// tween.to(dmgNum2.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2});
-// 	// tween.to(dmgNum2, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-// 	// tween.to(dmgNum2.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
-
-// 	// dmgNum2.alpha = 0;
-
-// 	tween = new TimelineMax({paused: true, onComplete: function(){
-// 		this.visible = false;
-// 	}});
-// 	tween.to(dmgNum2, 0.5, {ease:Expo.easeIn, alpha: 1});
-// 	tween.to(dmgNum2.scale, 0.5, {ease:Expo.easeIn, x: 2, y: 2},0);
-// 	tween.to(dmgNum2, 1.25, {ease:Expo.easeInOut, y: -300, alpha: 0})
-// 	tween.to(dmgNum2.scale, 1.25, {ease:Expo.easeInOut, x: 1, y: 1},0.5);
-
-
-// 	dmgNum2.tween = tween;
-
-// 	tempContainer.addChild(dmgNum2);
-// 	tempContainer.dmgNum = dmgNum2;
-
-// 	app.stage.addChild(tempContainer);
-
 
 	heroRoster.x = app.screen.width/2;
 	heroRoster.y = app.screen.height/2;
@@ -561,8 +515,8 @@ function setup(){
 		var w = 12.728;
 		
 		//Default position markers
-		const markerHeroArray = [];
-		const markerHeroContainer = new PIXI.Container();
+		const markerPositionArray = [];
+		const markerPositionContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -581,14 +535,14 @@ function setup(){
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			markerHeroArray.push(posMarker);
-			markerHeroContainer.addChild(defaultMarker);
-			markerHeroContainer.addChild(posMarker);
+			markerPositionArray.push(posMarker);
+			markerPositionContainer.addChild(defaultMarker);
+			markerPositionContainer.addChild(posMarker);
 		}
 		
 		//Default target markers
-		const markerTargetEnemyArray = [];
-		const markerTargetEnemyContainer = new PIXI.Container();
+		const markerTargetArray = [];
+		const markerTargetContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let defaultMarker = new PIXI.Graphics();
 			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -607,86 +561,45 @@ function setup(){
 			defaultMarker.angle = 45;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
-			markerTargetEnemyArray.push(posMarker);
-			markerTargetEnemyContainer.addChild(defaultMarker);
-			markerTargetEnemyContainer.addChild(posMarker);
+			markerTargetArray.push(posMarker);
+			markerTargetContainer.addChild(defaultMarker);
+			markerTargetContainer.addChild(posMarker);
 		}
 		
 		//Target several markers
-		const markerTargetEnemySeveralArray = [];
-		const markerTargetEnemySeveralContainer = new PIXI.Container();		
+		const markerTargetSeveralArray = [];
+		const markerTargetSeveralContainer = new PIXI.Container();		
 		for (var j = 0; j < 3; j++){
 			let posMarker = new PIXI.Graphics();				
 			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 			posMarker.x = 25 * j;
 			posMarker.visible = false;
-			markerTargetEnemySeveralArray.push(posMarker);
-			markerTargetEnemySeveralContainer.addChild(posMarker);
+			markerTargetSeveralArray.push(posMarker);
+			markerTargetSeveralContainer.addChild(posMarker);
 		}
-		
-		//Position markers
-// 		const markerTargetHeroArray = [];
-// 		const markerTargetHeroContainer = new PIXI.Container();
-// 		for (var j = 0; j < 4; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// // 			posMarker.visible = false;
-// 			posMarker.x = 25 * j;
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// 			markerTargetHeroArray.push(posMarker);
-// 			markerTargetHeroContainer.addChild(posMarker);
-// 		}
-		
-		//Target markers
-// 		const markerTargetArray = [];
-// 		const markerTargetContainer = new PIXI.Container();
-// 		for (var j = 0; j < 4; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-// // 			posMarker.visible = false;
-// 			posMarker.x = 25 * j;
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// // 			markerTargetHeroArray.push(posMarker);
-// 			markerTargetContainer.addChild(posMarker);
-// 		}
-		markerTargetEnemyContainer.x = 123;
-		// markerTargetHeroContainer.x = 123;
-		// markerTargetContainer.x = 123;
-		markerTargetEnemySeveralContainer.x = 135;
-		
-		markerContainer.addChild(markerHeroContainer);
-		// markerContainer.addChild(markerTargetContainer);		
-		markerContainer.addChild(markerTargetEnemyContainer);
-		// markerContainer.addChild(markerTargetHeroContainer);		
-		
-		markerContainer.addChild(markerTargetEnemySeveralContainer);
-		skillContainer.markerTargetEnemySeveralContainer = markerTargetEnemySeveralContainer;
-		
-		skillContainer.markerTargetEnemySeveralArray = markerTargetEnemySeveralArray;		
-		skillContainer.markerTargetEnemySeveralContainer.visible = false;
+
+		markerTargetContainer.x = 123;
+		markerTargetSeveralContainer.x = 135;
+		markerContainer.addChild(markerPositionContainer);
+		markerContainer.addChild(markerTargetContainer);
+		markerContainer.addChild(markerTargetSeveralContainer);
+
+		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
+		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
+		skillContainer.markerTargetSeveralContainer.visible = false;
 		
 		skillContainer.addChild(markerContainer);
-// 		skillContainer.posMarkerArray = posMarkerArray;
-		skillContainer.markerContainer = markerContainer;
-		
-		skillContainer.markerHeroArray = markerHeroArray;
-		skillContainer.markerHeroContainer = markerHeroContainer;
-		
-		skillContainer.markerTargetEnemyArray = markerTargetEnemyArray;
-		skillContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
-		
-		// skillContainer.markerTargetHeroArray = markerTargetHeroArray;
-		// skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
-		// skillContainer.markerTargetHeroContainer.visible = false;
+		skillContainer.markerContainer = markerContainer;		
+		skillContainer.markerPositionArray = markerPositionArray;
+		skillContainer.markerPositionContainer = markerPositionContainer;		
+		skillContainer.markerTargetArray = markerTargetArray;
+		skillContainer.markerTargetContainer = markerTargetContainer;
 		
 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
 		skillContainer.addChild(targetText);
 		skillContainer.targetText = targetText;
 		skillContainer.targetText.visible = false;
-// 		targetText.x = 123;
 		
 		var skillElement;
 		switch(skillsList.data.skills[heroArray[1].skills[i]].element){
@@ -763,8 +676,6 @@ function setup(){
 // 		});
 // 	});
 	
-	//const obj = resources["js/creatures.json"];
-	
 	//Current display stats
 	onScreenStats = new Text("Resolution: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
@@ -779,8 +690,7 @@ function setup(){
 	onScreenStats.visible = false;
 	consoleScreen.visible = false;
 	
-	//Resize button
-	btnSettings = new PIXI.Sprite(textureSettings);
+	btnSettings = new PIXI.Sprite(textureSettings);					//Button settings
     	btnSettings.buttonMode = true;
     	btnSettings.anchor.set(1,1);
     	btnSettings.position.x = 50;
@@ -795,7 +705,7 @@ function setup(){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onButtonDown);
 	
-	btnAdditional = new PIXI.Sprite(textureAdditional);
+	btnAdditional = new PIXI.Sprite(textureAdditional);				//Button additional
 	btnAdditional.anchor.set(0,1);
 	btnAdditional.buttonMode = true;
     	btnAdditional.interactive = true;
@@ -803,7 +713,7 @@ function setup(){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onAdditionalDown);
 	
-	btnAdditionalCancel = new PIXI.Sprite(textureAdditionalCancel);
+	btnAdditionalCancel = new PIXI.Sprite(textureAdditionalCancel);	//Button additional cancel
 	btnAdditionalCancel.anchor.set(0,1);
 	btnAdditionalCancel.buttonMode = true;
     	btnAdditionalCancel.interactive = true;
@@ -813,7 +723,7 @@ function setup(){
 	additionalContainer.addChild(btnAdditionalCancel);
 	additionalArray.push(btnAdditionalCancel);
 	
-	btnAdditionalItem = new PIXI.Sprite(textureAdditionalItem);
+	btnAdditionalItem = new PIXI.Sprite(textureAdditionalItem);		//Button additional item
 	btnAdditionalItem.anchor.set(0,1);
 	btnAdditionalItem.buttonMode = true;
     	btnAdditionalItem.interactive = true;
@@ -823,7 +733,7 @@ function setup(){
 	additionalContainer.addChild(btnAdditionalItem);
 	additionalArray.push(btnAdditionalItem);
 	
-	btnAdditionalMove = new PIXI.Sprite(textureAdditionalMove);
+	btnAdditionalMove = new PIXI.Sprite(textureAdditionalMove);		//Button additional move
 	btnAdditionalMove.anchor.set(0,1);
 	btnAdditionalMove.buttonMode = true;
     	btnAdditionalMove.interactive = true;
@@ -833,7 +743,7 @@ function setup(){
 	additionalContainer.addChild(btnAdditionalMove);
 	additionalArray.push(btnAdditionalMove);
 	
-	btnAdditionalSkip = new PIXI.Sprite(textureAdditionalSkip);
+	btnAdditionalSkip = new PIXI.Sprite(textureAdditionalSkip);		//Button additional skip
 	btnAdditionalSkip.anchor.set(0,1);
 	btnAdditionalSkip.buttonMode = true;
     	btnAdditionalSkip.interactive = true;
@@ -843,23 +753,16 @@ function setup(){
 	additionalContainer.addChild(btnAdditionalSkip);
 	additionalArray.push(btnAdditionalSkip);
 	
+	//Add containers to stage
+	app.stage.addChild(btnSettings);			//Settings button
+	app.stage.addChild(btnAdditional);			//Additional button
 	
-	app.stage.addChild(btnSettings);	
-	app.stage.addChild(btnAdditional);	
-	
-	var anchorX1 = 1;
-	var anchorY1 = 1;
-	var anchorX2 = 1;
-	var anchorY2 = 1;
-	var globalScale = 2;
-	var spriteSpacer = 2;
-	
-	app.stage.addChild(heroRoster);
-	app.stage.addChild(enemyRoster);
-	app.stage.addChild(heroHP);
-	app.stage.addChild(enemyHP);
-	app.stage.addChild(heroDMG);
-	app.stage.addChild(enemyDMG);
+	app.stage.addChild(heroRoster);				//Hero stage
+	app.stage.addChild(enemyRoster);			//Enemy stage
+	app.stage.addChild(heroHP);					//Hero HP
+	app.stage.addChild(enemyHP);				//Enemy HP
+	app.stage.addChild(heroDMG);				//Hero damage UI
+	app.stage.addChild(enemyDMG);				//Enemy damage UI
 	
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
@@ -3227,7 +3130,7 @@ function selectCreature(identifier){
 		skillContainer.disable.visible = true;
 		skillContainer.buttonMode = false;
 		skillContainer.interactive = false;
-		skillContainer.markerTargetEnemySeveralContainer.visible = false;
+		skillContainer.markerTargetSeveralContainer.visible = false;
 	});
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.select.visible = false;
@@ -3323,9 +3226,9 @@ function selectCreature(identifier){
 						skillContainerArray[skillContainerIndex].interactive = true;
 					}
 				});
-				skillContainerArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = true;
+				skillContainerArray[skillContainerIndex].markerPositionArray[skillPosIndex].visible = true;
 			}else{
-				skillContainerArray[skillContainerIndex].markerHeroArray[skillPosIndex].visible = false;
+				skillContainerArray[skillContainerIndex].markerPositionArray[skillPosIndex].visible = false;
 			}
 		});
 		
@@ -3346,13 +3249,13 @@ function selectCreature(identifier){
 					skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
 				}
 			}else if(tagName == "several"){
-				skillContainerArray[skillContainerIndex].markerTargetEnemySeveralContainer.visible = true;
+				skillContainerArray[skillContainerIndex].markerTargetSeveralContainer.visible = true;
 				//Show target dashes if 1
 				skillsList.data.skills[skillID][tagName].forEach((dash, dashIndex) => {
 					if(dash == 1){
-						skillContainerArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = true;
+						skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = true;
 					}else{
-						skillContainerArray[skillContainerIndex].markerTargetEnemySeveralArray[dashIndex].visible = false;
+						skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = false;
 					}
 				});
 			}
@@ -3360,16 +3263,16 @@ function selectCreature(identifier){
 		});
 		
 		if(column){
-			skillContainerArray[skillContainerIndex].markerTargetEnemyContainer.visible = false;
+			skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
 			skillContainerArray[skillContainerIndex].targetText.visible = true;
 		}else{
-			skillContainerArray[skillContainerIndex].markerTargetEnemyContainer.visible = true;
+			skillContainerArray[skillContainerIndex].markerTargetContainer.visible = true;
 			skillContainerArray[skillContainerIndex].targetText.visible = false;
 			skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
 				if(skillTarget == 1){
-					skillContainerArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = true;
+					skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = true;
 				}else{
-					skillContainerArray[skillContainerIndex].markerTargetEnemyArray[targetIndex].visible = false;
+					skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = false;
 				}
 			});
 		}
