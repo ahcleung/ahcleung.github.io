@@ -250,6 +250,7 @@ const heroArrayDmg = [];
 const enemyArrayDmg = [];
 var turnArray = [];
 var validPositionTargetArray = [];
+var validMoveTargetArray = [];
 
 const heroContainerArray = [];			//Array of hero sprite containers
 const enemyContainerArray = [];			//Array of enemy sprite containers
@@ -1583,7 +1584,7 @@ function resizeHP(roster, item, index){
 	
 	item.outer.height = resizeHeight;
 	item.inner.height = resizeHeight;
-	
+
 	item.critDmgBar.height = resizeHeight;
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.outer.width = resizeWidth;
@@ -1888,7 +1889,7 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	if(selectedSkill > -1){
-		attackedVita = this.identifier[0] * (this.identifier[1]+1);
+		attackedVita = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
 		console.log("Clicked target index: " + attackedVita);
 		var correctTarget = false;
 		var clickedTarget = 0;
@@ -2982,6 +2983,7 @@ function onAdditionalCancelDown(){
 
 function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
+	validMoveTargetArray = [];
 	additionalContainer.visible = false;
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
@@ -3013,12 +3015,15 @@ function onAdditionalMoveDown(){
 		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+sizeDelta){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+				validMoveTargetArray.push(arrayCreatureIndex+1);
 			}else if(arrayCreature.pos == temp-1){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+				validMoveTargetArray.push(arrayCreatureIndex+1);
 			}
 			if(arrayCreature.size == 2){
 				if(arrayCreature.pos == temp-2){
 					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+					validMoveTargetArray.push(arrayCreatureIndex+1);
 				}
 			}
 		});
@@ -3043,12 +3048,15 @@ function onAdditionalMoveDown(){
 		enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+sizeDelta){
 				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+				validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
 			}else if(arrayCreature.pos == temp-1){
 				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+				validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
 			}
 			if(arrayCreature.size == 2){
 				if(arrayCreature.pos == temp-2){
 					enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+					validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
 				}
 			}
 		});
@@ -3061,6 +3069,8 @@ function onAdditionalMoveDown(){
 		// 	enemyHPContainerArray[temp2].move.visible = true;
 		// }
 	}
+
+	console.log(validMoveTargetArray);
 }
 
 function onAdditionalItemDown(){
