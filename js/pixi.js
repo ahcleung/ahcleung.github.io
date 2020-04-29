@@ -922,8 +922,7 @@ function createSprite(direction, item, index){
 	dmgBarContainer.dmgBar = dmgBar;
 
 	const healthBar = new PIXI.Container();
-	healthBar.addChild(dmgBarContainer);
-	healthBar.dmgBarContainer = dmgBarContainer;
+	
 
 
 	
@@ -963,6 +962,9 @@ function createSprite(direction, item, index){
 	critDmgBar.endFill();
 	healthBar.addChild(critDmgBar);
 	healthBar.critDmgBar = critDmgBar;
+
+	healthBar.addChild(dmgBarContainer);
+	healthBar.dmgBarContainer = dmgBarContainer;
 	
 	let turnIndicator = new PIXI.Graphics();
 	turnIndicator.beginFill(0xFFD600);
