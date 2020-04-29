@@ -2297,7 +2297,7 @@ function onCreatureDown(){
 					//Hero Creature
 					var newCreatureX;
 					var newHPX;
-					
+
 					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
 					switch(arrayCreature.pos) {
@@ -2318,25 +2318,27 @@ function onCreatureDown(){
 					}
 
 					//Hero HP and dmg containers
-					switch(heroArray[index].pos) {
+					var switcher = 0;
+					if(arrayCreature.size > 1){
+						switcher = 1;
+					}
+					switch(arrayCreature.pos) {
 						case 1:
-							newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+							item.x = (resizeWidth + healthSpacing) * (3 - switcher);
 							break;
 						case 2:
-							newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+							item.x = (resizeWidth + healthSpacing) * (2 - switcher);
 							break;
 						case 3:
-							if(heroArray[index].size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
-							else 	newHPX = 0
+							if(arrayCreature.size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+							else 	item.x = 0
 							break;
 						case 4:
-							newHPX = 0;
+							item.x = 0;
 							break;
 						default:
-							newHPX = 0;	
+							item.x = 0;
 					}
-
-					
 
 					// var newX = -((resizeWidth + healthSpacing) * 3);
 					// var newX2 = 0;
