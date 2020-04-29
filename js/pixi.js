@@ -2291,14 +2291,74 @@ function onCreatureDown(){
 				console.log(heroArray[selectedVita-1].pos + " wants to move to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);
 
 				heroArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
-				// var temp = heroArray[selectedVita-1].pos;
-				// heroArray[selectedVita-1].pos = heroArray[validMoveTargetArray[targetedVita]-1].pos;
-				// heroArray[validMoveTargetArray[targetedVita]-1].pos = temp;
-				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					console.log(arrayCreature.pos);
-				});
+
 				heroArray.forEach(setPos);
 				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+					//Hero Creature
+					var newCreatureX;
+					var newHPX;
+					
+					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+					switch(arrayCreature.pos) {
+						case 1:
+							newCreatureX = 0;
+							break;
+						case 2:
+							newCreatureX = -(resizeWidth + healthSpacing);
+							break;
+						case 3:				
+							newCreatureX = -((resizeWidth + healthSpacing) * 2);
+							break;
+						case 4:
+							newCreatureX = -((resizeWidth + healthSpacing) * 3);
+							break;
+						default:
+							newCreatureX = 0;	
+					}
+
+					//Hero HP and dmg containers
+					switch(heroArray[index].pos) {
+						case 1:
+							newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+							break;
+						case 2:
+							newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+							break;
+						case 3:
+							if(heroArray[index].size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+							else 	newHPX = 0
+							break;
+						case 4:
+							newHPX = 0;
+							break;
+						default:
+							newHPX = 0;	
+					}
+
+					
+
+					// var newX = -((resizeWidth + healthSpacing) * 3);
+					// var newX2 = 0;
+					// var newX3 = -((resizeWidth + healthSpacing) * 2);
+
+					// var hpX = 0;
+					// var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
+					// var hpX3 = resizeWidth + healthSpacing * 1;
+
+					TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+					TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+					TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+
+					// TweenMax.to(heroContainerArray[0], 0.5, {x: newX});
+					// TweenMax.to(heroContainerArray[1], 0.5, {x: newX2});
+					// TweenMax.to(heroContainerArray[2], 0.5, {x: newX3});
+					// TweenMax.to(heroHPContainerArray[0], 0.5, {x: hpX});
+					// TweenMax.to(heroHPContainerArray[1], 0.5, {x: hpX2});
+					// TweenMax.to(heroHPContainerArray[2], 0.5, {x: hpX3});
+					// TweenMax.to(heroArrayDmg[0], 0.5, {x: hpX});
+					// TweenMax.to(heroArrayDmg[1], 0.5, {x: hpX2});
+					// TweenMax.to(heroArrayDmg[2], 0.5, {x: hpX3});
 					console.log(arrayCreature.pos);
 				});
 			}else{
