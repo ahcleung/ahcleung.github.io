@@ -212,7 +212,7 @@ class Creature{
 		return this.statCalc[5];
 	}
 
-	get speed(){
+	get spd(){
 		return this.statCalc[6];
 	}
 
