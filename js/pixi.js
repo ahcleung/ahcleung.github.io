@@ -758,25 +758,6 @@ function setup(){
 	state = play;
 	
 	app.ticker.add(delta => gameLoop(delta));
-// 	document.addEventListener('fullscreenerror', (event) => {
-// 		alert('an error occurred changing into fullscreen');
-// 		alert(event);
-// 		console.error('an error occurred changing into fullscreen');
-// 		console.log(event);
-// 	});
-	
-	//Load spritesheet	
-	//Flygon	
-// 	for (let i = 0; i < 125; i++) {
-//         	const val = i < 10 ? `00${i}` : i < 100 ? `0${i}` : i;
-//         	// magically works since the spritesheet was loaded with the pixi loader
-//         	framesIdleFlygon.push(PIXI.Texture.from(`flygonIdleSequence0${val}.png`));
-//     	}
-// 	hero4 = new PIXI.AnimatedSprite(framesIdleFlygon);
-// 	hero4.animationSpeed = 0.5;
-// 	hero4.play();	
-// 	hero4Container.addChild(hero4);
-// 	app.stage.addChild(anim);
 
 	calculateTurnOrder();
 }
@@ -797,27 +778,19 @@ function play(delta){
 	heroHPContainerArray.forEach(hpContainer => {
 		if(hpContainer.select.animate == true){
 			hpContainer.select.width = hpContainer.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-// 			hpContainer.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
 	enemyHPContainerArray.forEach(hpContainer => {
 		if(hpContainer.select.animate == true){
 			hpContainer.select.width = hpContainer.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-// 			hpContainer.select.scale.x = (Math.cos(phase) + 1) * 0.03 + 1;
 		}
 	});
-// 	heroHPContainerArray[0].select.scale.x = (Math.cos(phase) + 1) * 0.04 + 1;
-
-// 	tempContainer.damageText.y -= 5;
 }
 
 // Listen for animate update
 // app.ticker.add((delta) => {
 // 	// rotate the container!
-// 	// use delta to create frame-independent transform
-	
-// 	//container.rotation -= 0.01 * delta;
-	
+// 	// use delta to create frame-independent transform	
 // });
 
 function setPos(item, index, array){
@@ -856,94 +829,63 @@ function createSprite(direction, item, index){
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 	}
 	
-	const healthBar = new PIXI.Container();
-
 	const dmgContainer = new PIXI.Container();
-
 	const dmgPopup = new PIXI.Container();
+	const dmgBarContainer = new PIXI.Container();
 
-	const style = new PIXI.TextStyle({
+	const dmgNumStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 70,
-        // fontStyle: 'italic',
         fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#3B0000',
    		strokeThickness: 10,
     });
-
-    const style2 = new PIXI.TextStyle({
+    const dmgEffectiveStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 24,
-        // fontStyle: 'italic',
         fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#D80000',	
 		stroke: '#222222',
    		strokeThickness: 5,
     });
-
-    const style3 = new PIXI.TextStyle({
+    const dmgCritStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 24,
-        // fontStyle: 'italic',
         fontWeight: 700,
-//         fill: ['#ff0000', '#D80000'], // gradient
 		fill: '#ff7b00',	
 		stroke: '#4E2600',
    		strokeThickness: 5,
     });
 
-
-	let dmgNum = new Text("50", style);
+	let dmgNum = new Text("50", dmgNumStyle);
 	dmgNum.anchor.set(0.5, 0.5);
-	// dmgNum.x = 100;
-	// dmgNum.y = 500;
 
-	let dmgCrit = new Text ("CRIT!", style3);
-	dmgCrit.anchor.set(0.5, 0.5);
-	dmgCrit.y = 50;
-	dmgPopup.addChild(dmgCrit);
-	dmgPopup.dmgCrit = dmgCrit;
-
-	let dmgEffective = new Text ("Poor  x0.25", style2);
+	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
 	dmgEffective.y = -50;
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
 
-
-	//GSAP3 version, not working?
-	// var tween2 = gsap.timeline({paused: true});
-	// tween2
-	// 	.to(dmgNum, { duration: 0.5, ease:"expo.in", alpha: 1})
-	// 	.to(dmgNum.scale, { duration: 0.5, ease:"expo.in", x: 2, y: 2}, 0);
-	// tween2
-	// 	.to(dmgNum, { duration: 1.25, ease:"expo.inOut", y: -300, alpha: 0})
-	// 	.to(dmgNum.scale, { duration: 1.25, ease:"expo.inOut", x: 1, y: 1}, 0.1);
+	let dmgCrit = new Text ("CRIT!", dmgCritStyle);
+	dmgCrit.anchor.set(0.5, 0.5);
+	dmgCrit.y = 50;
+	dmgPopup.addChild(dmgCrit);
+	dmgPopup.dmgCrit = dmgCrit;
 
 	//GSAP2
-	var tween2 = new TimelineMax({paused: true});
-	// var tween2 = new TimelineMax({paused: true, onComplete: function(){
-	// 	dmgNum.visible = false;
-	// }});
-	tween2.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
-	tween2.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	// tween2.to(dmgPopup.scale, 0.2, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	tween2.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
-	tween2.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+	var dmgPopupTween = new TimelineMax({paused: true});
+	dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
+	dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
+	dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
 	dmgPopup.alpha = 0;
-
-	dmgPopup.tween = tween2;
-	
+	dmgPopup.tween = dmgPopupTween;	
 	dmgPopup.addChild(dmgNum);
 	dmgPopup.dmgNum = dmgNum;
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
-
-	var dmgBarContainer = new PIXI.Container();
 
 	let dmgBar = new PIXI.Graphics();
 	dmgBar.beginFill(0xFFFFFF);
@@ -957,6 +899,9 @@ function createSprite(direction, item, index){
 
 	dmgContainer.addChild(dmgBarContainer);
 	dmgContainer.dmgBarContainer = dmgBarContainer;
+
+
+	const healthBar = new PIXI.Container();
 
 	healthBar.identifier = [direction, index];
 	// healthBar.buttonMode = true;
@@ -972,6 +917,7 @@ function createSprite(direction, item, index){
 	healthBar.addChild(outerBar);
 	healthBar.outer = outerBar;
 
+	//Make healthbar interactive
 	outerBar.identifier = [direction, index];
 	outerBar.buttonMode = true;
 	outerBar.interactive = true;
