@@ -179,6 +179,30 @@ class Creature{
 		this.statCalc[0] = this.EHP;	
 	}
 
+	get hp(){
+		return this.statCalc[0];
+	}
+
+	get dodge(){
+		return this.statCalc[1];
+	}
+
+	get patk(){
+		return this.statCalc[2];
+	}
+
+	get pdef(){
+		return this.statCalc[3];
+	}
+
+	get satk(){
+		return this.statCalc[4];
+	}
+
+	get sdef(){
+		return this.statCalc[5];
+	}
+
 	get speed(){
 		return this.statCalc[6];
 	}
@@ -897,13 +921,14 @@ function createSprite(direction, item, index){
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
 
+	const healthBar = new PIXI.Container();
 	healthBar.addChild(dmgBarContainer);
 	healthBar.dmgBarContainer = dmgBarContainer;
 
 
-	const healthBar = new PIXI.Container();
+	
 
-	healthBar.identifier = [direction, index];
+	// healthBar.identifier = [direction, index];
 	// healthBar.buttonMode = true;
 	// healthBar.interactive = true;
 	// healthBar
