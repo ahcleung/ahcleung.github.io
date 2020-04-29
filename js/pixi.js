@@ -1334,15 +1334,9 @@ function resizeDmg(roster, item, index){
 // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(heroArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-			// item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (heroArray[index].statCalc[0]/heroArray[index].overallHP);
-			// item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].critDmg/heroArray[index].overallHP);
-			// item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			switcher = 1;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
-			// item.dmgBarContainer.x = resizeWidth * (heroArray[index].statCalc[0]/heroArray[index].overallHP);
-			// item.critDmgBar.width = resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP);
-			// item.critDmgBar.x = resizeWidth;
 		}
 		switch(heroArray[index].pos) {
 			case 1:
@@ -1364,14 +1358,8 @@ function resizeDmg(roster, item, index){
 	}else{
 		if(enemyArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-			// item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].statCalc[0]/enemyArray[index].overallHP);
-			// item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].critDmg/heroArray[index].overallHP);
-			// item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
-			// item.dmgBarContainer.x = resizeWidth * (enemyArray[index].statCalc[0]/enemyArray[index].overallHP);
-			// item.critDmgBar.width = resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP);
-			// item.critDmgBar.x = resizeWidth;
 		}
 		switch(enemyArray[index].pos) {
 			case 1:
@@ -1392,7 +1380,6 @@ function resizeDmg(roster, item, index){
 
 	}
 
-	// item.dmgBarContainer.x = item.inner.width;
 	item.dmgPopup.y = app.screen.height/3;
 }
 
@@ -1410,7 +1397,6 @@ function resizeHP(roster, item, index){
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
-		// item.textHP.style = {fontFamily : 'Arial', fontSize: 14, fill : 0xfefefe, align : 'center'};
 		item.textHP.style.fontSize = 14;
 		statusSpacing = 2;
 		HPSpacing = 1;
@@ -1423,7 +1409,6 @@ function resizeHP(roster, item, index){
 		item.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
 		resizeHeight = 30;
-		// item.textHP.style = {fontFamily : 'Arial', fontSize: 18, fill : 0xfefefe, align : 'center'};
 		item.textHP.style.fontSize = 18;
 		statusSpacing = 4;
 		HPSpacing = 2;
@@ -1436,7 +1421,6 @@ function resizeHP(roster, item, index){
 		item.turn.y = resizeHeight + 2;
 	}else{
 		resizeHeight = 40;
-		// item.textHP.style = {fontFamily : 'Arial', fontSize: 24, fill : 0xfefefe, align : 'center'};
 		item.textHP.style.fontSize = 24;
 		statusSpacing = 5;
 		HPSpacing = 3;
@@ -1462,7 +1446,6 @@ function resizeHP(roster, item, index){
 		if(heroArray[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].hp/heroArray[index].overallHP);
-			// item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (heroArray[index].statCalc[0]/heroArray[index].overallHP);
 			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].critDmg/heroArray[index].overallHP);
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
@@ -1492,7 +1475,6 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (heroArray[index].hp/heroArray[index].overallHP);
-			// item.dmgBarContainer.x = resizeWidth * (heroArray[index].statCalc[0]/heroArray[index].overallHP);
 			item.critDmgBar.width = resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP);
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
@@ -1550,7 +1532,6 @@ function resizeHP(roster, item, index){
 		if(enemyArray[index].size > 1){
 			item.outer.width = resizeWidth * 2 + healthSpacing;
 			item.inner.width = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].hp/enemyArray[index].overallHP);
-			// item.dmgBarContainer.x = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].statCalc[0]/enemyArray[index].overallHP);
 			item.critDmgBar.width = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].critDmg/enemyArray[index].overallHP);
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
@@ -1579,7 +1560,6 @@ function resizeHP(roster, item, index){
 			});
 		}else{
 			item.inner.width = resizeWidth * (enemyArray[index].hp/enemyArray[index].overallHP);
-			// item.dmgBarContainer.x = resizeWidth * (enemyArray[index].statCalc[0]/enemyArray[index].overallHP);
 			item.critDmgBar.width = resizeWidth * (enemyArray[index].critDmg/enemyArray[index].overallHP);
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
@@ -1637,7 +1617,6 @@ function resizeHP(roster, item, index){
 	}
 
 	item.dmgBarContainer.x = item.inner.width;
-
 	// item.dmgContainer.y = app.screen.height/2;
 	
 	item.textHP.x = item.outer.width/2;
@@ -1789,35 +1768,15 @@ function onCreatureDown(){
 						level = heroArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = heroArray[selectedIndex].patk;
-							// if(heroArray[selectedIndex].statMod[2] > 0){
-							// 	attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
-							// }else if(heroArray[selectedIndex].statMod[2] < 0){
-							// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
-							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = heroArray[selectedIndex].satk;
-							// if(heroArray[selectedIndex].statMod[4] > 0){
-							// 	attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
-							// }else if(heroArray[selectedIndex].statMod[4] < 0){
-							// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
-							// }
 						}
 					}else{
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = enemyArray[selectedIndex].patk;
-							// if(enemyArray[selectedIndex].statMod[2] > 0){
-							// 	attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
-							// }else if(enemyArray[selectedIndex].statMod[2] < 0){
-							// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
-							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = enemyArray[selectedIndex].satk;
-							// if(enemyArray[selectedIndex].statMod[4] > 0){
-							// 	attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
-							// }else if(enemyArray[selectedIndex].statMod[4] < 0){
-							// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
-							// }
 						}
 					}
 
@@ -1825,20 +1784,9 @@ function onCreatureDown(){
 					if(targeted > 0){
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = heroArray[targetedIndex].pdef;
-							// if(heroArray[selectedIndex].statMod[3] > 0){
-							// 	defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
-							// }else if(heroArray[selectedIndex].statMod[3] < 0){
-							// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
-							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							defense = heroArray[targetedIndex].sdef;
-							// if(heroArray[selectedIndex].statMod[5] > 0){
-							// 	defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
-							// }else if(heroArray[selectedIndex].statMod[5] < 0){
-							// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
-							// }
 						}
-
 						heroArray[targetedIndex].elements.forEach(element =>{
 							defendElements.push(element);
 						});
@@ -1846,18 +1794,8 @@ function onCreatureDown(){
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = enemyArray[targetedIndex].pdef;
-							// if(enemyArray[selectedIndex].statMod[3] > 0){
-							// 	defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
-							// }else if(enemyArray[selectedIndex].statMod[3] < 0){
-							// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
-							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							defense = enemyArray[targetedIndex].sdef;
-							// if(enemyArray[selectedIndex].statMod[5] > 0){
-							// 	defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
-							// }else if(enemyArray[selectedIndex].statMod[5] < 0){
-							// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
-							// }
 						}
 						enemyArray[targetedIndex].elements.forEach(element =>{
 							defendElements.push(element);
@@ -1876,7 +1814,6 @@ function onCreatureDown(){
 					if(criticalChance > 5000){
 						crit = 1.5;
 					}
-
 					
 					// console.log("Level: " + level);
 					// console.log("Attack: " + attack);
@@ -1904,11 +1841,9 @@ function onCreatureDown(){
 
 					if(targeted > 0){
 						if(attack == 0 && defense == 0){
-							//add heal
-							heroArray[targetedIndex].heal(deltaHP);
+							heroArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
-							//subtract damage
-							heroArray[targetedIndex].damage(deltaHP);
+							heroArray[targetedIndex].damage(deltaHP);		//subtract damage
 						}
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
@@ -1987,11 +1922,9 @@ function onCreatureDown(){
 						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
 						if(attack == 0 && defense == 0){
-							//add heal
-							enemyArray[targetedIndex].heal(deltaHP);
+							enemyArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
-							//subtract damage
-							enemyArray[targetedIndex].damage(deltaHP);
+							enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 						}
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
@@ -2085,55 +2018,24 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = heroArray[selectedIndex].patk;
-						// if(heroArray[selectedIndex].statMod[2] > 0){
-						// 	attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
-						// }else if(heroArray[selectedIndex].statMod[2] < 0){
-						// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
-						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = heroArray[selectedIndex].satk;
-						// if(heroArray[selectedIndex].statMod[4] > 0){
-						// 	attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
-						// }else if(heroArray[selectedIndex].statMod[4] < 0){
-						// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[4])+2));
-						// }
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = enemyArray[selectedIndex].patk;
-						// if(enemyArray[selectedIndex].statMod[2] > 0){
-						// 	attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
-						// }else if(enemyArray[selectedIndex].statMod[2] < 0){
-						// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
-						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = enemyArray[selectedIndex].satk;
-						// if(enemyArray[selectedIndex].statMod[4] > 0){
-						// 	attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
-						// }else if(enemyArray[selectedIndex].statMod[4] < 0){
-						// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[4])+2));
-						// }
 					}
 				}
 				
 				if(targeted > 0){
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = heroArray[targetedIndex].pdef;
-						// if(heroArray[selectedIndex].statMod[3] > 0){
-						// 	defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
-						// }else if(heroArray[selectedIndex].statMod[3] < 0){
-						// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
-						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						defense = heroArray[targetedIndex].sdef;
-						// if(heroArray[selectedIndex].statMod[5] > 0){
-						// 	defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
-						// }else if(heroArray[selectedIndex].statMod[5] < 0){
-						// 	defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[5])+2));
-						// }
 					}
-
 					heroArray[targetedIndex].elements.forEach(element =>{
 						defendElements.push(element);
 					});
@@ -2141,18 +2043,8 @@ function onCreatureDown(){
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = enemyArray[targetedIndex].pdef;
-						// if(enemyArray[selectedIndex].statMod[3] > 0){
-						// 	defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
-						// }else if(enemyArray[selectedIndex].statMod[3] < 0){
-						// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
-						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						defense = enemyArray[targetedIndex].sdef;
-						// if(enemyArray[selectedIndex].statMod[5] > 0){
-						// 	defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
-						// }else if(enemyArray[selectedIndex].statMod[5] < 0){
-						// 	defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[5])+2));
-						// }
 					}
 					enemyArray[targetedIndex].elements.forEach(element =>{
 						defendElements.push(element);
@@ -2187,11 +2079,9 @@ function onCreatureDown(){
 
 				if(targeted > 0){
 					if(attack == 0 && defense == 0){
-						//add heal
-						heroArray[targetedIndex].heal(deltaHP);
+						heroArray[targetedIndex].heal(deltaHP);				//add heal
 					}else{
-						//subtract damage
-						heroArray[targetedIndex].damage(deltaHP);
+						heroArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
 					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
@@ -2270,11 +2160,9 @@ function onCreatureDown(){
 					heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 				}else{
 					if(attack == 0 && defense == 0){
-						//add heal
-						enemyArray[targetedIndex].heal(deltaHP);
+						enemyArray[targetedIndex].heal(deltaHP);			//add heal
 					}else{
-						//subtract damage
-						enemyArray[targetedIndex].damage(deltaHP);
+						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
 					enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
@@ -2382,20 +2270,6 @@ function onCreatureDown(){
 
 function onHPDown(){
 	console.log("HP:" + this.identifier[0] * (this.identifier[1]+1));
-	
-	// heroHPContainerArray.forEach(hpContainer=>{
-	// 	hpContainer.turn.visible = false;
-	// });
-	// enemyHPContainerArray.forEach(hpContainer=>{
-	// 	hpContainer.turn.visible = false;
-	// });
-	
-	// if(this.identifier[0] < 0){
-	// 	enemyHPContainerArray[this.identifier[1]].turn.visible = true;
-	// }else{
-	// 	heroHPContainerArray[this.identifier[1]].turn.visible = true;
-	// }
-// 	heroHPContainerArray[this.identifier[1]].selected = visible;
 }
 
 function onSkillDown(){
