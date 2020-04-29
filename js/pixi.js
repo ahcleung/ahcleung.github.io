@@ -2284,8 +2284,18 @@ function onCreatureDown(){
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + "moves to: " + validMoveTargetArray[clickedTarget]);
+			console.log(selectedVita + " moves to: " + validMoveTargetArray[clickedTarget]);
 
+			var identifier = [];
+			if(turnArray[0] > 0){
+				identifier[0] = 1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+				// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			}else{
+				identifier[0] = -1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			}
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
 				selectCreature(identifier);
