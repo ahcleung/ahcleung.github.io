@@ -188,7 +188,16 @@ class Creature{
 	}
 
 	get patk(){
-		return this.statCalc[2];
+		var attack = this.statCalc[2];
+		if(this.statMod[2] > 0){
+			return attack * ((this.statMod[2]+2)/2);
+		}else if(this.statMod[2] < 0){
+			return attack * (2/(Math.abs(this.statMod[2])+2));
+		}else{
+			return attack;
+		}
+
+		// return this.statCalc[2];
 	}
 
 	get pdef(){
@@ -1765,11 +1774,11 @@ function onCreatureDown(){
 						level = heroArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = heroArray[selectedIndex].patk;
-							if(heroArray[selectedIndex].statMod[2] > 0){
-								attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
-							}else if(heroArray[selectedIndex].statMod[2] < 0){
-								attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
-							}
+							// if(heroArray[selectedIndex].statMod[2] > 0){
+							// 	attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
+							// }else if(heroArray[selectedIndex].statMod[2] < 0){
+							// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
+							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = heroArray[selectedIndex].satk;
 							if(heroArray[selectedIndex].statMod[4] > 0){
@@ -1782,11 +1791,11 @@ function onCreatureDown(){
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = enemyArray[selectedIndex].patk;
-							if(enemyArray[selectedIndex].statMod[2] > 0){
-								attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
-							}else if(enemyArray[selectedIndex].statMod[2] < 0){
-								attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
-							}
+							// if(enemyArray[selectedIndex].statMod[2] > 0){
+							// 	attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
+							// }else if(enemyArray[selectedIndex].statMod[2] < 0){
+							// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
+							// }
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 							attack = enemyArray[selectedIndex].satk;
 							if(enemyArray[selectedIndex].statMod[4] > 0){
@@ -2061,11 +2070,11 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = heroArray[selectedIndex].patk;
-						if(heroArray[selectedIndex].statMod[2] > 0){
-							attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
-						}else if(heroArray[selectedIndex].statMod[2] < 0){
-							attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
-						}
+						// if(heroArray[selectedIndex].statMod[2] > 0){
+						// 	attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
+						// }else if(heroArray[selectedIndex].statMod[2] < 0){
+						// 	attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
+						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = heroArray[selectedIndex].satk;
 						if(heroArray[selectedIndex].statMod[4] > 0){
@@ -2078,11 +2087,11 @@ function onCreatureDown(){
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = enemyArray[selectedIndex].patk;
-						if(enemyArray[selectedIndex].statMod[2] > 0){
-							attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
-						}else if(enemyArray[selectedIndex].statMod[2] < 0){
-							attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
-						}
+						// if(enemyArray[selectedIndex].statMod[2] > 0){
+						// 	attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
+						// }else if(enemyArray[selectedIndex].statMod[2] < 0){
+						// 	attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
+						// }
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						attack = enemyArray[selectedIndex].satk;
 						if(enemyArray[selectedIndex].statMod[4] > 0){
