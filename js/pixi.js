@@ -2295,12 +2295,12 @@ function onCreatureDown(){
 				// heroArray[selectedVita-1].pos = heroArray[validMoveTargetArray[targetedVita]-1].pos;
 				// heroArray[validMoveTargetArray[targetedVita]-1].pos = temp;
 
-				// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-				// 	if(arrayCreature.pos == 1){
+				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+					// if(arrayCreature.pos == 1){
 
-				// 	}
-				// 	console.log(arrayCreatureIndex + " moves to: " + arrayCreature.pos);
-				// });
+					// }
+					console.log(arrayCreature.pos);
+				});
 			}else{
 				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " wants to move to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
 
@@ -2310,7 +2310,7 @@ function onCreatureDown(){
 				// });
 			}
 
-			console.log(heroArray);
+			// console.log(heroArray);
 
 			//Get next turn Vita
 			var identifier = [];
