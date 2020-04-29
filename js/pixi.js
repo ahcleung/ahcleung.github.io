@@ -621,42 +621,41 @@ function setup(){
 		}
 		
 		//Position markers
-// 		const markerTargetHeroArray = [];
-// 		const markerTargetHeroContainer = new PIXI.Container();
-// 		for (var j = 0; j < 4; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// // 			posMarker.visible = false;
-// 			posMarker.x = 25 * j;
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// 			markerTargetHeroArray.push(posMarker);
-// 			markerTargetHeroContainer.addChild(posMarker);
-// 		}
+		const markerTargetHeroArray = [];
+		const markerTargetHeroContainer = new PIXI.Container();
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+// 			posMarker.visible = false;
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			markerTargetHeroArray.push(posMarker);
+			markerTargetHeroContainer.addChild(posMarker);
+		}
 		
 		//Target markers
-// 		const markerTargetArray = [];
-// 		const markerTargetContainer = new PIXI.Container();
-// 		for (var j = 0; j < 4; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-// // 			posMarker.visible = false;
-// 			posMarker.x = 25 * j;
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// // 			markerTargetHeroArray.push(posMarker);
-// 			markerTargetContainer.addChild(posMarker);
-// 		}
-		
+		const markerTargetArray = [];
+		const markerTargetContainer = new PIXI.Container();
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+// 			posMarker.visible = false;
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+// 			markerTargetHeroArray.push(posMarker);
+			markerTargetContainer.addChild(posMarker);
+		}
 		markerTargetEnemyContainer.x = 123;
-		// markerTargetHeroContainer.x = 123;
-		// markerTargetContainer.x = 123;
+		markerTargetHeroContainer.x = 123;
+		markerTargetContainer.x = 123;
 		markerTargetEnemySeveralContainer.x = 135;
 		
 		markerContainer.addChild(markerHeroContainer);
-		// markerContainer.addChild(markerTargetContainer);		
+		markerContainer.addChild(markerTargetContainer);		
 		markerContainer.addChild(markerTargetEnemyContainer);
-		// markerContainer.addChild(markerTargetHeroContainer);		
+		markerContainer.addChild(markerTargetHeroContainer);		
 		
 		markerContainer.addChild(markerTargetEnemySeveralContainer);
 		skillContainer.markerTargetEnemySeveralContainer = markerTargetEnemySeveralContainer;
@@ -674,9 +673,9 @@ function setup(){
 		skillContainer.markerTargetEnemyArray = markerTargetEnemyArray;
 		skillContainer.markerTargetEnemyContainer = markerTargetEnemyContainer;
 		
-		// skillContainer.markerTargetHeroArray = markerTargetHeroArray;
-		// skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
-		// skillContainer.markerTargetHeroContainer.visible = false;
+		skillContainer.markerTargetHeroArray = markerTargetHeroArray;
+		skillContainer.markerTargetHeroContainer = markerTargetHeroContainer;
+		skillContainer.markerTargetHeroContainer.visible = false;
 		
 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
