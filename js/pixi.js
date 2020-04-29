@@ -514,57 +514,88 @@ function setup(){
 		
 		var w = 12.728;
 		
-		//Default position markers
 		const markerPositionArray = [];
 		const markerPositionContainer = new PIXI.Container();
-		for (var j = 0; j < 4; j++){
-			let defaultMarker = new PIXI.Graphics();
-			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-			
-			let posMarker = new PIXI.Graphics();			
-			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-			
-			if(skillsList.data.skills[heroArray[1].skills[i]].position[j] == 0){
-				posMarker.visible = false;
-			}
-			
-			defaultMarker.x = 25 * j;
-			posMarker.x = 25 * j;
-			
-			defaultMarker.pivot.set(0.5);
-			defaultMarker.angle = 45;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			markerPositionArray.push(posMarker);
-			markerPositionContainer.addChild(defaultMarker);
-			markerPositionContainer.addChild(posMarker);
-		}
-		
-		//Default target markers
 		const markerTargetArray = [];
 		const markerTargetContainer = new PIXI.Container();
-		for (var j = 0; j < 4; j++){
-			let defaultMarker = new PIXI.Graphics();
-			defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+		for (var j = 0; j < 2; j++){
+			for (var k = 0; k < 4; k++){
+				let defaultMarker = new PIXI.Graphics();
+				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				defaultMarker.x = 25 * j;
+				defaultMarker.pivot.set(0.5);
+				defaultMarker.angle = 45;
 
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+				let posMarker = new PIXI.Graphics();
+				if(j == 0)		posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				else 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
 
-			if(skillsList.data.skills[heroArray[1].skills[i]].target[j] == 0){
-				posMarker.visible = false;
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+
+				if(j == 0){
+					markerPositionArray.push(posMarker);
+					markerPositionContainer.addChild(defaultMarker);
+					markerPositionContainer.addChild(posMarker);
+				}else{
+					markerTargetArray.push(posMarker);
+					markerTargetContainer.addChild(defaultMarker);
+					markerTargetContainer.addChild(posMarker);
+				}
 			}
-
-			defaultMarker.x = 25 * j;
-			posMarker.x = 25 * j;
-
-			defaultMarker.pivot.set(0.5);
-			defaultMarker.angle = 45;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			markerTargetArray.push(posMarker);
-			markerTargetContainer.addChild(defaultMarker);
-			markerTargetContainer.addChild(posMarker);
 		}
+
+		//Default position markers
+		// const markerPositionArray = [];
+		// const markerPositionContainer = new PIXI.Container();
+		// for (var j = 0; j < 4; j++){
+		// 	let defaultMarker = new PIXI.Graphics();
+		// 	defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+			
+		// 	let posMarker = new PIXI.Graphics();			
+		// 	posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+			
+		// 	// if(skillsList.data.skills[heroArray[1].skills[i]].position[j] == 0){
+		// 	// 	posMarker.visible = false;
+		// 	// }
+			
+		// 	defaultMarker.x = 25 * j;
+		// 	posMarker.x = 25 * j;
+			
+		// 	defaultMarker.pivot.set(0.5);
+		// 	defaultMarker.angle = 45;
+		// 	posMarker.pivot.set(0.5);
+		// 	posMarker.angle = 45;
+		// 	markerPositionArray.push(posMarker);
+		// 	markerPositionContainer.addChild(defaultMarker);
+		// 	markerPositionContainer.addChild(posMarker);
+		// }
+		
+		// //Default target markers
+		// const markerTargetArray = [];
+		// const markerTargetContainer = new PIXI.Container();
+		// for (var j = 0; j < 4; j++){
+		// 	let defaultMarker = new PIXI.Graphics();
+		// 	defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+
+		// 	let posMarker = new PIXI.Graphics();				
+		// 	posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+
+		// 	// if(skillsList.data.skills[heroArray[1].skills[i]].target[j] == 0){
+		// 	// 	posMarker.visible = false;
+		// 	// }
+
+		// 	defaultMarker.x = 25 * j;
+		// 	posMarker.x = 25 * j;
+
+		// 	defaultMarker.pivot.set(0.5);
+		// 	defaultMarker.angle = 45;
+		// 	posMarker.pivot.set(0.5);
+		// 	posMarker.angle = 45;
+		// 	markerTargetArray.push(posMarker);
+		// 	markerTargetContainer.addChild(defaultMarker);
+		// 	markerTargetContainer.addChild(posMarker);
+		// }
 		
 		//Target several markers
 		const markerTargetSeveralArray = [];
