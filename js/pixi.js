@@ -1764,14 +1764,14 @@ function onCreatureDown(){
 					if(selectedVita > 0){
 						level = heroArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							attack = heroArray[selectedIndex].statCalc[2];
+							attack = heroArray[selectedIndex].patk;
 							if(heroArray[selectedIndex].statMod[2] > 0){
 								attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
 							}else if(heroArray[selectedIndex].statMod[2] < 0){
 								attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
 							}
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							attack = heroArray[selectedIndex].statCalc[4];
+							attack = heroArray[selectedIndex].satk;
 							if(heroArray[selectedIndex].statMod[4] > 0){
 								attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
 							}else if(heroArray[selectedIndex].statMod[4] < 0){
@@ -1781,14 +1781,14 @@ function onCreatureDown(){
 					}else{
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							attack = enemyArray[selectedIndex].statCalc[2];
+							attack = enemyArray[selectedIndex].patk;
 							if(enemyArray[selectedIndex].statMod[2] > 0){
 								attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
 							}else if(enemyArray[selectedIndex].statMod[2] < 0){
 								attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
 							}
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							attack = enemyArray[selectedIndex].statCalc[4];
+							attack = enemyArray[selectedIndex].satk;
 							if(enemyArray[selectedIndex].statMod[4] > 0){
 								attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
 							}else if(enemyArray[selectedIndex].statMod[4] < 0){
@@ -1800,14 +1800,14 @@ function onCreatureDown(){
 					//Get defense stat based on skill used					
 					if(targeted > 0){
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							defense = heroArray[targetedIndex].statCalc[3];
+							defense = heroArray[targetedIndex].pdef;
 							if(heroArray[selectedIndex].statMod[3] > 0){
 								defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
 							}else if(heroArray[selectedIndex].statMod[3] < 0){
 								defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
 							}
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							defense = heroArray[targetedIndex].statCalc[5];
+							defense = heroArray[targetedIndex].sdef;
 							if(heroArray[selectedIndex].statMod[5] > 0){
 								defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
 							}else if(heroArray[selectedIndex].statMod[5] < 0){
@@ -1821,14 +1821,14 @@ function onCreatureDown(){
 					}else{
 						level = enemyArray[selectedIndex].level;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							defense = enemyArray[targetedIndex].statCalc[3];
+							defense = enemyArray[targetedIndex].pdef;
 							if(enemyArray[selectedIndex].statMod[3] > 0){
 								defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
 							}else if(enemyArray[selectedIndex].statMod[3] < 0){
 								defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
 							}
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							defense = enemyArray[targetedIndex].statCalc[5];
+							defense = enemyArray[targetedIndex].sdef;
 							if(enemyArray[selectedIndex].statMod[5] > 0){
 								defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
 							}else if(enemyArray[selectedIndex].statMod[5] < 0){
@@ -2060,14 +2060,14 @@ function onCreatureDown(){
 				if(selectedVita > 0){
 					level = heroArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						attack = heroArray[selectedIndex].statCalc[2];
+						attack = heroArray[selectedIndex].patk;
 						if(heroArray[selectedIndex].statMod[2] > 0){
 							attack = attack * ((heroArray[selectedIndex].statMod[2]+2)/2);
 						}else if(heroArray[selectedIndex].statMod[2] < 0){
 							attack = attack * (2/(Math.abs(heroArray[selectedIndex].statMod[2])+2));
 						}
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						attack = heroArray[selectedIndex].statCalc[4];
+						attack = heroArray[selectedIndex].satk;
 						if(heroArray[selectedIndex].statMod[4] > 0){
 							attack = attack * ((heroArray[selectedIndex].statMod[4]+2)/2);
 						}else if(heroArray[selectedIndex].statMod[4] < 0){
@@ -2077,14 +2077,14 @@ function onCreatureDown(){
 				}else{
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						attack = enemyArray[selectedIndex].statCalc[2];
+						attack = enemyArray[selectedIndex].patk;
 						if(enemyArray[selectedIndex].statMod[2] > 0){
 							attack = attack * ((enemyArray[selectedIndex].statMod[2]+2)/2);
 						}else if(enemyArray[selectedIndex].statMod[2] < 0){
 							attack = attack * (2/(Math.abs(enemyArray[selectedIndex].statMod[2])+2));
 						}
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						attack = enemyArray[selectedIndex].statCalc[4];
+						attack = enemyArray[selectedIndex].satk;
 						if(enemyArray[selectedIndex].statMod[4] > 0){
 							attack = attack * ((enemyArray[selectedIndex].statMod[4]+2)/2);
 						}else if(enemyArray[selectedIndex].statMod[4] < 0){
@@ -2095,14 +2095,14 @@ function onCreatureDown(){
 				
 				if(targeted > 0){
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						defense = heroArray[targetedIndex].statCalc[3];
+						defense = heroArray[targetedIndex].pdef;
 						if(heroArray[selectedIndex].statMod[3] > 0){
 							defense = defense * ((heroArray[selectedIndex].statMod[3]+2)/2);
 						}else if(heroArray[selectedIndex].statMod[3] < 0){
 							defense = defense * (2/(Math.abs(heroArray[selectedIndex].statMod[3])+2));
 						}
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						defense = heroArray[targetedIndex].statCalc[5];
+						defense = heroArray[targetedIndex].sdef;
 						if(heroArray[selectedIndex].statMod[5] > 0){
 							defense = defense * ((heroArray[selectedIndex].statMod[5]+2)/2);
 						}else if(heroArray[selectedIndex].statMod[5] < 0){
@@ -2116,14 +2116,14 @@ function onCreatureDown(){
 				}else{
 					level = enemyArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						defense = enemyArray[targetedIndex].statCalc[3];
+						defense = enemyArray[targetedIndex].pdef;
 						if(enemyArray[selectedIndex].statMod[3] > 0){
 							defense = defense * ((enemyArray[selectedIndex].statMod[3]+2)/2);
 						}else if(enemyArray[selectedIndex].statMod[3] < 0){
 							defense = defense * (2/(Math.abs(enemyArray[selectedIndex].statMod[3])+2));
 						}
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						defense = enemyArray[targetedIndex].statCalc[5];
+						defense = enemyArray[targetedIndex].sdef;
 						if(enemyArray[selectedIndex].statMod[5] > 0){
 							defense = defense * ((enemyArray[selectedIndex].statMod[5]+2)/2);
 						}else if(enemyArray[selectedIndex].statMod[5] < 0){
@@ -2985,22 +2985,22 @@ function calculateTurnOrder(){
 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.speed/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
+			calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
 		}else{
-			calcSpeed = (arrayCreature.speed/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
+			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
-		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
+		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
 		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.speed/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
+			calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
 		}else{
-			calcSpeed = (arrayCreature.speed/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
+			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
-		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.speed + "| CalcSpeed: " + calcSpeed);
+		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
