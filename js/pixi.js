@@ -1731,29 +1731,29 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	if(selectedSkill > -1){
-		attackedVita = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-		console.log("Clicked skill target index: " + attackedVita);
+		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+		console.log("Clicked skill target index: " + clickedTarget);
 		var correctTarget = false;
-		var clickedTarget = 0;
+		var targetedVita = 0;
 		validSkillTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
-					if(arrayElement == attackedVita){
+					if(arrayElement == clickedTarget){
 						correctTarget = true;
-						clickedTarget = targetedIndex;
+						targetedVita = targetedIndex;
 					}	
 				});
 			}
-			if(targeted == attackedVita){
+			if(targeted == clickedTarget){
 				correctTarget = true;
-				clickedTarget = targetedIndex;
+				targetedVita = targetedIndex;
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[clickedTarget]);
+			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
 
-			if(Array.isArray(validSkillTargetArray[clickedTarget])){
-				validSkillTargetArray[clickedTarget].forEach(targeted => {
+			if(Array.isArray(validSkillTargetArray[targetedVita])){
+				validSkillTargetArray[targetedVita].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
 					var targetedIndex = Math.abs(targeted)-1;
 					var deltaHP = 0;
@@ -2004,8 +2004,8 @@ function onCreatureDown(){
 					}
 				});
 			}else{
-				// console.log(validSkillTargetArray[clickedTarget] + " takes ## deltaHP");
-				var targeted = validSkillTargetArray[clickedTarget];
+				// console.log(validSkillTargetArray[targetedVita] + " takes ## deltaHP");
+				var targeted = validSkillTargetArray[targetedVita];
 				var selectedIndex = Math.abs(selectedVita)-1;
 				var targetedIndex = Math.abs(targeted)-1;
 				var deltaHP = 0;
@@ -2265,36 +2265,41 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveTargetArray.length > 0){
-		attackedVita = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-		console.log("Clicked move target index: " + attackedVita);
+		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
-		var clickedTarget = 0;
+		var targetedVita = 0;
 		validMoveTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
-					if(arrayElement == attackedVita){
+					if(arrayElement == clickedTarget){
 						correctTarget = true;
-						clickedTarget = targetedIndex;
+						targetedVita = targetedIndex;
 					}	
 				});
 			}
-			if(targeted == attackedVita){
+			if(targeted == clickedTarget){
 				correctTarget = true;
-				clickedTarget = targetedIndex;
+				targetedVita = targetedIndex;
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + " moves to: " + validMoveTargetArray[clickedTarget]);
+			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+			if(selectedVita > 0){
+				console.log(heroArray[selectedVita-1].pos + " moves to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);				
+			}else{
+				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " moves to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
+			}
 
+
+			//Get next turn Vita
 			var identifier = [];
 			if(turnArray[0] > 0){
 				identifier[0] = 1;
 				identifier[1] = Math.abs(turnArray[0])-1;
-				// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
 			}else{
 				identifier[0] = -1;
 				identifier[1] = Math.abs(turnArray[0])-1;
-				// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
 			}
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
