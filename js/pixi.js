@@ -2294,11 +2294,11 @@ function onCreatureDown(){
 				// var temp = heroArray[selectedVita-1].pos;
 				// heroArray[selectedVita-1].pos = heroArray[validMoveTargetArray[targetedVita]-1].pos;
 				// heroArray[validMoveTargetArray[targetedVita]-1].pos = temp;
-
 				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					// if(arrayCreature.pos == 1){
-
-					// }
+					console.log(arrayCreature.pos);
+				});
+				heroArray.forEach(setPos);
+				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 					console.log(arrayCreature.pos);
 				});
 			}else{
