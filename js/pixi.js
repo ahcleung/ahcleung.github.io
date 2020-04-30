@@ -2974,7 +2974,7 @@ function onAdditionalMoveDown(){
 
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 			for(var i = 0; i < moveDelta; i++){
-				if(orderIndex == tempIndex+i){
+				if(orderIndex == tempIndex+1+i){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
 					validMoveTargetArray.push(orderIndex);
 					//visible = true
