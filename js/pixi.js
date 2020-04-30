@@ -1734,7 +1734,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	if(selectedSkill > -1){
+	if(validSkillTargetArray.length > 0){
 		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
 		console.log("Clicked skill target index: " + clickedTarget);
 		var correctTarget = false;
@@ -2894,6 +2894,7 @@ function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
 	validMoveTargetArray = [];
 	validSkillTargetArray = [];
+	selectedSkill = -1;
 	additionalContainer.visible = false;
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
