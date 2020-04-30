@@ -596,10 +596,11 @@ function setup(){
 			}
 		}
 		
+		//Filler targets for proper resize and spacing
 		const markerSpacerContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x333333).drawRect(0, -w, w, w);
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
@@ -626,8 +627,7 @@ function setup(){
 		markerContainer.addChild(markerSpacerContainer);
 		markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
-		markerContainer.addChild(markerTargetSeveralContainer);
-		
+		markerContainer.addChild(markerTargetSeveralContainer);		
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
@@ -2308,49 +2308,25 @@ function onCreatureDown(){
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			if(selectedVita > 0){
-
-				//PROBLEM BE HERE. FIGURE THIS SHIT OUT HOMEY, WTF?!!
-				//FIND THE INDEX OF SELECTEDVITA AND TARGETEDVITA ACCORDING TO HEROORDER ARRAY AND SWAP THOSE INSTEAD
 				var moveFrom;
 				var moveTo;
 				heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 					if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
 						moveTo = orderIndex;
 					}
-
 					if(creatureInitialOrder == selectedVita-1){
 						moveFrom = orderIndex;
 					}
 				});
 
-				// console.log((selectedVita-1) + " wants to move to: " + (validMoveTargetArray[targetedVita]-1));
-				console.log(moveTo + " wants to move to: " + moveFrom);
-
-				console.log(heroOrder);
-				// heroOrder.splice(validMoveTargetArray[targetedVita]-1, 0, heroOrder.splice(selectedVita-1,1)[0]);
+				// console.log(moveTo + " wants to move to: " + moveFrom);
+				// console.log(heroOrder);
 				heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
-				console.log(heroOrder);
-
-				//DOESN'T WORK, TRY AGAIN
-				// heroArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
-				// heroContainerArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
-				// heroHPContainerArray.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
-				// heroArrayDmg.splice(validMoveTargetArray[targetedVita]-1, 0, heroArray.splice(selectedVita-1,1)[0]);
-				// heroArray.forEach(setPos);
-
-				// var temp = heroArray[selectedVita-1].pos;
-				// heroArray[selectedVita-1].pos = heroArray[validMoveTargetArray[targetedVita]-1].pos;
-				// heroArray[validMoveTargetArray[targetedVita]-1].pos = temp;
+				// console.log(heroOrder);
 
 				// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-				// 	if(arrayCreature.pos == 1){
-
-				// 	}
+				// 	console.log(arrayCreature.pos);
 				// });
-
-				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					console.log(arrayCreature.pos);
-				});
 
 				//THIS SHIT ROCKS THOUGH, I THINK...
 				heroOrder.forEach((creatureIndex,arrayIndex) => {
@@ -2362,16 +2338,6 @@ function onCreatureDown(){
 						heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
 					}
 				});
-
-				// function setPos(item, index, array){
-				// 	if(index == 0){
-				// 		item.pos = 1;
-				// 	}else if(array[index-1].size == 2){
-				// 		item.pos = array[index-1].pos + 2;
-				// 	}else{
-				// 		item.pos = array[index-1].pos + 1;	
-				// 	}	
-				// }
 
 				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 					//Hero Creature
@@ -2427,12 +2393,64 @@ function onCreatureDown(){
 					console.log(arrayCreature.pos);
 				});
 			}else{
-				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " wants to move to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
+				var moveFrom;
+				var moveTo;
+				enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+					if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
+						moveTo = orderIndex;
+					}
+					if(creatureInitialOrder == selectedVita-1){
+						moveFrom = orderIndex;
+					}
+				});
 
-				// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+				enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
 
-				// 	console.log(arrayCreatureIndex + " moves to: " + arrayCreature.pos);
-				// });
+				enemyOrder.forEach((creatureIndex,arrayIndex) => {
+					if(arrayIndex == 0){
+						enemyArray[creatureIndex].pos = 1;
+					}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
+						enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
+					}else{
+						enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
+					}
+				});
+
+				enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+					//Enemy Creature
+					var newCreatureX;
+					var newHPX;
+
+					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+					switch(arrayCreature.pos) {
+						case 1:
+							newCreatureX = 0;
+							newHPX = 0;
+							break;
+						case 2:
+							newCreatureX = resizeWidth + healthSpacing;
+							newHPX = resizeWidth + healthSpacing;
+							break;
+						case 3:				
+							newCreatureX = (resizeWidth + healthSpacing * 2);
+							newHPX = (resizeWidth + healthSpacing * 2);
+							break;
+						case 4:
+							newCreatureX = (resizeWidth + healthSpacing * 3);
+							newHPX = (resizeWidth + healthSpacing * 3);
+							break;
+						default:
+							newCreatureX = 0;	
+							newHPX = 0;
+					}
+
+					TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+					TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+					TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+
+					// console.log(arrayCreature.pos);
+				});
 			}
 
 			// console.log(heroArray);
