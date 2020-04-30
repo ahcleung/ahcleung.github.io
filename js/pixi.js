@@ -2404,7 +2404,7 @@ function onCreatureDown(){
 					}
 				});
 
-				console.log(moveTo + " wants to move to: " + moveFrom);
+				console.log(moveFrom + " wants to move to: " + moveTo);
 				console.log(enemyOrder);
 				enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
 				console.log(enemyOrder);
@@ -2457,7 +2457,7 @@ function onCreatureDown(){
 					TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 					TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 
-					// console.log(arrayCreature.pos);
+					console.log(arrayCreature.pos);
 				});
 			}
 
