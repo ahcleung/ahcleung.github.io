@@ -2442,7 +2442,7 @@ function onCreatureDown(){
 							break;
 						case 3:				
 							newCreatureX = (resizeWidth + healthSpacing) * 2;
-							newHPX = (resizeWidth + healthSpacing * 2);
+							newHPX = (resizeWidth + healthSpacing) * 2;
 							break;
 						case 4:
 							newCreatureX = (resizeWidth + healthSpacing) * 3;
