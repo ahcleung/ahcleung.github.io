@@ -619,9 +619,9 @@ function setup(){
 		}
 
 		markerTargetContainer.x = 123;
-		markerTargetSeveralContainer.x = 123;
+		markerSpacerContainer.x = 123;
 
-		markerSpacerContainer.x = 135;
+		markerTargetSeveralContainer.x = 135;		
 
 		markerContainer.addChild(markerSpacerContainer);
 		markerContainer.addChild(markerPositionContainer);
