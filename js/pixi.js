@@ -3180,7 +3180,9 @@ function calculateTurnOrder(){
 		});
 	});
 
-	// console.log(turnArray);
+	console.log(turnArray);
+
+	
 	var identifier = [];
 	if(turnArray[0] > 0){
 		identifier[0] = 1;
