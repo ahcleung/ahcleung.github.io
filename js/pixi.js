@@ -2314,9 +2314,9 @@ function onCreatureDown(){
 				var moveFrom;
 				var moveTo = validMoveTargetArray[targetedVita];
 				heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-					// if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
-					// 	moveTo = orderIndex;
-					// }
+					if(creatureInitialOrder == validMoveTargetArray[targetedVita]){
+						moveTo = orderIndex;
+					}
 					if(creatureInitialOrder == selectedVita-1){
 						moveFrom = orderIndex;
 					}
