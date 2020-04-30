@@ -2292,7 +2292,7 @@ function onCreatureDown(){
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			if(selectedVita > 0){
-				console.log(heroArray[selectedVita-1].pos + " wants to move to: " + heroArray[validMoveTargetArray[targetedVita]-1].pos);
+				console.log(selectedVita-1 + " wants to move to: " + validMoveTargetArray[targetedVita]-1);
 
 				console.log(heroOrder);
 				heroOrder.splice(validMoveTargetArray[targetedVita]-1, 0, heroOrder.splice(selectedVita-1,1)[0]);
@@ -2386,22 +2386,11 @@ function onCreatureDown(){
 							newHPX = 0;
 					}
 
-					// var newX = -((resizeWidth + healthSpacing) * 3);
-					// var newX2 = 0;
-					// var newX3 = -((resizeWidth + healthSpacing) * 2);
-
-					// var hpX = 0;
-					// var hpX2 = (resizeWidth + healthSpacing) * (3 - 1);
-					// var hpX3 = resizeWidth + healthSpacing * 1;
-
-					// heroContainerArray[arrayCreatureIndex].x = newCreatureX;
-					// heroHPContainerArray[arrayCreatureIndex].x = newHPX;
-					// heroArrayDmg[arrayCreatureIndex].x = newHPX
-
 					TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 					TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 					TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
-					// console.log(arrayCreature.pos);
+
+					console.log(arrayCreature.pos);
 				});
 			}else{
 				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " wants to move to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
