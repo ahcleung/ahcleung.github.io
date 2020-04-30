@@ -2341,50 +2341,50 @@ function onCreatureDown(){
 
 				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 					//Hero Creature
-					// var newCreatureX;
-					// var newHPX;
+					var newCreatureX;
+					var newHPX;
 
-					// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-					// switch(arrayCreature.pos) {
-					// 	case 1:
-					// 		newCreatureX = 0;
-					// 		break;
-					// 	case 2:
-					// 		newCreatureX = -(resizeWidth + healthSpacing);
-					// 		break;
-					// 	case 3:				
-					// 		newCreatureX = -((resizeWidth + healthSpacing) * 2);
-					// 		break;
-					// 	case 4:
-					// 		newCreatureX = -((resizeWidth + healthSpacing) * 3);
-					// 		break;
-					// 	default:
-					// 		newCreatureX = 0;	
-					// }
+					switch(arrayCreature.pos) {
+						case 1:
+							newCreatureX = 0;
+							break;
+						case 2:
+							newCreatureX = -(resizeWidth + healthSpacing);
+							break;
+						case 3:				
+							newCreatureX = -((resizeWidth + healthSpacing) * 2);
+							break;
+						case 4:
+							newCreatureX = -((resizeWidth + healthSpacing) * 3);
+							break;
+						default:
+							newCreatureX = 0;	
+					}
 
-					// //Hero HP and dmg containers
-					// var switcher = 0;
-					// if(arrayCreature.size > 1){
-					// 	switcher = 1;
-					// }
-					// switch(arrayCreature.pos) {
-					// 	case 1:
-					// 		newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
-					// 		break;
-					// 	case 2:
-					// 		newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
-					// 		break;
-					// 	case 3:
-					// 		if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
-					// 		else 	newHPX = 0
-					// 		break;
-					// 	case 4:
-					// 		newHPX = 0;
-					// 		break;
-					// 	default:
-					// 		newHPX = 0;
-					// }
+					//Hero HP and dmg containers
+					var switcher = 0;
+					if(arrayCreature.size > 1){
+						switcher = 1;
+					}
+					switch(arrayCreature.pos) {
+						case 1:
+							newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+							break;
+						case 2:
+							newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+							break;
+						case 3:
+							if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+							else 	newHPX = 0
+							break;
+						case 4:
+							newHPX = 0;
+							break;
+						default:
+							newHPX = 0;
+					}
 
 					// var newX = -((resizeWidth + healthSpacing) * 3);
 					// var newX2 = 0;
@@ -2398,10 +2398,10 @@ function onCreatureDown(){
 					// heroHPContainerArray[arrayCreatureIndex].x = newHPX;
 					// heroArrayDmg[arrayCreatureIndex].x = newHPX
 
-					// TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-					// TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
-					// TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
-					console.log(arrayCreature.pos);
+					TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+					TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+					TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+					// console.log(arrayCreature.pos);
 				});
 			}else{
 				console.log(enemyArray[Math.abs(selectedVita)-1].pos + " wants to move to: " + enemyArray[Math.abs(validMoveTargetArray[targetedVita])-1].pos);
