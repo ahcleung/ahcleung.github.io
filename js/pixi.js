@@ -2299,7 +2299,7 @@ function onCreatureDown(){
 				console.log((selectedVita-1) + " wants to move to: " + (validMoveTargetArray[targetedVita]));
 
 				console.log(heroOrder);
-				heroOrder.splice(validMoveTargetArray[targetedVita]-1, 0, heroOrder.splice(selectedVita-1,1)[0]);
+				heroOrder.splice(validMoveTargetArray[targetedVita], 0, heroOrder.splice(selectedVita-1,1)[0]);
 				console.log(heroOrder);
 
 				//DOESN'T WORK, TRY AGAIN
