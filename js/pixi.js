@@ -3035,6 +3035,8 @@ function onAdditionalSkipDown(){
 	heroArray[0].pos = 4;
 	heroArray[1].pos = 1;
 	heroArray[2].pos = 3;
+
+	heroOrder = [1,2,0];
 }
 
 function calculateTurnOrder(){
