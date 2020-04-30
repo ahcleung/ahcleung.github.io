@@ -2976,12 +2976,12 @@ function onAdditionalMoveDown(){
 			for(var i = 0; i < moveDelta; i++){
 				if(orderIndex == tempIndex+1+i){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(orderIndex+1);
 					//visible = true
 					//push validMoveTargetArray
 				}else if(orderIndex == tempIndex-1-i){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(orderIndex+1);
 					//visible = true
 					//push validMoveTargetArray
 				}
