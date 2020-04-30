@@ -2287,6 +2287,8 @@ function onCreatureDown(){
 		}
 	}else if(validMoveTargetArray.length > 0){
 		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+		
+		clickedTarget = this.identifier[1];
 		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
 		var targetedVita = 0;
@@ -2310,11 +2312,11 @@ function onCreatureDown(){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			if(selectedVita > 0){
 				var moveFrom;
-				var moveTo;
+				var moveTo = validMoveTargetArray[targetedVita];
 				heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-					if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
-						moveTo = orderIndex;
-					}
+					// if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
+					// 	moveTo = orderIndex;
+					// }
 					if(creatureInitialOrder == selectedVita-1){
 						moveFrom = orderIndex;
 					}
@@ -2987,10 +2989,10 @@ function onAdditionalMoveDown(){
 			for(var i = 0; i < moveDelta; i++){
 				if(orderIndex == tempIndex+1+i && backward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(orderIndex+1);
 				}else if(orderIndex == tempIndex-1-i && forward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(orderIndex+1);
 				}
 			}
 		});
