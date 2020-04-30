@@ -2989,10 +2989,10 @@ function onAdditionalMoveDown(){
 			for(var i = 0; i < moveDelta; i++){
 				if(orderIndex == tempIndex+1+i && backward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(creatureInitialOrder);
 				}else if(orderIndex == tempIndex-1-i && forward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
-					validMoveTargetArray.push(orderIndex);
+					validMoveTargetArray.push(creatureInitialOrder);
 				}
 			}
 		});
