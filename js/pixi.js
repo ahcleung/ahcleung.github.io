@@ -2269,7 +2269,7 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveTargetArray.length > 0){
-		clickedTarget = this.identifier[1];								//index
+		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
 		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
 		var targetedVita = 0;
@@ -2295,11 +2295,24 @@ function onCreatureDown(){
 
 				//PROBLEM BE HERE. FIGURE THIS SHIT OUT HOMEY, WTF?!!
 				//FIND THE INDEX OF SELECTEDVITA AND TARGETEDVITA ACCORDING TO HEROORDER ARRAY AND SWAP THOSE INSTEAD
+				var moveFrom;
+				var moveTo;
+				heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+					if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
+						moveTo = orderIndex;
+					}
 
-				console.log((selectedVita-1) + " wants to move to: " + (validMoveTargetArray[targetedVita]));
+					if(creatureInitialOrder == selectedVita-1){
+						moveFrom = orderIndex;
+					}
+				});
+
+				// console.log((selectedVita-1) + " wants to move to: " + (validMoveTargetArray[targetedVita]-1));
+				console.log(moveTo + " wants to move to: " + moveFrom);
 
 				console.log(heroOrder);
-				heroOrder.splice(validMoveTargetArray[targetedVita], 0, heroOrder.splice(selectedVita-1,1)[0]);
+				// heroOrder.splice(validMoveTargetArray[targetedVita]-1, 0, heroOrder.splice(selectedVita-1,1)[0]);
+				heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
 				console.log(heroOrder);
 
 				//DOESN'T WORK, TRY AGAIN
@@ -2894,7 +2907,7 @@ function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
 	validMoveTargetArray = [];
 	validSkillTargetArray = [];
-	selectedSkill = -1;
+	selectedSkill = -1
 	additionalContainer.visible = false;
 	enemyHPContainerArray.forEach(hpContainer=>{
 		hpContainer.target.visible = false;
@@ -2919,15 +2932,15 @@ function onAdditionalMoveDown(){
 		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+sizeDelta){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push(arrayCreatureIndex);
+				validMoveTargetArray.push(arrayCreatureIndex+1);
 			}else if(arrayCreature.pos == temp-1){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push(arrayCreatureIndex);
+				validMoveTargetArray.push(arrayCreatureIndex+1);
 			}
 			if(arrayCreature.size == 2){
 				if(arrayCreature.pos == temp-2){
 					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-					validMoveTargetArray.push(arrayCreatureIndex);
+					validMoveTargetArray.push(arrayCreatureIndex+1);
 				}
 			}
 		});
