@@ -2467,21 +2467,46 @@ function onCreatureDown(){
 			// console.log(heroArray);
 
 			//Get next turn Vita
-			var identifier = [];
-			if(turnArray[0] > 0){
-				identifier[0] = 1;
-				identifier[1] = Math.abs(turnArray[0])-1;
-			}else{
-				identifier[0] = -1;
-				identifier[1] = Math.abs(turnArray[0])-1;
-			}
+
+			
+
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
 				selectCreature(identifier);
+				turnArray.shift();
 			}else{
 				calculateTurnOrder();
 			}
-			turnArray.shift();
+			
+			
+
+
+
+
+			// var identifier = [];
+			// if(turnArray[0] > 0){
+			// 	identifier[0] = 1;
+			// 	identifier[1] = Math.abs(turnArray[0])-1;
+			// 	// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			// }else{
+			// 	identifier[0] = -1;
+			// 	identifier[1] = Math.abs(turnArray[0])-1;
+			// 	// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
+			// }
+			// // console.log(identifier);
+			// selectCreature(identifier);
+			// turnArray.shift();
+
+
+
 			selectedSkill = -1;
 		}else{
 			console.log("Invalid move target");
@@ -3182,7 +3207,6 @@ function calculateTurnOrder(){
 
 	console.log(turnArray);
 
-	
 	var identifier = [];
 	if(turnArray[0] > 0){
 		identifier[0] = 1;
