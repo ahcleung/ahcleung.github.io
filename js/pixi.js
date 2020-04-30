@@ -2269,7 +2269,7 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveTargetArray.length > 0){
-		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+		clickedTarget = this.identifier[1];								//index
 		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
 		var targetedVita = 0;
