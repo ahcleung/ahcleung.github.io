@@ -2318,16 +2318,15 @@ function onCreatureDown(){
 				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 					console.log(arrayCreature.pos);
 				});
-				
+
 				heroOrder.forEach((creatureIndex,arrayIndex) => {
 					if(arrayIndex == 0){
 						heroArray[creatureIndex].pos = 1;
-					}else if(heroArray[arrayIndex-1].size == 2){
-						heroArray[creatureIndex].pos = heroArray[arrayIndex-1].pos + 2;
+					}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
+						heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
 					}else{
-						heroArray[creatureIndex].pos = heroArray[arrayIndex-1].pos + 1;
+						heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
 					}
-					
 				});
 
 				// function setPos(item, index, array){
