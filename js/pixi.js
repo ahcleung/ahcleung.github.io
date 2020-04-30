@@ -2919,15 +2919,15 @@ function onAdditionalMoveDown(){
 		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
 			if(arrayCreature.pos == temp+sizeDelta){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push(arrayCreatureIndex+1);
+				validMoveTargetArray.push(arrayCreatureIndex);
 			}else if(arrayCreature.pos == temp-1){
 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push(arrayCreatureIndex+1);
+				validMoveTargetArray.push(arrayCreatureIndex);
 			}
 			if(arrayCreature.size == 2){
 				if(arrayCreature.pos == temp-2){
 					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-					validMoveTargetArray.push(arrayCreatureIndex+1);
+					validMoveTargetArray.push(arrayCreatureIndex);
 				}
 			}
 		});
