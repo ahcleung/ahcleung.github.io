@@ -3041,9 +3041,9 @@ function onAdditionalMoveDown(){
 		var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
 		var forward = false;
 		var backward = false;
-		if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
+		if(enemyArray[Math.abs(selectedVita)-1].move[0] == "+"){
 			forward = true;
-		}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
+		}else if(enemyArray[Math.abs(selectedVita)-1].move[0] == "-"){
 			backward = true;
 		}else{
 			forward = true;
