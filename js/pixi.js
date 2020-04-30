@@ -2292,6 +2292,10 @@ function onCreatureDown(){
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			if(selectedVita > 0){
+
+				//PROBLEM BE HERE. FIGURE THIS SHIT OUT HOMEY, WTF?!!
+				//FIND THE INDEX OF SELECTEDVITA AND TARGETEDVITA ACCORDING TO HEROORDER ARRAY AND SWAP THOSE INSTEAD
+
 				console.log((selectedVita-1) + " wants to move to: " + (validMoveTargetArray[targetedVita]));
 
 				console.log(heroOrder);
@@ -2319,6 +2323,7 @@ function onCreatureDown(){
 					console.log(arrayCreature.pos);
 				});
 
+				//THIS SHIT ROCKS THOUGH, I THINK...
 				heroOrder.forEach((creatureIndex,arrayIndex) => {
 					if(arrayIndex == 0){
 						heroArray[creatureIndex].pos = 1;
@@ -2869,7 +2874,7 @@ function onSkillDown(){
 			validSkillTargetArray = [array1, array2];
 		}
 	}
-	console.log("Targets: " + validSkillTargetArray);
+	console.log("validSkillTargetArray: " + validSkillTargetArray);
 }
 
 function onAdditionalDown(){
@@ -2950,7 +2955,7 @@ function onAdditionalMoveDown(){
 		});
 	}
 
-	console.log(validMoveTargetArray);
+	console.log("validMoveTargetArray: " + validMoveTargetArray);
 }
 
 function onAdditionalItemDown(){
@@ -3113,6 +3118,8 @@ function selectCreature(identifier){
 	}else{
 		enemyHPContainerArray[identifier[1]].turn.visible = false;
 	}
+
+	//Direction x Index+1
 	selectedVita = identifier[0] * (identifier[1]+1);
 	console.log("///////////////////////////////////////////////");
 	console.log("Turn: " + selectedVita);
