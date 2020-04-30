@@ -2441,12 +2441,12 @@ function onCreatureDown(){
 							newHPX = resizeWidth + healthSpacing;
 							break;
 						case 3:				
-							newCreatureX = (resizeWidth + healthSpacing * 2);
+							newCreatureX = (resizeWidth + healthSpacing) * 2;
 							newHPX = (resizeWidth + healthSpacing * 2);
 							break;
 						case 4:
-							newCreatureX = (resizeWidth + healthSpacing * 3);
-							newHPX = (resizeWidth + healthSpacing * 3);
+							newCreatureX = (resizeWidth + healthSpacing) * 3;
+							newHPX = (resizeWidth + healthSpacing) * 3;
 							break;
 						default:
 							newCreatureX = 0;	
