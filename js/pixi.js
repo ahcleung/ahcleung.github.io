@@ -567,8 +567,7 @@ function setup(){
 		const markerPositionContainer = new PIXI.Container();
 		const markerTargetArray = [];
 		const markerTargetContainer = new PIXI.Container();
-		// const markerSpacer = [];
-		const markerSpacerContainer = new PIXI.Container();
+		
 		for (var j = 0; j < 3; j++){
 			for (var k = 0; k < 4; k++){
 				let defaultMarker = new PIXI.Graphics();
@@ -580,7 +579,6 @@ function setup(){
 				let posMarker = new PIXI.Graphics();
 				if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 				else if(j == 1)		posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-				else				posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
 
 				posMarker.x = 25 * k;
 				posMarker.pivot.set(0.5);
@@ -594,12 +592,20 @@ function setup(){
 					markerTargetArray.push(posMarker);
 					markerTargetContainer.addChild(defaultMarker);
 					markerTargetContainer.addChild(posMarker);
-				}else{
-					markerSpacerContainer.addChild(posMarker);
 				}
 			}
 		}
 		
+		const markerSpacerContainer = new PIXI.Container();
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			markerSpacerContainer.addChild(posMarker);
+		}
+
 		//Target several markers
 		const markerTargetSeveralArray = [];
 		const markerTargetSeveralContainer = new PIXI.Container();		
