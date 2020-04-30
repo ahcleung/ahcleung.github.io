@@ -599,7 +599,7 @@ function setup(){
 		const markerSpacerContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+			posMarker.beginFill(0x333333).drawRect(0, -w, w, w);
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
@@ -620,13 +620,14 @@ function setup(){
 
 		markerTargetContainer.x = 123;
 		markerTargetSeveralContainer.x = 123;
-		
+
 		markerSpacerContainer.x = 135;
 
+		markerContainer.addChild(markerSpacerContainer);
 		markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);
-		// markerContainer.addChild(markerSpacerContainer);
+		
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
