@@ -2277,7 +2277,7 @@ function onCreatureDown(){
 			}else{
 				calculateTurnOrder();
 			}
-			
+
 			selectedSkill = -1;
 		}else{
 			console.log("Invalid skill target");
@@ -2463,11 +2463,7 @@ function onCreatureDown(){
 
 			// console.log(heroArray);
 
-			//Get next turn Vita
-
-			
-
-			//If out of turns, and still have enemies, and still have heroes
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
 				var identifier = [];
 				if(turnArray[0] > 0){
@@ -2482,28 +2478,6 @@ function onCreatureDown(){
 			}else{
 				calculateTurnOrder();
 			}
-			
-			
-
-
-
-
-			// var identifier = [];
-			// if(turnArray[0] > 0){
-			// 	identifier[0] = 1;
-			// 	identifier[1] = Math.abs(turnArray[0])-1;
-			// 	// console.log(heroContainerArray[Math.abs(turnArray[0]-1)].identifier);
-			// }else{
-			// 	identifier[0] = -1;
-			// 	identifier[1] = Math.abs(turnArray[0])-1;
-			// 	// console.log(enemyContainerArray[Math.abs(turnArray[0]-1)].identifier);
-			// }
-			// // console.log(identifier);
-			// selectCreature(identifier);
-			// turnArray.shift();
-
-
-
 			selectedSkill = -1;
 		}else{
 			console.log("Invalid move target");
@@ -3047,7 +3021,6 @@ function onAdditionalMoveDown(){
 		// 	}
 
 
-
 		// 	// if(arrayCreature.pos == currPos+sizeDelta){			//behind
 		// 	// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
 		// 	// 	validMoveTargetArray.push(arrayCreatureIndex+1);
@@ -3063,29 +3036,59 @@ function onAdditionalMoveDown(){
 		// 	// }
 		// });
 	}else{
-		var currPos = enemyArray[Math.abs(selectedVita)-1].pos;
-		var moveDelta = 2;
-
-		var sizeDelta = 1;
-		if(enemyArray[Math.abs(selectedVita)-1].size == 2){
-			sizeDelta = 2;
+		var currIndex = Math.abs(selectedVita)-1;
+		var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
+		var forward = false;
+		var backward = false;
+		if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
+			forward = true;
+		}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
+			backward = true;
+		}else{
+			forward = true;
+			backward = true;
 		}
 
-		enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
-			if(arrayCreature.pos == currPos+sizeDelta){
-				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
-			}else if(arrayCreature.pos == currPos-1){
-				enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-				validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
-			}
-			if(arrayCreature.size == 2){
-				if(arrayCreature.pos == currPos-2){
-					enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-					validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
+		var tempIndex;
+		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+		});
+
+		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+			for(var i = 0; i < moveDelta; i++){
+				if(orderIndex == tempIndex+1+i && backward){
+					enemyHPContainerArray[creatureInitialOrder].move.visible = true;
+					validMoveTargetArray.push(creatureInitialOrder);
+				}else if(orderIndex == tempIndex-1-i && forward){
+					enemyHPContainerArray[creatureInitialOrder].move.visible = true;
+					validMoveTargetArray.push(creatureInitialOrder);
 				}
 			}
 		});
+
+		// var currPos = enemyArray[Math.abs(selectedVita)-1].pos;
+		// var moveDelta = 2;
+
+		// var sizeDelta = 1;
+		// if(enemyArray[Math.abs(selectedVita)-1].size == 2){
+		// 	sizeDelta = 2;
+		// }
+
+		// enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+		// 	if(arrayCreature.pos == currPos+sizeDelta){
+		// 		enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 		validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
+		// 	}else if(arrayCreature.pos == currPos-1){
+		// 		enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 		validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
+		// 	}
+		// 	if(arrayCreature.size == 2){
+		// 		if(arrayCreature.pos == currPos-2){
+		// 			enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 			validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
+		// 		}
+		// 	}
+		// });
 	}
 
 	console.log("validMoveTargetArray: " + validMoveTargetArray);
