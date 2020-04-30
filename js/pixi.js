@@ -626,7 +626,7 @@ function setup(){
 		markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);
-		markerContainer.addChild(markerSpacerContainer);
+		// markerContainer.addChild(markerSpacerContainer);
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
