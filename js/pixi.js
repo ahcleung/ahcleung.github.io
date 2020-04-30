@@ -3004,7 +3004,7 @@ function onAdditionalMoveDown(){
 			// 		heroHPContainerArray[arrayCreatureIndex].move.visible = true;
 			// 		validMoveTargetArray.push(arrayCreatureIndex+1);
 			// 	}
-			}
+			// }
 		});
 	}else{
 		var currPos = enemyArray[Math.abs(selectedVita)-1].pos;
