@@ -2404,7 +2404,15 @@ function onCreatureDown(){
 					}
 				});
 
+				console.log(moveTo + " wants to move to: " + moveFrom);
+				console.log(enemyOrder);
 				enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
+				console.log(enemyOrder);
+
+				enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+					console.log(arrayCreature.pos);
+				});
+
 
 				enemyOrder.forEach((creatureIndex,arrayIndex) => {
 					if(arrayIndex == 0){
