@@ -2395,8 +2395,9 @@ function onCreatureDown(){
 			}else{
 				var moveFrom;
 				var moveTo;
+
 				enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-					if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])-1){
+					if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
 						moveTo = orderIndex;
 					}
 					if(creatureInitialOrder == Math.abs(selectedVita)-1){
