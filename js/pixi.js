@@ -118,6 +118,7 @@ class Creature{
 		this.frames = creatureList.data.creatures[this.id].frames;			//Number of frames for creature animation
 		this.code = creatureList.data.creatures[this.id].code;				//Creature code
 		this.size = creatureList.data.creatures[this.id].size;				//Creature size
+		this.move = creatureList.data.creatures[this.id].move;				//Creature movement
 		
 		this.name = creatureList.data.creatures[this.id].name;				//Creature name
 		this.elements = creatureList.data.creatures[this.id].elements;		//Creature element
@@ -2965,7 +2966,17 @@ function onAdditionalMoveDown(){
 
 	if(selectedVita > 0){
 		var currIndex = Math.abs(selectedVita)-1;
-		var moveDelta = 2;
+		var moveDelta = heroArray[Math.abs(selectedVita)-1].move[1];
+		var forward = false;
+		var backward = false;
+		if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
+			forward = true;
+		}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
+			backward = true;
+		}else{
+			forward = true;
+			backward = true;
+		}
 
 		var tempIndex;
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
@@ -2974,16 +2985,12 @@ function onAdditionalMoveDown(){
 
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 			for(var i = 0; i < moveDelta; i++){
-				if(orderIndex == tempIndex+1+i){
+				if(orderIndex == tempIndex+1+i && backward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
 					validMoveTargetArray.push(orderIndex+1);
-					//visible = true
-					//push validMoveTargetArray
-				}else if(orderIndex == tempIndex-1-i){
+				}else if(orderIndex == tempIndex-1-i && forward){
 					heroHPContainerArray[creatureInitialOrder].move.visible = true;
 					validMoveTargetArray.push(orderIndex+1);
-					//visible = true
-					//push validMoveTargetArray
 				}
 			}
 		});
