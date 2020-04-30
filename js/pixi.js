@@ -2396,10 +2396,10 @@ function onCreatureDown(){
 				var moveFrom;
 				var moveTo;
 				enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-					if(creatureInitialOrder == validMoveTargetArray[targetedVita]-1){
+					if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])-1){
 						moveTo = orderIndex;
 					}
-					if(creatureInitialOrder == selectedVita-1){
+					if(creatureInitialOrder == Math.abs(selectedVita)-1){
 						moveFrom = orderIndex;
 					}
 				});
