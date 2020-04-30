@@ -2964,48 +2964,73 @@ function onAdditionalMoveDown(){
 	});
 
 	if(selectedVita > 0){
-		var currPos = heroArray[Math.abs(selectedVita)-1].pos;
+		var currIndex = Math.abs(selectedVita)-1;
 		var moveDelta = 2;
 
-		var sizeDelta = 1;
-		if(heroArray[Math.abs(selectedVita)-1].size == 2){
-			sizeDelta = 2;
-		}
+		var tempIndex;
+		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+		});
 
-		heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 			for(var i = 0; i < moveDelta; i++){
-				if(arrayCreature.pos == currPos+sizeDelta+i){
-					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-					validMoveTargetArray.push(arrayCreatureIndex+1);
-				}else if(arrayCreature.pos == currPos-1-i){
-					heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-					validMoveTargetArray.push(arrayCreatureIndex+1);
-				}
-
-				if(arrayCreature.size == 2){
-					if(arrayCreature.pos == currPos-2-i){
-						heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-						validMoveTargetArray.push(arrayCreatureIndex+1);
-					}
+				if(orderIndex == tempIndex+i){
+					heroHPContainerArray[creatureInitialOrder].move.visible = true;
+					validMoveTargetArray.push(orderIndex);
+					//visible = true
+					//push validMoveTargetArray
+				}else if(orderIndex == tempIndex-1-i){
+					heroHPContainerArray[creatureInitialOrder].move.visible = true;
+					validMoveTargetArray.push(orderIndex);
+					//visible = true
+					//push validMoveTargetArray
 				}
 			}
-
-
-
-			// if(arrayCreature.pos == currPos+sizeDelta){			//behind
-			// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-			// 	validMoveTargetArray.push(arrayCreatureIndex+1);
-			// }else if(arrayCreature.pos == currPos-1){			//infront
-			// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-			// 	validMoveTargetArray.push(arrayCreatureIndex+1);
-			// }
-			// if(arrayCreature.size == 2){
-			// 	if(arrayCreature.pos == currPos-2){				//infront size2
-			// 		heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-			// 		validMoveTargetArray.push(arrayCreatureIndex+1);
-			// 	}
-			// }
 		});
+
+
+		// var currPos = heroArray[Math.abs(selectedVita)-1].pos;
+		// var moveDelta = 2;
+
+		// var sizeDelta = 1;
+		// if(heroArray[Math.abs(selectedVita)-1].size == 2){
+		// 	sizeDelta = 2;
+		// }
+
+		// heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+		// 	for(var i = 0; i < moveDelta; i++){
+		// 		if(arrayCreature.pos == currPos+sizeDelta+i){
+		// 			heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 			validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 		}else if(arrayCreature.pos == currPos-1-i){
+		// 			heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 			validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 		}
+
+		// 		if(arrayCreature.size == 2){
+		// 			if(arrayCreature.pos == currPos-2-i){
+		// 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 				validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 			}
+		// 		}
+		// 	}
+
+
+
+		// 	// if(arrayCreature.pos == currPos+sizeDelta){			//behind
+		// 	// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 	// 	validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 	// }else if(arrayCreature.pos == currPos-1){			//infront
+		// 	// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 	// 	validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 	// }
+		// 	// if(arrayCreature.size == 2){
+		// 	// 	if(arrayCreature.pos == currPos-2){				//infront size2
+		// 	// 		heroHPContainerArray[arrayCreatureIndex].move.visible = true;
+		// 	// 		validMoveTargetArray.push(arrayCreatureIndex+1);
+		// 	// 	}
+		// 	// }
+		// });
 	}else{
 		var currPos = enemyArray[Math.abs(selectedVita)-1].pos;
 		var moveDelta = 2;
