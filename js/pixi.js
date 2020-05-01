@@ -2290,7 +2290,7 @@ function onCreatureDown(){
 		var correctTarget = false;
 		var targetedVita = 0;
 
-		var movePositions = [];
+		// var movePositions = [];
 		validMoveTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
@@ -2307,160 +2307,164 @@ function onCreatureDown(){
 		});
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-			if(selectedVita > 0){
-				var moveFrom;
-				var moveTo = validMoveTargetArray[targetedVita];
-				heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-					if(creatureInitialOrder == validMoveTargetArray[targetedVita]){
-						moveTo = orderIndex;
-					}
-					if(creatureInitialOrder == selectedVita-1){
-						moveFrom = orderIndex;
-					}
-				});
+			moveCreature(validMoveTargetArray[targetedVita]);
+			
+			// if(selectedVita > 0){
+			// 	//YOU FIGURED IT OUT, YOU MAGNIFICENT SON OF A BITCH
+			// 	var moveFrom;
+			// 	var moveTo;
+			// 	// var moveTo = validMoveTargetArray[targetedVita];
+			// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+			// 		if(creatureInitialOrder == validMoveTargetArray[targetedVita]){
+			// 			moveTo = orderIndex;
+			// 		}
+			// 		if(creatureInitialOrder == selectedVita-1){
+			// 			moveFrom = orderIndex;
+			// 		}
+			// 	});
 
-				console.log(moveFrom + " wants to move to: " + moveTo);
-				// console.log(heroOrder);
-				heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
-				// console.log(heroOrder);
+			// 	console.log(moveFrom + " wants to move to: " + moveTo);
+			// 	// console.log(heroOrder);
+			// 	heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
+			// 	// console.log(heroOrder);
 
-				// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-				// 	console.log(arrayCreature.pos);
-				// });
+			// 	// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			// 	// 	console.log(arrayCreature.pos);
+			// 	// });
 
-				//THIS SHIT ROCKS THOUGH, I THINK...
-				heroOrder.forEach((creatureIndex,arrayIndex) => {
-					if(arrayIndex == 0){
-						heroArray[creatureIndex].pos = 1;
-					}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
-						heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
-					}else{
-						heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
-					}
-				});
+			// 	//THIS SHIT ROCKS THOUGH, I THINK...
+			// 	heroOrder.forEach((creatureIndex,arrayIndex) => {
+			// 		if(arrayIndex == 0){
+			// 			heroArray[creatureIndex].pos = 1;
+			// 		}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
+			// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
+			// 		}else{
+			// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
+			// 		}
+			// 	});
 
-				heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					//Hero Creature
-					var newCreatureX;
-					var newHPX;
+			// 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			// 		//Hero Creature
+			// 		var newCreatureX;
+			// 		var newHPX;
 
-					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+			// 		var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-					switch(arrayCreature.pos) {
-						case 1:
-							newCreatureX = 0;
-							break;
-						case 2:
-							newCreatureX = -(resizeWidth + healthSpacing);
-							break;
-						case 3:				
-							newCreatureX = -((resizeWidth + healthSpacing) * 2);
-							break;
-						case 4:
-							newCreatureX = -((resizeWidth + healthSpacing) * 3);
-							break;
-						default:
-							newCreatureX = 0;	
-					}
+			// 		switch(arrayCreature.pos) {
+			// 			case 1:
+			// 				newCreatureX = 0;
+			// 				break;
+			// 			case 2:
+			// 				newCreatureX = -(resizeWidth + healthSpacing);
+			// 				break;
+			// 			case 3:				
+			// 				newCreatureX = -((resizeWidth + healthSpacing) * 2);
+			// 				break;
+			// 			case 4:
+			// 				newCreatureX = -((resizeWidth + healthSpacing) * 3);
+			// 				break;
+			// 			default:
+			// 				newCreatureX = 0;	
+			// 		}
 
-					//Hero HP and dmg containers
-					var switcher = 0;
-					if(arrayCreature.size > 1){
-						switcher = 1;
-					}
-					switch(arrayCreature.pos) {
-						case 1:
-							newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
-							break;
-						case 2:
-							newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
-							break;
-						case 3:
-							if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
-							else 	newHPX = 0
-							break;
-						case 4:
-							newHPX = 0;
-							break;
-						default:
-							newHPX = 0;
-					}
+			// 		//Hero HP and dmg containers
+			// 		var switcher = 0;
+			// 		if(arrayCreature.size > 1){
+			// 			switcher = 1;
+			// 		}
+			// 		switch(arrayCreature.pos) {
+			// 			case 1:
+			// 				newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+			// 				break;
+			// 			case 2:
+			// 				newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+			// 				break;
+			// 			case 3:
+			// 				if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+			// 				else 	newHPX = 0
+			// 				break;
+			// 			case 4:
+			// 				newHPX = 0;
+			// 				break;
+			// 			default:
+			// 				newHPX = 0;
+			// 		}
 
-					TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-					TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
-					TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+			// 		TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// 		TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			// 		TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 
-					console.log(arrayCreature.pos);
-				});
-			}else{
-				var moveFrom;
-				var moveTo;
-				//Find index number for moveTo target and moveFrom selected
-				enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-					if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
-						moveTo = orderIndex;
-					}
-					if(creatureInitialOrder == Math.abs(selectedVita)-1){
-						moveFrom = orderIndex;
-					}
-				});
+			// 		console.log(arrayCreature.pos);
+			// 	});
+			// }else{
+			// 	var moveFrom;
+			// 	var moveTo;
+			// 	//Find index number for moveTo target and moveFrom selected
+			// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+			// 		if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
+			// 			moveTo = orderIndex;
+			// 		}
+			// 		if(creatureInitialOrder == Math.abs(selectedVita)-1){
+			// 			moveFrom = orderIndex;
+			// 		}
+			// 	});
 
-				console.log(moveFrom + " wants to move to: " + moveTo);
-				// console.log(enemyOrder);
-				enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
-				// console.log(enemyOrder);
+			// 	console.log(moveFrom + " wants to move to: " + moveTo);
+			// 	// console.log(enemyOrder);
+			// 	enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
+			// 	// console.log(enemyOrder);
 
-				// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-				// 	console.log(arrayCreature.pos);
-				// });
+			// 	// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			// 	// 	console.log(arrayCreature.pos);
+			// 	// });
 
 
-				enemyOrder.forEach((creatureIndex,arrayIndex) => {
-					if(arrayIndex == 0){
-						enemyArray[creatureIndex].pos = 1;
-					}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
-						enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
-					}else{
-						enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
-					}
-				});
+			// 	enemyOrder.forEach((creatureIndex,arrayIndex) => {
+			// 		if(arrayIndex == 0){
+			// 			enemyArray[creatureIndex].pos = 1;
+			// 		}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
+			// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
+			// 		}else{
+			// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
+			// 		}
+			// 	});
 
-				enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					//Enemy Creature
-					var newCreatureX;
-					var newHPX;
+			// 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			// 		//Enemy Creature
+			// 		var newCreatureX;
+			// 		var newHPX;
 
-					var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+			// 		var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-					switch(arrayCreature.pos) {
-						case 1:
-							newCreatureX = 0;
-							newHPX = 0;
-							break;
-						case 2:
-							newCreatureX = resizeWidth + healthSpacing;
-							newHPX = resizeWidth + healthSpacing;
-							break;
-						case 3:				
-							newCreatureX = (resizeWidth + healthSpacing) * 2;
-							newHPX = (resizeWidth + healthSpacing) * 2;
-							break;
-						case 4:
-							newCreatureX = (resizeWidth + healthSpacing) * 3;
-							newHPX = (resizeWidth + healthSpacing) * 3;
-							break;
-						default:
-							newCreatureX = 0;	
-							newHPX = 0;
-					}
+			// 		switch(arrayCreature.pos) {
+			// 			case 1:
+			// 				newCreatureX = 0;
+			// 				newHPX = 0;
+			// 				break;
+			// 			case 2:
+			// 				newCreatureX = resizeWidth + healthSpacing;
+			// 				newHPX = resizeWidth + healthSpacing;
+			// 				break;
+			// 			case 3:				
+			// 				newCreatureX = (resizeWidth + healthSpacing) * 2;
+			// 				newHPX = (resizeWidth + healthSpacing) * 2;
+			// 				break;
+			// 			case 4:
+			// 				newCreatureX = (resizeWidth + healthSpacing) * 3;
+			// 				newHPX = (resizeWidth + healthSpacing) * 3;
+			// 				break;
+			// 			default:
+			// 				newCreatureX = 0;	
+			// 				newHPX = 0;
+			// 		}
 
-					TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-					TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
-					TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+			// 		TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// 		TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			// 		TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 
-					// console.log(arrayCreature.pos);
-				});
-			}
+			// 		// console.log(arrayCreature.pos);
+			// 	});
+			// }
 
 			// console.log(heroArray);
 
@@ -2486,6 +2490,155 @@ function onCreatureDown(){
 	}
 }
 
+function moveCreature(targetedVita){
+	if(selectedVita > 0){
+		var moveFrom;
+		var moveTo;
+
+		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+			if(creatureInitialOrder == targetedVita){
+				moveTo = orderIndex;
+			}
+			if(creatureInitialOrder == selectedVita-1){
+				moveFrom = orderIndex;
+			}
+		});
+		console.log(moveFrom + " wants to move to: " + moveTo);
+		heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
+
+		heroOrder.forEach((creatureIndex,arrayIndex) => {
+			if(arrayIndex == 0){
+				heroArray[creatureIndex].pos = 1;
+			}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
+				heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
+			}else{
+				heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
+			}
+		});
+
+		heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			//Hero Creature
+			var newCreatureX;
+			var newHPX;
+
+			var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+			switch(arrayCreature.pos) {
+				case 1:
+					newCreatureX = 0;
+					break;
+				case 2:
+					newCreatureX = -(resizeWidth + healthSpacing);
+					break;
+				case 3:				
+					newCreatureX = -((resizeWidth + healthSpacing) * 2);
+					break;
+				case 4:
+					newCreatureX = -((resizeWidth + healthSpacing) * 3);
+					break;
+				default:
+					newCreatureX = 0;	
+			}
+
+			//Hero HP and dmg containers
+			var switcher = 0;
+			if(arrayCreature.size > 1){
+				switcher = 1;
+			}
+			switch(arrayCreature.pos) {
+				case 1:
+					newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+					break;
+				case 2:
+					newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+					break;
+				case 3:
+					if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+					else 	newHPX = 0
+					break;
+				case 4:
+					newHPX = 0;
+					break;
+				default:
+					newHPX = 0;
+			}
+
+			TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+
+			console.log(arrayCreature.pos);
+		});
+	}else{
+		var moveFrom;
+		var moveTo;
+		//Find index number for moveTo target and moveFrom selected
+		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+			if(creatureInitialOrder == Math.abs(targetedVita)){
+				moveTo = orderIndex;
+			}
+			if(creatureInitialOrder == Math.abs(selectedVita)-1){
+				moveFrom = orderIndex;
+			}
+		});
+
+		console.log(moveFrom + " wants to move to: " + moveTo);
+		// console.log(enemyOrder);
+		enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
+		// console.log(enemyOrder);
+
+		// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+		// 	console.log(arrayCreature.pos);
+		// });
+
+
+		enemyOrder.forEach((creatureIndex,arrayIndex) => {
+			if(arrayIndex == 0){
+				enemyArray[creatureIndex].pos = 1;
+			}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
+				enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
+			}else{
+				enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
+			}
+		});
+
+		enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			//Enemy Creature
+			var newCreatureX;
+			var newHPX;
+
+			var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+			switch(arrayCreature.pos) {
+				case 1:
+					newCreatureX = 0;
+					newHPX = 0;
+					break;
+				case 2:
+					newCreatureX = resizeWidth + healthSpacing;
+					newHPX = resizeWidth + healthSpacing;
+					break;
+				case 3:				
+					newCreatureX = (resizeWidth + healthSpacing) * 2;
+					newHPX = (resizeWidth + healthSpacing) * 2;
+					break;
+				case 4:
+					newCreatureX = (resizeWidth + healthSpacing) * 3;
+					newHPX = (resizeWidth + healthSpacing) * 3;
+					break;
+				default:
+					newCreatureX = 0;	
+					newHPX = 0;
+			}
+
+			TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
+
+			// console.log(arrayCreature.pos);
+		});
+	}
+}
 
 function onHPDown(){
 	console.log("HP:" + this.identifier[0] * (this.identifier[1]+1));
@@ -2510,6 +2663,7 @@ function onSkillDown(){
 	console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
 	var column = false;
 	var several = false;
+	var displace = false;
 	var heal = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
@@ -2530,6 +2684,9 @@ function onSkillDown(){
 		}
 		if(tagName == "several"){
 			several = true;
+		}
+		if(tagName == "displace"){
+			displace = true;
 		}
 	});
 	
