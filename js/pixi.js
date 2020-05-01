@@ -2319,7 +2319,7 @@ function onCreatureDown(){
 					}
 				});
 
-				console.log(moveTo + " wants to move to: " + moveFrom);
+				console.log(moveFrom + " wants to move to: " + moveTo);
 				// console.log(heroOrder);
 				heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
 				// console.log(heroOrder);
