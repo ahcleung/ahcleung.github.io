@@ -2341,7 +2341,8 @@ function onCreatureDown(){
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 
-			console.log(selectedVita + "moves: " + displacement);
+			// console.log(selectedVita + " moves: " + displacement);
+			moveCreature(selectedVita, displacement);
 			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
@@ -2368,19 +2369,22 @@ function onCreatureDown(){
 
 //function moveCreature(movingCreature, displace(1, -2))
 //function moveCreature(movingCreature, moveToCreature)
-function moveCreature(movingCreature, targetedVita){
+function moveCreature(movingCreature, displacement){
 	if(movingCreature > 0){
 		var moveFrom;
-		var moveTo;
+		// var moveTo;
 
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == targetedVita){
-				moveTo = orderIndex;
-			}
+			// if(creatureInitialOrder == targetedVita){
+			// 	moveTo = orderIndex;
+			// }
 			if(creatureInitialOrder == movingCreature-1){
 				moveFrom = orderIndex;
 			}
 		});
+
+		var moveTo = moveFrom - displacement;
+
 		console.log(moveFrom + " wants to move to: " + moveTo);
 		heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
 
@@ -2449,16 +2453,18 @@ function moveCreature(movingCreature, targetedVita){
 		});
 	}else{
 		var moveFrom;
-		var moveTo;
+		// var moveTo;
 		//Find index number for moveTo target and moveFrom selected
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == Math.abs(targetedVita)){
-				moveTo = orderIndex;
-			}
+			// if(creatureInitialOrder == Math.abs(targetedVita)){
+			// 	moveTo = orderIndex;
+			// }
 			if(creatureInitialOrder == Math.abs(movingCreature)-1){
 				moveFrom = orderIndex;
 			}
 		});
+
+		var moveTo = moveFrom - displacement;
 
 		console.log(moveFrom + " wants to move to: " + moveTo);
 		// console.log(enemyOrder);
