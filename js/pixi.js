@@ -2718,6 +2718,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;						
 							stageSide = -1;
+							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
 						}else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2726,16 +2727,17 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = -1;
+							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
 						}else{stageSide = 0;}
 					}
-					if(stageSide != 0){
-						var alreadyAdded = false;
-						validSkillTargetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						});
-						if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
-						// validSkillTargetArray.push(arrayCreature.pos*stageSide);
-					}					
+					// if(stageSide != 0){
+					// 	var alreadyAdded = false;
+					// 	validSkillTargetArray.forEach(targeted => {
+					// 		if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+					// 	});
+					// 	if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
+					// 	// validSkillTargetArray.push(arrayCreature.pos*stageSide);
+					// }					
 				});
 			}else{
 				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2744,6 +2746,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = 1;
+							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
 						}else{stageSide = 0;}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2752,16 +2755,17 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
 							stageSide = 1;
+							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
 						}else{stageSide = 0;}
 					}
-					if(stageSide != 0){
-						var alreadyAdded = false;
-						validSkillTargetArray.forEach(targeted => {
-							if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-						});
-						if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
-						// validSkillTargetArray.push(arrayCreature.pos*stageSide);
-					}			
+					// if(stageSide != 0){
+					// 	var alreadyAdded = false;
+					// 	validSkillTargetArray.forEach(targeted => {
+					// 		if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
+					// 	});
+					// 	if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
+					// 	// validSkillTargetArray.push(arrayCreature.pos*stageSide);
+					// }			
 				});
 			}
 		}
@@ -2971,6 +2975,8 @@ function onSkillDown(){
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
 }
+
+
 
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
