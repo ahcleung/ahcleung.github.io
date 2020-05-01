@@ -2313,14 +2313,28 @@ function onCreatureDown(){
 			}
 		});
 
-		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == targetedVita){
-				moveTo = orderIndex;
-			}
-			if(creatureInitialOrder == movingCreature-1){
-				moveFrom = orderIndex;
-			}
-		});
+		var moveFrom;
+		var moveTo;
+
+		if(selectedVita > 0){
+			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita]){
+					moveTo = orderIndex;
+				}
+				if(creatureInitialOrder == selectedVita-1){
+					moveFrom = orderIndex;
+				}
+			});
+		}else{
+			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
+					moveTo = orderIndex;
+				}
+				if(creatureInitialOrder == Math.abs(selectedVita)-1){
+					moveFrom = orderIndex;
+				}
+			});
+		}
 
 		displacement = moveFrom - moveTo;
 
