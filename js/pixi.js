@@ -2395,7 +2395,7 @@ function onCreatureDown(){
 			}else{
 				var moveFrom;
 				var moveTo;
-
+				//Find index number for moveTo target and moveFrom selected
 				enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
 					if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
 						moveTo = orderIndex;
@@ -2406,13 +2406,13 @@ function onCreatureDown(){
 				});
 
 				console.log(moveFrom + " wants to move to: " + moveTo);
-				console.log(enemyOrder);
+				// console.log(enemyOrder);
 				enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
-				console.log(enemyOrder);
+				// console.log(enemyOrder);
 
-				enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					console.log(arrayCreature.pos);
-				});
+				// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+				// 	console.log(arrayCreature.pos);
+				// });
 
 
 				enemyOrder.forEach((creatureIndex,arrayIndex) => {
@@ -2458,7 +2458,7 @@ function onCreatureDown(){
 					TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 					TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 
-					console.log(arrayCreature.pos);
+					// console.log(arrayCreature.pos);
 				});
 			}
 
