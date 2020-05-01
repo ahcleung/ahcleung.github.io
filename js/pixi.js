@@ -2307,8 +2307,8 @@ function onCreatureDown(){
 		});
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-			moveCreature(validMoveTargetArray[targetedVita]);
-			
+			moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+
 			// if(selectedVita > 0){
 			// 	//YOU FIGURED IT OUT, YOU MAGNIFICENT SON OF A BITCH
 			// 	var moveFrom;
@@ -2490,8 +2490,9 @@ function onCreatureDown(){
 	}
 }
 
-function moveCreature(targetedVita){
-	if(selectedVita > 0){
+//function moveCreature(movingCreature, moveToCreature)
+function moveCreature(movingCreature, targetedVita){
+	if(movingCreature > 0){
 		var moveFrom;
 		var moveTo;
 
@@ -2499,7 +2500,7 @@ function moveCreature(targetedVita){
 			if(creatureInitialOrder == targetedVita){
 				moveTo = orderIndex;
 			}
-			if(creatureInitialOrder == selectedVita-1){
+			if(creatureInitialOrder == movingCreature-1){
 				moveFrom = orderIndex;
 			}
 		});
@@ -2577,7 +2578,7 @@ function moveCreature(targetedVita){
 			if(creatureInitialOrder == Math.abs(targetedVita)){
 				moveTo = orderIndex;
 			}
-			if(creatureInitialOrder == Math.abs(selectedVita)-1){
+			if(creatureInitialOrder == Math.abs(movingCreature)-1){
 				moveFrom = orderIndex;
 			}
 		});
