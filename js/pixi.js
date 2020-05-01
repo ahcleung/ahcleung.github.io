@@ -2262,10 +2262,9 @@ function onCreatureDown(){
 				}
 			}
 
-			// if(skillsList.data.skills[selectedSkill].displace[0] != 0){
-
-			// 	moveCreature(validSkillTargetArray[targetedVita], validMoveTargetArray[targetedVita]);
-			// }
+			if(skillsList.data.skills[selectedSkill].displace[0] != 0){
+				moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+			}
 
 
 			//If out of turns, and still have enemies, and still have heroes
