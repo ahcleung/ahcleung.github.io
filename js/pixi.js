@@ -311,7 +311,7 @@ hero[0] = {
 	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 125
 };
 hero[1] = {
-	id: 9, level: 47, 
+	id: 11, level: 47, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 5,
 	statDODG: 20, statHP: 35, statPATK: 0, statPDEF: 3, statSATK: 40, statSDEF: 20, statSPD: 39
 };
@@ -333,7 +333,7 @@ enemy[0] = {
 	statDODG: 20, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 50
 };
 enemy[1] = {
-	id: 10, level: 46, 
+	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 5,
 	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 148
 };
@@ -342,11 +342,11 @@ enemy[2] = {
 	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 95
 };
-enemy[3] = {
-	id: 11, level: 45, 
-	skill1: 4, skill2: 5, skill3: 6, skill4: 1,
-	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
-};
+// enemy[3] = {
+// 	id: 11, level: 45, 
+// 	skill1: 4, skill2: 5, skill3: 6, skill4: 1,
+// 	statDODG: 10, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 65, statSDEF: 0, statSPD: 0
+// };
 
 //Write to firestore
 // db.collection("enemy").doc("004").set({
