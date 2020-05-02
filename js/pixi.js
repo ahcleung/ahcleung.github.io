@@ -1849,6 +1849,10 @@ function onCreatureDown(){
 						deltaHP = skillsList.data.skills[selectedSkill].heal;
 						effectiveness = 1;
 						crit = 1;
+					}else if(attack == 0 && defense == 0){
+						deltaHP = 0;
+						effectiveness = 1;
+						crit = 1;
 					}else{
 						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 					}
@@ -2093,6 +2097,10 @@ function onCreatureDown(){
 				if(skillsList.data.skills[selectedSkill].heal > 0){
 					//calculate how much to heal
 					deltaHP = skillsList.data.skills[selectedSkill].heal;
+					effectiveness = 1;
+					crit = 1;
+				}else if(attack == 0 && defense == 0){
+					deltaHP = 0;
 					effectiveness = 1;
 					crit = 1;
 				}else{
