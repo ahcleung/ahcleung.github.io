@@ -2100,7 +2100,7 @@ function onCreatureDown(){
 					effectiveness = 1;
 					crit = 1;
 				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-					other = false;
+					other = true;
 				}else{
 					deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 				}
