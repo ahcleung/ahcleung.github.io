@@ -1844,9 +1844,9 @@ function onCreatureDown(){
 					// console.log("Effectiveness: " + effectiveness);
 
 					//Calculate heal amount or damage amount
-					if(attack == 0 && defense == 0){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
-						deltaHP = 25;
+						deltaHP = skillsList.data.skills[selectedSkill].heal;
 						effectiveness = 1;
 						crit = 1;
 					}else{
@@ -1861,7 +1861,7 @@ function onCreatureDown(){
 					console.log(targeted + " takes " + deltaHP + " damage");
 
 					if(targeted > 0){
-						if(attack == 0 && defense == 0){
+						if(skillsList.data.skills[selectedSkill].heal > 0){
 							heroArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
 							heroArray[targetedIndex].damage(deltaHP);		//subtract damage
@@ -1903,7 +1903,7 @@ function onCreatureDown(){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
-						if(attack == 0 && defense == 0){
+						if(skillsList.data.skills[selectedSkill].heal > 0){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
 							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
@@ -1942,7 +1942,7 @@ function onCreatureDown(){
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 					}else{
-						if(attack == 0 && defense == 0){
+						if(skillsList.data.skills[selectedSkill].heal > 0){
 							enemyArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
 							enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
@@ -1984,7 +1984,7 @@ function onCreatureDown(){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 						}
 
-						if(attack == 0 && defense == 0){
+						if(skillsList.data.skills[selectedSkill].heal > 0){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
@@ -2088,8 +2088,16 @@ function onCreatureDown(){
 				// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
 				// console.log("Defender element: " + defendElements);
 				// console.log("Effectiveness: " + effectiveness);
-				
-				deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+
+				//Calculate heal amount or damage amount
+				if(skillsList.data.skills[selectedSkill].heal > 0){
+					//calculate how much to heal
+					deltaHP = skillsList.data.skills[selectedSkill].heal;
+					effectiveness = 1;
+					crit = 1;
+				}else{
+					deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+				}
 
 				if(crit > 1){
 					console.log("Critical damage: " + Math.floor(deltaHP/3));
@@ -2099,7 +2107,7 @@ function onCreatureDown(){
 				console.log(targeted + " takes " + deltaHP + " damage");
 
 				if(targeted > 0){
-					if(attack == 0 && defense == 0){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
 						heroArray[targetedIndex].heal(deltaHP);				//add heal
 					}else{
 						heroArray[targetedIndex].damage(deltaHP);			//subtract damage
@@ -2142,7 +2150,7 @@ function onCreatureDown(){
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
-					if(attack == 0 && defense == 0){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
@@ -2180,7 +2188,7 @@ function onCreatureDown(){
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 				}else{
-					if(attack == 0 && defense == 0){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
 						enemyArray[targetedIndex].heal(deltaHP);			//add heal
 					}else{
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
@@ -2222,7 +2230,7 @@ function onCreatureDown(){
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
 
-					if(attack == 0 && defense == 0){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
@@ -2266,7 +2274,6 @@ function onCreatureDown(){
 				moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
 			}
 
-
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
 				var identifier = [];
@@ -2288,15 +2295,11 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveTargetArray.length > 0){
-		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-		
 		clickedTarget = this.identifier[1];
 		console.log("Clicked move target index: " + clickedTarget);
 		var correctTarget = false;
 		var targetedVita = 0;
-		var displacement = 0;
 
-		// var movePositions = [];
 		validMoveTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
@@ -2317,29 +2320,20 @@ function onCreatureDown(){
 
 		if(selectedVita > 0){
 			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveTargetArray[targetedVita]){
-					moveTo = orderIndex;
-				}
-				if(creatureInitialOrder == selectedVita-1){
-					moveFrom = orderIndex;
-				}
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
+				if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
 			});
 		}else{
 			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita])){
-					moveTo = orderIndex;
-				}
-				if(creatureInitialOrder == Math.abs(selectedVita)-1){
-					moveFrom = orderIndex;
-				}
+				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
+				if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
 			});
 		}
 
-		displacement = moveFrom - moveTo;
+		var displacement = moveFrom - moveTo;
 
 		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-
 			// console.log(selectedVita + " moves: " + displacement);
 			moveCreature(selectedVita, displacement);
 			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
@@ -2367,23 +2361,14 @@ function onCreatureDown(){
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
-//function moveCreature(movingCreature, moveToCreature)
 function moveCreature(movingCreature, displacement){
 	if(movingCreature > 0){
 		var moveFrom;
-		// var moveTo;
-
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			// if(creatureInitialOrder == targetedVita){
-			// 	moveTo = orderIndex;
-			// }
-			if(creatureInitialOrder == movingCreature-1){
-				moveFrom = orderIndex;
-			}
+			if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
-
 		console.log(moveFrom + " wants to move to: " + moveTo);
 		heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
 
@@ -2423,9 +2408,8 @@ function moveCreature(movingCreature, displacement){
 
 			//Hero HP and dmg containers
 			var switcher = 0;
-			if(arrayCreature.size > 1){
-				switcher = 1;
-			}
+			if(arrayCreature.size > 1)	switcher = 1
+
 			switch(arrayCreature.pos) {
 				case 1:
 					newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
@@ -2447,33 +2431,18 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
-
 			// console.log(arrayCreature.pos);
 		});
 	}else{
 		var moveFrom;
-		// var moveTo;
 		//Find index number for moveTo target and moveFrom selected
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			// if(creatureInitialOrder == Math.abs(targetedVita)){
-			// 	moveTo = orderIndex;
-			// }
-			if(creatureInitialOrder == Math.abs(movingCreature)-1){
-				moveFrom = orderIndex;
-			}
+			if(creatureInitialOrder == Math.abs(movingCreature)-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
-
 		console.log(moveFrom + " wants to move to: " + moveTo);
-		// console.log(enemyOrder);
 		enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
-		// console.log(enemyOrder);
-
-		// enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-		// 	console.log(arrayCreature.pos);
-		// });
-
 
 		enemyOrder.forEach((creatureIndex,arrayIndex) => {
 			if(arrayIndex == 0){
@@ -2517,7 +2486,6 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
-
 			// console.log(arrayCreature.pos);
 		});
 	}
@@ -2717,27 +2685,17 @@ function onSkillDown(){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;						
-							stageSide = -1;
-							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
-						}else{stageSide = 0;}
+							validSkillTargetArray.push((arrayCreatureIndex+1)*-1);
+						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;
-							stageSide = -1;
-							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
-						}else{stageSide = 0;}
-					}
-					// if(stageSide != 0){
-					// 	var alreadyAdded = false;
-					// 	validSkillTargetArray.forEach(targeted => {
-					// 		if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-					// 	});
-					// 	if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
-					// 	// validSkillTargetArray.push(arrayCreature.pos*stageSide);
-					// }					
+							validSkillTargetArray.push((arrayCreatureIndex+1)*-1);
+						}
+					}				
 				});
 			}else{
 				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
@@ -2745,27 +2703,17 @@ function onSkillDown(){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
-							stageSide = 1;
-							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
-						}else{stageSide = 0;}
+							validSkillTargetArray.push(arrayCreatureIndex+1);
+						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
-							stageSide = 1;
-							validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide);
-						}else{stageSide = 0;}
-					}
-					// if(stageSide != 0){
-					// 	var alreadyAdded = false;
-					// 	validSkillTargetArray.forEach(targeted => {
-					// 		if(targeted == arrayCreature.pos*stageSide)	alreadyAdded = true
-					// 	});
-					// 	if(!alreadyAdded)	validSkillTargetArray.push((arrayCreatureIndex+1)*stageSide)
-					// 	// validSkillTargetArray.push(arrayCreature.pos*stageSide);
-					// }			
+							validSkillTargetArray.push(arrayCreatureIndex+1);
+						}
+					}			
 				});
 			}
 		}
