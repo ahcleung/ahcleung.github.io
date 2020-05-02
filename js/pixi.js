@@ -1777,6 +1777,7 @@ function onCreatureDown(){
 				validSkillTargetArray[targetedVita].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
 					var targetedIndex = Math.abs(targeted)-1;
+					var other = false;
 					var deltaHP = 0;
 					var level = 0;
 					var attack = 0;
@@ -1849,10 +1850,8 @@ function onCreatureDown(){
 						deltaHP = skillsList.data.skills[selectedSkill].heal;
 						effectiveness = 1;
 						crit = 1;
-					}else if(attack == 0 && defense == 0){
-						deltaHP = 0;
-						effectiveness = 1;
-						crit = 1;
+					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+						other = true;
 					}else{
 						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 					}
@@ -1864,7 +1863,7 @@ function onCreatureDown(){
 
 					console.log(targeted + " takes " + deltaHP + " damage");
 
-					if(targeted > 0){
+					if(targeted > 0 && !other){
 						if(skillsList.data.skills[selectedSkill].heal > 0){
 							heroArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
@@ -1945,7 +1944,7 @@ function onCreatureDown(){
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-					}else{
+					}else if(targeted < 0 && !other){
 						if(skillsList.data.skills[selectedSkill].heal > 0){
 							enemyArray[targetedIndex].heal(deltaHP);			//add heal
 						}else{
@@ -2039,6 +2038,7 @@ function onCreatureDown(){
 				var defense = 0;
 				var defendElements = [];
 				var effectiveness = 1;
+				var other = false;
 				if(selectedVita > 0){
 					level = heroArray[selectedIndex].level;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -2099,10 +2099,8 @@ function onCreatureDown(){
 					deltaHP = skillsList.data.skills[selectedSkill].heal;
 					effectiveness = 1;
 					crit = 1;
-				}else if(attack == 0 && defense == 0){
-					deltaHP = 0;
-					effectiveness = 1;
-					crit = 1;
+				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+					other = false;
 				}else{
 					deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 				}
@@ -2114,7 +2112,7 @@ function onCreatureDown(){
 
 				console.log(targeted + " takes " + deltaHP + " damage");
 
-				if(targeted > 0){
+				if(targeted > 0 && !other){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						heroArray[targetedIndex].heal(deltaHP);				//add heal
 					}else{
@@ -2195,7 +2193,7 @@ function onCreatureDown(){
 					
 					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-				}else{
+				}else if(targeted < 0 && !other){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						enemyArray[targetedIndex].heal(deltaHP);			//add heal
 					}else{
