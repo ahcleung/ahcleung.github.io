@@ -828,13 +828,13 @@ function setup(){
 	attackSprite3.visible = 0;
 	attackSprite4.visible = 0;
 
-	attackSprite1.x = 0;
+	attackSprite1.x = 50;
 	attackSprite2.x = 100;
 	attackSprite3.x = 200;
 	attackSprite4.x = 300;
 	
 	actionTween = new TimelineMax({paused: true});
-	actionTween.to(attackSprite1, 0.33, {ease:Expo.easeOut, x:50});
+	actionTween.to(attackSprite1, 0.33, {ease:Expo.easeOut, x:-50});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
