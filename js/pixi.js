@@ -824,17 +824,25 @@ function setup(){
 	attackSprite4.scale.set(0.55);
 	attackSprite4.anchor.set(0, 1);
 
-	attackSprite2.visible = 0;
-	attackSprite3.visible = 0;
-	attackSprite4.visible = 0;
+	attackSprite2.visible = false;
+	attackSprite3.visible = false;
+	attackSprite4.visible = false;
 
 	attackSprite1.x = 50;
 	attackSprite2.x = 100;
-	attackSprite3.x = 200;
-	attackSprite4.x = 300;
+	attackSprite3.x = 100;
+	attackSprite4.x = 100;
 	
-	actionTween = new TimelineMax({paused: true});
-	actionTween.to(attackSprite1, 0.33, {ease:Expo.easeOut, x:-50});
+	// actionTween = new TimelineMax({paused: true});
+	actionTween = TweenMax.to(paused:true, attackSprite1, 0.33, {ease:Expo.easeOut, x:-50, onComplete: function(){
+		attackSprite1.visible = true;
+		attackSprite2.visible = true;
+		attackSprite3.visible = true;
+		attackSprite4.visible = true;
+		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+	}});
+
+	var actionTween2 = new TimelineMax({paused: true});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
