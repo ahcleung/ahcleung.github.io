@@ -806,7 +806,7 @@ function setup(){
 	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 	attackSprite.scale.set(0.5);
 	
-
+	heroRoster.addChild(attackSprite);
 
 
 
@@ -842,7 +842,7 @@ function setup(){
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
 
-	app.stage.addChild(attackSprite);
+
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
