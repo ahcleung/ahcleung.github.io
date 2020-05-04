@@ -36,6 +36,9 @@ loader
 		"js/elements.json",
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_physical_ready.png'},
+		{name:'gorilla3_p_attack', url:'img/gorilla3_physical_attack.png'},
+		{name:'gorilla3_p_fxBack', url:'img/gorilla3_physical_fxBack.png'},
+		{name:'gorilla3_p_fxTop', url:'img/gorilla3_physical_fxTop.png'},
 	
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
@@ -806,10 +809,34 @@ function setup(){
 	additionalContainer.visible = false;
 
 
-	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
-	attackSprite.scale.set(0.5);
+	let attackSprite1 = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
+	let attackSprite2 = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
+	let attackSprite3 = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
+	let attackSprite4 = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
+
+	attackSprite1.scale.set(0.5);
+	attackSprite2.scale.set(0.5);
+	attackSprite3.scale.set(0.5);
+	attackSprite4.scale.set(0.5);
+
+	attackSprite1.x = 0;
+	attackSprite2.x = 100;
+	attackSprite3.x = 200;
+	attackSprite4.x = 300;
 	
-	tempContainer.addChild(attackSprite);
+	var actionTween = new TimelineMax({paused: true});
+
+
+	// var dmgPopupTween = new TimelineMax({paused: true});
+	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
+	// dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
+	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
+	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+
+	tempContainer.addChild(attackSprite1);
+	tempContainer.addChild(attackSprite2);
+	tempContainer.addChild(attackSprite3);
+	tempContainer.addChild(attackSprite4);
 
 
 
@@ -1231,7 +1258,7 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	tempContainer.position.set(app.screen.width*1/3, app.screen.height/2);
+	tempContainer.position.set(margin, app.screen.height*1/3);
 	
 	var skillSelectPadding = 5;
 	
