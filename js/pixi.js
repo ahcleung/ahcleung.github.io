@@ -815,6 +815,8 @@ function setup(){
 	let attackSprite4 = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
 
 	attackSprite1.scale.set(0.5);
+	attackSprite1.anchor.set(0, 1);
+
 	attackSprite2.scale.set(0.5);
 	attackSprite3.scale.set(0.5);
 	attackSprite4.scale.set(0.5);
