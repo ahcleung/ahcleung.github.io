@@ -810,35 +810,35 @@ function setup(){
 	additionalContainer.visible = false;
 
 
-	let attackSprite1 = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
-	let attackSprite2 = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
-	let attackSprite3 = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
-	let attackSprite4 = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
+	let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
+	let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
+	let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
+	let attackSpriteTop = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
 
-	attackSprite1.scale.set(0.55);
-	attackSprite1.anchor.set(0, 1);
-	attackSprite2.scale.set(0.55);
-	attackSprite2.anchor.set(0, 1);
-	attackSprite3.scale.set(0.55);
-	attackSprite3.anchor.set(0, 1);
-	attackSprite4.scale.set(0.55);
-	attackSprite4.anchor.set(0, 1);
+	attackSpriteReady.scale.set(0.55);
+	attackSpriteReady.anchor.set(0, 1);
+	attackSpriteAttack.scale.set(0.55);
+	attackSpriteAttack.anchor.set(0, 1);
+	attackSpriteBack.scale.set(0.55);
+	attackSpriteBack.anchor.set(0, 1);
+	attackSpriteTop.scale.set(0.55);
+	attackSpriteTop.anchor.set(0, 1);
 
-	attackSprite2.visible = false;
-	attackSprite3.visible = false;
-	attackSprite4.visible = false;
+	attackSpriteAttack.visible = false;
+	attackSpriteBack.visible = false;
+	attackSpriteTop.visible = false;
 
-	attackSprite1.x = 50;
-	attackSprite2.x = 100;
-	attackSprite3.x = 100;
-	attackSprite4.x = 100;
+	attackSpriteReady.x = 50;
+	attackSpriteAttack.x = 100;
+	attackSpriteBack.x = 100;
+	attackSpriteTop.x = 100;
 	
 	// actionTween = new TimelineMax({paused: true});
-	actionTween = TweenMax.to(attackSprite1, 0.33, {paused:true, ease:Expo.easeOut, x:-50, onComplete: function(){
-		attackSprite1.visible = true;
-		attackSprite2.visible = true;
-		attackSprite3.visible = true;
-		attackSprite4.visible = true;
+	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:Expo.easeOut, x:-50, onComplete: function(){
+		attackSpriteReady.visible = false;
+		attackSpriteAttack.visible = true;
+		attackSpriteBack.visible = true;
+		attackSpriteTop.visible = true;
 		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 	}});
 
@@ -850,10 +850,10 @@ function setup(){
 	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	tempContainer.addChild(attackSprite1);
-	tempContainer.addChild(attackSprite2);
-	tempContainer.addChild(attackSprite3);
-	tempContainer.addChild(attackSprite4);
+	tempContainer.addChild(attackSpriteReady);
+	tempContainer.addChild(attackSpriteBack);
+	tempContainer.addChild(attackSpriteAttack);	
+	tempContainer.addChild(attackSpriteTop);
 
 
 
