@@ -804,8 +804,8 @@ function setup(){
 	additionalContainer.visible = false;
 
 	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
-
-	app.stage.addChild(attackSprite);
+	attackSprite.scale.set(0.5);
+	
 
 
 
@@ -841,6 +841,8 @@ function setup(){
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
+
+	app.stage.addChild(attackSprite);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
