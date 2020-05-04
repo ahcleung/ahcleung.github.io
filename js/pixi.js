@@ -34,6 +34,8 @@ loader
 		"js/creatures.json",
 		"js/skills.json",
 		"js/elements.json",
+
+		{name:'gorilla3_p_ready', url:'img/gorilla3_physical_ready.png'},
 	
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
@@ -800,6 +802,29 @@ function setup(){
 	additionalArray.push(btnAdditionalSkip);
 
 	additionalContainer.visible = false;
+
+	let attackSprite = statusEffect = new PIXI.Sprite(resources.gorilla3_p_ready);
+
+	app.stage.addChild(attackSprite);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	//Add containers to stage
 	app.stage.addChild(btnSettings);			//Settings button
