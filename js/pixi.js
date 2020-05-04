@@ -831,6 +831,7 @@ function setup(){
 	attackSpriteReady.x = 50;
 	attackSpriteAttack.x = 150;
 	attackSpriteBack.x = 0;
+	attackSpriteBack.y = -50
 	attackSpriteTop.x = 0;
 	
 	// actionTween = new TimelineMax({paused: true});
