@@ -816,10 +816,12 @@ function setup(){
 
 	attackSprite1.scale.set(0.5);
 	attackSprite1.anchor.set(0, 1);
-
 	attackSprite2.scale.set(0.5);
+	attackSprite2.anchor.set(0, 1);
 	attackSprite3.scale.set(0.5);
+	attackSprite3.anchor.set(0, 1);
 	attackSprite4.scale.set(0.5);
+	attackSprite4.anchor.set(0, 1);
 
 	attackSprite1.x = 0;
 	attackSprite2.x = 100;
@@ -1260,7 +1262,7 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	tempContainer.position.set(margin, app.screen.height*1/3);
+	tempContainer.position.set(margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
 	
