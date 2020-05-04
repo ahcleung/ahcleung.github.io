@@ -272,6 +272,7 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
+var actionTween;
 
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
@@ -823,13 +824,17 @@ function setup(){
 	attackSprite4.scale.set(0.55);
 	attackSprite4.anchor.set(0, 1);
 
+	attackSprite2.visible = 0;
+	attackSprite3.visible = 0;
+	attackSprite4.visible = 0;
+
 	attackSprite1.x = 0;
 	attackSprite2.x = 100;
 	attackSprite3.x = 200;
 	attackSprite4.x = 300;
 	
-	var actionTween = new TimelineMax({paused: true});
-
+	actionTween = new TimelineMax({paused: true});
+	actionTween.to(attackSprite1, 0.33, {ease:Expo.easeOut, x:50});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
@@ -2997,6 +3002,8 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	additionalContainer.visible = true;
+
+	actionTween.play(0);
 	// tween.invalidate();
 	// tween.play(0);
 }
