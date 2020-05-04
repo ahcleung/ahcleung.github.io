@@ -803,7 +803,7 @@ function setup(){
 
 	additionalContainer.visible = false;
 
-	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready);
+	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 
 	app.stage.addChild(attackSprite);
 
