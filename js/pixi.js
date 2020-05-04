@@ -831,9 +831,9 @@ function setup(){
 	attackSpriteReady.x = 50;
 	attackSpriteAttack.x = 150;
 	attackSpriteBack.x = 0;
-	attackSpriteBack.y = -15;
+	attackSpriteBack.y = -20;
 	attackSpriteTop.x = 0;
-	attackSpriteTop.y = -15;
+	attackSpriteTop.y = -20;
 	
 	// actionTween = new TimelineMax({paused: true});
 	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:Expo.easeOut, x:-50, onComplete: function(){
