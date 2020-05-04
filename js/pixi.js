@@ -847,8 +847,8 @@ function setup(){
 
 	var actionTween2 = new TimelineMax({paused: true});
 	actionTween2.to(attackSpriteBack, 1, {ease:Expo.easeOut, x: 350});
-	actionTween2.to(attackSpriteAttack, 1, {ease:Expo.easeOut, x: 400},0);
-	actionTween2.to(attackSpriteTop, 1, {ease:Expo.easeOut, x: 450},0);
+	actionTween2.to(attackSpriteAttack, 1, {ease:Expo.easeOut, x: 300},0);
+	actionTween2.to(attackSpriteTop, 1, {ease:Expo.easeOut, x: 350},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
