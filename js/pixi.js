@@ -839,7 +839,7 @@ function setup(){
 		attackSpriteAttack.visible = true;
 		attackSpriteBack.visible = true;
 		attackSpriteTop.visible = true;
-		actionTween2.play(0);
+		// actionTween2.play(0);
 		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 	}});
 
