@@ -268,6 +268,8 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 
 const rectTemp = new PIXI.Graphics();
 
+const tempContainer = new PIXI.Container();
+
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
 
@@ -803,10 +805,11 @@ function setup(){
 
 	additionalContainer.visible = false;
 
+
 	let attackSprite = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 	attackSprite.scale.set(0.5);
 	
-	heroRoster.addChild(attackSprite);
+	tempContainer.addChild(attackSprite);
 
 
 
@@ -842,7 +845,7 @@ function setup(){
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
 
-
+	app.stage.addChild(tempContainer);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1228,7 +1231,7 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	// tempContainer.position.set(app.screen.width/2, app.screen.height/2);
+	tempContainer.position.set(app.screen.width*1/3, app.screen.height/2);
 	
 	var skillSelectPadding = 5;
 	
