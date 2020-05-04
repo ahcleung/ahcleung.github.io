@@ -829,9 +829,9 @@ function setup(){
 	attackSpriteTop.visible = false;
 
 	attackSpriteReady.x = 50;
-	attackSpriteAttack.x = 100;
-	attackSpriteBack.x = 100;
-	attackSpriteTop.x = 100;
+	attackSpriteAttack.x = 150;
+	attackSpriteBack.x = 150;
+	attackSpriteTop.x = 150;
 	
 	// actionTween = new TimelineMax({paused: true});
 	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:Expo.easeOut, x:-50, onComplete: function(){
@@ -839,10 +839,14 @@ function setup(){
 		attackSpriteAttack.visible = true;
 		attackSpriteBack.visible = true;
 		attackSpriteTop.visible = true;
+		actionTween2.play(0);
 		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 	}});
 
 	var actionTween2 = new TimelineMax({paused: true});
+	actionTween2.to(attackSpriteBack, 1, {ease:Expo.easeOut, x: 300});
+	actionTween2.to(attackSpriteAttack, 1, {ease:Expo.easeOut, x: 350},0);
+	actionTween2.to(attackSpriteTop, 1, {ease:Expo.easeOut, x: 400},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
