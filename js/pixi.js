@@ -834,7 +834,7 @@ function setup(){
 	attackSprite4.x = 100;
 	
 	// actionTween = new TimelineMax({paused: true});
-	actionTween = TweenMax.to(paused:true, attackSprite1, 0.33, {ease:Expo.easeOut, x:-50, onComplete: function(){
+	actionTween = TweenMax.to(attackSprite1, 0.33, {paused:true, ease:Expo.easeOut, x:-50, onComplete: function(){
 		attackSprite1.visible = true;
 		attackSprite2.visible = true;
 		attackSprite3.visible = true;
