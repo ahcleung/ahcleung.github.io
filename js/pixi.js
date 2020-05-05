@@ -2051,6 +2051,7 @@ function onCreatureDown(){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
 						}else if(deltaHP == 0){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
 						}else{
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
@@ -2116,7 +2117,7 @@ function onCreatureDown(){
 						}
 
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;					
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
@@ -2132,6 +2133,9 @@ function onCreatureDown(){
 						}else if(effectiveness == 4){
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+						}else if(deltaHP == 0){
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
 						}else{
 							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
