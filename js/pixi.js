@@ -862,7 +862,7 @@ function setup(){
 	}});
 
 	var actionTween2 = new TimelineMax({paused: true});
-	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 150});
+	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
 	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
 	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
 
