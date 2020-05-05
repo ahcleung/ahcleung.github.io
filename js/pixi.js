@@ -39,6 +39,10 @@ loader
 		{name:'gorilla3_p_attack', url:'img/gorilla3_physical_attack.png'},
 		{name:'gorilla3_p_fxBack', url:'img/gorilla3_physical_fxBack.png'},
 		{name:'gorilla3_p_fxTop', url:'img/gorilla3_physical_fxTop.png'},
+
+		{name:'toad3_d_ready', url:'img/toad3_defend_ready.png'},
+		{name:'toad3_d_miss', url:'img/toad3_defend_miss.png'},
+		{name:'toad3_d_damage', url:'img/toad3_defend_damage.png'},
 	
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
@@ -272,6 +276,7 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
+const tempContainer2 = new PIXI.Container();
 // var actionTween1;
 let rectFade;
 
@@ -828,6 +833,17 @@ function setup(){
 	let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
 	let attackSpriteTop = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
 
+	let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
+	let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
+
+	defendSpriteReady.scale.set(-0.55, 0.55);
+	defendSpriteReady.anchor.set(0,1);
+	defendSpriteReady.scale.set(-0.55, 0.55);
+	defendSpriteReady.anchor.set(0,1);
+
+	defendSpriteReady.x = 200;
+	defendSpriteMiss.x = 100;
+
 	attackSpriteReady.scale.set(0.55);
 	attackSpriteReady.anchor.set(0, 1);
 	attackSpriteAttack.scale.set(0.55);
@@ -877,6 +893,9 @@ function setup(){
 	tempContainer.addChild(attackSpriteAttack);	
 	tempContainer.addChild(attackSpriteTop);
 
+	tempContainer2.addChild(defendSpriteReady);
+	tempContainer2.addChild(defendSpriteMiss);
+
 
 
 
@@ -914,6 +933,7 @@ function setup(){
 	app.stage.addChild(rectFade);
 
 	app.stage.addChild(tempContainer);
+	app.stage.addChild(tempContainer2);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1304,6 +1324,7 @@ function resize() {
 	// rectFade.position.set(0, 0);
 
 	tempContainer.position.set(margin, app.screen.height*3/4);
+	tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
 	
