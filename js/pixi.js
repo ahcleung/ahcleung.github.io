@@ -1975,9 +1975,9 @@ function onCreatureDown(){
 					}
 
 					if(skillsList.data.skills[selectedSkill].accuracy == 110){
-						var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-					}else{
 						var hitChance = 1;
+					}else{
+						var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
 					}
 					var hitRoll = Math.random();
 
@@ -2255,10 +2255,11 @@ function onCreatureDown(){
 				}
 
 				if(skillsList.data.skills[selectedSkill].accuracy == 110){
-					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-				}else{
 					var hitChance = 1;
+				}else{
+					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;					
 				}
+
 				var hitRoll = Math.random();
 
 				if(hitRoll < hitChance){
