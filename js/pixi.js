@@ -836,10 +836,10 @@ function setup(){
 	let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
 	let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
 
-	defendSpriteReady.scale.set(-0.55, 0.55);
+	defendSpriteReady.scale.set(-0.6, 0.6);
 	defendSpriteReady.anchor.set(0,1);
-	defendSpriteReady.scale.set(-0.55, 0.55);
-	defendSpriteReady.anchor.set(0,1);
+	defendSpriteMiss.scale.set(-0.6, 0.6);
+	defendSpriteMiss.anchor.set(0,1);
 
 	defendSpriteReady.x = 200;
 	defendSpriteMiss.x = 100;
