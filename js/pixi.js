@@ -1980,9 +1980,9 @@ function onCreatureDown(){
 					var hitRoll = Math.random();
 
 					if(hitRoll < hitChance){
-						console.log("Hit chance: " + hitChance + " : HIT");
+						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
 					}else{
-						console.log("Hit chance: " + hitChance + " : MISS");
+						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
 					}					
 
 					//Get defenders elements to calculate effectiveness
