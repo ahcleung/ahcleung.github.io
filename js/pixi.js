@@ -835,10 +835,10 @@ function setup(){
 	attackSpriteTop.x = 0;
 	attackSpriteTop.y = -20;
 	
-	easeCustom = CustomEase.create("custom", "M0,0 C0,0 0.00042,0.19394 0.00531,0.31901 0.00822,0.39326 0.00919,0.43567 0.01989,0.50787 0.03652,0.61998 0.04784,0.69539 0.07614,0.79659 0.08512,0.82871 0.10332,0.85094 0.12317,0.87722 0.13266,0.88977 0.14386,0.89659 0.15807,0.90499 0.17834,0.91698 0.19294,0.92596 0.21573,0.93195 0.29211,0.95204 0.34348,0.96297 0.42465,0.9751 0.4941,0.98547 0.53498,0.98723 0.60656,0.99033 0.76088,0.99701 1,1 1,1 ");
+	CustomEase.create("custom", "M0,0 C0,0 0.00042,0.19394 0.00531,0.31901 0.00822,0.39326 0.00919,0.43567 0.01989,0.50787 0.03652,0.61998 0.04784,0.69539 0.07614,0.79659 0.08512,0.82871 0.10332,0.85094 0.12317,0.87722 0.13266,0.88977 0.14386,0.89659 0.15807,0.90499 0.17834,0.91698 0.19294,0.92596 0.21573,0.93195 0.29211,0.95204 0.34348,0.96297 0.42465,0.9751 0.4941,0.98547 0.53498,0.98723 0.60656,0.99033 0.76088,0.99701 1,1 1,1 ");
 
 	// actionTween = new TimelineMax({paused: true});
-	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:easeCustom, x:-50, onComplete: function(){
+	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:custom, x:-50, onComplete: function(){
 		attackSpriteReady.visible = false;
 		attackSpriteAttack.visible = true;
 		attackSpriteBack.visible = true;
@@ -848,9 +848,9 @@ function setup(){
 	}});
 
 	var actionTween2 = new TimelineMax({paused: true});
-	actionTween2.to(attackSpriteBack, 1, {ease:easeCustom, x: 150});
-	actionTween2.to(attackSpriteAttack, 1, {ease:easeCustom, x: 360},0);
-	actionTween2.to(attackSpriteTop, 1, {ease:easeCustom, x: 255},0);
+	actionTween2.to(attackSpriteBack, 1, {ease:custom, x: 150});
+	actionTween2.to(attackSpriteAttack, 1, {ease:custom, x: 360},0);
+	actionTween2.to(attackSpriteTop, 1, {ease:custom, x: 255},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
