@@ -1070,7 +1070,18 @@ function createSprite(direction, item, index){
 
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
+
+	const creatureAction = new PIXI.Container();
+
+	var spriteReady = new PIXI.Sprite(resources[item.code + 'p_ready'].texture);
 	
+	// resources[item.code + 'p_ready']
+	creatureAction.addChild(spriteReady);
+
+
+
+
+
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
 	creatureContainer.interactive = true;
@@ -1080,8 +1091,10 @@ function createSprite(direction, item, index){
 	
 	if(item.size == 2){		
 		creatureContainer.scale.set(direction * 0.5, 0.5);
+		creatureAction.scale.set(direction * 0.5, 0.5);
 	}else{
 		creatureContainer.scale.set(direction * 0.33, 0.33);
+		creatureAction.scale.set(direction * 0.33, 0.33);
 	}
 	
 	const dmgContainer = new PIXI.Container();
@@ -1357,6 +1370,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroRoster.addChild(creatureContainer);
+		heroRoster.addChild(creatureAction);
 		heroHP.addChild(healthBar);
 		heroDMG.addChild(dmgContainer);
 // 		heroHP.addChild(moveContainer);
@@ -1368,8 +1382,8 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemyRoster.addChild(creatureContainer);
+		enemyRoster.addChild(creatureAction);
 		enemyHP.addChild(healthBar);
-
 		enemyDMG.addChild(dmgContainer);
 // 		enemyHP.addChild(moveContainer);
 	}	
