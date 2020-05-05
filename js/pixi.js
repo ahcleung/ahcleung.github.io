@@ -1073,7 +1073,7 @@ function createSprite(direction, item, index){
 
 	const creatureAction = new PIXI.Container();
 
-	var spriteReady = new PIXI.Sprite(resources[item.code + 'p_ready'].texture);
+	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	
 	// resources[item.code + 'p_ready']
 	creatureAction.addChild(spriteReady);
