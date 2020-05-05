@@ -888,7 +888,7 @@ function setup(){
 	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
 	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
 	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
-	actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400 y: -200},0);
+	actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
