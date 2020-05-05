@@ -40,7 +40,7 @@ loader
 		{name:'gorilla3_p_fxBack', url:'img/gorilla3_physical_fxBack.png'},
 		{name:'gorilla3_p_fxTop', url:'img/gorilla3_physical_fxTop.png'},
 
-		{name:'toad3_d_ready', url:'img/toad3_defend_ready.png'},
+		{name:'toad3_d_ready', url:'img/toad3_defend_ready_105.png'},
 		{name:'toad3_d_miss', url:'img/toad3_defend_miss.png'},
 		{name:'toad3_d_damage', url:'img/toad3_defend_damage.png'},
 	
@@ -836,9 +836,9 @@ function setup(){
 	let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
 	let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
 
-	defendSpriteReady.scale.set(-0.6, 0.6);
+	defendSpriteReady.scale.set(-0.55, 0.55);
 	defendSpriteReady.anchor.set(0,1);
-	defendSpriteMiss.scale.set(-0.6, 0.6);
+	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(0,1);
 
 	defendSpriteReady.x = 200;
