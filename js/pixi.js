@@ -2012,6 +2012,10 @@ function onCreatureDown(){
 						}
 
 						console.log(targeted + " takes " + deltaHP + " damage");
+
+						if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
+							moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+						}
 					}else{
 						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
 						deltaHP = 0;
@@ -2293,6 +2297,10 @@ function onCreatureDown(){
 					}
 
 					console.log(targeted + " takes " + deltaHP + " damage");
+
+					if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
+						moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+					}
 				}else{
 					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
 					deltaHP = 0;
@@ -2468,9 +2476,7 @@ function onCreatureDown(){
 				}
 			}
 
-			if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
-				moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
-			}
+			
 
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
