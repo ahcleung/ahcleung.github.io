@@ -43,7 +43,7 @@ loader
 		{name:'gorilla3_s_attack', url:'img/gorilla3_special_attack.png'},
 		{name:'gorilla3_s_fxBack', url:'img/gorilla3_special_fxBack.png'},
 		{name:'gorilla3_s_fxTop', url:'img/gorilla3_special_fxTop.png'},
-		{name:'gorilla3_d_ready', url:'img/gorilla3_defend_ready_120.png'},
+		{name:'gorilla3_d_ready', url:'img/gorilla3_defend_ready.png'},
 		{name:'gorilla3_d_miss', url:'img/gorilla3_defend_miss.png'},
 		{name:'gorilla3_d_damage', url:'img/gorilla3_defend_damage.png'},
 
@@ -55,7 +55,7 @@ loader
 		{name:'toad3_s_attack', url:'img/toad3_special_attack.png'},
 		{name:'toad3_s_fxBack', url:'img/toad3_special_fxBack.png'},
 		{name:'toad3_s_fxTop', url:'img/toad3_special_fxTop.png'},
-		{name:'toad3_d_ready', url:'img/toad3_defend_ready_120.png'},
+		{name:'toad3_d_ready', url:'img/toad3_defend_ready.png'},
 		{name:'toad3_d_miss', url:'img/toad3_defend_miss.png'},
 		{name:'toad3_d_damage', url:'img/toad3_defend_damage.png'},
 
@@ -67,7 +67,7 @@ loader
 		{name:'goat2_1_s_attack', url:'img/goat2_1_special_attack.png'},
 		{name:'goat2_1_s_fxBack', url:'img/goat2_1_special_fxBack.png'},
 		{name:'goat2_1_s_fxTop', url:'img/goat2_1_special_fxTop.png'},
-		{name:'goat2_1_d_ready', url:'img/goat2_1_defend_ready_120.png'},
+		{name:'goat2_1_d_ready', url:'img/goat2_1_defend_ready.png'},
 		{name:'goat2_1_d_miss', url:'img/goat2_1_defend_miss.png'},
 		{name:'goat2_1_d_damage', url:'img/goat2_1_defend_damage.png'},
 
@@ -79,7 +79,7 @@ loader
 		{name:'goat2_2_s_attack', url:'img/goat2_2_special_attack.png'},
 		{name:'goat2_2_s_fxBack', url:'img/goat2_2_special_fxBack.png'},
 		{name:'goat2_2_s_fxTop', url:'img/goat2_2_special_fxTop.png'},
-		{name:'goat2_2_d_ready', url:'img/goat2_2_defend_ready_120.png'},
+		{name:'goat2_2_d_ready', url:'img/goat2_2_defend_ready.png'},
 		{name:'goat2_2_d_miss', url:'img/goat2_2_defend_miss.png'},
 		{name:'goat2_2_d_damage', url:'img/goat2_2_defend_damage.png'},
 
@@ -91,7 +91,7 @@ loader
 		{name:'hel1_s_attack', url:'img/hel1_special_attack.png'},
 		{name:'hel1_s_fxBack', url:'img/hel1_special_fxBack.png'},
 		{name:'hel1_s_fxTop', url:'img/hel1_special_fxTop.png'},
-		{name:'hel1_d_ready', url:'img/hel1_defend_ready_120.png'},
+		{name:'hel1_d_ready', url:'img/hel1_defend_ready.png'},
 		{name:'hel1_d_miss', url:'img/hel1_defend_miss.png'},
 		{name:'hel1_d_damage', url:'img/hel1_defend_damage.png'},
 
@@ -103,7 +103,7 @@ loader
 		{name:'hel2_s_attack', url:'img/hel2_special_attack.png'},
 		{name:'hel2_s_fxBack', url:'img/hel2_special_fxBack.png'},
 		{name:'hel2_s_fxTop', url:'img/hel2_special_fxTop.png'},
-		{name:'hel2_d_ready', url:'img/hel2_defend_ready_120.png'},
+		{name:'hel2_d_ready', url:'img/hel2_defend_ready.png'},
 		{name:'hel2_d_miss', url:'img/hel2_defend_miss.png'},
 		{name:'hel2_d_damage', url:'img/hel2_defend_damage.png'},
 
@@ -1076,7 +1076,7 @@ function createSprite(direction, item, index){
 	const creatureAction = new PIXI.Container();
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
-	spriteReady.anchor.set(0,1);
+	spriteReady.anchor.set(1);
 	
 	// resources[item.code + 'p_ready']
 	creatureAction.addChild(spriteReady);
