@@ -1921,7 +1921,6 @@ function onCreatureDown(){
 					var dodgeMod = 0;
 					var accMod = 0;
 
-
 					//Get attack stat based on skill used
 					if(selectedVita > 0){
 						level = heroArray[selectedIndex].level;
@@ -1975,8 +1974,11 @@ function onCreatureDown(){
 						hitMod = 3/(Math.abs(accDiff) + 3);
 					}
 
-					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-
+					if(skillsList.data.skills[selectedSkill].accuracy == 110){
+						var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
+					}else{
+						var hitChance = 1;
+					}
 					var hitRoll = Math.random();
 
 					if(hitRoll < hitChance){
@@ -1984,7 +1986,6 @@ function onCreatureDown(){
 						//Get defenders elements to calculate effectiveness
 						defendElements.forEach(defendElement=>{
 							effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-							// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
 						});
 
 						//Critical hit chance
@@ -1993,13 +1994,6 @@ function onCreatureDown(){
 						if(criticalChance > 5000){
 							crit = 1.5;
 						}
-
-						// console.log("Level: " + level);
-						// console.log("Attack: " + attack);
-						// console.log("Defense: " + defense);
-						// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-						// console.log("Defender element: " + defendElements);
-						// console.log("Effectiveness: " + effectiveness);
 
 						//Calculate heal amount or damage amount
 						if(skillsList.data.skills[selectedSkill].heal > 0){
@@ -2016,10 +2010,8 @@ function onCreatureDown(){
 						if(crit > 1){
 							console.log("Critical damage: " + Math.floor(deltaHP/3));
 						}
-						// deltaHP = 25;
 
 						console.log(targeted + " takes " + deltaHP + " damage");
-
 					}else{
 						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
 						deltaHP = 0;
@@ -2200,15 +2192,20 @@ function onCreatureDown(){
 				var targeted = validSkillTargetArray[targetedVita];
 				var selectedIndex = Math.abs(selectedVita)-1;
 				var targetedIndex = Math.abs(targeted)-1;
+				var other = false;
 				var deltaHP = 0;
 				var level = 0;
 				var attack = 0;
 				var defense = 0;
 				var defendElements = [];
-				var effectiveness = 1;
-				var other = false;
+				var effectiveness = 1;				
+				var dodge = 0;
+				var dodgeMod = 0;
+				var accMod = 0;
+
 				if(selectedVita > 0){
 					level = heroArray[selectedIndex].level;
+					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2216,6 +2213,7 @@ function onCreatureDown(){
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
+					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2224,6 +2222,8 @@ function onCreatureDown(){
 				}
 				
 				if(targeted > 0){
+					dodge = heroArray[targetedIndex].dodge;
+					dodgeMod = heroArray[targetedIndex].dodgeMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = heroArray[targetedIndex].pdef;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2233,7 +2233,9 @@ function onCreatureDown(){
 						defendElements.push(element);
 					});
 				}else{
-					level = enemyArray[selectedIndex].level;
+					// level = enemyArray[selectedIndex].level;
+					dodge = enemyArray[targetedIndex].dodge;
+					dodgeMod = enemyArray[targetedIndex].dodgeMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						defense = enemyArray[targetedIndex].pdef;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2243,42 +2245,57 @@ function onCreatureDown(){
 						defendElements.push(element);
 					});
 				}
-				defendElements.forEach(defendElement=>{
-					effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-					// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
-				});
 
-				var criticalChance = Math.floor(Math.random() * 10000);
-				var crit = 1;
-				if(criticalChance > 5000){
-					crit = 1.5;
+				var accDiff = accMod - dodgeMod;
+				var hitMod = 1;
+				if(accDiff > 0){
+					hitMod = (Math.abs(accDiff) + 3)/3;
+				}else if(accDiff < 0){
+					hitMod = 3/(Math.abs(accDiff) + 3);
 				}
 
-				// console.log("Level: " + level);
-				// console.log("Attack: " + attack);
-				// console.log("Defense: " + defense);
-				// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-				// console.log("Defender element: " + defendElements);
-				// console.log("Effectiveness: " + effectiveness);
-
-				//Calculate heal amount or damage amount
-				if(skillsList.data.skills[selectedSkill].heal > 0){
-					//calculate how much to heal
-					deltaHP = skillsList.data.skills[selectedSkill].heal;
-					effectiveness = 1;
-					crit = 1;
-				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-					other = true;
+				if(skillsList.data.skills[selectedSkill].accuracy == 110){
+					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
 				}else{
-					deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+					var hitChance = 1;
 				}
+				var hitRoll = Math.random();
 
-				if(crit > 1){
-					console.log("Critical damage: " + Math.floor(deltaHP/3));
+				if(hitRoll < hitChance){
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
+					//Get defenders elements to calculate effectiveness
+					defendElements.forEach(defendElement=>{
+						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+					});
+
+					//Critical hit chance
+					var criticalChance = Math.floor(Math.random() * 10000);
+					var crit = 1;
+					if(criticalChance > 5000){
+						crit = 1.5;
+					}
+
+					//Calculate heal amount or damage amount
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						//calculate how much to heal
+						deltaHP = skillsList.data.skills[selectedSkill].heal;
+						effectiveness = 1;
+						crit = 1;
+					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+						other = true;
+					}else{
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+					}
+
+					if(crit > 1){
+						console.log("Critical damage: " + Math.floor(deltaHP/3));
+					}
+
+					console.log(targeted + " takes " + deltaHP + " damage");
+				}else{
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
+					deltaHP = 0;
 				}
-				// deltaHP = 25;
-
-				console.log(targeted + " takes " + deltaHP + " damage");
 
 				if(targeted > 0 && !other){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
@@ -2305,6 +2322,9 @@ function onCreatureDown(){
 					}else if(effectiveness == 4){
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					}else if(deltaHP == 0){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
 					}else{
 						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2385,6 +2405,9 @@ function onCreatureDown(){
 					}else if(effectiveness == 4){
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					}else if(deltaHP == 0){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
 					}else{
 						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2444,7 +2467,7 @@ function onCreatureDown(){
 				}
 			}
 
-			if(skillsList.data.skills[selectedSkill].displace[0] != 0){
+			if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
 				moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
 			}
 
