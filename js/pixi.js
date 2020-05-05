@@ -273,7 +273,7 @@ const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
 // var actionTween1;
-// let rectFade;
+let rectFade;
 
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
@@ -810,7 +810,7 @@ function setup(){
 
 	additionalContainer.visible = false;
 
-	let rectFade = new PIXI.Graphics();
+	rectFade = new PIXI.Graphics();
 	rectFade.beginFill(0x2d2d2d);
 	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
 	rectFade.endFill();
