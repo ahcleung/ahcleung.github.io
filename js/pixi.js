@@ -385,6 +385,8 @@ const enemyHPContainerArray = [];		//Array of enemy HP containers
 const skillContainerArray = [];			//Array of skill containers
 const heroArrayDmg = [];				//Array of hero dmg containers
 const enemyArrayDmg = [];				//Array of enemy dmg containers
+const heroActionArray = [];
+const enemyActionArray = [];
 
 const hero = [];
 hero[0] = {
@@ -1076,7 +1078,7 @@ function createSprite(direction, item, index){
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	
 	// resources[item.code + 'p_ready']
-	creatureContainer.addChild(spriteReady);
+	creatureAction.addChild(spriteReady);
 
 
 
@@ -1365,6 +1367,7 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		heroHPContainerArray.push(healthBar);
+		heroActionArray.push(creatureAction);
 		heroArrayDmg.push(dmgContainer);
 		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
@@ -1377,6 +1380,7 @@ function createSprite(direction, item, index){
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		enemyHPContainerArray.push(healthBar);
+		enemyActionArray.push(creatureAction);
 		enemyArrayDmg.push(dmgContainer);
 		enemyOrder.push(index);
 // 		moveEnemyContainerArray.push(moveContainer);
@@ -1528,6 +1532,14 @@ function resize() {
 	});
 	enemyContainerArray.forEach(function (item, index){
 		resizeSprites(-1, item, index)	
+	});
+
+	heroActionArray.forEach(function (item, index){
+		resizeAction(-1, item, index)	
+	});
+
+	enemyActionArray.forEach(function (item, index){
+		resizeAction(-1, item, index)	
 	});
 
 	heroArrayDmg.forEach(function (item, index){
@@ -1887,6 +1899,59 @@ function resizeHP(roster, item, index){
 	item.move.indicatorEnd.height = indicatorEndHeight;	
 	item.move.indicatorEnd.y = indicatorEndY;	
 	item.move.indicatorEnd.x = item.outer.width - 4;
+}
+
+function resizeAction(direction, item, index){
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	if(direction > 0){
+		if(app.screen.width < 860){
+			item.scale.set(direction * 0.23, 0.23);
+		}else if(app.screen.width < 1366){
+			item.scale.set(direction * 0.3, 0.3); 
+		}else{
+			item.scale.set(direction * 0.5, 0.5);
+		}
+		switch(heroArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = -(resizeWidth + healthSpacing);
+				break;
+			case 3:				
+				item.x = -((resizeWidth + healthSpacing) * 2);
+				break;
+			case 4:
+				item.x = -((resizeWidth + healthSpacing) * 3);
+				break;
+			default:
+				item.x = 0;	
+		}
+	}else{
+		if(app.screen.width < 860){
+			item.scale.set(direction * 0.23, 0.23);
+		}else if(app.screen.width < 1366){
+			item.scale.set(direction * 0.3, 0.3); 
+		}else{
+			item.scale.set(direction * 0.5, 0.5);
+		}
+		switch(enemyArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;
+		}
+	}
 }
 
 function resizeSprites(direction, item, index){
