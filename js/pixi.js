@@ -857,6 +857,7 @@ function setup(){
 	attackSpriteTop.scale.set(0.55);
 	attackSpriteTop.anchor.set(0, 1);
 
+	attackSpriteReady.visible = false;
 	attackSpriteAttack.visible = false;
 	attackSpriteBack.visible = false;
 	attackSpriteTop.visible = false;
