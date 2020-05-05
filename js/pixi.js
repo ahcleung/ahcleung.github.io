@@ -848,9 +848,9 @@ function setup(){
 	}});
 
 	var actionTween2 = new TimelineMax({paused: true});
-	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 150});
-	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
-	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
+	actionTween2.to(attackSpriteBack, 5, {ease:"custom", x: 150});
+	actionTween2.to(attackSpriteAttack, 5, {ease:"custom", x: 360},0);
+	actionTween2.to(attackSpriteTop, 5, {ease:"custom", x: 255},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
