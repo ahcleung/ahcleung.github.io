@@ -149,7 +149,7 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
-		this.statMod = [0, -1, 0, 0, 0, 0, 0, 1];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
 			[Math.floor(Math.random() * 14) + 1, 1],
 			[Math.floor(Math.random() * 14) + 1, 3, 5],
@@ -1973,10 +1973,17 @@ function onCreatureDown(){
 						hitMod = (Math.abs(accDiff) + 3)/3;
 					}else if(accDiff < 0){
 						hitMod = 3/(Math.abs(accDiff) + 3);
-					}					
+					}
 
 					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-					console.log("Hit chance: " + hitChance);
+
+					var hitRoll = Math.random();
+
+					if(hitRoll < hitChance){
+						console.log("Hit chance: " + hitChance + " : HIT");
+					}else{
+						console.log("Hit chance: " + hitChance + " : MISS");
+					}					
 
 					//Get defenders elements to calculate effectiveness
 					defendElements.forEach(defendElement=>{
