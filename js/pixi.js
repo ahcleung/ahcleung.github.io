@@ -1981,48 +1981,49 @@ function onCreatureDown(){
 
 					if(hitRoll < hitChance){
 						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
+						//Get defenders elements to calculate effectiveness
+						defendElements.forEach(defendElement=>{
+							effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+							// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
+						});
+
+						//Critical hit chance
+						var criticalChance = Math.floor(Math.random() * 10000);
+						var crit = 1;
+						if(criticalChance > 5000){
+							crit = 1.5;
+						}
+
+						// console.log("Level: " + level);
+						// console.log("Attack: " + attack);
+						// console.log("Defense: " + defense);
+						// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
+						// console.log("Defender element: " + defendElements);
+						// console.log("Effectiveness: " + effectiveness);
+
+						//Calculate heal amount or damage amount
+						if(skillsList.data.skills[selectedSkill].heal > 0){
+							//calculate how much to heal
+							deltaHP = skillsList.data.skills[selectedSkill].heal;
+							effectiveness = 1;
+							crit = 1;
+						}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+							other = true;
+						}else{
+							deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+						}
+
+						if(crit > 1){
+							console.log("Critical damage: " + Math.floor(deltaHP/3));
+						}
+						// deltaHP = 25;
+
+						console.log(targeted + " takes " + deltaHP + " damage");
+
 					}else{
 						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-					}					
-
-					//Get defenders elements to calculate effectiveness
-					defendElements.forEach(defendElement=>{
-						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-						// console.log("Skill element: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement]);
-					});
-
-					//Critical hit chance
-					var criticalChance = Math.floor(Math.random() * 10000);
-					var crit = 1;
-					if(criticalChance > 5000){
-						crit = 1.5;
+						deltaHP = 0;
 					}
-					
-					// console.log("Level: " + level);
-					// console.log("Attack: " + attack);
-					// console.log("Defense: " + defense);
-					// console.log("Power: " + skillsList.data.skills[selectedSkill].power);
-					// console.log("Defender element: " + defendElements);
-					// console.log("Effectiveness: " + effectiveness);
-
-					//Calculate heal amount or damage amount
-					if(skillsList.data.skills[selectedSkill].heal > 0){
-						//calculate how much to heal
-						deltaHP = skillsList.data.skills[selectedSkill].heal;
-						effectiveness = 1;
-						crit = 1;
-					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-						other = true;
-					}else{
-						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-					}
-
-					if(crit > 1){
-						console.log("Critical damage: " + Math.floor(deltaHP/3));
-					}
-					// deltaHP = 25;
-
-					console.log(targeted + " takes " + deltaHP + " damage");
 
 					if(targeted > 0 && !other){
 						if(skillsList.data.skills[selectedSkill].heal > 0){
@@ -2048,6 +2049,8 @@ function onCreatureDown(){
 						}else if(effectiveness == 4){
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+						}else if(deltaHP == 0){
+							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						}else{
 							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
 						}
