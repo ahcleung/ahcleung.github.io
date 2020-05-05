@@ -3033,7 +3033,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	actionTween.play(0);
+	actionTween1.play(0);
 	// tween.invalidate();
 	// tween.play(0);
 }
