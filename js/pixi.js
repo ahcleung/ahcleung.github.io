@@ -272,7 +272,8 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
-var actionTween;
+// var actionTween1;
+// let rectFade;
 
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
@@ -1298,6 +1299,7 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
+	rectFade.position.set(app.screen.width/2, app.screen.height/2);
 	tempContainer.position.set(margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
