@@ -149,7 +149,7 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
-		this.statMod = [0, 0, 0, 0, 0, 0, 0];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
 			[Math.floor(Math.random() * 14) + 1, 1],
 			[Math.floor(Math.random() * 14) + 1, 3, 5],
@@ -197,6 +197,10 @@ class Creature{
 		return this.statCalc[1];
 	}
 
+	get dodgeMod(){
+		return this.statMod[1];
+	}
+
 	get patk(){
 		if(this.statMod[2] > 0){
 			return this.statCalc[2] * ((this.statMod[2]+2)/2);
@@ -239,6 +243,10 @@ class Creature{
 
 	get spd(){
 		return this.statCalc[6];
+	}
+
+	get accMod(){
+		return this.statMod[7];
 	}
 
 // 	get PAtk(){
@@ -912,21 +920,6 @@ function setup(){
 
 	tempContainer2.addChild(defendSpriteReady);
 	tempContainer2.addChild(defendSpriteMiss);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1924,10 +1917,15 @@ function onCreatureDown(){
 					var defense = 0;
 					var defendElements = [];
 					var effectiveness = 1;
+					var dodge = 0;
+					var dodgeMod = 0;
+					var accMod = 0;
+
 
 					//Get attack stat based on skill used
 					if(selectedVita > 0){
 						level = heroArray[selectedIndex].level;
+						accMod = heroArray[selectedIndex].accMod;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = heroArray[selectedIndex].patk;
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -1935,6 +1933,7 @@ function onCreatureDown(){
 						}
 					}else{
 						level = enemyArray[selectedIndex].level;
+						accMod = enemyArray[selectedIndex].accMod;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							attack = enemyArray[selectedIndex].patk;
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -1944,6 +1943,8 @@ function onCreatureDown(){
 
 					//Get defense stat based on skill used					
 					if(targeted > 0){
+						dodge = heroArray[targetedIndex].dodge;
+						dodgeMod = heroArray[targetedIndex].dodgeMod;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = heroArray[targetedIndex].pdef;
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -1953,7 +1954,9 @@ function onCreatureDown(){
 							defendElements.push(element);
 						});
 					}else{
-						level = enemyArray[selectedIndex].level;
+						// level = enemyArray[selectedIndex].level;
+						dodge = enemyArray[targetedIndex].dodge;
+						dodgeMod = enemyArray[targetedIndex].dodgeMod;
 						if(skillsList.data.skills[selectedSkill].type == "phy"){
 							defense = enemyArray[targetedIndex].pdef;
 						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -1963,6 +1966,17 @@ function onCreatureDown(){
 							defendElements.push(element);
 						});
 					}
+
+					var accDiff = accMod - dodgeMod;
+					var hitMod = 1;
+					if(accDiff > 0){
+						hitMod = (Math.abs(accDiff) + 3)/3;
+					}else if(accDiff < 0){
+						hitMod = 3/(Math.abs(accDiff) + 3);
+					}					
+
+					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
+					console.log("Hit chance: " + hitChance);
 
 					//Get defenders elements to calculate effectiveness
 					defendElements.forEach(defendElement=>{
