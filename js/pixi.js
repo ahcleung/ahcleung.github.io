@@ -871,7 +871,6 @@ function setup(){
 	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	tempContainer.addChild(rectFade);
 	tempContainer.addChild(attackSpriteReady);
 	tempContainer.addChild(attackSpriteBack);
 	tempContainer.addChild(attackSpriteAttack);	
@@ -910,6 +909,8 @@ function setup(){
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
+
+	app.stage.addChild(rectFade);
 
 	app.stage.addChild(tempContainer);
 
