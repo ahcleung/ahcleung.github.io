@@ -909,7 +909,7 @@ function setup(){
 	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(0,1);
 
-	defendSpriteReady.visible = false;
+	// defendSpriteReady.visible = false;
 	defendSpriteMiss.visible = false;
 
 	defendSpriteReady.x = 600;
