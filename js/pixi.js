@@ -842,7 +842,7 @@ function setup(){
 	defendSpriteMiss.anchor.set(0,1);
 
 	defendSpriteReady.x = 200;
-	defendSpriteReady.y = -10;
+	defendSpriteReady.y = 10;
 	defendSpriteMiss.x = 100;
 
 	attackSpriteReady.scale.set(0.55);
