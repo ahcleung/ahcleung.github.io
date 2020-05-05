@@ -841,8 +841,8 @@ function setup(){
 	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(0,1);
 
-	// defendSpriteReady.visible = false;
-
+	defendSpriteReady.visible = false;
+	defendSpriteMiss.visible = false;
 
 	defendSpriteReady.x = 600;
 	defendSpriteReady.y = 10;
@@ -877,9 +877,11 @@ function setup(){
 	}});
 	actionTween1.to(attackSpriteReady, 0.33, {ease:"custom", x:-50, onComplete: function(){
 		attackSpriteReady.visible = false;
+		defendSpriteReady.visible = false;
 		attackSpriteAttack.visible = true;
 		attackSpriteBack.visible = true;
 		attackSpriteTop.visible = true;
+		defendSpriteMiss.visible = true;
 		actionTween2.play(0);
 		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 	}});
@@ -888,7 +890,13 @@ function setup(){
 	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
 	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
 	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
-	actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200},0);
+	actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200, onComplete: function(){
+		attackSpriteAttack.visible = false;
+		attackSpriteBack.visible = false;
+		attackSpriteTop.visible = false;
+		defendSpriteMiss.visible = false;
+	}},0);
+	actionTween2.to(rectFade, 0.16, {alpha:0});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
