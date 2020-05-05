@@ -809,6 +809,18 @@ function setup(){
 
 	additionalContainer.visible = false;
 
+	let rectFade = new PIXI.Graphics();
+	rectFade.beginFill(0x2d2d2d);
+	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
+	rectFade.endFill();
+	rectFade.alpha = 0;
+
+	// let outerBar = new PIXI.Graphics();
+	// outerBar.beginFill(0x222222);
+	// outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
+	// outerBar.endFill();
+	// healthBar.addChild(outerBar);
+	// healthBar.outer = outerBar;
 
 	let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 	let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
@@ -837,8 +849,9 @@ function setup(){
 	
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
-	// actionTween = new TimelineMax({paused: true});
-	actionTween = TweenMax.to(attackSpriteReady, 0.33, {paused:true, ease:"custom", x:-50, onComplete: function(){
+	actionTween1 = new TimelineMax({paused: true});
+	actionTween1.to(rectFade, 0.16, {alpha:0.75});
+	actionTween1.to(attackSpriteReady, 0.33, {ease:"custom", x:-50, onComplete: function(){
 		attackSpriteReady.visible = false;
 		attackSpriteAttack.visible = true;
 		attackSpriteBack.visible = true;
@@ -848,9 +861,9 @@ function setup(){
 	}});
 
 	var actionTween2 = new TimelineMax({paused: true});
-	actionTween2.to(attackSpriteBack, 5, {ease:"custom", x: 150});
-	actionTween2.to(attackSpriteAttack, 5, {ease:"custom", x: 360},0);
-	actionTween2.to(attackSpriteTop, 5, {ease:"custom", x: 255},0);
+	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 150});
+	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
+	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
@@ -858,6 +871,7 @@ function setup(){
 	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
+	tempContainer.addChild(rectFade);
 	tempContainer.addChild(attackSpriteReady);
 	tempContainer.addChild(attackSpriteBack);
 	tempContainer.addChild(attackSpriteAttack);	
