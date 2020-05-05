@@ -1299,9 +1299,10 @@ function resize() {
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	rectFade.position.resize(app.screen.width, app.screen.height);
+	rectFade.width = app.screen.width;
+	rectFade.height = app.screen.height;
 	// rectFade.position.set(0, 0);
-	
+
 	tempContainer.position.set(margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
