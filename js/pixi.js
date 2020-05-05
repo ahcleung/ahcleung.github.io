@@ -40,7 +40,7 @@ loader
 		{name:'gorilla3_p_fxBack', url:'img/gorilla3_physical_fxBack.png'},
 		{name:'gorilla3_p_fxTop', url:'img/gorilla3_physical_fxTop.png'},
 
-		{name:'toad3_d_ready', url:'img/toad3_defend_ready_115.png'},
+		{name:'toad3_d_ready', url:'img/toad3_defend_ready_120.png'},
 		{name:'toad3_d_miss', url:'img/toad3_defend_miss.png'},
 		{name:'toad3_d_damage', url:'img/toad3_defend_damage.png'},
 	
