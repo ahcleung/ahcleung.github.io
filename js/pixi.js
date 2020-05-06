@@ -920,9 +920,9 @@ function setup(){
 	// defendSpriteReady.visible = false;
 	// defendSpriteMiss.visible = false;
 
-	// defendSpriteReady.x = 600;
+	defendSpriteReady.x = -50;
 	// defendSpriteReady.y = 10;
-	// defendSpriteMiss.x = 550;
+	defendSpriteMiss.x = -50;
 
 	attackSpriteReady.scale.set(0.55);
 	attackSpriteReady.anchor.set(1);
@@ -938,15 +938,15 @@ function setup(){
 	// attackSpriteBack.visible = false;
 	// attackSpriteTop.visible = false;
 
-	// attackSpriteReady.x = 50;
-	// attackSpriteAttack.x = 50;
-	// attackSpriteBack.x = -100;
+	attackSpriteReady.x = 50;
+	attackSpriteAttack.x = 50;
+	attackSpriteBack.x = 50;
 	// attackSpriteBack.y = -20;
-	// attackSpriteTop.x = -100;
+	attackSpriteTop.x = 50;
 	// attackSpriteTop.y = -20;
 
-	attackContainer.x = 50;
-	defendContainer.x = -50;
+	// attackContainer.x = 50;
+	// defendContainer.x = -50;
 	
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
