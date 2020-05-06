@@ -898,6 +898,9 @@ function setup(){
 	// healthBar.addChild(outerBar);
 	// healthBar.outer = outerBar;
 
+	const attackContainer = new PIXI.Container();
+	const defendContainer = new PIXI.Container();
+
 	let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 	let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
 	let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
@@ -911,8 +914,8 @@ function setup(){
 	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(0,1);
 
-	defendSpriteReady.visible = false;
-	defendSpriteMiss.visible = false;
+	// defendSpriteReady.visible = false;
+	// defendSpriteMiss.visible = false;
 
 	defendSpriteReady.x = 600;
 	defendSpriteReady.y = 10;
@@ -927,10 +930,10 @@ function setup(){
 	attackSpriteTop.scale.set(0.55);
 	attackSpriteTop.anchor.set(0, 1);
 
-	attackSpriteReady.visible = false;
-	attackSpriteAttack.visible = false;
-	attackSpriteBack.visible = false;
-	attackSpriteTop.visible = false;
+	// attackSpriteReady.visible = false;
+	// attackSpriteAttack.visible = false;
+	// attackSpriteBack.visible = false;
+	// attackSpriteTop.visible = false;
 
 	attackSpriteReady.x = 50;
 	attackSpriteAttack.x = 50;
@@ -975,14 +978,24 @@ function setup(){
 	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	tempContainer.addChild(attackSpriteReady);
-	tempContainer.addChild(attackSpriteBack);
-	tempContainer.addChild(attackSpriteAttack);	
-	tempContainer.addChild(attackSpriteTop);
+	attackContainer.addChild(attackSpriteReady);
+	attackContainer.addChild(attackSpriteBack);
+	attackContainer.addChild(attackSpriteAttack);
+	attackContainer.addChild(attackSpriteTop);
 
-	tempContainer2.addChild(defendSpriteReady);
-	tempContainer2.addChild(defendSpriteMiss);
+	defendContainer.addChild(defendSpriteReady);
+	defendContainer.addChild(defendSpriteMiss);
 
+	// tempContainer.addChild(attackSpriteReady);
+	// tempContainer.addChild(attackSpriteBack);
+	// tempContainer.addChild(attackSpriteAttack);	
+	// tempContainer.addChild(attackSpriteTop);
+
+	// tempContainer2.addChild(defendSpriteReady);
+	// tempContainer2.addChild(defendSpriteMiss);
+
+	tempContainer.addChild(attackContainer);
+	tempContainer.addChild(defendContainer);
 
 
 	
@@ -1075,14 +1088,9 @@ function createSprite(direction, item, index){
 
 	const creatureAction = new PIXI.Container();
 
-	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
-	spriteReady.anchor.set(1);
-	
-	// resources[item.code + 'p_ready']
-	
-	// creatureAction.anchor.set(1);
-
-	creatureAction.addChild(spriteReady);
+	// var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
+	// spriteReady.anchor.set(1);
+	// creatureAction.addChild(spriteReady);
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
