@@ -391,7 +391,8 @@ const enemyArrayDmg = [];				//Array of enemy dmg containers
 const heroActionArray = [];
 const enemyActionArray = [];
 
-const actionArray = [];
+const attackArray = [];
+const defendArray = [];
 
 const hero = [];
 hero[0] = {
@@ -983,31 +984,31 @@ function setup(){
 	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
 	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
 
-	attackContainer.addChild(attackSpriteReady);
-	attackContainer.addChild(attackSpriteBack);
-	attackContainer.addChild(attackSpriteAttack);
-	attackContainer.addChild(attackSpriteTop);
+	// attackContainer.addChild(attackSpriteReady);
+	// attackContainer.addChild(attackSpriteBack);
+	// attackContainer.addChild(attackSpriteAttack);
+	// attackContainer.addChild(attackSpriteTop);
 
-	defendContainer.addChild(defendSpriteReady);
-	defendContainer.addChild(defendSpriteMiss);
+	// defendContainer.addChild(defendSpriteReady);
+	// defendContainer.addChild(defendSpriteMiss);
 
 	actionArray.push(attackSpriteReady);
 	actionArray.push(attackSpriteBack);
 	actionArray.push(attackSpriteAttack);
 	actionArray.push(attackSpriteTop);
-	actionArray.push(defendSpriteReady);
-	actionArray.push(defendSpriteMiss);
+	defendArray.push(defendSpriteReady);
+	defendArray.push(defendSpriteMiss);
 
-	// tempContainer.addChild(attackSpriteReady);
-	// tempContainer.addChild(attackSpriteBack);
-	// tempContainer.addChild(attackSpriteAttack);	
-	// tempContainer.addChild(attackSpriteTop);
+	tempContainer.addChild(attackSpriteReady);
+	tempContainer.addChild(attackSpriteBack);
+	tempContainer.addChild(attackSpriteAttack);	
+	tempContainer.addChild(attackSpriteTop);
 
-	// tempContainer2.addChild(defendSpriteReady);
-	// tempContainer2.addChild(defendSpriteMiss);
+	tempContainer.addChild(defendSpriteReady);
+	tempContainer.addChild(defendSpriteMiss);
 
-	tempContainer.addChild(attackContainer);
-	tempContainer.addChild(defendContainer);
+	// tempContainer.addChild(attackContainer);
+	// tempContainer.addChild(defendContainer);
 
 
 	
@@ -3300,7 +3301,7 @@ function onAdditionalDown(){
 	// tween.invalidate();
 	// tween.play(0);
 
-	actionArray[0].zIndex = 5;
+	attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
 	// topLayer
 }
