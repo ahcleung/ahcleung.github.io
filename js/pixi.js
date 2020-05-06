@@ -1076,11 +1076,11 @@ function createSprite(direction, item, index){
 	const creatureAction = new PIXI.Container();
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
-	// spriteReady.anchor.set(1);
+	spriteReady.anchor.set(1);
 	
 	// resources[item.code + 'p_ready']
-	creatureAction.addChild(spriteReady);
-	creatureAction.anchor.set(1);
+	
+	// creatureAction.anchor.set(1);
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
@@ -1096,6 +1096,8 @@ function createSprite(direction, item, index){
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 		creatureAction.scale.set(direction * 0.33, 0.33);
 	}
+
+	creatureAction.x = index * 100;
 	
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
@@ -1532,13 +1534,13 @@ function resize() {
 		resizeSprites(-1, item, index)	
 	});
 
-	heroActionArray.forEach(function (item, index){
-		resizeAction(-1, item, index)	
-	});
+	// heroActionArray.forEach(function (item, index){
+	// 	resizeAction(-1, item, index)	
+	// });
 
-	enemyActionArray.forEach(function (item, index){
-		resizeAction(-1, item, index)	
-	});
+	// enemyActionArray.forEach(function (item, index){
+	// 	resizeAction(-1, item, index)	
+	// });
 
 	heroArrayDmg.forEach(function (item, index){
 		resizeDmg(0, item, index)
