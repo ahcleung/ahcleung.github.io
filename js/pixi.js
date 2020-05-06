@@ -1535,7 +1535,7 @@ function resize() {
 	});
 
 	heroActionArray.forEach(function (item, index){
-		resizeAction(-1, item, index)	
+		resizeAction(1, item, index)	
 	});
 
 	enemyActionArray.forEach(function (item, index){
