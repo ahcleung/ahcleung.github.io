@@ -1096,8 +1096,6 @@ function createSprite(direction, item, index){
 		creatureContainer.scale.set(direction * 0.33, 0.33);
 		creatureAction.scale.set(direction * 0.33, 0.33);
 	}
-
-	// creatureAction.x = index * 100;
 	
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
@@ -1902,57 +1900,57 @@ function resizeHP(roster, item, index){
 }
 
 function resizeAction(direction, item, index){
-	item.x = index * 100;
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	// if(direction > 0){
-	// 	if(app.screen.width < 860){
-	// 		item.scale.set(direction * 0.23, 0.23);
-	// 	}else if(app.screen.width < 1366){
-	// 		item.scale.set(direction * 0.3, 0.3); 
-	// 	}else{
-	// 		item.scale.set(direction * 0.5, 0.5);
-	// 	}
-	// 	switch(heroArray[index].pos) {
-	// 		case 1:
-	// 			item.x = 0;
-	// 			break;
-	// 		case 2:
-	// 			item.x = -(resizeWidth + healthSpacing);
-	// 			break;
-	// 		case 3:				
-	// 			item.x = -((resizeWidth + healthSpacing) * 2);
-	// 			break;
-	// 		case 4:
-	// 			item.x = -((resizeWidth + healthSpacing) * 3);
-	// 			break;
-	// 		default:
-	// 			item.x = 0;	
-	// 	}
-	// }else{
-	// 	if(app.screen.width < 860){
-	// 		item.scale.set(direction * 0.23, 0.23);
-	// 	}else if(app.screen.width < 1366){
-	// 		item.scale.set(direction * 0.3, 0.3); 
-	// 	}else{
-	// 		item.scale.set(direction * 0.5, 0.5);
-	// 	}
-	// 	switch(enemyArray[index].pos) {
-	// 		case 1:
-	// 			item.x = 0;
-	// 			break;
-	// 		case 2:
-	// 			item.x = resizeWidth + healthSpacing;
-	// 			break;
-	// 		case 3:				
-	// 			item.x = (resizeWidth + healthSpacing) * 2;
-	// 			break;
-	// 		case 4:
-	// 			item.x = (resizeWidth + healthSpacing) * 3;
-	// 			break;
-	// 		default:
-	// 			item.x = 0;
-	// 	}
-	// }
+	// item.x = index * 100;
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	if(direction > 0){
+		if(app.screen.width < 860){
+			item.scale.set(direction * 0.23, 0.23);
+		}else if(app.screen.width < 1366){
+			item.scale.set(direction * 0.3, 0.3); 
+		}else{
+			item.scale.set(direction * 0.5, 0.5);
+		}
+		switch(heroArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = -(resizeWidth + healthSpacing);
+				break;
+			case 3:				
+				item.x = -((resizeWidth + healthSpacing) * 2);
+				break;
+			case 4:
+				item.x = -((resizeWidth + healthSpacing) * 3);
+				break;
+			default:
+				item.x = 0;	
+		}
+	}else{
+		if(app.screen.width < 860){
+			item.scale.set(direction * 0.23, 0.23);
+		}else if(app.screen.width < 1366){
+			item.scale.set(direction * 0.3, 0.3); 
+		}else{
+			item.scale.set(direction * 0.5, 0.5);
+		}
+		switch(enemyArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;
+		}
+	}
 }
 
 function resizeSprites(direction, item, index){
