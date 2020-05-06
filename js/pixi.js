@@ -1000,12 +1000,12 @@ function setup(){
 	defendArray.push(defendSpriteMiss);
 
 	// tempContainer.addChild(attackSpriteReady);
-	tempContainer.addChild(attackSpriteBack);
-	tempContainer.addChild(attackSpriteAttack);	
-	tempContainer.addChild(attackSpriteTop);
+	// tempContainer.addChild(attackSpriteBack);
+	// tempContainer.addChild(attackSpriteAttack);	
+	// tempContainer.addChild(attackSpriteTop);
 
 	// tempContainer.addChild(defendSpriteReady);
-	tempContainer.addChild(defendSpriteMiss);
+	// tempContainer.addChild(defendSpriteMiss);
 
 	// tempContainer.addChild(attackContainer);
 	// tempContainer.addChild(defendContainer);
@@ -3300,8 +3300,12 @@ function onAdditionalDown(){
 
 	// tween.invalidate();
 	// tween.play(0);
+	tempContainer.addChild(attackArray[0]);
+	tempContainer.addChild(defendArray[0]);
+	tempContainer.addChild(attackArray[1]);
+	tempContainer.addChild(attackArray[2]);
 
-	attackContainer.zIndex = 5;
+	// attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
 	// topLayer
 }
