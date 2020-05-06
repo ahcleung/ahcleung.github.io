@@ -992,10 +992,10 @@ function setup(){
 	// defendContainer.addChild(defendSpriteReady);
 	// defendContainer.addChild(defendSpriteMiss);
 
-	actionArray.push(attackSpriteReady);
-	actionArray.push(attackSpriteBack);
-	actionArray.push(attackSpriteAttack);
-	actionArray.push(attackSpriteTop);
+	attackArray.push(attackSpriteReady);
+	attackArray.push(attackSpriteBack);
+	attackArray.push(attackSpriteAttack);
+	attackArray.push(attackSpriteTop);
 	defendArray.push(defendSpriteReady);
 	defendArray.push(defendSpriteMiss);
 
