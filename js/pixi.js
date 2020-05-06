@@ -341,6 +341,9 @@ const heroDMG = new PIXI.Container();				//Hero damage UI
 const enemyDMG = new PIXI.Container();				//Enemy damage UI
 const additionalContainer = new PIXI.Container();	//Additional actions
 
+const attackContainer = new PIXI.Container();
+const defendContainer = new PIXI.Container();
+
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
@@ -387,6 +390,8 @@ const heroArrayDmg = [];				//Array of hero dmg containers
 const enemyArrayDmg = [];				//Array of enemy dmg containers
 const heroActionArray = [];
 const enemyActionArray = [];
+
+const actionArray = [];
 
 const hero = [];
 hero[0] = {
@@ -898,9 +903,6 @@ function setup(){
 	// healthBar.addChild(outerBar);
 	// healthBar.outer = outerBar;
 
-	const attackContainer = new PIXI.Container();
-	const defendContainer = new PIXI.Container();
-
 	let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
 	let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
 	let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
@@ -988,6 +990,13 @@ function setup(){
 
 	defendContainer.addChild(defendSpriteReady);
 	defendContainer.addChild(defendSpriteMiss);
+
+	actionArray.push(attackSpriteReady);
+	actionArray.push(attackSpriteBack);
+	actionArray.push(attackSpriteAttack);
+	actionArray.push(attackSpriteTop);
+	actionArray.push(defendSpriteReady);
+	actionArray.push(defendSpriteMiss);
 
 	// tempContainer.addChild(attackSpriteReady);
 	// tempContainer.addChild(attackSpriteBack);
@@ -3286,9 +3295,12 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	actionTween1.play(0);
+	// actionTween1.play(0);
+
 	// tween.invalidate();
 	// tween.play(0);
+
+	actionArray[0].zIndex = 2;
 }
 
 function onAdditionalCancelDown(){
