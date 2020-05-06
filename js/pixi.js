@@ -1091,13 +1091,13 @@ function createSprite(direction, item, index){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onCreatureDown);
 	
-	if(item.size == 2){		
-		creatureContainer.scale.set(direction * 0.5, 0.5);
-		creatureAction.scale.set(direction * 0.30, 0.30);
-	}else{
-		creatureContainer.scale.set(direction * 0.33, 0.33);
-		creatureAction.scale.set(direction * 0.25, 0.25);
-	}
+	// if(item.size == 2){		
+	// 	creatureContainer.scale.set(direction * 0.5, 0.5);
+	// 	creatureAction.scale.set(direction * 0.30, 0.30);
+	// }else{
+	// 	creatureContainer.scale.set(direction * 0.33, 0.33);
+	// 	creatureAction.scale.set(direction * 0.25, 0.25);
+	// }
 	
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
