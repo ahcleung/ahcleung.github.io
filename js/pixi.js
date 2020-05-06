@@ -344,10 +344,6 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 const attackContainer = new PIXI.Container();
 const defendContainer = new PIXI.Container();
 
-var backLayer = new PIXI.DisplayGroup(0, true);
-var midLayer = new PIXI.DisplayGroup(1, true);
-var topLayer = new PIXI.DisplayGroup(2, true);
-
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
@@ -3304,8 +3300,8 @@ function onAdditionalDown(){
 	// tween.invalidate();
 	// tween.play(0);
 
-	// actionArray[0].zIndex = 2;
-	actionArray[0].displayGroup = topLayer;
+	actionArray[0].zIndex = 5;
+	// actionArray[0].displayGroup = topLayer;
 	// topLayer
 }
 
