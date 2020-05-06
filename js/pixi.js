@@ -917,7 +917,7 @@ function setup(){
 	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(1);
 
-	defendSpriteReady.visible = false;
+	// defendSpriteReady.visible = false;
 	defendSpriteMiss.visible = false;
 
 	defendSpriteReady.x = -100;
@@ -933,7 +933,7 @@ function setup(){
 	attackSpriteTop.scale.set(0.55);
 	attackSpriteTop.anchor.set(1);
 
-	attackSpriteReady.visible = false;
+	// attackSpriteReady.visible = false;
 	attackSpriteAttack.visible = false;
 	attackSpriteBack.visible = false;
 	attackSpriteTop.visible = false;
@@ -991,6 +991,11 @@ function setup(){
 		attackSpriteBack.visible = false;
 		attackSpriteAttack.visible = false;
 		attackSpriteTop.visible = false;
+		tempContainer.removeChild(attackSpriteReady);
+		tempContainer.removeChild(attackSpriteBack);
+		tempContainer.removeChild(attackSpriteAttack);
+		tempContainer.removeChild(attackSpriteTop);
+		attackSpriteReady.visible = true;
 	}},0.33);
 
 	defendTween = new TimelineMax({paused: true});
@@ -1000,6 +1005,9 @@ function setup(){
 	}});
 	defendTween.fromTo(defendSpriteMiss, 1, {x:0, y:0}, {ease:"custom", x: -125, y: -100, onComplete: function(){
 		defendSpriteMiss.visible = false;
+		tempContainer.removeChild(defendSpriteReady);
+		tempContainer.removeChild(defendSpriteMiss);
+		defendSpriteReady.visible = true;
 	}});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
