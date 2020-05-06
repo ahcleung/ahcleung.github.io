@@ -910,9 +910,9 @@ function setup(){
 	let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
 
 	defendSpriteReady.scale.set(-0.55, 0.55);
-	defendSpriteReady.anchor.set(0,1);
+	defendSpriteReady.anchor.set(1);
 	defendSpriteMiss.scale.set(-0.55, 0.55);
-	defendSpriteMiss.anchor.set(0,1);
+	defendSpriteMiss.anchor.set(1);
 
 	// defendSpriteReady.visible = false;
 	// defendSpriteMiss.visible = false;
@@ -922,13 +922,13 @@ function setup(){
 	// defendSpriteMiss.x = 550;
 
 	attackSpriteReady.scale.set(0.55);
-	attackSpriteReady.anchor.set(0, 1);
+	attackSpriteReady.anchor.set(1);
 	attackSpriteAttack.scale.set(0.55);
-	attackSpriteAttack.anchor.set(0, 1);
+	attackSpriteAttack.anchor.set(1);
 	attackSpriteBack.scale.set(0.55);
-	attackSpriteBack.anchor.set(0, 1);
+	attackSpriteBack.anchor.set(1);
 	attackSpriteTop.scale.set(0.55);
-	attackSpriteTop.anchor.set(0, 1);
+	attackSpriteTop.anchor.set(1);
 
 	// attackSpriteReady.visible = false;
 	// attackSpriteAttack.visible = false;
