@@ -985,20 +985,20 @@ function setup(){
 		attackSpriteBack.visible = true;
 		attackSpriteTop.visible = true;
 	}});
-	attackTween.fromTo(attackSpriteBack, 1,, {x:0},{ease:"custom", x: 125});
-	attackTween.fromTo(attackSpriteAttack, 1,, {x:0},{ease:"custom", x: 125},0.33);
-	attackTween.fromTo(attackSpriteTop, 1,, {x:0},{ease:"custom", x: 125, onComplete: function(){
+	attackTween.fromTo(attackSpriteBack, 1, {x:0}, {ease:"custom", x: 125});
+	attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 125}, 0.33);
+	attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 125, onComplete: function(){
 		attackSpriteBack.visible = false;
 		attackSpriteAttack.visible = false;
 		attackSpriteTop.visible = false;
 	}},0.33);
 
 	defendTween = new TimelineMax({paused: true});
-	defendTween.fromTo(defendSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+	defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:-50, onComplete: function(){
 		defendSpriteReady.visible = false;
 		defendSpriteMiss.visible = true;
 	}});
-	defendTween.fromTo(defendSpriteMiss, 1,, {x:0, y:0},{ease:"custom", x: -125, y: -100, onComplete: function(){
+	defendTween.fromTo(defendSpriteMiss, 1, {x:0, y:0}, {ease:"custom", x: -125, y: -100, onComplete: function(){
 		defendSpriteMiss.visible = false;
 	}});
 
