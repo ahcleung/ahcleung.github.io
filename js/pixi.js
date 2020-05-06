@@ -1096,7 +1096,7 @@ function createSprite(direction, item, index){
 		creatureAction.scale.set(direction * 0.55, 0.55);
 	}else{
 		creatureContainer.scale.set(direction * 0.33, 0.33);
-		creatureAction.scale.set(direction * 0.25, 0.25);
+		creatureAction.scale.set(direction * 0.15, 0.15);
 	}
 	
 	const dmgContainer = new PIXI.Container();
