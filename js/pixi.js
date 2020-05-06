@@ -992,19 +992,19 @@ function setup(){
 	// defendContainer.addChild(defendSpriteReady);
 	// defendContainer.addChild(defendSpriteMiss);
 
-	attackArray.push(attackSpriteReady);
+	// attackArray.push(attackSpriteReady);
 	attackArray.push(attackSpriteBack);
 	attackArray.push(attackSpriteAttack);
 	attackArray.push(attackSpriteTop);
-	defendArray.push(defendSpriteReady);
+	// defendArray.push(defendSpriteReady);
 	defendArray.push(defendSpriteMiss);
 
-	tempContainer.addChild(attackSpriteReady);
+	// tempContainer.addChild(attackSpriteReady);
 	tempContainer.addChild(attackSpriteBack);
 	tempContainer.addChild(attackSpriteAttack);	
 	tempContainer.addChild(attackSpriteTop);
 
-	tempContainer.addChild(defendSpriteReady);
+	// tempContainer.addChild(defendSpriteReady);
 	tempContainer.addChild(defendSpriteMiss);
 
 	// tempContainer.addChild(attackContainer);
