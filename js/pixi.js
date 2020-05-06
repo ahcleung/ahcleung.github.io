@@ -999,7 +999,7 @@ function setup(){
 	}},0.33);
 
 	defendTween = new TimelineMax({paused: true});
-	defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:-50, onComplete: function(){
+	defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:50, onComplete: function(){
 		defendSpriteReady.visible = false;
 		defendSpriteMiss.visible = true;
 	}});
