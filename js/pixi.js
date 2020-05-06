@@ -992,11 +992,11 @@ function setup(){
 	// defendContainer.addChild(defendSpriteReady);
 	// defendContainer.addChild(defendSpriteMiss);
 
-	// attackArray.push(attackSpriteReady);
+	attackArray.push(attackSpriteReady);
 	attackArray.push(attackSpriteBack);
 	attackArray.push(attackSpriteAttack);
 	attackArray.push(attackSpriteTop);
-	// defendArray.push(defendSpriteReady);
+	defendArray.push(defendSpriteReady);
 	defendArray.push(defendSpriteMiss);
 
 	// tempContainer.addChild(attackSpriteReady);
@@ -3296,15 +3296,18 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	// actionTween1.play(0);
+	
 
 	// tween.invalidate();
 	// tween.play(0);
 	tempContainer.addChild(attackArray[0]);
 	tempContainer.addChild(defendArray[0]);
 	tempContainer.addChild(attackArray[1]);
+	tempContainer.addChild(defendArray[1]);
 	tempContainer.addChild(attackArray[2]);
+	tempContainer.addChild(attackArray[3]);
 
+	actionTween1.play(0);
 	// attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
 	// topLayer
