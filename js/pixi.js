@@ -978,6 +978,30 @@ function setup(){
 	}},0);
 	actionTween2.to(rectFade, 0.16, {alpha:0});
 
+	attackTween = new TimelineMax({paused: true});
+	attackTween.fromTo(attackSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+		attackSpriteReady.visible = false;
+		attackSpriteAttack.visible = true;
+		attackSpriteBack.visible = true;
+		attackSpriteTop.visible = true;
+	}});
+	attackTween.fromTo(attackSpriteBack, 1,, {x:0},{ease:"custom", x: 125});
+	attackTween.fromTo(attackSpriteAttack, 1,, {x:0},{ease:"custom", x: 125},0.33);
+	attackTween.fromTo(attackSpriteTop, 1,, {x:0},{ease:"custom", x: 125, onComplete: function(){
+		attackSpriteBack.visible = false;
+		attackSpriteAttack.visible = false;
+		attackSpriteTop.visible = false;
+	}},0.33);
+
+	defendTween = new TimelineMax({paused: true});
+	defendTween.fromTo(defendSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+		defendSpriteReady.visible = false;
+		defendSpriteMiss.visible = true;
+	}});
+	defendTween.fromTo(defendSpriteMiss, 1,, {x:0, y:0},{ease:"custom", x: -125, y: -100, onComplete: function(){
+		defendSpriteMiss.visible = false;
+	}});
+
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
 	// dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
@@ -3307,7 +3331,10 @@ function onAdditionalDown(){
 	tempContainer.addChild(attackArray[2]);
 	tempContainer.addChild(attackArray[3]);
 
-	actionTween1.play(0);
+	// actionTween1.play(0);
+
+	attackTween.play(0);
+	defendTween.play(0);
 	// attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
 	// topLayer
