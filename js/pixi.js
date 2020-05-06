@@ -986,8 +986,8 @@ function setup(){
 		attackSpriteTop.visible = true;
 	}});
 	attackTween.fromTo(attackSpriteBack, 1, {x:0}, {ease:"custom", x: 125});
-	attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 125}, 0.33);
-	attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 125, onComplete: function(){
+	attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
+	attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
 		attackSpriteBack.visible = false;
 		attackSpriteAttack.visible = false;
 		attackSpriteTop.visible = false;
