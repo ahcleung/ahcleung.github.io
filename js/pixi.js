@@ -917,8 +917,8 @@ function setup(){
 	defendSpriteMiss.scale.set(-0.55, 0.55);
 	defendSpriteMiss.anchor.set(1);
 
-	// defendSpriteReady.visible = false;
-	// defendSpriteMiss.visible = false;
+	defendSpriteReady.visible = false;
+	defendSpriteMiss.visible = false;
 
 	defendSpriteReady.x = -100;
 	// defendSpriteReady.y = 10;
@@ -933,10 +933,10 @@ function setup(){
 	attackSpriteTop.scale.set(0.55);
 	attackSpriteTop.anchor.set(1);
 
-	// attackSpriteReady.visible = false;
-	// attackSpriteAttack.visible = false;
-	// attackSpriteBack.visible = false;
-	// attackSpriteTop.visible = false;
+	attackSpriteReady.visible = false;
+	attackSpriteAttack.visible = false;
+	attackSpriteBack.visible = false;
+	attackSpriteTop.visible = false;
 
 	attackSpriteReady.x = 100;
 	attackSpriteAttack.x = 100;
