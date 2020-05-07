@@ -2227,7 +2227,8 @@ function onCreatureDown(){
 		});
 		if(correctTarget){
 			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
-
+			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
+			
 			if(Array.isArray(validSkillTargetArray[targetedVita])){
 				validSkillTargetArray[targetedVita].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
@@ -3523,7 +3524,7 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
-	animateBattle(1, [-1, -2]);
+	
 	
 
 	// heroActionArray[0].ready.visible = true;
