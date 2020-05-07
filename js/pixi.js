@@ -1176,10 +1176,10 @@ function createSprite(direction, item, index){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
-		actionContainer.removeChild(attackSpriteReady);
-		actionContainer.removeChild(attackSpriteBack);
-		actionContainer.removeChild(attackSpriteAttack);
-		actionContainer.removeChild(attackSpriteTop);
+		actionContainer.removeChild(sprite_p_ready);
+		actionContainer.removeChild(sprite_p_fxBack);
+		actionContainer.removeChild(sprite_p_attack);
+		actionContainer.removeChild(sprite_p_fxTop);
 		sprite_p_ready.visible = true;
 	}},0.33);
 
