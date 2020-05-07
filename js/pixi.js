@@ -2228,7 +2228,7 @@ function onCreatureDown(){
 		if(correctTarget){
 			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
-			
+
 			if(Array.isArray(validSkillTargetArray[targetedVita])){
 				validSkillTargetArray[targetedVita].forEach(targeted => {
 					var selectedIndex = Math.abs(selectedVita)-1;
@@ -3214,7 +3214,7 @@ function onSkillDown(){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;						
-							validSkillTargetArray.push((arrayCreatureIndex+1)*-1);
+							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -3222,7 +3222,7 @@ function onSkillDown(){
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
 							enemyHPContainerArray[arrayCreatureIndex].target.visible = true;
-							validSkillTargetArray.push((arrayCreatureIndex+1)*-1);
+							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 						}
 					}				
 				});
@@ -3232,7 +3232,7 @@ function onSkillDown(){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
-							validSkillTargetArray.push(arrayCreatureIndex+1);
+							validSkillTargetArray.push([arrayCreatureIndex+1]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -3240,7 +3240,7 @@ function onSkillDown(){
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
 							heroHPContainerArray[arrayCreatureIndex].target.visible = true;
-							validSkillTargetArray.push(arrayCreatureIndex+1);
+							validSkillTargetArray.push([arrayCreatureIndex+1]);
 						}
 					}			
 				});
