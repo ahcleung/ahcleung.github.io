@@ -1145,7 +1145,7 @@ function createSprite(direction, item, index){
 	creatureAction.addChild(spriteReady);
 	creatureAction.ready = spriteReady;
 
-	actionContainer.addChild(creatureAction);
+	// actionContainer.addChild(creatureAction);
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
@@ -3357,8 +3357,8 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	// actionContainer.addChild(heroActionArray[0]);
-	// actionContainer.addChild(enemyActionArray[0]);
+	actionContainer.addChild(heroActionArray[0].ready);
+	actionContainer.addChild(enemyActionArray[0].ready);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
