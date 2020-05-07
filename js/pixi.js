@@ -2016,7 +2016,7 @@ function resizeAction(direction, item, index){
 			}
 		});
 	}else{
-		enemyActionArray[index].forEach(spriteIndex => {
+		enemyActionArray[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
 				spriteItem.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
