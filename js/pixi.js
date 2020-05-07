@@ -1143,7 +1143,7 @@ function createSprite(direction, item, index){
 	spriteReady.anchor.set(1);
 	// spriteReady.visible = false;
 	creatureAction.addChild(spriteReady);
-	creatureAction.ready = spriteReady;
+	// creatureAction.ready = spriteReady;
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
@@ -1598,7 +1598,6 @@ function resize() {
 	heroActionArray.forEach(function (item, index){
 		resizeAction(1, item, index)	
 	});
-
 	enemyActionArray.forEach(function (item, index){
 		resizeAction(-1, item, index)	
 	});
