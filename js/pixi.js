@@ -503,6 +503,21 @@ function setup(){
 // 	rectEnemy.y = 0;
 // 	enemyHP.addChild(rectEnemy);
 
+	rectFade = new PIXI.Graphics();
+	rectFade.beginFill(0x2d2d2d);
+	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
+	rectFade.endFill();
+	rectFade.alpha = 0;
+
+	fadeTween = new TimelineMax({paused: true});
+	fadeTween.to(rectFade, 0.16, {alpha:0.75});
+	fadeTween.to(rectFade, 0.16, {delay:1.33, alpha:0});
+
+	actionContainer.addChild(rectFade);
+	actionContainer.fadeTween = fadeTween;
+
+	
+
 	heroRoster.x = app.screen.width/2;
 	heroRoster.y = app.screen.height/2;
 	
@@ -895,19 +910,6 @@ function setup(){
 	additionalArray.push(btnAdditionalSkip);
 
 	additionalContainer.visible = false;
-
-	rectFade = new PIXI.Graphics();
-	rectFade.beginFill(0x2d2d2d);
-	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
-	rectFade.endFill();
-	rectFade.alpha = 0;
-
-	fadeTween = new TimelineMax({paused: true});
-	fadeTween.to(rectFade, 0.16, {alpha:0.75});
-	fadeTween.to(rectFade, 0.16, {delay:1.33, alpha:0});
-
-	actionContainer.addChild(rectFade);
-	actionContainer.fadeTween = fadeTween;
 
 	// let outerBar = new PIXI.Graphics();
 	// outerBar.beginFill(0x222222);
