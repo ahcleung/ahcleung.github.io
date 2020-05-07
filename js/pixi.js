@@ -1162,22 +1162,22 @@ function createSprite(direction, item, index){
 
 	patkTween = new TimelineMax({paused: true});
 	patkTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
-		// attackSpriteReady.visible = false;
-		// attackSpriteAttack.visible = true;
-		// attackSpriteBack.visible = true;
-		// attackSpriteTop.visible = true;
+		sprite_p_ready.visible = false;
+		sprite_p_attack.visible = true;
+		sprite_p_fxBack.visible = true;
+		sprite_p_fxTop.visible = true;
 	}});
 	patkTween.fromTo(sprite_p_fxBack, 1, {x:0}, {ease:"custom", x: 125});
 	patkTween.fromTo(sprite_p_attack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
 	patkTween.fromTo(sprite_p_fxTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
-		// attackSpriteBack.visible = false;
-		// attackSpriteAttack.visible = false;
-		// attackSpriteTop.visible = false;
-		// tempContainer.removeChild(attackSpriteReady);
-		// tempContainer.removeChild(attackSpriteBack);
-		// tempContainer.removeChild(attackSpriteAttack);
-		// tempContainer.removeChild(attackSpriteTop);
-		// attackSpriteReady.visible = true;
+		sprite_p_fxBack.visible = false;
+		sprite_p_attack.visible = false;
+		sprite_p_fxTop.visible = false;
+		actionContainer.removeChild(attackSpriteReady);
+		actionContainer.removeChild(attackSpriteBack);
+		actionContainer.removeChild(attackSpriteAttack);
+		actionContainer.removeChild(attackSpriteTop);
+		sprite_p_ready.visible = true;
 	}},0.33);
 
 	creatureContainer.patkTween = patkTween;
