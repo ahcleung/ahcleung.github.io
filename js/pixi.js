@@ -1137,7 +1137,7 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 
-	// const creatureAction = new PIXI.Container();
+	const creatureAction = new PIXI.Container();
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	spriteReady.anchor.set(1);
