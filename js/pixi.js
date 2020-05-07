@@ -1428,7 +1428,7 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		heroHPContainerArray.push(healthBar);
-		heroActionArray.push(creatureAction);
+		// heroActionArray.push(creatureAction);
 		heroActionArray.push(spriteReady);
 		heroArrayDmg.push(dmgContainer);
 		heroOrder.push(index);
@@ -1442,7 +1442,7 @@ function createSprite(direction, item, index){
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		enemyHPContainerArray.push(healthBar);
-		enemyActionArray.push(creatureAction);
+		// enemyActionArray.push(creatureAction);
 		enemyActionArray.push(spriteReady);
 		enemyArrayDmg.push(dmgContainer);
 		enemyOrder.push(index);
