@@ -393,6 +393,9 @@ const enemyArrayDmg = [];				//Array of enemy dmg containers
 const heroActionArray = [];
 const enemyActionArray = [];
 
+const heroActionContainerArray = [];
+const enemyActionContainerArray = [];
+
 const attackArray = [];
 const defendArray = [];
 
@@ -1146,36 +1149,49 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 
-	// const creatureAction = new PIXI.Container();
+	creatureContainer.identifier = [direction, index, item.pos];
+	creatureContainer.buttonMode = true;
+	creatureContainer.interactive = true;
+	creatureContainer
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onCreatureDown);
+
+	const creatureAction = new PIXI.Container();
 	const actionArray = [];
 
 	var sprite_p_ready = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	sprite_p_ready.anchor.set(1);
 	actionArray.push(sprite_p_ready);
+	creatureAction.addChild(sprite_p_ready);
 
 	var sprite_p_fxBack = new PIXI.Sprite(resources[item.code + '_p_fxBack'].texture);
 	sprite_p_fxBack.anchor.set(1);
 	sprite_p_fxBack.visible = false;
 	actionArray.push(sprite_p_fxBack);
+	creatureAction.addChild(sprite_p_fxBack);
 
 	var sprite_p_attack = new PIXI.Sprite(resources[item.code + '_p_attack'].texture);
 	sprite_p_attack.anchor.set(1);
 	sprite_p_attack.visible = false;
 	actionArray.push(sprite_p_attack);
+	creatureAction.addChild(sprite_p_attack);
 
 	var sprite_p_fxTop = new PIXI.Sprite(resources[item.code + '_p_fxTop'].texture);
 	sprite_p_fxTop.anchor.set(1);
 	sprite_p_fxTop.visible = false;
 	actionArray.push(sprite_p_fxTop);
+	creatureAction.addChild(sprite_p_fxTop);
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
 	actionArray.push(sprite_d_ready);
+	creatureAction.addChild(sprite_d_ready);
 
 	var sprite_d_miss = new PIXI.Sprite(resources[item.code + '_d_miss'].texture);
 	sprite_d_miss.anchor.set(1);
 	sprite_d_miss.visible = false;
 	actionArray.push(sprite_d_miss);
+	creatureAction.addChild(sprite_d_miss);
 
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
@@ -1221,12 +1237,7 @@ function createSprite(direction, item, index){
 
 	// actionContainer.addChild(creatureAction);
 
-	creatureContainer.identifier = [direction, index, item.pos];
-	creatureContainer.buttonMode = true;
-	creatureContainer.interactive = true;
-	creatureContainer
-        // set the mousedown and touchstart callback...
-        .on('pointerdown', onCreatureDown);
+	
 	
 	// if(item.size == 2){		
 	// 	creatureContainer.scale.set(direction * 0.5, 0.5);
@@ -1507,6 +1518,7 @@ function createSprite(direction, item, index){
 		// heroActionArray.push(creatureAction);
 		// heroActionArray.push(spriteReady);
 		heroActionArray.push(actionArray);
+		heroActionContainerArray.push(creatureAction);
 		heroArrayDmg.push(dmgContainer);
 		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
@@ -1521,6 +1533,7 @@ function createSprite(direction, item, index){
 		enemyHPContainerArray.push(healthBar);
 		// enemyActionArray.push(creatureAction);
 		enemyActionArray.push(actionArray);
+		enemyActionContainerArray.push(creatureAction);
 		// enemyActionArray.push(spriteReady);
 		enemyArrayDmg.push(dmgContainer);
 		enemyOrder.push(index);
@@ -1682,6 +1695,13 @@ function resize() {
 	});
 	enemyActionArray.forEach(function (item, index){
 		resizeAction(-1, item, index)	
+	});
+
+	heroActionContainerArray.forEach(function (item, index){
+		resizeContainerAction(1, item, index)	
+	});
+	enemyActionContainerArray.forEach(function (item, index){
+		resizeContainerAction(-1, item, index)	
 	});
 
 	heroArrayDmg.forEach(function (item, index){
@@ -2056,22 +2076,6 @@ function resizeAction(direction, item, index){
 			}else{
 				spriteItem.scale.set(direction * 0.55, 0.55);
 			}
-			switch(heroArray[index].pos) {
-				case 1:
-					spriteItem.x = 0;
-					break;
-				case 2:
-					spriteItem.x = -(resizeWidth + healthSpacing);
-					break;
-				case 3:				
-					spriteItem.x = -((resizeWidth + healthSpacing) * 2);
-					break;
-				case 4:
-					spriteItem.x = -((resizeWidth + healthSpacing) * 3);
-					break;
-				default:
-					spriteItem.x = 0;	
-			}
 		});
 	}else{
 		enemyActionArray[index].forEach((spriteItem,spriteIndex) => {
@@ -2082,23 +2086,48 @@ function resizeAction(direction, item, index){
 			}else{
 				spriteItem.scale.set(direction * 0.55, 0.55);
 			}
-			switch(enemyArray[index].pos) {
-				case 1:
-					spriteItem.x = 0;
-					break;
-				case 2:
-					spriteItem.x = resizeWidth + healthSpacing;
-					break;
-				case 3:				
-					spriteItem.x = (resizeWidth + healthSpacing) * 2;
-					break;
-				case 4:
-					spriteItem.x = (resizeWidth + healthSpacing) * 3;
-					break;
-				default:
-					spriteItem.x = 0;
-			}
 		});	
+	}	
+}
+
+function resizeContainerAction(direction, item, index){
+	// item.x = index * 100;
+	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	
+	if(direction > 0){		
+		switch(heroArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = -(resizeWidth + healthSpacing);
+				break;
+			case 3:				
+				item.x = -((resizeWidth + healthSpacing) * 2);
+				break;
+			case 4:
+				item.x = -((resizeWidth + healthSpacing) * 3);
+				break;
+			default:
+				item.x = 0;	
+		}
+	}else{
+		switch(enemyArray[index].pos) {
+			case 1:
+				item.x = 0;
+				break;
+			case 2:
+				item.x = resizeWidth + healthSpacing;
+				break;
+			case 3:				
+				item.x = (resizeWidth + healthSpacing) * 2;
+				break;
+			case 4:
+				item.x = (resizeWidth + healthSpacing) * 3;
+				break;
+			default:
+				item.x = 0;
+		}
 	}	
 }
 
@@ -2920,9 +2949,11 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(heroActionContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 			// console.log(arrayCreature.pos);
+			heroActionContainerArray
 		});
 	}else{
 		var moveFrom;
@@ -2975,6 +3006,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(enemyActionContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 			// console.log(arrayCreature.pos);
