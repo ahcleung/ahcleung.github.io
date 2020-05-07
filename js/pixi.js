@@ -1202,7 +1202,8 @@ function createSprite(direction, item, index){
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
 	pAtkTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
-		sprite_p_ready.visible = false;
+		// sprite_p_ready.visible = false;
+		sprite_p_ready.alpha = 0;
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
@@ -1217,7 +1218,7 @@ function createSprite(direction, item, index){
 		// actionContainer.removeChild(sprite_p_fxBack);
 		// actionContainer.removeChild(sprite_p_attack);
 		// actionContainer.removeChild(sprite_p_fxTop);
-		sprite_p_ready.alpha = 0;
+		// sprite_p_ready.alpha = 0;
 		// sprite_p_ready.visible = true;
 		creatureAction.visible = false;
 	}},0.33);
@@ -1227,14 +1228,16 @@ function createSprite(direction, item, index){
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
 	dMissTween.fromTo(sprite_d_ready, 0.33, {x:0},{ease:"custom", x:0, onComplete: function(){
-		sprite_d_ready.visible = false;
+		// sprite_d_ready.visible = false;
+		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
 	dMissTween.fromTo(sprite_d_miss, 1, {x:0, y:0}, {ease:"custom", x: 275, y: -100, onComplete: function(){
 		sprite_d_miss.visible = false;
 		// actionContainer.removeChild(sprite_d_ready);
 		// actionContainer.removeChild(sprite_d_miss);
-		sprite_d_ready.alpha = 0;
+		// sprite_d_ready.alpha = 0;
+		// sprite_d_ready.visible = true;
 		creatureAction.visible = false;
 	}});
 
