@@ -3415,8 +3415,8 @@ function onAdditionalDown(){
 	actionContainer.addChild(heroActionArray[0][3]);
 	actionContainer.addChild(enemyActionArray[0][3]);
 
-	heroArray[0].patkTween.play(0);
-	enemyArray[0].patkTween.play(0);
+	heroContainerArray[0].patkTween.play(0);
+	enemyContainerArray[0].patkTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
