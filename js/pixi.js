@@ -1137,13 +1137,16 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 
-	const creatureAction = new PIXI.Container();
+	// const creatureAction = new PIXI.Container();
+	const actionArray = [];
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	spriteReady.anchor.set(1);
+
+	actionArray.push(spriteReady);
 	// spriteReady.visible = false;
-	creatureAction.addChild(spriteReady);
-	creatureAction.ready = spriteReady;
+	// creatureAction.addChild(spriteReady);
+	// creatureAction.ready = spriteReady;
 
 	// actionContainer.addChild(creatureAction);
 
@@ -1430,8 +1433,9 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		heroHPContainerArray.push(healthBar);
-		heroActionArray.push(creatureAction);
+		// heroActionArray.push(creatureAction);
 		// heroActionArray.push(spriteReady);
+		heroActionArray.push(actionArray);
 		heroArrayDmg.push(dmgContainer);
 		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
@@ -1444,7 +1448,8 @@ function createSprite(direction, item, index){
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		enemyHPContainerArray.push(healthBar);
-		enemyActionArray.push(creatureAction);
+		// enemyActionArray.push(creatureAction);
+		enemyActionArray.push(actionArray);
 		// enemyActionArray.push(spriteReady);
 		enemyArrayDmg.push(dmgContainer);
 		enemyOrder.push(index);
@@ -1972,51 +1977,51 @@ function resizeAction(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
-			item.getChildAt(0).scale.set(direction * 0.23, 0.23);
+			item[0].scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.getChildAt(0).scale.set(direction * 0.3, 0.3); 
+			item[0].scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.getChildAt(0).scale.set(direction * 0.55, 0.55);
+			item[0].scale.set(direction * 0.55, 0.55);
 		}
 		switch(heroArray[index].pos) {
 			case 1:
-				item.getChildAt(0).x = 0;
+				item[0].x = 0;
 				break;
 			case 2:
-				item.getChildAt(0).x = -(resizeWidth + healthSpacing);
+				item[0].x = -(resizeWidth + healthSpacing);
 				break;
 			case 3:				
-				item.getChildAt(0).x = -((resizeWidth + healthSpacing) * 2);
+				item[0].x = -((resizeWidth + healthSpacing) * 2);
 				break;
 			case 4:
-				item.getChildAt(0).x = -((resizeWidth + healthSpacing) * 3);
+				item[0].x = -((resizeWidth + healthSpacing) * 3);
 				break;
 			default:
-				item.getChildAt(0).x = 0;	
+				item[0].x = 0;	
 		}
 	}else{
 		if(app.screen.width < 860){
-			item.getChildAt(0).scale.set(direction * 0.23, 0.23);
+			item[0].scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.getChildAt(0).scale.set(direction * 0.3, 0.3); 
+			item[0].scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.getChildAt(0).scale.set(direction * 0.55, 0.55);
+			item[0].scale.set(direction * 0.55, 0.55);
 		}
 		switch(enemyArray[index].pos) {
 			case 1:
-				item.getChildAt(0).x = 0;
+				item[0].x = 0;
 				break;
 			case 2:
-				item.getChildAt(0).x = resizeWidth + healthSpacing;
+				item[0].x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
-				item.getChildAt(0).x = (resizeWidth + healthSpacing) * 2;
+				item[0].x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
-				item.getChildAt(0).x = (resizeWidth + healthSpacing) * 3;
+				item[0].x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
-				item.getChildAt(0).x = 0;
+				item[0].x = 0;
 		}
 	}
 }
@@ -3358,14 +3363,13 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0].ready);
-	actionContainer.addChild(enemyActionArray[0].ready);
+	actionContainer.addChild(heroActionArray[0][0]);
+	actionContainer.addChild(enemyActionArray[0][0]);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
 
 	// attackContainer.zIndex = 5;
-	// actionArray[0].displayGroup = topLayer;
 	// topLayer
 }
 
