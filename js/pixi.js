@@ -3482,9 +3482,10 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
-	actionContainer.addChild(heroActionArray[0]);
+	
 	actionContainer.addChild(enemyActionArray[0]);
-
+	actionContainer.addChild(heroActionArray[0]);
+	
 	actionContainer.fadeTween.play(0);
 
 	heroActionArray[0].visible = true;
