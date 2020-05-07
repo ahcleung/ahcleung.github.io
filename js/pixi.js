@@ -188,6 +188,8 @@ class Creature{
 		this.code = creatureList.data.creatures[this.id].code;				//Creature code
 		this.size = creatureList.data.creatures[this.id].size;				//Creature size
 		this.move = creatureList.data.creatures[this.id].move;				//Creature movement
+
+		this.action = creatureList.data.creatures[this.id].action;
 		
 		this.name = creatureList.data.creatures[this.id].name;				//Creature name
 		this.elements = creatureList.data.creatures[this.id].elements;		//Creature element
@@ -910,122 +912,122 @@ function setup(){
 
 	additionalContainer.visible = false;
 
-	// let outerBar = new PIXI.Graphics();
-	// outerBar.beginFill(0x222222);
-	// outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
-	// outerBar.endFill();
-	// healthBar.addChild(outerBar);
-	// healthBar.outer = outerBar;
+	// // let outerBar = new PIXI.Graphics();
+	// // outerBar.beginFill(0x222222);
+	// // outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
+	// // outerBar.endFill();
+	// // healthBar.addChild(outerBar);
+	// // healthBar.outer = outerBar;
 
-	let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
-	let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
-	let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
-	let attackSpriteTop = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
+	// let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
+	// let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
+	// let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
+	// let attackSpriteTop = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
 
-	let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
-	let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
+	// let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
+	// let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
 
-	defendSpriteReady.scale.set(-0.55, 0.55);
-	defendSpriteReady.anchor.set(1);
-	defendSpriteMiss.scale.set(-0.55, 0.55);
-	defendSpriteMiss.anchor.set(1);
+	// defendSpriteReady.scale.set(-0.55, 0.55);
+	// defendSpriteReady.anchor.set(1);
+	// defendSpriteMiss.scale.set(-0.55, 0.55);
+	// defendSpriteMiss.anchor.set(1);
 
-	// defendSpriteReady.visible = false;
-	defendSpriteMiss.visible = false;
+	// // defendSpriteReady.visible = false;
+	// defendSpriteMiss.visible = false;
 
-	defendSpriteReady.x = -100;
-	// defendSpriteReady.y = 10;
-	defendSpriteMiss.x = -100;
+	// defendSpriteReady.x = -100;
+	// // defendSpriteReady.y = 10;
+	// defendSpriteMiss.x = -100;
 
-	attackSpriteReady.scale.set(0.55);
-	attackSpriteReady.anchor.set(1);
-	attackSpriteAttack.scale.set(0.55);
-	attackSpriteAttack.anchor.set(1);
-	attackSpriteBack.scale.set(0.55);
-	attackSpriteBack.anchor.set(1);
-	attackSpriteTop.scale.set(0.55);
-	attackSpriteTop.anchor.set(1);
+	// attackSpriteReady.scale.set(0.55);
+	// attackSpriteReady.anchor.set(1);
+	// attackSpriteAttack.scale.set(0.55);
+	// attackSpriteAttack.anchor.set(1);
+	// attackSpriteBack.scale.set(0.55);
+	// attackSpriteBack.anchor.set(1);
+	// attackSpriteTop.scale.set(0.55);
+	// attackSpriteTop.anchor.set(1);
 
-	// attackSpriteReady.visible = false;
-	attackSpriteAttack.visible = false;
-	attackSpriteBack.visible = false;
-	attackSpriteTop.visible = false;
+	// // attackSpriteReady.visible = false;
+	// attackSpriteAttack.visible = false;
+	// attackSpriteBack.visible = false;
+	// attackSpriteTop.visible = false;
 
-	attackSpriteReady.x = 100;
-	attackSpriteAttack.x = 100;
-	attackSpriteBack.x = 100;
-	// attackSpriteBack.y = -20;
-	attackSpriteTop.x = 100;
-	// attackSpriteTop.y = -20;
+	// attackSpriteReady.x = 100;
+	// attackSpriteAttack.x = 100;
+	// attackSpriteBack.x = 100;
+	// // attackSpriteBack.y = -20;
+	// attackSpriteTop.x = 100;
+	// // attackSpriteTop.y = -20;
 
-	// attackContainer.x = 50;
-	// defendContainer.x = -50;
+	// // attackContainer.x = 50;
+	// // defendContainer.x = -50;
 	
-	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
+	// CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
 
 
-	actionTween1 = new TimelineMax({paused: true});
-	actionTween1.to(rectFade, 0.16, {alpha:0.75, onComplete:function(){
-		attackSpriteReady.visible = true;
-		defendSpriteReady.visible = true;
-	}});
-	actionTween1.to(attackSpriteReady, 0.33, {ease:"custom", x:-50, onComplete: function(){
-		attackSpriteReady.visible = false;
-		defendSpriteReady.visible = false;
-		attackSpriteAttack.visible = true;
-		attackSpriteBack.visible = true;
-		attackSpriteTop.visible = true;
-		defendSpriteMiss.visible = true;
-		actionTween2.play(0);
-		// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-	}});
+	// actionTween1 = new TimelineMax({paused: true});
+	// actionTween1.to(rectFade, 0.16, {alpha:0.75, onComplete:function(){
+	// 	attackSpriteReady.visible = true;
+	// 	defendSpriteReady.visible = true;
+	// }});
+	// actionTween1.to(attackSpriteReady, 0.33, {ease:"custom", x:-50, onComplete: function(){
+	// 	attackSpriteReady.visible = false;
+	// 	defendSpriteReady.visible = false;
+	// 	attackSpriteAttack.visible = true;
+	// 	attackSpriteBack.visible = true;
+	// 	attackSpriteTop.visible = true;
+	// 	defendSpriteMiss.visible = true;
+	// 	actionTween2.play(0);
+	// 	// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+	// }});
 
-	var actionTween2 = new TimelineMax({paused: true});
-	actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
-	actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
-	actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
-	actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200, onComplete: function(){
-		attackSpriteAttack.visible = false;
-		attackSpriteBack.visible = false;
-		attackSpriteTop.visible = false;
-		defendSpriteMiss.visible = false;
-	}},0);
-	actionTween2.to(rectFade, 0.16, {alpha:0});
+	// var actionTween2 = new TimelineMax({paused: true});
+	// actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
+	// actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
+	// actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
+	// actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200, onComplete: function(){
+	// 	attackSpriteAttack.visible = false;
+	// 	attackSpriteBack.visible = false;
+	// 	attackSpriteTop.visible = false;
+	// 	defendSpriteMiss.visible = false;
+	// }},0);
+	// actionTween2.to(rectFade, 0.16, {alpha:0});
 
-	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
+	// CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
-	attackTween = new TimelineMax({paused: true});
-	attackTween.fromTo(attackSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
-		attackSpriteReady.visible = false;
-		attackSpriteAttack.visible = true;
-		attackSpriteBack.visible = true;
-		attackSpriteTop.visible = true;
-	}});
-	attackTween.fromTo(attackSpriteBack, 1, {x:0}, {ease:"custom", x: 125});
-	attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
-	attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
-		attackSpriteBack.visible = false;
-		attackSpriteAttack.visible = false;
-		attackSpriteTop.visible = false;
-		tempContainer.removeChild(attackSpriteReady);
-		tempContainer.removeChild(attackSpriteBack);
-		tempContainer.removeChild(attackSpriteAttack);
-		tempContainer.removeChild(attackSpriteTop);
-		attackSpriteReady.visible = true;
-	}},0.33);
+	// attackTween = new TimelineMax({paused: true});
+	// attackTween.fromTo(attackSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+	// 	attackSpriteReady.visible = false;
+	// 	attackSpriteAttack.visible = true;
+	// 	attackSpriteBack.visible = true;
+	// 	attackSpriteTop.visible = true;
+	// }});
+	// attackTween.fromTo(attackSpriteBack, 1, {x:0}, {ease:"custom", x: 125});
+	// attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
+	// attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
+	// 	attackSpriteBack.visible = false;
+	// 	attackSpriteAttack.visible = false;
+	// 	attackSpriteTop.visible = false;
+	// 	tempContainer.removeChild(attackSpriteReady);
+	// 	tempContainer.removeChild(attackSpriteBack);
+	// 	tempContainer.removeChild(attackSpriteAttack);
+	// 	tempContainer.removeChild(attackSpriteTop);
+	// 	attackSpriteReady.visible = true;
+	// }},0.33);
 
-	defendTween = new TimelineMax({paused: true});
-	defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:50, onComplete: function(){
-		defendSpriteReady.visible = false;
-		defendSpriteMiss.visible = true;
-	}});
-	defendTween.fromTo(defendSpriteMiss, 1, {x:0, y:0}, {ease:"custom", x: -125, y: -100, onComplete: function(){
-		defendSpriteMiss.visible = false;
-		tempContainer.removeChild(defendSpriteReady);
-		tempContainer.removeChild(defendSpriteMiss);
-		defendSpriteReady.visible = true;
-	}});
+	// defendTween = new TimelineMax({paused: true});
+	// defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:50, onComplete: function(){
+	// 	defendSpriteReady.visible = false;
+	// 	defendSpriteMiss.visible = true;
+	// }});
+	// defendTween.fromTo(defendSpriteMiss, 1, {x:0, y:0}, {ease:"custom", x: -125, y: -100, onComplete: function(){
+	// 	defendSpriteMiss.visible = false;
+	// 	tempContainer.removeChild(defendSpriteReady);
+	// 	tempContainer.removeChild(defendSpriteMiss);
+	// 	defendSpriteReady.visible = true;
+	// }});
 
 	// var dmgPopupTween = new TimelineMax({paused: true});
 	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
@@ -1160,8 +1162,6 @@ function createSprite(direction, item, index){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onCreatureDown);
 
-
-
 	const creatureAction = new PIXI.Container();
 	// const actionArray = [];
 	var sprite_p_ready = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
@@ -1204,16 +1204,16 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_ready, 0.33, {x:0, y:0},{ease:"custom", x:-50, y:0, onComplete: function(){
 		// sprite_p_ready.visible = false;
 		sprite_p_ready.alpha = 0;
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
 	}});
-	pAtkTween.fromTo(sprite_p_fxBack, 1, {x:0}, {ease:"custom", x: 125});
-	pAtkTween.fromTo(sprite_p_attack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
-	pAtkTween.fromTo(sprite_p_fxTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxBack, 1, {x:0, y:0}, {ease:"custom", x: 125, y:0});
+	pAtkTween.fromTo(sprite_p_attack, 1, {x:0, y:0}, {ease:"custom", x: 200, y:0}, 0.33);
+	pAtkTween.fromTo(sprite_p_fxTop, 1, {x:0, y:0}, {ease:"custom", x: 275, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
@@ -1231,7 +1231,7 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, 0.33, {x:0},{ease:"custom", x:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, 0.33, {x:0, y:0},{ease:"custom", x:0, y:0, onComplete: function(){
 		// sprite_d_ready.visible = false;
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
@@ -3217,38 +3217,6 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	additionalContainer.visible = true;
-
-	// tween.invalidate();
-	// tween.play(0);
-
-	// tempContainer.addChild(attackArray[0]);
-	// tempContainer.addChild(defendArray[0]);
-	// tempContainer.addChild(attackArray[1]);
-	// tempContainer.addChild(defendArray[1]);
-	// tempContainer.addChild(attackArray[2]);
-	// tempContainer.addChild(attackArray[3]);
-
-
-	// actionTween1.play(0);
-	// attackTween.play(0);
-	// defendTween.play(0);
-
-	// actionContainer.addChild(heroActionArray[0][0]);		//ready
-	// actionContainer.addChild(enemyActionArray[1][4]);		//ready
-
-	// actionContainer.addChild(heroActionArray[0][1]);
-	// actionContainer.addChild(enemyActionArray[1][5]);
-	// actionContainer.addChild(heroActionArray[0][2]);
-	// actionContainer.addChild(heroActionArray[0][3]);
-
-	
-	
-
-	// heroActionArray[0].ready.visible = true;
-	// enemyActionArray[0].ready.visible = true;
-
-	// attackContainer.zIndex = 5;
-	// topLayer
 }
 
 function onAdditionalCancelDown(){
