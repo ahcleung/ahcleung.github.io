@@ -1221,6 +1221,7 @@ function createSprite(direction, item, index){
 		// sprite_p_ready.alpha = 0;
 		// sprite_p_ready.visible = true;
 		creatureAction.visible = false;
+		actionContainer.removeChild(creatureAction);
 	}},0.33);
 
 	creatureAction.pAtkTween = pAtkTween;
@@ -1239,6 +1240,7 @@ function createSprite(direction, item, index){
 		// sprite_d_ready.alpha = 0;
 		// sprite_d_ready.visible = true;
 		creatureAction.visible = false;
+		actionContainer.removeChild(creatureAction);
 	}});
 
 	creatureAction.dMissTween = dMissTween;
@@ -1537,7 +1539,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroRoster.addChild(creatureContainer);
-		actionContainer.addChild(creatureAction);
+		// actionContainer.addChild(creatureAction);
 		heroHP.addChild(healthBar);
 		heroDMG.addChild(dmgContainer);
 // 		heroHP.addChild(moveContainer);
@@ -1553,7 +1555,7 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemyRoster.addChild(creatureContainer);
-		actionContainer.addChild(creatureAction);
+		// actionContainer.addChild(creatureAction);
 		enemyHP.addChild(healthBar);
 		enemyDMG.addChild(dmgContainer);
 // 		enemyHP.addChild(moveContainer);
@@ -3457,8 +3459,6 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	
-
 	// tween.invalidate();
 	// tween.play(0);
 
@@ -3482,12 +3482,15 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
+	actionContainer.addChild(heroActionArray[0]);
+	actionContainer.addChild(enemyActionArray[0]);
+
 	actionContainer.fadeTween.play(0);
 
-	heroActionArray[1].visible = true;
+	heroActionArray[0].visible = true;
 	enemyActionArray[0].visible = true;
 
-	heroActionArray[1].pAtkTween.play(0);
+	heroActionArray[0].pAtkTween.play(0);
 	enemyActionArray[0].dMissTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
