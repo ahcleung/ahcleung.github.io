@@ -3208,6 +3208,9 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	additionalContainer.visible = true;
+
+	actionContainer.addChild(heroActionArray[0]);
+	actionContainer.addChild(enemyActionArray[2]);
 }
 
 function onAdditionalCancelDown(){
