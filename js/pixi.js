@@ -1180,14 +1180,14 @@ function createSprite(direction, item, index){
 	sprite_p_attack.anchor.set(1);
 	// sprite_p_attack.visible = false;
 	creatureAction.addChild(sprite_p_attack);
-	sprite_p_attack.x = 100;
+	sprite_p_attack.x = -100;
 	sprite_p_attack.y = 0;
 
 	var sprite_p_fxTop = new PIXI.Sprite(resources[item.code + '_p_fxTop'].texture);
 	sprite_p_fxTop.anchor.set(1);
 	// sprite_p_fxTop.visible = false;
 	creatureAction.addChild(sprite_p_fxTop);
-	sprite_p_fxTop.x = 200;
+	sprite_p_fxTop.x = -200;
 	sprite_p_fxTop.y = 0;
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
