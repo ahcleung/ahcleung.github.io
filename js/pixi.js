@@ -897,7 +897,7 @@ function setup(){
 	rectFade.beginFill(0x2d2d2d);
 	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
 	rectFade.endFill();
-	// rectFade.alpha = 0;
+	rectFade.alpha = 0.5;
 
 	actionContainer.addChild(rectFade);
 
@@ -3340,7 +3340,7 @@ function onAdditionalDown(){
 
 	// tween.invalidate();
 	// tween.play(0);
-	
+
 	// tempContainer.addChild(attackArray[0]);
 	// tempContainer.addChild(defendArray[0]);
 	// tempContainer.addChild(attackArray[1]);
@@ -3353,8 +3353,8 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0].ready);
-	actionContainer.addChild(enemyActionArray[0].ready)
+	actionContainer.addChild(heroActionArray[0]);
+	actionContainer.addChild(enemyActionArray[0]);
 
 	heroActionArray[0].ready.visible = true;
 	enemyActionArray[0].ready.visible = true;
