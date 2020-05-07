@@ -1145,6 +1145,8 @@ function createSprite(direction, item, index){
 	creatureAction.addChild(spriteReady);
 	creatureAction.ready = spriteReady;
 
+	actionContainer.addChild(creatureAction);
+
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
 	creatureContainer.interactive = true;
