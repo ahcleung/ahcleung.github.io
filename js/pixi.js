@@ -897,7 +897,7 @@ function setup(){
 	rectFade.beginFill(0x2d2d2d);
 	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
 	rectFade.endFill();
-	rectFade.alpha = 0;
+	// rectFade.alpha = 0;
 
 	actionContainer.addChild(rectFade);
 
