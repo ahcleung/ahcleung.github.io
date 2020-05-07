@@ -1988,8 +1988,9 @@ function resizeHP(roster, item, index){
 function resizeAction(direction, item, index){
 	// item.x = index * 100;
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	actionArray[index].forEach(spriteIndex => {
-		if(direction > 0){
+	
+	if(direction > 0){
+		heroActionArray[index].forEach(spriteIndex => {
 			if(app.screen.width < 860){
 				item[spriteIndex].scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
@@ -2013,7 +2014,9 @@ function resizeAction(direction, item, index){
 				default:
 					item[spriteIndex].x = 0;	
 			}
-		}else{
+		});
+	}else{
+		enemyActionArray[index].forEach(spriteIndex => {
 			if(app.screen.width < 860){
 				item[spriteIndex].scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
@@ -2037,8 +2040,8 @@ function resizeAction(direction, item, index){
 				default:
 					item[spriteIndex].x = 0;
 			}
-		}
-	});
+		});	
+	}	
 }
 
 function resizeSprites(direction, item, index){
