@@ -1167,37 +1167,37 @@ function createSprite(direction, item, index){
 	var sprite_p_ready = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	sprite_p_ready.anchor.set(1);
 	sprite_p_ready.alpha = 0;
-	// actionArray.push(sprite_p_ready);
 	creatureAction.addChild(sprite_p_ready);
 
 	var sprite_p_fxBack = new PIXI.Sprite(resources[item.code + '_p_fxBack'].texture);
 	sprite_p_fxBack.anchor.set(1);
 	// sprite_p_fxBack.visible = false;
-	// actionArray.push(sprite_p_fxBack);
 	creatureAction.addChild(sprite_p_fxBack);
+	sprite_p_fxBack.x = 0;
+	sprite_p_fxBack.y = 0;
 
 	var sprite_p_attack = new PIXI.Sprite(resources[item.code + '_p_attack'].texture);
 	sprite_p_attack.anchor.set(1);
 	// sprite_p_attack.visible = false;
-	// actionArray.push(sprite_p_attack);
 	creatureAction.addChild(sprite_p_attack);
+	sprite_p_attack.x = 100;
+	sprite_p_attack.y = 0;
 
 	var sprite_p_fxTop = new PIXI.Sprite(resources[item.code + '_p_fxTop'].texture);
 	sprite_p_fxTop.anchor.set(1);
 	// sprite_p_fxTop.visible = false;
-	// actionArray.push(sprite_p_fxTop);
 	creatureAction.addChild(sprite_p_fxTop);
+	sprite_p_fxTop.x = 200;
+	sprite_p_fxTop.y = 0;
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
 	sprite_d_ready.alpha = 0;
-	// actionArray.push(sprite_d_ready);
 	creatureAction.addChild(sprite_d_ready);
 
 	var sprite_d_miss = new PIXI.Sprite(resources[item.code + '_d_miss'].texture);
 	sprite_d_miss.anchor.set(1);
 	sprite_d_miss.visible = false;
-	// actionArray.push(sprite_d_miss);
 	creatureAction.addChild(sprite_d_miss);
 
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
@@ -3210,7 +3210,6 @@ function onAdditionalDown(){
 	additionalContainer.visible = true;
 
 	actionContainer.addChild(heroActionArray[0]);
-	actionContainer.addChild(enemyActionArray[2]);
 }
 
 function onAdditionalCancelDown(){
