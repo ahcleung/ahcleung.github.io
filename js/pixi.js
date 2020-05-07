@@ -1971,51 +1971,51 @@ function resizeAction(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
-			item.getChildByName(spriteReady).scale.set(direction * 0.23, 0.23);
+			item.getChildAt(0).scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.getChildByName(spriteReady).scale.set(direction * 0.3, 0.3); 
+			item.getChildAt(0).scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.getChildByName(spriteReady).scale.set(direction * 0.55, 0.55);
+			item.getChildAt(0).scale.set(direction * 0.55, 0.55);
 		}
 		switch(heroArray[index].pos) {
 			case 1:
-				item.getChildByName(spriteReady).x = 0;
+				item.getChildAt(0).x = 0;
 				break;
 			case 2:
-				item.getChildByName(spriteReady).x = -(resizeWidth + healthSpacing);
+				item.getChildAt(0).x = -(resizeWidth + healthSpacing);
 				break;
 			case 3:				
-				item.getChildByName(spriteReady).x = -((resizeWidth + healthSpacing) * 2);
+				item.getChildAt(0).x = -((resizeWidth + healthSpacing) * 2);
 				break;
 			case 4:
-				item.getChildByName(spriteReady).x = -((resizeWidth + healthSpacing) * 3);
+				item.getChildAt(0).x = -((resizeWidth + healthSpacing) * 3);
 				break;
 			default:
-				item.getChildByName(spriteReady).x = 0;	
+				item.getChildAt(0).x = 0;	
 		}
 	}else{
 		if(app.screen.width < 860){
-			item.getChildByName(spriteReady).scale.set(direction * 0.23, 0.23);
+			item.getChildAt(0).scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.getChildByName(spriteReady).scale.set(direction * 0.3, 0.3); 
+			item.getChildAt(0).scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.getChildByName(spriteReady).scale.set(direction * 0.55, 0.55);
+			item.getChildAt(0).scale.set(direction * 0.55, 0.55);
 		}
 		switch(enemyArray[index].pos) {
 			case 1:
-				item.getChildByName(spriteReady).x = 0;
+				item.getChildAt(0).x = 0;
 				break;
 			case 2:
-				item.getChildByName(spriteReady).x = resizeWidth + healthSpacing;
+				item.getChildAt(0).x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
-				item.getChildByName(spriteReady).x = (resizeWidth + healthSpacing) * 2;
+				item.getChildAt(0).x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
-				item.getChildByName(spriteReady).x = (resizeWidth + healthSpacing) * 3;
+				item.getChildAt(0).x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
-				item.getChildByName(spriteReady).x = 0;
+				item.getChildAt(0).x = 0;
 		}
 	}
 }
