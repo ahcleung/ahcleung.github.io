@@ -1215,6 +1215,7 @@ function createSprite(direction, item, index){
 		// actionContainer.removeChild(sprite_p_attack);
 		// actionContainer.removeChild(sprite_p_fxTop);
 		sprite_p_ready.visible = true;
+		creatureAction.visible = false;
 	}},0.33);
 
 	creatureAction.pAtkTween = pAtkTween;
