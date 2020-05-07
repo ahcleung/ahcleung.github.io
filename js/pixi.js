@@ -1141,7 +1141,7 @@ function createSprite(direction, item, index){
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	spriteReady.anchor.set(1);
-	spriteReady.visible = false;
+	// spriteReady.visible = false;
 	creatureAction.addChild(spriteReady);
 	creatureAction.ready = spriteReady;
 
@@ -3353,11 +3353,11 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0]);
-	actionContainer.addChild(enemyActionArray[0]);
+	actionContainer.addChild(heroActionArray[0].ready);
+	actionContainer.addChild(enemyActionArray[0].ready);
 
-	heroActionArray[0].ready.visible = true;
-	enemyActionArray[0].ready.visible = true;
+	// heroActionArray[0].ready.visible = true;
+	// enemyActionArray[0].ready.visible = true;
 
 	// attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
