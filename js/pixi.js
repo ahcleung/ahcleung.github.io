@@ -3484,11 +3484,11 @@ function onAdditionalDown(){
 
 	actionContainer.fadeTween.play(0);
 
-	heroActionArray[0].visible = true;
-	enemyActionArray[1].visible = true;
+	heroActionArray[1].visible = true;
+	enemyActionArray[0].visible = true;
 
-	heroActionArray[0].pAtkTween.play(0);
-	enemyActionArray[1].dMissTween.play(0);
+	heroActionArray[1].pAtkTween.play(0);
+	enemyActionArray[0].dMissTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
