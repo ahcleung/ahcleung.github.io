@@ -3523,7 +3523,7 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
-	animateBattle(1, [-2]);
+	animateBattle(1, [-1, -2]);
 	
 
 	// heroActionArray[0].ready.visible = true;
