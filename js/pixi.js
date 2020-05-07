@@ -1201,15 +1201,15 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-50, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-25, y:0, onComplete: function(){
 		sprite_p_ready.alpha = 0;
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
 	}});
-	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:0, y:0}, {ease:"custom", x: 100, y:0});
+	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:0, y:0}, {ease:"custom", x: 500, y:0});
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:500, y:0}, {ease:"custom", x: 600, y:0}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:1100, y:0}, {ease:"custom", x: 1200, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:1100, y:0}, {ease:"custom", x: 1250, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
