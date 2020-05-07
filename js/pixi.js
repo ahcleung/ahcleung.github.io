@@ -3410,13 +3410,13 @@ function onAdditionalDown(){
 	// defendTween.play(0);
 
 	actionContainer.addChild(heroActionArray[0][0]);
-	actionContainer.addChild(enemyActionArray[0][0]);
+	actionContainer.addChild(enemyActionArray[1][0]);
 	actionContainer.addChild(heroActionArray[0][1]);
-	actionContainer.addChild(enemyActionArray[0][1]);
+	actionContainer.addChild(enemyActionArray[1][1]);
 	actionContainer.addChild(heroActionArray[0][2]);
-	actionContainer.addChild(enemyActionArray[0][2]);
+	actionContainer.addChild(enemyActionArray[1][2]);
 	actionContainer.addChild(heroActionArray[0][3]);
-	actionContainer.addChild(enemyActionArray[0][3]);
+	actionContainer.addChild(enemyActionArray[1][3]);
 
 	heroContainerArray[0].patkTween.play(0);
 	enemyContainerArray[0].patkTween.play(0);
