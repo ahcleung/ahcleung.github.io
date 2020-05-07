@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.03
+*Version:         1.04
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -1067,8 +1067,11 @@ function setup(){
 	
 	app.stage.addChild(heroRoster);				//Hero stage
 	app.stage.addChild(enemyRoster);			//Enemy stage
+
 	app.stage.addChild(heroHP);					//Hero HP
 	app.stage.addChild(enemyHP);				//Enemy HP
+
+	app.stage.addChild(actionContainer);
 	app.stage.addChild(heroDMG);				//Hero damage UI
 	app.stage.addChild(enemyDMG);				//Enemy damage UI
 
@@ -1082,7 +1085,7 @@ function setup(){
 	app.stage.addChild(tempContainer);
 	// app.stage.addChild(tempContainer2);
 
-	app.stage.addChild(actionContainer);
+	
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -2227,580 +2230,294 @@ function onCreatureDown(){
 		});
 		if(correctTarget){
 			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
+
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
-			// if(Array.isArray(validSkillTargetArray[targetedVita])){
-				validSkillTargetArray[targetedVita].forEach(targeted => {
-					var selectedIndex = Math.abs(selectedVita)-1;
-					var targetedIndex = Math.abs(targeted)-1;
-					var other = false;
-					var deltaHP = 0;
-					var level = 0;
-					var attack = 0;
-					var defense = 0;
-					var defendElements = [];
-					var effectiveness = 1;
-					var dodge = 0;
-					var dodgeMod = 0;
-					var accMod = 0;
+			validSkillTargetArray[targetedVita].forEach(targeted => {
+				var selectedIndex = Math.abs(selectedVita)-1;
+				var targetedIndex = Math.abs(targeted)-1;
+				var other = false;
+				var deltaHP = 0;
+				var level = 0;
+				var attack = 0;
+				var defense = 0;
+				var defendElements = [];
+				var effectiveness = 1;
+				var dodge = 0;
+				var dodgeMod = 0;
+				var accMod = 0;
 
-					//Get attack stat based on skill used
-					if(selectedVita > 0){
-						level = heroArray[selectedIndex].level;
-						accMod = heroArray[selectedIndex].accMod;
-						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							attack = heroArray[selectedIndex].patk;
-						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							attack = heroArray[selectedIndex].satk;
-						}
+				//Get attack stat based on skill used
+				if(selectedVita > 0){
+					level = heroArray[selectedIndex].level;
+					accMod = heroArray[selectedIndex].accMod;
+					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						attack = heroArray[selectedIndex].patk;
+					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						attack = heroArray[selectedIndex].satk;
+					}
+				}else{
+					level = enemyArray[selectedIndex].level;
+					accMod = enemyArray[selectedIndex].accMod;
+					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						attack = enemyArray[selectedIndex].patk;
+					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						attack = enemyArray[selectedIndex].satk;
+					}
+				}
+
+				//Get defense stat based on skill used					
+				if(targeted > 0){
+					dodge = heroArray[targetedIndex].dodge;
+					dodgeMod = heroArray[targetedIndex].dodgeMod;
+					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						defense = heroArray[targetedIndex].pdef;
+					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						defense = heroArray[targetedIndex].sdef;
+					}
+					heroArray[targetedIndex].elements.forEach(element =>{
+						defendElements.push(element);
+					});
+				}else{
+					// level = enemyArray[selectedIndex].level;
+					dodge = enemyArray[targetedIndex].dodge;
+					dodgeMod = enemyArray[targetedIndex].dodgeMod;
+					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						defense = enemyArray[targetedIndex].pdef;
+					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						defense = enemyArray[targetedIndex].sdef;
+					}
+					enemyArray[targetedIndex].elements.forEach(element =>{
+						defendElements.push(element);
+					});
+				}
+
+				var accDiff = accMod - dodgeMod;
+				var hitMod = 1;
+				if(accDiff > 0){
+					hitMod = (Math.abs(accDiff) + 3)/3;
+				}else if(accDiff < 0){
+					hitMod = 3/(Math.abs(accDiff) + 3);
+				}
+
+				if(skillsList.data.skills[selectedSkill].accuracy == 110){
+					var hitChance = 1;
+				}else{
+					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
+				}
+				var hitRoll = Math.random();
+
+				if(hitRoll < hitChance){
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
+					//Get defenders elements to calculate effectiveness
+					defendElements.forEach(defendElement=>{
+						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+					});
+
+					//Critical hit chance
+					var criticalChance = Math.floor(Math.random() * 10000);
+					var crit = 1;
+					if(criticalChance > 5000){
+						crit = 1.5;
+					}
+
+					//Calculate heal amount or damage amount
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						//calculate how much to heal
+						deltaHP = skillsList.data.skills[selectedSkill].heal;
+						effectiveness = 1;
+						crit = 1;
+					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+						other = true;
 					}else{
-						level = enemyArray[selectedIndex].level;
-						accMod = enemyArray[selectedIndex].accMod;
-						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							attack = enemyArray[selectedIndex].patk;
-						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							attack = enemyArray[selectedIndex].satk;
-						}
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 					}
 
-					//Get defense stat based on skill used					
-					if(targeted > 0){
-						dodge = heroArray[targetedIndex].dodge;
-						dodgeMod = heroArray[targetedIndex].dodgeMod;
-						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							defense = heroArray[targetedIndex].pdef;
-						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							defense = heroArray[targetedIndex].sdef;
-						}
-						heroArray[targetedIndex].elements.forEach(element =>{
-							defendElements.push(element);
-						});
+					if(crit > 1){
+						console.log("Critical damage: " + Math.floor(deltaHP/3));
+					}
+
+					console.log(targeted + " takes " + deltaHP + " damage");
+
+					if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
+						moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+					}
+				}else{
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
+					deltaHP = 0;
+				}
+
+				if(targeted > 0 && !other){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						heroArray[targetedIndex].heal(deltaHP);			//add heal
 					}else{
-						// level = enemyArray[selectedIndex].level;
-						dodge = enemyArray[targetedIndex].dodge;
-						dodgeMod = enemyArray[targetedIndex].dodgeMod;
-						if(skillsList.data.skills[selectedSkill].type == "phy"){
-							defense = enemyArray[targetedIndex].pdef;
-						}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-							defense = enemyArray[targetedIndex].sdef;
-						}
-						enemyArray[targetedIndex].elements.forEach(element =>{
-							defendElements.push(element);
-						});
+						heroArray[targetedIndex].damage(deltaHP);		//subtract damage
 					}
 
-					var accDiff = accMod - dodgeMod;
-					var hitMod = 1;
-					if(accDiff > 0){
-						hitMod = (Math.abs(accDiff) + 3)/3;
-					}else if(accDiff < 0){
-						hitMod = 3/(Math.abs(accDiff) + 3);
-					}
-
-					if(skillsList.data.skills[selectedSkill].accuracy == 110){
-						var hitChance = 1;
-					}else{
-						var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-					}
-					var hitRoll = Math.random();
-
-					if(hitRoll < hitChance){
-						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
-						//Get defenders elements to calculate effectiveness
-						defendElements.forEach(defendElement=>{
-							effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-						});
-
-						//Critical hit chance
-						var criticalChance = Math.floor(Math.random() * 10000);
-						var crit = 1;
-						if(criticalChance > 5000){
-							crit = 1.5;
-						}
-
-						//Calculate heal amount or damage amount
-						if(skillsList.data.skills[selectedSkill].heal > 0){
-							//calculate how much to heal
-							deltaHP = skillsList.data.skills[selectedSkill].heal;
-							effectiveness = 1;
-							crit = 1;
-						}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-							other = true;
-						}else{
-							deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-						}
-
-						if(crit > 1){
-							console.log("Critical damage: " + Math.floor(deltaHP/3));
-						}
-
-						console.log(targeted + " takes " + deltaHP + " damage");
-
-						if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
-							moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
-						}
-					}else{
-						console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-						deltaHP = 0;
-					}
-
-					if(targeted > 0 && !other){
-						if(skillsList.data.skills[selectedSkill].heal > 0){
-							heroArray[targetedIndex].heal(deltaHP);			//add heal
-						}else{
-							heroArray[targetedIndex].damage(deltaHP);		//subtract damage
-						}
-
-						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
-						
-						if(effectiveness == 0.25){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						}else if(effectiveness == 0.5){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						}else if(effectiveness == 2){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						}else if(effectiveness == 4){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						}else if(deltaHP == 0){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						}else{
-							heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
-						}
-						
-						if(crit > 1){
-							heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
-
-							var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
-
-							TweenMax.fromTo(heroHPContainerArray[targetedIndex].critDmgBar
-								, 1, {
-									width: heroHPContainerArray[targetedIndex].critDmgBar.width
-								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
-
-							heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-						}
-
-						if(skillsList.data.skills[selectedSkill].heal > 0){
-							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-							heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
-
-							var newWidth = (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP)) - heroHPContainerArray[targetedIndex].inner.width;
-
-							heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].inner.width;
-							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-							var tween = new TimelineMax({onComplete: function(){
-								heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;	
-								heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
-							}});
-							tween.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-									heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
-								}});
-							tween.to(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {ease:Expo.easeIn, alpha:0});
-						}else{
-							var newWidth = heroHPContainerArray[targetedIndex].inner.width - (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP));
-
-							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-							TweenMax.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {
-									width: newWidth
-								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-								heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-							}});
-
-							heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
-							heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);	
-						}
-						
-						heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
-
-						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-						heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-					}else if(targeted < 0 && !other){
-						if(skillsList.data.skills[selectedSkill].heal > 0){
-							enemyArray[targetedIndex].heal(deltaHP);			//add heal
-						}else{
-							enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
-						}
-
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
-
-						if(effectiveness == 0.25){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						}else if(effectiveness == 0.5){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						}else if(effectiveness == 2){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						}else if(effectiveness == 4){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						}else if(deltaHP == 0){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						}else{
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
-						}
-
-						if(crit > 1){
-							enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
-
-							var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
-
-							TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
-								, 1, {
-									width: enemyHPContainerArray[targetedIndex].critDmgBar.width
-								}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
-
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-						}
-
-						if(skillsList.data.skills[selectedSkill].heal > 0){
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-							enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
-
-							var newWidth = (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyHPContainerArray[targetedIndex].inner.width;
-
-							enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].inner.width;
-							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-							var tween = new TimelineMax({onComplete: function(){
-								enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-								enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
-							}});
-							tween.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-									enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-								}});
-							tween.to(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {ease:Expo.easeIn, alpha:0});
-						}else{
-							var newWidth = enemyHPContainerArray[targetedIndex].inner.width - (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
-
-							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-							TweenMax.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-								, 1, {
-									width: newWidth
-								}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-								enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-							}});
-
-							enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-							enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);					
-						}	
-
-						enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
-
-						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-						enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-					}
-				});
-			// }else{
-			// 	// console.log(validSkillTargetArray[targetedVita] + " takes ## deltaHP");
-			// 	var targeted = validSkillTargetArray[targetedVita];
-			// 	var selectedIndex = Math.abs(selectedVita)-1;
-			// 	var targetedIndex = Math.abs(targeted)-1;
-			// 	var other = false;
-			// 	var deltaHP = 0;
-			// 	var level = 0;
-			// 	var attack = 0;
-			// 	var defense = 0;
-			// 	var defendElements = [];
-			// 	var effectiveness = 1;				
-			// 	var dodge = 0;
-			// 	var dodgeMod = 0;
-			// 	var accMod = 0;
-
-			// 	if(selectedVita > 0){
-			// 		level = heroArray[selectedIndex].level;
-			// 		accMod = heroArray[selectedIndex].accMod;
-			// 		if(skillsList.data.skills[selectedSkill].type == "phy"){
-			// 			attack = heroArray[selectedIndex].patk;
-			// 		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-			// 			attack = heroArray[selectedIndex].satk;
-			// 		}
-			// 	}else{
-			// 		level = enemyArray[selectedIndex].level;
-			// 		accMod = heroArray[selectedIndex].accMod;
-			// 		if(skillsList.data.skills[selectedSkill].type == "phy"){
-			// 			attack = enemyArray[selectedIndex].patk;
-			// 		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-			// 			attack = enemyArray[selectedIndex].satk;
-			// 		}
-			// 	}
-				
-			// 	if(targeted > 0){
-			// 		dodge = heroArray[targetedIndex].dodge;
-			// 		dodgeMod = heroArray[targetedIndex].dodgeMod;
-			// 		if(skillsList.data.skills[selectedSkill].type == "phy"){
-			// 			defense = heroArray[targetedIndex].pdef;
-			// 		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-			// 			defense = heroArray[targetedIndex].sdef;
-			// 		}
-			// 		heroArray[targetedIndex].elements.forEach(element =>{
-			// 			defendElements.push(element);
-			// 		});
-			// 	}else{
-			// 		// level = enemyArray[selectedIndex].level;
-			// 		dodge = enemyArray[targetedIndex].dodge;
-			// 		dodgeMod = enemyArray[targetedIndex].dodgeMod;
-			// 		if(skillsList.data.skills[selectedSkill].type == "phy"){
-			// 			defense = enemyArray[targetedIndex].pdef;
-			// 		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-			// 			defense = enemyArray[targetedIndex].sdef;
-			// 		}
-			// 		enemyArray[targetedIndex].elements.forEach(element =>{
-			// 			defendElements.push(element);
-			// 		});
-			// 	}
-
-			// 	var accDiff = accMod - dodgeMod;
-			// 	var hitMod = 1;
-			// 	if(accDiff > 0){
-			// 		hitMod = (Math.abs(accDiff) + 3)/3;
-			// 	}else if(accDiff < 0){
-			// 		hitMod = 3/(Math.abs(accDiff) + 3);
-			// 	}
-
-			// 	if(skillsList.data.skills[selectedSkill].accuracy == 110){
-			// 		var hitChance = 1;
-			// 	}else{
-			// 		var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;					
-			// 	}
-
-			// 	var hitRoll = Math.random();
-
-			// 	if(hitRoll < hitChance){
-			// 		console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
-			// 		//Get defenders elements to calculate effectiveness
-			// 		defendElements.forEach(defendElement=>{
-			// 			effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-			// 		});
-
-			// 		//Critical hit chance
-			// 		var criticalChance = Math.floor(Math.random() * 10000);
-			// 		var crit = 1;
-			// 		if(criticalChance > 5000){
-			// 			crit = 1.5;
-			// 		}
-
-			// 		//Calculate heal amount or damage amount
-			// 		if(skillsList.data.skills[selectedSkill].heal > 0){
-			// 			//calculate how much to heal
-			// 			deltaHP = skillsList.data.skills[selectedSkill].heal;
-			// 			effectiveness = 1;
-			// 			crit = 1;
-			// 		}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-			// 			other = true;
-			// 		}else{
-			// 			deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-			// 		}
-
-			// 		if(crit > 1){
-			// 			console.log("Critical damage: " + Math.floor(deltaHP/3));
-			// 		}
-
-			// 		console.log(targeted + " takes " + deltaHP + " damage");
-
-			// 		if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
-			// 			moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
-			// 		}
-			// 	}else{
-			// 		console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-			// 		deltaHP = 0;
-			// 	}
-
-			// 	if(targeted > 0 && !other){
-			// 		if(skillsList.data.skills[selectedSkill].heal > 0){
-			// 			heroArray[targetedIndex].heal(deltaHP);				//add heal
-			// 		}else{
-			// 			heroArray[targetedIndex].damage(deltaHP);			//subtract damage
-			// 		}
-
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
-
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-			// 		if(effectiveness == 0.25){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-			// 		}else if(effectiveness == 0.5){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-			// 		}else if(effectiveness == 2){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-			// 		}else if(effectiveness == 4){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-			// 		}else if(deltaHP == 0){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-			// 		}else{
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
-			// 		}
-
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-			// 		if(crit > 1){
-			// 			heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
-
-			// 			var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
-
-			// 			TweenMax.fromTo(heroHPContainerArray[targetedIndex].critDmgBar
-			// 				, 1, {
-			// 					width: heroHPContainerArray[targetedIndex].critDmgBar.width
-			// 				}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
-
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-			// 		}
-			// 		if(skillsList.data.skills[selectedSkill].heal > 0){
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-			// 			heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
-
-			// 			var newWidth = (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP)) - heroHPContainerArray[targetedIndex].inner.width;
-
-			// 			heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].inner.width;
-			// 			heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-			// 			var tween = new TimelineMax({onComplete: function(){
-			// 				heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;	
-			// 				heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
-			// 			}});
-			// 			tween.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-			// 					heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
-			// 				}});
-			// 			tween.to(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 1, {ease:Expo.easeIn, alpha:0});
-			// 		}else{
-			// 			var newWidth = heroHPContainerArray[targetedIndex].inner.width - (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP));
-
-			// 			heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-			// 			heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-			// 			TweenMax.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 1, {
-			// 					width: newWidth
-			// 				}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-			// 				heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-			// 			}});
-
-			// 			heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
-			// 			heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);	
-			// 		}
-			// 		heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
+					heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
 					
-			// 		heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-			// 		heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-			// 	}else if(targeted < 0 && !other){
-			// 		if(skillsList.data.skills[selectedSkill].heal > 0){
-			// 			enemyArray[targetedIndex].heal(deltaHP);			//add heal
-			// 		}else{
-			// 			enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
-			// 		}
+					if(effectiveness == 0.25){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+					}else if(effectiveness == 0.5){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+					}else if(effectiveness == 2){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+					}else if(effectiveness == 4){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					}else if(deltaHP == 0){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					}else{
+						heroArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					}
+					
+					if(crit > 1){
+						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
+						var newCritWidth = -(heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
-			// 		if(effectiveness == 0.25){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-			// 		}else if(effectiveness == 0.5){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-			// 		}else if(effectiveness == 2){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-			// 		}else if(effectiveness == 4){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-			// 		}else if(deltaHP == 0){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-			// 		}else{
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
-			// 		}
+						TweenMax.fromTo(heroHPContainerArray[targetedIndex].critDmgBar
+							, 1, {
+								width: heroHPContainerArray[targetedIndex].critDmgBar.width
+							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
-			// 		if(crit > 1){
-			// 			enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
+						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+					}
 
-			// 			var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
-			// 			TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
-			// 				, 1, {
-			// 					width: enemyHPContainerArray[targetedIndex].critDmgBar.width
-			// 				}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
+						var newWidth = (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP)) - heroHPContainerArray[targetedIndex].inner.width;
 
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-			// 		}
+						heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].inner.width;
+						heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						var tween = new TimelineMax({onComplete: function(){
+							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;	
+							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
+						}});
+						tween.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+								heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
+							}});
+						tween.to(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {ease:Expo.easeIn, alpha:0});
+					}else{
+						var newWidth = heroHPContainerArray[targetedIndex].inner.width - (heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP));
 
-			// 		if(skillsList.data.skills[selectedSkill].heal > 0){
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-			// 			enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+						heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+						heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						TweenMax.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {
+								width: newWidth
+							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+						}});
 
-			// 			var newWidth = (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyHPContainerArray[targetedIndex].inner.width;
+						heroHPContainerArray[targetedIndex].dmgBarContainer.x = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
+						heroHPContainerArray[targetedIndex].inner.width = heroHPContainerArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);	
+					}
+					
+					heroHPContainerArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
-			// 			enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].inner.width;
-			// 			enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-			// 			var tween = new TimelineMax({onComplete: function(){
-			// 				enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-			// 				enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
-			// 			}});
-			// 			tween.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-			// 					enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-			// 				}});
-			// 			tween.to(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 1, {ease:Expo.easeIn, alpha:0});
-			// 		}else{
-			// 			var newWidth = enemyHPContainerArray[targetedIndex].inner.width - (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
+					heroArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					heroArrayDmg[targetedIndex].dmgPopup.tween.play(0);
+				}else if(targeted < 0 && !other){
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						enemyArray[targetedIndex].heal(deltaHP);			//add heal
+					}else{
+						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
+					}
 
-			// 			enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-			// 			enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-			// 			TweenMax.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-			// 				, 1, {
-			// 					width: newWidth
-			// 				}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
-			// 				enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-			// 			}});
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
 
-			// 			enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-			// 			enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-			// 		}
-			// 		enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
+					if(effectiveness == 0.25){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+					}else if(effectiveness == 0.5){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+					}else if(effectiveness == 2){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+					}else if(effectiveness == 4){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					}else if(deltaHP == 0){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					}else{
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					}
 
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-			// 		enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
-			// 	}
-			// }
+					if(crit > 1){
+						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
-			
+						var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
+						TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
+							, 1, {
+								width: enemyHPContainerArray[targetedIndex].critDmgBar.width
+							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
+
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+					}
+
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+
+						var newWidth = (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyHPContainerArray[targetedIndex].inner.width;
+
+						enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].inner.width;
+						enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						var tween = new TimelineMax({onComplete: function(){
+							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
+						}});
+						tween.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+								enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+							}});
+						tween.to(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {ease:Expo.easeIn, alpha:0});
+					}else{
+						var newWidth = enemyHPContainerArray[targetedIndex].inner.width - (enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
+
+						enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+						enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+						TweenMax.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
+							, 1, {
+								width: newWidth
+							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+						}});
+
+						enemyHPContainerArray[targetedIndex].dmgBarContainer.x = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+						enemyHPContainerArray[targetedIndex].inner.width = enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);					
+					}	
+
+					enemyHPContainerArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
+
+					enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
+				}
+			});
+		
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
 				var identifier = [];
