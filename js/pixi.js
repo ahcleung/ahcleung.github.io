@@ -516,7 +516,6 @@ function setup(){
 	actionContainer.addChild(rectFade);
 	actionContainer.fadeTween = fadeTween;
 
-	
 
 	heroRoster.x = app.screen.width/2;
 	heroRoster.y = app.screen.height/2;
@@ -1158,9 +1157,10 @@ function createSprite(direction, item, index){
         // set the mousedown and touchstart callback...
         .on('pointerdown', onCreatureDown);
 
-	const creatureAction = new PIXI.Container();
-	const actionArray = [];
 
+
+	const creatureAction = new PIXI.Container();
+	// const actionArray = [];
 	var sprite_p_ready = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	sprite_p_ready.anchor.set(1);
 	// actionArray.push(sprite_p_ready);
@@ -1210,10 +1210,10 @@ function createSprite(direction, item, index){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
-		actionContainer.removeChild(sprite_p_ready);
-		actionContainer.removeChild(sprite_p_fxBack);
-		actionContainer.removeChild(sprite_p_attack);
-		actionContainer.removeChild(sprite_p_fxTop);
+		// actionContainer.removeChild(sprite_p_ready);
+		// actionContainer.removeChild(sprite_p_fxBack);
+		// actionContainer.removeChild(sprite_p_attack);
+		// actionContainer.removeChild(sprite_p_fxTop);
 		sprite_p_ready.visible = true;
 	}},0.33);
 
@@ -1226,19 +1226,21 @@ function createSprite(direction, item, index){
 	}});
 	dMissTween.fromTo(sprite_d_miss, 1, {x:0, y:0}, {ease:"custom", x: -275, y: -100, onComplete: function(){
 		sprite_d_miss.visible = false;
-		actionContainer.removeChild(sprite_d_ready);
-		actionContainer.removeChild(sprite_d_miss);
+		// actionContainer.removeChild(sprite_d_ready);
+		// actionContainer.removeChild(sprite_d_miss);
 		sprite_d_ready.visible = true;
+		creatureAction.visible = false;
 	}});
 
 	creatureAction.dMissTween = dMissTween;
+
+	creatureAction.visible = false;
 
 	// spriteReady.visible = false;
 	// creatureAction.addChild(spriteReady);
 	// creatureAction.ready = spriteReady;
 
 	// actionContainer.addChild(creatureAction);
-
 	
 	
 	// if(item.size == 2){		
@@ -3472,6 +3474,10 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][3]);
 
 	actionContainer.fadeTween.play(0);
+
+	heroActionArray[0].visible = true;
+	enemyActionArray[1].visible = true;
+
 	heroActionArray[0].pAtkTween.play(0);
 	enemyActionArray[1].dMissTween.play(0);
 
