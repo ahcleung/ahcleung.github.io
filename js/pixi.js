@@ -1173,22 +1173,22 @@ function createSprite(direction, item, index){
 	sprite_p_fxBack.anchor.set(1);
 	// sprite_p_fxBack.visible = false;
 	creatureAction.addChild(sprite_p_fxBack);
-	// sprite_p_fxBack.x = 0;
-	// sprite_p_fxBack.y = 0;
+	sprite_p_fxBack.x = 0;
+	sprite_p_fxBack.y = 0;
 
 	var sprite_p_attack = new PIXI.Sprite(resources[item.code + '_p_attack'].texture);
 	sprite_p_attack.anchor.set(1);
 	// sprite_p_attack.visible = false;
 	creatureAction.addChild(sprite_p_attack);
-	// sprite_p_attack.x = -100;
-	// sprite_p_attack.y = 0;
+	sprite_p_attack.x = -100;
+	sprite_p_attack.y = 0;
 
 	var sprite_p_fxTop = new PIXI.Sprite(resources[item.code + '_p_fxTop'].texture);
 	sprite_p_fxTop.anchor.set(1);
 	// sprite_p_fxTop.visible = false;
 	creatureAction.addChild(sprite_p_fxTop);
-	// sprite_p_fxTop.x = -200;
-	// sprite_p_fxTop.y = 0;
+	sprite_p_fxTop.x = -200;
+	sprite_p_fxTop.y = 0;
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
@@ -1214,8 +1214,8 @@ function createSprite(direction, item, index){
 		sprite_p_fxTop.visible = true;
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:0, y:0}, {ease:"custom", x: 125, y:0});
-	pAtkTween.fromTo(sprite_p_attack, anim2, {x:-100, y:0}, {ease:"custom", x: 200, y:0}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:-200, y:0}, {ease:"custom", x: 275, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_attack, anim2, {x:0, y:0}, {ease:"custom", x: 200, y:0}, anim1);
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:0, y:0}, {ease:"custom", x: 275, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
