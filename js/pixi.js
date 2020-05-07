@@ -1230,12 +1230,12 @@ function createSprite(direction, item, index){
 		sprite_d_ready.visible = false;
 		sprite_d_miss.visible = true;
 	}});
-	dMissTween.fromTo(sprite_d_miss, 1, {x:0, y:0}, {ease:"custom", x: 275, y: 100, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, 1, {x:0, y:0}, {ease:"custom", x: 275, y: -100, onComplete: function(){
 		sprite_d_miss.visible = false;
 		// actionContainer.removeChild(sprite_d_ready);
 		// actionContainer.removeChild(sprite_d_miss);
 		sprite_d_ready.alpha = 0;
-		// creatureAction.visible = false;
+		creatureAction.visible = false;
 	}});
 
 	creatureAction.dMissTween = dMissTween;
