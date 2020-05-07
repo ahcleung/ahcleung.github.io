@@ -1524,7 +1524,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroRoster.addChild(creatureContainer);
-		heroRoster.addChild(creatureAction);
+		actionContainer.addChild(creatureAction);
 		heroHP.addChild(healthBar);
 		heroDMG.addChild(dmgContainer);
 // 		heroHP.addChild(moveContainer);
@@ -1540,7 +1540,7 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemyRoster.addChild(creatureContainer);
-		enemyRoster.addChild(creatureAction);
+		actionContainer.addChild(creatureAction);
 		enemyHP.addChild(healthBar);
 		enemyDMG.addChild(dmgContainer);
 // 		enemyHP.addChild(moveContainer);
@@ -2940,11 +2940,10 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			TweenMax.to(heroContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			TweenMax.to(heroActionContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(heroActionArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(heroHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(heroArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 			// console.log(arrayCreature.pos);
-			heroActionContainerArray
 		});
 	}else{
 		var moveFrom;
@@ -2997,7 +2996,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			TweenMax.to(enemyContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			TweenMax.to(enemyActionContainerArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			TweenMax.to(enemyActionArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(enemyHPContainerArray[arrayCreatureIndex], 0.5, {x: newHPX});
 			TweenMax.to(enemyArrayDmg[arrayCreatureIndex], 0.5, {x: newHPX});
 			// console.log(arrayCreature.pos);
