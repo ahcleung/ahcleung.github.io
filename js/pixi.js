@@ -897,7 +897,7 @@ function setup(){
 	rectFade.beginFill(0x2d2d2d);
 	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
 	rectFade.endFill();
-	rectFade.alpha = 0.5;
+	rectFade.alpha = 0;
 
 	fadeTween = new TimelineMax({paused: true});
 	fadeTween.to(rectFade, 0.16, {alpha:0.75});
@@ -1168,18 +1168,28 @@ function createSprite(direction, item, index){
 	sprite_p_fxTop.visible = false;
 	actionArray.push(sprite_p_fxTop);
 
+	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
+	sprite_d_ready.anchor.set(1);
+	sprite_d_ready.visible = false;
+	actionArray.push(sprite_d_ready);
+
+	var sprite_d_miss = new PIXI.Sprite(resources[item.code + '_d_miss'].texture);
+	sprite_d_miss.anchor.set(1);
+	sprite_d_miss.visible = false;
+	actionArray.push(sprite_d_miss);
+
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
-	patkTween = new TimelineMax({paused: true});
-	patkTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
+	pAtkTween = new TimelineMax({paused: true});
+	pAtkTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
 		sprite_p_ready.visible = false;
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
 	}});
-	patkTween.fromTo(sprite_p_fxBack, 1, {x:0}, {ease:"custom", x: 125});
-	patkTween.fromTo(sprite_p_attack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
-	patkTween.fromTo(sprite_p_fxTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxBack, 1, {x:0}, {ease:"custom", x: 125});
+	pAtkTween.fromTo(sprite_p_attack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
+	pAtkTween.fromTo(sprite_p_fxTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
@@ -1190,7 +1200,21 @@ function createSprite(direction, item, index){
 		sprite_p_ready.visible = true;
 	}},0.33);
 
-	creatureContainer.patkTween = patkTween;
+	creatureContainer.pAtkTween = pAtkTween;
+
+	dmissTween = new TimelineMax({paused: true});
+	dmissTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:0, onComplete: function(){
+		sprite_d_ready.visible = false;
+		sprite_d_miss.visible = true;
+	}});
+	dmissTween.fromTo(sprite_d_miss, 1, {x:0 y:0}, {ease:"custom", x: -275, y: -100, onComplete: function(){
+		sprite_d_miss.visible = false;
+		actionContainer.removeChild(sprite_d_ready);
+		actionContainer.removeChild(sprite_d_miss);
+		sprite_d_ready.visible = true;
+	}});
+
+	creatureContainer.dMissTween = dMissTween;
 
 	// spriteReady.visible = false;
 	// creatureAction.addChild(spriteReady);
@@ -3416,18 +3440,17 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0][0]);
-	actionContainer.addChild(enemyActionArray[1][0]);
+	actionContainer.addChild(heroActionArray[0][0]);		//ready
+	actionContainer.addChild(enemyActionArray[1][4]);		//ready
+
 	actionContainer.addChild(heroActionArray[0][1]);
-	actionContainer.addChild(enemyActionArray[1][1]);
+	actionContainer.addChild(enemyActionArray[1][5]);
 	actionContainer.addChild(heroActionArray[0][2]);
-	actionContainer.addChild(enemyActionArray[1][2]);
 	actionContainer.addChild(heroActionArray[0][3]);
-	actionContainer.addChild(enemyActionArray[1][3]);
 
 	actionContainer.fadeTween.play(0);
-	heroContainerArray[0].patkTween.play(0);
-	enemyContainerArray[1].patkTween.play(0);
+	heroContainerArray[0].pAtkTween.play(0);
+	enemyContainerArray[1].dMissTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
