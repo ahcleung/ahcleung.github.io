@@ -1137,7 +1137,7 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 
-	const creatureAction = new PIXI.Container();
+	// const creatureAction = new PIXI.Container();
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	spriteReady.anchor.set(1);
@@ -1971,51 +1971,51 @@ function resizeAction(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.23, 0.23);
+			item.getChildByName(ready).scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.scale.set(direction * 0.3, 0.3); 
+			item.getChildByName(ready).scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.scale.set(direction * 0.55, 0.55);
+			item.getChildByName(ready).scale.set(direction * 0.55, 0.55);
 		}
 		switch(heroArray[index].pos) {
 			case 1:
-				item.x = 0;
+				item.getChildByName(ready).x = 0;
 				break;
 			case 2:
-				item.x = -(resizeWidth + healthSpacing);
+				item.getChildByName(ready).x = -(resizeWidth + healthSpacing);
 				break;
 			case 3:				
-				item.x = -((resizeWidth + healthSpacing) * 2);
+				item.getChildByName(ready).x = -((resizeWidth + healthSpacing) * 2);
 				break;
 			case 4:
-				item.x = -((resizeWidth + healthSpacing) * 3);
+				item.getChildByName(ready).x = -((resizeWidth + healthSpacing) * 3);
 				break;
 			default:
-				item.x = 0;	
+				item.getChildByName(ready).x = 0;	
 		}
 	}else{
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.23, 0.23);
+			item.getChildByName(ready).scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.scale.set(direction * 0.3, 0.3); 
+			item.getChildByName(ready).scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.scale.set(direction * 0.55, 0.55);
+			item.getChildByName(ready).scale.set(direction * 0.55, 0.55);
 		}
 		switch(enemyArray[index].pos) {
 			case 1:
-				item.x = 0;
+				item.getChildByName(ready).x = 0;
 				break;
 			case 2:
-				item.x = resizeWidth + healthSpacing;
+				item.getChildByName(ready).x = resizeWidth + healthSpacing;
 				break;
 			case 3:				
-				item.x = (resizeWidth + healthSpacing) * 2;
+				item.getChildByName(ready).x = (resizeWidth + healthSpacing) * 2;
 				break;
 			case 4:
-				item.x = (resizeWidth + healthSpacing) * 3;
+				item.getChildByName(ready).x = (resizeWidth + healthSpacing) * 3;
 				break;
 			default:
-				item.x = 0;
+				item.getChildByName(ready).x = 0;
 		}
 	}
 }
@@ -3357,8 +3357,8 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0].ready);
-	actionContainer.addChild(enemyActionArray[0].ready);
+	// actionContainer.addChild(heroActionArray[0]);
+	// actionContainer.addChild(enemyActionArray[0]);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
