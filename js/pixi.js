@@ -1474,7 +1474,7 @@ function resize() {
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	rectFade.width = app.screen.width;
 	rectFade.height = app.screen.height;
-	rectFade.position.set(-app.screen.width/2, -app.screen.height/2);
+	rectFade.position.set(-app.screen.width/2, -app.screen.height*3/4);
 	// rectFade.position.set(0, 0);
 
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
