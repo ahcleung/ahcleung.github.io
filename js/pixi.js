@@ -2797,7 +2797,7 @@ function onCreatureDown(){
 			// 		enemyArrayDmg[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 			// 		enemyArrayDmg[targetedIndex].dmgPopup.tween.play(0);
 			// 	}
-			}
+			// }
 
 			
 
