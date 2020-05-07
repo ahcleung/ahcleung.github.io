@@ -1137,13 +1137,13 @@ function createSprite(direction, item, index){
 	const creatureContainer = new PIXI.Container();	
 	creatureContainer.addChild(armatureHero);
 
-	// const creatureAction = new PIXI.Container();
+	const creatureAction = new PIXI.Container();
 
 	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
-	spriteReady.anchor.set(1);
+	// spriteReady.anchor.set(1);
 	// spriteReady.visible = false;
-	// creatureAction.addChild(spriteReady);
-	// creatureAction.ready = spriteReady;
+	creatureAction.addChild(spriteReady);
+	creatureAction.ready = spriteReady;
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
@@ -1428,8 +1428,8 @@ function createSprite(direction, item, index){
 	if(direction > 0){
 		heroContainerArray.push(creatureContainer);
 		heroHPContainerArray.push(healthBar);
-		// heroActionArray.push(creatureAction);
-		heroActionArray.push(spriteReady);
+		heroActionArray.push(creatureAction);
+		// heroActionArray.push(spriteReady);
 		heroArrayDmg.push(dmgContainer);
 		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
@@ -1442,8 +1442,8 @@ function createSprite(direction, item, index){
 	}else{
 		enemyContainerArray.push(creatureContainer);
 		enemyHPContainerArray.push(healthBar);
-		// enemyActionArray.push(creatureAction);
-		enemyActionArray.push(spriteReady);
+		enemyActionArray.push(creatureAction);
+		// enemyActionArray.push(spriteReady);
 		enemyArrayDmg.push(dmgContainer);
 		enemyOrder.push(index);
 // 		moveEnemyContainerArray.push(moveContainer);
@@ -1474,7 +1474,7 @@ function resize() {
 	rectFade.height = app.screen.height;
 	// rectFade.position.set(0, 0);
 
-	// actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
+	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
@@ -3355,8 +3355,8 @@ function onAdditionalDown(){
 	// attackTween.play(0);
 	// defendTween.play(0);
 
-	actionContainer.addChild(heroActionArray[0]);
-	actionContainer.addChild(enemyActionArray[0]);
+	actionContainer.addChild(heroActionArray[0].ready);
+	actionContainer.addChild(enemyActionArray[0].ready);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
