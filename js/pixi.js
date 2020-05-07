@@ -344,6 +344,8 @@ const additionalContainer = new PIXI.Container();	//Additional actions
 const attackContainer = new PIXI.Container();
 const defendContainer = new PIXI.Container();
 
+const actionContainer = new PIXI.Container();
+
 const rectTemp = new PIXI.Graphics();
 
 const tempContainer = new PIXI.Container();
@@ -897,6 +899,8 @@ function setup(){
 	rectFade.endFill();
 	rectFade.alpha = 0;
 
+	actionContainer.addChild(rectFade);
+
 	// let outerBar = new PIXI.Graphics();
 	// outerBar.beginFill(0x222222);
 	// outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
@@ -1060,10 +1064,12 @@ function setup(){
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
 
-	app.stage.addChild(rectFade);
+	// app.stage.addChild(rectFade);
 
 	app.stage.addChild(tempContainer);
-	app.stage.addChild(tempContainer2);
+	// app.stage.addChild(tempContainer2);
+
+	app.stage.addChild(actionContainer);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1133,9 +1139,11 @@ function createSprite(direction, item, index){
 
 	const creatureAction = new PIXI.Container();
 
-	// var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
-	// spriteReady.anchor.set(1);
-	// creatureAction.addChild(spriteReady);
+	var spriteReady = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
+	spriteReady.anchor.set(1);
+	spriteReady.visible = false;
+	creatureAction.addChild(spriteReady);
+	creatureAction.ready = spriteReady;
 
 	creatureContainer.identifier = [direction, index, item.pos];
 	creatureContainer.buttonMode = true;
@@ -1426,7 +1434,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroRoster.addChild(creatureContainer);
-		heroRoster.addChild(creatureAction);
+		// heroRoster.addChild(creatureAction);
 		heroHP.addChild(healthBar);
 		heroDMG.addChild(dmgContainer);
 // 		heroHP.addChild(moveContainer);
@@ -1439,7 +1447,7 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemyRoster.addChild(creatureContainer);
-		enemyRoster.addChild(creatureAction);
+		// enemyRoster.addChild(creatureAction);
 		enemyHP.addChild(healthBar);
 		enemyDMG.addChild(dmgContainer);
 // 		enemyHP.addChild(moveContainer);
@@ -3340,9 +3348,15 @@ function onAdditionalDown(){
 	tempContainer.addChild(attackArray[3]);
 
 	// actionTween1.play(0);
+	// attackTween.play(0);
+	// defendTween.play(0);
 
-	attackTween.play(0);
-	defendTween.play(0);
+	actionContainer.addChild(heroActionArray[0].ready);
+	actionContainer.addChild(enemyActionArray[0].ready)
+
+	heroActionArray[0].ready.visible = true;
+	enemyActionArray[0].ready.visible = true;
+	
 	// attackContainer.zIndex = 5;
 	// actionArray[0].displayGroup = topLayer;
 	// topLayer
