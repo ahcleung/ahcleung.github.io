@@ -1990,55 +1990,55 @@ function resizeAction(direction, item, index){
 	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	
 	if(direction > 0){
-		heroActionArray[index].forEach(spriteIndex => {
+		heroActionArray[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
-				item[spriteIndex].scale.set(direction * 0.23, 0.23);
+				spriteItem.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item[spriteIndex].scale.set(direction * 0.3, 0.3); 
+				spriteItem.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item[spriteIndex].scale.set(direction * 0.55, 0.55);
+				spriteItem.scale.set(direction * 0.55, 0.55);
 			}
 			switch(heroArray[index].pos) {
 				case 1:
-					item[spriteIndex].x = 0;
+					spriteItem.x = 0;
 					break;
 				case 2:
-					item[spriteIndex].x = -(resizeWidth + healthSpacing);
+					spriteItem.x = -(resizeWidth + healthSpacing);
 					break;
 				case 3:				
-					item[spriteIndex].x = -((resizeWidth + healthSpacing) * 2);
+					spriteItem.x = -((resizeWidth + healthSpacing) * 2);
 					break;
 				case 4:
-					item[spriteIndex].x = -((resizeWidth + healthSpacing) * 3);
+					spriteItem.x = -((resizeWidth + healthSpacing) * 3);
 					break;
 				default:
-					item[spriteIndex].x = 0;	
+					spriteItem.x = 0;	
 			}
 		});
 	}else{
 		enemyActionArray[index].forEach(spriteIndex => {
 			if(app.screen.width < 860){
-				item[spriteIndex].scale.set(direction * 0.23, 0.23);
+				spriteItem.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item[spriteIndex].scale.set(direction * 0.3, 0.3); 
+				spriteItem.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item[spriteIndex].scale.set(direction * 0.55, 0.55);
+				spriteItem.scale.set(direction * 0.55, 0.55);
 			}
 			switch(enemyArray[index].pos) {
 				case 1:
-					item[spriteIndex].x = 0;
+					spriteItem.x = 0;
 					break;
 				case 2:
-					item[spriteIndex].x = resizeWidth + healthSpacing;
+					spriteItem.x = resizeWidth + healthSpacing;
 					break;
 				case 3:				
-					item[spriteIndex].x = (resizeWidth + healthSpacing) * 2;
+					spriteItem.x = (resizeWidth + healthSpacing) * 2;
 					break;
 				case 4:
-					item[spriteIndex].x = (resizeWidth + healthSpacing) * 3;
+					spriteItem.x = (resizeWidth + healthSpacing) * 3;
 					break;
 				default:
-					item[spriteIndex].x = 0;
+					spriteItem.x = 0;
 			}
 		});	
 	}	
