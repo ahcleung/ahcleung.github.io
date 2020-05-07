@@ -3453,13 +3453,16 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
-	if(defender > 0){
-		actionContainer.addChild(heroActionArray[Math.abs(defender)-1]);
-		heroActionArray[Math.abs(defender)-1].visible = true;
-	}else{
-		actionContainer.addChild(enemyActionArray[Math.abs(defender)-1]);
-		enemyActionArray[Math.abs(defender)-1].visible = true;
-	}
+	defender.forEach(arrayCreature => {
+		if(arrayCreature > 0){
+			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
+			heroActionArray[Math.abs(arrayCreature)-1].visible = true;
+		}else{
+			actionContainer.addChild(enemyActionArray[Math.abs(arrayCreature)-1]);
+			enemyActionArray[Math.abs(arrayCreature)-1].visible = true;
+		}
+	});
+	
 
 	if(attacker > 0){
 		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
@@ -3471,11 +3474,13 @@ function animateBattle(attacker, defender){
 
 	actionContainer.fadeTween.play(0);
 
-	if(defender > 0){
-		heroActionArray[Math.abs(defender)-1].dMissTween.play(0);
-	}else{
-		enemyActionArray[Math.abs(defender)-1].dMissTween.play(0);
-	}
+	defender.forEach(arrayCreature => {
+		if(arrayCreature > 0){
+			heroActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
+		}else{
+			enemyActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
+		}
+	});	
 
 	if(attacker > 0){
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
@@ -3518,7 +3523,7 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
-	animateBattle(1, -2);
+	animateBattle(1, [-2]);
 	
 
 	// heroActionArray[0].ready.visible = true;
