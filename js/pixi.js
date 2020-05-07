@@ -3452,7 +3452,43 @@ function onSkillDown(){
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
 }
 
+function animateBattle(attacker, defender){
+	if(defender > 0){
+		actionContainer.addChild(heroActionArray[Math.abs(defender)-1]);
+		heroActionArray[Math.abs(defender)-1].visible = true;
+	}else{
+		actionContainer.addChild(enemyActionArray[Math.abs(defender)-1]);
+		enemyActionArray[Math.abs(defender)-1].visible = true;
+	}
 
+	if(attacker > 0){
+		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
+		heroActionArray[Math.abs(attacker)-1].visible = true;
+	}else{
+		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
+		enemyActionArray[Math.abs(attacker)-1].visible = true;
+	}
+
+	actionContainer.fadeTween.play(0);
+
+	if(defender > 0){
+		heroActionArray[Math.abs(defender)-1].dMissTween.play(0);
+	}else{
+		enemyActionArray[Math.abs(defender)-1].dMissTween.play(0);
+	}
+
+	if(attacker > 0){
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}else{
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}
+
+	// heroActionArray[0].visible = true;
+	// enemyActionArray[0].visible = true;
+
+	// heroActionArray[0].pAtkTween.play(0);
+	
+}
 
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
@@ -3482,17 +3518,8 @@ function onAdditionalDown(){
 	// actionContainer.addChild(heroActionArray[0][2]);
 	// actionContainer.addChild(heroActionArray[0][3]);
 
+	animateBattle(1, -2);
 	
-	actionContainer.addChild(enemyActionArray[0]);
-	actionContainer.addChild(heroActionArray[0]);
-	
-	actionContainer.fadeTween.play(0);
-
-	heroActionArray[0].visible = true;
-	enemyActionArray[0].visible = true;
-
-	heroActionArray[0].pAtkTween.play(0);
-	enemyActionArray[0].dMissTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
