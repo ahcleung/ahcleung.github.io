@@ -899,7 +899,12 @@ function setup(){
 	rectFade.endFill();
 	rectFade.alpha = 0.5;
 
+	fadeTween = new TimelineMax({paused: true});
+	fadeTween.to(rectFade, 0.16, {alpha:0.75});
+	fadeTween.to(rectFade, 0.16, {delay:1.33, alpha:0});
+
 	actionContainer.addChild(rectFade);
+	actionContainer.fadeTween = fadeTween;
 
 	// let outerBar = new PIXI.Graphics();
 	// outerBar.beginFill(0x222222);
@@ -953,6 +958,8 @@ function setup(){
 	// defendContainer.x = -50;
 	
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
+
+
 
 	actionTween1 = new TimelineMax({paused: true});
 	actionTween1.to(rectFade, 0.16, {alpha:0.75, onComplete:function(){
@@ -3418,8 +3425,9 @@ function onAdditionalDown(){
 	actionContainer.addChild(heroActionArray[0][3]);
 	actionContainer.addChild(enemyActionArray[1][3]);
 
+	actionContainer.fadeTween.play(0);
 	heroContainerArray[0].patkTween.play(0);
-	enemyContainerArray[0].patkTween.play(0);
+	enemyContainerArray[1].patkTween.play(0);
 
 	// heroActionArray[0].ready.visible = true;
 	// enemyActionArray[0].ready.visible = true;
