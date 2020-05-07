@@ -1202,12 +1202,12 @@ function createSprite(direction, item, index){
 
 	creatureContainer.pAtkTween = pAtkTween;
 
-	dmissTween = new TimelineMax({paused: true});
-	dmissTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:0, onComplete: function(){
+	dMissTween = new TimelineMax({paused: true});
+	dMissTween.fromTo(sprite_p_ready, 0.33, {x:0},{ease:"custom", x:0, onComplete: function(){
 		sprite_d_ready.visible = false;
 		sprite_d_miss.visible = true;
 	}});
-	dmissTween.fromTo(sprite_d_miss, 1, {x:0 y:0}, {ease:"custom", x: -275, y: -100, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, 1, {x:0, y:0}, {ease:"custom", x: -275, y: -100, onComplete: function(){
 		sprite_d_miss.visible = false;
 		actionContainer.removeChild(sprite_d_ready);
 		actionContainer.removeChild(sprite_d_miss);
