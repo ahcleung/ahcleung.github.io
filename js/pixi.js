@@ -1435,7 +1435,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroRoster.addChild(creatureContainer);
-		heroRoster.addChild(creatureAction);
+		// heroRoster.addChild(creatureAction);
 		heroHP.addChild(healthBar);
 		heroDMG.addChild(dmgContainer);
 // 		heroHP.addChild(moveContainer);
@@ -1449,7 +1449,7 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemyRoster.addChild(creatureContainer);
-		enemyRoster.addChild(creatureAction);
+		// enemyRoster.addChild(creatureAction);
 		enemyHP.addChild(healthBar);
 		enemyDMG.addChild(dmgContainer);
 // 		enemyHP.addChild(moveContainer);
@@ -1474,6 +1474,7 @@ function resize() {
 	rectFade.height = app.screen.height;
 	// rectFade.position.set(0, 0);
 
+	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
