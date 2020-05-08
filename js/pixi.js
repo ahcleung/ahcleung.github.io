@@ -337,6 +337,7 @@ let state, onScreenStats, consoleScreen;
 
 var styleFontFamily = 'Arvo';
 
+const stageContainer = new PIXI.Container();
 const heroRoster = new PIXI.Container();			//Hero stage
 const enemyRoster = new PIXI.Container();			//Enemy stage
 const heroHP = new PIXI.Container();				//Hero HP
@@ -484,9 +485,9 @@ enemy[2] = {
 // const framesIdleFlygon = [];				//Flygon spritesheet
 
 function setup(){	
-
+	app.stage.addChild(stageContainer);
 	bgSprite = new PIXI.Sprite.from('img/bg3.png');
-	app.stage.addChild(bgSprite);
+	stageContainer.addChild(bgSprite);
 
 	textureAdditional = PIXI.Texture.from('img/additional.png');
 	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
@@ -1073,8 +1074,11 @@ function setup(){
 	app.stage.addChild(btnSettings);			//Settings button
 	app.stage.addChild(btnAdditional);			//Additional button
 	
-	app.stage.addChild(heroRoster);				//Hero stage
-	app.stage.addChild(enemyRoster);			//Enemy stage
+
+	stageContainer.addChild(heroRoster);
+	stageContainer.addChild(enemyRoster);
+	// app.stage.addChild(heroRoster);				//Hero stage
+	// app.stage.addChild(enemyRoster);			//Enemy stage
 
 	app.stage.addChild(heroHP);					//Hero HP
 	app.stage.addChild(enemyHP);				//Enemy HP
@@ -1233,7 +1237,7 @@ function createSprite(direction, item, index){
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:-150, y:0}, {ease:"custom", x:-100, y:0});
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:250, y:0}, {ease:"custom", x:350, y:0}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:700, y:0}, {ease:"custom", x:1000, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:700, y:0}, {ease:"custom", x:900, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
@@ -3227,12 +3231,8 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(heroRoster, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
-		TweenMax.to(heroRoster,0.5,{x:0,ease:Elastic.easeOut})
-	}});
-
-	TweenMax.fromTo(enemyRoster, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
-		TweenMax.to(enemyRoster,0.5,{x:0,ease:Elastic.easeOut})
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
 	}});
 }
 
