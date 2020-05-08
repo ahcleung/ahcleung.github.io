@@ -1247,30 +1247,30 @@ function createSprite(direction, item, index){
 
 	creatureAction.pAtkTween = pAtkTween;
 
-	dMissTween = new TimelineMax({paused: true});
-	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
-		sprite_d_ready.alpha = 0;
-		sprite_d_miss.visible = true;
-	}});
-	dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
-		sprite_d_miss.visible = false;
-		creatureAction.visible = false;
-		actionContainer.removeChild(creatureAction);
-	}});
-
-
 	// dMissTween = new TimelineMax({paused: true});
 	// dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	// dMissTween.fromTo(sprite_d_ready, anim1, {x:-145, y:10}, {ease:"custom", x:-155, y:10, onComplete: function(){
+	// dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 	// 	sprite_d_ready.alpha = 0;
 	// 	sprite_d_miss.visible = true;
 	// }});
-	// dMissTween.fromTo(sprite_d_miss, anim2, {x:600, y:-75}, {ease:"custom", x:800, y:-175, onComplete: function(){
+	// dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
 	// 	sprite_d_miss.visible = false;
 	// 	creatureAction.visible = false;
 	// 	actionContainer.removeChild(creatureAction);
 	// }});
+
+
+	dMissTween = new TimelineMax({paused: true});
+	dMissTween.to(sprite_d_ready, 0, {alpha:1});
+	dMissTween.fromTo(sprite_d_ready, anim1, {x:0, y:0}, {ease:"custom", x:0, y:0, onComplete: function(){
+		sprite_d_ready.alpha = 0;
+		sprite_d_miss.visible = true;
+	}});
+	dMissTween.fromTo(sprite_d_miss, anim2, {x:0, y:0}, {ease:"custom", x:0, y:0, onComplete: function(){
+		sprite_d_miss.visible = false;
+		creatureAction.visible = false;
+		actionContainer.removeChild(creatureAction);
+	}});
 
 	creatureAction.dMissTween = dMissTween;
 
