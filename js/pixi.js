@@ -1227,7 +1227,7 @@ function createSprite(direction, item, index){
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:-100, y:0}, {ease:"custom", x:-100, y:0});
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:150, y:0}, {ease:"custom", x:150, y:0}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:700, y:0}, {ease:"custom", x:700, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:650, y:0}, {ease:"custom", x:650, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
@@ -3221,7 +3221,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(app.stage, 0.07, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+	TweenMax.fromTo(app.stage, 0.05, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
 		TweenMax.to(app.stage,0.5,{x:0,ease:Elastic.easeOut})
 	}});
 }
