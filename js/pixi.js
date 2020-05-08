@@ -1206,8 +1206,8 @@ function createSprite(direction, item, index){
 
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
-	var anim1 = 10;
-	var anim2 = 1;
+	var anim1 = 0.33;
+	var anim2 = 10;
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
@@ -1262,11 +1262,11 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:-300, y:0}, {ease:"custom", x:-300, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, anim1, {x:-300, y:0}, {ease:"custom", x:-310, y:0, onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
-	dMissTween.fromTo(sprite_d_miss, anim2, {x:-120, y:0}, {ease:"custom", x:-160, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, anim2, {x:-300, y:0}, {ease:"custom", x:-300, y:0, onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
@@ -3197,6 +3197,10 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
+	}});
+	
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
 			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
@@ -3208,13 +3212,13 @@ function animateBattle(attacker, defender){
 	});
 	
 
-	// if(attacker > 0){
-	// 	actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
-	// 	heroActionArray[Math.abs(attacker)-1].visible = true;
-	// }else{
-	// 	actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
-	// 	enemyActionArray[Math.abs(attacker)-1].visible = true;
-	// }
+	if(attacker > 0){
+		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
+		heroActionArray[Math.abs(attacker)-1].visible = true;
+	}else{
+		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
+		enemyActionArray[Math.abs(attacker)-1].visible = true;
+	}
 
 	actionContainer.fadeTween.play(0);
 
@@ -3226,11 +3230,11 @@ function animateBattle(attacker, defender){
 		}
 	});	
 
-	// if(attacker > 0){
-	// 	heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	// }else{
-	// 	enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	// }
+	if(attacker > 0){
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}else{
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}
 
 
 
@@ -3246,9 +3250,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
-		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
-	}});
+	
 }
 
 function onAdditionalCancelDown(){
