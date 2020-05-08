@@ -31,9 +31,11 @@ loader
 		"img/additional_skip.png",
 		"img/leper.ability.five.png",
 		"img/flygon.json",
+		"img/bg3.png",
 		"js/creatures.json",
 		"js/skills.json",
 		"js/elements.json",
+
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_physical_ready.png'},
 		{name:'gorilla3_p_attack', url:'img/gorilla3_physical_attack.png'},
@@ -482,6 +484,10 @@ enemy[2] = {
 // const framesIdleFlygon = [];				//Flygon spritesheet
 
 function setup(){	
+
+	bgSprite = new PIXI.Sprite("img/bg3.png");
+	app.stage.addChild(bgSprite);
+
 	textureAdditional = PIXI.Texture.from('img/additional.png');
 	textureSettings = PIXI.Texture.from('img/leper.ability.five.png');
 	textureAdditionalCancel = PIXI.Texture.from('img/additional_cancel.png');
@@ -3221,7 +3227,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(app.stage, 0.05, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+	TweenMax.fromTo(app.stage, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
 		TweenMax.to(app.stage,0.5,{x:0,ease:Elastic.easeOut})
 	}});
 }
