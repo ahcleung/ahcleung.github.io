@@ -1247,30 +1247,30 @@ function createSprite(direction, item, index){
 
 	creatureAction.pAtkTween = pAtkTween;
 
-	// dMissTween = new TimelineMax({paused: true});
-	// dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	// dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
-	// 	sprite_d_ready.alpha = 0;
-	// 	sprite_d_miss.visible = true;
-	// }});
-	// dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
-	// 	sprite_d_miss.visible = false;
-	// 	creatureAction.visible = false;
-	// 	actionContainer.removeChild(creatureAction);
-	// }});
-
-
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:0, y:0}, {ease:"custom", x:-10, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
-	dMissTween.fromTo(sprite_d_miss, anim2, {x:-200, y:0}, {ease:"custom", x:-250, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
 	}});
+
+
+	// dMissTween = new TimelineMax({paused: true});
+	// dMissTween.to(sprite_d_ready, 0, {alpha:1});
+	// dMissTween.fromTo(sprite_d_ready, anim1, {x:0, y:0}, {ease:"custom", x:-10, y:0, onComplete: function(){
+	// 	sprite_d_ready.alpha = 0;
+	// 	sprite_d_miss.visible = true;
+	// }});
+	// dMissTween.fromTo(sprite_d_miss, anim2, {x:-200, y:0}, {ease:"custom", x:-250, y:0, onComplete: function(){
+	// 	sprite_d_miss.visible = false;
+	// 	creatureAction.visible = false;
+	// 	actionContainer.removeChild(creatureAction);
+	// }});
 
 	creatureAction.dMissTween = dMissTween;
 
@@ -3197,6 +3197,10 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:15, onComplete:function(){
+		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
+	}});
+
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
 			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
@@ -3208,13 +3212,13 @@ function animateBattle(attacker, defender){
 	});
 	
 
-	// if(attacker > 0){
-	// 	actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
-	// 	heroActionArray[Math.abs(attacker)-1].visible = true;
-	// }else{
-	// 	actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
-	// 	enemyActionArray[Math.abs(attacker)-1].visible = true;
-	// }
+	if(attacker > 0){
+		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
+		heroActionArray[Math.abs(attacker)-1].visible = true;
+	}else{
+		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
+		enemyActionArray[Math.abs(attacker)-1].visible = true;
+	}
 
 	actionContainer.fadeTween.play(0);
 
@@ -3226,11 +3230,11 @@ function animateBattle(attacker, defender){
 		}
 	});	
 
-	// if(attacker > 0){
-	// 	heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	// }else{
-	// 	enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	// }
+	if(attacker > 0){
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}else{
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	}
 
 
 
