@@ -405,7 +405,7 @@ const hero = [];
 hero[0] = {
 	id: 10, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 5,
-	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 125
+	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0
 };
 hero[1] = {
 	id: 11, level: 47, 
@@ -432,12 +432,12 @@ enemy[0] = {
 enemy[1] = {
 	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 5,
-	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 148, statSPD: 0
+	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 200
 };
 enemy[2] = {
 	id: 12, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 3,
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 95
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 0
 };
 // enemy[3] = {
 // 	id: 11, level: 45, 
@@ -1199,41 +1199,41 @@ function createSprite(direction, item, index){
 	var anim1 = 0.33;
 	var anim2 = 1;
 
-	pAtkTween = new TimelineMax({paused: true});
-	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.fromTo(sprite_p_ready, anim1, {x:item.action[0][0], y:item.action[0][1]},{ease:"custom", x:item.action[0][2], y:item.action[0][3], onComplete: function(){
-		sprite_p_ready.alpha = 0;
-		sprite_p_attack.visible = true;
-		sprite_p_fxBack.visible = true;
-		sprite_p_fxTop.visible = true;
-	}});
-	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
-	pAtkTween.fromTo(sprite_p_attack, anim2, {x:item.action[2][0], y:item.action[2][1]}, {ease:"custom", x:item.action[2][2], y:item.action[2][3]}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:item.action[3][0], y:item.action[3][1]}, {ease:"custom", x:item.action[3][2], y:item.action[3][3], onComplete: function(){
-		sprite_p_fxBack.visible = false;
-		sprite_p_attack.visible = false;
-		sprite_p_fxTop.visible = false;
-		creatureAction.visible = false;
-		actionContainer.removeChild(creatureAction);
-	}},anim1);
-
 	// pAtkTween = new TimelineMax({paused: true});
 	// pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	// pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-25, y:0, onComplete: function(){
+	// pAtkTween.fromTo(sprite_p_ready, anim1, {x:item.action[0][0], y:item.action[0][1]},{ease:"custom", x:item.action[0][2], y:item.action[0][3], onComplete: function(){
 	// 	sprite_p_ready.alpha = 0;
 	// 	sprite_p_attack.visible = true;
 	// 	sprite_p_fxBack.visible = true;
 	// 	sprite_p_fxTop.visible = true;
 	// }});
-	// pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:-150}, {ease:"custom", x:400, y:-150});
-	// pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:650, y:-75}, anim1);
-	// pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:450, y:0, onComplete: function(){
+	// pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
+	// pAtkTween.fromTo(sprite_p_attack, anim2, {x:item.action[2][0], y:item.action[2][1]}, {ease:"custom", x:item.action[2][2], y:item.action[2][3]}, anim1);
+	// pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:item.action[3][0], y:item.action[3][1]}, {ease:"custom", x:item.action[3][2], y:item.action[3][3], onComplete: function(){
 	// 	sprite_p_fxBack.visible = false;
 	// 	sprite_p_attack.visible = false;
 	// 	sprite_p_fxTop.visible = false;
 	// 	creatureAction.visible = false;
 	// 	actionContainer.removeChild(creatureAction);
 	// }},anim1);
+
+	pAtkTween = new TimelineMax({paused: true});
+	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
+	pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-25, y:0, onComplete: function(){
+		sprite_p_ready.alpha = 0;
+		sprite_p_attack.visible = true;
+		sprite_p_fxBack.visible = true;
+		sprite_p_fxTop.visible = true;
+	}});
+	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:0, y:0}, {ease:"custom", x:0, y:0});
+	pAtkTween.fromTo(sprite_p_attack, anim2, {x:0, y:0}, {ease:"custom", x:0, y:0}, anim1);
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:0, y:0}, {ease:"custom", x:0, y:0, onComplete: function(){
+		sprite_p_fxBack.visible = false;
+		sprite_p_attack.visible = false;
+		sprite_p_fxTop.visible = false;
+		creatureAction.visible = false;
+		actionContainer.removeChild(creatureAction);
+	}},anim1);
 
 	creatureAction.pAtkTween = pAtkTween;
 
