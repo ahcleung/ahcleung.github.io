@@ -359,7 +359,7 @@ let rectFade;
 
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
-
+var bgSprite;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
@@ -3227,8 +3227,12 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(app.stage, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
-		TweenMax.to(app.stage,0.5,{x:0,ease:Elastic.easeOut})
+	TweenMax.fromTo(heroRoster, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(heroRoster,0.5,{x:0,ease:Elastic.easeOut})
+	}});
+
+	TweenMax.fromTo(enemyRoster, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(enemyRoster,0.5,{x:0,ease:Elastic.easeOut})
 	}});
 }
 
