@@ -485,7 +485,7 @@ enemy[2] = {
 
 function setup(){	
 
-	bgSprite = new PIXI.Sprite("img/bg3.png");
+	bgSprite = new PIXI.Sprite.from('img/bg3.png');
 	app.stage.addChild(bgSprite);
 
 	textureAdditional = PIXI.Texture.from('img/additional.png');
