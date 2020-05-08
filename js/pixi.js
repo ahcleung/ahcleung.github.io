@@ -3221,7 +3221,9 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(app.stage, 0.1, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10});
+	TweenMax.fromTo(app.stage, 0.1, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(this.target,1.5,{x:0,ease:Elastic.easeOut})
+	}});
 }
 
 function onAdditionalCancelDown(){
