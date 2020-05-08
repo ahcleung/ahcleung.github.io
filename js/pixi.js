@@ -1266,7 +1266,7 @@ function createSprite(direction, item, index){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
-	dMissTween.fromTo(sprite_d_miss, anim2, {x:600, y:-50}, {ease:"custom", x:600, y:-50, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, anim2, {x:600, y:-75}, {ease:"custom", x:800, y:-150, onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
