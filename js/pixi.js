@@ -1219,15 +1219,15 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-30, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:30, y:0, onComplete: function(){
 		sprite_p_ready.alpha = 0;
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:-100, y:0}, {ease:"custom", x:-100, y:0});
-	pAtkTween.fromTo(sprite_p_attack, anim2, {x:100, y:0}, {ease:"custom", x:100, y:0}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:0, y:0}, {ease:"custom", x:0, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_attack, anim2, {x:150, y:0}, {ease:"custom", x:150, y:0}, anim1);
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:200, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
@@ -3221,7 +3221,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	additionalContainer.visible = true;
 
-	TweenMax.fromTo(app.stage, 0.05, {x:-20}, {x:20, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+	TweenMax.fromTo(app.stage, 0.1, {x:-30}, {x:30, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
 		TweenMax.to(app.stage,1,{x:0,ease:Elastic.easeOut})
 	}});
 }
