@@ -1262,11 +1262,11 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:-40, y:0}, {ease:"custom", x:-65, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, anim1, {x:-40, y:0}, {ease:"custom", x:-50, y:0, onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
-	dMissTween.fromTo(sprite_d_miss, anim2, {x:-135, y:0}, {ease:"custom", x:-160, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_miss, anim2, {x:-120, y:0}, {ease:"custom", x:-160, y:0, onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
