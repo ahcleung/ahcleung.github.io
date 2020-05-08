@@ -408,7 +408,7 @@ const hero = [];
 hero[0] = {
 	id: 10, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 5,
-	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0
+	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 120
 };
 hero[1] = {
 	id: 11, level: 47, 
@@ -430,7 +430,7 @@ const enemy = [];
 enemy[0] = {
 	id: 9, level: 49, 
 	skill1: 4, skill2: 6, skill3: 5, skill4: 3,
-	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 200
+	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 0
 };
 enemy[1] = {
 	id: 8, level: 46, 
@@ -1207,7 +1207,7 @@ function createSprite(direction, item, index){
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
 	var anim1 = 0.33;
-	var anim2 = 10;
+	var anim2 = 1;
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
@@ -1247,9 +1247,22 @@ function createSprite(direction, item, index){
 
 	creatureAction.pAtkTween = pAtkTween;
 
+	// dMissTween = new TimelineMax({paused: true});
+	// dMissTween.to(sprite_d_ready, 0, {alpha:1});
+	// dMissTween.fromTo(sprite_d_ready, 0.33, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
+	// 	sprite_d_ready.alpha = 0;
+	// 	sprite_d_miss.visible = true;
+	// }});
+	// dMissTween.fromTo(sprite_d_miss, 1, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
+	// 	sprite_d_miss.visible = false;
+	// 	creatureAction.visible = false;
+	// 	actionContainer.removeChild(creatureAction);
+	// }});
+
+
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, 0.33, {x:0, y:0},{ease:"custom", x:0, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, 0.33, {x:0, y:0}, {ease:"custom", x:0, y:0, onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
@@ -3184,40 +3197,42 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
-	// defender.forEach(arrayCreature => {
-	// 	if(arrayCreature > 0){
-	// 		actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
-	// 		heroActionArray[Math.abs(arrayCreature)-1].visible = true;
-	// 	}else{
-	// 		actionContainer.addChild(enemyActionArray[Math.abs(arrayCreature)-1]);
-	// 		enemyActionArray[Math.abs(arrayCreature)-1].visible = true;
-	// 	}
-	// });
+	defender.forEach(arrayCreature => {
+		if(arrayCreature > 0){
+			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
+			heroActionArray[Math.abs(arrayCreature)-1].visible = true;
+		}else{
+			actionContainer.addChild(enemyActionArray[Math.abs(arrayCreature)-1]);
+			enemyActionArray[Math.abs(arrayCreature)-1].visible = true;
+		}
+	});
 	
 
-	if(attacker > 0){
-		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
-		heroActionArray[Math.abs(attacker)-1].visible = true;
-	}else{
-		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
-		enemyActionArray[Math.abs(attacker)-1].visible = true;
-	}
+	// if(attacker > 0){
+	// 	actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
+	// 	heroActionArray[Math.abs(attacker)-1].visible = true;
+	// }else{
+	// 	actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
+	// 	enemyActionArray[Math.abs(attacker)-1].visible = true;
+	// }
 
 	actionContainer.fadeTween.play(0);
 
-	// defender.forEach(arrayCreature => {
-	// 	if(arrayCreature > 0){
-	// 		heroActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
-	// 	}else{
-	// 		enemyActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
-	// 	}
-	// });	
+	defender.forEach(arrayCreature => {
+		if(arrayCreature > 0){
+			heroActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
+		}else{
+			enemyActionArray[Math.abs(arrayCreature)-1].dMissTween.play(0);
+		}
+	});	
 
-	if(attacker > 0){
-		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	}else{
-		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
-	}
+	// if(attacker > 0){
+	// 	heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	// }else{
+	// 	enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+	// }
+
+
 
 	// heroActionArray[0].visible = true;
 	// enemyActionArray[0].visible = true;
