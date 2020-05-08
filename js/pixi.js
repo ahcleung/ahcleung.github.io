@@ -1262,7 +1262,7 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:-75, y:0}, {ease:"custom", x:-75, y:0, onComplete: function(){
+	dMissTween.fromTo(sprite_d_ready, anim1, {x:-50, y:0}, {ease:"custom", x:-50, y:0, onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
