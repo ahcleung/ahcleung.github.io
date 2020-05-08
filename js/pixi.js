@@ -1209,7 +1209,7 @@ function createSprite(direction, item, index){
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:-150}, {ease:"custom", x:400, y:-150});
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:650, y:-75}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:400, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:450, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
