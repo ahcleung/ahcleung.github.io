@@ -3266,12 +3266,22 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
+	// const blurFilter1 = new PIXI.filters.BlurFilter();
+	// const blurFilter2 = new PIXI.filters.BlurFilter();
+	// blurFilter1.blur = 2;
+	// blurFilter2.blur = 0;
+
+	// stageContainer.filters = [blurFilter1];
+
+
 	const blurFilter1 = new PIXI.filters.BlurFilter();
-	const blurFilter2 = new PIXI.filters.BlurFilter();
-	blurFilter1.blur = 2;
-	blurFilter2.blur = 0;
+	// const blurFilter2 = new PIXI.filters.BlurFilter();
+	blurFilter1.blur = 0;
+	// blurFilter2.blur = 0;
 
 	stageContainer.filters = [blurFilter1];
+	TweenMax.fromTo(blurFilter1, 0.5, {blur:0}, {blur:2});
+
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
@@ -3321,7 +3331,8 @@ function animateBattle(attacker, defender){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
-			stageContainer.filters = [blurFilter2];
+			// stageContainer.filters = [blurFilter2];
+			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
 		});
 	}else{
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
@@ -3329,7 +3340,8 @@ function animateBattle(attacker, defender){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
-			stageContainer.filters = [blurFilter2];
+			// stageContainer.filters = [blurFilter2];
+			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
 		});
 	}
 	// heroActionArray[0].visible = true;
