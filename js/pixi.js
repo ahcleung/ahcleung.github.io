@@ -3244,7 +3244,7 @@ function animateBattle(attacker, defender){
 	}
 
 	actionContainer.fadeTween.play(0);
-	actionContainer.fadeTween..eventCallback("onComplete", function(){
+	actionContainer.fadeTween.eventCallback("onComplete", function(){
 		animateArray.forEach(item =>{
 			item.visible = true;
 		});
