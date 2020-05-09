@@ -3218,9 +3218,11 @@ function animateBattle(attacker, defender){
 		if(arrayCreature > 0){
 			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
 			heroActionArray[Math.abs(arrayCreature)-1].visible = true;
+			heroContainerArray[Math.abs(arrayCreature)-1].visible = false;
 		}else{
 			actionContainer.addChild(enemyActionArray[Math.abs(arrayCreature)-1]);
 			enemyActionArray[Math.abs(arrayCreature)-1].visible = true;
+			enemyContainerArray[Math.abs(arrayCreature)-1].visible = false;
 		}
 	});
 	
@@ -3228,9 +3230,11 @@ function animateBattle(attacker, defender){
 	if(attacker > 0){
 		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
 		heroActionArray[Math.abs(attacker)-1].visible = true;
+		heroContainerArray[Math.abs(arrayCreature)-1].visible = false;
 	}else{
 		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
 		enemyActionArray[Math.abs(attacker)-1].visible = true;
+		enemyContainerArray[Math.abs(arrayCreature)-1].visible = false;
 	}
 
 	actionContainer.fadeTween.play(0);
@@ -3423,51 +3427,12 @@ function onAdditionalItemDown(){
 	console.log("Additional Item");
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
-
-	// var tweenScreen = new TweenMax(app.stage
 }
 
 function onAdditionalSkipDown(){
 	console.log("Additional Skip");
 	// onScreenStats.visible = false;
 	// consoleScreen.visible = false;
-
-	//Hero Creature
-	// switch(heroArray[index].pos) {
-	// 	case 1:
-	// 		item.x = 0;
-	// 		break;
-	// 	case 2:
-	// 		item.x = -(resizeWidth + healthSpacing);
-	// 		break;
-	// 	case 3:				
-	// 		item.x = -((resizeWidth + healthSpacing) * 2);
-	// 		break;
-	// 	case 4:
-	// 		item.x = -((resizeWidth + healthSpacing) * 3);
-	// 		break;
-	// 	default:
-	// 		item.x = 0;	
-	// }
-
-	//Hero HP and dmg containers
-	// switch(heroArray[index].pos) {
-	// 	case 1:
-	// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-	// 		break;
-	// 	case 2:
-	// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-	// 		break;
-	// 	case 3:
-	// 		if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-	// 		else 	item.x = 0
-	// 		break;
-	// 	case 4:
-	// 		item.x = 0;
-	// 		break;
-	// 	default:
-	// 		item.x = 0;	
-	// }
 }
 
 function calculateTurnOrder(){
