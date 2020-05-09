@@ -1246,10 +1246,10 @@ function createSprite(direction, item, index){
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:-150}, {ease:"custom", x:400, y:-150});
 	pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
 	pAtkTween.fromTo(sprite_p_fxBack, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
-	pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:650, y:-75}, anim1);
+	pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:700, y:-75}, anim1);
 	pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:0}, {alpha:1}, anim1);
 	pAtkTween.fromTo(sprite_p_fxTop, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:450, y:0, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:200, y:0}, {ease:"custom", x:500, y:0, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.alpha = 0;
@@ -3280,7 +3280,7 @@ function animateBattle(attacker, defender){
 	// blurFilter2.blur = 0;
 
 	stageContainer.filters = [blurFilter1];
-	TweenMax.fromTo(blurFilter1, 0.5, {blur:0}, {blur:2});
+	TweenMax.fromTo(blurFilter1, 0.1, {blur:0}, {blur:2});
 
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
@@ -3341,7 +3341,7 @@ function animateBattle(attacker, defender){
 				item.visible = true;
 			});
 			// stageContainer.filters = [blurFilter2];
-			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
+			TweenMax.fromTo(blurFilter1, 0.1, {blur:2}, {blur:0});
 		});
 	}
 	// heroActionArray[0].visible = true;
