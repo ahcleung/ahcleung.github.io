@@ -1194,6 +1194,7 @@ function createSprite(direction, item, index){
 	sprite_p_fxTop.anchor.set(1);
 	sprite_p_fxTop.visible = false;
 	creatureAction.addChild(sprite_p_fxTop);
+	creatureAction.fxTop = sprite_p_fxTop;
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
@@ -3260,6 +3261,7 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
+		heroActionArray[Math.abs(attacker)-1].fxTop.tint = 0x3D85C6;
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
@@ -3268,6 +3270,7 @@ function animateBattle(attacker, defender){
 			stageContainer.filters = [blurFilter2];
 		});
 	}else{
+		enemyActionArray[Math.abs(attacker)-1].fxTop.tint = 0xA64D79;
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
