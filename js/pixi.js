@@ -3230,11 +3230,11 @@ function animateBattle(attacker, defender){
 	if(attacker > 0){
 		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
 		heroActionArray[Math.abs(attacker)-1].visible = true;
-		heroContainerArray[Math.abs(arrayCreature)-1].visible = false;
+		heroContainerArray[Math.abs(attacker)-1].visible = false;
 	}else{
 		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
 		enemyActionArray[Math.abs(attacker)-1].visible = true;
-		enemyContainerArray[Math.abs(arrayCreature)-1].visible = false;
+		enemyContainerArray[Math.abs(attacker)-1].visible = false;
 	}
 
 	actionContainer.fadeTween.play(0);
