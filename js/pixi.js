@@ -3197,7 +3197,7 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
-	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:15, onComplete:function(){
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeInOut, repeat:15, onComplete:function(){
 		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
 	}});
 
