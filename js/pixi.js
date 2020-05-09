@@ -1184,6 +1184,7 @@ function createSprite(direction, item, index){
 	sprite_p_fxBack.anchor.set(1);
 	sprite_p_fxBack.visible = false;
 	creatureAction.addChild(sprite_p_fxBack);
+	creatureAction.fxBack = sprite_p_fxBack;
 
 	var sprite_p_attack = new PIXI.Sprite(resources[item.code + '_p_attack'].texture);
 	sprite_p_attack.anchor.set(1);
@@ -2326,9 +2327,11 @@ function onCreatureDown(){
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
@@ -2336,9 +2339,11 @@ function onCreatureDown(){
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
 						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
@@ -3298,7 +3303,6 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
-		// heroActionArray[Math.abs(attacker)-1].fxTop.tint = 0x3D85C6;
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
@@ -3307,7 +3311,6 @@ function animateBattle(attacker, defender){
 			stageContainer.filters = [blurFilter2];
 		});
 	}else{
-		// enemyActionArray[Math.abs(attacker)-1].fxTop.tint = 0xA64D79;
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
