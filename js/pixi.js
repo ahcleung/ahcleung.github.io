@@ -521,7 +521,7 @@ function setup(){
 
 	fadeTween = new TimelineMax({paused: true});
 	fadeTween.to(rectFade, 0.16, {alpha:0.75});
-	fadeTween.to(rectFade, 0.16, {delay:1.33, alpha:0});
+	fadeTween.to(rectFade, 0.1, {delay:1.33, alpha:0});
 
 	actionContainer.addChild(rectFade);
 	actionContainer.fadeTween = fadeTween;
@@ -3210,6 +3210,11 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
+	const blurFilter1 = new PIXI.filters.BlurFilter();
+	const blurFilter2 = new PIXI.filters.BlurFilter();
+	blurFilter1.blur = 20;
+
+	stageContainer.filters = [blurFilter1];
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
@@ -3244,11 +3249,6 @@ function animateBattle(attacker, defender){
 	}
 
 	actionContainer.fadeTween.play(0);
-	actionContainer.fadeTween.eventCallback("onComplete", function(){
-		animateArray.forEach(item =>{
-			item.visible = true;
-		});
-	});
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
@@ -3260,8 +3260,20 @@ function animateBattle(attacker, defender){
 
 	if(attacker > 0){
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
+			stageContainer.filters = [blurFilter2];
+		});
 	}else{
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
+			stageContainer.filters = [blurFilter2];
+		});
 	}
 
 	
