@@ -3255,14 +3255,14 @@ function animateBattle(attacker, defender){
 
 	if(attacker > 0){
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
-		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallBack("onComplete", function(){
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
 		});
 	}else{
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
-		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallBack("onComplete", function(){
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
