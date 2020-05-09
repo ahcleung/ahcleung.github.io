@@ -2275,36 +2275,49 @@ function onCreatureDown(){
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
 			var elementTint = 0x000000;
+			const colourTint = new PIXI.filters.ColorMatrixFilter();
+			colourTint.hue(0);
+			colourTint.saturate(0);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
 					elementTint = 0x6AA84F;
+					colourTint.hue(65);
 					break;
 				case 2:
 					elementTint = 0x3D85C6;
+					colourTint.hue(165);
 					break;
 				case 3:				
 					elementTint = 0xCC0000;
+					colourTint.hue(-55);
 					break;
 				case 4:
 					elementTint = 0xB45F06;
+					colourTint.hue(-29);
 					break;
 				case 5:
 					elementTint = 0xF1C232;
+					colourTint.hue(0);
 					break;
 				case 6:				
 					elementTint = 0x75BCAF;
+					colourTint.hue(117);
 					break;
 				case 7:
 					elementTint = 0x9900FF;
+					colourTint.hue(-130);
 					break;
 				case 8:
 					elementTint = 0xA64D79;
+					colourTint.hue(-92);
 					break;
 				case 9:				
 					elementTint = 0x434343;
+					colourTint.saturate(-100);
 					break;
 				default:
 					elementTint = 0x6AA84F;
+					colourTint.hue(0);
 			}
 
 			validSkillTargetArray[targetedVita].forEach(targeted => {
@@ -2326,24 +2339,24 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [colourTint];;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [colourTint];;
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [colourTint];;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [colourTint];;
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [colourTint];;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [colourTint];;
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.tint = elementTint;
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [colourTint];;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [colourTint];;
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
