@@ -3249,7 +3249,7 @@ function animateBattle(attacker, defender){
 		animateArray.push(enemyContainerArray[Math.abs(attacker)-1]);
 	}
 
-	actionContainer.fadeTween.play(0);
+	// actionContainer.fadeTween.play(0);
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
