@@ -3292,6 +3292,9 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	additionalContainer.visible = true;
+
+	// 0xccffcc
+	bgSprite.tint = 0x3D85C6;	
 }
 
 function onAdditionalCancelDown(){
