@@ -3244,6 +3244,11 @@ function animateBattle(attacker, defender){
 	}
 
 	actionContainer.fadeTween.play(0);
+	actionContainer.fadeTween..eventCallback("onComplete", function(){
+		animateArray.forEach(item =>{
+			item.visible = true;
+		});
+	});
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
@@ -3255,18 +3260,8 @@ function animateBattle(attacker, defender){
 
 	if(attacker > 0){
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
-		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
-		});
 	}else{
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
-		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
-		});
 	}
 
 	
