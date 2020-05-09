@@ -3212,7 +3212,8 @@ function onSkillDown(){
 function animateBattle(attacker, defender){
 	const blurFilter1 = new PIXI.filters.BlurFilter();
 	const blurFilter2 = new PIXI.filters.BlurFilter();
-	blurFilter1.blur = 20;
+	blurFilter1.blur = 10;
+	blurFilter2.blur = 0;
 
 	stageContainer.filters = [blurFilter1];
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
