@@ -523,8 +523,8 @@ function setup(){
 	rectFade.alpha = 0;
 
 	fadeTween = new TimelineMax({paused: true});
-	fadeTween.to(rectFade, 0.16, {alpha:0.75});
-	fadeTween.to(rectFade, 0.1, {delay:1.33, alpha:0});
+	fadeTween.to(rectFade, 0.16, {alpha:0.5});
+	fadeTween.to(rectFade, 0.1, {delay:2, alpha:0});
 
 	actionContainer.addChild(rectFade);
 	actionContainer.fadeTween = fadeTween;
@@ -3315,7 +3315,7 @@ function animateBattle(attacker, defender){
 		animateArray.push(enemyContainerArray[Math.abs(attacker)-1]);
 	}
 
-	// actionContainer.fadeTween.play(0);
+	actionContainer.fadeTween.play(0);
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
