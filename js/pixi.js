@@ -374,6 +374,9 @@ var skillNameFontSize = 28;
 var selectedVita = 0;
 var selectedSkill = -1;
 
+var anim1 = 0.66;
+var anim2 = 1.34;
+
 // var db = firebase.firestore();
 
 const factory = dragonBones.PixiFactory.factory;
@@ -3261,7 +3264,7 @@ function animateBattle(attacker, defender){
 	blurFilter2.blur = 0;
 
 	stageContainer.filters = [blurFilter1];
-	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
 
