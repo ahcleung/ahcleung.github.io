@@ -2273,6 +2273,39 @@ function onCreatureDown(){
 
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
+			var elementTint = 0x000000;
+			switch(skillsList.data.skills[selectedSkill].element){
+				case 1:
+					elementTint = 0x6AA84F;
+					break;
+				case 2:
+					elementTint = 0x3D85C6;
+					break;
+				case 3:				
+					elementTint = 0xCC0000;
+					break;
+				case 4:
+					elementTint = 0xB45F06;
+					break;
+				case 5:
+					elementTint = 0xF1C232;
+					break;
+				case 6:				
+					elementTint = 0x75BCAF;
+					break;
+				case 7:
+					elementTint = 0x9900FF;
+					break;
+				case 8:
+					elementTint = 0xA64D79;
+					break;
+				case 9:				
+					elementTint = 0x434343;
+					break;
+				default:
+					elementTint = 0x6AA84F;
+			}
+
 			validSkillTargetArray[targetedVita].forEach(targeted => {
 				var selectedIndex = Math.abs(selectedVita)-1;
 				var targetedIndex = Math.abs(targeted)-1;
@@ -2292,16 +2325,20 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.tint = elementTint;
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
@@ -3261,7 +3298,7 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
-		heroActionArray[Math.abs(attacker)-1].fxTop.tint = 0x3D85C6;
+		// heroActionArray[Math.abs(attacker)-1].fxTop.tint = 0x3D85C6;
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
@@ -3270,7 +3307,7 @@ function animateBattle(attacker, defender){
 			stageContainer.filters = [blurFilter2];
 		});
 	}else{
-		enemyActionArray[Math.abs(attacker)-1].fxTop.tint = 0xA64D79;
+		// enemyActionArray[Math.abs(attacker)-1].fxTop.tint = 0xA64D79;
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
 		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
@@ -3279,11 +3316,6 @@ function animateBattle(attacker, defender){
 			stageContainer.filters = [blurFilter2];
 		});
 	}
-
-	
-
-	
-
 	// heroActionArray[0].visible = true;
 	// enemyActionArray[0].visible = true;
 
