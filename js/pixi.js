@@ -487,6 +487,7 @@ enemy[2] = {
 function setup(){	
 	app.stage.addChild(stageContainer);
 	bgSprite = new PIXI.Sprite.from('img/bg3.png');
+	bgSprite.anchor.set(0.5);
 	stageContainer.addChild(bgSprite);
 
 	textureAdditional = PIXI.Texture.from('img/additional.png');
@@ -513,7 +514,7 @@ function setup(){
 // 	enemyHP.addChild(rectEnemy);
 
 	rectFade = new PIXI.Graphics();
-	rectFade.beginFill(0x2d2d2d);
+	rectFade.beginFill(0x000000);
 	rectFade.drawRect(0, 0, app.screen.width, app.screen.height);
 	rectFade.endFill();
 	rectFade.alpha = 0;
@@ -1603,6 +1604,18 @@ function resize() {
 		);
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
+
+	var widthMath = app.screen.width/16;
+	var heightMath = app.screen.height/9;
+
+	if(widthMath > heightMath){
+		bgSprite.width = app.screen.width;
+		bgSprite.height = app.screen.width * 9/16;
+	}else{
+		bgSprite.height = app.screen.height;
+		bgSprite.width = app.screen.height * 16/9;
+	}
+	bgSprite.position.set(app.screen.width/2, app.screen.height/2);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	rectFade.width = app.screen.width;
@@ -3197,8 +3210,8 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
-	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeInOut, repeat:15, onComplete:function(){
-		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:0.33, x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
+		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
 
 	defender.forEach(arrayCreature => {
@@ -3249,10 +3262,6 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	additionalContainer.visible = true;
-
-	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeInOut, repeat:10, onComplete:function(){
-		TweenMax.to(stageContainer,0.5,{x:0,ease:Elastic.easeOut})
-	}});
 }
 
 function onAdditionalCancelDown(){
