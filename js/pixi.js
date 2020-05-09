@@ -3214,15 +3214,19 @@ function animateBattle(attacker, defender){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
 
+	var animateArray = [];
+
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
 			actionContainer.addChild(heroActionArray[Math.abs(arrayCreature)-1]);
 			heroActionArray[Math.abs(arrayCreature)-1].visible = true;
 			heroContainerArray[Math.abs(arrayCreature)-1].visible = false;
+			animateArray.push(heroContainerArray[Math.abs(arrayCreature)-1]);
 		}else{
 			actionContainer.addChild(enemyActionArray[Math.abs(arrayCreature)-1]);
 			enemyActionArray[Math.abs(arrayCreature)-1].visible = true;
 			enemyContainerArray[Math.abs(arrayCreature)-1].visible = false;
+			animateArray.push(enemyContainerArray[Math.abs(arrayCreature)-1]);
 		}
 	});
 	
@@ -3231,10 +3235,12 @@ function animateBattle(attacker, defender){
 		actionContainer.addChild(heroActionArray[Math.abs(attacker)-1]);
 		heroActionArray[Math.abs(attacker)-1].visible = true;
 		heroContainerArray[Math.abs(attacker)-1].visible = false;
+		animateArray.push(heroContainerArray[Math.abs(attacker)-1]);
 	}else{
 		actionContainer.addChild(enemyActionArray[Math.abs(attacker)-1]);
 		enemyActionArray[Math.abs(attacker)-1].visible = true;
 		enemyContainerArray[Math.abs(attacker)-1].visible = false;
+		animateArray.push(enemyContainerArray[Math.abs(attacker)-1]);
 	}
 
 	actionContainer.fadeTween.play(0);
@@ -3248,12 +3254,24 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
-		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
+		heroActionArray[Math.abs(attacker)-1].pAtkTween.eventCallBack("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
+		});
 	}else{
-		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0)
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.play(0);
+		enemyActionArray[Math.abs(attacker)-1].pAtkTween.eventCallBack("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
+		});
 	}
 
+	
 
+	
 
 	// heroActionArray[0].visible = true;
 	// enemyActionArray[0].visible = true;
