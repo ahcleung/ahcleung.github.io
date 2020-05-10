@@ -1241,6 +1241,8 @@ function createSprite(direction, item, index){
 	// pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:item.action[3][0], y:item.action[3][1]}, {ease:"custom", x:item.action[3][2], y:item.action[3][3], onComplete: function(){
 	// 	sprite_p_fxBack.visible = false;
 	// 	sprite_p_attack.visible = false;
+	// sprite_p_fxTop.alpha = 0;
+	// sprite_p_fxBack.alpha = 0;
 	// 	sprite_p_fxTop.visible = false;
 	// 	creatureAction.visible = false;
 	// 	actionLines.visible = false;
@@ -1254,20 +1256,22 @@ function createSprite(direction, item, index){
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
+		actionLines.visible = true;
 	}});	
-	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:-100}, {ease:"custom", x:225, y:-100});
+	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:0}, {ease:"custom", x:225, y:0});
 	pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
 	pAtkTween.fromTo(sprite_p_fxBack, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:375, y:-75}, anim1);
 	pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:0}, {alpha:1}, anim1);
 	pAtkTween.fromTo(sprite_p_fxTop, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:350, y:-25}, {ease:"custom", x:350, y:-25, onComplete: function(){
+	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:350, y:-50}, {ease:"custom", x:350, y:-50, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.alpha = 0;
 		sprite_p_fxBack.alpha = 0;
 		sprite_p_fxTop.visible = false;
 		creatureAction.visible = false;
+		actionLines.visible = false;
 		actionContainer.removeChild(creatureAction);
 	}},anim1);
 
