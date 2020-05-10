@@ -2586,7 +2586,7 @@ function onCreatureDown(){
 						var newCritWidth = -(enemyHPContainerArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 						TweenMax.fromTo(enemyHPContainerArray[targetedIndex].critDmgBar
-							, 1, {
+							, 0.5, {
 								width: enemyHPContainerArray[targetedIndex].critDmgBar.width
 							}, {delay:2, ease:Expo.easeIn, width:newCritWidth});
 
@@ -2619,7 +2619,7 @@ function onCreatureDown(){
 						enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
 						enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 						TweenMax.fromTo(enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
-							, 1, {
+							, 0.5, {
 								width: newWidth
 							}, {delay:2, ease:Expo.easeIn, width:0, onComplete: function(){
 							enemyHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
