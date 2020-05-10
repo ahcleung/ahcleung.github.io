@@ -1259,11 +1259,11 @@ function createSprite(direction, item, index){
 		actionLines.visible = true;
 	}});	
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:0}, {ease:"custom", x:350, y:0});
-	pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
-	pAtkTween.fromTo(sprite_p_fxBack, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
+	pAtkTween.fromTo(sprite_p_fxBack, 0.5, {alpha:0}, {alpha:1}, anim1);
+	pAtkTween.fromTo(sprite_p_fxBack, 0.5, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
 	pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:750, y:-75}, anim1);
 	pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:0}, {alpha:1}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
+	pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
 	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:350, y:-75}, {ease:"custom", x:550, y:-75, onComplete: function(){
 		sprite_p_fxBack.visible = false;
 		sprite_p_attack.visible = false;
