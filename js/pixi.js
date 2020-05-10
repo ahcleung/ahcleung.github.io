@@ -31,7 +31,7 @@ loader
 		"img/additional_skip.png",
 		"img/leper.ability.five.png",
 		"img/actionLines.png",
-		"img/flygon.json",
+		// "img/flygon.json",
 		"img/bg3.png",
 		"js/creatures.json",
 		"js/skills.json",
