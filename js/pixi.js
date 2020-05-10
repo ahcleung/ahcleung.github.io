@@ -532,8 +532,9 @@ function setup(){
 
 	actionLines = new PIXI.Sprite.from("img/actionLines.png");
 	actionLines.anchor.set(0.5);
+	actionLines.visible = false;
 	actionContainer.addChild(actionLines);
-
+	// actionContainer.actionLines = actionLines
 
 	heroRoster.x = app.screen.width/2;
 	heroRoster.y = app.screen.height/2;
@@ -1082,7 +1083,6 @@ function setup(){
 	//Add containers to stage
 	app.stage.addChild(btnSettings);			//Settings button
 	app.stage.addChild(btnAdditional);			//Additional button
-	
 
 	stageContainer.addChild(heroRoster);
 	stageContainer.addChild(enemyRoster);
@@ -1093,6 +1093,7 @@ function setup(){
 	app.stage.addChild(enemyHP);				//Enemy HP
 
 	app.stage.addChild(actionContainer);
+	app.stage.addChild(actionLines);
 	app.stage.addChild(heroDMG);				//Hero damage UI
 	app.stage.addChild(enemyDMG);				//Enemy damage UI
 
@@ -1229,6 +1230,7 @@ function createSprite(direction, item, index){
 		sprite_p_attack.visible = true;
 		sprite_p_fxBack.visible = true;
 		sprite_p_fxTop.visible = true;
+		actionLines.visible = true;
 	}});
 	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 	pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
@@ -1241,6 +1243,7 @@ function createSprite(direction, item, index){
 		sprite_p_attack.visible = false;
 		sprite_p_fxTop.visible = false;
 		creatureAction.visible = false;
+		actionLines.visible = false;
 		actionContainer.removeChild(creatureAction);
 	}},anim1);
 
