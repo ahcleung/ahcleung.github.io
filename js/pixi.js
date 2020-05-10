@@ -30,6 +30,7 @@ loader
 		"img/additional_item.png",
 		"img/additional_skip.png",
 		"img/leper.ability.five.png",
+		"img/actionLines.png",
 		"img/flygon.json",
 		"img/bg3.png",
 		"js/creatures.json",
@@ -360,7 +361,7 @@ let rectFade;
 
 // const rectHero = new PIXI.Graphics();
 // const rectEnemy = new PIXI.Graphics();
-var bgSprite;
+var bgSprite, actionLines;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
@@ -528,6 +529,10 @@ function setup(){
 
 	actionContainer.addChild(rectFade);
 	actionContainer.fadeTween = fadeTween;
+
+	actionLines = new PIXI.Sprite.from("img/actionLines.png");
+	actionLines.anchor.set(0.5);
+	actionContainer.addChild(actionLines);
 
 
 	heroRoster.x = app.screen.width/2;
@@ -1628,11 +1633,16 @@ function resize() {
 	if(widthMath > heightMath){
 		bgSprite.width = app.screen.width;
 		bgSprite.height = app.screen.width * 9/16;
+		actionLines.width = app.screen.width;
+		actionLines.height = app.screen.width * 9/16;
 	}else{
 		bgSprite.height = app.screen.height;
 		bgSprite.width = app.screen.height * 16/9;
+		actionLines.height = app.screen.height;
+		actionLines.width = app.screen.height * 16/9;
 	}
 	bgSprite.position.set(app.screen.width/2, app.screen.height/2);
+	actionLines.position.set(app.screen.width/2, app.screen.height/2);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	rectFade.width = app.screen.width;
@@ -2364,6 +2374,8 @@ function onCreatureDown(){
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
+
+				actionLines.filters = [elementFilter];
 
 				//Get defense stat based on skill used					
 				if(targeted > 0){
