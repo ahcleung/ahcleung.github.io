@@ -1365,7 +1365,7 @@ function createSprite(direction, item, index){
 	dmgPopupTween.to(dmgPopup, 0.2, {delay:anim1, ease:Expo.easeIn, alpha: 1});
 	dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {delay:anim1, ease:Expo.easeIn, x: 1, y: 1}, 0);
 	dmgPopupTween.to(dmgPopup, 1, {delay: 1, ease:Expo.easeInOut, y: 100, alpha: 0});
-	dmgPopupTween.to(dmgPopup.scale, 1, {delay: 1, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
+	dmgPopupTween.to(dmgPopup.scale, 1, {delay: 1, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2+anim1);
 
 	dmgPopup.alpha = 0;
 	dmgPopup.tween = dmgPopupTween;	
