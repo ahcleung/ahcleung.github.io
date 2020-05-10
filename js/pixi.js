@@ -2504,7 +2504,7 @@ function onCreatureDown(){
 						TweenMax.fromTo(heroHPContainerArray[targetedIndex].critDmgBar
 							, 1, {
 								width: heroHPContainerArray[targetedIndex].critDmgBar.width
-							}, {delay:2, ease:Expo.easeIn, width:newCritWidth});
+							}, {delay:5, ease:Expo.easeIn, width:newCritWidth});
 
 						heroArrayDmg[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						heroArrayDmg[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
@@ -2537,7 +2537,7 @@ function onCreatureDown(){
 						TweenMax.fromTo(heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar
 							, 1, {
 								width: newWidth
-							}, {delay:2, ease:Expo.easeIn, width:0, onComplete: function(){
+							}, {delay:5, ease:Expo.easeIn, width:0, onComplete: function(){
 							heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
 
