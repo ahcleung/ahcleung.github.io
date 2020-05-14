@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.04
+*Version:         1.05
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -31,12 +31,10 @@ loader
 		"img/additional_skip.png",
 		"img/leper.ability.five.png",
 		"img/actionLines.png",
-		// "img/flygon.json",
 		"img/bg3.png",
 		"js/creatures.json",
 		"js/skills.json",
 		"js/elements.json",
-
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_physical_ready.png'},
 		{name:'gorilla3_p_attack', url:'img/gorilla3_physical_attack.png'},
@@ -352,10 +350,10 @@ const defendContainer = new PIXI.Container();
 
 const actionContainer = new PIXI.Container();
 
-const rectTemp = new PIXI.Graphics();
+// const rectTemp = new PIXI.Graphics();
 
-const tempContainer = new PIXI.Container();
-const tempContainer2 = new PIXI.Container();
+// const tempContainer = new PIXI.Container();
+// const tempContainer2 = new PIXI.Container();
 // var actionTween1;
 let rectFade;
 
@@ -503,8 +501,8 @@ function setup(){
 	
 	consolePrint("SETUP");
 	// PIXI.settings.ROUND_PIXELS = true;
-	rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-	rectTemp.alpha = 0.1;
+	// rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
+	// rectTemp.alpha = 0.1;
 	// app.stage.add(rectTemp);
 
 // 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
@@ -928,157 +926,6 @@ function setup(){
 	additionalArray.push(btnAdditionalSkip);
 
 	additionalContainer.visible = false;
-
-	// // let outerBar = new PIXI.Graphics();
-	// // outerBar.beginFill(0x222222);
-	// // outerBar.drawRect(0, 0, (app.screen.width-320)/8, 40);
-	// // outerBar.endFill();
-	// // healthBar.addChild(outerBar);
-	// // healthBar.outer = outerBar;
-
-	// let attackSpriteReady = new PIXI.Sprite(resources.gorilla3_p_ready.texture);
-	// let attackSpriteAttack = new PIXI.Sprite(resources.gorilla3_p_attack.texture);
-	// let attackSpriteBack = new PIXI.Sprite(resources.gorilla3_p_fxBack.texture);
-	// let attackSpriteTop = new PIXI.Sprite(resources.gorilla3_p_fxTop.texture);
-
-	// let defendSpriteReady = new PIXI.Sprite(resources.toad3_d_ready.texture);
-	// let defendSpriteMiss = new PIXI.Sprite(resources.toad3_d_miss.texture);
-
-	// defendSpriteReady.scale.set(-0.55, 0.55);
-	// defendSpriteReady.anchor.set(1);
-	// defendSpriteMiss.scale.set(-0.55, 0.55);
-	// defendSpriteMiss.anchor.set(1);
-
-	// // defendSpriteReady.visible = false;
-	// defendSpriteMiss.visible = false;
-
-	// defendSpriteReady.x = -100;
-	// // defendSpriteReady.y = 10;
-	// defendSpriteMiss.x = -100;
-
-	// attackSpriteReady.scale.set(0.55);
-	// attackSpriteReady.anchor.set(1);
-	// attackSpriteAttack.scale.set(0.55);
-	// attackSpriteAttack.anchor.set(1);
-	// attackSpriteBack.scale.set(0.55);
-	// attackSpriteBack.anchor.set(1);
-	// attackSpriteTop.scale.set(0.55);
-	// attackSpriteTop.anchor.set(1);
-
-	// // attackSpriteReady.visible = false;
-	// attackSpriteAttack.visible = false;
-	// attackSpriteBack.visible = false;
-	// attackSpriteTop.visible = false;
-
-	// attackSpriteReady.x = 100;
-	// attackSpriteAttack.x = 100;
-	// attackSpriteBack.x = 100;
-	// // attackSpriteBack.y = -20;
-	// attackSpriteTop.x = 100;
-	// // attackSpriteTop.y = -20;
-
-	// // attackContainer.x = 50;
-	// // defendContainer.x = -50;
-	
-	// CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
-
-
-
-	// actionTween1 = new TimelineMax({paused: true});
-	// actionTween1.to(rectFade, 0.16, {alpha:0.75, onComplete:function(){
-	// 	attackSpriteReady.visible = true;
-	// 	defendSpriteReady.visible = true;
-	// }});
-	// actionTween1.to(attackSpriteReady, 0.33, {ease:"custom", x:-50, onComplete: function(){
-	// 	attackSpriteReady.visible = false;
-	// 	defendSpriteReady.visible = false;
-	// 	attackSpriteAttack.visible = true;
-	// 	attackSpriteBack.visible = true;
-	// 	attackSpriteTop.visible = true;
-	// 	defendSpriteMiss.visible = true;
-	// 	actionTween2.play(0);
-	// 	// heroHPContainerArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-	// }});
-
-	// var actionTween2 = new TimelineMax({paused: true});
-	// actionTween2.to(attackSpriteBack, 1, {ease:"custom", x: 125});
-	// actionTween2.to(attackSpriteAttack, 1, {ease:"custom", x: 360},0);
-	// actionTween2.to(attackSpriteTop, 1, {ease:"custom", x: 255},0);
-	// actionTween2.to(defendSpriteMiss, 1, {ease:"custom", x: 400, y: -200, onComplete: function(){
-	// 	attackSpriteAttack.visible = false;
-	// 	attackSpriteBack.visible = false;
-	// 	attackSpriteTop.visible = false;
-	// 	defendSpriteMiss.visible = false;
-	// }},0);
-	// actionTween2.to(rectFade, 0.16, {alpha:0});
-
-	// CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
-
-	// attackTween = new TimelineMax({paused: true});
-	// attackTween.fromTo(attackSpriteReady, 0.33, {x:0},{ease:"custom", x:-50, onComplete: function(){
-	// 	attackSpriteReady.visible = false;
-	// 	attackSpriteAttack.visible = true;
-	// 	attackSpriteBack.visible = true;
-	// 	attackSpriteTop.visible = true;
-	// }});
-	// attackTween.fromTo(attackSpriteBack, 1, {x:0}, {ease:"custom", x: 125});
-	// attackTween.fromTo(attackSpriteAttack, 1, {x:0}, {ease:"custom", x: 200}, 0.33);
-	// attackTween.fromTo(attackSpriteTop, 1, {x:0}, {ease:"custom", x: 275, onComplete: function(){
-	// 	attackSpriteBack.visible = false;
-	// 	attackSpriteAttack.visible = false;
-	// 	attackSpriteTop.visible = false;
-	// 	tempContainer.removeChild(attackSpriteReady);
-	// 	tempContainer.removeChild(attackSpriteBack);
-	// 	tempContainer.removeChild(attackSpriteAttack);
-	// 	tempContainer.removeChild(attackSpriteTop);
-	// 	attackSpriteReady.visible = true;
-	// }},0.33);
-
-	// defendTween = new TimelineMax({paused: true});
-	// defendTween.fromTo(defendSpriteReady, 0.33, {x:0}, {ease:"custom", x:50, onComplete: function(){
-	// 	defendSpriteReady.visible = false;
-	// 	defendSpriteMiss.visible = true;
-	// }});
-	// defendTween.fromTo(defendSpriteMiss, 1, {x:0, y:0}, {ease:"custom", x: -125, y: -100, onComplete: function(){
-	// 	defendSpriteMiss.visible = false;
-	// 	tempContainer.removeChild(defendSpriteReady);
-	// 	tempContainer.removeChild(defendSpriteMiss);
-	// 	defendSpriteReady.visible = true;
-	// }});
-
-	// var dmgPopupTween = new TimelineMax({paused: true});
-	// dmgPopupTween.to(dmgPopup, 0.2, {ease:Expo.easeIn, alpha: 1});
-	// dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0.5, y: 0.5}, {ease:Expo.easeIn, x: 1, y: 1}, 0);
-	// dmgPopupTween.to(dmgPopup, 1.5, {delay: 0.5, ease:Expo.easeInOut, y: 100, alpha: 0})
-	// dmgPopupTween.to(dmgPopup.scale, 1.5, {delay: 0.5, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2);
-
-	// attackContainer.addChild(attackSpriteReady);
-	// attackContainer.addChild(attackSpriteBack);
-	// attackContainer.addChild(attackSpriteAttack);
-	// attackContainer.addChild(attackSpriteTop);
-
-	// defendContainer.addChild(defendSpriteReady);
-	// defendContainer.addChild(defendSpriteMiss);
-
-	// attackArray.push(attackSpriteReady);
-	// attackArray.push(attackSpriteBack);
-	// attackArray.push(attackSpriteAttack);
-	// attackArray.push(attackSpriteTop);
-	// defendArray.push(defendSpriteReady);
-	// defendArray.push(defendSpriteMiss);
-
-	// tempContainer.addChild(attackSpriteReady);
-	// tempContainer.addChild(attackSpriteBack);
-	// tempContainer.addChild(attackSpriteAttack);	
-	// tempContainer.addChild(attackSpriteTop);
-
-	// tempContainer.addChild(defendSpriteReady);
-	// tempContainer.addChild(defendSpriteMiss);
-
-	// tempContainer.addChild(attackContainer);
-	// tempContainer.addChild(defendContainer);
-
-
 	
 	//Add containers to stage
 	app.stage.addChild(btnSettings);			//Settings button
@@ -1104,7 +951,7 @@ function setup(){
 
 	// app.stage.addChild(rectFade);
 
-	app.stage.addChild(tempContainer);
+	// app.stage.addChild(tempContainer);
 	// app.stage.addChild(tempContainer2);
 
 	
@@ -1658,8 +1505,8 @@ function resize() {
 	// rectFade.position.set(0, 0);
 
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
-	tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
-	tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
+	// tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
+	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
 	
@@ -2309,6 +2156,7 @@ function onCreatureDown(){
 			const elementFilter = new PIXI.filters.ColorMatrixFilter();
 			elementFilter.hue(0);
 			elementFilter.saturate(0);
+			elementFilter.brightness(0);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
 					elementFilter.hue(65);
@@ -2336,6 +2184,7 @@ function onCreatureDown(){
 					break;
 				case 9:				
 					elementFilter.saturate(-1);
+					elementFilter.brightness(-1);
 					break;
 				default:
 					elementFilter.hue(0);
@@ -3289,14 +3138,6 @@ function onSkillDown(){
 }
 
 function animateBattle(attacker, defender){
-	// const blurFilter1 = new PIXI.filters.BlurFilter();
-	// const blurFilter2 = new PIXI.filters.BlurFilter();
-	// blurFilter1.blur = 2;
-	// blurFilter2.blur = 0;
-
-	// stageContainer.filters = [blurFilter1];
-
-
 	const blurFilter1 = new PIXI.filters.BlurFilter();
 	// const blurFilter2 = new PIXI.filters.BlurFilter();
 	blurFilter1.blur = 0;
@@ -3436,49 +3277,6 @@ function onAdditionalMoveDown(){
 				}
 			}
 		});
-
-
-		// var currPos = heroArray[Math.abs(selectedVita)-1].pos;
-		// var moveDelta = 2;
-
-		// var sizeDelta = 1;
-		// if(heroArray[Math.abs(selectedVita)-1].size == 2){
-		// 	sizeDelta = 2;
-		// }
-
-		// heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
-		// 	for(var i = 0; i < moveDelta; i++){
-		// 		if(arrayCreature.pos == currPos+sizeDelta+i){
-		// 			heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 			validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 		}else if(arrayCreature.pos == currPos-1-i){
-		// 			heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 			validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 		}
-
-		// 		if(arrayCreature.size == 2){
-		// 			if(arrayCreature.pos == currPos-2-i){
-		// 				heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 				validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 			}
-		// 		}
-		// 	}
-
-
-		// 	// if(arrayCreature.pos == currPos+sizeDelta){			//behind
-		// 	// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 	// 	validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 	// }else if(arrayCreature.pos == currPos-1){			//infront
-		// 	// 	heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 	// 	validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 	// }
-		// 	// if(arrayCreature.size == 2){
-		// 	// 	if(arrayCreature.pos == currPos-2){				//infront size2
-		// 	// 		heroHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 	// 		validMoveTargetArray.push(arrayCreatureIndex+1);
-		// 	// 	}
-		// 	// }
-		// });
 	}else{
 		var currIndex = Math.abs(selectedVita)-1;
 		var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
@@ -3509,32 +3307,7 @@ function onAdditionalMoveDown(){
 				}
 			}
 		});
-
-		// var currPos = enemyArray[Math.abs(selectedVita)-1].pos;
-		// var moveDelta = 2;
-
-		// var sizeDelta = 1;
-		// if(enemyArray[Math.abs(selectedVita)-1].size == 2){
-		// 	sizeDelta = 2;
-		// }
-
-		// enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
-		// 	if(arrayCreature.pos == currPos+sizeDelta){
-		// 		enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 		validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
-		// 	}else if(arrayCreature.pos == currPos-1){
-		// 		enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 		validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
-		// 	}
-		// 	if(arrayCreature.size == 2){
-		// 		if(arrayCreature.pos == currPos-2){
-		// 			enemyHPContainerArray[arrayCreatureIndex].move.visible = true;
-		// 			validMoveTargetArray.push((arrayCreatureIndex+1)*-1);
-		// 		}
-		// 	}
-		// });
 	}
-
 	console.log("validMoveTargetArray: " + validMoveTargetArray);
 }
 
