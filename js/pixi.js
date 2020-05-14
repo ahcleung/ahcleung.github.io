@@ -2187,7 +2187,7 @@ function onCreatureDown(){
 					break;
 				case 9:				
 					filterSaturate.saturate(-1, true);
-					filterBrightness.brightness(0.5, true);
+					filterBrightness.brightness(0.25, true);
 					break;
 				default:
 					filterHue.hue(0);
