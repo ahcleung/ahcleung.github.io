@@ -2154,40 +2154,40 @@ function onCreatureDown(){
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
 			const elementFilter = new PIXI.filters.ColorMatrixFilter();
-			elementFilter.hue(0);
-			elementFilter.saturate(0);
-			elementFilter.brightness(0);
+			elementFilter.hue(0, true);
+			elementFilter.saturate(0, true);
+			elementFilter.brightness(0, true);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
-					elementFilter.hue(65);
+					elementFilter.hue(65, true);
 					break;
 				case 2:
-					elementFilter.hue(165);
+					elementFilter.hue(165, true);
 					break;
 				case 3:				
-					elementFilter.hue(-55);
+					elementFilter.hue(-55, true);
 					break;
 				case 4:
-					elementFilter.hue(-29);
+					elementFilter.hue(-29, true);
 					break;
 				case 5:
-					elementFilter.hue(0);
+					elementFilter.hue(0, true);
 					break;
 				case 6:				
-					elementFilter.hue(117);
+					elementFilter.hue(117, true);
 					break;
 				case 7:
-					elementFilter.hue(-130);
+					elementFilter.hue(-130, true);
 					break;
 				case 8:
-					elementFilter.hue(-92);
+					elementFilter.hue(-92, true);
 					break;
 				case 9:				
-					elementFilter.saturate(-1);
-					elementFilter.brightness(-1);
+					elementFilter.saturate(-1, true);
+					elementFilter.brightness(-1, true);
 					break;
 				default:
-					elementFilter.hue(0);
+					elementFilter.hue(0, true);
 			}
 
 			validSkillTargetArray[targetedVita].forEach(targeted => {
