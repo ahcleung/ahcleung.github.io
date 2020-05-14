@@ -2158,7 +2158,7 @@ function onCreatureDown(){
 			const filterBrightness = new PIXI.filters.ColorMatrixFilter();
 
 			filterHue.hue(0);
-			filterContrast.Contrast(0);
+			filterContrast.contrast(0);
 			filterBrightness.blackAndWhite(false);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
@@ -2186,7 +2186,7 @@ function onCreatureDown(){
 					filterHue.hue(-92);
 					break;
 				case 9:				
-					filterContrast.Contrast(0.5);
+					filterContrast.contrast(0.5);
 					filterBrightness.blackAndWhite(true);
 					break;
 				default:
