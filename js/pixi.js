@@ -2153,41 +2153,44 @@ function onCreatureDown(){
 
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
-			const elementFilter = new PIXI.filters.ColorMatrixFilter();
-			elementFilter.hue(0, true);
-			elementFilter.saturate(0, true);
-			elementFilter.brightness(0, true);
+			const filterHue = new PIXI.filters.ColorMatrixFilter();
+			const filterSaturate = new PIXI.filters.ColorMatrixFilter();
+			const filterBrightness = new PIXI.filters.ColorMatrixFilter();
+
+			filterHue.hue(0);
+			filterSaturate.saturate(0);
+			filterBrightness.brightness(1);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
-					elementFilter.hue(65, true);
+					filterHue.hue(65);
 					break;
 				case 2:
-					elementFilter.hue(165, true);
+					filterHue.hue(165);
 					break;
 				case 3:				
-					elementFilter.hue(-55, true);
+					filterHue.hue(-55);
 					break;
 				case 4:
-					elementFilter.hue(-29, true);
+					filterHue.hue(-29);
 					break;
 				case 5:
-					elementFilter.hue(0, true);
+					filterHue.hue(0);
 					break;
 				case 6:				
-					elementFilter.hue(117, true);
+					filterHue.hue(117);
 					break;
 				case 7:
-					elementFilter.hue(-130, true);
+					filterHue.hue(-130);
 					break;
 				case 8:
-					elementFilter.hue(-92, true);
+					filterHue.hue(-92);
 					break;
 				case 9:				
-					elementFilter.saturate(-1, true);
-					elementFilter.brightness(-1, true);
+					filterSaturate.saturate(-1, true);
+					filterBrightness.brightness(0.5, true);
 					break;
 				default:
-					elementFilter.hue(0, true);
+					filterHue.hue(0);
 			}
 
 			validSkillTargetArray[targetedVita].forEach(targeted => {
@@ -2209,29 +2212,29 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [elementFilter];
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [elementFilter];
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterSaturate, filterBrightness];
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterSaturate, filterBrightness];
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [elementFilter];
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [elementFilter];
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterSaturate, filterBrightness];
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterSaturate, filterBrightness];
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [elementFilter];
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [elementFilter];
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterSaturate, filterBrightness];
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterSaturate, filterBrightness];
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [elementFilter];
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [elementFilter];
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterSaturate, filterBrightness];
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterSaturate, filterBrightness];
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
 
-				actionLines.filters = [elementFilter];
+				actionLines.filters = [filterHue, filterSaturate, filterBrightness];
 
 				//Get defense stat based on skill used					
 				if(targeted > 0){
