@@ -2153,44 +2153,56 @@ function onCreatureDown(){
 
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
-			const filterHue = new PIXI.filters.ColorMatrixFilter();
-			const filterContrast = new PIXI.filters.ColorMatrixFilter();
-			const filterBrightness = new PIXI.filters.ColorMatrixFilter();
+			const filter1 = new PIXI.filters.ColorMatrixFilter();
+			const filter2 = new PIXI.filters.ColorMatrixFilter();
+			const filter3 = new PIXI.filters.ColorMatrixFilter();
 
-			filterHue.hue(0);
-			filterContrast.contrast(0);
-			filterBrightness.blackAndWhite(false);
+			var filtersArray = [];
+
+			filter1.hue(0);
+			filter2.saturate(-1, true);
+			filter3.negative(true);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
-					filterHue.hue(65);
+					filter1.hue(65);
+					filtersArray = [filter1];
 					break;
 				case 2:
-					filterHue.hue(165);
+					filter1.hue(165);
+					filtersArray = [filter1];
 					break;
 				case 3:				
-					filterHue.hue(-55);
+					filter1.hue(-55);
+					filtersArray = [filter1];
 					break;
 				case 4:
-					filterHue.hue(-29);
+					filter1.hue(-29);
+					filtersArray = [filter1];
 					break;
 				case 5:
-					filterHue.hue(0);
+					filter1.hue(0);
+					filtersArray = [filter1];
 					break;
 				case 6:				
-					filterHue.hue(117);
+					filter1.hue(117);
+					filtersArray = [filter1];
 					break;
 				case 7:
-					filterHue.hue(-130);
+					filter1.hue(-130);
+					filtersArray = [filter1];
 					break;
 				case 8:
-					filterHue.hue(-92);
+					filter1.hue(-92);
+					filtersArray = [filter1];
 					break;
 				case 9:				
-					filterContrast.contrast(0.5);
-					filterBrightness.blackAndWhite(true);
+					filtersArray = [filter2, filter3];
+					// filter2.contrast(0.5);
+					// filter3.blackAndWhite(true);
 					break;
 				default:
-					filterHue.hue(0);
+					filter1.hue(0);
+					filtersArray = [filter1];
 			}
 
 			validSkillTargetArray[targetedVita].forEach(targeted => {
@@ -2212,29 +2224,29 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterContrast, filterBrightness];
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterContrast, filterBrightness];
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterContrast, filterBrightness];
-						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterContrast, filterBrightness];
+						heroActionArray[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						heroActionArray[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterContrast, filterBrightness];
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterContrast, filterBrightness];
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = [filterHue, filterContrast, filterBrightness];
-						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = [filterHue, filterContrast, filterBrightness];
+						enemyActionArray[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						enemyActionArray[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
 
-				actionLines.filters = [filterHue, filterContrast, filterBrightness];
+				actionLines.filters = filtersArray;
 
 				//Get defense stat based on skill used					
 				if(targeted > 0){
