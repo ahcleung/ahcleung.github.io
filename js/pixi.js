@@ -2161,7 +2161,7 @@ function onCreatureDown(){
 
 			filter1.hue(0);
 			filter2.desaturate(true);
-			filter3.greyscale(0.3, true);
+			filter3.greyscale(0.1, true);
 			// filter3.negative(true);
 			switch(skillsList.data.skills[selectedSkill].element){
 				case 1:
