@@ -37,76 +37,76 @@ loader
 		"js/elements.json",
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_physical_ready.png'},
-		{name:'gorilla3_p_attack', url:'img/gorilla3_physical_attack.png'},
-		{name:'gorilla3_p_fxBack', url:'img/gorilla3_physical_fxBack.png'},
-		{name:'gorilla3_p_fxTop', url:'img/gorilla3_physical_fxTop.png'},
+		{name:'gorilla3_p_main', url:'img/gorilla3_physical_attack.png'},
+		{name:'gorilla3_p_back', url:'img/gorilla3_physical_fxBack.png'},
+		{name:'gorilla3_p_top', url:'img/gorilla3_physical_fxTop.png'},
 		{name:'gorilla3_s_ready', url:'img/gorilla3_special_ready.png'},
-		{name:'gorilla3_s_attack', url:'img/gorilla3_special_attack.png'},
-		{name:'gorilla3_s_fxBack', url:'img/gorilla3_special_fxBack.png'},
-		{name:'gorilla3_s_fxTop', url:'img/gorilla3_special_fxTop.png'},
+		{name:'gorilla3_s_main', url:'img/gorilla3_special_attack.png'},
+		{name:'gorilla3_s_back', url:'img/gorilla3_special_fxBack.png'},
+		{name:'gorilla3_s_top', url:'img/gorilla3_special_fxTop.png'},
 		{name:'gorilla3_d_ready', url:'img/gorilla3_defend_ready.png'},
 		{name:'gorilla3_d_miss', url:'img/gorilla3_defend_miss.png'},
-		{name:'gorilla3_d_damage', url:'img/gorilla3_defend_damage.png'},
+		{name:'gorilla3_d_dmg', url:'img/gorilla3_defend_damage.png'},
 
-		{name:'toad3_p_ready', url:'img/toad3_physical_ready.png'},
-		{name:'toad3_p_attack', url:'img/toad3_physical_attack.png'},
-		{name:'toad3_p_fxBack', url:'img/toad3_physical_fxBack.png'},
-		{name:'toad3_p_fxTop', url:'img/toad3_physical_fxTop.png'},
-		{name:'toad3_s_ready', url:'img/toad3_special_ready.png'},
-		{name:'toad3_s_attack', url:'img/toad3_special_attack.png'},
-		{name:'toad3_s_fxBack', url:'img/toad3_special_fxBack.png'},
-		{name:'toad3_s_fxTop', url:'img/toad3_special_fxTop.png'},
-		{name:'toad3_d_ready', url:'img/toad3_defend_ready.png'},
-		{name:'toad3_d_miss', url:'img/toad3_defend_miss.png'},
-		{name:'toad3_d_damage', url:'img/toad3_defend_damage.png'},
+		{name:'toad3_p_ready', url:'img/toad3_p_ready.png'},
+		{name:'toad3_p_main', url:'img/toad3_p_main.png'},
+		{name:'toad3_p_back', url:'img/toad3_p_back.png'},
+		{name:'toad3_p_top', url:'img/toad3_p_top.png'},
+		{name:'toad3_s_ready', url:'img/toad3_s_ready.png'},
+		{name:'toad3_s_main', url:'img/toad3_s_main.png'},
+		{name:'toad3_s_back', url:'img/toad3_s_back.png'},
+		{name:'toad3_s_top', url:'img/toad3_s_top.png'},
+		{name:'toad3_d_ready', url:'img/toad3_d_ready.png'},
+		{name:'toad3_d_miss', url:'img/toad3_d_miss.png'},
+		{name:'toad3_d_dmg', url:'img/toad3_d_dmg.png'},
 
 		{name:'goat2_1_p_ready', url:'img/goat2_1_p_ready.png'},
-		{name:'goat2_1_p_attack', url:'img/goat2_1_p_main.png'},
-		{name:'goat2_1_p_fxBack', url:'img/goat2_1_p_back.png'},
-		{name:'goat2_1_p_fxTop', url:'img/goat2_1_p_top.png'},
+		{name:'goat2_1_p_main', url:'img/goat2_1_p_main.png'},
+		{name:'goat2_1_p_back', url:'img/goat2_1_p_back.png'},
+		{name:'goat2_1_p_top', url:'img/goat2_1_p_top.png'},
 		{name:'goat2_1_s_ready', url:'img/goat2_1_s_ready.png'},
-		{name:'goat2_1_s_attack', url:'img/goat2_1_s_main.png'},
-		{name:'goat2_1_s_fxBack', url:'img/goat2_1_s_back.png'},
-		{name:'goat2_1_s_fxTop', url:'img/goat2_1_s_top.png'},
+		{name:'goat2_1_s_main', url:'img/goat2_1_s_main.png'},
+		{name:'goat2_1_s_back', url:'img/goat2_1_s_back.png'},
+		{name:'goat2_1_s_top', url:'img/goat2_1_s_top.png'},
 		{name:'goat2_1_d_ready', url:'img/goat2_1_d_ready.png'},
 		{name:'goat2_1_d_miss', url:'img/goat2_1_d_miss.png'},
-		{name:'goat2_1_d_damage', url:'img/goat2_1_d_dmg.png'},
+		{name:'goat2_1_d_dmg', url:'img/goat2_1_d_dmg.png'},
 
 		{name:'goat2_2_p_ready', url:'img/goat2_2_p_ready.png'},
-		{name:'goat2_2_p_attack', url:'img/goat2_2_p_main.png'},
-		{name:'goat2_2_p_fxBack', url:'img/goat2_2_p_back.png'},
-		{name:'goat2_2_p_fxTop', url:'img/goat2_2_p_top.png'},
+		{name:'goat2_2_p_main', url:'img/goat2_2_p_main.png'},
+		{name:'goat2_2_p_back', url:'img/goat2_2_p_back.png'},
+		{name:'goat2_2_p_top', url:'img/goat2_2_p_top.png'},
 		{name:'goat2_2_s_ready', url:'img/goat2_2_s_ready.png'},
-		{name:'goat2_2_s_attack', url:'img/goat2_2_s_main.png'},
-		{name:'goat2_2_s_fxBack', url:'img/goat2_2_s_back.png'},
-		{name:'goat2_2_s_fxTop', url:'img/goat2_2_s_top.png'},
+		{name:'goat2_2_s_main', url:'img/goat2_2_s_main.png'},
+		{name:'goat2_2_s_back', url:'img/goat2_2_s_back.png'},
+		{name:'goat2_2_s_top', url:'img/goat2_2_s_top.png'},
 		{name:'goat2_2_d_ready', url:'img/goat2_2_d_ready.png'},
 		{name:'goat2_2_d_miss', url:'img/goat2_2_d_miss.png'},
-		{name:'goat2_2_d_damage', url:'img/goat2_2_d_dmg.png'},
+		{name:'goat2_2_d_dmg', url:'img/goat2_2_d_dmg.png'},
 
 		{name:'hel1_p_ready', url:'img/hel1_physical_ready.png'},
-		{name:'hel1_p_attack', url:'img/hel1_physical_attack.png'},
-		{name:'hel1_p_fxBack', url:'img/hel1_physical_fxBack.png'},
-		{name:'hel1_p_fxTop', url:'img/hel1_physical_fxTop.png'},
+		{name:'hel1_p_main', url:'img/hel1_physical_attack.png'},
+		{name:'hel1_p_back', url:'img/hel1_physical_fxBack.png'},
+		{name:'hel1_p_top', url:'img/hel1_physical_fxTop.png'},
 		{name:'hel1_s_ready', url:'img/hel1_special_ready.png'},
-		{name:'hel1_s_attack', url:'img/hel1_special_attack.png'},
-		{name:'hel1_s_fxBack', url:'img/hel1_special_fxBack.png'},
-		{name:'hel1_s_fxTop', url:'img/hel1_special_fxTop.png'},
+		{name:'hel1_s_main', url:'img/hel1_special_attack.png'},
+		{name:'hel1_s_back', url:'img/hel1_special_fxBack.png'},
+		{name:'hel1_s_top', url:'img/hel1_special_fxTop.png'},
 		{name:'hel1_d_ready', url:'img/hel1_defend_ready.png'},
 		{name:'hel1_d_miss', url:'img/hel1_defend_miss.png'},
-		{name:'hel1_d_damage', url:'img/hel1_defend_damage.png'},
+		{name:'hel1_d_dmg', url:'img/hel1_defend_damage.png'},
 
 		{name:'hel2_p_ready', url:'img/hel2_physical_ready.png'},
-		{name:'hel2_p_attack', url:'img/hel2_physical_attack.png'},
-		{name:'hel2_p_fxBack', url:'img/hel2_physical_fxBack.png'},
-		{name:'hel2_p_fxTop', url:'img/hel2_physical_fxTop.png'},
+		{name:'hel2_p_main', url:'img/hel2_physical_attack.png'},
+		{name:'hel2_p_back', url:'img/hel2_physical_fxBack.png'},
+		{name:'hel2_p_top', url:'img/hel2_physical_fxTop.png'},
 		{name:'hel2_s_ready', url:'img/hel2_special_ready.png'},
-		{name:'hel2_s_attack', url:'img/hel2_special_attack.png'},
-		{name:'hel2_s_fxBack', url:'img/hel2_special_fxBack.png'},
-		{name:'hel2_s_fxTop', url:'img/hel2_special_fxTop.png'},
+		{name:'hel2_s_main', url:'img/hel2_special_attack.png'},
+		{name:'hel2_s_back', url:'img/hel2_special_fxBack.png'},
+		{name:'hel2_s_top', url:'img/hel2_special_fxTop.png'},
 		{name:'hel2_d_ready', url:'img/hel2_defend_ready.png'},
 		{name:'hel2_d_miss', url:'img/hel2_defend_miss.png'},
-		{name:'hel2_d_damage', url:'img/hel2_defend_damage.png'},
+		{name:'hel2_d_dmg', url:'img/hel2_defend_damage.png'},
 
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
@@ -1036,24 +1036,24 @@ function createSprite(direction, item, index){
 	sprite_p_ready.alpha = 0;
 	creatureAction.addChild(sprite_p_ready);
 
-	var sprite_p_fxBack = new PIXI.Sprite(resources[item.code + '_p_fxBack'].texture);
-	sprite_p_fxBack.anchor.set(1);
-	sprite_p_fxBack.alpha = 0;
-	sprite_p_fxBack.visible = false;
-	creatureAction.addChild(sprite_p_fxBack);
-	creatureAction.fxBack = sprite_p_fxBack;
+	var sprite_p_back = new PIXI.Sprite(resources[item.code + '_p_back'].texture);
+	sprite_p_back.anchor.set(1);
+	sprite_p_back.alpha = 0;
+	sprite_p_back.visible = false;
+	creatureAction.addChild(sprite_p_back);
+	creatureAction.fxBack = sprite_p_back;
 
-	var sprite_p_attack = new PIXI.Sprite(resources[item.code + '_p_attack'].texture);
-	sprite_p_attack.anchor.set(1);
-	sprite_p_attack.visible = false;
-	creatureAction.addChild(sprite_p_attack);
+	var sprite_p_main = new PIXI.Sprite(resources[item.code + '_p_main'].texture);
+	sprite_p_main.anchor.set(1);
+	sprite_p_main.visible = false;
+	creatureAction.addChild(sprite_p_main);
 
-	var sprite_p_fxTop = new PIXI.Sprite(resources[item.code + '_p_fxTop'].texture);
-	sprite_p_fxTop.anchor.set(1);
-	sprite_p_fxTop.alpha = 0;
-	sprite_p_fxTop.visible = false;
-	creatureAction.addChild(sprite_p_fxTop);
-	creatureAction.fxTop = sprite_p_fxTop;
+	var sprite_p_top = new PIXI.Sprite(resources[item.code + '_p_top'].texture);
+	sprite_p_top.anchor.set(1);
+	sprite_p_top.alpha = 0;
+	sprite_p_top.visible = false;
+	creatureAction.addChild(sprite_p_top);
+	creatureAction.fxTop = sprite_p_top;
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
@@ -1074,23 +1074,23 @@ function createSprite(direction, item, index){
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
 	pAtkTween.fromTo(sprite_p_ready, anim1, {x:item.action[0][0], y:item.action[0][1]},{ease:"custom", x:item.action[0][2], y:item.action[0][3], onComplete: function(){
 		sprite_p_ready.alpha = 0;
-		sprite_p_attack.visible = true;
-		sprite_p_fxBack.visible = true;
-		sprite_p_fxTop.visible = true;
+		sprite_p_main.visible = true;
+		sprite_p_back.visible = true;
+		sprite_p_top.visible = true;
 		actionLines.visible = true;
 	}});
-	pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
-	pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
-	pAtkTween.fromTo(sprite_p_fxBack, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
-	pAtkTween.fromTo(sprite_p_attack, anim2, {x:item.action[2][0], y:item.action[2][1]}, {ease:"custom", x:item.action[2][2], y:item.action[2][3]}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:0}, {alpha:1}, anim1);
-	pAtkTween.fromTo(sprite_p_fxTop, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
-	pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:item.action[3][0], y:item.action[3][1]}, {ease:"custom", x:item.action[3][2], y:item.action[3][3], onComplete: function(){
-		sprite_p_fxBack.visible = false;
-		sprite_p_attack.visible = false;
-		sprite_p_fxTop.alpha = 0;
-		sprite_p_fxBack.alpha = 0;
-		sprite_p_fxTop.visible = false;
+	pAtkTween.fromTo(sprite_p_back, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
+	pAtkTween.fromTo(sprite_p_back, 0.33, {alpha:0}, {alpha:1}, anim1);
+	pAtkTween.fromTo(sprite_p_back, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
+	pAtkTween.fromTo(sprite_p_main, anim2, {x:item.action[2][0], y:item.action[2][1]}, {ease:"custom", x:item.action[2][2], y:item.action[2][3]}, anim1);
+	pAtkTween.fromTo(sprite_p_top, 0.5, {alpha:0}, {alpha:1}, anim1);
+	pAtkTween.fromTo(sprite_p_top, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
+	pAtkTween.fromTo(sprite_p_top, anim2, {x:item.action[3][0], y:item.action[3][1]}, {ease:"custom", x:item.action[3][2], y:item.action[3][3], onComplete: function(){
+		sprite_p_back.visible = false;
+		sprite_p_main.visible = false;
+		sprite_p_top.alpha = 0;
+		sprite_p_back.alpha = 0;
+		sprite_p_top.visible = false;
 		creatureAction.visible = false;
 		actionLines.visible = false;
 		actionContainer.removeChild(creatureAction);
@@ -1100,23 +1100,23 @@ function createSprite(direction, item, index){
 	// pAtkTween.to(sprite_p_ready, 0, {alpha:1});
 	// pAtkTween.fromTo(sprite_p_ready, anim1, {x:0, y:0},{ease:"custom", x:-40, y:0, onComplete: function(){
 	// 	sprite_p_ready.alpha = 0;
-	// 	sprite_p_attack.visible = true;
-	// 	sprite_p_fxBack.visible = true;
-	// 	sprite_p_fxTop.visible = true;
+	// 	sprite_p_main.visible = true;
+	// 	sprite_p_back.visible = true;
+	// 	sprite_p_top.visible = true;
 	// 	actionLines.visible = true;
 	// }});	
-	// pAtkTween.fromTo(sprite_p_fxBack, anim2, {x:225, y:0}, {ease:"custom", x:350, y:0});
-	// pAtkTween.fromTo(sprite_p_fxBack, 0.33, {alpha:0}, {alpha:1}, anim1);
-	// pAtkTween.fromTo(sprite_p_fxBack, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
-	// pAtkTween.fromTo(sprite_p_attack, anim2, {x:375, y:-75}, {ease:"custom", x:750, y:-75}, anim1);
-	// pAtkTween.fromTo(sprite_p_fxTop, 0.5, {alpha:0}, {alpha:1}, anim1);
-	// pAtkTween.fromTo(sprite_p_fxTop, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
-	// pAtkTween.fromTo(sprite_p_fxTop, anim2, {x:350, y:-75}, {ease:"custom", x:550, y:-75, onComplete: function(){
-	// 	sprite_p_fxBack.visible = false;
-	// 	sprite_p_attack.visible = false;
-	// 	sprite_p_fxTop.alpha = 0;
-	// 	sprite_p_fxBack.alpha = 0;
-	// 	sprite_p_fxTop.visible = false;
+	// pAtkTween.fromTo(sprite_p_back, anim2, {x:225, y:0}, {ease:"custom", x:350, y:0});
+	// pAtkTween.fromTo(sprite_p_back, 0.33, {alpha:0}, {alpha:1}, anim1);
+	// pAtkTween.fromTo(sprite_p_back, 0.25, {alpha:1}, {alpha:0}, anim1+anim2-0.25);
+	// pAtkTween.fromTo(sprite_p_main, anim2, {x:375, y:-75}, {ease:"custom", x:750, y:-75}, anim1);
+	// pAtkTween.fromTo(sprite_p_top, 0.5, {alpha:0}, {alpha:1}, anim1);
+	// pAtkTween.fromTo(sprite_p_top, 0.33, {alpha:1}, {alpha:0}, anim1+anim2-0.33);
+	// pAtkTween.fromTo(sprite_p_top, anim2, {x:350, y:-75}, {ease:"custom", x:550, y:-75, onComplete: function(){
+	// 	sprite_p_back.visible = false;
+	// 	sprite_p_main.visible = false;
+	// 	sprite_p_top.alpha = 0;
+	// 	sprite_p_back.alpha = 0;
+	// 	sprite_p_top.visible = false;
 	// 	creatureAction.visible = false;
 	// 	actionLines.visible = false;
 	// 	actionContainer.removeChild(creatureAction);
