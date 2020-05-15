@@ -106,7 +106,7 @@
 		},
 		{
 			"name": "Water geyser",
-			"element": 2,
+			"element": 5,
 			"type": "spe",
 			"power": 40,
 			"accuracy": 80,
