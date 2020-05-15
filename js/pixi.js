@@ -2012,7 +2012,7 @@ function resizeAction(direction, item, index){
 			}else if(app.screen.width < 1366){
 				item.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.scale.set(direction * 0.55, 0.55);
+				item.scale.set(direction * 0.5, 0.5);
 			}
 			switch(heroArray[index].pos) {
 				case 1:
@@ -2038,7 +2038,7 @@ function resizeAction(direction, item, index){
 			}else if(app.screen.width < 1366){
 				item.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.scale.set(direction * 0.55, 0.55);
+				item.scale.set(direction * 0.5, 0.5);
 			}
 			switch(enemyArray[index].pos) {
 				case 1:
