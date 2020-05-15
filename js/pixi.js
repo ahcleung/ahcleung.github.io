@@ -2159,47 +2159,45 @@ function onCreatureDown(){
 
 			var filtersArray = [];
 
-			filter1.hue(0);
-			filter2.desaturate(true);
-			filter3.greyscale(0.1, true);
+			filter2.brightness(1.4,  true);
+			filter2.hue(175, true);
+			filter3.blackAndWhite(true);
+
 			// filter3.negative(true);
 			switch(skillsList.data.skills[selectedSkill].element){
-				case 1:
-					filter1.hue(65);
+				case 1: 	//flora
+					filter1.hue(-120);
 					filtersArray = [filter1];
 					break;
-				case 2:
-					filter1.hue(165);
+				case 2: 	//water
+					filter1.hue(-30);
 					filtersArray = [filter1];
 					break;
-				case 3:				
-					filter1.hue(-55);
+				case 3:		//fire
+					filter1.hue(110);
 					filtersArray = [filter1];
 					break;
-				case 4:
-					filter1.hue(-29);
+				case 4: 	//earth
+					filter1.hue(160);
 					filtersArray = [filter1];
 					break;
-				case 5:
-					filter1.hue(0);
+				case 5: 	//lightning
+					filtersArray = [filter2];
+					break;
+				case 6: 	//wind
+					filter1.hue(-80);
 					filtersArray = [filter1];
 					break;
-				case 6:				
-					filter1.hue(117);
+				case 7: 	//toxic
+					filter1.hue(20);
 					filtersArray = [filter1];
 					break;
-				case 7:
-					filter1.hue(-130);
+				case 8: 	//spirit
+					filter1.hue(60);
 					filtersArray = [filter1];
 					break;
-				case 8:
-					filter1.hue(-92);
-					filtersArray = [filter1];
-					break;
-				case 9:				
-					filtersArray = [filter2, filter3];
-					// filter2.contrast(0.5);
-					// filter3.blackAndWhite(true);
+				case 9: 	//shadow	
+					filtersArray = [filter3];		
 					break;
 				default:
 					filter1.hue(0);
