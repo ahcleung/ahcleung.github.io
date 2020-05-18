@@ -136,6 +136,9 @@ loader
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
 		{name:'gorilla3_texture_png', url:'img/gorilla3_tex.png'},
+		{name:'toad1_skeleton', url:'img/toad1_ske.json'},
+		{name:'toad1_texture_json', url:'img/toad1_tex.json'},
+		{name:'toad1_texture_png', url:'img/toad1_tex.png'},
 		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
 		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
 		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
@@ -408,7 +411,7 @@ const defendArray = [];
 
 const hero = [];
 hero[0] = {
-	id: 10, level: 50, 
+	id: 6, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 5,
 	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0
 };
