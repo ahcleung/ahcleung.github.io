@@ -48,6 +48,18 @@ loader
 		{name:'gorilla3_d_miss', url:'img/gorilla3_defend_miss.png'},
 		{name:'gorilla3_d_dmg', url:'img/gorilla3_defend_damage.png'},
 
+		{name:'toad1_p_ready', url:'img/toad1_p_ready.png'},
+		{name:'toad1_p_main', url:'img/toad1_p_main.png'},
+		{name:'toad1_p_back', url:'img/toad1_p_back.png'},
+		{name:'toad1_p_top', url:'img/toad1_p_top.png'},
+		{name:'toad1_s_ready', url:'img/toad1_s_ready.png'},
+		{name:'toad1_s_main', url:'img/toad1_s_main.png'},
+		{name:'toad1_s_back', url:'img/toad1_s_back.png'},
+		{name:'toad1_s_top', url:'img/toad1_s_top.png'},
+		{name:'toad1_d_ready', url:'img/toad1_d_ready.png'},
+		{name:'toad1_d_miss', url:'img/toad1_d_miss.png'},
+		{name:'toad1_d_dmg', url:'img/toad1_d_dmg.png'},
+
 		{name:'toad3_p_ready', url:'img/toad3_p_ready.png'},
 		{name:'toad3_p_main', url:'img/toad3_p_main.png'},
 		{name:'toad3_p_back', url:'img/toad3_p_back.png'},
