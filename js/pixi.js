@@ -1241,6 +1241,8 @@ function createSprite(direction, item, index){
 	dmgContainer.dmgPopup = dmgPopup;
 
 	const healthBar = new PIXI.Container();	
+	const healthBarIndicators = [];
+	healthBar.healthBarIndicators = healthBarIndicators;
 	
 	let outerBar = new PIXI.Graphics();
 	outerBar.beginFill(0x222222);
@@ -1406,6 +1408,7 @@ function createSprite(direction, item, index){
 			healthBar.addChild(select);
 			healthBar.select = select;
 			healthBar.select.visible = false;
+			healthBar.healthBarIndicators.push(select);
 		}else if(i == 1){
 			//Target
 			target.addChild(indicatorEnd);
@@ -1419,6 +1422,7 @@ function createSprite(direction, item, index){
 			healthBar.addChild(target);
 			healthBar.target = target;
 			healthBar.target.visible = false;
+			healthBar.healthBarIndicators.push(target);
 		}else if(i == 2){
 			//Heal
 			heal.addChild(indicatorEnd);
@@ -1432,6 +1436,7 @@ function createSprite(direction, item, index){
 			healthBar.addChild(heal);
 			healthBar.heal = heal;
 			healthBar.heal.visible = false;
+			healthBar.healthBarIndicators.push(heal);
 		}else if(i == 3){
 			//Move
 			move.addChild(indicatorEnd);
@@ -1445,6 +1450,7 @@ function createSprite(direction, item, index){
 			healthBar.addChild(move);
 			healthBar.move = move;
 			healthBar.move.visible = false;
+			healthBar.healthBarIndicators.push(move);
 		}
 	}
 	
@@ -1805,14 +1811,19 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
-			item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			item.healthBarIndicator.forEach(indicator => {
+				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			});
+
+			// item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
+			// item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			// item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			// item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 
 // 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1833,15 +1844,20 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.width = -(resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP));
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
+
+			item.healthBarIndicator.forEach(indicator => {
+				indicator.indicatorBar1.width = resizeWidth;
+				indicator.indicatorBar2.width = resizeWidth;
+			});
 			
-			item.select.indicatorBar1.width = resizeWidth;
-			item.select.indicatorBar2.width = resizeWidth;
-			item.target.indicatorBar1.width = resizeWidth;
-			item.target.indicatorBar2.width = resizeWidth;
-			item.heal.indicatorBar1.width = resizeWidth;
-			item.heal.indicatorBar2.width = resizeWidth;
-			item.move.indicatorBar1.width = resizeWidth;
-			item.move.indicatorBar2.width = resizeWidth;
+			// item.select.indicatorBar1.width = resizeWidth;
+			// item.select.indicatorBar2.width = resizeWidth;
+			// item.target.indicatorBar1.width = resizeWidth;
+			// item.target.indicatorBar2.width = resizeWidth;
+			// item.heal.indicatorBar1.width = resizeWidth;
+			// item.heal.indicatorBar2.width = resizeWidth;
+			// item.move.indicatorBar1.width = resizeWidth;
+			// item.move.indicatorBar2.width = resizeWidth;
 
 // 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
@@ -1890,15 +1906,20 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (enemyArray[index].critDmg/enemyArray[index].overallHP));
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
+
+			item.healthBarIndicator.forEach(indicator => {
+				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			});
 			
-			item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
-			item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			// item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
+			// item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			// item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			// item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			// item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
@@ -1918,15 +1939,20 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.width = -(resizeWidth * (enemyArray[index].critDmg/enemyArray[index].overallHP));
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
+
+			item.healthBarIndicator.forEach(indicator => {
+				indicator.indicatorBar1.width = resizeWidth;
+				indicator.indicatorBar2.width = resizeWidth;
+			});
 			
-			item.select.indicatorBar1.width = resizeWidth;
-			item.select.indicatorBar2.width = resizeWidth;
-			item.target.indicatorBar1.width = resizeWidth;
-			item.target.indicatorBar2.width = resizeWidth;
-			item.heal.indicatorBar1.width = resizeWidth;
-			item.heal.indicatorBar2.width = resizeWidth;
-			item.move.indicatorBar1.width = resizeWidth;
-			item.move.indicatorBar2.width = resizeWidth;
+			// item.select.indicatorBar1.width = resizeWidth;
+			// item.select.indicatorBar2.width = resizeWidth;
+			// item.target.indicatorBar1.width = resizeWidth;
+			// item.target.indicatorBar2.width = resizeWidth;
+			// item.heal.indicatorBar1.width = resizeWidth;
+			// item.heal.indicatorBar2.width = resizeWidth;
+			// item.move.indicatorBar1.width = resizeWidth;
+			// item.move.indicatorBar2.width = resizeWidth;
 			
 // 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
@@ -1976,44 +2002,55 @@ function resizeHP(roster, item, index){
 	
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
+
+	item.healthBarIndicator.forEach(indicator => {
+		indicator.indicatorBar1.height = selectBarHeight;
+		indicator.indicatorBar1.y = indicatorBar1Y;	
+		indicator.indicatorBar2.y = indicatorBar2Y;	
+		indicator.indicatorStart.height = indicatorEndHeight;
+		indicator.indicatorStart.y = indicatorEndY;	
+		indicator.indicatorEnd.height = indicatorEndHeight;	
+		indicator.indicatorEnd.y = indicatorEndY;	
+		indicator.indicatorEnd.x = item.outer.width - 4;
+	});
 	
-	item.select.indicatorBar1.height = selectBarHeight;
-	item.select.indicatorBar1.y = indicatorBar1Y;	
-	item.select.indicatorBar2.y = indicatorBar2Y;	
-	item.select.indicatorStart.height = indicatorEndHeight;
-	item.select.indicatorStart.y = indicatorEndY;	
-	item.select.indicatorEnd.height = indicatorEndHeight;	
-	item.select.indicatorEnd.y = indicatorEndY;	
-	item.select.indicatorEnd.x = item.outer.width - 4;	
+	// item.select.indicatorBar1.height = selectBarHeight;
+	// item.select.indicatorBar1.y = indicatorBar1Y;	
+	// item.select.indicatorBar2.y = indicatorBar2Y;	
+	// item.select.indicatorStart.height = indicatorEndHeight;
+	// item.select.indicatorStart.y = indicatorEndY;	
+	// item.select.indicatorEnd.height = indicatorEndHeight;	
+	// item.select.indicatorEnd.y = indicatorEndY;	
+	// item.select.indicatorEnd.x = item.outer.width - 4;	
 	item.select.pivot.x = item.select.width/2;
 	item.select.x = item.select.width/2;
 	
-	item.target.indicatorBar1.height = selectBarHeight;
-	item.target.indicatorBar1.y = indicatorBar1Y;
-	item.target.indicatorBar2.y = indicatorBar2Y;
-	item.target.indicatorStart.height = indicatorEndHeight;
-	item.target.indicatorStart.y = indicatorEndY;
-	item.target.indicatorEnd.height = indicatorEndHeight;	
-	item.target.indicatorEnd.y = indicatorEndY;	
-	item.target.indicatorEnd.x = item.outer.width - 4;
+	// item.target.indicatorBar1.height = selectBarHeight;
+	// item.target.indicatorBar1.y = indicatorBar1Y;
+	// item.target.indicatorBar2.y = indicatorBar2Y;
+	// item.target.indicatorStart.height = indicatorEndHeight;
+	// item.target.indicatorStart.y = indicatorEndY;
+	// item.target.indicatorEnd.height = indicatorEndHeight;	
+	// item.target.indicatorEnd.y = indicatorEndY;	
+	// item.target.indicatorEnd.x = item.outer.width - 4;
 	
-	item.heal.indicatorBar1.height = selectBarHeight;
-	item.heal.indicatorBar1.y = indicatorBar1Y;
-	item.heal.indicatorBar2.y = indicatorBar2Y;
-	item.heal.indicatorStart.height = indicatorEndHeight;
-	item.heal.indicatorStart.y = indicatorEndY;
-	item.heal.indicatorEnd.height = indicatorEndHeight;	
-	item.heal.indicatorEnd.y = indicatorEndY;	
-	item.heal.indicatorEnd.x = item.outer.width - 4;
+	// item.heal.indicatorBar1.height = selectBarHeight;
+	// item.heal.indicatorBar1.y = indicatorBar1Y;
+	// item.heal.indicatorBar2.y = indicatorBar2Y;
+	// item.heal.indicatorStart.height = indicatorEndHeight;
+	// item.heal.indicatorStart.y = indicatorEndY;
+	// item.heal.indicatorEnd.height = indicatorEndHeight;	
+	// item.heal.indicatorEnd.y = indicatorEndY;	
+	// item.heal.indicatorEnd.x = item.outer.width - 4;
 	
-	item.move.indicatorBar1.height = selectBarHeight;
-	item.move.indicatorBar1.y = indicatorBar1Y;
-	item.move.indicatorBar2.y = indicatorBar2Y;
-	item.move.indicatorStart.height = indicatorEndHeight;
-	item.move.indicatorStart.y = indicatorEndY;
-	item.move.indicatorEnd.height = indicatorEndHeight;	
-	item.move.indicatorEnd.y = indicatorEndY;	
-	item.move.indicatorEnd.x = item.outer.width - 4;
+	// item.move.indicatorBar1.height = selectBarHeight;
+	// item.move.indicatorBar1.y = indicatorBar1Y;
+	// item.move.indicatorBar2.y = indicatorBar2Y;
+	// item.move.indicatorStart.height = indicatorEndHeight;
+	// item.move.indicatorStart.y = indicatorEndY;
+	// item.move.indicatorEnd.height = indicatorEndHeight;	
+	// item.move.indicatorEnd.y = indicatorEndY;	
+	// item.move.indicatorEnd.x = item.outer.width - 4;
 }
 
 function resizeAction(direction, item, index){
