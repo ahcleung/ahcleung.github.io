@@ -1811,7 +1811,7 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 			
-			item.healthBarIndicator.forEach(indicator => {
+			item.healthBarIndicators.forEach(indicator => {
 				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			});
@@ -1845,7 +1845,7 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
 
-			item.healthBarIndicator.forEach(indicator => {
+			item.healthBarIndicators.forEach(indicator => {
 				indicator.indicatorBar1.width = resizeWidth;
 				indicator.indicatorBar2.width = resizeWidth;
 			});
@@ -1907,7 +1907,7 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
 			item.turn.width = resizeWidth * 2 + healthSpacing;
 
-			item.healthBarIndicator.forEach(indicator => {
+			item.healthBarIndicators.forEach(indicator => {
 				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			});
@@ -1940,7 +1940,7 @@ function resizeHP(roster, item, index){
 			item.critDmgBar.x = resizeWidth;
 			item.turn.width = resizeWidth;
 
-			item.healthBarIndicator.forEach(indicator => {
+			item.healthBarIndicators.forEach(indicator => {
 				indicator.indicatorBar1.width = resizeWidth;
 				indicator.indicatorBar2.width = resizeWidth;
 			});
@@ -2003,7 +2003,7 @@ function resizeHP(roster, item, index){
 	item.textHP.x = item.outer.width/2;
 	item.textHP.y = item.outer.height/2;
 
-	item.healthBarIndicator.forEach(indicator => {
+	item.healthBarIndicators.forEach(indicator => {
 		indicator.indicatorBar1.height = selectBarHeight;
 		indicator.indicatorBar1.y = indicatorBar1Y;	
 		indicator.indicatorBar2.y = indicatorBar2Y;	
