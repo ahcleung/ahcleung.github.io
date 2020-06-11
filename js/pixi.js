@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.05
+*Version:         1.06
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -10,336 +10,6 @@
 *Description:     Project Elements production code
 *
 ======================================================================================*/
-
-let Application = PIXI.Application,
-	loader = PIXI.Loader.shared,
-	resources = PIXI.Loader.shared.resources,
-	Sprite = PIXI.Sprite,
-	Text = PIXI.Text;
-
-const app = new Application({
-	autoResize: true, transparent: true, resolution: devicePixelRatio || 1,
-});
-document.querySelector('#frame').appendChild(app.view);
-
-loader
-	.add([
-		"img/ability_move.png",
-		"img/additional.png",
-		"img/additional_cancel.png",
-		"img/additional_item.png",
-		"img/additional_skip.png",
-		"img/leper.ability.five.png",
-		"img/actionLines.png",
-		"img/bg3.png",
-		"js/creatures.json",
-		"js/skills.json",
-		"js/elements.json",
-
-		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
-		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
-		{name:'gorilla3_p_back', url:'img/gorilla3_p_back.png'},
-		{name:'gorilla3_p_top', url:'img/gorilla3_p_top.png'},
-		{name:'gorilla3_s_ready', url:'img/gorilla3_s_ready.png'},
-		{name:'gorilla3_s_main', url:'img/gorilla3_s_main.png'},
-		{name:'gorilla3_s_back', url:'img/gorilla3_s_back.png'},
-		{name:'gorilla3_s_top', url:'img/gorilla3_s_top.png'},
-		{name:'gorilla3_d_ready', url:'img/gorilla3_d_ready.png'},
-		{name:'gorilla3_d_miss', url:'img/gorilla3_d_miss.png'},
-		{name:'gorilla3_d_dmg', url:'img/gorilla3_d_dmg.png'},
-
-		{name:'toad1_p_ready', url:'img/toad1_p_ready.png'},
-		{name:'toad1_p_main', url:'img/toad1_p_main.png'},
-		{name:'toad1_p_back', url:'img/toad1_p_back.png'},
-		{name:'toad1_p_top', url:'img/toad1_p_top.png'},
-		{name:'toad1_s_ready', url:'img/toad1_s_ready.png'},
-		{name:'toad1_s_main', url:'img/toad1_s_main.png'},
-		{name:'toad1_s_back', url:'img/toad1_s_back.png'},
-		{name:'toad1_s_top', url:'img/toad1_s_top.png'},
-		{name:'toad1_d_ready', url:'img/toad1_d_ready.png'},
-		{name:'toad1_d_miss', url:'img/toad1_d_miss.png'},
-		{name:'toad1_d_dmg', url:'img/toad1_d_dmg.png'},
-
-		{name:'toad3_p_ready', url:'img/toad3_p_ready.png'},
-		{name:'toad3_p_main', url:'img/toad3_p_main.png'},
-		{name:'toad3_p_back', url:'img/toad3_p_back.png'},
-		{name:'toad3_p_top', url:'img/toad3_p_top.png'},
-		{name:'toad3_s_ready', url:'img/toad3_s_ready.png'},
-		{name:'toad3_s_main', url:'img/toad3_s_main.png'},
-		{name:'toad3_s_back', url:'img/toad3_s_back.png'},
-		{name:'toad3_s_top', url:'img/toad3_s_top.png'},
-		{name:'toad3_d_ready', url:'img/toad3_d_ready.png'},
-		{name:'toad3_d_miss', url:'img/toad3_d_miss.png'},
-		{name:'toad3_d_dmg', url:'img/toad3_d_dmg.png'},
-
-		{name:'goat2_1_p_ready', url:'img/goat2_1_p_ready.png'},
-		{name:'goat2_1_p_main', url:'img/goat2_1_p_main.png'},
-		{name:'goat2_1_p_back', url:'img/goat2_1_p_back.png'},
-		{name:'goat2_1_p_top', url:'img/goat2_1_p_top.png'},
-		{name:'goat2_1_s_ready', url:'img/goat2_1_s_ready.png'},
-		{name:'goat2_1_s_main', url:'img/goat2_1_s_main.png'},
-		{name:'goat2_1_s_back', url:'img/goat2_1_s_back.png'},
-		{name:'goat2_1_s_top', url:'img/goat2_1_s_top.png'},
-		{name:'goat2_1_d_ready', url:'img/goat2_1_d_ready.png'},
-		{name:'goat2_1_d_miss', url:'img/goat2_1_d_miss.png'},
-		{name:'goat2_1_d_dmg', url:'img/goat2_1_d_dmg.png'},
-
-		{name:'goat2_2_p_ready', url:'img/goat2_2_p_ready.png'},
-		{name:'goat2_2_p_main', url:'img/goat2_2_p_main.png'},
-		{name:'goat2_2_p_back', url:'img/goat2_2_p_back.png'},
-		{name:'goat2_2_p_top', url:'img/goat2_2_p_top.png'},
-		{name:'goat2_2_s_ready', url:'img/goat2_2_s_ready.png'},
-		{name:'goat2_2_s_main', url:'img/goat2_2_s_main.png'},
-		{name:'goat2_2_s_back', url:'img/goat2_2_s_back.png'},
-		{name:'goat2_2_s_top', url:'img/goat2_2_s_top.png'},
-		{name:'goat2_2_d_ready', url:'img/goat2_2_d_ready.png'},
-		{name:'goat2_2_d_miss', url:'img/goat2_2_d_miss.png'},
-		{name:'goat2_2_d_dmg', url:'img/goat2_2_d_dmg.png'},
-
-		{name:'hel1_p_ready', url:'img/hel1_p_ready.png'},
-		{name:'hel1_p_main', url:'img/hel1_p_main.png'},
-		{name:'hel1_p_back', url:'img/hel1_p_back.png'},
-		{name:'hel1_p_top', url:'img/hel1_p_top.png'},
-		{name:'hel1_s_ready', url:'img/hel1_s_ready.png'},
-		{name:'hel1_s_main', url:'img/hel1_s_main.png'},
-		{name:'hel1_s_back', url:'img/hel1_s_back.png'},
-		{name:'hel1_s_top', url:'img/hel1_s_top.png'},
-		{name:'hel1_d_ready', url:'img/hel1_d_ready.png'},
-		{name:'hel1_d_miss', url:'img/hel1_d_miss.png'},
-		{name:'hel1_d_dmg', url:'img/hel1_d_dmg.png'},
-
-		{name:'hel2_p_ready', url:'img/hel2_p_ready.png'},
-		{name:'hel2_p_main', url:'img/hel2_p_main.png'},
-		{name:'hel2_p_back', url:'img/hel2_p_back.png'},
-		{name:'hel2_p_top', url:'img/hel2_p_top.png'},
-		{name:'hel2_s_ready', url:'img/hel2_s_ready.png'},
-		{name:'hel2_s_main', url:'img/hel2_s_main.png'},
-		{name:'hel2_s_back', url:'img/hel2_s_back.png'},
-		{name:'hel2_s_top', url:'img/hel2_s_top.png'},
-		{name:'hel2_d_ready', url:'img/hel2_d_ready.png'},
-		{name:'hel2_d_miss', url:'img/hel2_d_miss.png'},
-		{name:'hel2_d_dmg', url:'img/hel2_d_dmg.png'},
-
-		{name:'status_bleed', url:'img/status_bleed.png'},
-		{name:'status_buff', url:'img/status_buff.png'},
-		{name:'status_burned', url:'img/status_burned.png'},
-		{name:'status_debuff', url:'img/status_debuff.png'},
-		{name:'status_depressed', url:'img/status_depressed.png'},
-		{name:'status_guard', url:'img/status_guard.png'},
-		{name:'status_immune', url:'img/status_immune.png'},
-		{name:'status_paralyzed', url:'img/status_paralyzed.png'},
-		{name:'status_poisoned', url:'img/status_poisoned.png'},
-		{name:'status_recover', url:'img/status_recover.png'},
-		{name:'status_secured', url:'img/status_secured.png'},
-		{name:'status_silenced', url:'img/status_silenced.png'},
-		{name:'status_stunned', url:'img/status_stunned.png'},
-		{name:'status_critical', url:'img/status_critical.png'},
-		
-		{name:'element_flora', url:'img/element_flora.png'},
-		{name:'element_water', url:'img/element_water.png'},
-		{name:'element_fire', url:'img/element_fire.png'},
-		{name:'element_earth', url:'img/element_earth.png'},
-		{name:'element_lightning', url:'img/element_lightning.png'},
-		{name:'element_wind', url:'img/element_wind.png'},
-		{name:'element_toxic', url:'img/element_toxic.png'},
-		{name:'element_spirit', url:'img/element_spirit.png'},
-		{name:'element_shadow', url:'img/element_shadow.png'},
-		
-		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
-		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
-		{name:'gorilla3_texture_png', url:'img/gorilla3_tex.png'},
-		{name:'toad1_skeleton', url:'img/toad1_ske.json'},
-		{name:'toad1_texture_json', url:'img/toad1_tex.json'},
-		{name:'toad1_texture_png', url:'img/toad1_tex.png'},
-		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
-		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
-		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
-		{name:'goat2_1_skeleton', url:'img/goat2_1_ske.json'},
-		{name:'goat2_1_texture_json', url:'img/goat2_1_tex.json'},
-		{name:'goat2_1_texture_png', url:'img/goat2_1_tex.png'},
-		{name:'goat2_2_skeleton', url:'img/goat2_2_ske.json'},
-		{name:'goat2_2_texture_json', url:'img/goat2_2_tex.json'},
-		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
-		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
-		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
-		{name:'hel1_texture_png', url:'img/hel1_tex.png'},
-		{name:'hel2_skeleton', url:'img/hel2_ske.json'},
-		{name:'hel2_texture_json', url:'img/hel2_tex.json'},
-		{name:'hel2_texture_png', url:'img/hel2_tex.png'}
-	])
-	.on("progress", loadProgressHandler)
-	.load(setup);
-
-function loadProgressHandler(loader, resource) {
-
-  //Display the file `url` currently being loaded
-  console.log("loading: " + resource.url); 
-
-  //Display the percentage of files currently loaded
-  console.log("progress: " + loader.progress + "%"); 
-
-  //If you gave your files names as the first argument 
-  //of the `add` method, you can access them like this
-  //console.log("loading: " + resource.name);
-}
-
-
-/*
-*	Creature class 
-*/
-class Creature{
-	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skills=[0,0,0,0]}){
-		this.id = id;
-		this.level = level;
-		this.statDis = statDis;
-		this.skills = skills;
-		this.pos = 0;
-		
-		// this.critDmg = Math.floor(Math.random() * 25) + 10;
-		this.critDmg = 0;
-		
-		const creatureList = resources["js/creatures.json"];				//Load creature JSON list
-		
-		this.frames = creatureList.data.creatures[this.id].frames;			//Number of frames for creature animation
-		this.code = creatureList.data.creatures[this.id].code;				//Creature code
-		this.size = creatureList.data.creatures[this.id].size;				//Creature size
-		this.move = creatureList.data.creatures[this.id].move;				//Creature movement
-
-		this.action = creatureList.data.creatures[this.id].action;
-		
-		this.name = creatureList.data.creatures[this.id].name;				//Creature name
-		this.elements = creatureList.data.creatures[this.id].elements;		//Creature element
-		
-		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
-// 		this.overallHP = 100;
-			
-		this.EHP = this.overallHP - this.critDmg;
-
-		this.statCalc = [
-			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
-			// this.EHP, 
-// 			this.EHP - 25,
-			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
-			creatureList.data.creatures[this.id].patk + this.statDis[2],
-			creatureList.data.creatures[this.id].pdef + this.statDis[3],
-			creatureList.data.creatures[this.id].satk + this.statDis[4],
-			creatureList.data.creatures[this.id].sdef + this.statDis[5],
-			creatureList.data.creatures[this.id].spd + this.statDis[6]
-		];
-		
-		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
-		this.statusArray = [
-			[Math.floor(Math.random() * 14) + 1, 1],
-			[Math.floor(Math.random() * 14) + 1, 3, 5],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-			[Math.floor(Math.random() * 14) + 1, 2],
-		];
-		this.statusSpriteArray = [];
-	}
-	
-	heal(healAmount){
-		this.statCalc[0] += healAmount;
-		if(this.statCalc[0] > this.EHP){
-			this.statCalc[0] = this.EHP;
-		}
-	}
-
-	damage(dmgAmount){
-		this.statCalc[0] -= dmgAmount;
-		if(this.statCalc[0] < 0){
-			this.statCalc[0] = 0;
-		}
-	}
-
-	criticalHit(critAmount){
-		this.critDmg += critAmount;
-		this.EHP = this.overallHP - this.critDmg;
-	}
-
-	fullHeal(){
-		this.statCalc[0] = this.EHP;	
-	}
-
-	get hp(){
-		return this.statCalc[0];
-	}
-
-	get dodge(){
-		return this.statCalc[1];
-	}
-
-	get dodgeMod(){
-		return this.statMod[1];
-	}
-
-	get patk(){
-		if(this.statMod[2] > 0){
-			return this.statCalc[2] * ((this.statMod[2]+2)/2);
-		}else if(this.statMod[2] < 0){
-			return this.statCalc[2] * (2/(Math.abs(this.statMod[2])+2));
-		}else{
-			return this.statCalc[2];
-		}
-	}
-
-	get pdef(){
-		if(this.statMod[3] > 0){
-			return this.statCalc[3] * ((this.statMod[3]+2)/2);
-		}else if(this.statMod[3] < 0){
-			return this.statCalc[3] * (2/(Math.abs(this.statMod[3])+2));
-		}else{
-			return this.statCalc[3];
-		}
-	}
-
-	get satk(){
-		if(this.statMod[4] > 0){
-			return this.statCalc[4] * ((this.statMod[4]+2)/2);
-		}else if(this.statMod[4] < 0){
-			return this.statCalc[4] * (2/(Math.abs(this.statMod[4])+2));
-		}else{
-			return this.statCalc[4];
-		}
-	}
-
-	get sdef(){
-		if(this.statMod[5] > 0){
-			return this.statCalc[5] * ((this.statMod[5]+2)/2);
-		}else if(this.statMod[5] < 0){
-			return this.statCalc[5] * (2/(Math.abs(this.statMod[5])+2));
-		}else{
-			return this.statCalc[5];
-		}
-	}
-
-	get spd(){
-		return this.statCalc[6];
-	}
-
-	get accMod(){
-		return this.statMod[7];
-	}
-
-// 	get PAtk(){
-// 		return this.calcPAtk();	
-// 	}
-	
-// 	calcHP(){
-// 		return this.level * 5;
-// 	}
-	
-// 	calcPAtk(){
-// 		return this.level * 2;	
-// 	}
-}
-
 
 /*
 *	Declare  variables
@@ -1815,17 +1485,6 @@ function resizeHP(roster, item, index){
 				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
 				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			});
-
-			// item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
-			// item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			// item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			// item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-
-// 			moveHeroContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
 			
 			switcher = 1;
 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
@@ -1849,17 +1508,6 @@ function resizeHP(roster, item, index){
 				indicator.indicatorBar1.width = resizeWidth;
 				indicator.indicatorBar2.width = resizeWidth;
 			});
-			
-			// item.select.indicatorBar1.width = resizeWidth;
-			// item.select.indicatorBar2.width = resizeWidth;
-			// item.target.indicatorBar1.width = resizeWidth;
-			// item.target.indicatorBar2.width = resizeWidth;
-			// item.heal.indicatorBar1.width = resizeWidth;
-			// item.heal.indicatorBar2.width = resizeWidth;
-			// item.move.indicatorBar1.width = resizeWidth;
-			// item.move.indicatorBar2.width = resizeWidth;
-
-// 			moveHeroContainerArray[index].right.x = resizeWidth;
 			
 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -1912,17 +1560,6 @@ function resizeHP(roster, item, index){
 				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
 			});
 			
-			// item.select.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.select.indicatorBar2.width = resizeWidth * 2 + healthSpacing;			
-			// item.target.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.target.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			// item.heal.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.heal.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			// item.move.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			// item.move.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			
-// 			moveEnemyContainerArray[index].right.x = resizeWidth * 2 + healthSpacing;
-			
 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
 				statusSprite.height = statusSprite.width;
@@ -1944,17 +1581,6 @@ function resizeHP(roster, item, index){
 				indicator.indicatorBar1.width = resizeWidth;
 				indicator.indicatorBar2.width = resizeWidth;
 			});
-			
-			// item.select.indicatorBar1.width = resizeWidth;
-			// item.select.indicatorBar2.width = resizeWidth;
-			// item.target.indicatorBar1.width = resizeWidth;
-			// item.target.indicatorBar2.width = resizeWidth;
-			// item.heal.indicatorBar1.width = resizeWidth;
-			// item.heal.indicatorBar2.width = resizeWidth;
-			// item.move.indicatorBar1.width = resizeWidth;
-			// item.move.indicatorBar2.width = resizeWidth;
-			
-// 			moveEnemyContainerArray[index].right.x = resizeWidth;
 			
 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
@@ -2014,43 +1640,8 @@ function resizeHP(roster, item, index){
 		indicator.indicatorEnd.x = item.outer.width - 4;
 	});
 	
-	// item.select.indicatorBar1.height = selectBarHeight;
-	// item.select.indicatorBar1.y = indicatorBar1Y;	
-	// item.select.indicatorBar2.y = indicatorBar2Y;	
-	// item.select.indicatorStart.height = indicatorEndHeight;
-	// item.select.indicatorStart.y = indicatorEndY;	
-	// item.select.indicatorEnd.height = indicatorEndHeight;	
-	// item.select.indicatorEnd.y = indicatorEndY;	
-	// item.select.indicatorEnd.x = item.outer.width - 4;	
 	item.select.pivot.x = item.select.width/2;
 	item.select.x = item.select.width/2;
-	
-	// item.target.indicatorBar1.height = selectBarHeight;
-	// item.target.indicatorBar1.y = indicatorBar1Y;
-	// item.target.indicatorBar2.y = indicatorBar2Y;
-	// item.target.indicatorStart.height = indicatorEndHeight;
-	// item.target.indicatorStart.y = indicatorEndY;
-	// item.target.indicatorEnd.height = indicatorEndHeight;	
-	// item.target.indicatorEnd.y = indicatorEndY;	
-	// item.target.indicatorEnd.x = item.outer.width - 4;
-	
-	// item.heal.indicatorBar1.height = selectBarHeight;
-	// item.heal.indicatorBar1.y = indicatorBar1Y;
-	// item.heal.indicatorBar2.y = indicatorBar2Y;
-	// item.heal.indicatorStart.height = indicatorEndHeight;
-	// item.heal.indicatorStart.y = indicatorEndY;
-	// item.heal.indicatorEnd.height = indicatorEndHeight;	
-	// item.heal.indicatorEnd.y = indicatorEndY;	
-	// item.heal.indicatorEnd.x = item.outer.width - 4;
-	
-	// item.move.indicatorBar1.height = selectBarHeight;
-	// item.move.indicatorBar1.y = indicatorBar1Y;
-	// item.move.indicatorBar2.y = indicatorBar2Y;
-	// item.move.indicatorStart.height = indicatorEndHeight;
-	// item.move.indicatorStart.y = indicatorEndY;
-	// item.move.indicatorEnd.height = indicatorEndHeight;	
-	// item.move.indicatorEnd.y = indicatorEndY;	
-	// item.move.indicatorEnd.x = item.outer.width - 4;
 }
 
 function resizeAction(direction, item, index){
