@@ -378,7 +378,7 @@ function setup(){
 	actionBlack.alpha = 0;
 
 	actionBlackTween = new TimelineMax({paused: true});
-	actionBlackTween.to(actionBlack, 0.16, {alpha:0.5});
+	actionBlackTween.to(actionBlack, 0.25, {alpha:0.75});
 	actionBlackTween.to(actionBlack, 0.1, {delay:2, alpha:0});
 
 	stageContainer.addChild(actionBlack);
@@ -986,6 +986,7 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
+	dMissTween.to(creatureAction, 0.5, {x:0});
 	dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
