@@ -3031,10 +3031,10 @@ function animateBattle(attacker, defender){
 
 	if(attacker > 0){
 		var originalX = actionHero[Math.abs(attacker)-1].x;
-		console.log("X: " + originalX);
+		console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
 		// TweenMax.fromTo(actionHero[Math.abs(attacker)-1], 0.5 ,{x:originalX}, {x:0});
 		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.5, {x:0});
-
+		console.log("X2: " + actionHero[Math.abs(attacker)-1].x);
 
 		actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
@@ -3043,6 +3043,7 @@ function animateBattle(attacker, defender){
 			});
 			// spriteHolder.filters = [blurFilter2];
 			actionHero[Math.abs(attacker)-1].x = originalX;
+			console.log("X3: " + actionHero[Math.abs(attacker)-1].x);
 			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
 		});
 	}else{
