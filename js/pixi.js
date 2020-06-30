@@ -1391,7 +1391,7 @@ function resize() {
 	var skillSelectPadding = 5;
 	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-	heroResizePosition[0] = 
+	// heroResizePosition[0] = 
 	
 	if(app.screen.width < 860){
 		margin = 10;
