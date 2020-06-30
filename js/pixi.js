@@ -928,7 +928,7 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	// pAtkTween.to(creatureAction, 0.5, {x:0});
+	pAtkTween.to(creatureAction, 0.5, {x:0});
 
 	// pAtkTween = new TimelineMax({paused: true});
 	// pAtkTween.to(sprite_p_ready, 0, {alpha:1});
