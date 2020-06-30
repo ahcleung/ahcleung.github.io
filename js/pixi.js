@@ -928,7 +928,7 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.to(creatureAction, 0.5, {x:0});
+	// pAtkTween.to(creatureAction, 0.5, {x:0});
 
 	// pAtkTween = new TimelineMax({paused: true});
 	// pAtkTween.to(sprite_p_ready, 0, {alpha:1});
@@ -3031,6 +3031,9 @@ function animateBattle(attacker, defender){
 			// spriteHolder.filters = [blurFilter2];
 			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
 		});
+
+		var originalX = actionHero[Math.abs(attacker)-1].x;
+		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.5, {x:0});
 	}else{
 		actionEnemy[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionEnemy[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
