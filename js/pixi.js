@@ -3024,8 +3024,7 @@ function animateBattle(attacker, defender){
 
 	if(attacker > 0){
 		var originalX = actionHero[Math.abs(attacker)-1].x;
-		var actionSpriteTween = new TweenMax();
-		actionSpriteTween.to(actionHero[Math.abs(attacker)-1], 0.5, {x:0});
+		gsap.to(actionHero[Math.abs(attacker)-1], {duration:0.5, x:0});
 
 		actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
