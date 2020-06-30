@@ -224,6 +224,7 @@ var margin = 50;
 var skillSpacer = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
+var resizeWidth = 0;
 
 //Selected element tracker
 var selectedVita = 0;
@@ -242,6 +243,9 @@ const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 var heroOrder = [];						//Track hero positioning
 var enemyOrder = [];					//Track enemy positioning
+
+var heroResizePosition = [];
+var enemyResizePosition = [];
 
 var turnArray = [];						//Array for turn order
 var validSkillTargetArray = [];			//Array of valid skill targets
@@ -392,6 +396,8 @@ function setup(){
 
 	heroSprites.x = app.screen.width/2;
 	heroSprites.y = app.screen.height/2;
+
+	heroSprites.scale.set(-1,1);
 	
 	enemySprites.x = app.screen.width/2;
 	enemySprites.y = app.screen.height/2;
@@ -1383,6 +1389,9 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
+	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+
+	heroResizePosition[0] = 
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1529,16 +1538,16 @@ function resize() {
 }
 
 function resizeDmg(roster, item, index){
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	var resizeHeight = 40;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeHeight = 40;
 
-	if(app.screen.width < 860){
-		resizeHeight = 20;
-	}else if(app.screen.width < 1366){
-		resizeHeight = 30;
-	}else{
-		resizeHeight = 40;
-	}
+	// if(app.screen.width < 860){
+	// 	resizeHeight = 20;
+	// }else if(app.screen.width < 1366){
+	// 	resizeHeight = 30;
+	// }else{
+	// 	resizeHeight = 40;
+	// }
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
@@ -1599,7 +1608,7 @@ function resizeDmg(roster, item, index){
 
 function resizeHP(roster, item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	var HPSpacing = 3;
@@ -1829,7 +1838,7 @@ function resizeHP(roster, item, index){
 
 function resizeAction(direction, item, index){
 	// item.x = index * 100;
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	
 	if(direction > 0){
 		// actionHero[index].forEach((spriteItem,spriteIndex) => {
@@ -1887,7 +1896,7 @@ function resizeAction(direction, item, index){
 }
 
 function resizeSprites(direction, item, index){
-	var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
 			item.scale.set(direction * 0.23, 0.23);
@@ -2438,7 +2447,7 @@ function moveCreature(movingCreature, displacement){
 			var newCreatureX;
 			var newHPX;
 
-			var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
 			switch(arrayCreature.pos) {
 				case 1:
@@ -2511,7 +2520,7 @@ function moveCreature(movingCreature, displacement){
 			var newCreatureX;
 			var newHPX;
 
-			var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
 			switch(arrayCreature.pos) {
 				case 1:
@@ -3023,10 +3032,10 @@ function animateBattle(attacker, defender){
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
-			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.5, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}else{
-			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.5, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}
 	});	
@@ -3035,7 +3044,7 @@ function animateBattle(attacker, defender){
 		var originalX = actionHero[Math.abs(attacker)-1].x;
 		// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
 		// TweenMax.fromTo(actionHero[Math.abs(attacker)-1], 0.5 ,{x:originalX}, {x:0});
-		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.5, {x:0});
+		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.25, {x:0});
 
 		actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
