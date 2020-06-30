@@ -923,8 +923,8 @@ function createSprite(direction, item, index){
 
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
-	// anim1 = 0.5;
-	// anim2 = 5;
+	anim1 = 0.5;
+	anim2 = 5;
 
 	// pAtkTween = new TimelineMax({paused: true});
 	// pAtkTween.to(sprite_p_ready, 0, {alpha:1});
@@ -993,7 +993,7 @@ function createSprite(direction, item, index){
 
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.to(sprite_d_ready, 0, {alpha:1});
-	dMissTween.to(creatureAction, 0.5, {x:0});
+	// dMissTween.to(creatureAction, 0.5, {x:0});
 	dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
@@ -3021,10 +3021,12 @@ function animateBattle(attacker, defender){
 
 	stageContainer.actionBlackTween.play(0);
 
-	defender.forEach(arrayCreature => {
+	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
+			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.5, {x:0+100*arrayCreatureIndex});
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}else{
+			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.5, {x:0+100*arrayCreatureIndex});
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}
 	});	
