@@ -3023,6 +3023,9 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
+		var originalX = actionHero[Math.abs(attacker)-1].x;
+		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.5, {x:0});
+		
 		actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
