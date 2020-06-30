@@ -3040,6 +3040,7 @@ function animateBattle(attacker, defender){
 				item.visible = true;
 			});
 			// spriteHolder.filters = [blurFilter2];
+			actionHero[Math.abs(attacker)-1].x = originalX;
 			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
 		});
 	}else{
