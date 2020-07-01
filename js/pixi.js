@@ -1440,23 +1440,23 @@ function resize() {
 	heroHealthXPosition[2] = resizeWidth + healthSpacing;
 	heroHealthXPosition[3] = 0;
 
-	switch(heroArray[index].pos) {
-			case 1:
-				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-				break;
-			case 2:
-				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-				break;
-			case 3:
-				if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-				else 	item.x = 0
-				break;
-			case 4:
-				item.x = 0;
-				break;
-			default:
-				item.x = 0;
-		}
+	// switch(heroArray[index].pos) {
+	// 		case 1:
+	// 			item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+	// 			break;
+	// 		case 2:
+	// 			item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+	// 			break;
+	// 		case 3:
+	// 			if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+	// 			else 	item.x = 0
+	// 			break;
+	// 		case 4:
+	// 			item.x = 0;
+	// 			break;
+	// 		default:
+	// 			item.x = 0;
+	// 	}
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
