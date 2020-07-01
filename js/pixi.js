@@ -1592,25 +1592,25 @@ function resizeDmg(roster, item, index){
 			item.dmgPopup.x = resizeWidth/2;
 		}
 
+		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
 
-
-		switch(heroArray[index].pos) {
-			case 1:
-				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-				break;
-			case 2:
-				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-				break;
-			case 3:
-				if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-				else 	item.x = 0
-				break;
-			case 4:
-				item.x = 0;
-				break;
-			default:
-				item.x = 0;
-		}
+		// switch(heroArray[index].pos) {
+		// 	case 1:
+		// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
+		// 		break;
+		// 	case 2:
+		// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
+		// 		break;
+		// 	case 3:
+		// 		if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
+		// 		else 	item.x = 0
+		// 		break;
+		// 	case 4:
+		// 		item.x = 0;
+		// 		break;
+		// 	default:
+		// 		item.x = 0;
+		// }
 	}else{
 		if(enemyArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
@@ -2400,23 +2400,25 @@ function moveCreature(movingCreature, displacement){
 			var switcher = 0;
 			if(arrayCreature.size > 1)	switcher = 1
 
-			switch(arrayCreature.pos) {
-				case 1:
-					newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
-					break;
-				case 2:
-					newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
-					break;
-				case 3:
-					if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
-					else 	newHPX = 0
-					break;
-				case 4:
-					newHPX = 0;
-					break;
-				default:
-					newHPX = 0;
-			}
+			newHPX = heroHealthXPosition[heroArray[index].pos-1+switcher];
+
+			// switch(arrayCreature.pos) {
+			// 	case 1:
+			// 		newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
+			// 		break;
+			// 	case 2:
+			// 		newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
+			// 		break;
+			// 	case 3:
+			// 		if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
+			// 		else 	newHPX = 0
+			// 		break;
+			// 	case 4:
+			// 		newHPX = 0;
+			// 		break;
+			// 	default:
+			// 		newHPX = 0;
+			// }
 
 			TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
