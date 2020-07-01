@@ -244,8 +244,9 @@ const additionalArray = [];				//Array of additional menu buttons
 var heroOrder = [];						//Track hero positioning
 var enemyOrder = [];					//Track enemy positioning
 
-var heroResizePosition = [];
-var enemyResizePosition = [];
+// var heroResizePosition = [];
+// var enemyResizePosition = [];
+var spriteResizeXPosition = [];
 
 var turnArray = [];						//Array for turn order
 var validSkillTargetArray = [];			//Array of valid skill targets
@@ -397,10 +398,12 @@ function setup(){
 	heroSprites.x = app.screen.width/2;
 	heroSprites.y = app.screen.height/2;
 
-	heroSprites.scale.set(-1,1);
+	// heroSprites.scale.set(-1,1);
 	
 	enemySprites.x = app.screen.width/2;
 	enemySprites.y = app.screen.height/2;
+
+	// enemySprites.scale.set(-1,1);
 	
 	interfaceHeroHealth.x = app.screen.width/2;
 	interfaceHeroHealth.y = 10;
@@ -1389,9 +1392,6 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
-	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-
-	// heroResizePosition[0] = 
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1427,6 +1427,13 @@ function resize() {
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
 	}
+
+	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	spriteResizeXPosition[0] = 0;
+	spriteResizeXPosition[1] = resizeWidth + healthSpacing;
+	spriteResizeXPosition[2] = (resizeWidth + healthSpacing) * 2;
+	spriteResizeXPosition[3] = (resizeWidth + healthSpacing) * 3;
+
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
@@ -1905,22 +1912,25 @@ function resizeSprites(direction, item, index){
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
-		switch(heroArray[index].pos) {
-			case 1:
-				item.x = 0;
-				break;
-			case 2:
-				item.x = -(resizeWidth + healthSpacing);
-				break;
-			case 3:				
-				item.x = -((resizeWidth + healthSpacing) * 2);
-				break;
-			case 4:
-				item.x = -((resizeWidth + healthSpacing) * 3);
-				break;
-			default:
-				item.x = 0;	
-		}
+
+		item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+
+		// switch(heroArray[index].pos) {
+		// 	case 1:
+		// 		item.x = 0;
+		// 		break;
+		// 	case 2:
+		// 		item.x = -(resizeWidth + healthSpacing);
+		// 		break;
+		// 	case 3:				
+		// 		item.x = -((resizeWidth + healthSpacing) * 2);
+		// 		break;
+		// 	case 4:
+		// 		item.x = -((resizeWidth + healthSpacing) * 3);
+		// 		break;
+		// 	default:
+		// 		item.x = 0;	
+		// }
 	}else{
 		if(app.screen.width < 860){
 			item.scale.set(direction * 0.23, 0.23);
@@ -1929,22 +1939,25 @@ function resizeSprites(direction, item, index){
 		}else{
 			item.scale.set(direction * 0.5, 0.5);
 		}
-		switch(enemyArray[index].pos) {
-			case 1:
-				item.x = 0;
-				break;
-			case 2:
-				item.x = resizeWidth + healthSpacing;
-				break;
-			case 3:				
-				item.x = (resizeWidth + healthSpacing) * 2;
-				break;
-			case 4:
-				item.x = (resizeWidth + healthSpacing) * 3;
-				break;
-			default:
-				item.x = 0;
-		}
+
+		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+
+		// switch(enemyArray[index].pos) {
+		// 	case 1:
+		// 		item.x = 0;
+		// 		break;
+		// 	case 2:
+		// 		item.x = resizeWidth + healthSpacing;
+		// 		break;
+		// 	case 3:				
+		// 		item.x = (resizeWidth + healthSpacing) * 2;
+		// 		break;
+		// 	case 4:
+		// 		item.x = (resizeWidth + healthSpacing) * 3;
+		// 		break;
+		// 	default:
+		// 		item.x = 0;
+		// }
 	}
 }
 
