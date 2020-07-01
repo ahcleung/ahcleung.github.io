@@ -1591,22 +1591,24 @@ function resizeDmg(roster, item, index){
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
 		}
-		switch(enemyArray[index].pos) {
-			case 1:
-				item.x = 0;
-				break;
-			case 2:
-				item.x = resizeWidth + healthSpacing;
-				break;
-			case 3:				
-				item.x = (resizeWidth + healthSpacing) * 2;
-				break;
-			case 4:
-				item.x = (resizeWidth + healthSpacing) * 3;
-				break;
-			default:
-				item.x = 0;				
-		}
+
+		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+		// switch(enemyArray[index].pos) {
+		// 	case 1:
+		// 		item.x = 0;
+		// 		break;
+		// 	case 2:
+		// 		item.x = resizeWidth + healthSpacing;
+		// 		break;
+		// 	case 3:				
+		// 		item.x = (resizeWidth + healthSpacing) * 2;
+		// 		break;
+		// 	case 4:
+		// 		item.x = (resizeWidth + healthSpacing) * 3;
+		// 		break;
+		// 	default:
+		// 		item.x = 0;				
+		// }
 
 	}
 
@@ -1797,28 +1799,30 @@ function resizeHP(roster, item, index){
 			});
 		}
 		
-		switch(enemyArray[index].pos) {
-			case 1:
-				item.x = 0;
-// 				moveEnemyContainerArray[index].x = 0;
-				break;
-			case 2:
-				item.x = resizeWidth + healthSpacing;
-// 				moveEnemyContainerArray[index].x = resizeWidth + healthSpacing;
-				break;
-			case 3:				
-				item.x = (resizeWidth + healthSpacing) * 2;
-// 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
-				break;
-			case 4:
-				item.x = (resizeWidth + healthSpacing) * 3;
-// 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
-				break;
-			default:
-				item.x = 0;
-// 				moveEnemyContainerArray[index].x = 0;
+		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+
+// 		switch(enemyArray[index].pos) {
+// 			case 1:
+// 				item.x = 0;
+// // 				moveEnemyContainerArray[index].x = 0;
+// 				break;
+// 			case 2:
+// 				item.x = resizeWidth + healthSpacing;
+// // 				moveEnemyContainerArray[index].x = resizeWidth + healthSpacing;
+// 				break;
+// 			case 3:				
+// 				item.x = (resizeWidth + healthSpacing) * 2;
+// // 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 2;
+// 				break;
+// 			case 4:
+// 				item.x = (resizeWidth + healthSpacing) * 3;
+// // 				moveEnemyContainerArray[index].x = (resizeWidth + healthSpacing) * 3;
+// 				break;
+// 			default:
+// 				item.x = 0;
+// // 				moveEnemyContainerArray[index].x = 0;
 				
-		}
+// 		}
 
 	}
 
@@ -1856,22 +1860,25 @@ function resizeAction(direction, item, index){
 			}else{
 				item.scale.set(direction * 0.5, 0.5);
 			}
-			switch(heroArray[index].pos) {
-				case 1:
-					item.x = 0;
-					break;
-				case 2:
-					item.x = -(resizeWidth + healthSpacing);
-					break;
-				case 3:				
-					item.x = -((resizeWidth + healthSpacing) * 2);
-					break;
-				case 4:
-					item.x = -((resizeWidth + healthSpacing) * 3);
-					break;
-				default:
-					item.x = 0;	
-			}
+
+			item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+
+			// switch(heroArray[index].pos) {
+			// 	case 1:
+			// 		item.x = 0;
+			// 		break;
+			// 	case 2:
+			// 		item.x = -(resizeWidth + healthSpacing);
+			// 		break;
+			// 	case 3:				
+			// 		item.x = -((resizeWidth + healthSpacing) * 2);
+			// 		break;
+			// 	case 4:
+			// 		item.x = -((resizeWidth + healthSpacing) * 3);
+			// 		break;
+			// 	default:
+			// 		item.x = 0;	
+			// }
 		// });
 	}else{
 		// actionEnemy[index].forEach((spriteItem,spriteIndex) => {
@@ -1882,22 +1889,25 @@ function resizeAction(direction, item, index){
 			}else{
 				item.scale.set(direction * 0.5, 0.5);
 			}
-			switch(enemyArray[index].pos) {
-				case 1:
-					item.x = 0;
-					break;
-				case 2:
-					item.x = resizeWidth + healthSpacing;
-					break;
-				case 3:				
-					item.x = (resizeWidth + healthSpacing) * 2;
-					break;
-				case 4:
-					item.x = (resizeWidth + healthSpacing) * 3;
-					break;
-				default:
-					item.x = 0;
-			}
+
+			item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+
+			// switch(enemyArray[index].pos) {
+			// 	case 1:
+			// 		item.x = 0;
+			// 		break;
+			// 	case 2:
+			// 		item.x = resizeWidth + healthSpacing;
+			// 		break;
+			// 	case 3:				
+			// 		item.x = (resizeWidth + healthSpacing) * 2;
+			// 		break;
+			// 	case 4:
+			// 		item.x = (resizeWidth + healthSpacing) * 3;
+			// 		break;
+			// 	default:
+			// 		item.x = 0;
+			// }
 		// });	
 	}	
 }
@@ -2462,22 +2472,24 @@ function moveCreature(movingCreature, displacement){
 
 			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 
-			switch(arrayCreature.pos) {
-				case 1:
-					newCreatureX = 0;
-					break;
-				case 2:
-					newCreatureX = -(resizeWidth + healthSpacing);
-					break;
-				case 3:				
-					newCreatureX = -((resizeWidth + healthSpacing) * 2);
-					break;
-				case 4:
-					newCreatureX = -((resizeWidth + healthSpacing) * 3);
-					break;
-				default:
-					newCreatureX = 0;	
-			}
+			newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
+
+			// switch(arrayCreature.pos) {
+			// 	case 1:
+			// 		newCreatureX = 0;
+			// 		break;
+			// 	case 2:
+			// 		newCreatureX = -(resizeWidth + healthSpacing);
+			// 		break;
+			// 	case 3:				
+			// 		newCreatureX = -((resizeWidth + healthSpacing) * 2);
+			// 		break;
+			// 	case 4:
+			// 		newCreatureX = -((resizeWidth + healthSpacing) * 3);
+			// 		break;
+			// 	default:
+			// 		newCreatureX = 0;	
+			// }
 
 			//Hero HP and dmg containers
 			var switcher = 0;
@@ -2534,28 +2546,30 @@ function moveCreature(movingCreature, displacement){
 			var newHPX;
 
 			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+			newCreatureX = spriteResizeXPosition[arrayCreature.pos-1];
+			newHPX = spriteResizeXPosition[arrayCreature.pos-1];
 
-			switch(arrayCreature.pos) {
-				case 1:
-					newCreatureX = 0;
-					newHPX = 0;
-					break;
-				case 2:
-					newCreatureX = resizeWidth + healthSpacing;
-					newHPX = resizeWidth + healthSpacing;
-					break;
-				case 3:				
-					newCreatureX = (resizeWidth + healthSpacing) * 2;
-					newHPX = (resizeWidth + healthSpacing) * 2;
-					break;
-				case 4:
-					newCreatureX = (resizeWidth + healthSpacing) * 3;
-					newHPX = (resizeWidth + healthSpacing) * 3;
-					break;
-				default:
-					newCreatureX = 0;	
-					newHPX = 0;
-			}
+			// switch(arrayCreature.pos) {
+			// 	case 1:
+			// 		// newCreatureX = 0;
+			// 		newHPX = 0;
+			// 		break;
+			// 	case 2:
+			// 		// newCreatureX = resizeWidth + healthSpacing;
+			// 		newHPX = resizeWidth + healthSpacing;
+			// 		break;
+			// 	case 3:				
+			// 		// newCreatureX = (resizeWidth + healthSpacing) * 2;
+			// 		newHPX = (resizeWidth + healthSpacing) * 2;
+			// 		break;
+			// 	case 4:
+			// 		// newCreatureX = (resizeWidth + healthSpacing) * 3;
+			// 		newHPX = (resizeWidth + healthSpacing) * 3;
+			// 		break;
+			// 	default:
+			// 		newCreatureX = 0;	
+			// 		newHPX = 0;
+			// }
 
 			TweenMax.to(enemySpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionEnemy[arrayCreatureIndex], 0.5, {x: newCreatureX});
