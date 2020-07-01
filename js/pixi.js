@@ -1734,7 +1734,7 @@ function resizeHP(roster, item, index){
 				}
 			});
 		}
-		item.x = heroHealthXPosition[heroArray[index].pos-1-switcher];
+		item.x = heroHealthXPosition[heroArray[index].pos-1];
 
 // 		switch(heroArray[index].pos) {
 // 			case 1:
