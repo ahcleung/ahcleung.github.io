@@ -1352,7 +1352,6 @@ function createSprite(direction, item, index){
 	}	
 }
 
-
 // Resize function window
 function resize() {
 	// Resize the renderer
@@ -1439,24 +1438,6 @@ function resize() {
 	heroHealthXPosition[1] = (resizeWidth + healthSpacing) * 2;
 	heroHealthXPosition[2] = resizeWidth + healthSpacing;
 	heroHealthXPosition[3] = 0;
-
-	// switch(heroArray[index].pos) {
-	// 		case 1:
-	// 			item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-	// 			break;
-	// 		case 2:
-	// 			item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-	// 			break;
-	// 		case 3:
-	// 			if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-	// 			else 	item.x = 0
-	// 			break;
-	// 		case 4:
-	// 			item.x = 0;
-	// 			break;
-	// 		default:
-	// 			item.x = 0;
-	// 	}
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
@@ -1594,23 +1575,6 @@ function resizeDmg(roster, item, index){
 
 		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
 
-		// switch(heroArray[index].pos) {
-		// 	case 1:
-		// 		item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-		// 		break;
-		// 	case 2:
-		// 		item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-		// 		break;
-		// 	case 3:
-		// 		if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-		// 		else 	item.x = 0
-		// 		break;
-		// 	case 4:
-		// 		item.x = 0;
-		// 		break;
-		// 	default:
-		// 		item.x = 0;
-		// }
 	}else{
 		if(enemyArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
@@ -1734,29 +1698,9 @@ function resizeHP(roster, item, index){
 				}
 			});
 		}
+		
 		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
 
-// 		switch(heroArray[index].pos) {
-// 			case 1:
-// 				item.x = (resizeWidth + healthSpacing) * (3 - switcher);
-// // 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (3 - switcher);
-// 				break;
-// 			case 2:
-// 				item.x = (resizeWidth + healthSpacing) * (2 - switcher);
-// // 				moveHeroContainerArray[index].x = (resizeWidth + healthSpacing) * (2 - switcher);
-// 				break;
-// 			case 3:
-// 				if(heroArray[index].size == 1)	item.x = resizeWidth + healthSpacing * (1 - switcher)
-// 				else 	item.x = 0
-// // 				moveHeroContainerArray[index].x = resizeWidth + healthSpacing * (1 - switcher);
-// 				break;
-// 			case 4:
-// 				item.x = 0;
-// // 				moveHeroContainerArray[index].x = 0;
-// 				break;
-// 			default:
-// 				item.x = 0;
-// 		}
 	}else{	
 // 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
 		if(enemyArray[index].size > 1){
@@ -2401,24 +2345,6 @@ function moveCreature(movingCreature, displacement){
 			if(arrayCreature.size > 1)	switcher = 1
 
 			newHPX = heroHealthXPosition[heroArray[index].pos-1+switcher];
-
-			// switch(arrayCreature.pos) {
-			// 	case 1:
-			// 		newHPX = (resizeWidth + healthSpacing) * (3 - switcher);
-			// 		break;
-			// 	case 2:
-			// 		newHPX = (resizeWidth + healthSpacing) * (2 - switcher);
-			// 		break;
-			// 	case 3:
-			// 		if(arrayCreature.size == 1)	newHPX = resizeWidth + healthSpacing * (1 - switcher)
-			// 		else 	newHPX = 0
-			// 		break;
-			// 	case 4:
-			// 		newHPX = 0;
-			// 		break;
-			// 	default:
-			// 		newHPX = 0;
-			// }
 
 			TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
