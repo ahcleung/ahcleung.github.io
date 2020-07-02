@@ -384,7 +384,7 @@ function setup(){
 	actionBlack.alpha = 0;
 
 	actionBlackTween = new TimelineMax({paused: true});
-	actionBlackTween.to(actionBlack, 0.5, {alpha:0.75});
+	actionBlackTween.to(actionBlack, 0.167, {alpha:0.75});
 	actionBlackTween.to(actionBlack, 0.1, {delay:2, alpha:0});
 
 	stageContainer.addChild(actionBlack);
@@ -2831,7 +2831,7 @@ function animateBattle(attacker, defender){
 	// blurFilter2.blur = 0;
 
 	spriteHolder.filters = [blurFilter1];
-	TweenMax.fromTo(blurFilter1, 0.1, {blur:0}, {blur:10});
+	TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
 	TweenMax.fromTo(spriteHolder, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(spriteHolder,0.5, {x:0,ease:Elastic.easeOut})
@@ -2891,7 +2891,7 @@ function animateBattle(attacker, defender){
 			});
 			// spriteHolder.filters = [blurFilter2];
 			// actionHero[Math.abs(attacker)-1].x = originalX;
-			TweenMax.fromTo(blurFilter1, 0.5, {blur:2}, {blur:0});
+			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}else{
 		actionEnemy[Math.abs(attacker)-1].pAtkTween.play(0);
@@ -2900,7 +2900,7 @@ function animateBattle(attacker, defender){
 				item.visible = true;
 			});
 			// spriteHolder.filters = [blurFilter2];
-			TweenMax.fromTo(blurFilter1, 0.1, {blur:2}, {blur:0});
+			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}
 	// actionHero[0].visible = true;
