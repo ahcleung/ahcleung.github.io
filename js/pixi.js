@@ -352,7 +352,7 @@ enemy[2] = {
 
 function setup(){
 	consolePrint("SETUP");
-	app.stage.addChild(spriteHolder);
+	// app.stage.addChild(spriteHolder);
 	backgroundImage = new PIXI.Sprite.from('img/bg3.png');
 	backgroundImage.anchor.set(0.5);
 	spriteHolder.addChild(backgroundImage);
