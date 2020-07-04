@@ -479,7 +479,7 @@ function setup(){
 	actionBlack.beginFill(0x000000);
 	actionBlack.drawRect(0, 0, app.screen.width, app.screen.height);
 	actionBlack.endFill();
-	actionBlack.alpha = 0.75;
+	actionBlack.alpha = 0;
 
 	actionBlackTween = new TimelineMax({paused: true});
 	actionBlackTween.to(actionBlack, 0.167, {alpha:0.75});
