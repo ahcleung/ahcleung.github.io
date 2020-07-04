@@ -199,6 +199,7 @@ const interfaceEnemyHealth = new PIXI.Container();				//Enemy HP
 const interfaceHeroFloatingInfo = new PIXI.Container();				//Hero damage UI
 const interfaceEnemyFloatingInfo = new PIXI.Container();				//Enemy damage UI
 const interfaceAdditional = new PIXI.Container();	//Additional actions
+const interfaceHolder = new PIXI.Container();
 
 // const attackContainer = new PIXI.Container();
 // const defendContainer = new PIXI.Container();
@@ -410,6 +411,9 @@ function setup(){
 	interfaceHeroHealth.y = 10;
 	interfaceEnemyHealth.x = app.screen.width/2;
 	interfaceEnemyHealth.y = 10;
+
+	interfaceHolder.adChild(interfaceHeroHealth);
+	interfaceHolder.adChild(interfaceEnemyHealth);
 	
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
@@ -680,7 +684,7 @@ function setup(){
 		skillContainer.disable = skillDisable;
 		
 		skillContainerArray.push(skillContainer);
-		app.stage.addChild(skillContainer);
+		interfaceHolder.addChild(skillContainer);
 	}
 	//Read from firestore
 // 	db.collection("enemy").get().then((querySnapshot) => {
@@ -742,6 +746,7 @@ function setup(){
 	btnSettings
         // set the mousedown and touchstart callback...
         .on('pointerdown', onButtonDown);
+    interfaceHolder.addChild(btnSettings);
 	
 	btnAdditional = new PIXI.Sprite(textureAdditional);				//Button additional
 	btnAdditional.anchor.set(0,1);
@@ -750,6 +755,7 @@ function setup(){
 	btnAdditional
         // set the mousedown and touchstart callback...
         .on('pointerdown', onAdditionalDown);
+    interfaceHolder.addChild(btnAdditional);
 	
 	btnAdditionalCancel = new PIXI.Sprite(textureAdditionalCancel);	//Button additional cancel
 	btnAdditionalCancel.anchor.set(0,1);
@@ -792,25 +798,29 @@ function setup(){
 	additionalArray.push(btnAdditionalSkip);
 
 	interfaceAdditional.visible = false;
+	interfaceHolder.addChild(interfaceAdditional);
 	
 	//Add containers to stage
-	app.stage.addChild(btnSettings);			//Settings button
-	app.stage.addChild(btnAdditional);			//Additional button
+	// app.stage.addChild(btnSettings);			//Settings button
+	// app.stage.addChild(btnAdditional);			//Additional button
 
 	spriteHolder.addChild(heroSprites);
 	spriteHolder.addChild(enemySprites);
+	stageContainer.addChild(priteHolder);
 	// app.stage.addChild(heroSprites);				//Hero stage
 	// app.stage.addChild(enemySprites);			//Enemy stage
 
-	app.stage.addChild(interfaceHeroHealth);					//Hero HP
-	app.stage.addChild(interfaceEnemyHealth);				//Enemy HP
+	// app.stage.addChild(interfaceHeroHealth);					//Hero HP
+	// app.stage.addChild(interfaceEnemyHealth);				//Enemy HP
 
 	app.stage.addChild(stageContainer);
-	app.stage.addChild(actionLines);
+	// app.stage.addChild(actionLines);
 	app.stage.addChild(interfaceHeroFloatingInfo);				//Hero damage UI
 	app.stage.addChild(interfaceEnemyFloatingInfo);				//Enemy damage UI
 
-	app.stage.addChild(interfaceAdditional);	
+	// app.stage.addChild(interfaceAdditional);
+
+	app.stage.addChild(interfaceHolder);
 	
 	app.stage.addChild(onScreenStats);	
 	app.stage.addChild(consoleScreen);
@@ -819,8 +829,6 @@ function setup(){
 
 	// app.stage.addChild(tempContainer);
 	// app.stage.addChild(tempContainer2);
-
-	
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
