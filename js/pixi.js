@@ -204,6 +204,7 @@ const interfaceHolder = new PIXI.Container();
 // const attackContainer = new PIXI.Container();
 // const defendContainer = new PIXI.Container();
 
+const actionContainer = new PIXI.Container();
 const stageContainer = new PIXI.Container();
 
 // const rectTemp = new PIXI.Graphics();
@@ -395,7 +396,8 @@ function setup(){
 	actionLines.anchor.set(0.5);
 	actionLines.visible = false;
 	stageContainer.addChild(actionLines);
-	// stageContainer.actionLines = actionLines
+	// actionContainer.actionLines = actionLines
+	stageContainer.addChild(actionContainer);
 
 	heroSprites.x = app.screen.width/2;
 	heroSprites.y = app.screen.height/2;
@@ -978,7 +980,7 @@ function createSprite(direction, item, index){
 		sprite_p_top.visible = false;
 		creatureAction.visible = false;
 		actionLines.visible = false;
-		stageContainer.removeChild(creatureAction);
+		actionContainer.removeChild(creatureAction);
 	}},anim1);
 
 	// pAtkTween = new TimelineMax({paused: true});
@@ -1004,7 +1006,7 @@ function createSprite(direction, item, index){
 	// 	sprite_p_top.visible = false;
 	// 	creatureAction.visible = false;
 	// 	actionLines.visible = false;
-	// 	stageContainer.removeChild(creatureAction);
+	// 	actionContainer.removeChild(creatureAction);
 	// }},anim1);
 
 	creatureAction.pAtkTween = pAtkTween;
@@ -1019,7 +1021,7 @@ function createSprite(direction, item, index){
 	dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
-		stageContainer.removeChild(creatureAction);
+		actionContainer.removeChild(creatureAction);
 	}});
 
 
@@ -1032,7 +1034,7 @@ function createSprite(direction, item, index){
 	// dMissTween.fromTo(sprite_d_miss, anim2, {x:-200, y:0}, {ease:"custom", x:-250, y:0, onComplete: function(){
 	// 	sprite_d_miss.visible = false;
 	// 	creatureAction.visible = false;
-	// 	stageContainer.removeChild(creatureAction);
+	// 	actionContainer.removeChild(creatureAction);
 	// }});
 
 	creatureAction.dMissTween = dMissTween;
@@ -1043,7 +1045,7 @@ function createSprite(direction, item, index){
 	// creatureAction.addChild(spriteReady);
 	// creatureAction.ready = spriteReady;
 
-	// stageContainer.addChild(creatureAction);
+	// actionContainer.addChild(creatureAction);
 	
 	
 	// if(item.size == 2){		
@@ -1337,7 +1339,7 @@ function createSprite(direction, item, index){
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroSprites.addChild(creatureContainer);
-		// stageContainer.addChild(creatureAction);
+		// actionContainer.addChild(creatureAction);
 		interfaceHeroHealth.addChild(healthBar);
 		interfaceHeroFloatingInfo.addChild(dmgContainer);
 // 		interfaceHeroHealth.addChild(moveContainer);
@@ -1353,7 +1355,7 @@ function createSprite(direction, item, index){
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemySprites.addChild(creatureContainer);
-		// stageContainer.addChild(creatureAction);
+		// actionContainer.addChild(creatureAction);
 		interfaceEnemyHealth.addChild(healthBar);
 		interfaceEnemyFloatingInfo.addChild(dmgContainer);
 // 		interfaceEnemyHealth.addChild(moveContainer);
@@ -1395,7 +1397,7 @@ function resize() {
 	actionBlack.position.set(-app.screen.width/2, -app.screen.height*3/4);
 	// actionBlack.position.set(0, 0);
 
-	stageContainer.position.set(app.screen.width/2, app.screen.height*3/4);
+	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
@@ -2849,12 +2851,12 @@ function animateBattle(attacker, defender){
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
-			stageContainer.addChild(actionHero[Math.abs(arrayCreature)-1]);
+			actionContainer.addChild(actionHero[Math.abs(arrayCreature)-1]);
 			actionHero[Math.abs(arrayCreature)-1].visible = true;
 			heroSpriteArray[Math.abs(arrayCreature)-1].visible = false;
 			animateArray.push(heroSpriteArray[Math.abs(arrayCreature)-1]);
 		}else{
-			stageContainer.addChild(actionEnemy[Math.abs(arrayCreature)-1]);
+			actionContainer.addChild(actionEnemy[Math.abs(arrayCreature)-1]);
 			actionEnemy[Math.abs(arrayCreature)-1].visible = true;
 			enemySpriteArray[Math.abs(arrayCreature)-1].visible = false;
 			animateArray.push(enemySpriteArray[Math.abs(arrayCreature)-1]);
@@ -2863,12 +2865,12 @@ function animateBattle(attacker, defender){
 	
 
 	if(attacker > 0){
-		stageContainer.addChild(actionHero[Math.abs(attacker)-1]);
+		actionContainer.addChild(actionHero[Math.abs(attacker)-1]);
 		actionHero[Math.abs(attacker)-1].visible = true;
 		heroSpriteArray[Math.abs(attacker)-1].visible = false;
 		animateArray.push(heroSpriteArray[Math.abs(attacker)-1]);
 	}else{
-		stageContainer.addChild(actionEnemy[Math.abs(attacker)-1]);
+		actionContainer.addChild(actionEnemy[Math.abs(attacker)-1]);
 		actionEnemy[Math.abs(attacker)-1].visible = true;
 		enemySpriteArray[Math.abs(attacker)-1].visible = false;
 		animateArray.push(enemySpriteArray[Math.abs(attacker)-1]);
