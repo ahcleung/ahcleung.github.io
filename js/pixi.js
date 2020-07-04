@@ -806,7 +806,7 @@ function setup(){
 
 	spriteHolder.addChild(heroSprites);
 	spriteHolder.addChild(enemySprites);
-	stageContainer.addChild(priteHolder);
+	stageContainer.addChild(spriteHolder);
 	// app.stage.addChild(heroSprites);				//Hero stage
 	// app.stage.addChild(enemySprites);			//Enemy stage
 
