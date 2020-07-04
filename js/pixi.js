@@ -364,59 +364,12 @@ function setup(){
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
 	
-	// PIXI.settings.ROUND_PIXELS = true;
-	// rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
-	// rectTemp.alpha = 0.1;
-	// app.stage.add(rectTemp);
-
-// 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
-// 	rectHero.x = 0;
-// 	rectHero.y = 0;
-// 	interfaceHeroHealth.addChild(rectHero);
-	
-// 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
-// 	rectEnemy.x = 0;
-// 	rectEnemy.y = 0;
-// 	interfaceEnemyHealth.addChild(rectEnemy);
-
-	actionBlack = new PIXI.Graphics();
-	actionBlack.beginFill(0x000000);
-	actionBlack.drawRect(0, 0, app.screen.width, app.screen.height);
-	actionBlack.endFill();
-	actionBlack.alpha = 0.75;
-
-	actionBlackTween = new TimelineMax({paused: true});
-	actionBlackTween.to(actionBlack, 0.167, {alpha:0.75});
-	actionBlackTween.to(actionBlack, 0.1, {delay:2, alpha:0});
-
-	stageContainer.addChild(actionBlack);
-	stageContainer.actionBlackTween = actionBlackTween;
-
-	actionLines = new PIXI.Sprite.from("img/actionLines.png");
-	actionLines.anchor.set(0.5);
-	actionLines.visible = false;
-	stageContainer.addChild(actionLines);
-	// actionContainer.actionLines = actionLines
-	stageContainer.addChild(actionContainer);
-
 	heroSprites.x = app.screen.width/2;
 	heroSprites.y = app.screen.height/2;
-
-	// heroSprites.scale.set(-1,1);
 	
 	enemySprites.x = app.screen.width/2;
 	enemySprites.y = app.screen.height/2;
 
-	// enemySprites.scale.set(-1,1);
-	
-	interfaceHeroHealth.x = app.screen.width/2;
-	interfaceHeroHealth.y = 10;
-	interfaceEnemyHealth.x = app.screen.width/2;
-	interfaceEnemyHealth.y = 10;
-
-	interfaceHolder.addChild(interfaceHeroHealth);
-	interfaceHolder.addChild(interfaceEnemyHealth);
-	
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
 // 		querySnapshot.forEach((doc) => {
@@ -502,6 +455,55 @@ function setup(){
 	enemyArray.forEach(function (item, index){
 		createSprite(-1, item, index)	
 	});
+
+	spriteHolder.addChild(heroSprites);
+	spriteHolder.addChild(enemySprites);
+	stageContainer.addChild(spriteHolder);
+
+	// PIXI.settings.ROUND_PIXELS = true;
+	// rectTemp.beginFill(0xccffcc).drawRect(-50, -50, 100, 100);
+	// rectTemp.alpha = 0.1;
+	// app.stage.add(rectTemp);
+
+// 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
+// 	rectHero.x = 0;
+// 	rectHero.y = 0;
+// 	interfaceHeroHealth.addChild(rectHero);
+	
+// 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
+// 	rectEnemy.x = 0;
+// 	rectEnemy.y = 0;
+// 	interfaceEnemyHealth.addChild(rectEnemy);
+
+	actionBlack = new PIXI.Graphics();
+	actionBlack.beginFill(0x000000);
+	actionBlack.drawRect(0, 0, app.screen.width, app.screen.height);
+	actionBlack.endFill();
+	actionBlack.alpha = 0.75;
+
+	actionBlackTween = new TimelineMax({paused: true});
+	actionBlackTween.to(actionBlack, 0.167, {alpha:0.75});
+	actionBlackTween.to(actionBlack, 0.1, {delay:2, alpha:0});
+
+	stageContainer.addChild(actionBlack);
+	stageContainer.actionBlackTween = actionBlackTween;
+
+	actionLines = new PIXI.Sprite.from("img/actionLines.png");
+	actionLines.anchor.set(0.5);
+	actionLines.visible = false;
+	stageContainer.addChild(actionLines);
+	// actionContainer.actionLines = actionLines
+	stageContainer.addChild(actionContainer);
+
+	// enemySprites.scale.set(-1,1);
+	
+	interfaceHeroHealth.x = app.screen.width/2;
+	interfaceHeroHealth.y = 10;
+	interfaceEnemyHealth.x = app.screen.width/2;
+	interfaceEnemyHealth.y = 10;
+
+	interfaceHolder.addChild(interfaceHeroHealth);
+	interfaceHolder.addChild(interfaceEnemyHealth);
 
 	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
@@ -806,9 +808,6 @@ function setup(){
 	// app.stage.addChild(btnSettings);			//Settings button
 	// app.stage.addChild(btnAdditional);			//Additional button
 
-	spriteHolder.addChild(heroSprites);
-	spriteHolder.addChild(enemySprites);
-	stageContainer.addChild(spriteHolder);
 	// app.stage.addChild(heroSprites);				//Hero stage
 	// app.stage.addChild(enemySprites);			//Enemy stage
 
