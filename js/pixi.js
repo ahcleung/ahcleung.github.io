@@ -1393,7 +1393,7 @@ function resize() {
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	actionBlack.width = app.screen.width;
 	actionBlack.height = app.screen.height;
-	actionBlack.position.set(-app.screen.width/2, -app.screen.height*3/4);
+	actionBlack.position.set(app.screen.width/2, app.screen.height/2);
 	// actionBlack.position.set(0, 0);
 
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
