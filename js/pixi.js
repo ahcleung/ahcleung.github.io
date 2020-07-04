@@ -412,8 +412,8 @@ function setup(){
 	interfaceEnemyHealth.x = app.screen.width/2;
 	interfaceEnemyHealth.y = 10;
 
-	interfaceHolder.adChild(interfaceHeroHealth);
-	interfaceHolder.adChild(interfaceEnemyHealth);
+	interfaceHolder.addChild(interfaceHeroHealth);
+	interfaceHolder.addChild(interfaceEnemyHealth);
 	
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
