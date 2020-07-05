@@ -2092,7 +2092,7 @@ function onCreatureDown(){
 					}else if(deltaHP == 0){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
 					}else{
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2165,23 +2165,23 @@ function onCreatureDown(){
 					if(effectiveness == 0.25){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
 					}else if(effectiveness == 0.5){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
 					}else if(effectiveness == 2){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
 					}else if(effectiveness == 4){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else if(deltaHP == 0){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					}else{
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2890,12 +2890,12 @@ function animateBattle(attacker, defender){
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
 			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
-			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[arrayCreatureIndex]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}else{
 			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
-			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[arrayCreatureIndex]});
 
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}
