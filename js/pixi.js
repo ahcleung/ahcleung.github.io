@@ -483,7 +483,7 @@ function setup(){
 
 	actionBlackTween = new TimelineMax({paused: true});
 	actionBlackTween.to(actionBlack, 0.167, {alpha:0.75});
-	actionBlackTween.to(actionBlack, 0.1, {delay:2, alpha:0});
+	actionBlackTween.to(actionBlack, 0.1, {delay:1.75, alpha:0});
 
 	stageContainer.addChild(actionBlack);
 	stageContainer.actionBlackTween = actionBlackTween;
