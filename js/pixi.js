@@ -2888,10 +2888,14 @@ function animateBattle(attacker, defender){
 	stageContainer.actionBlackTween.play(0);
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
+		var switcher = 0;
+		if(arrayCreature.size > 1)	switcher = 1
+
 		if(arrayCreature > 0){
-			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
-			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[arrayCreatureIndex]});
-			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[arrayCreatureIndex]});
+			var originalX = actionHero[Math.abs(arrayCreature)-1].x;			
+
+			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[arrayCreatureIndex+switcher]});
+			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[arrayCreatureIndex+switcher]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
@@ -2900,8 +2904,8 @@ function animateBattle(attacker, defender){
 			});
 		}else{
 			var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
-			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[arrayCreatureIndex]});
-			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[arrayCreatureIndex]});
+			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[arrayCreatureIndex+switcher]});
+			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[arrayCreatureIndex+switcher]});
 
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
