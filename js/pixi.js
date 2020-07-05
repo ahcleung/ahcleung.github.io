@@ -2890,9 +2890,13 @@ function animateBattle(attacker, defender){
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
 			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}else{
 			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:0+100*arrayCreatureIndex});
+
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 		}
 	});	
