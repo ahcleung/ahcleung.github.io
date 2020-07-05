@@ -2363,7 +2363,7 @@ function moveCreature(movingCreature, displacement){
 			var switcher = 0;
 			if(arrayCreature.size > 1)	switcher = 1
 
-			newHPX = heroHealthXPosition[heroArray[index].pos-1+switcher];
+			newHPX = heroHealthXPosition[heroArray[arrayCreatureIndex].pos-1+switcher];
 
 			TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
