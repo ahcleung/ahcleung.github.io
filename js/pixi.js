@@ -278,7 +278,7 @@ hero[0] = {
 };
 hero[1] = {
 	id: 11, level: 47, 
-	skill1: 4, skill2: 10, skill3: 11, skill4: 5,
+	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120
 };
 hero[2] = {
@@ -958,7 +958,7 @@ function createSprite(direction, item, index){
 
 	pAtkTween = new TimelineMax({paused: true});
 	pAtkTween.to(sprite_p_ready, 0, {alpha:1});
-	pAtkTween.fromTo(sprite_p_ready, anim1, {x:item.action[0][0], y:item.action[0][1]},{ease:"custom", x:item.action[0][2], y:item.action[0][3], onComplete: function(){
+	pAtkTween.fromTo(sprite_p_ready, anim1, {x:item.action[0][0], y:item.action[0][1]}, {ease:"custom", x:item.action[0][2], y:item.action[0][3], onComplete: function(){
 		sprite_p_ready.alpha = 0;
 		sprite_p_main.visible = true;
 		sprite_p_back.visible = true;
