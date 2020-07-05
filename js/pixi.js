@@ -1074,14 +1074,14 @@ function createSprite(direction, item, index){
 		stroke: '#222222',
    		strokeThickness: 5,
     });
-    const dmgCritStyle = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 24,
-        fontWeight: 700,
-		fill: '#ff7b00',	
-		stroke: '#4E2600',
-   		strokeThickness: 5,
-    });
+  //   const dmgCritStyle = new PIXI.TextStyle({
+  //       fontFamily: 'Arvo',
+  //       fontSize: 24,
+  //       fontWeight: 700,
+		// fill: '#ff7b00',	
+		// stroke: '#4E2600',
+  //  		strokeThickness: 5,
+  //   });
 
 	let dmgNum = new Text("50", dmgNumStyle);
 	dmgNum.anchor.set(0.5, 0.5);
@@ -2071,7 +2071,7 @@ function onCreatureDown(){
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';						
 					
 					if(effectiveness == 0.25){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
@@ -2160,7 +2160,7 @@ function onCreatureDown(){
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
 					if(effectiveness == 0.25){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
