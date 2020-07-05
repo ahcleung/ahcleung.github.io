@@ -1063,7 +1063,7 @@ function createSprite(direction, item, index){
         fontSize: 70,
         fontWeight: 700,
 		fill: '#D80000',	
-		stroke: '#3B0000',
+		stroke: '#222222',
    		strokeThickness: 10,
     });
     const dmgEffectiveStyle = new PIXI.TextStyle({
@@ -1088,15 +1088,15 @@ function createSprite(direction, item, index){
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
-	dmgEffective.y = -50;
+	dmgEffective.y = 50;
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
 
-	let dmgCrit = new Text ("CRIT!", dmgCritStyle);
-	dmgCrit.anchor.set(0.5, 0.5);
-	dmgCrit.y = 50;
-	dmgPopup.addChild(dmgCrit);
-	dmgPopup.dmgCrit = dmgCrit;
+	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
+	// dmgCrit.anchor.set(0.5, 0.5);
+	// dmgCrit.y = 50;
+	// dmgPopup.addChild(dmgCrit);
+	// dmgPopup.dmgCrit = dmgCrit;
 
 	//GSAP2
 	var dmgPopupTween = new TimelineMax({paused: true});
@@ -2068,7 +2068,7 @@ function onCreatureDown(){
 						heroArray[targetedIndex].damage(deltaHP);		//subtract damage
 					}
 
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';						
@@ -2076,18 +2076,23 @@ function onCreatureDown(){
 					if(effectiveness == 0.25){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
 					}else if(effectiveness == 0.5){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
 					}else if(effectiveness == 2){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
 					}else if(effectiveness == 4){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else if(deltaHP == 0){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else{
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2102,7 +2107,7 @@ function onCreatureDown(){
 								width: heroInterfaceHealthArray[targetedIndex].critDmgBar.width
 							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
@@ -2152,7 +2157,7 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#3B0000';
@@ -2160,18 +2165,23 @@ function onCreatureDown(){
 					if(effectiveness == 0.25){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
 					}else if(effectiveness == 0.5){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
 					}else if(effectiveness == 2){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
 					}else if(effectiveness == 4){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else if(deltaHP == 0){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					}else{
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2186,7 +2196,7 @@ function onCreatureDown(){
 								width: enemyInterfaceHealthArray[targetedIndex].critDmgBar.width
 							}, {delay:2, ease:Expo.easeIn, width:newCritWidth});
 
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
