@@ -2904,7 +2904,7 @@ function animateBattle(attacker, defender){
 		}else{
 			var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
 			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[shiftSizeTracker]});
-			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPositionshiftSizeTracker]});
+			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[shiftSizeTracker]});
 
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
