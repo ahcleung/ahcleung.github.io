@@ -2892,15 +2892,17 @@ function animateBattle(attacker, defender){
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
 			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
+			var originalFloatX = heroFloatingInfoArray[Math.abs(arrayCreature)-1].x;
 			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[shiftSizeTracker]});
-			
+
 			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	shiftSizeTracker++;
 			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[shiftSizeTracker]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionHero[Math.abs(arrayCreature)-1].x = originalX;
-				heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
+				// heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = heroHealthXPosition[heroArray[Math.abs(arrayCreature)-1].pos-1];
+				heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalFloatX;
 			});
 
 			shiftSizeTracker++;			
@@ -2958,7 +2960,7 @@ function onAdditionalDown(){
 	interfaceAdditional.visible = true;
 
 	// 0xccffcc
-	backgroundImage.tint = 0x3D85C6;	
+	// backgroundImage.tint = 0x3D85C6;	
 }
 
 function onAdditionalCancelDown(){
