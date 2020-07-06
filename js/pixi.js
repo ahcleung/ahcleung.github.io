@@ -2891,10 +2891,10 @@ function animateBattle(attacker, defender){
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
-			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	shiftSizeTracker++;
-
 			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
 			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[shiftSizeTracker]});
+			
+			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	shiftSizeTracker++;
 			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[shiftSizeTracker]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
