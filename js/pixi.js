@@ -1391,8 +1391,8 @@ function resize() {
 	actionLines.position.set((app.screen.width/2)-25, (app.screen.height/2)-25);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	actionBlack.width = app.screen.width+50;
-	actionBlack.height = app.screen.height+50;
+	actionBlack.width = app.screen.width+100;
+	actionBlack.height = app.screen.height+100;
 	// actionBlack.position.set(0, app.screen.height/2);
 	// actionBlack.position.set(0, 0);
 
