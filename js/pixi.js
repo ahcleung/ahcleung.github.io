@@ -2887,29 +2887,29 @@ function animateBattle(attacker, defender){
 
 	stageContainer.actionBlackTween.play(0);
 
-	var shiftSizeTracker = 0;
+	var heroShiftSizeTracker = 0;
+	var enemyShiftSizeTracker = 0;
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
 			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
 			var originalFloatX = heroFloatingInfoArray[Math.abs(arrayCreature)-1].x;
-			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[shiftSizeTracker]});
+			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
 
-			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	shiftSizeTracker++;
-			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[shiftSizeTracker]});
+			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
+			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionHero[Math.abs(arrayCreature)-1].x = originalX;
-				// heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = heroHealthXPosition[heroArray[Math.abs(arrayCreature)-1].pos-1];
 				heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalFloatX;
 			});
 
-			shiftSizeTracker++;			
+			heroShiftSizeTracker++;			
 		}else{
 			var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
-			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[shiftSizeTracker]});
-			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[shiftSizeTracker]});
+			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
 
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
@@ -2917,8 +2917,8 @@ function animateBattle(attacker, defender){
 				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
 			});
 
-			shiftSizeTracker++;
-			if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	shiftSizeTracker++;
+			enemyShiftSizeTracker++;
+			if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	enemyShiftSizeTracker++;
 		}		
 	});	
 
