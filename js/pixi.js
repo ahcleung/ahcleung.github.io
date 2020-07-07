@@ -477,7 +477,7 @@ function setup(){
 
 	actionBlack = new PIXI.Graphics();
 	actionBlack.beginFill(0x000000);
-	actionBlack.drawRect(0, 0, app.screen.width, app.screen.height);
+	actionBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	actionBlack.endFill();
 	actionBlack.alpha = 0;
 
@@ -1379,20 +1379,20 @@ function resize() {
 	if(widthMath > heightMath){
 		backgroundImage.width = app.screen.width;
 		backgroundImage.height = app.screen.width * 9/16;
-		actionLines.width = app.screen.width;
-		actionLines.height = app.screen.width * 9/16;
+		actionLines.width = app.screen.width+50;
+		actionLines.height = (app.screen.width * 9/16)+50;
 	}else{
 		backgroundImage.height = app.screen.height;
 		backgroundImage.width = app.screen.height * 16/9;
-		actionLines.height = app.screen.height;
-		actionLines.width = app.screen.height * 16/9;
+		actionLines.height = app.screen.height+50;
+		actionLines.width = (app.screen.height * 16/9)+50;
 	}
 	backgroundImage.position.set(app.screen.width/2, app.screen.height/2);
-	actionLines.position.set(app.screen.width/2, app.screen.height/2);
+	actionLines.position.set((app.screen.width/2)-25, (app.screen.height/2)-25);
 
 	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
-	actionBlack.width = app.screen.width;
-	actionBlack.height = app.screen.height;
+	actionBlack.width = app.screen.width+50;
+	actionBlack.height = app.screen.height+50;
 	// actionBlack.position.set(0, app.screen.height/2);
 	// actionBlack.position.set(0, 0);
 
@@ -2852,7 +2852,7 @@ function animateBattle(attacker, defender){
 	spriteHolder.filters = [blurFilter1];
 	TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
-	TweenMax.fromTo(stageContainer, 0.05, {x:-5}, {delay:anim1, x:5, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
 
