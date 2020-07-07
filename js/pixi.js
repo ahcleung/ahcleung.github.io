@@ -2852,8 +2852,8 @@ function animateBattle(attacker, defender){
 	spriteHolder.filters = [blurFilter1];
 	TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
-	TweenMax.fromTo(spriteHolder, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
-		TweenMax.to(spriteHolder,0.5, {x:0,ease:Elastic.easeOut})
+	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
 
 	var animateArray = [];
