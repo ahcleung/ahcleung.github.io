@@ -1088,18 +1088,18 @@ function createSprite(direction, item, index){
 
 	let dmgNum2 = new Text("25", dmgNumStyle);
 	dmgNum2.anchor.set(0.5, 0.5);
-	dmgNum2.x = 60;
-	dmgNum2.y = -60;
+	dmgNum2.x = 50;
+	dmgNum2.y = -50;
 	let dmgNum3 = new Text("32", dmgNumStyle);
 	dmgNum3.anchor.set(0.5, 0.5);
-	dmgNum3.y = -120;
+	dmgNum3.y = -100;
 	let dmgNum4 = new Text("32", dmgNumStyle);
 	dmgNum4.anchor.set(0.5, 0.5);
-	dmgNum4.x = 60;
-	dmgNum4.y = -180;
+	dmgNum4.x = 50;
+	dmgNum4.y = -150;
 	let dmgNum5 = new Text("32", dmgNumStyle);
 	dmgNum5.anchor.set(0.5, 0.5);
-	dmgNum5.y = -240;
+	dmgNum5.y = -200;
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
@@ -1617,7 +1617,7 @@ function resizeDmg(roster, item, index){
 		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
 	}
 
-	item.dmgPopup.y = app.screen.height/3;
+	item.dmgPopup.y = app.screen.height*3/5;
 }
 
 function resizeHP(roster, item, index){
