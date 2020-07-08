@@ -54,7 +54,7 @@
 		},
 		{
 			"name": "Fire wall",
-			"element": 3,
+			"element": 2,
 			"type": "spe",
 			"power": 80,
 			"accuracy": 100,
