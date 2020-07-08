@@ -1090,10 +1090,16 @@ function createSprite(direction, item, index){
 	dmgNum2.anchor.set(0.5, 0.5);
 	dmgNum2.x = 60;
 	dmgNum2.y = -60;
-
 	let dmgNum3 = new Text("32", dmgNumStyle);
 	dmgNum3.anchor.set(0.5, 0.5);
 	dmgNum3.y = -120;
+	let dmgNum4 = new Text("32", dmgNumStyle);
+	dmgNum4.anchor.set(0.5, 0.5);
+	dmgNum2.x = 60;
+	dmgNum4.y = -180;
+	let dmgNum5 = new Text("32", dmgNumStyle);
+	dmgNum5.anchor.set(0.5, 0.5);
+	dmgNum5.y = -240;
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
@@ -1120,6 +1126,8 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgNum);
 	dmgPopup.addChild(dmgNum2);
 	dmgPopup.addChild(dmgNum3);
+	dmgPopup.addChild(dmgNum4);
+	dmgPopup.addChild(dmgNum5);
 	dmgPopup.dmgNum = dmgNum;
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
