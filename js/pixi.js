@@ -1095,7 +1095,7 @@ function createSprite(direction, item, index){
 	dmgNum3.y = -120;
 	let dmgNum4 = new Text("32", dmgNumStyle);
 	dmgNum4.anchor.set(0.5, 0.5);
-	dmgNum2.x = 60;
+	dmgNum4.x = 60;
 	dmgNum4.y = -180;
 	let dmgNum5 = new Text("32", dmgNumStyle);
 	dmgNum5.anchor.set(0.5, 0.5);
@@ -1588,7 +1588,7 @@ function resizeDmg(roster, item, index){
 		item.dmgPopup.dmgNum.style.fontSize = 50;
 		item.dmgPopup.dmgEffective.style.fontSize = 20;
 	}else{
-		item.dmgPopup.dmgNum.style.fontSize = 60;
+		item.dmgPopup.dmgNum.style.fontSize = 50;
 		item.dmgPopup.dmgEffective.style.fontSize = 24;
 	}
 
