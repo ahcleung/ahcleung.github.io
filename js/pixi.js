@@ -1060,7 +1060,7 @@ function createSprite(direction, item, index){
 
 	const dmgNumStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
-        fontSize: 70,
+        fontSize: 50,
         fontWeight: 700,
 		fill: '#D80000',	
 		stroke: '#222222',
