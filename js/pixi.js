@@ -1617,7 +1617,7 @@ function resizeDmg(roster, item, index){
 		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
 	}
 
-	item.dmgPopup.y = app.screen.height*3/5;
+	item.dmgPopup.y = app.screen.height/2;
 }
 
 function resizeHP(roster, item, index){
