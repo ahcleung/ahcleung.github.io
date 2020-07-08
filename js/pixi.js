@@ -1088,12 +1088,12 @@ function createSprite(direction, item, index){
 
 	let dmgNum2 = new Text("25", dmgNumStyle);
 	dmgNum2.anchor.set(0.5, 0.5);
-	dmgNum2.x = 40;
-	dmgNum2.y = -100;
+	dmgNum2.x = 60;
+	dmgNum2.y = -60;
 
 	let dmgNum3 = new Text("32", dmgNumStyle);
 	dmgNum3.anchor.set(0.5, 0.5);
-	dmgNum3.y = -200;
+	dmgNum3.y = -120;
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
