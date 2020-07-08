@@ -56,7 +56,7 @@
 			"name": "Fire wall",
 			"element": 3,
 			"type": "spe",
-			"power": 20,
+			"power": 80,
 			"accuracy": 100,
 			"position": [
 				0,1,1,1
