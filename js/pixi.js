@@ -1102,7 +1102,7 @@ function createSprite(direction, item, index){
 	var dmgPopupTween = new TimelineMax({paused: true});
 	dmgPopupTween.to(dmgPopup, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
 	dmgPopupTween.fromTo(dmgPopup.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
-	
+
 	dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.9, ease:Expo.easeInOut, y: 100, alpha: 0});
 	dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.9, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2+anim1);
 
@@ -1562,13 +1562,16 @@ function resizeDmg(roster, item, index){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	// var resizeHeight = 40;
 
-	// if(app.screen.width < 860){
-	// 	resizeHeight = 20;
-	// }else if(app.screen.width < 1366){
-	// 	resizeHeight = 30;
-	// }else{
-	// 	resizeHeight = 40;
-	// }
+	if(app.screen.width < 860){
+		item.dmgPopup.dmgNum.style.fontSize = 40;
+		item.dmgPopup.dmgEffective.style.fontSize = 16;
+	}else if(app.screen.width < 1366){
+		item.dmgPopup.dmgNum.style.fontSize = 50;
+		item.dmgPopup.dmgEffective.style.fontSize = 20;
+	}else{
+		item.dmgPopup.dmgNum.style.fontSize = 70;
+		item.dmgPopup.dmgEffective.style.fontSize = 24;
+	}
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
