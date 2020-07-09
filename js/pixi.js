@@ -1145,6 +1145,10 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgNum5);
 	dmgPopup.dmgNum = dmgNum1;
 	dmgPopup.dmgNum2 = dmgNum2;
+	dmgPopup.dmgNum3 = dmgNum3;
+	dmgPopup.dmgNum4 = dmgNum4;
+	dmgPopup.dmgNum5 = dmgNum5;
+
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
 
@@ -2286,7 +2290,11 @@ function onCreatureDown(){
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.visible = false;
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.visible = false;
+					
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}
 			});
