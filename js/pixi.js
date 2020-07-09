@@ -1144,6 +1144,7 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgNum4);
 	dmgPopup.addChild(dmgNum5);
 	dmgPopup.dmgNum = dmgNum1;
+	dmgPopup.dmgNum2 = dmgNum2;
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
 
@@ -2117,7 +2118,8 @@ function onCreatureDown(){
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';						
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';	
+
 					
 					if(effectiveness == 0.25){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
@@ -2284,6 +2286,7 @@ function onCreatureDown(){
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}
 			});
