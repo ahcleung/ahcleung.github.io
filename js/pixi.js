@@ -1130,7 +1130,7 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgNum3);
 	dmgPopup.addChild(dmgNum4);
 	dmgPopup.addChild(dmgNum5);
-	dmgPopup.dmgNum = dmgNum;
+	dmgPopup.dmgNum = dmgNum1;
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
 
