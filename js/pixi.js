@@ -1120,6 +1120,18 @@ function createSprite(direction, item, index){
 	dmgPopupTween.to(dmgEffective, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0);
 	dmgPopupTween.fromTo(dmgEffective.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
+	dmgPopupTween.to(dmgNum2, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.033);
+	dmgPopupTween.fromTo(dmgNum2.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.033);
+
+	dmgPopupTween.to(dmgNum3, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.066);
+	dmgPopupTween.fromTo(dmgNum3.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.066);
+
+	dmgPopupTween.to(dmgNum4, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.1);
+	dmgPopupTween.fromTo(dmgNum4.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.1);
+
+	dmgPopupTween.to(dmgNum5, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.133);
+	dmgPopupTween.fromTo(dmgNum5.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.133);
+
 	// dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.9, ease:Expo.easeInOut, y: 100, alpha: 0});
 	// dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.9, ease:Expo.easeInOut, x: 0.5, y: 0.5}, 0.2+anim1);
 
