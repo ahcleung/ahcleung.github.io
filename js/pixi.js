@@ -2425,9 +2425,9 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].style.fill = '#ff0000';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].style.fill = '#00ff00';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].style.fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
