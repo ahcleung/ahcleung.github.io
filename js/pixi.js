@@ -2042,7 +2042,7 @@ function onCreatureDown(){
 				var dodge = 0;
 				var dodgeMod = 0;
 				var accMod = 0;
-				var multiHit = false;
+				var multiHit = true;
 				var hitNum = 1;
 				var dmgArray = [];
 				var critTracker = [0,0,0,0,0];
