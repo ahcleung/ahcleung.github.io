@@ -2148,7 +2148,6 @@ function onCreatureDown(){
 						other = true;
 					}else{						
 						dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
-						if(dmgCalc == 0)	dmgCalc = 1;
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
 						for(var i = 0; i < hitNum; i++){
@@ -2158,9 +2157,11 @@ function onCreatureDown(){
 								crit = 1.5;
 								ifCrit = true;
 								critTracker[i] = 1;
-							}							
-							dmgArray[i] = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-							deltaHP += dmgArray[i];
+							}
+							var finalDmgCalc = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							if(finalDmgCalc == 0)		finalDmgCalc = 1;
+							dmgArray[i] = finalDmgCalc;
+							deltaHP += finalDmgCalc;
 						}
 					}
 
