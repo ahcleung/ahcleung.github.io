@@ -2000,6 +2000,7 @@ function onCreatureDown(){
 				var targetedIndex = Math.abs(targeted)-1;
 				var other = false;
 				var deltaHP = 0;
+				var dmgCalc = 0;
 				var level = 0;
 				var attack = 0;
 				var defense = 0;
@@ -2112,7 +2113,7 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						other = true;
 					}else{						
-						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
 						for(var i = 0; i < hitNum; i++){
@@ -2123,7 +2124,8 @@ function onCreatureDown(){
 								ifCrit = 1;
 							}
 							critTracker[i] = 1;
-							dmgArray[i] = Math.floor(deltaHP * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							dmgArray[i] = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							deltaHP += dmgArray[i];
 						}
 					}
 
@@ -2134,7 +2136,7 @@ function onCreatureDown(){
 								totalCritDmg = totalCritDmg + (dmgArrayNum/3);
 							}
 						});
-						console.log("Critical damage: " + Math.floor(deltaHP/3));
+						console.log("Critical damage: " + Math.floor(totalCritDmg));
 					}
 
 					console.log(targeted + " takes " + deltaHP + " damage");
