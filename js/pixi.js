@@ -2042,11 +2042,11 @@ function onCreatureDown(){
 				var dodge = 0;
 				var dodgeMod = 0;
 				var accMod = 0;
-				var multiHit = true;
+				var multiHit = false;
 				var hitNum = 0;
 				var dmgArray = [];
 				var critTracker = [0,0,0,0,0];
-				var ifCrit = 0;
+				var ifCrit = false;
 				var totalCritDmg = 0;
 
 				//Get attack stat based on skill used
@@ -2148,6 +2148,7 @@ function onCreatureDown(){
 						other = true;
 					}else{						
 						dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						if(dmgCalc == 0)	dmgCalc = 1;
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
 						for(var i = 0; i < hitNum; i++){
@@ -2155,7 +2156,7 @@ function onCreatureDown(){
 							var crit = 1;
 							if(criticalChance > 5000){
 								crit = 1.5;
-								ifCrit = 1;
+								ifCrit = true;
 								critTracker[i] = 1;
 							}							
 							dmgArray[i] = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
@@ -2163,7 +2164,7 @@ function onCreatureDown(){
 						}
 					}
 
-					if(ifCrit == 1){
+					if(ifCrit){
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1){
 								totalCritDmg = totalCritDmg + (dmgArrayNum/3);
@@ -2179,6 +2180,7 @@ function onCreatureDown(){
 					}
 				}else{
 					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
+					dmgArray[0] = 0;
 					deltaHP = 0;
 				}
 
@@ -2239,7 +2241,7 @@ function onCreatureDown(){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 					
-					if(ifCrit == 1){
+					if(ifCrit){
 						heroArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
 
 						var newCritWidth = -(heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2367,7 +2369,7 @@ function onCreatureDown(){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 
-					if(ifCrit == 1){
+					if(ifCrit){
 						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
 
 						var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
