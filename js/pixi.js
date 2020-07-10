@@ -2155,8 +2155,8 @@ function onCreatureDown(){
 							if(criticalChance > 5000){
 								crit = 1.5;
 								ifCrit = 1;
-							}
-							critTracker[i] = 1;
+								critTracker[i] = 1;
+							}							
 							dmgArray[i] = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 							deltaHP += dmgArray[i];
 						}
