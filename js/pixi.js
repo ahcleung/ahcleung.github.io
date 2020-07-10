@@ -2132,9 +2132,14 @@ function onCreatureDown(){
 					// if(criticalChance > 5000){
 					// 	crit = 1.5;
 					// }
+					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+						if(tagName == "multiple"){
+							multiHit = true;
+						}
+					});
 
 					if(multiHit){
-						hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+						hitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
 						// hitNum = 5;
 					}
 
