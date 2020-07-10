@@ -1118,18 +1118,18 @@ function createSprite(direction, item, index){
   	
 	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
-	let dmgNum2 = new Text("25", dmgNumStyle1);
+	let dmgNum2 = new Text("25", dmgNumStyle2);
 	dmgNum2.anchor.set(0.5, 0.5);
 	dmgNum2.x = 50;
 	dmgNum2.y = -50;
-	let dmgNum3 = new Text("32", dmgNumStyle1);
+	let dmgNum3 = new Text("32", dmgNumStyle3);
 	dmgNum3.anchor.set(0.5, 0.5);
 	dmgNum3.y = -100;
-	let dmgNum4 = new Text("32", dmgNumStyle1);
+	let dmgNum4 = new Text("32", dmgNumStyle4);
 	dmgNum4.anchor.set(0.5, 0.5);
 	dmgNum4.x = 50;
 	dmgNum4.y = -150;
-	let dmgNum5 = new Text("32", dmgNumStyle1);
+	let dmgNum5 = new Text("32", dmgNumStyle5);
 	dmgNum5.anchor.set(0.5, 0.5);
 	dmgNum5.y = -200;
 
@@ -2299,9 +2299,9 @@ function onCreatureDown(){
 					
 					heroInterfaceHealthArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
@@ -2425,9 +2425,9 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].style.fill = '#ff0000';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].style.fill = '#00ff00';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].style.fill = '#0000ff';
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].style.fill = '#ff0000';
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].style.fill = '#00ff00';
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].style.fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
