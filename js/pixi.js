@@ -2104,7 +2104,7 @@ function onCreatureDown(){
 							// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
 							hitNum = 5;
 							for(var i = 0; i < hitNum; i++){
-								dmgArray[i] = deltaHP * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
+								dmgArray[i] = Math.floor(deltaHP * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 							}
 						}
 					}
