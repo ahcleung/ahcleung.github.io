@@ -2094,8 +2094,9 @@ function onCreatureDown(){
 						crit = 1;
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						other = true;
-					}else{
-						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+					}else{						
+						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
 					}
 
 					if(crit > 1){
@@ -2294,7 +2295,7 @@ function onCreatureDown(){
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.visible = false;
-					
+
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}
 			});
