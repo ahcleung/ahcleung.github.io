@@ -1058,7 +1058,7 @@ function createSprite(direction, item, index){
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
 
-	const dmgNumStyle = new PIXI.TextStyle({
+	const dmgNumStyle1 = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 50,
         fontWeight: 700,
@@ -1066,6 +1066,39 @@ function createSprite(direction, item, index){
 		stroke: '#222222',
    		strokeThickness: 10,
     });
+    const dmgNumStyle2 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        fontWeight: 700,
+		fill: '#D80000',	
+		stroke: '#222222',
+   		strokeThickness: 10,
+    });
+    const dmgNumStyle3 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        fontWeight: 700,
+		fill: '#D80000',	
+		stroke: '#222222',
+   		strokeThickness: 10,
+    });
+    const dmgNumStyle4 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        fontWeight: 700,
+		fill: '#D80000',	
+		stroke: '#222222',
+   		strokeThickness: 10,
+    });
+    const dmgNumStyle5 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        fontWeight: 700,
+		fill: '#D80000',	
+		stroke: '#222222',
+   		strokeThickness: 10,
+    });
+
     const dmgEffectiveStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 24,
@@ -1083,20 +1116,20 @@ function createSprite(direction, item, index){
   //  		strokeThickness: 5,
   //   });
   	
-	let dmgNum1 = new Text("50", dmgNumStyle);
+	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
-	let dmgNum2 = new Text("25", dmgNumStyle);
+	let dmgNum2 = new Text("25", dmgNumStyle2);
 	dmgNum2.anchor.set(0.5, 0.5);
 	dmgNum2.x = 50;
 	dmgNum2.y = -50;
-	let dmgNum3 = new Text("32", dmgNumStyle);
+	let dmgNum3 = new Text("32", dmgNumStyle3);
 	dmgNum3.anchor.set(0.5, 0.5);
 	dmgNum3.y = -100;
-	let dmgNum4 = new Text("32", dmgNumStyle);
+	let dmgNum4 = new Text("32", dmgNumStyle4);
 	dmgNum4.anchor.set(0.5, 0.5);
 	dmgNum4.x = 50;
 	dmgNum4.y = -150;
-	let dmgNum5 = new Text("32", dmgNumStyle);
+	let dmgNum5 = new Text("32", dmgNumStyle5);
 	dmgNum5.anchor.set(0.5, 0.5);
 	dmgNum5.y = -200;
 
