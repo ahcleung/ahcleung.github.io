@@ -2089,6 +2089,11 @@ function onCreatureDown(){
 						crit = 1.5;
 					}
 
+					if(multiHit){
+						// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+						hitNum = 5;
+					}
+
 					//Calculate heal amount or damage amount
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
@@ -2098,14 +2103,16 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						other = true;
 					}else{						
-						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
-						if(multiHit){
-							// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
-							hitNum = 5;
-							for(var i = 0; i < hitNum; i++){
-								dmgArray[i] = Math.floor(deltaHP * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+						for(var i = 0; i < hitNum; i++){
+							var criticalChance = Math.floor(Math.random() * 10000);
+							var crit = 1;
+							if(criticalChance > 5000){
+								crit = 1.5;
 							}
+							dmgArray[i] = Math.floor(deltaHP * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 						}
 					}
 
