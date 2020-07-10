@@ -2129,7 +2129,7 @@ function onCreatureDown(){
 						}
 					}
 
-					if(crit == 1){
+					if(ifCrit == 1){
 						var totalCritDmg = 0;
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1){
@@ -2205,7 +2205,7 @@ function onCreatureDown(){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 					
-					if(crit == 1){
+					if(ifCrit == 1){
 						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
 						var newCritWidth = -(heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2331,7 +2331,7 @@ function onCreatureDown(){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 
-					if(crit == 1){
+					if(ifCrit == 1){
 						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
 						var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
