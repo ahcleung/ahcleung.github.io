@@ -2264,6 +2264,10 @@ function onCreatureDown(){
 					
 					heroInterfaceHealthArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
+
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
@@ -2386,14 +2390,13 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-					});
-
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
 
+					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+					});
 
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
