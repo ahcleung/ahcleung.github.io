@@ -2134,8 +2134,8 @@ function onCreatureDown(){
 					// }
 
 					if(multiHit){
-						// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
-						hitNum = 5;
+						hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+						// hitNum = 5;
 					}
 
 					//Calculate heal amount or damage amount
@@ -2195,6 +2195,7 @@ function onCreatureDown(){
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 						dmgNumArrayItem.style.fill = '#D80000';
 						dmgNumArrayItem.style.stroke = '#222222';
+						dmgNumArrayItem.visible = false;
 					});
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
@@ -2304,6 +2305,7 @@ function onCreatureDown(){
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
@@ -2321,6 +2323,7 @@ function onCreatureDown(){
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 						dmgNumArrayItem.style.fill = '#D80000';
 						dmgNumArrayItem.style.stroke = '#222222';
+						dmgNumArrayItem.visible = false;
 					});
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
@@ -2430,6 +2433,7 @@ function onCreatureDown(){
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].style.fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
