@@ -2001,6 +2001,9 @@ function onCreatureDown(){
 				var dodge = 0;
 				var dodgeMod = 0;
 				var accMod = 0;
+				var multiHit = true;
+				var hitNum = 0;
+				var dmgArray = [];
 
 				//Get attack stat based on skill used
 				if(selectedVita > 0){
@@ -2095,8 +2098,15 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						other = true;
 					}else{						
-						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
+						deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
+						if(multiHit){
+							// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+							hitNum = 5;
+							for(var i = 0; i < hitNum; i++){
+								dmgArray[i] = deltaHP * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
+							}
+						}
 					}
 
 					if(crit > 1){
@@ -2290,11 +2300,16 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.text = dmgArray[1];
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.text = dmgArray[2];
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.text = dmgArray[3];
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.text = dmgArray[4];
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.visible = false;
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.visible = false;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.visible = false;
 
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}
