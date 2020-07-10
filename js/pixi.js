@@ -1118,18 +1118,18 @@ function createSprite(direction, item, index){
   	
 	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
-	let dmgNum2 = new Text("25", dmgNumStyle2);
+	let dmgNum2 = new Text("25", dmgNumStyle1);
 	dmgNum2.anchor.set(0.5, 0.5);
 	dmgNum2.x = 50;
 	dmgNum2.y = -50;
-	let dmgNum3 = new Text("32", dmgNumStyle3);
+	let dmgNum3 = new Text("32", dmgNumStyle1);
 	dmgNum3.anchor.set(0.5, 0.5);
 	dmgNum3.y = -100;
-	let dmgNum4 = new Text("32", dmgNumStyle4);
+	let dmgNum4 = new Text("32", dmgNumStyle1);
 	dmgNum4.anchor.set(0.5, 0.5);
 	dmgNum4.x = 50;
 	dmgNum4.y = -150;
-	let dmgNum5 = new Text("32", dmgNumStyle5);
+	let dmgNum5 = new Text("32", dmgNumStyle1);
 	dmgNum5.anchor.set(0.5, 0.5);
 	dmgNum5.y = -200;
 
