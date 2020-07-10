@@ -1082,10 +1082,9 @@ function createSprite(direction, item, index){
 		// stroke: '#4E2600',
   //  		strokeThickness: 5,
   //   });
-
+  	
 	let dmgNum1 = new Text("50", dmgNumStyle);
 	dmgNum1.anchor.set(0.5, 0.5);
-
 	let dmgNum2 = new Text("25", dmgNumStyle);
 	dmgNum2.anchor.set(0.5, 0.5);
 	dmgNum2.x = 50;
@@ -1100,6 +1099,13 @@ function createSprite(direction, item, index){
 	let dmgNum5 = new Text("32", dmgNumStyle);
 	dmgNum5.anchor.set(0.5, 0.5);
 	dmgNum5.y = -200;
+
+	var dmgNumArray = [];
+	dmgNumArray.push(dmgNum1);
+	dmgNumArray.push(dmgNum2);
+	dmgNumArray.push(dmgNum3);
+	dmgNumArray.push(dmgNum4);
+	dmgNumArray.push(dmgNum5);
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
@@ -1143,11 +1149,12 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgNum3);
 	dmgPopup.addChild(dmgNum4);
 	dmgPopup.addChild(dmgNum5);
-	dmgPopup.dmgNum = dmgNum1;
-	dmgPopup.dmgNum2 = dmgNum2;
-	dmgPopup.dmgNum3 = dmgNum3;
-	dmgPopup.dmgNum4 = dmgNum4;
-	dmgPopup.dmgNum5 = dmgNum5;
+	dmgPopup.dmgNumArray = dmgNumArray;
+	// dmgPopup.dmgNum = dmgNum1;
+	// dmgPopup.dmgNum2 = dmgNum2;
+	// dmgPopup.dmgNum3 = dmgNum3;
+	// dmgPopup.dmgNum4 = dmgNum4;
+	// dmgPopup.dmgNum5 = dmgNum5;
 
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
@@ -2004,6 +2011,7 @@ function onCreatureDown(){
 				var multiHit = true;
 				var hitNum = 0;
 				var dmgArray = [];
+				var critTracker = [0,0,0,0,0];
 
 				//Get attack stat based on skill used
 				if(selectedVita > 0){
@@ -2112,11 +2120,18 @@ function onCreatureDown(){
 							if(criticalChance > 5000){
 								crit = 1.5;
 							}
+							critTracker[i] = 1;
 							dmgArray[i] = Math.floor(deltaHP * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 						}
 					}
 
 					if(crit > 1){
+						var totalCritDmg = 0;
+						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+							if(critTracker[dmgArrayIndex] == 1){
+								totalCritDmg = totalCritDmg + (dmgArrayNum/3);
+							}
+						});
 						console.log("Critical damage: " + Math.floor(deltaHP/3));
 					}
 
@@ -2139,30 +2154,49 @@ function onCreatureDown(){
 
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';	
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						dmgNumArrayItem.style.fill = '#D80000';
+						dmgNumArrayItem.style.stroke = '#222222';
+					});
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
 					
 					if(effectiveness == 0.25){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#9D9D9D';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
 					}else if(effectiveness == 0.5){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#FFFFFF';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
 					}else if(effectiveness == 2){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#FFE81C';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
 					}else if(effectiveness == 4){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#DB00FF';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else if(deltaHP == 0){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#D80000';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
 					}else{
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2178,13 +2212,23 @@ function onCreatureDown(){
 							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
 
 						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+							if(critTracker[dmgNumArrayIndex] == 1){
+								dmgNumArrayItem.style.fill = '#ff7b00';
+								dmgNumArrayItem.style.stroke = '#4E2600';
+							}							
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
 
 					if(skillsList.data.skills[selectedSkill].heal > 0){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#1bc617';
+							dmgNumArrayItem.style.stroke = '#052805';
+						});
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
 						var newWidth = (heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP)) - heroInterfaceHealthArray[targetedIndex].inner.width;
 
@@ -2218,7 +2262,11 @@ function onCreatureDown(){
 					
 					heroInterfaceHealthArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+					});
+
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					heroFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}else if(targeted < 0 && !other){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
@@ -2229,29 +2277,48 @@ function onCreatureDown(){
 
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						dmgNumArrayItem.style.fill = '#D80000';
+						dmgNumArrayItem.style.stroke = '#222222';
+					});
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
 					if(effectiveness == 0.25){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#9D9D9D';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
 					}else if(effectiveness == 0.5){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#FFFFFF';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
 					}else if(effectiveness == 2){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#FFE81C';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
 					}else if(effectiveness == 4){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#DB00FF';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
 					}else if(deltaHP == 0){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#D80000';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					}else{
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
@@ -2267,13 +2334,23 @@ function onCreatureDown(){
 							}, {delay:2, ease:Expo.easeIn, width:newCritWidth});
 
 						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+							if(critTracker[dmgNumArrayIndex] == 1){
+								dmgNumArrayItem.style.fill = '#ff7b00';
+								dmgNumArrayItem.style.stroke = '#4E2600';
+							}							
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
 					}
 
 					if(skillsList.data.skills[selectedSkill].heal > 0){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+							dmgNumArrayItem.style.fill = '#1bc617';
+							dmgNumArrayItem.style.stroke = '#052805';
+						});
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
 						var newWidth = (enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyInterfaceHealthArray[targetedIndex].inner.width;
 
@@ -2307,12 +2384,16 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
+					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+					});
+
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.text = dmgArray[1];
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.text = dmgArray[2];
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.text = dmgArray[3];
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.text = dmgArray[4];
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.text = dmgArray[1];
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.text = dmgArray[2];
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.text = dmgArray[3];
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.text = dmgArray[4];
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.visible = false;
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.visible = false;
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
