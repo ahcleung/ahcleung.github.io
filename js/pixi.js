@@ -2390,6 +2390,11 @@ function onCreatureDown(){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].fill = '#00ff00';
+					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
+
+
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.text = dmgArray[1];
