@@ -2047,6 +2047,7 @@ function onCreatureDown(){
 				var dmgArray = [];
 				var critTracker = [0,0,0,0,0];
 				var ifCrit = 0;
+				var totalCritDmg = 0;
 
 				//Get attack stat based on skill used
 				if(selectedVita > 0){
@@ -2163,7 +2164,6 @@ function onCreatureDown(){
 					}
 
 					if(ifCrit == 1){
-						var totalCritDmg = 0;
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1){
 								totalCritDmg = totalCritDmg + (dmgArrayNum/3);
@@ -2239,7 +2239,7 @@ function onCreatureDown(){
 					}
 					
 					if(ifCrit == 1){
-						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
+						heroArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
 
 						var newCritWidth = -(heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
 
@@ -2365,7 +2365,7 @@ function onCreatureDown(){
 					}
 
 					if(ifCrit == 1){
-						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
+						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
 
 						var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
