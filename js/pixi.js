@@ -2012,6 +2012,7 @@ function onCreatureDown(){
 				var hitNum = 0;
 				var dmgArray = [];
 				var critTracker = [0,0,0,0,0];
+				var ifCrit = 0;
 
 				//Get attack stat based on skill used
 				if(selectedVita > 0){
@@ -2091,11 +2092,11 @@ function onCreatureDown(){
 					});
 
 					//Critical hit chance
-					var criticalChance = Math.floor(Math.random() * 10000);
-					var crit = 1;
-					if(criticalChance > 5000){
-						crit = 1.5;
-					}
+					// var criticalChance = Math.floor(Math.random() * 10000);
+					// var crit = 1;
+					// if(criticalChance > 5000){
+					// 	crit = 1.5;
+					// }
 
 					if(multiHit){
 						// hitNum = Math.floor(Math.random() * (5 - 2 + 1) + 2);
@@ -2119,13 +2120,14 @@ function onCreatureDown(){
 							var crit = 1;
 							if(criticalChance > 5000){
 								crit = 1.5;
+								ifCrit = 1;
 							}
 							critTracker[i] = 1;
 							dmgArray[i] = Math.floor(deltaHP * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 						}
 					}
 
-					if(crit > 1){
+					if(crit == 1){
 						var totalCritDmg = 0;
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1){
@@ -2201,7 +2203,7 @@ function onCreatureDown(){
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 					
-					if(crit > 1){
+					if(crit == 1){
 						heroArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
 						var newCritWidth = -(heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].critDmg/heroArray[targetedIndex].overallHP));
@@ -2323,7 +2325,7 @@ function onCreatureDown(){
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
 					}
 
-					if(crit > 1){
+					if(crit == 1){
 						enemyArray[targetedIndex].criticalHit(Math.floor(deltaHP/3));
 
 						var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
