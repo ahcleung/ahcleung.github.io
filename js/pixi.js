@@ -1170,7 +1170,7 @@ function createSprite(direction, item, index){
 
 	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
 	statusImage1.anchor.set(0.5,0.5);
-	statusImage1.y = -50;
+	statusImage1.y = -40;
 	statusImage1.scale.set(0.4);
 	dmgStatus.addChild(statusImage1);
 
@@ -1182,7 +1182,7 @@ function createSprite(direction, item, index){
 	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
 	statusImage2.anchor.set(0.5,0.5);
 	statusImage2.scale.set(0.4);
-	statusImage2.y = -150;
+	statusImage2.y = -140;
 	dmgStatus.addChild(statusImage2);
 
 	let statusText3 = new Text ("Stunned", statusStyle3);
@@ -1193,7 +1193,7 @@ function createSprite(direction, item, index){
 	let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
 	statusImage3.anchor.set(0.5,0.5);
 	statusImage3.scale.set(0.4);
-	statusImage3.y = -250;
+	statusImage3.y = -240;
 	dmgStatus.addChild(statusImage3);
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
