@@ -1125,6 +1125,14 @@ function createSprite(direction, item, index){
 		stroke: '#0666FF',
    		strokeThickness: 5,
     });
+    const statusStyle3 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 24,
+        fontWeight: 700,
+		fill: '#F9EFD2',	
+		stroke: '#E6C04B',
+   		strokeThickness: 5,
+    });
   	
 	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
@@ -1163,7 +1171,7 @@ function createSprite(direction, item, index){
 	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
 	statusImage1.anchor.set(0.5,0.5);
 	statusImage1.y = -50;
-	statusImage1.scale.set(0.5);
+	statusImage1.scale.set(0.4);
 	dmgStatus.addChild(statusImage1);
 
 	let statusText2 = new Text ("Debuff", statusStyle2);
@@ -1173,9 +1181,20 @@ function createSprite(direction, item, index){
 
 	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
 	statusImage2.anchor.set(0.5,0.5);
-	statusImage2.scale.set(0.5);
+	statusImage2.scale.set(0.4);
 	statusImage2.y = -150;
 	dmgStatus.addChild(statusImage2);
+
+	let statusText3 = new Text ("Stunned", statusStyle3);
+	statusText3.anchor.set(0.5,0.5);
+	statusText3.y = -200;
+	dmgStatus.addChild(statusText3);
+
+	let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
+	statusImage3.anchor.set(0.5,0.5);
+	statusImage3.scale.set(0.4);
+	statusImage3.y = -250;
+	dmgStatus.addChild(statusImage3);
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
