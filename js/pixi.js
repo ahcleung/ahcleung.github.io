@@ -1747,7 +1747,7 @@ function resizeDmg(roster, item, index){
 	}
 
 	item.dmgPopup.y = app.screen.height/3;
-	item.dmgStatus.y = app.screen.height/2;
+	item.dmgStatus.y = app.screen.height*3/5;
 }
 
 function resizeHP(roster, item, index){
