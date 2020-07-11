@@ -1057,6 +1057,7 @@ function createSprite(direction, item, index){
 	
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
+	const dmgStatus = new PIXI.Container();
 
 	const dmgNumStyle1 = new PIXI.TextStyle({
         fontFamily: 'Arvo',
@@ -1107,14 +1108,23 @@ function createSprite(direction, item, index){
 		stroke: '#222222',
    		strokeThickness: 5,
     });
-  //   const dmgCritStyle = new PIXI.TextStyle({
-  //       fontFamily: 'Arvo',
-  //       fontSize: 24,
-  //       fontWeight: 700,
-		// fill: '#ff7b00',	
-		// stroke: '#4E2600',
-  //  		strokeThickness: 5,
-  //   });
+
+    const statusStyle1 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 24,
+        fontWeight: 700,
+		fill: '#FFDEBF',	
+		stroke: '#FF7B00',
+   		strokeThickness: 5,
+    });
+    const statusStyle2 = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 24,
+        fontWeight: 700,
+		fill: '#C1D9FF',	
+		stroke: '#0666FF',
+   		strokeThickness: 5,
+    });
   	
 	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
@@ -1145,6 +1155,10 @@ function createSprite(direction, item, index){
 	dmgEffective.y = 50;
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
+
+	let skillEffect1 = new Text ("Critical", statusStyle1);
+	skillEffect1.anchor.set(0.5,0.5);
+	dmgStatus.addChild(skillEffect1);
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
@@ -1188,6 +1202,9 @@ function createSprite(direction, item, index){
 	// dmgPopup.dmgNum3 = dmgNum3;
 	// dmgPopup.dmgNum4 = dmgNum4;
 	// dmgPopup.dmgNum5 = dmgNum5;
+
+	dmgContainer.addChild(dmgStatus);
+	dmgContainer.dmgStatus = dmgStatus;
 
 	dmgContainer.addChild(dmgPopup);
 	dmgContainer.dmgPopup = dmgPopup;
@@ -1645,19 +1662,23 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgNum.style.fontSize = 40;
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
+		item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
+		item.dmgStatus.scale.set(0.6,0.6);
 		// item.dmgPopup.dmgNum.style.fontSize = 45;
 		// item.dmgPopup.dmgEffective.style.fontSize = 20;
 	}else if(app.screen.width < 1500){
 		// item.dmgPopup.dmgNum.style.fontSize = 50;
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(0.75,0.75);
+		item.dmgStatus.scale.set(0.75,0.75);
 	}
 	else{
 		// item.dmgPopup.dmgNum.style.fontSize = 50;
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
+		item.dmgStatus.scale.set(1,1);
 	}
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
@@ -1668,9 +1689,11 @@ function resizeDmg(roster, item, index){
 // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
 		if(heroArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
 			switcher = 1;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
+			item.dmgStatus.x = resizeWidth/2;
 		}
 
 		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
@@ -1678,14 +1701,17 @@ function resizeDmg(roster, item, index){
 	}else{
 		if(enemyArray[index].size > 1){
 			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
+			item.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
 		}else{
 			item.dmgPopup.x = resizeWidth/2;
+			item.dmgStatus.x = resizeWidth/2;
 		}
 
 		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
 	}
 
 	item.dmgPopup.y = app.screen.height/3;
+	item.dmgStatus.y = app.screen.height/3;
 }
 
 function resizeHP(roster, item, index){
@@ -2432,25 +2458,12 @@ function onCreatureDown(){
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].style.fill = '#ff0000';
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[1].style.fill = '#00ff00';
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].style.fill = '#0000ff';
-
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
 						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = dmgArray[0];
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.text = dmgArray[1];
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.text = dmgArray[2];
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.text = dmgArray[3];
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.text = dmgArray[4];
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum2.visible = false;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum3.visible = false;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum4.visible = false;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum5.visible = false;
 
 					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 				}
