@@ -2251,7 +2251,7 @@ function onCreatureDown(){
 						TweenMax.fromTo(heroInterfaceHealthArray[targetedIndex].critDmgBar
 							, 1, {
 								width: heroInterfaceHealthArray[targetedIndex].critDmgBar.width
-							}, {delay:0.5, ease:Expo.easeIn, width:newCritWidth});
+							}, {delay: 2, ease:Expo.easeIn, width:newCritWidth});
 
 						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
 						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
@@ -2281,7 +2281,7 @@ function onCreatureDown(){
 							heroInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
 						}});
 						tween.fromTo(heroInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-							, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+							, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 								heroInterfaceHealthArray[targetedIndex].inner.width = heroInterfaceHealthArray[targetedIndex].outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
 							}});
 						tween.to(heroInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
@@ -2294,7 +2294,7 @@ function onCreatureDown(){
 						TweenMax.fromTo(heroInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
 							, 1, {
 								width: newWidth
-							}, {delay:0.5, ease:Expo.easeIn, width:0, onComplete: function(){
+							}, {delay: 2, ease:Expo.easeIn, width:0, onComplete: function(){
 							heroInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
 						}});
 
@@ -2377,7 +2377,7 @@ function onCreatureDown(){
 						var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
 						TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].critDmgBar
-							, 0.5, {
+							, 1, {
 								width: enemyInterfaceHealthArray[targetedIndex].critDmgBar.width
 							}, {delay:2, ease:Expo.easeIn, width:newCritWidth});
 
@@ -2409,7 +2409,7 @@ function onCreatureDown(){
 							enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
 						}});
 						tween.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-							, 0.5, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+							, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 								enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
 							}});
 						tween.to(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
@@ -2420,7 +2420,7 @@ function onCreatureDown(){
 						enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
 						enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
 						TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-							, 0.5, {
+							, 1, {
 								width: newWidth
 							}, {delay:2, ease:Expo.easeIn, width:0, onComplete: function(){
 							enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
