@@ -1162,18 +1162,19 @@ function createSprite(direction, item, index){
 
 	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
 	statusImage1.anchor.set(0.5,0.5);
+	statusImage1.y = -50;
 	statusImage1.scale.set(0.5);
 	dmgStatus.addChild(statusImage1);
 
-	let statusText2 = new Text ("Debuff", statusStyle1);
+	let statusText2 = new Text ("Debuff", statusStyle2);
 	statusText2.anchor.set(0.5,0.5);
-	statusText2.y = 50;
+	statusText2.y = -100;
 	dmgStatus.addChild(statusText2);
 
 	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
 	statusImage2.anchor.set(0.5,0.5);
 	statusImage2.scale.set(0.5);
-	statusImage2.y = 50;
+	statusImage2.y = -150;
 	dmgStatus.addChild(statusImage2);
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
