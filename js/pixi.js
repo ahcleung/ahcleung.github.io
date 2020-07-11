@@ -1156,9 +1156,23 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
 
-	let skillEffect1 = new Text ("Critical", statusStyle1);
-	skillEffect1.anchor.set(0.5,0.5);
-	dmgStatus.addChild(skillEffect1);
+	let statusText1 = new Text ("Critical", statusStyle1);
+	statusText1.anchor.set(0.5,0.5);
+	dmgStatus.addChild(statusText1);
+
+	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
+	statusImage1.anchor.set(0.5,0.5);
+	dmgStatus.addChild(statusImage1);
+
+	let statusText2 = new Text ("Debuff", statusStyle1);
+	statusText2.anchor.set(0.5,0.5);
+	statusText2.y = 50;
+	dmgStatus.addChild(statusText2);
+
+	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
+	statusImage2.anchor.set(0.5,0.5);
+	statusImage2.y = 50;
+	dmgStatus.addChild(statusImage2);
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
