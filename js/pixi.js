@@ -2042,7 +2042,7 @@ function onCreatureDown(){
 				var dodge = 0;
 				var dodgeMod = 0;
 				var accMod = 0;
-				var multiHit = true;
+				var multiHit = false;
 				var hitNum = 1;
 				var dmgArray = [];
 				var critTracker = [0,0,0,0,0];
@@ -2133,9 +2133,7 @@ function onCreatureDown(){
 					// 	crit = 1.5;
 					// }
 					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-						if(tagName == "multiple"){
-							multiHit = true;
-						}
+						if(tagName == "multiple")		multiHit = true;
 					});
 
 					if(multiHit){
@@ -2172,9 +2170,7 @@ function onCreatureDown(){
 
 					if(ifCrit){
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							if(critTracker[dmgArrayIndex] == 1){
-								totalCritDmg = totalCritDmg + (dmgArrayNum/3);
-							}
+							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
 						});
 						console.log("Critical damage: " + Math.floor(totalCritDmg));
 					}
