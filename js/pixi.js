@@ -3152,12 +3152,16 @@ function animateBattle(attacker, defender){
 			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}else{
+		var originalX = actionEnemy[Math.abs(attacker)-1].x;
+		TweenMax.to(actionEnemy[Math.abs(attacker)-1], 0.25, {x:0});
+
 		actionEnemy[Math.abs(attacker)-1].pAtkTween.play(0);
 		actionEnemy[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
 			// spriteHolder.filters = [blurFilter2];
+			actionEnemy[Math.abs(attacker)-1].x = originalX;
 			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}
