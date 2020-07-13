@@ -68,7 +68,7 @@
 				"multiple", "status", "turns"
 			],
 			"multiple": [2,5],
-			"status": 2,
+			"status": 3,
 			"hazard": [10,"between"],
 			"turns": 5,
 			"splash": 0,
