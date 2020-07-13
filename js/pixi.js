@@ -1737,18 +1737,12 @@ function resizeDmg(roster, item, index){
 	var statusSpacer2 = 100;
 	var statusStrokeSize = 5;
 	if(app.screen.width < 860){
-		// item.dmgPopup.dmgNum.style.fontSize = 40;
-		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
 		statusFontSize = 14;
 		statusSpacer1 = 20;
 		statusSpacer2 = 40;
 		statusStrokeSize = 3;
-		// item.dmgStatus.statusText1.style.fontSize = 14;
-		// item.dmgStatus.statusText2.style.fontSize = 14;
-		// item.dmgStatus.statusText3.style.fontSize = 14;
-		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
@@ -1756,31 +1750,16 @@ function resizeDmg(roster, item, index){
 		statusSpacer1 = 30;
 		statusSpacer2 = 80;
 		statusStrokeSize = 4;
-		// item.dmgStatus.statusText1.style.fontSize = 20;
-		// item.dmgStatus.statusText2.style.fontSize = 20;
-		// item.dmgStatus.statusText3.style.fontSize = 20;
-		// item.dmgStatus.scale.set(0.6,0.6);
-		// item.dmgPopup.dmgNum.style.fontSize = 45;
-		// item.dmgPopup.dmgEffective.style.fontSize = 20;
 	}else if(app.screen.width < 1500){
-		// item.dmgPopup.dmgNum.style.fontSize = 50;
-		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(0.75,0.75);
-		// item.dmgStatus.scale.set(0.75,0.75);
 	}
 	else{
-		// item.dmgPopup.dmgNum.style.fontSize = 50;
-		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
 		statusFontSize = 24;
 		statusSpacer1 = 40;
 		statusSpacer2 = 100;
 		statusStrokeSize = 5;
-		// item.dmgStatus.statusText1.style.fontSize = 24;
-		// item.dmgStatus.statusText2.style.fontSize = 24;
-		// item.dmgStatus.statusText3.style.fontSize = 24;
-		// item.dmgStatus.scale.set(1,1);
 	}
 
 	item.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
@@ -1794,15 +1773,6 @@ function resizeDmg(roster, item, index){
 		statusText.style.strokeThickness = statusStrokeSize;
 		statusText.y = -(arrayIndex*statusSpacer2);
 	});
-	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
-	// item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
-	// item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
-	// item.dmgStatus.statusImage2.height = item.dmgStatus.statusImage2.width;
-	// item.dmgStatus.statusImage3.width = (resizeWidth - (statusSpacing * 5))/4;
-	// item.dmgStatus.statusImage3.height = item.dmgStatus.statusImage2.width;
-
-	// item.dmgBarContainer.dmgBar.height = resizeHeight;
-	// item.critDmgBar.height = resizeHeight;
 
 	if(roster == 0){
 		var switcher = 0;
@@ -3405,6 +3375,8 @@ function onAdditionalItemDown(){
 	console.log("Additional Item");
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
+
+	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].setTexture(resources.status_buff.texture);
 }
 
 function onAdditionalSkipDown(){
