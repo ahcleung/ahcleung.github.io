@@ -2421,12 +2421,14 @@ function onCreatureDown(){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
 							heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 							heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							let newStatusEffect;
 							switch(statusNumber){
 								case 1:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
+									newStatusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 									break;
 								case 2:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
@@ -2512,11 +2514,14 @@ function onCreatureDown(){
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';	
 							}
+							heroInterfaceHealthArray[targetedIndex].addChild(statusEffect);
+							heroArray[targetedIndex].statusArray.statusSpriteArray.push(statusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
+
 						});
 					}
 					
-					console.log("Hero status: " + heroArray[targetedIndex].statusArray);
+					// console.log("Hero status: " + heroArray[targetedIndex].statusArray);
 
 					heroInterfaceHealthArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
@@ -2654,17 +2659,19 @@ function onCreatureDown(){
 					}
 
 					console.log("Enemy status: " + enemyArray[targetedIndex].statusArray);
-					
+
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							let newStatusEffect;
 							switch(statusNumber){
 								case 1:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
+									newStatusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 									break;
 								case 2:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
@@ -2749,9 +2756,11 @@ function onCreatureDown(){
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									
 							}
+							enemyInterfaceHealthArray[targetedIndex].addChild(statusEffect);
+							enemyArray[targetedIndex].statusArray.statusSpriteArray.push(statusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
+							// enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
 					}
 
