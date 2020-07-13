@@ -1698,24 +1698,28 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgNum.style.fontSize = 40;
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
-		item.dmgStatus.scale.set(0.4,0.4);
+		
+		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
-		item.dmgStatus.scale.set(0.6,0.6);
+		// item.dmgStatus.scale.set(0.6,0.6);
 		// item.dmgPopup.dmgNum.style.fontSize = 45;
 		// item.dmgPopup.dmgEffective.style.fontSize = 20;
 	}else if(app.screen.width < 1500){
 		// item.dmgPopup.dmgNum.style.fontSize = 50;
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(0.75,0.75);
-		item.dmgStatus.scale.set(0.75,0.75);
+		// item.dmgStatus.scale.set(0.75,0.75);
 	}
 	else{
 		// item.dmgPopup.dmgNum.style.fontSize = 50;
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
-		item.dmgStatus.scale.set(1,1);
+		// item.dmgStatus.scale.set(1,1);
 	}
+
+	item.dmgStatus.width = (resizeWidth - (statusSpacing * 5))/4;
+	item.dmgStatus.height = item.dmgStatus.width;
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
