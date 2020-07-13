@@ -1720,7 +1720,7 @@ function resizeDmg(roster, item, index){
 		statusFontSize = 20;
 		statusSpacer1 = 30;
 		statusSpacer2 = 80;
-		statusStrokeSize = 4;
+		statusStrokeSize = 3;
 	}else if(app.screen.width < 1500){
 		item.dmgPopup.scale.set(0.75,0.75);
 	}
@@ -1730,7 +1730,7 @@ function resizeDmg(roster, item, index){
 		statusFontSize = 24;
 		statusSpacer1 = 40;
 		statusSpacer2 = 100;
-		statusStrokeSize = 5;
+		statusStrokeSize = 4;
 	}
 
 	item.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
