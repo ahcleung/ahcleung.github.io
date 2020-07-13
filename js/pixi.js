@@ -1767,6 +1767,10 @@ function resizeDmg(roster, item, index){
 		// item.dmgStatus.scale.set(1,1);
 	}
 
+	item.dmgStatus.statusImageArray.forEach(statusImage=>{
+		statusImage.width = (resizeWidth - (statusSpacing * 5))/4;
+		statusImage.height = statusImage.width;
+	});
 	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
 	// item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
 	// item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
