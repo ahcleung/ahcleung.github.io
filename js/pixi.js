@@ -2514,8 +2514,8 @@ function onCreatureDown(){
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';	
 							}
-							heroInterfaceHealthArray[targetedIndex].addChild(statusEffect);
-							heroArray[targetedIndex].statusArray.statusSpriteArray.push(statusEffect);
+							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
+							heroArray[targetedIndex].statusArray.statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
 
 						});
@@ -2758,7 +2758,7 @@ function onCreatureDown(){
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
 							}
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
-							enemyArray[targetedIndex].statusArray.statusSpriteArray.push(statusNumber);
+							enemyArray[targetedIndex].statusArray.statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
 							// enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
