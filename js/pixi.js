@@ -2758,7 +2758,7 @@ function onCreatureDown(){
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
 							}
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
-							enemyArray[targetedIndex].statusArray.statusSpriteArray.push(newStatusEffect);
+							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
 							// enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
