@@ -1167,6 +1167,7 @@ function createSprite(direction, item, index){
 	let statusText1 = new Text ("Critical", statusStyle1);
 	statusText1.anchor.set(0.5,0.5);
 	dmgStatus.addChild(statusText1);
+	dmgStatus.statusText1 = statusText1;
 
 	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
 	statusImage1.anchor.set(0.5,0.5);
@@ -1179,6 +1180,7 @@ function createSprite(direction, item, index){
 	statusText2.anchor.set(0.5,0.5);
 	statusText2.y = -100;
 	dmgStatus.addChild(statusText2);
+	dmgStatus.statusText2 = statusText2;
 
 	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
 	statusImage2.anchor.set(0.5,0.5);
@@ -1191,6 +1193,7 @@ function createSprite(direction, item, index){
 	statusText3.anchor.set(0.5,0.5);
 	statusText3.y = -200;
 	dmgStatus.addChild(statusText3);
+	dmgStatus.statusText3 = statusText3;
 
 	let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
 	statusImage3.anchor.set(0.5,0.5);
@@ -1702,11 +1705,12 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
-		
+		item.dmgStatus.statusText1.style.fontSize = 14;
 		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
+		item.dmgStatus.statusText1.style.fontSize = 20;
 		// item.dmgStatus.scale.set(0.6,0.6);
 		// item.dmgPopup.dmgNum.style.fontSize = 45;
 		// item.dmgPopup.dmgEffective.style.fontSize = 20;
@@ -1721,6 +1725,7 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
+		item.dmgStatus.statusText1.style.fontSize = 24;
 		// item.dmgStatus.scale.set(1,1);
 	}
 
