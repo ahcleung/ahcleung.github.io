@@ -65,10 +65,10 @@
 				1,1,1,1
 			],
 			"tags":[
-				"multiple", "hazard", "turns"
+				"multiple", "status", "turns"
 			],
 			"multiple": [2,5],
-			"status": 0,
+			"status": 1,
 			"hazard": [10,"between"],
 			"turns": 5,
 			"splash": 0,
