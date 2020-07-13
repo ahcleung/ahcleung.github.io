@@ -2510,12 +2510,14 @@ function onCreatureDown(){
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									
+									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';	
 							}
+							heroArray[targetedIndex].statusArray.push(statusNumber);
 						});
 					}
 					
+					console.log("Hero status: " + heroArray[targetedIndex].statusArray);
+
 					heroInterfaceHealthArray[targetedIndex].textHP.text = heroArray[targetedIndex].hp + " / " + heroArray[targetedIndex].EHP;
 
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[0].fill = '#ff0000';
@@ -2747,8 +2749,11 @@ function onCreatureDown(){
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
 									
 							}
+							enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
 					}
+
+					console.log("Enemy status: " + enemyArray[targetedIndex].statusArray);
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
