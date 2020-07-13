@@ -2309,6 +2309,13 @@ function onCreatureDown(){
 						dmgNumArrayItem.style.stroke = '#222222';
 						dmgNumArrayItem.visible = false;
 					});
+
+					heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+						dmgStatusImageItem.visible = false;
+					});
+					heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+						dmgStatusTextItem.visible = false;
+					});
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
 					
@@ -2412,6 +2419,8 @@ function onCreatureDown(){
 
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
+							heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							switch(statusNumber){
 								case 1:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
@@ -2534,6 +2543,13 @@ function onCreatureDown(){
 						dmgNumArrayItem.style.stroke = '#222222';
 						dmgNumArrayItem.visible = false;
 					});
+
+					enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+						dmgStatusImageItem.visible = false;
+					});
+					enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+						dmgStatusTextItem.visible = false;
+					});
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
@@ -2637,6 +2653,8 @@ function onCreatureDown(){
 
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
+							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							switch(statusNumber){
 								case 1:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
