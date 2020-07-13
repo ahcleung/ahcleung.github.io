@@ -1779,15 +1779,15 @@ function resizeDmg(roster, item, index){
 		// item.dmgStatus.scale.set(1,1);
 	}
 
-	item.dmgStatus.statusImageArray.forEach(statusImage=>{
+	item.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
 		statusImage.width = (resizeWidth - (statusSpacing * 5))/4;
 		statusImage.height = statusImage.width;
-		statusImage.y = -(statusSpacer1 + (i*statusSpacer2));
+		statusImage.y = -(statusSpacer1 + (arrayIndex*statusSpacer2));
 	});
 
-	item.dmgStatus.statusTextArray.forEach(statusText=>{
+	item.dmgStatus.statusTextArray.forEach((statusText,arrayIndex)=>{
 		statusText.style.fontSize = statusFontSize;
-		statusText.y = -(i*statusSpacer2);
+		statusText.y = -(arrayIndex*statusSpacer2);
 	});
 	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
 	// item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
