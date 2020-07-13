@@ -2653,6 +2653,8 @@ function onCreatureDown(){
 						enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);					
 					}
 
+					console.log("Enemy status: " + enemyArray[targetedIndex].statusArray);
+					
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
