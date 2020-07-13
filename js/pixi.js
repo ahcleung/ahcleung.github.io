@@ -3280,6 +3280,8 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
+	// enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].setTexture(resources.status_buff.texture);
+	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].visible = false;
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
@@ -3375,8 +3377,6 @@ function onAdditionalItemDown(){
 	console.log("Additional Item");
 	onScreenStats.visible = true;
 	consoleScreen.visible = true;
-
-	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].setTexture(resources.status_buff.texture);
 }
 
 function onAdditionalSkipDown(){
