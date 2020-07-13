@@ -1173,6 +1173,7 @@ function createSprite(direction, item, index){
 	statusImage1.y = -40;
 	statusImage1.scale.set(0.4);
 	dmgStatus.addChild(statusImage1);
+	dmgStatus.statusImage1 = statusImage1;
 
 	let statusText2 = new Text ("Debuff", statusStyle2);
 	statusText2.anchor.set(0.5,0.5);
@@ -1184,6 +1185,7 @@ function createSprite(direction, item, index){
 	statusImage2.scale.set(0.4);
 	statusImage2.y = -140;
 	dmgStatus.addChild(statusImage2);
+	dmgStatus.statusImage2 = statusImage2;
 
 	let statusText3 = new Text ("Stunned", statusStyle3);
 	statusText3.anchor.set(0.5,0.5);
@@ -1195,6 +1197,7 @@ function createSprite(direction, item, index){
 	statusImage3.scale.set(0.4);
 	statusImage3.y = -240;
 	dmgStatus.addChild(statusImage3);
+	dmgStatus.statusImage3 = statusImage3;
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
@@ -1721,8 +1724,12 @@ function resizeDmg(roster, item, index){
 		// item.dmgStatus.scale.set(1,1);
 	}
 
-	item.dmgStatus.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
+	item.dmgStatus.statusImage1.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
+	item.dmgStatus.statusImage2.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage3.width = (resizeWidth - (statusSpacing * 5))/4;
+	item.dmgStatus.statusImage3.height = item.dmgStatus.width;
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
