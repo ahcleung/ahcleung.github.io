@@ -1164,43 +1164,75 @@ function createSprite(direction, item, index){
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
 
-	let statusText1 = new Text ("Critical", statusStyle1);
-	statusText1.anchor.set(0.5,0.5);
-	dmgStatus.addChild(statusText1);
-	dmgStatus.statusText1 = statusText1;
+	var statusTextArray = [];
+	var statusImageArray = [];
 
-	let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
-	statusImage1.anchor.set(0.5,0.5);
-	statusImage1.y = -40;
-	statusImage1.scale.set(0.4);
-	dmgStatus.addChild(statusImage1);
-	dmgStatus.statusImage1 = statusImage1;
+	for(var i = 0; i < 3; i++){
+		const statusStyle = new PIXI.TextStyle({
+	        fontFamily: 'Arvo',
+	        fontSize: 24,
+	        fontWeight: 700,
+			fill: '#F9EFD2',	
+			stroke: '#E6C04B',
+	   		strokeThickness: 5,
+	    });
 
-	let statusText2 = new Text ("Debuff", statusStyle2);
-	statusText2.anchor.set(0.5,0.5);
-	statusText2.y = -100;
-	dmgStatus.addChild(statusText2);
-	dmgStatus.statusText2 = statusText2;
+	    let statusText = new Text ("Critical" + i, statusStyle);
+		statusText.anchor.set(0.5,0.5);
+		statusText.y = i*100;
+		dmgStatus.addChild(statusText);
+		// dmgStatus.statusText = statusText;
+		statusTextArray.push(statusText);
 
-	let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
-	statusImage2.anchor.set(0.5,0.5);
-	statusImage2.scale.set(0.4);
-	statusImage2.y = -140;
-	dmgStatus.addChild(statusImage2);
-	dmgStatus.statusImage2 = statusImage2;
+		let statusImage = new PIXI.Sprite(resources.status_critical.texture);
+		statusImage.anchor.set(0.5,0.5);
+		statusImage.y = -40 + (i*100);
+		statusImage.scale.set(0.4);
+		dmgStatus.addChild(statusImage);
+		statusImageArray.push(statusImage);
+		// dmgStatus.statusImage = statusImage;
+	}
 
-	let statusText3 = new Text ("Stunned", statusStyle3);
-	statusText3.anchor.set(0.5,0.5);
-	statusText3.y = -200;
-	dmgStatus.addChild(statusText3);
-	dmgStatus.statusText3 = statusText3;
+	dmgStatus.statusTextArray = statusTextArray;
+	dmgStatus.statusImageArray = statusImageArray;
 
-	let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
-	statusImage3.anchor.set(0.5,0.5);
-	statusImage3.scale.set(0.4);
-	statusImage3.y = -240;
-	dmgStatus.addChild(statusImage3);
-	dmgStatus.statusImage3 = statusImage3;
+	// let statusText1 = new Text ("Critical", statusStyle1);
+	// statusText1.anchor.set(0.5,0.5);
+	// dmgStatus.addChild(statusText1);
+	// dmgStatus.statusText1 = statusText1;
+
+	// let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
+	// statusImage1.anchor.set(0.5,0.5);
+	// statusImage1.y = -40;
+	// statusImage1.scale.set(0.4);
+	// dmgStatus.addChild(statusImage1);
+	// dmgStatus.statusImage1 = statusImage1;
+
+	// let statusText2 = new Text ("Debuff", statusStyle2);
+	// statusText2.anchor.set(0.5,0.5);
+	// statusText2.y = -100;
+	// dmgStatus.addChild(statusText2);
+	// dmgStatus.statusText2 = statusText2;
+
+	// let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
+	// statusImage2.anchor.set(0.5,0.5);
+	// statusImage2.scale.set(0.4);
+	// statusImage2.y = -140;
+	// dmgStatus.addChild(statusImage2);
+	// dmgStatus.statusImage2 = statusImage2;
+
+	// let statusText3 = new Text ("Stunned", statusStyle3);
+	// statusText3.anchor.set(0.5,0.5);
+	// statusText3.y = -200;
+	// dmgStatus.addChild(statusText3);
+	// dmgStatus.statusText3 = statusText3;
+
+	// let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
+	// statusImage3.anchor.set(0.5,0.5);
+	// statusImage3.scale.set(0.4);
+	// statusImage3.y = -240;
+	// dmgStatus.addChild(statusImage3);
+	// dmgStatus.statusImage3 = statusImage3;
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
@@ -1706,11 +1738,15 @@ function resizeDmg(roster, item, index){
 		item.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
 		item.dmgStatus.statusText1.style.fontSize = 14;
+		// item.dmgStatus.statusText2.style.fontSize = 14;
+		// item.dmgStatus.statusText3.style.fontSize = 14;
 		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
 		item.dmgStatus.statusText1.style.fontSize = 20;
+		// item.dmgStatus.statusText2.style.fontSize = 20;
+		// item.dmgStatus.statusText3.style.fontSize = 20;
 		// item.dmgStatus.scale.set(0.6,0.6);
 		// item.dmgPopup.dmgNum.style.fontSize = 45;
 		// item.dmgPopup.dmgEffective.style.fontSize = 20;
@@ -1726,15 +1762,17 @@ function resizeDmg(roster, item, index){
 		item.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
 		item.dmgStatus.statusText1.style.fontSize = 24;
+		// item.dmgStatus.statusText2.style.fontSize = 24;
+		// item.dmgStatus.statusText3.style.fontSize = 24;
 		// item.dmgStatus.scale.set(1,1);
 	}
 
-	item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
-	item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage2.height = item.dmgStatus.statusImage2.width;
-	item.dmgStatus.statusImage3.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage3.height = item.dmgStatus.statusImage2.width;
+	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
+	// item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
+	// item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
+	// item.dmgStatus.statusImage2.height = item.dmgStatus.statusImage2.width;
+	// item.dmgStatus.statusImage3.width = (resizeWidth - (statusSpacing * 5))/4;
+	// item.dmgStatus.statusImage3.height = item.dmgStatus.statusImage2.width;
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
