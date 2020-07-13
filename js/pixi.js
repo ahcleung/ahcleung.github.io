@@ -1725,11 +1725,11 @@ function resizeDmg(roster, item, index){
 	}
 
 	item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage1.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
 	item.dmgStatus.statusImage2.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage2.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage2.height = item.dmgStatus.statusImage2.width;
 	item.dmgStatus.statusImage3.width = (resizeWidth - (statusSpacing * 5))/4;
-	item.dmgStatus.statusImage3.height = item.dmgStatus.width;
+	item.dmgStatus.statusImage3.height = item.dmgStatus.statusImage2.width;
 
 	// item.dmgBarContainer.dmgBar.height = resizeHeight;
 	// item.critDmgBar.height = resizeHeight;
