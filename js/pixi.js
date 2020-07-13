@@ -1179,14 +1179,14 @@ function createSprite(direction, item, index){
 
 	    let statusText = new Text ("Critical" + i, statusStyle);
 		statusText.anchor.set(0.5,0.5);
-		statusText.y = -(i*100);
+		// statusText.y = -(i*100);
 		dmgStatus.addChild(statusText);
 		// dmgStatus.statusText = statusText;
 		statusTextArray.push(statusText);
 
 		let statusImage = new PIXI.Sprite(resources.status_critical.texture);
 		statusImage.anchor.set(0.5,0.5);
-		statusImage.y = -(40 + (i*100));
+		// statusImage.y = -(40 + (i*100));
 		statusImage.scale.set(0.4);
 		dmgStatus.addChild(statusImage);
 		statusImageArray.push(statusImage);
@@ -1733,12 +1733,16 @@ function resizeDmg(roster, item, index){
 	// var resizeHeight = 40;
 	var statusSpacing = 5;
 	var statusFontSize = 24;
+	var statusSpacer1 = 40;
+	var statusSpacer2 = 100;
 	if(app.screen.width < 860){
 		// item.dmgPopup.dmgNum.style.fontSize = 40;
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
 		statusFontSize = 14;
+		statusSpacer1 = 20;
+		statusSpacer2 = 60;
 		// item.dmgStatus.statusText1.style.fontSize = 14;
 		// item.dmgStatus.statusText2.style.fontSize = 14;
 		// item.dmgStatus.statusText3.style.fontSize = 14;
@@ -1747,6 +1751,8 @@ function resizeDmg(roster, item, index){
 		item.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
 		statusFontSize = 20;
+		statusSpacer1 = 30;
+		statusSpacer2 = 80;
 		// item.dmgStatus.statusText1.style.fontSize = 20;
 		// item.dmgStatus.statusText2.style.fontSize = 20;
 		// item.dmgStatus.statusText3.style.fontSize = 20;
@@ -1765,6 +1771,8 @@ function resizeDmg(roster, item, index){
 		item.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
 		statusFontSize = 24;
+		statusSpacer1 = 40;
+		statusSpacer2 = 100;
 		// item.dmgStatus.statusText1.style.fontSize = 24;
 		// item.dmgStatus.statusText2.style.fontSize = 24;
 		// item.dmgStatus.statusText3.style.fontSize = 24;
@@ -1774,10 +1782,12 @@ function resizeDmg(roster, item, index){
 	item.dmgStatus.statusImageArray.forEach(statusImage=>{
 		statusImage.width = (resizeWidth - (statusSpacing * 5))/4;
 		statusImage.height = statusImage.width;
+		statusImage.y = -(statusSpacer1 + (i*statusSpacer2));
 	});
 
 	item.dmgStatus.statusTextArray.forEach(statusText=>{
 		statusText.style.fontSize = statusFontSize;
+		statusText.y = -(i*statusSpacer2);
 	});
 	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
 	// item.dmgStatus.statusImage1.height = item.dmgStatus.statusImage1.width;
