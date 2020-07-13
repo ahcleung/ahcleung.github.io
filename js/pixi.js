@@ -1196,43 +1196,14 @@ function createSprite(direction, item, index){
 	dmgStatus.statusTextArray = statusTextArray;
 	dmgStatus.statusImageArray = statusImageArray;
 
-	// let statusText1 = new Text ("Critical", statusStyle1);
-	// statusText1.anchor.set(0.5,0.5);
-	// dmgStatus.addChild(statusText1);
-	// dmgStatus.statusText1 = statusText1;
+	var dmgStatusTween = new TimelineMax({paused:true});
+	dmgStatusTween.to(dmgNum1, 0.1, {ease:Expo.easeIn, alpha: 1});
+	dmgStatusTween.fromTo(dmgNum1.scale, 0.2, {x: 0, y: 0}, {ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	// let statusImage1 = new PIXI.Sprite(resources.status_critical.texture);
-	// statusImage1.anchor.set(0.5,0.5);
-	// statusImage1.y = -40;
-	// statusImage1.scale.set(0.4);
-	// dmgStatus.addChild(statusImage1);
-	// dmgStatus.statusImage1 = statusImage1;
+	dmgStatusTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
+	dmgStatusTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.2);
 
-	// let statusText2 = new Text ("Debuff", statusStyle2);
-	// statusText2.anchor.set(0.5,0.5);
-	// statusText2.y = -100;
-	// dmgStatus.addChild(statusText2);
-	// dmgStatus.statusText2 = statusText2;
-
-	// let statusImage2 = new PIXI.Sprite(resources.status_debuff.texture);
-	// statusImage2.anchor.set(0.5,0.5);
-	// statusImage2.scale.set(0.4);
-	// statusImage2.y = -140;
-	// dmgStatus.addChild(statusImage2);
-	// dmgStatus.statusImage2 = statusImage2;
-
-	// let statusText3 = new Text ("Stunned", statusStyle3);
-	// statusText3.anchor.set(0.5,0.5);
-	// statusText3.y = -200;
-	// dmgStatus.addChild(statusText3);
-	// dmgStatus.statusText3 = statusText3;
-
-	// let statusImage3 = new PIXI.Sprite(resources.status_stunned.texture);
-	// statusImage3.anchor.set(0.5,0.5);
-	// statusImage3.scale.set(0.4);
-	// statusImage3.y = -240;
-	// dmgStatus.addChild(statusImage3);
-	// dmgStatus.statusImage3 = statusImage3;
+	dmgStatus.tween = dmgStatusTween;
 
 	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
 	// dmgCrit.anchor.set(0.5, 0.5);
@@ -1773,6 +1744,8 @@ function resizeDmg(roster, item, index){
 		statusText.style.strokeThickness = statusStrokeSize;
 		statusText.y = -(arrayIndex*statusSpacer2);
 	});
+
+	// enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].texture = resources.status_buff.texture;
 
 	if(roster == 0){
 		var switcher = 0;
@@ -3280,8 +3253,8 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
-	// enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].setTexture(resources.status_buff.texture);
-	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].texture = resources.status_buff.texture;
+	enemyFloatingInfoArray[0].dmgStatus.tween.play(0);
+
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
