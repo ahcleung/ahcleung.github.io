@@ -3281,7 +3281,7 @@ function onAdditionalDown(){
 	interfaceAdditional.visible = true;
 
 	// enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].setTexture(resources.status_buff.texture);
-	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].visible = false;
+	enemyFloatingInfoArray[0].dmgStatus.statusImageArray[0].texture = resources.status_buff.texture;
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
