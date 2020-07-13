@@ -3193,6 +3193,7 @@ function animateBattle(attacker, defender){
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionHero[Math.abs(arrayCreature)-1].x = originalX;
 				heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalFloatX;
+				heroFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
 			});
 
 			heroShiftSizeTracker++;			
@@ -3205,6 +3206,7 @@ function animateBattle(attacker, defender){
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionEnemy[Math.abs(arrayCreature)-1].x = originalX;
 				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
+				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
 			});
 
 			enemyShiftSizeTracker++;
@@ -3253,7 +3255,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
-	enemyFloatingInfoArray[0].dmgStatus.tween.play(0);
+	
 
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
