@@ -2267,7 +2267,6 @@ function onCreatureDown(){
 								crit = 1.5;
 								ifCrit = true;
 								critTracker[i] = 1;
-								statusNum.push(14);
 							}
 							var finalDmgCalc = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 							if(finalDmgCalc == 0)		finalDmgCalc = 1;
@@ -2277,6 +2276,7 @@ function onCreatureDown(){
 					}
 
 					if(ifCrit){
+						statusNum.push(14);
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
 						});
