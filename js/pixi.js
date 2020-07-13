@@ -1737,14 +1737,14 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
-		item.dmgStatus.statusText1.style.fontSize = 14;
+		// item.dmgStatus.statusText1.style.fontSize = 14;
 		// item.dmgStatus.statusText2.style.fontSize = 14;
 		// item.dmgStatus.statusText3.style.fontSize = 14;
 		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
-		item.dmgStatus.statusText1.style.fontSize = 20;
+		// item.dmgStatus.statusText1.style.fontSize = 20;
 		// item.dmgStatus.statusText2.style.fontSize = 20;
 		// item.dmgStatus.statusText3.style.fontSize = 20;
 		// item.dmgStatus.scale.set(0.6,0.6);
@@ -1761,7 +1761,7 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
-		item.dmgStatus.statusText1.style.fontSize = 24;
+		// item.dmgStatus.statusText1.style.fontSize = 24;
 		// item.dmgStatus.statusText2.style.fontSize = 24;
 		// item.dmgStatus.statusText3.style.fontSize = 24;
 		// item.dmgStatus.scale.set(1,1);
