@@ -1179,14 +1179,14 @@ function createSprite(direction, item, index){
 
 	    let statusText = new Text ("Critical" + i, statusStyle);
 		statusText.anchor.set(0.5,0.5);
-		statusText.y = i*100;
+		statusText.y = -(i*100);
 		dmgStatus.addChild(statusText);
 		// dmgStatus.statusText = statusText;
 		statusTextArray.push(statusText);
 
 		let statusImage = new PIXI.Sprite(resources.status_critical.texture);
 		statusImage.anchor.set(0.5,0.5);
-		statusImage.y = -40 + (i*100);
+		statusImage.y = -(40 + (i*100));
 		statusImage.scale.set(0.4);
 		dmgStatus.addChild(statusImage);
 		statusImageArray.push(statusImage);
