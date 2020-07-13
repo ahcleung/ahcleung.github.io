@@ -1712,7 +1712,7 @@ function resizeDmg(roster, item, index){
 		statusSpacing = 2;
 		statusFontSize = 13;
 		statusSpacer1 = 20;
-		statusSpacer2 = 40;
+		statusSpacer2 = 50;
 		statusStrokeSize = 2;
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
