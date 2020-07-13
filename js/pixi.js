@@ -1735,6 +1735,7 @@ function resizeDmg(roster, item, index){
 	var statusFontSize = 24;
 	var statusSpacer1 = 40;
 	var statusSpacer2 = 100;
+	var statusStrokeSize = 5;
 	if(app.screen.width < 860){
 		// item.dmgPopup.dmgNum.style.fontSize = 40;
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
@@ -1742,7 +1743,8 @@ function resizeDmg(roster, item, index){
 		statusSpacing = 2;
 		statusFontSize = 14;
 		statusSpacer1 = 20;
-		statusSpacer2 = 60;
+		statusSpacer2 = 40;
+		statusStrokeSize = 3;
 		// item.dmgStatus.statusText1.style.fontSize = 14;
 		// item.dmgStatus.statusText2.style.fontSize = 14;
 		// item.dmgStatus.statusText3.style.fontSize = 14;
@@ -1753,6 +1755,7 @@ function resizeDmg(roster, item, index){
 		statusFontSize = 20;
 		statusSpacer1 = 30;
 		statusSpacer2 = 80;
+		statusStrokeSize = 4;
 		// item.dmgStatus.statusText1.style.fontSize = 20;
 		// item.dmgStatus.statusText2.style.fontSize = 20;
 		// item.dmgStatus.statusText3.style.fontSize = 20;
@@ -1773,6 +1776,7 @@ function resizeDmg(roster, item, index){
 		statusFontSize = 24;
 		statusSpacer1 = 40;
 		statusSpacer2 = 100;
+		statusStrokeSize = 5;
 		// item.dmgStatus.statusText1.style.fontSize = 24;
 		// item.dmgStatus.statusText2.style.fontSize = 24;
 		// item.dmgStatus.statusText3.style.fontSize = 24;
@@ -1787,6 +1791,7 @@ function resizeDmg(roster, item, index){
 
 	item.dmgStatus.statusTextArray.forEach((statusText,arrayIndex)=>{
 		statusText.style.fontSize = statusFontSize;
+		statusText.style.strokeThickness = statusStrokeSize;
 		statusText.y = -(arrayIndex*statusSpacer2);
 	});
 	// item.dmgStatus.statusImage1.width = (resizeWidth - (statusSpacing * 5))/4;
