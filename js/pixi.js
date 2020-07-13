@@ -1197,11 +1197,11 @@ function createSprite(direction, item, index){
 	dmgStatus.statusImageArray = statusImageArray;
 
 	var dmgStatusTween = new TimelineMax({paused:true});
-	dmgStatusTween.to(dmgNum1, 0.1, {ease:Expo.easeIn, alpha: 1});
-	dmgStatusTween.fromTo(dmgNum1.scale, 0.2, {x: 0, y: 0}, {ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
+	dmgStatusTween.to(dmgStatus, 0.1, {ease:Expo.easeIn, alpha: 1});
+	dmgStatusTween.fromTo(dmgStatus.scale, 0.2, {x: 0, y: 0}, {ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	dmgStatusTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
-	dmgStatusTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.2);
+	dmgStatusTween.to(dmgStatus, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
+	dmgStatusTween.to(dmgStatus.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.2);
 
 	dmgStatus.tween = dmgStatusTween;
 
