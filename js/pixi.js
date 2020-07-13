@@ -1693,15 +1693,17 @@ function resize() {
 function resizeDmg(roster, item, index){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	// var resizeHeight = 40;
-
+	var statusSpacing = 5;
 	if(app.screen.width < 860){
 		// item.dmgPopup.dmgNum.style.fontSize = 40;
 		// item.dmgPopup.dmgEffective.style.fontSize = 16;
 		item.dmgPopup.scale.set(0.4,0.4);
+		statusSpacing = 2;
 		
 		// item.dmgStatus.scale.set(0.4,0.4);
 	}else if(app.screen.width < 1366){
 		item.dmgPopup.scale.set(0.6,0.6);
+		statusSpacing = 4;
 		// item.dmgStatus.scale.set(0.6,0.6);
 		// item.dmgPopup.dmgNum.style.fontSize = 45;
 		// item.dmgPopup.dmgEffective.style.fontSize = 20;
@@ -1715,6 +1717,7 @@ function resizeDmg(roster, item, index){
 		// item.dmgPopup.dmgNum.style.fontSize = 50;
 		// item.dmgPopup.dmgEffective.style.fontSize = 24;
 		item.dmgPopup.scale.set(1,1);
+		statusSpacing = 5;
 		// item.dmgStatus.scale.set(1,1);
 	}
 
