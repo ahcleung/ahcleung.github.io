@@ -1059,6 +1059,26 @@ function createSprite(direction, item, index){
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
 
+	var dmgNumArray = [];
+	
+	for(var i = 0; i < 5; i++){
+		const dmgNumStyle = new PIXI.TextStyle({
+	        fontFamily: 'Arvo',
+	        fontSize: 50,
+	        fontWeight: 700,
+			fill: '#D80000',	
+			stroke: '#222222',
+	   		strokeThickness: 10,
+	    });
+
+	    let dmgNum = new Text("25", dmgNumStyle2);
+		dmgNum.anchor.set(0.5, 0.5);
+		if (i%2 == 0)	dmgNum.x = 50;
+		dmgNum.y = -(i*50);
+		dmgNumArray.push(dmgNum);
+		dmgPopup.addChild(dmgNum);
+	}
+
 	const dmgNumStyle1 = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 50,
@@ -1109,29 +1129,29 @@ function createSprite(direction, item, index){
    		strokeThickness: 5,
     });
   	
-	let dmgNum1 = new Text("50", dmgNumStyle1);
-	dmgNum1.anchor.set(0.5, 0.5);
-	let dmgNum2 = new Text("25", dmgNumStyle2);
-	dmgNum2.anchor.set(0.5, 0.5);
-	dmgNum2.x = 50;
-	dmgNum2.y = -50;
-	let dmgNum3 = new Text("32", dmgNumStyle3);
-	dmgNum3.anchor.set(0.5, 0.5);
-	dmgNum3.y = -100;
-	let dmgNum4 = new Text("32", dmgNumStyle4);
-	dmgNum4.anchor.set(0.5, 0.5);
-	dmgNum4.x = 50;
-	dmgNum4.y = -150;
-	let dmgNum5 = new Text("32", dmgNumStyle5);
-	dmgNum5.anchor.set(0.5, 0.5);
-	dmgNum5.y = -200;
+	// let dmgNum1 = new Text("50", dmgNumStyle1);
+	// dmgNum1.anchor.set(0.5, 0.5);
+	// let dmgNum2 = new Text("25", dmgNumStyle2);
+	// dmgNum2.anchor.set(0.5, 0.5);
+	// dmgNum2.x = 50;
+	// dmgNum2.y = -50;
+	// let dmgNum3 = new Text("32", dmgNumStyle3);
+	// dmgNum3.anchor.set(0.5, 0.5);
+	// dmgNum3.y = -100;
+	// let dmgNum4 = new Text("32", dmgNumStyle4);
+	// dmgNum4.anchor.set(0.5, 0.5);
+	// dmgNum4.x = 50;
+	// dmgNum4.y = -150;
+	// let dmgNum5 = new Text("32", dmgNumStyle5);
+	// dmgNum5.anchor.set(0.5, 0.5);
+	// dmgNum5.y = -200;
 
-	var dmgNumArray = [];
-	dmgNumArray.push(dmgNum1);
-	dmgNumArray.push(dmgNum2);
-	dmgNumArray.push(dmgNum3);
-	dmgNumArray.push(dmgNum4);
-	dmgNumArray.push(dmgNum5);
+	// var dmgNumArray = [];
+	// dmgNumArray.push(dmgNum1);
+	// dmgNumArray.push(dmgNum2);
+	// dmgNumArray.push(dmgNum3);
+	// dmgNumArray.push(dmgNum4);
+	// dmgNumArray.push(dmgNum5);
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
@@ -1211,11 +1231,12 @@ function createSprite(direction, item, index){
 
 	// dmgPopup.alpha = 1;
 	// dmgPopup.tween = dmgPopupTween;	
-	dmgPopup.addChild(dmgNum1);
-	dmgPopup.addChild(dmgNum2);
-	dmgPopup.addChild(dmgNum3);
-	dmgPopup.addChild(dmgNum4);
-	dmgPopup.addChild(dmgNum5);
+
+	// dmgPopup.addChild(dmgNum1);
+	// dmgPopup.addChild(dmgNum2);
+	// dmgPopup.addChild(dmgNum3);
+	// dmgPopup.addChild(dmgNum4);
+	// dmgPopup.addChild(dmgNum5);
 	dmgPopup.dmgNumArray = dmgNumArray;
 	// dmgPopup.dmgNum = dmgNum1;
 	// dmgPopup.dmgNum2 = dmgNum2;
