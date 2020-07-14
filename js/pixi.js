@@ -2340,7 +2340,7 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, ifHeal, statusNum, skillStatusEffect);
+					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, totalCritDmg, ifHeal, statusNum, skillStatusEffect);
 
 					// // updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
 					// updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
@@ -3900,7 +3900,7 @@ function resizeStatus(item, index){
 }
 
 
-function updateDamage(object, targetIndex, effective, skillCrit, critTracker, skillHeal, statusNumArray, skillStatus){
+function updateDamage(object, targetIndex, effective, skillCrit, critTracker, totalCritDmg, skillHeal, statusNumArray, skillStatus){
 
 	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
 
