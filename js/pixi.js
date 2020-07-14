@@ -3537,56 +3537,6 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 	}
 }
 
-function updateDmgEffectiveness(container, effective){
-	container.dmgPopup.dmgEffective.visible = true;
-	container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-		dmgNumArrayItem.style.fill = '#D80000';
-		dmgNumArrayItem.style.stroke = '#222222';
-		dmgNumArrayItem.visible = false;
-	});
-
-	container.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-		dmgStatusImageItem.visible = false;
-	});
-	container.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-		dmgStatusTextItem.visible = false;
-	});
-
-	if(effective == 0.25){
-		container.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-		container.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#9D9D9D';
-		});
-	}else if(effective == 0.5){
-		container.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-		container.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFFFFF';
-		});
-	}else if(effective == 2){
-		container.dmgPopup.dmgEffective.text = "SUPER  ×2";
-		container.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFE81C';
-		});
-	}else if(effective == 4){
-		container.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-		container.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#DB00FF';
-		});
-	}else if(effective == 0){
-		container.dmgPopup.dmgEffective.text = "MISS!";
-		container.dmgPopup.dmgEffective.style.fill = '#D80000';
-		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#D80000';
-		});
-	}else{
-		container.dmgPopup.dmgEffective.visible = false;
-	}
-}
-
 function resizeStatus(item, index){
 	var resizeHeight = 40;
 	var statusSpacing = 5;
@@ -3634,9 +3584,6 @@ function resizeStatus(item, index){
 
 
 function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
-
-	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
-
 	object.dmgContainer.dmgPopup.dmgEffective.visible = true;
 	object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 		dmgNumArrayItem.style.fill = '#D80000';
@@ -3754,8 +3701,8 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 			object.healthBar.addChild(newStatusEffect);
 			object.statusSpriteArray.push(newStatusEffect);
 			object.statusArray.push(statusNumber);
-			resizeStatus(object, targetIndex);
 		});
+		resizeStatus(object, targetIndex);
 	}
 
 	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
@@ -3764,5 +3711,6 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
 		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 	});
+	
 	object.dmgContainer.dmgPopup.tween.play(0);
 }
