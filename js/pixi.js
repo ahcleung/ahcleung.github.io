@@ -2340,7 +2340,7 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, totalCritDmg, ifHeal, statusNum, skillStatusEffect);
+					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
 
 					// // updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
 					// updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
@@ -3900,7 +3900,7 @@ function resizeStatus(item, index){
 }
 
 
-function updateDamage(object, targetIndex, effective, skillCrit, critTracker, totalCritDmg, skillHeal, statusNumArray, skillStatus){
+function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
 
 	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
 
@@ -3953,7 +3953,12 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, to
 	}
 	
 	if(skillCrit){
-		object.criticalHit(Math.floor(totalCritDmg));
+		var critTotal = 0;
+		dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+			if(critTracker[dmgArrayIndex] == 1)		critTotal = critTotal + (dmgArrayNum/3)
+		});
+
+		object.criticalHit(Math.floor(critTotal));
 
 		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
 
