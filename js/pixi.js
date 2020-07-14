@@ -1071,7 +1071,7 @@ function createSprite(direction, item, index){
 	   		strokeThickness: 10,
 	    });
 
-	    let dmgNum = new Text("25", dmgNumStyle2);
+	    let dmgNum = new Text("25", dmgNumStyle);
 		dmgNum.anchor.set(0.5, 0.5);
 		if (i%2 == 0)	dmgNum.x = 50;
 		dmgNum.y = -(i*50);
