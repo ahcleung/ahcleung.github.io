@@ -3854,7 +3854,7 @@ function updateDmgEffectiveness(container, effective){
 	}
 }
 
-function resizeStatus(roster, item, index){
+function resizeStatus(item, index){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	var resizeHeight = 40;
