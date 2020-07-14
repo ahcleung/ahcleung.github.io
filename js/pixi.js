@@ -2033,6 +2033,8 @@ function onCreatureDown(){
 				var critTracker = [0,0,0,0,0];
 				var ifCrit = false;
 				var totalCritDmg = 0;
+				var ifHeal = false;
+				var critMultiplier = 1;
 
 				//Get attack stat based on skill used
 				if(selectedVita > 0){
@@ -2145,8 +2147,9 @@ function onCreatureDown(){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
 						deltaHP = skillsList.data.skills[selectedSkill].heal;
+						ifHeal = true;
 						effectiveness = 1;
-						crit = 1;
+						critMultiplier = 1;
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						other = true;
 					}else{						
@@ -2155,13 +2158,13 @@ function onCreatureDown(){
 						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
 						for(var i = 0; i < hitNum; i++){
 							var criticalChance = Math.floor(Math.random() * 10000);
-							var crit = 1;
+							var critMultiplier = 1;
 							if(criticalChance > 5000){
-								crit = 1.5;
+								critMultiplier = 1.5;
 								ifCrit = true;
 								critTracker[i] = 1;
 							}
-							var finalDmgCalc = Math.floor(dmgCalc * crit * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 							if(finalDmgCalc == 0)		finalDmgCalc = 1;
 							dmgArray[i] = finalDmgCalc;
 							deltaHP += finalDmgCalc;
@@ -3868,65 +3871,224 @@ function resizeStatus(roster, item, index){
 		statusSpacing = 5;
 	}
 	
-	if(roster == 0){
-		var switcher = 0;
-		if(heroArray[index].size > 1){
-			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}
-			});
-		}else{
-			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 4){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-				}
-			});
-		}
+	if(item.size > 1){
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}
+		});
 	}else{
-// 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
-		if(enemyArray[index].size > 1){
-			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}
-			});
-		}else{
-			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 4){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-				}
-			});
-		}
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 4){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+			}
+		});
 	}
+
+// 	if(roster == 0){
+// 		var switcher = 0;
+// 		if(heroArray[index].size > 1){
+// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}
+// 			});
+// 		}else{
+// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 4){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+// 				}
+// 			});
+// 		}
+// 	}else{
+// // 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
+// 		if(enemyArray[index].size > 1){
+// 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}
+// 			});
+// 		}else{
+// 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 4){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+// 				}
+// 			});
+// 		}
+// 	}
+}
+
+
+function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum, skillStatChange, skillStatusEffect){
+
+	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
+
+	object.dmgContainer.dmgPopup.dmgEffective.visible = true;
+	object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+		dmgNumArrayItem.style.fill = '#D80000';
+		dmgNumArrayItem.style.stroke = '#222222';
+		dmgNumArrayItem.visible = false;
+	});
+
+	object.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+		dmgStatusImageItem.visible = false;
+	});
+	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+		dmgStatusTextItem.visible = false;
+	});
+
+	if(effective == 0.25){
+		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#9D9D9D';
+		});
+	}else if(effective == 0.5){
+		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#FFFFFF';
+		});
+	}else if(effective == 2){
+		object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#FFE81C';
+		});
+	}else if(effective == 4){
+		object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#DB00FF';
+		});
+	}else if(effective == 0){
+		object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#D80000';
+		});
+	}else{
+		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+	}
+	
+	if(crit){
+		object.criticalHit(Math.floor(totalCritDmg));
+
+		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
+
+		TweenMax.fromTo(object.healthBar.critDmgBar
+			, 1, {
+				width: object.healthBar.critDmgBar.width
+			}, {delay: 1.75, ease:Expo.easeIn, width:newCritWidth});
+
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+			if(critTracker[dmgNumArrayIndex] == 1){
+				dmgNumArrayItem.style.fill = '#ff7b00';
+				dmgNumArrayItem.style.stroke = '#4E2600';
+			}
+		});
+	}
+
+	if(heal){
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#1bc617';
+			dmgNumArrayItem.style.stroke = '#052805';
+		});
+
+		var newWidth = (object.healthBar.outer.width * (object.hp/object.overallHP)) - object.healthBar.inner.width;
+
+		object.healthBar.dmgBarContainer.x = object.healthBar.inner.width;
+		object.healthBar.dmgBarContainer.dmgBar.visible = true;
+		var tween = new TimelineMax({onComplete: function(){
+			object.healthBar.dmgBarContainer.dmgBar.visible = false;	
+			object.healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
+		}});
+		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
+			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+			}});
+		tween.to(object.healthBar.dmgBarContainer.dmgBar
+			, 1, {ease:Expo.easeIn, alpha:0});
+	}else{
+		var newWidth = object.healthBar.inner.width - (object.healthBar.outer.width * (object.hp/object.overallHP));
+
+		object.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+		object.healthBar.dmgBarContainer.dmgBar.visible = true;
+		TweenMax.fromTo(object.healthBar.dmgBarContainer.dmgBar
+			, 1, {
+				width: newWidth
+			}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+			object.healthBar.dmgBarContainer.dmgBar.visible = false;
+		}});
+
+		object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
+		object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+	}
+
+	if(skillStatChange || skillStatusEffect){
+		statusNum.forEach((statusNumber, statusNumberIndex)=>{
+			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+			let newStatusEffect = statusEffectSprite(statusNumber);
+			updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
+			newStatusEffect.visible = false;
+			object.healthBar.addChild(newStatusEffect);
+			object.statusSpriteArray.push(newStatusEffect);
+			object.statusArray.push(statusNumber);
+			resizeStatus(0, object.healthBar, targetedIndex);
+		});
+	}
+
+	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
+
+	dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+	});
+	object.dmgContainer.dmgPopup.tween.play(0);
 }
