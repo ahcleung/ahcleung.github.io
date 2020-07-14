@@ -3535,7 +3535,7 @@ function animateBattle(attacker, defender){
 
 					// // healthBar.addChild(statusEffect);
 					// // item.statusSpriteArray.push(statusEffect);
-					// });
+					});
 					// resizeHP(1, enemyInterfaceHealthArray[Math.abs(arrayCreature)-1], Math.abs(arrayCreature)-1);
 				});
 			});
