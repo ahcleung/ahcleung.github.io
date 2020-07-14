@@ -2340,7 +2340,7 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					updateDamage(enemyArray[targetedIndex], targetIndex, effectiveness, ifCrit, critTracker, ifHeal, statusNum, skillStatusEffect);
+					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, ifHeal, statusNum, skillStatusEffect);
 
 					// // updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
 					// updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
