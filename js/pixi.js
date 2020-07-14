@@ -1210,7 +1210,7 @@ function createSprite(direction, item, index){
 	// dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.333+anim1);
 
 	// dmgPopup.alpha = 1;
-	dmgPopup.tween = dmgPopupTween;	
+	// dmgPopup.tween = dmgPopupTween;	
 	dmgPopup.addChild(dmgNum1);
 	dmgPopup.addChild(dmgNum2);
 	dmgPopup.addChild(dmgNum3);
