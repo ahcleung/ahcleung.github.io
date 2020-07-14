@@ -3049,7 +3049,7 @@ function animateBattle(attacker, defender){
 				actionEnemy[Math.abs(arrayCreature)-1].x = originalX;
 				
 				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
-				enemyArray[aMath.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
+				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
 				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
 				// enemyFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
 				// enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
