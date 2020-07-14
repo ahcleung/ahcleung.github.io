@@ -2435,91 +2435,107 @@ function onCreatureDown(){
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+									newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 									break;
 								case 3:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
+									newStatusEffect = new PIXI.Sprite(resources.status_burned.texture);
 									break;
 								case 4:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
+									newStatusEffect = new PIXI.Sprite(resources.status_debuff.texture);
 									break;
 								case 5:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
+									newStatusEffect = new PIXI.Sprite(resources.status_depressed.texture);
 									break;
 								case 6:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
+									newStatusEffect = new PIXI.Sprite(resources.status_guard.texture);
 									break;
 								case 7:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
+									newStatusEffect = new PIXI.Sprite(resources.status_immune.texture);
 									break;
 								case 8:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
+									newStatusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 									break;
 								case 9:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
+									newStatusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
 									break;
 								case 10:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
+									newStatusEffect = new PIXI.Sprite(resources.status_recover.texture);
 									break;
 								case 11:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
+									newStatusEffect = new PIXI.Sprite(resources.status_secured.texture);
 									break;
 								case 12:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
+									newStatusEffect = new PIXI.Sprite(resources.status_silenced.texture);
 									break;
 								case 13:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
+									newStatusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 									break;
 								case 14:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
+									newStatusEffect = new PIXI.Sprite(resources.status_critical.texture);
 									break;
 								default:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';	
+									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+									newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 							}
+							newStatusEffect.visible = false;
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
-							heroArray[targetedIndex].statusArray.statusSpriteArray.push(newStatusEffect);
+							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
-
+							resizeHP(1, heroInterfaceHealthArray[targetedIndex], targetedIndex);
 						});
 					}
+
 					
 					// console.log("Hero status: " + heroArray[targetedIndex].statusArray);
 
@@ -2658,8 +2674,6 @@ function onCreatureDown(){
 						enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);					
 					}
 
-					console.log("Enemy status: " + enemyArray[targetedIndex].statusArray);
-
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
@@ -2776,16 +2790,8 @@ function onCreatureDown(){
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
 							resizeHP(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
-
-							// enemyInterfaceHealthArray.forEach(function (item, index){
-							// 	resizeHP(1, item, index)	
-							// });
-
-							// enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
 					}
-
-					console.log("Enemy status: " + enemyArray[targetedIndex].statusArray);
 
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
@@ -3478,65 +3484,7 @@ function animateBattle(attacker, defender){
 				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.eventCallback("onComplete", function(){
 					enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
 						statusSprite.visible = true;
-					// 	let newStatusEffect;
-					// 	switch(status[0]){
-					// 		case 1:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_bleed.texture);
-					// 			break;
-					// 		case 2:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
-					// 			break;
-					// 		case 3:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_burned.texture);
-					// 			break;
-					// 		case 4:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_debuff.texture);
-					// 			break;
-					// 		case 5:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_depressed.texture);
-					// 			break;
-					// 		case 6:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_guard.texture);
-					// 			break;
-					// 		case 7:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_immune.texture);
-					// 			break;
-					// 		case 8:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
-					// 			break;
-					// 		case 9:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
-					// 			break;
-					// 		case 10:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_recover.texture);
-					// 			break;
-					// 		case 11:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_secured.texture);
-					// 			break;
-					// 		case 12:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_silenced.texture);
-					// 			break;
-					// 		case 13:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_stunned.texture);
-					// 			break;
-					// 		case 14:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_critical.texture);
-					// 			break;
-					// 		default:
-					// 			newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
-								
-					// 	}
-
-					// 	enemyInterfaceHealthArray[Math.abs(arrayCreature)-1].addChild(newStatusEffect);
-					// 	enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.push(newStatusEffect);
-					// // resizeHP(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
-
-
-
-					// // healthBar.addChild(statusEffect);
-					// // item.statusSpriteArray.push(statusEffect);
 					});
-					// resizeHP(1, enemyInterfaceHealthArray[Math.abs(arrayCreature)-1], Math.abs(arrayCreature)-1);
 				});
 			});
 
