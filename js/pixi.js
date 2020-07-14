@@ -3900,7 +3900,7 @@ function resizeStatus(item, index){
 }
 
 
-function updateDamage(object, targetIndex, effectiveness, skillCrit, critTracker, skillHeal, statusNumArray, skillStatus){
+function updateDamage(object, targetIndex, effective, skillCrit, critTracker, skillHeal, statusNumArray, skillStatus){
 
 	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
 
