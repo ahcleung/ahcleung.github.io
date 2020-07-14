@@ -1519,12 +1519,12 @@ function resize() {
 	});
 
 	heroArray.forEach(function (item, index){
-		resizeHP(0, item.healthBar, index);
+		resizeHP(0, item, index);
 		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
-		resizeHP(1, item.healthBar, index);
+		resizeHP(1, item, index);
 		resizeDmg(1, item);
 	});
 
@@ -1590,28 +1590,8 @@ function resizeDmg(roster, item){
 	}
 
 	if(roster == 0){
-// 		var switcher = 0;
-// // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
-// 		if(heroArray[index].size > 1){
-// 			item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-// 			item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
-// 			switcher = 1;
-// 		}else{
-// 			item.dmgContainer.dmgPopup.x = resizeWidth/2;
-// 			item.dmgContainer.dmgStatus.x = resizeWidth/2;
-// 		}
-
 		item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
-
 	}else{
-		// if(enemyArray[index].size > 1){
-		// 	item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-		// 	item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
-		// }else{
-		// 	item.dmgContainer.dmgPopup.x = resizeWidth/2;
-		// 	item.dmgContainer.dmgStatus.x = resizeWidth/2;
-		// }
-
 		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
 	}
 
@@ -1633,7 +1613,7 @@ function resizeHP(roster, item, index){
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
-		item.textHP.style.fontSize = 14;
+		item.healthBar.textHP.style.fontSize = 14;
 		statusSpacing = 2;
 		HPSpacing = 1;
 		selectBarHeight = 5;
@@ -1641,11 +1621,11 @@ function resizeHP(roster, item, index){
 		indicatorBar2Y = -13;
 		indicatorEndHeight = 12;
 		indicatorEndY = -15;
-		item.turn.height = 3;
-		item.turn.y = resizeHeight;
+		item.healthBar.turn.height = 3;
+		item.healthBar.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
 		resizeHeight = 30;
-		item.textHP.style.fontSize = 18;
+		item.healthBar.textHP.style.fontSize = 18;
 		statusSpacing = 4;
 		HPSpacing = 2;
 		selectBarHeight = 7;
@@ -1653,11 +1633,11 @@ function resizeHP(roster, item, index){
 		indicatorBar2Y = -20;
 		indicatorEndHeight = 18;
 		indicatorEndY = -23;
-		item.turn.height = 4;
-		item.turn.y = resizeHeight + 2;
+		item.healthBar.turn.height = 4;
+		item.healthBar.turn.y = resizeHeight + 2;
 	}else{
 		resizeHeight = 40;
-		item.textHP.style.fontSize = 24;
+		item.healthBar.textHP.style.fontSize = 24;
 		statusSpacing = 5;
 		HPSpacing = 3;
 		selectBarHeight = 7;
@@ -1665,135 +1645,188 @@ function resizeHP(roster, item, index){
 		indicatorBar2Y = -20;
 		indicatorEndHeight = 18;
 		indicatorEndY = -23;
-		item.turn.height = 5;
-		item.turn.y = resizeHeight + 2;
+		item.healthBar.turn.height = 5;
+		item.healthBar.turn.y = resizeHeight + 2;
 	}
 	
-	item.outer.height = resizeHeight;
-	item.inner.height = resizeHeight;
+	item.healthBar.outer.height = resizeHeight;
+	item.healthBar.inner.height = resizeHeight;
 
-	item.critDmgBar.height = resizeHeight;
-	item.dmgBarContainer.dmgBar.height = resizeHeight;
-	item.outer.width = resizeWidth;
+	item.healthBar.critDmgBar.height = resizeHeight;
+	item.healthBar.dmgBarContainer.dmgBar.height = resizeHeight;
+	item.healthBar.outer.width = resizeWidth;
 	
-	if(roster == 0){
-		var switcher = 0;
-// 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
-		if(heroArray[index].size > 1){
-			item.outer.width = resizeWidth * 2 + healthSpacing;
-			item.inner.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].hp/heroArray[index].overallHP);
-			item.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (heroArray[index].critDmg/heroArray[index].overallHP));
-			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
-			item.turn.width = resizeWidth * 2 + healthSpacing;
-			
-			item.healthBarIndicators.forEach(indicator => {
-				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			});
-			
-			switcher = 1;
-			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}
-			});
-		}else{
-			item.inner.width = resizeWidth * (heroArray[index].hp/heroArray[index].overallHP);
-			item.critDmgBar.width = -(resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP));
-			item.critDmgBar.x = resizeWidth;
-			item.turn.width = resizeWidth;
 
-			item.healthBarIndicators.forEach(indicator => {
-				indicator.indicatorBar1.width = resizeWidth;
-				indicator.indicatorBar2.width = resizeWidth;
-			});
-			
-			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 4){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-				}
-			});
-		}
+	var switcher = 0;
+	if(item.size > 1){
+		item.healthBar.outer.width = resizeWidth * 2 + healthSpacing;
+		item.healthBar.inner.width = (resizeWidth * 2 + healthSpacing) * (item.hp/item.overallHP);
+		item.healthBar.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (item.critDmg/item.overallHP));
+		item.healthBar.critDmgBar.x = resizeWidth * 2 + healthSpacing;
+		item.healthBar.turn.width = resizeWidth * 2 + healthSpacing;
 		
-		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
+		item.healthBar.healthBarIndicators.forEach(indicator => {
+			indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+			indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+		});
+		
+		switcher = 1;
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}
+		});
+	}else{
+		item.healthBar.inner.width = resizeWidth * (item.hp/item.overallHP);
+		item.healthBar.critDmgBar.width = -(resizeWidth * (item.critDmg/item.overallHP));
+		item.healthBar.critDmgBar.x = resizeWidth;
+		item.healthBar.turn.width = resizeWidth;
+
+		item.healthBar.healthBarIndicators.forEach(indicator => {
+			indicator.indicatorBar1.width = resizeWidth;
+			indicator.indicatorBar2.width = resizeWidth;
+		});
+		
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 4){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+			}
+		});
+	}
+
+	if(roster == 0){
+// 		var switcher = 0;
+// // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
+// 		if(heroArray[index].size > 1){
+// 			item.healthBar.outer.width = resizeWidth * 2 + healthSpacing;
+// 			item.healthBar.inner.width = (resizeWidth * 2 + healthSpacing) * (heroArray[index].hp/heroArray[index].overallHP);
+// 			item.healthBar.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (heroArray[index].critDmg/heroArray[index].overallHP));
+// 			item.healthBar.critDmgBar.x = resizeWidth * 2 + healthSpacing;
+// 			item.healthBar.turn.width = resizeWidth * 2 + healthSpacing;
+			
+// 			item.healthBar.healthBarIndicators.forEach(indicator => {
+// 				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+// 				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+// 			});
+			
+// 			switcher = 1;
+// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}
+// 			});
+// 		}else{
+// 			item.healthBar.inner.width = resizeWidth * (heroArray[index].hp/heroArray[index].overallHP);
+// 			item.healthBar.critDmgBar.width = -(resizeWidth * (heroArray[index].critDmg/heroArray[index].overallHP));
+// 			item.healthBar.critDmgBar.x = resizeWidth;
+// 			item.healthBar.turn.width = resizeWidth;
+
+// 			item.healthBar.healthBarIndicators.forEach(indicator => {
+// 				indicator.indicatorBar1.width = resizeWidth;
+// 				indicator.indicatorBar2.width = resizeWidth;
+// 			});
+			
+// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+// 				statusSprite.height = statusSprite.width;
+// 				if(index < 4){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+// 					statusSprite.y = resizeHeight + statusSpacing*2;
+// 				}else if(index < 8){
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+// 				}else{
+// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+// 					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+// 				}
+// 			});
+// 		}
+		
+		item.healthBar.x = heroHealthXPosition[item.pos-1+switcher];
 
 	}else{	
 // 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
-		if(enemyArray[index].size > 1){
-			item.outer.width = resizeWidth * 2 + healthSpacing;
-			item.inner.width = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].hp/enemyArray[index].overallHP);
-			item.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (enemyArray[index].critDmg/enemyArray[index].overallHP));
-			item.critDmgBar.x = resizeWidth * 2 + healthSpacing;
-			item.turn.width = resizeWidth * 2 + healthSpacing;
+		// if(enemyArray[index].size > 1){
+		// 	item.healthBar.outer.width = resizeWidth * 2 + healthSpacing;
+		// 	item.healthBar.inner.width = (resizeWidth * 2 + healthSpacing) * (enemyArray[index].hp/enemyArray[index].overallHP);
+		// 	item.healthBar.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (enemyArray[index].critDmg/enemyArray[index].overallHP));
+		// 	item.healthBar.critDmgBar.x = resizeWidth * 2 + healthSpacing;
+		// 	item.healthBar.turn.width = resizeWidth * 2 + healthSpacing;
 
-			item.healthBarIndicators.forEach(indicator => {
-				indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-				indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
-			});
+		// 	item.healthBar.healthBarIndicators.forEach(indicator => {
+		// 		indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
+		// 		indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+		// 	});
 			
-			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}
-			});
-		}else{
-			item.inner.width = resizeWidth * (enemyArray[index].hp/enemyArray[index].overallHP);
-			item.critDmgBar.width = -(resizeWidth * (enemyArray[index].critDmg/enemyArray[index].overallHP));
-			item.critDmgBar.x = resizeWidth;
-			item.turn.width = resizeWidth;
+		// 	enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+		// 		statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+		// 		statusSprite.height = statusSprite.width;
+		// 		if(index < 8){
+		// 			statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+		// 			statusSprite.y = resizeHeight + statusSpacing*2;
+		// 		}else{
+		// 			statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+		// 			statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+		// 		}
+		// 	});
+		// }else{
+		// 	item.healthBar.inner.width = resizeWidth * (enemyArray[index].hp/enemyArray[index].overallHP);
+		// 	item.healthBar.critDmgBar.width = -(resizeWidth * (enemyArray[index].critDmg/enemyArray[index].overallHP));
+		// 	item.healthBar.critDmgBar.x = resizeWidth;
+		// 	item.healthBar.turn.width = resizeWidth;
 
-			item.healthBarIndicators.forEach(indicator => {
-				indicator.indicatorBar1.width = resizeWidth;
-				indicator.indicatorBar2.width = resizeWidth;
-			});
+		// 	item.healthBar.healthBarIndicators.forEach(indicator => {
+		// 		indicator.indicatorBar1.width = resizeWidth;
+		// 		indicator.indicatorBar2.width = resizeWidth;
+		// 	});
 			
-			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-				statusSprite.height = statusSprite.width;
-				if(index < 4){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-					statusSprite.y = resizeHeight + statusSpacing*2;
-				}else if(index < 8){
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-				}else{
-					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-				}
-			});
-		}
+		// 	enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+		// 		statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+		// 		statusSprite.height = statusSprite.width;
+		// 		if(index < 4){
+		// 			statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+		// 			statusSprite.y = resizeHeight + statusSpacing*2;
+		// 		}else if(index < 8){
+		// 			statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+		// 			statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+		// 		}else{
+		// 			statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+		// 			statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+		// 		}
+		// 	});
+		// }
 		
-		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+		item.healthBar.x = spriteResizeXPosition[item.pos-1];
 	}
 
-	item.dmgBarContainer.x = item.inner.width;
-	// item.dmgContainer.y = app.screen.height/2;
+	item.healthBar.dmgBarContainer.x = item.healthBar.inner.width;
+	// item.healthBar.dmgContainer.y = app.screen.height/2;
 	
-	item.textHP.x = item.outer.width/2;
-	item.textHP.y = item.outer.height/2;
+	item.healthBar.textHP.x = item.healthBar.outer.width/2;
+	item.healthBar.textHP.y = item.healthBar.outer.height/2;
 
-	item.healthBarIndicators.forEach(indicator => {
+	item.healthBar.healthBarIndicators.forEach(indicator => {
 		indicator.indicatorBar1.height = selectBarHeight;
 		indicator.indicatorBar1.y = indicatorBar1Y;	
 		indicator.indicatorBar2.y = indicatorBar2Y;	
@@ -1801,11 +1834,11 @@ function resizeHP(roster, item, index){
 		indicator.indicatorStart.y = indicatorEndY;	
 		indicator.indicatorEnd.height = indicatorEndHeight;	
 		indicator.indicatorEnd.y = indicatorEndY;	
-		indicator.indicatorEnd.x = item.outer.width - 4;
+		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
 	});
 	
-	item.select.pivot.x = item.select.width/2;
-	item.select.x = item.select.width/2;
+	item.healthBar.select.pivot.x = item.healthBar.select.width/2;
+	item.healthBar.select.x = item.healthBar.select.width/2;
 }
 
 function resizeAction(direction, item, index){
