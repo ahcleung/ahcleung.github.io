@@ -2774,6 +2774,12 @@ function onCreatureDown(){
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
+							resizeHP(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
+
+							// enemyInterfaceHealthArray.forEach(function (item, index){
+							// 	resizeHP(1, item, index)	
+							// });
+							
 							// enemyArray[targetedIndex].statusArray.push(statusNumber);
 						});
 					}
