@@ -2240,6 +2240,7 @@ function onCreatureDown(){
 					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
 					dmgArray[0] = 0;
 					deltaHP = 0;
+					effectiveness = 0;
 				}
 
 				if(targeted > 0 && !other){
@@ -2249,62 +2250,64 @@ function onCreatureDown(){
 						heroArray[targetedIndex].damage(deltaHP);		//subtract damage
 					}
 
-					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#D80000';
-						dmgNumArrayItem.style.stroke = '#222222';
-						dmgNumArrayItem.visible = false;
-					});
+					updateDmgEffectiveness(heroFloatingInfoArray[targetedIndex], effectiveness);
 
-					heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-						dmgStatusImageItem.visible = false;
-					});
-					heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-						dmgStatusTextItem.visible = false;
-					});
-					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
+					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 	dmgNumArrayItem.style.fill = '#D80000';
+					// 	dmgNumArrayItem.style.stroke = '#222222';
+					// 	dmgNumArrayItem.visible = false;
+					// });
+
+					// heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+					// 	dmgStatusImageItem.visible = false;
+					// });
+					// heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+					// 	dmgStatusTextItem.visible = false;
+					// });
+					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
 
 					
-					if(effectiveness == 0.25){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#9D9D9D';
-						});
-						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
-					}else if(effectiveness == 0.5){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#FFFFFF';
-						});
-						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
-					}else if(effectiveness == 2){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#FFE81C';
-						});
-						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
-					}else if(effectiveness == 4){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#DB00FF';
-						});
-						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
-					}else if(deltaHP == 0){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#D80000';
-						});
-						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
-					}else{
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
-					}
+					// if(effectiveness == 0.25){
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#9D9D9D';
+					// 	});
+					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
+					// }else if(effectiveness == 0.5){
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#FFFFFF';
+					// 	});
+					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
+					// }else if(effectiveness == 2){
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#FFE81C';
+					// 	});
+					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
+					// }else if(effectiveness == 4){
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#DB00FF';
+					// 	});
+					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+					// }else if(deltaHP == 0){
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#D80000';
+					// 	});
+					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
+					// }else{
+					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					// }
 					
 					if(ifCrit){
 						heroArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -2371,97 +2374,6 @@ function onCreatureDown(){
 							heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
 							updateDmgStatus(heroFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
-							// switch(statusNumber){
-							// 	case 1:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-							// 		break;
-							// 	case 2:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							// 		break;
-							// 	case 3:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-							// 		break;
-							// 	case 4:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-							// 		break;
-							// 	case 5:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-							// 		break;
-							// 	case 6:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-							// 		break;
-							// 	case 7:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-							// 		break;
-							// 	case 8:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-							// 		break;
-							// 	case 9:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-							// 		break;
-							// 	case 10:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-							// 		break;
-							// 	case 11:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-							// 		break;
-							// 	case 12:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-							// 		break;
-							// 	case 13:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-							// 		break;
-							// 	case 14:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-							// 		break;
-							// 	default:
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							// }
 							newStatusEffect.visible = false;
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -2492,61 +2404,63 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#D80000';
-						dmgNumArrayItem.style.stroke = '#222222';
-						dmgNumArrayItem.visible = false;
-					});
+					updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
 
-					enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-						dmgStatusImageItem.visible = false;
-					});
-					enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-						dmgStatusTextItem.visible = false;
-					});
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
+					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 	dmgNumArrayItem.style.fill = '#D80000';
+					// 	dmgNumArrayItem.style.stroke = '#222222';
+					// 	dmgNumArrayItem.visible = false;
+					// });
 
-					if(effectiveness == 0.25){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#9D9D9D';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
-					}else if(effectiveness == 0.5){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#FFFFFF';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
-					}else if(effectiveness == 2){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#FFE81C';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
-					}else if(effectiveness == 4){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#DB00FF';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
-					}else if(deltaHP == 0){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#D80000';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					}else{
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
-					}
+					// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+					// 	dmgStatusImageItem.visible = false;
+					// });
+					// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+					// 	dmgStatusTextItem.visible = false;
+					// });
+					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
+
+					// if(effectiveness == 0.25){
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#9D9D9D';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
+					// }else if(effectiveness == 0.5){
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#FFFFFF';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
+					// }else if(effectiveness == 2){
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#FFE81C';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
+					// }else if(effectiveness == 4){
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#DB00FF';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
+					// }else if(deltaHP == 0){
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#D80000';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
+					// }else{
+					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
+					// }
 
 					if(ifCrit){
 						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -2613,97 +2527,6 @@ function onCreatureDown(){
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
 							updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
-							// switch(statusNumber){
-							// 	case 1:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-							// 		break;
-							// 	case 2:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							// 		break;
-							// 	case 3:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-							// 		break;
-							// 	case 4:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-							// 		break;
-							// 	case 5:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-							// 		break;
-							// 	case 6:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-							// 		break;
-							// 	case 7:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-							// 		break;
-							// 	case 8:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-							// 		break;
-							// 	case 9:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-							// 		break;
-							// 	case 10:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-							// 		break;
-							// 	case 11:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-							// 		break;
-							// 	case 12:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-							// 		break;
-							// 	case 13:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-							// 		break;
-							// 	case 14:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-							// 		break;
-							// 	default:
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							// }
 							newStatusEffect.visible = false;
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -3965,5 +3788,63 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
+	}
+}
+
+function updateDmgEffectiveness(container, effective){
+	// container.dmgPopup.dmgCrit.visible = false;
+	container.dmgPopup.dmgEffective.visible = true;
+	container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+		dmgNumArrayItem.style.fill = '#D80000';
+		dmgNumArrayItem.style.stroke = '#222222';
+		dmgNumArrayItem.visible = false;
+	});
+
+	container.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+		dmgStatusImageItem.visible = false;
+	});
+	container.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+		dmgStatusTextItem.visible = false;
+	});
+	// container.dmgPopup.dmgNum.style.fill = '#D80000';
+	// container.dmgPopup.dmgNum.style.stroke = '#222222';
+
+	if(effective == 0.25){
+		container.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+		container.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#9D9D9D';
+		});
+		// container.dmgPopup.dmgNum.style.fill = '#9D9D9D';
+	}else if(effective == 0.5){
+		container.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+		container.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#FFFFFF';
+		});
+		// container.dmgPopup.dmgNum.style.fill = '#FFFFFF';
+	}else if(effective == 2){
+		container.dmgPopup.dmgEffective.text = "SUPER  ×2";
+		container.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#FFE81C';
+		});
+		// container.dmgPopup.dmgNum.style.fill = '#FFE81C';
+	}else if(effective == 4){
+		container.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+		container.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#DB00FF';
+		});
+		// container.dmgPopup.dmgNum.style.fill = '#DB00FF';
+	}else if(effective == 0){
+		container.dmgPopup.dmgEffective.text = "MISS!";
+		container.dmgPopup.dmgEffective.style.fill = '#D80000';
+		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#D80000';
+		});
+		// container.dmgPopup.dmgNum.style.fill = '#D80000';
+	}else{
+		container.dmgPopup.dmgEffective.visible = false;
 	}
 }
