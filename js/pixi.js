@@ -3054,6 +3054,11 @@ function animateBattle(attacker, defender){
 				// heroFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
 				heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
 				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
+				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+					heroArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
+						statusSprite.visible = true;
+					});
+				});
 			});
 
 			heroShiftSizeTracker++;			
