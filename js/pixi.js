@@ -4016,7 +4016,7 @@ function updateDamage(object, targetIndex, effectiveness, skillCrit, critTracker
 			object.healthBar.addChild(newStatusEffect);
 			object.statusSpriteArray.push(newStatusEffect);
 			object.statusArray.push(statusNumber);
-			resizeStatus(object, targetedIndex);
+			resizeStatus(object, targetIndex);
 		});
 	}
 
