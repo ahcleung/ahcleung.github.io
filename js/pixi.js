@@ -1079,46 +1079,46 @@ function createSprite(direction, item, index){
 		dmgPopup.addChild(dmgNum);
 	}
 
-	const dmgNumStyle1 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
-    const dmgNumStyle2 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
-    const dmgNumStyle3 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
-    const dmgNumStyle4 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
-    const dmgNumStyle5 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
+	// const dmgNumStyle1 = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
+ //    const dmgNumStyle2 = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
+ //    const dmgNumStyle3 = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
+ //    const dmgNumStyle4 = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
+ //    const dmgNumStyle5 = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
 
     const dmgEffectiveStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
@@ -2370,97 +2370,98 @@ function onCreatureDown(){
 							heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 							heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
-							switch(statusNumber){
-								case 1:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-									break;
-								case 2:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									break;
-								case 3:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-									break;
-								case 4:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-									break;
-								case 5:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-									break;
-								case 6:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-									break;
-								case 7:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-									break;
-								case 8:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-									break;
-								case 9:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-									break;
-								case 10:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-									break;
-								case 11:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-									break;
-								case 12:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-									break;
-								case 13:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-									break;
-								case 14:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-									break;
-								default:
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							}
+							updateDmgStatus(heroFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							// switch(statusNumber){
+							// 	case 1:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
+							// 		break;
+							// 	case 2:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+							// 		break;
+							// 	case 3:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
+							// 		break;
+							// 	case 4:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
+							// 		break;
+							// 	case 5:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
+							// 		break;
+							// 	case 6:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
+							// 		break;
+							// 	case 7:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
+							// 		break;
+							// 	case 8:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
+							// 		break;
+							// 	case 9:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
+							// 		break;
+							// 	case 10:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
+							// 		break;
+							// 	case 11:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
+							// 		break;
+							// 	case 12:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
+							// 		break;
+							// 	case 13:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
+							// 		break;
+							// 	case 14:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
+							// 		break;
+							// 	default:
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
+							// 		heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+							// }
 							newStatusEffect.visible = false;
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -2611,97 +2612,98 @@ function onCreatureDown(){
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
-							switch(statusNumber){
-								case 1:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-									break;
-								case 2:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									break;
-								case 3:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-									break;
-								case 4:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-									break;
-								case 5:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-									break;
-								case 6:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-									break;
-								case 7:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-									break;
-								case 8:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-									break;
-								case 9:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-									break;
-								case 10:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-									break;
-								case 11:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-									break;
-								case 12:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-									break;
-								case 13:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-									break;
-								case 14:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-									break;
-								default:
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
-									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-							}
+							updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							// switch(statusNumber){
+							// 	case 1:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_bleed.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
+							// 		break;
+							// 	case 2:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+							// 		break;
+							// 	case 3:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
+							// 		break;
+							// 	case 4:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
+							// 		break;
+							// 	case 5:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
+							// 		break;
+							// 	case 6:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
+							// 		break;
+							// 	case 7:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
+							// 		break;
+							// 	case 8:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
+							// 		break;
+							// 	case 9:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
+							// 		break;
+							// 	case 10:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
+							// 		break;
+							// 	case 11:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
+							// 		break;
+							// 	case 12:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
+							// 		break;
+							// 	case 13:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
+							// 		break;
+							// 	case 14:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
+							// 		break;
+							// 	default:
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
+							// 		enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
+							// }
 							newStatusEffect.visible = false;
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -3870,4 +3872,98 @@ function statusEffectSprite(identifier){
 			
 	}
 	return statusEffectIcon;
+}
+
+function updateDmgStatus(container, newStatus, newStatusIndex){
+	switch(newStatus){
+		case 1:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
+			break;
+		case 2:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
+			break;
+		case 3:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
+			break;
+		case 4:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
+			break;
+		case 5:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
+			break;
+		case 6:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
+			break;
+		case 7:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
+			break;
+		case 8:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
+			break;
+		case 9:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
+			break;
+		case 10:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
+			break;
+		case 11:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
+			break;
+		case 12:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
+			break;
+		case 13:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
+			break;
+		case 14:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
+			break;
+		default:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
+	}
 }
