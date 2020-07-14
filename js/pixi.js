@@ -2943,7 +2943,7 @@ function onAdditionalMoveDown(){
 
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.target.visible = false;
-		enemyObject.healthBar.visible = false;
+		enemyObject.healthBar.heal.visible = false;
 	});
 	heroArray.forEach(heroObject=>{
 		heroObject.healthBar.target.visible = false;
