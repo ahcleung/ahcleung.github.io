@@ -1108,31 +1108,6 @@ function createSprite(direction, item, index){
 		stroke: '#222222',
    		strokeThickness: 5,
     });
-
-    const statusStyle1 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 24,
-        fontWeight: 700,
-		fill: '#FFDEBF',	
-		stroke: '#FF7B00',
-   		strokeThickness: 5,
-    });
-    const statusStyle2 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 24,
-        fontWeight: 700,
-		fill: '#C1D9FF',	
-		stroke: '#0666FF',
-   		strokeThickness: 5,
-    });
-    const statusStyle3 = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 24,
-        fontWeight: 700,
-		fill: '#F9EFD2',	
-		stroke: '#E6C04B',
-   		strokeThickness: 5,
-    });
   	
 	let dmgNum1 = new Text("50", dmgNumStyle1);
 	dmgNum1.anchor.set(0.5, 0.5);
@@ -1212,27 +1187,27 @@ function createSprite(direction, item, index){
 	// dmgPopup.dmgCrit = dmgCrit;
 
 	//GSAP2
-	var dmgPopupTween = new TimelineMax({paused: true});
-	dmgPopupTween.to(dmgNum1, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
-	dmgPopupTween.fromTo(dmgNum1.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
+	// var dmgPopupTween = new TimelineMax({paused: true});
+	// dmgPopupTween.to(dmgNum1, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
+	// dmgPopupTween.fromTo(dmgNum1.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	dmgPopupTween.to(dmgEffective, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0);
-	dmgPopupTween.fromTo(dmgEffective.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
+	// dmgPopupTween.to(dmgEffective, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0);
+	// dmgPopupTween.fromTo(dmgEffective.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	dmgPopupTween.to(dmgNum2, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.033);
-	dmgPopupTween.fromTo(dmgNum2.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.033);
+	// dmgPopupTween.to(dmgNum2, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.033);
+	// dmgPopupTween.fromTo(dmgNum2.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.033);
 
-	dmgPopupTween.to(dmgNum3, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.067);
-	dmgPopupTween.fromTo(dmgNum3.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.067);
+	// dmgPopupTween.to(dmgNum3, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.067);
+	// dmgPopupTween.fromTo(dmgNum3.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.067);
 
-	dmgPopupTween.to(dmgNum4, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.1);
-	dmgPopupTween.fromTo(dmgNum4.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.1);
+	// dmgPopupTween.to(dmgNum4, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.1);
+	// dmgPopupTween.fromTo(dmgNum4.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.1);
 
-	dmgPopupTween.to(dmgNum5, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.133);
-	dmgPopupTween.fromTo(dmgNum5.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.133);
+	// dmgPopupTween.to(dmgNum5, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.133);
+	// dmgPopupTween.fromTo(dmgNum5.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.133);
 
-	dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
-	dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.333+anim1);
+	// dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
+	// dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.333+anim1);
 
 	// dmgPopup.alpha = 1;
 	dmgPopup.tween = dmgPopupTween;	
@@ -1307,57 +1282,8 @@ function createSprite(direction, item, index){
 	healthBar.turn = turnIndicator;
 	// healthBar.turn.visible = false;
 	
-	let statusEffect;
-	
 	item.statusArray.forEach(status => {
-		statusEffect = statusEffectSprite(status[0]);
-		// switch(status[0]){
-		// 	case 1:
-		// 		statusEffect = new PIXI.Sprite(resources.status_bleed.texture);
-		// 		break;
-		// 	case 2:
-		// 		statusEffect = new PIXI.Sprite(resources.status_buff.texture);
-		// 		break;
-		// 	case 3:
-		// 		statusEffect = new PIXI.Sprite(resources.status_burned.texture);
-		// 		break;
-		// 	case 4:
-		// 		statusEffect = new PIXI.Sprite(resources.status_debuff.texture);
-		// 		break;
-		// 	case 5:
-		// 		statusEffect = new PIXI.Sprite(resources.status_depressed.texture);
-		// 		break;
-		// 	case 6:
-		// 		statusEffect = new PIXI.Sprite(resources.status_guard.texture);
-		// 		break;
-		// 	case 7:
-		// 		statusEffect = new PIXI.Sprite(resources.status_immune.texture);
-		// 		break;
-		// 	case 8:
-		// 		statusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
-		// 		break;
-		// 	case 9:
-		// 		statusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
-		// 		break;
-		// 	case 10:
-		// 		statusEffect = new PIXI.Sprite(resources.status_recover.texture);
-		// 		break;
-		// 	case 11:
-		// 		statusEffect = new PIXI.Sprite(resources.status_secured.texture);
-		// 		break;
-		// 	case 12:
-		// 		statusEffect = new PIXI.Sprite(resources.status_silenced.texture);
-		// 		break;
-		// 	case 13:
-		// 		statusEffect = new PIXI.Sprite(resources.status_stunned.texture);
-		// 		break;
-		// 	case 14:
-		// 		statusEffect = new PIXI.Sprite(resources.status_critical.texture);
-		// 		break;
-		// 	default:
-		// 		statusEffect = new PIXI.Sprite(resources.status_buff.texture);
-				
-		// }
+		let statusEffect = statusEffectSprite(status[0]);
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
@@ -2429,105 +2355,90 @@ function onCreatureDown(){
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-									// newStatusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 									break;
 								case 2:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									// newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 									break;
 								case 3:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-									// newStatusEffect = new PIXI.Sprite(resources.status_burned.texture);
 									break;
 								case 4:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-									// newStatusEffect = new PIXI.Sprite(resources.status_debuff.texture);
 									break;
 								case 5:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-									// newStatusEffect = new PIXI.Sprite(resources.status_depressed.texture);
 									break;
 								case 6:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-									// newStatusEffect = new PIXI.Sprite(resources.status_guard.texture);
 									break;
 								case 7:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-									// newStatusEffect = new PIXI.Sprite(resources.status_immune.texture);
 									break;
 								case 8:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-									// newStatusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 									break;
 								case 9:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-									// newStatusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
 									break;
 								case 10:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-									// newStatusEffect = new PIXI.Sprite(resources.status_recover.texture);
 									break;
 								case 11:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-									// newStatusEffect = new PIXI.Sprite(resources.status_secured.texture);
 									break;
 								case 12:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-									// newStatusEffect = new PIXI.Sprite(resources.status_silenced.texture);
 									break;
 								case 13:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-									// newStatusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 									break;
 								case 14:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-									// newStatusEffect = new PIXI.Sprite(resources.status_critical.texture);
 									break;
 								default:
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									// newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 							}
 							newStatusEffect.visible = false;
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
@@ -2536,7 +2447,6 @@ function onCreatureDown(){
 							resizeHP(1, heroInterfaceHealthArray[targetedIndex], targetedIndex);
 						});
 					}
-
 					
 					// console.log("Hero status: " + heroArray[targetedIndex].statusArray);
 
@@ -2686,105 +2596,90 @@ function onCreatureDown(){
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Bleed";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E3C2C2';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#910A0A';
-									// newStatusEffect = new PIXI.Sprite(resources.status_bleed.texture);
 									break;
 								case 2:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									// newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 									break;
 								case 3:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_burned.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Burned";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#ECCFC6';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#B23F1B';
-									// newStatusEffect = new PIXI.Sprite(resources.status_burned.texture);
 									break;
 								case 4:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_debuff.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Debuff";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C1D9FF';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#0666FF';
-									// newStatusEffect = new PIXI.Sprite(resources.status_debuff.texture);
 									break;
 								case 5:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_depressed.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Depressed";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CCCCCC';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#353535';
-									// newStatusEffect = new PIXI.Sprite(resources.status_depressed.texture);
 									break;
 								case 6:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_guard.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Guard";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#BFE9F0';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#00A8C4';
-									// newStatusEffect = new PIXI.Sprite(resources.status_guard.texture);
 									break;
 								case 7:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_immune.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Immune";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#E8C2EC';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#A50BB2';
-									// newStatusEffect = new PIXI.Sprite(resources.status_immune.texture);
 									break;
 								case 8:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_paralyzed.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Paralyzed";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#EFDFBF';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#C18100';
-									// newStatusEffect = new PIXI.Sprite(resources.status_paralyzed.texture);
 									break;
 								case 9:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_poisoned.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Poisoned";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DEC2ED';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#7C0BB7';
-									// newStatusEffect = new PIXI.Sprite(resources.status_poisoned.texture);
 									break;
 								case 10:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_recover.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Recover";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#C6F1C5';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#1BC617';
-									// newStatusEffect = new PIXI.Sprite(resources.status_recover.texture);
 									break;
 								case 11:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_secured.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Secured";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#CBE1D9';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#2E8966';
-									// newStatusEffect = new PIXI.Sprite(resources.status_secured.texture);
 									break;
 								case 12:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_silenced.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Silenced";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#DACDEE';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#6A37BC';
-									// newStatusEffect = new PIXI.Sprite(resources.status_silenced.texture);
 									break;
 								case 13:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_stunned.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Stunned";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#F9EFD2';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#E6C04B';
-									// newStatusEffect = new PIXI.Sprite(resources.status_stunned.texture);
 									break;
 								case 14:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_critical.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Critical";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFDEBF';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF7B00';
-									// newStatusEffect = new PIXI.Sprite(resources.status_critical.texture);
 									break;
 								default:
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].texture = resources.status_buff.texture;
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].text = "Buff";
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.fill = '#FFE7C1';
 									enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].style.stroke = '#FF9F06';
-									// newStatusEffect = new PIXI.Sprite(resources.status_buff.texture);
 							}
 							newStatusEffect.visible = false;
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
