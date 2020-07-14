@@ -2247,7 +2247,7 @@ function onCreatureDown(){
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
-							resizeHP(1, heroInterfaceHealthArray[targetedIndex], targetedIndex);
+							resizeHP(0, heroInterfaceHealthArray[targetedIndex], targetedIndex);
 						});
 					}
 					
