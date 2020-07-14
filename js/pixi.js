@@ -1117,30 +1117,29 @@ function createSprite(direction, item, index){
 	dmgStatus.tween = dmgStatusTween;
 
 	//GSAP2
-	var dmgPopupTween = new TimelineMax({paused: true});
-	dmgPopupTween.to(dmgNumArray[0], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
-	dmgPopupTween.fromTo(dmgNumArray[0].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
+	// var dmgPopupTween = new TimelineMax({paused: true});
+	// dmgPopupTween.to(dmgNumArray[0], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
+	// dmgPopupTween.fromTo(dmgNumArray[0].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	dmgPopupTween.to(dmgEffective, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0);
-	dmgPopupTween.fromTo(dmgEffective.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
+	// dmgPopupTween.to(dmgEffective, 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0);
+	// dmgPopupTween.fromTo(dmgEffective.scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0);
 
-	dmgPopupTween.to(dmgNumArray[1], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.033);
-	dmgPopupTween.fromTo(dmgNumArray[1].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.033);
+	// dmgPopupTween.to(dmgNumArray[1], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.033);
+	// dmgPopupTween.fromTo(dmgNumArray[1].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.033);
 
-	dmgPopupTween.to(dmgNumArray[2], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.067);
-	dmgPopupTween.fromTo(dmgNumArray[2].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.067);
+	// dmgPopupTween.to(dmgNumArray[2], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.067);
+	// dmgPopupTween.fromTo(dmgNumArray[2].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.067);
 
-	dmgPopupTween.to(dmgNumArray[3], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.1);
-	dmgPopupTween.fromTo(dmgNumArray[3].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.1);
+	// dmgPopupTween.to(dmgNumArray[3], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.1);
+	// dmgPopupTween.fromTo(dmgNumArray[3].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.1);
 
-	dmgPopupTween.to(dmgNumArray[4], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.133);
-	dmgPopupTween.fromTo(dmgNumArray[4].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.133);
+	// dmgPopupTween.to(dmgNumArray[4], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1},0.133);
+	// dmgPopupTween.fromTo(dmgNumArray[4].scale, 0.2, {x: 0, y: 0}, {delay:anim1, ease:Back.easeOut.config(1.7), x: 1, y: 1},0.133);
 
-	dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
-	dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.333+anim1);
+	// dmgPopupTween.to(dmgPopup, 0.267, {delay: 0.6, ease:Expo.easeInOut, y: 100, alpha: 0});
+	// dmgPopupTween.to(dmgPopup.scale, 0.267, {delay: 0.6, ease:Expo.easeInOut, x: 0, y: 0}, 0.333+anim1);
 
-	// dmgPopup.alpha = 1;
-	dmgPopup.tween = dmgPopupTween;	
+	// dmgPopup.tween = dmgPopupTween;	
 	dmgPopup.dmgNumArray = dmgNumArray;
 
 	dmgContainer.addChild(dmgStatus);
@@ -1521,12 +1520,12 @@ function resize() {
 
 	heroArray.forEach(function (item, index){
 		resizeHP(0, item.healthBar, index);
-		resizeDmg(0, item.dmgContainer, index);
+		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
 		resizeHP(1, item.healthBar, index);
-		resizeDmg(1, item.dmgContainer, index);
+		resizeDmg(1, item);
 	});
 
 	//Console log RESIZE
@@ -1534,7 +1533,7 @@ function resize() {
 	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
-function resizeDmg(roster, item, index){
+function resizeDmg(roster, item){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	// var resizeHeight = 40;
 	var statusSpacing = 5;
@@ -1543,24 +1542,24 @@ function resizeDmg(roster, item, index){
 	var statusSpacer2 = 100;
 	var statusStrokeSize = 5;
 	if(app.screen.width < 860){
-		item.dmgPopup.scale.set(0.4,0.4);
+		item.dmgContainer.dmgPopup.scale.set(0.4,0.4);
 		statusSpacing = 2;
 		statusFontSize = 12;
 		statusSpacer1 = 20;
 		statusSpacer2 = 40;
 		statusStrokeSize = 2;
 	}else if(app.screen.width < 1366){
-		item.dmgPopup.scale.set(0.6,0.6);
+		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
 		statusSpacing = 4;
 		statusFontSize = 20;
 		statusSpacer1 = 30;
 		statusSpacer2 = 80;
 		statusStrokeSize = 3;
 	}else if(app.screen.width < 1500){
-		item.dmgPopup.scale.set(0.75,0.75);
+		item.dmgContainer.dmgPopup.scale.set(0.75,0.75);
 	}
 	else{
-		item.dmgPopup.scale.set(1,1);
+		item.dmgContainer.dmgPopup.scale.set(1,1);
 		statusSpacing = 5;
 		statusFontSize = 24;
 		statusSpacer1 = 40;
@@ -1568,46 +1567,56 @@ function resizeDmg(roster, item, index){
 		statusStrokeSize = 4;
 	}
 
-	item.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
+	item.dmgContainer.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
 		statusImage.width = (resizeWidth - (statusSpacing * 5))/4;
 		statusImage.height = statusImage.width;
 		statusImage.y = -(statusSpacer1 + (arrayIndex*statusSpacer2));
 	});
 
-	item.dmgStatus.statusTextArray.forEach((statusText,arrayIndex)=>{
+	item.dmgContainer.dmgStatus.statusTextArray.forEach((statusText,arrayIndex)=>{
 		statusText.style.fontSize = statusFontSize;
 		statusText.style.strokeThickness = statusStrokeSize;
 		statusText.y = -(arrayIndex*statusSpacer2);
 	});
 
-	if(roster == 0){
-		var switcher = 0;
-// 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
-		if(heroArray[index].size > 1){
-			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-			item.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
-			switcher = 1;
-		}else{
-			item.dmgPopup.x = resizeWidth/2;
-			item.dmgStatus.x = resizeWidth/2;
-		}
-
-		item.x = heroHealthXPosition[heroArray[index].pos-1+switcher];
-
+	var switcher = 0;
+	if(item.size > 1){
+		item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
+		item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
+		switcher = 1;
 	}else{
-		if(enemyArray[index].size > 1){
-			item.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-			item.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
-		}else{
-			item.dmgPopup.x = resizeWidth/2;
-			item.dmgStatus.x = resizeWidth/2;
-		}
-
-		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+		item.dmgContainer.dmgPopup.x = resizeWidth/2;
+		item.dmgContainer.dmgStatus.x = resizeWidth/2;
 	}
 
-	item.dmgPopup.y = app.screen.height/3;
-	item.dmgStatus.y = app.screen.height*2/5;
+	if(roster == 0){
+// 		var switcher = 0;
+// // 		moveHeroContainerArray[index].y = app.screen.height * 1/2;
+// 		if(heroArray[index].size > 1){
+// 			item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
+// 			item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
+// 			switcher = 1;
+// 		}else{
+// 			item.dmgContainer.dmgPopup.x = resizeWidth/2;
+// 			item.dmgContainer.dmgStatus.x = resizeWidth/2;
+// 		}
+
+		item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
+
+	}else{
+		// if(enemyArray[index].size > 1){
+		// 	item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
+		// 	item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
+		// }else{
+		// 	item.dmgContainer.dmgPopup.x = resizeWidth/2;
+		// 	item.dmgContainer.dmgStatus.x = resizeWidth/2;
+		// }
+
+		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+	}
+
+	item.dmgContainer.dmgPopup.y = app.screen.height/3;
+	item.dmgContainer.dmgStatus.y = app.screen.height*2/5;
 }
 
 function resizeHP(roster, item, index){
