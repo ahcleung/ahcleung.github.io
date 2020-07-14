@@ -2311,7 +2311,7 @@ function onCreatureDown(){
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
 							// resizeStatus(0, heroInterfaceHealthArray[targetedIndex], targetedIndex);
-							resizeStatus(0, heroArray[targetedIndex].healthBar, targetedIndex);
+							resizeStatus(heroArray[targetedIndex], targetedIndex);
 						});
 					}
 					
@@ -2456,7 +2456,7 @@ function onCreatureDown(){
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
 							// resizeStatus(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
-							resizeStatus(1, enemyArray[targetedIndex].healthBar, targetedIndex);
+							resizeStatus(enemyArray[targetedIndex], targetedIndex);
 						});
 					}
 
