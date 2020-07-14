@@ -2136,11 +2136,11 @@ function onCreatureDown(){
 					}
 
 					if(skillStatChange){
-						if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
-							statusNum.push(2);
-						}else{
-							statusNum.push(4);
-						}
+						// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
+						// 	statusNum.push(2);
+						// }else{
+						// 	statusNum.push(4);
+						// }
 					}
 
 					//Calculate heal amount or damage amount
@@ -2296,7 +2296,7 @@ function onCreatureDown(){
 						heroArray[targetedIndex].healthBar.inner.width = heroArray[targetedIndex].healthBar.outer.width * (heroArray[targetedIndex].hp/heroArray[targetedIndex].overallHP);
 					}
 
-					if(skillStatChange || skillStatusEffect){
+					if(skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
 							// heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 							// heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
@@ -2310,7 +2310,6 @@ function onCreatureDown(){
 							heroArray[targetedIndex].healthBar.addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
-							// resizeStatus(0, heroInterfaceHealthArray[targetedIndex], targetedIndex);
 							resizeStatus(heroArray[targetedIndex], targetedIndex);
 						});
 					}
@@ -2335,145 +2334,146 @@ function onCreatureDown(){
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
 					heroArray[targetedIndex].dmgContainer.dmgPopup.tween.play(0);
 				}else if(targeted < 0 && !other){
-					if(skillsList.data.skills[selectedSkill].heal > 0){
+					if(ifHeal){
 						enemyArray[targetedIndex].heal(deltaHP);			//add heal
 					}else{
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					// updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
-					updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
+					updateDamage(enemyArray[targetedIndex], targetIndex, effectiveness, ifCrit, critTracker, ifHeal, statusNum, skillStatusEffect);
 
-					if(ifCrit){
-						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
+					// // updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
+					// updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
 
-						// var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
+					// if(ifCrit){
+					// 	enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
 
-						// TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].critDmgBar
-						// 	, 1, {
-						// 		width: enemyInterfaceHealthArray[targetedIndex].critDmgBar.width
-						// 	}, {delay:1.75, ease:Expo.easeIn, width:newCritWidth});
+					// 	// var newCritWidth = -(enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
-						var newCritWidth = -(enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
+					// 	// TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].critDmgBar
+					// 	// 	, 1, {
+					// 	// 		width: enemyInterfaceHealthArray[targetedIndex].critDmgBar.width
+					// 	// 	}, {delay:1.75, ease:Expo.easeIn, width:newCritWidth});
 
-						TweenMax.fromTo(enemyArray[targetedIndex].healthBar.critDmgBar
-							, 1, {
-								width: enemyArray[targetedIndex].healthBar.critDmgBar.width
-							}, {delay:1.75, ease:Expo.easeIn, width:newCritWidth});
+					// 	var newCritWidth = -(enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].critDmg/enemyArray[targetedIndex].overallHP));
 
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
-							if(critTracker[dmgNumArrayIndex] == 1){
-								dmgNumArrayItem.style.fill = '#ff7b00';
-								dmgNumArrayItem.style.stroke = '#4E2600';
-							}							
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
-					}
+					// 	TweenMax.fromTo(enemyArray[targetedIndex].healthBar.critDmgBar
+					// 		, 1, {
+					// 			width: enemyArray[targetedIndex].healthBar.critDmgBar.width
+					// 		}, {delay:1.75, ease:Expo.easeIn, width:newCritWidth});
 
-					if(skillsList.data.skills[selectedSkill].heal > 0){
-						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-							dmgNumArrayItem.style.fill = '#1bc617';
-							dmgNumArrayItem.style.stroke = '#052805';
-						});
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
+					// 	enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+					// 		if(critTracker[dmgNumArrayIndex] == 1){
+					// 			dmgNumArrayItem.style.fill = '#ff7b00';
+					// 			dmgNumArrayItem.style.stroke = '#4E2600';
+					// 		}							
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#ff7b00';
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#4E2600';
+					// }
 
-						// var newWidth = (enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyInterfaceHealthArray[targetedIndex].inner.width;
+					// if(skillsList.data.skills[selectedSkill].heal > 0){
+					// 	enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					// 		dmgNumArrayItem.style.fill = '#1bc617';
+					// 		dmgNumArrayItem.style.stroke = '#052805';
+					// 	});
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#1bc617';
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#052805';
 
-						// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.x = enemyInterfaceHealthArray[targetedIndex].inner.width;
-						// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						// var tween = new TimelineMax({onComplete: function(){
-						// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-						// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
-						// }});
-						// tween.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-						// 	, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-						// 		enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-						// 	}});
-						// tween.to(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-						// 	, 1, {ease:Expo.easeIn, alpha:0});
+					// 	// var newWidth = (enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyInterfaceHealthArray[targetedIndex].inner.width;
 
-						var newWidth = (enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyArray[targetedIndex].healthBar.inner.width;
+					// 	// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.x = enemyInterfaceHealthArray[targetedIndex].inner.width;
+					// 	// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// 	// var tween = new TimelineMax({onComplete: function(){
+					// 	// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+					// 	// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.alpha = 0.9;
+					// 	// }});
+					// 	// tween.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
+					// 	// 	, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+					// 	// 		enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// 	// 	}});
+					// 	// tween.to(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
+					// 	// 	, 1, {ease:Expo.easeIn, alpha:0});
 
-						enemyArray[targetedIndex].healthBar.dmgBarContainer.x = enemyArray[targetedIndex].healthBar.inner.width;
-						enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = true;
-						var tween = new TimelineMax({onComplete: function(){
-							enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = false;
-							enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
-						}});
-						tween.fromTo(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
-							, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-								enemyArray[targetedIndex].healthBar.inner.width = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-							}});
-						tween.to(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
-							, 1, {ease:Expo.easeIn, alpha:0});
-					}else{
-						// var newWidth = enemyInterfaceHealthArray[targetedIndex].inner.width - (enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
+					// 	var newWidth = (enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP)) - enemyArray[targetedIndex].healthBar.inner.width;
 
-						// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
-						// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
-						// TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
-						// 	, 1, {
-						// 		width: newWidth
-						// 	}, {delay:1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-						// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
-						// }});
+					// 	enemyArray[targetedIndex].healthBar.dmgBarContainer.x = enemyArray[targetedIndex].healthBar.inner.width;
+					// 	enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = true;
+					// 	var tween = new TimelineMax({onComplete: function(){
+					// 		enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = false;
+					// 		enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
+					// 	}});
+					// 	tween.fromTo(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
+					// 		, 1, {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+					// 			enemyArray[targetedIndex].healthBar.inner.width = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// 		}});
+					// 	tween.to(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
+					// 		, 1, {ease:Expo.easeIn, alpha:0});
+					// }else{
+					// 	// var newWidth = enemyInterfaceHealthArray[targetedIndex].inner.width - (enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
 
-						// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.x = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-						// enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// 	// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.width = newWidth;
+					// 	// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = true;
+					// 	// TweenMax.fromTo(enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar
+					// 	// 	, 1, {
+					// 	// 		width: newWidth
+					// 	// 	}, {delay:1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+					// 	// 	enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.dmgBar.visible = false;
+					// 	// }});
 
-						var newWidth = enemyArray[targetedIndex].healthBar.inner.width - (enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
+					// 	// enemyInterfaceHealthArray[targetedIndex].dmgBarContainer.x = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// 	// enemyInterfaceHealthArray[targetedIndex].inner.width = enemyInterfaceHealthArray[targetedIndex].outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
 
-						enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.width = newWidth;
-						enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = true;
-						TweenMax.fromTo(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
-							, 1, {
-								width: newWidth
-							}, {delay:1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-							enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = false;
-						}});
+					// 	var newWidth = enemyArray[targetedIndex].healthBar.inner.width - (enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP));
 
-						enemyArray[targetedIndex].healthBar.dmgBarContainer.x = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-						enemyArray[targetedIndex].healthBar.inner.width = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
-					}
+					// 	enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.width = newWidth;
+					// 	enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = true;
+					// 	TweenMax.fromTo(enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar
+					// 		, 1, {
+					// 			width: newWidth
+					// 		}, {delay:1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+					// 		enemyArray[targetedIndex].healthBar.dmgBarContainer.dmgBar.visible = false;
+					// 	}});
 
-					if(skillStatChange || skillStatusEffect){
-						statusNum.forEach((statusNumber, statusNumberIndex)=>{
-							// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-							// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-							enemyArray[targetedIndex].dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-							enemyArray[targetedIndex].dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-							let newStatusEffect = statusEffectSprite(statusNumber);
-							// updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
-							updateDmgStatus(enemyArray[targetedIndex].dmgContainer, statusNumber, statusNumberIndex);
-							newStatusEffect.visible = false;
-							// enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
-							enemyArray[targetedIndex].healthBar.addChild(newStatusEffect);
-							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
-							enemyArray[targetedIndex].statusArray.push(statusNumber);
-							// resizeStatus(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
-							resizeStatus(enemyArray[targetedIndex], targetedIndex);
-						});
-					}
+					// 	enemyArray[targetedIndex].healthBar.dmgBarContainer.x = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// 	enemyArray[targetedIndex].healthBar.inner.width = enemyArray[targetedIndex].healthBar.outer.width * (enemyArray[targetedIndex].hp/enemyArray[targetedIndex].overallHP);
+					// }
 
-					// enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
-					enemyArray[targetedIndex].healthBar.textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
+					// if(skillStatusEffect){
+					// 	statusNum.forEach((statusNumber, statusNumberIndex)=>{
+					// 		// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+					// 		// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+					// 		enemyArray[targetedIndex].dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+					// 		enemyArray[targetedIndex].dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+					// 		let newStatusEffect = statusEffectSprite(statusNumber);
+					// 		// updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+					// 		updateDmgStatus(enemyArray[targetedIndex].dmgContainer, statusNumber, statusNumberIndex);
+					// 		newStatusEffect.visible = false;
+					// 		// enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
+					// 		enemyArray[targetedIndex].healthBar.addChild(newStatusEffect);
+					// 		enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
+					// 		enemyArray[targetedIndex].statusArray.push(statusNumber);
+					// 		resizeStatus(enemyArray[targetedIndex], targetedIndex);
+					// 	});
+					// }
 
-					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-					});
+					// // enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
+					// enemyArray[targetedIndex].healthBar.textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+					// dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+					// 	enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+					// 	enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+					// });
 
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
-					enemyArray[targetedIndex].dmgContainer.dmgPopup.tween.play(0);
+					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
+
+					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
+					// enemyArray[targetedIndex].dmgContainer.dmgPopup.tween.play(0);
 				}
 			});
 		
@@ -3855,8 +3855,6 @@ function updateDmgEffectiveness(container, effective){
 }
 
 function resizeStatus(item, index){
-	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	
@@ -3899,72 +3897,10 @@ function resizeStatus(item, index){
 			}
 		});
 	}
-
-// 	if(roster == 0){
-// 		var switcher = 0;
-// 		if(heroArray[index].size > 1){
-// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				statusSprite.height = statusSprite.width;
-// 				if(index < 8){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-// 					statusSprite.y = resizeHeight + statusSpacing*2;
-// 				}else{
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-// 				}
-// 			});
-// 		}else{
-// 			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				statusSprite.height = statusSprite.width;
-// 				if(index < 4){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-// 					statusSprite.y = resizeHeight + statusSpacing*2;
-// 				}else if(index < 8){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-// 				}else{
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-// 					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-// 				}
-// 			});
-// 		}
-// 	}else{
-// // 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
-// 		if(enemyArray[index].size > 1){
-// 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				statusSprite.height = statusSprite.width;
-// 				if(index < 8){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-// 					statusSprite.y = resizeHeight + statusSpacing*2;
-// 				}else{
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-// 				}
-// 			});
-// 		}else{
-// 			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
-// 				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-// 				statusSprite.height = statusSprite.width;
-// 				if(index < 4){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-// 					statusSprite.y = resizeHeight + statusSpacing*2;
-// 				}else if(index < 8){
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-// 					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-// 				}else{
-// 					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-// 					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-// 				}
-// 			});
-// 		}
-// 	}
 }
 
 
-function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum, skillStatChange, skillStatusEffect){
+function updateDamage(object, targetIndex, effectiveness, skillCrit, critTracker, skillHeal, statusNumArray, skillStatus){
 
 	// updateDmgEffectiveness(object.dmgContainer, effectiveness);
 
@@ -4016,7 +3952,7 @@ function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum,
 		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
 	}
 	
-	if(crit){
+	if(skillCrit){
 		object.criticalHit(Math.floor(totalCritDmg));
 
 		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
@@ -4034,7 +3970,7 @@ function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum,
 		});
 	}
 
-	if(heal){
+	if(skillHeal){
 		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#1bc617';
 			dmgNumArrayItem.style.stroke = '#052805';
@@ -4070,8 +4006,8 @@ function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum,
 		object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
 	}
 
-	if(skillStatChange || skillStatusEffect){
-		statusNum.forEach((statusNumber, statusNumberIndex)=>{
+	if(skillStatus){
+		statusNumArray.forEach((statusNumber, statusNumberIndex)=>{
 			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 			let newStatusEffect = statusEffectSprite(statusNumber);
@@ -4080,7 +4016,7 @@ function updateDamage(object, effectiveness, crit, critTracker, heal, statusNum,
 			object.healthBar.addChild(newStatusEffect);
 			object.statusSpriteArray.push(newStatusEffect);
 			object.statusArray.push(statusNumber);
-			resizeStatus(0, object.healthBar, targetedIndex);
+			resizeStatus(object, targetedIndex);
 		});
 	}
 
