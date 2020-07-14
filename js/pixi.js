@@ -1073,7 +1073,7 @@ function createSprite(direction, item, index){
 
 	    let dmgNum = new Text("25", dmgNumStyle);
 		dmgNum.anchor.set(0.5, 0.5);
-		if (i%2 == 0)	dmgNum.x = 50;
+		if (i%2 != 0)	dmgNum.x = 50;
 		dmgNum.y = -(i*50);
 		dmgNumArray.push(dmgNum);
 		dmgPopup.addChild(dmgNum);
