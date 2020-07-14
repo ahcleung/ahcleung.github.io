@@ -1358,8 +1358,11 @@ function createSprite(direction, item, index){
 		// actionEnemy.push(actionArray);
 		// enemyActionContainerArray.push(creatureAction);
 		// actionEnemy.push(spriteReady);
+
 		item.dmgContainer = dmgContainer;
-		enemyFloatingInfoArray.push(dmgContainer);
+
+		// enemyFloatingInfoArray.push(dmgContainer);
+
 		enemyOrder.push(index);
 // 		moveEnemyContainerArray.push(moveContainer);
 		
@@ -1559,9 +1562,12 @@ function resize() {
 		resizeDmg(0, item, index)
 	});
 
-	enemyFloatingInfoArray.forEach(function (item, index){
-		resizeDmg(1, item, index)
+	enemyArray.forEach(function (item, index){
+		resizeDmg(1, item.dmgContainer, index)
 	});
+	// enemyFloatingInfoArray.forEach(function (item, index){
+	// 	resizeDmg(1, item, index)
+	// });
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
@@ -2267,7 +2273,8 @@ function onCreatureDown(){
 						enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
 					}
 
-					updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
+					// updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
+					updateDmgEffectiveness(enemyArray[targetedIndex].dmgContainer, effectiveness);
 
 					if(ifCrit){
 						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -2280,7 +2287,8 @@ function onCreatureDown(){
 							}, {delay:1.75, ease:Expo.easeIn, width:newCritWidth});
 
 						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
 							if(critTracker[dmgNumArrayIndex] == 1){
 								dmgNumArrayItem.style.fill = '#ff7b00';
 								dmgNumArrayItem.style.stroke = '#4E2600';
@@ -2291,7 +2299,8 @@ function onCreatureDown(){
 					}
 
 					if(skillsList.data.skills[selectedSkill].heal > 0){
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 							dmgNumArrayItem.style.fill = '#1bc617';
 							dmgNumArrayItem.style.stroke = '#052805';
 						});
@@ -2330,10 +2339,13 @@ function onCreatureDown(){
 
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
-							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-							enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							enemyArray[targetedIndex].dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							enemyArray[targetedIndex].dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
-							updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							// updateDmgStatus(enemyFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							updateDmgStatus(enemyArray[targetedIndex].dmgContainer, statusNumber, statusNumberIndex);
 							newStatusEffect.visible = false;
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -2345,13 +2357,16 @@ function onCreatureDown(){
 					enemyInterfaceHealthArray[targetedIndex].textHP.text = enemyArray[targetedIndex].hp + " / " + enemyArray[targetedIndex].EHP;
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-						enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+						// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+						enemyArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
 					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
 
-					enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
+					// enemyFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
+					enemyArray[targetedIndex].dmgContainer.dmgPopup.tween.play(0);
 				}
 			});
 		
@@ -2517,7 +2532,9 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(enemySpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionEnemy[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(enemyInterfaceHealthArray[arrayCreatureIndex], 0.5, {x: newHPX});
-			TweenMax.to(enemyFloatingInfoArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			// TweenMax.to(enemyFloatingInfoArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
+			
 			// console.log(arrayCreature.pos);
 		});
 	}
@@ -3023,14 +3040,20 @@ function animateBattle(attacker, defender){
 		}else{
 			var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
 			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-			TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			// TweenMax.to(enemyFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			
 
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionEnemy[Math.abs(arrayCreature)-1].x = originalX;
-				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
-				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
-				enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.eventCallback("onComplete", function(){
+				
+				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
+				enemyArray[aMath.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
+				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+				// enemyFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalX;
+				// enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
+				// enemyFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.eventCallback("onComplete", function(){
 					enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
 						statusSprite.visible = true;
 					});
