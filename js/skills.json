@@ -54,7 +54,7 @@
 		},
 		{
 			"name": "Fire wall",
-			"element": 3,
+			"element": 2,
 			"type": "spe",
 			"power": 20,
 			"accuracy": 100,
@@ -68,7 +68,7 @@
 				"multiple", "status", "turns"
 			],
 			"multiple": [2,5],
-			"status": 3,
+			"status": 4,
 			"hazard": [10,"between"],
 			"turns": 5,
 			"splash": 0,
