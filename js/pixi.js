@@ -2259,7 +2259,7 @@ function onCreatureDown(){
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							heroArray[targetedIndex].statusArray.push(statusNumber);
-							resizeHP(0, heroInterfaceHealthArray[targetedIndex], targetedIndex);
+							resizeStatus(0, heroInterfaceHealthArray[targetedIndex], targetedIndex);
 						});
 					}
 					
@@ -2365,7 +2365,7 @@ function onCreatureDown(){
 							enemyInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							enemyArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
 							enemyArray[targetedIndex].statusArray.push(statusNumber);
-							resizeHP(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
+							resizeStatus(1, enemyInterfaceHealthArray[targetedIndex], targetedIndex);
 						});
 					}
 
@@ -3693,5 +3693,85 @@ function updateDmgEffectiveness(container, effective){
 		});
 	}else{
 		container.dmgPopup.dmgEffective.visible = false;
+	}
+}
+
+function resizeStatus(roster, item, index){
+	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	var resizeHeight = 40;
+	var statusSpacing = 5;
+	
+	if(app.screen.width < 860){
+		resizeHeight = 20;
+		statusSpacing = 2;
+	}else if(app.screen.width < 1366){
+		resizeHeight = 30;
+		statusSpacing = 4;
+	}else{
+		resizeHeight = 40;
+		statusSpacing = 5;
+	}
+	
+	if(roster == 0){
+		var switcher = 0;
+		if(heroArray[index].size > 1){
+			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
+				if(index < 8){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
+				}else{
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+				}
+			});
+		}else{
+			heroArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
+				if(index < 4){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
+				}else if(index < 8){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+				}else{
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+				}
+			});
+		}
+	}else{
+// 		moveEnemyContainerArray[index].y = app.screen.height * 1/2;
+		if(enemyArray[index].size > 1){
+			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
+				if(index < 8){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
+				}else{
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+				}
+			});
+		}else{
+			enemyArray[index].statusSpriteArray.forEach((statusSprite, index) => {
+				statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+				statusSprite.height = statusSprite.width;
+				if(index < 4){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+					statusSprite.y = resizeHeight + statusSpacing*2;
+				}else if(index < 8){
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+					statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+				}else{
+					statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+					statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+				}
+			});
+		}
 	}
 }
