@@ -1342,7 +1342,9 @@ function createSprite(direction, item, index){
 		// actionHero.push(spriteReady);
 		// actionHero.push(actionArray);
 		// heroActionContainerArray.push(creatureAction);
-		heroFloatingInfoArray.push(dmgContainer);
+
+		item.dmgContainer = dmgContainer;
+		// heroFloatingInfoArray.push(dmgContainer);
 		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
 		
@@ -1558,9 +1560,13 @@ function resize() {
 	// 	resizeContainerAction(-1, item, index)	
 	// });
 
-	heroFloatingInfoArray.forEach(function (item, index){
-		resizeDmg(0, item, index)
-	});
+	heroArray.forEach(function (item, index){
+		resizeDmg(0, item.dmgContainer, index)
+	});	
+
+	// heroFloatingInfoArray.forEach(function (item, index){
+	// 	resizeDmg(0, item, index)
+	// });
 
 	enemyArray.forEach(function (item, index){
 		resizeDmg(1, item.dmgContainer, index)
@@ -2176,7 +2182,8 @@ function onCreatureDown(){
 						heroArray[targetedIndex].damage(deltaHP);		//subtract damage
 					}
 
-					updateDmgEffectiveness(heroFloatingInfoArray[targetedIndex], effectiveness);
+					// updateDmgEffectiveness(heroFloatingInfoArray[targetedIndex], effectiveness);
+					updateDmgEffectiveness(heroArray[targetedIndex].dmgContainer, effectiveness);
 					
 					if(ifCrit){
 						heroArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -2189,7 +2196,8 @@ function onCreatureDown(){
 							}, {delay: 1.75, ease:Expo.easeIn, width:newCritWidth});
 
 						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = true;
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+						heroArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
 							if(critTracker[dmgNumArrayIndex] == 1){
 								dmgNumArrayItem.style.fill = '#ff7b00';
 								dmgNumArrayItem.style.stroke = '#4E2600';
@@ -2200,7 +2208,8 @@ function onCreatureDown(){
 					}
 
 					if(skillsList.data.skills[selectedSkill].heal > 0){
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						heroArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 							dmgNumArrayItem.style.fill = '#1bc617';
 							dmgNumArrayItem.style.stroke = '#052805';
 						});
@@ -2239,10 +2248,13 @@ function onCreatureDown(){
 
 					if(skillStatChange || skillStatusEffect){
 						statusNum.forEach((statusNumber, statusNumberIndex)=>{
-							heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-							heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							// heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							// heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+							heroArray[targetedIndex].dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+							heroArray[targetedIndex].dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 							let newStatusEffect = statusEffectSprite(statusNumber);
-							updateDmgStatus(heroFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							// updateDmgStatus(heroFloatingInfoArray[targetedIndex], statusNumber, statusNumberIndex);
+							updateDmgStatus(heroArray[targetedIndex].dmgContainer, statusNumber, statusNumberIndex);
 							newStatusEffect.visible = false;
 							heroInterfaceHealthArray[targetedIndex].addChild(newStatusEffect);
 							heroArray[targetedIndex].statusSpriteArray.push(newStatusEffect);
@@ -2260,12 +2272,15 @@ function onCreatureDown(){
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[2].fill = '#0000ff';
 
 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-						heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						heroArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+						heroArray[targetedIndex].dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+						// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
 					});
 
 					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.text = deltaHP;
-					heroFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
+					// heroFloatingInfoArray[targetedIndex].dmgPopup.tween.play(0);
+					heroArray[targetedIndex].dmgContainer.dmgPopup.tween.play(0);
 				}else if(targeted < 0 && !other){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						enemyArray[targetedIndex].heal(deltaHP);			//add heal
@@ -2496,7 +2511,8 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
 			TweenMax.to(heroInterfaceHealthArray[arrayCreatureIndex], 0.5, {x: newHPX});
-			TweenMax.to(heroFloatingInfoArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			// TweenMax.to(heroFloatingInfoArray[arrayCreatureIndex], 0.5, {x: newHPX});
+			TweenMax.to(heroArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
 			// console.log(arrayCreature.pos);
 		});
 	}else{
@@ -3023,17 +3039,21 @@ function animateBattle(attacker, defender){
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
 			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
-			var originalFloatX = heroFloatingInfoArray[Math.abs(arrayCreature)-1].x;
+			// var originalFloatX = heroFloatingInfoArray[Math.abs(arrayCreature)-1].x;
+			var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
 			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
 
 			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
-			TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
+			// TweenMax.to(heroFloatingInfoArray[Math.abs(arrayCreature)-1], 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
+			TweenMax.to(heroArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
 
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
 			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
 				actionHero[Math.abs(arrayCreature)-1].x = originalX;
-				heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalFloatX;
-				heroFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
+				// heroFloatingInfoArray[Math.abs(arrayCreature)-1].x = originalFloatX;
+				// heroFloatingInfoArray[Math.abs(arrayCreature)-1].dmgStatus.tween.play(0);
+				heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
+				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
 			});
 
 			heroShiftSizeTracker++;			
