@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.07
+*Version:         1.08
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -1079,47 +1079,6 @@ function createSprite(direction, item, index){
 		dmgPopup.addChild(dmgNum);
 	}
 
-	// const dmgNumStyle1 = new PIXI.TextStyle({
- //        fontFamily: 'Arvo',
- //        fontSize: 50,
- //        fontWeight: 700,
-	// 	fill: '#D80000',	
-	// 	stroke: '#222222',
- //   		strokeThickness: 10,
- //    });
- //    const dmgNumStyle2 = new PIXI.TextStyle({
- //        fontFamily: 'Arvo',
- //        fontSize: 50,
- //        fontWeight: 700,
-	// 	fill: '#D80000',	
-	// 	stroke: '#222222',
- //   		strokeThickness: 10,
- //    });
- //    const dmgNumStyle3 = new PIXI.TextStyle({
- //        fontFamily: 'Arvo',
- //        fontSize: 50,
- //        fontWeight: 700,
-	// 	fill: '#D80000',	
-	// 	stroke: '#222222',
- //   		strokeThickness: 10,
- //    });
- //    const dmgNumStyle4 = new PIXI.TextStyle({
- //        fontFamily: 'Arvo',
- //        fontSize: 50,
- //        fontWeight: 700,
-	// 	fill: '#D80000',	
-	// 	stroke: '#222222',
- //   		strokeThickness: 10,
- //    });
- //    const dmgNumStyle5 = new PIXI.TextStyle({
- //        fontFamily: 'Arvo',
- //        fontSize: 50,
- //        fontWeight: 700,
-	// 	fill: '#D80000',	
-	// 	stroke: '#222222',
- //   		strokeThickness: 10,
- //    });
-
     const dmgEffectiveStyle = new PIXI.TextStyle({
         fontFamily: 'Arvo',
         fontSize: 24,
@@ -1128,30 +1087,6 @@ function createSprite(direction, item, index){
 		stroke: '#222222',
    		strokeThickness: 5,
     });
-  	
-	// let dmgNum1 = new Text("50", dmgNumStyle1);
-	// dmgNum1.anchor.set(0.5, 0.5);
-	// let dmgNum2 = new Text("25", dmgNumStyle2);
-	// dmgNum2.anchor.set(0.5, 0.5);
-	// dmgNum2.x = 50;
-	// dmgNum2.y = -50;
-	// let dmgNum3 = new Text("32", dmgNumStyle3);
-	// dmgNum3.anchor.set(0.5, 0.5);
-	// dmgNum3.y = -100;
-	// let dmgNum4 = new Text("32", dmgNumStyle4);
-	// dmgNum4.anchor.set(0.5, 0.5);
-	// dmgNum4.x = 50;
-	// dmgNum4.y = -150;
-	// let dmgNum5 = new Text("32", dmgNumStyle5);
-	// dmgNum5.anchor.set(0.5, 0.5);
-	// dmgNum5.y = -200;
-
-	// var dmgNumArray = [];
-	// dmgNumArray.push(dmgNum1);
-	// dmgNumArray.push(dmgNum2);
-	// dmgNumArray.push(dmgNum3);
-	// dmgNumArray.push(dmgNum4);
-	// dmgNumArray.push(dmgNum5);
 
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
@@ -1200,12 +1135,6 @@ function createSprite(direction, item, index){
 
 	dmgStatus.tween = dmgStatusTween;
 
-	// let dmgCrit = new Text ("CRIT!", dmgCritStyle);
-	// dmgCrit.anchor.set(0.5, 0.5);
-	// dmgCrit.y = 50;
-	// dmgPopup.addChild(dmgCrit);
-	// dmgPopup.dmgCrit = dmgCrit;
-
 	//GSAP2
 	var dmgPopupTween = new TimelineMax({paused: true});
 	dmgPopupTween.to(dmgNumArray[0], 0.1, {delay:anim1, ease:Expo.easeIn, alpha: 1});
@@ -1231,18 +1160,7 @@ function createSprite(direction, item, index){
 
 	// dmgPopup.alpha = 1;
 	dmgPopup.tween = dmgPopupTween;	
-
-	// dmgPopup.addChild(dmgNum1);
-	// dmgPopup.addChild(dmgNum2);
-	// dmgPopup.addChild(dmgNum3);
-	// dmgPopup.addChild(dmgNum4);
-	// dmgPopup.addChild(dmgNum5);
 	dmgPopup.dmgNumArray = dmgNumArray;
-	// dmgPopup.dmgNum = dmgNum1;
-	// dmgPopup.dmgNum2 = dmgNum2;
-	// dmgPopup.dmgNum3 = dmgNum3;
-	// dmgPopup.dmgNum4 = dmgNum4;
-	// dmgPopup.dmgNum5 = dmgNum5;
 
 	dmgContainer.addChild(dmgStatus);
 	dmgContainer.dmgStatus = dmgStatus;
@@ -1418,6 +1336,7 @@ function createSprite(direction, item, index){
 	
 	if(direction > 0){
 		heroSpriteArray.push(creatureContainer);
+		// heroArray[]
 		heroInterfaceHealthArray.push(healthBar);
 		actionHero.push(creatureAction);
 		// actionHero.push(spriteReady);
@@ -1439,6 +1358,7 @@ function createSprite(direction, item, index){
 		// actionEnemy.push(actionArray);
 		// enemyActionContainerArray.push(creatureAction);
 		// actionEnemy.push(spriteReady);
+		item.dmgContainer = dmgContainer;
 		enemyFloatingInfoArray.push(dmgContainer);
 		enemyOrder.push(index);
 // 		moveEnemyContainerArray.push(moveContainer);
@@ -2251,63 +2171,6 @@ function onCreatureDown(){
 					}
 
 					updateDmgEffectiveness(heroFloatingInfoArray[targetedIndex], effectiveness);
-
-					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
-					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 	dmgNumArrayItem.style.fill = '#D80000';
-					// 	dmgNumArrayItem.style.stroke = '#222222';
-					// 	dmgNumArrayItem.visible = false;
-					// });
-
-					// heroFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-					// 	dmgStatusImageItem.visible = false;
-					// });
-					// heroFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-					// 	dmgStatusTextItem.visible = false;
-					// });
-					// // heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
-
-					
-					// if(effectiveness == 0.25){
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#9D9D9D';
-					// 	});
-					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
-					// }else if(effectiveness == 0.5){
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#FFFFFF';
-					// 	});
-					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
-					// }else if(effectiveness == 2){
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#FFE81C';
-					// 	});
-					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
-					// }else if(effectiveness == 4){
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#DB00FF';
-					// 	});
-					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
-					// }else if(deltaHP == 0){
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#D80000';
-					// 	});
-					// 	// heroFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB0000';
-					// }else{
-					// 	heroFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
-					// }
 					
 					if(ifCrit){
 						heroArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -2405,62 +2268,6 @@ function onCreatureDown(){
 					}
 
 					updateDmgEffectiveness(enemyFloatingInfoArray[targetedIndex], effectiveness);
-
-					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgCrit.visible = false;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = true;
-					// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 	dmgNumArrayItem.style.fill = '#D80000';
-					// 	dmgNumArrayItem.style.stroke = '#222222';
-					// 	dmgNumArrayItem.visible = false;
-					// });
-
-					// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-					// 	dmgStatusImageItem.visible = false;
-					// });
-					// enemyFloatingInfoArray[targetedIndex].dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-					// 	dmgStatusTextItem.visible = false;
-					// });
-					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					// // enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.stroke = '#222222';
-
-					// if(effectiveness == 0.25){
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.25";
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#9D9D9D';
-					// 	});
-					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#9D9D9D';
-					// }else if(effectiveness == 0.5){
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "Resist  ×0.5";
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#FFFFFF';
-					// 	});
-					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFFFFF';
-					// }else if(effectiveness == 2){
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "SUPER  ×2";
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#FFE81C';
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#FFE81C';
-					// 	});
-					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#FFE81C';
-					// }else if(effectiveness == 4){
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "ULTRA  ×4";
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#DB00FF';
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#DB00FF';
-					// 	});
-					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#DB00FF';
-					// }else if(deltaHP == 0){
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.text = "MISS!";
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.style.fill = '#D80000';
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					// 		dmgNumArrayItem.style.fill = '#D80000';
-					// 	});
-					// 	// enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgNum.style.fill = '#D80000';
-					// }else{
-					// 	enemyFloatingInfoArray[targetedIndex].dmgPopup.dmgEffective.visible = false;
-					// }
 
 					if(ifCrit){
 						enemyArray[targetedIndex].criticalHit(Math.floor(totalCritDmg));
@@ -3792,7 +3599,6 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 }
 
 function updateDmgEffectiveness(container, effective){
-	// container.dmgPopup.dmgCrit.visible = false;
 	container.dmgPopup.dmgEffective.visible = true;
 	container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 		dmgNumArrayItem.style.fill = '#D80000';
@@ -3806,8 +3612,6 @@ function updateDmgEffectiveness(container, effective){
 	container.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 		dmgStatusTextItem.visible = false;
 	});
-	// container.dmgPopup.dmgNum.style.fill = '#D80000';
-	// container.dmgPopup.dmgNum.style.stroke = '#222222';
 
 	if(effective == 0.25){
 		container.dmgPopup.dmgEffective.text = "Resist  ×0.25";
@@ -3815,35 +3619,30 @@ function updateDmgEffectiveness(container, effective){
 		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#9D9D9D';
 		});
-		// container.dmgPopup.dmgNum.style.fill = '#9D9D9D';
 	}else if(effective == 0.5){
 		container.dmgPopup.dmgEffective.text = "Resist  ×0.5";
 		container.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#FFFFFF';
 		});
-		// container.dmgPopup.dmgNum.style.fill = '#FFFFFF';
 	}else if(effective == 2){
 		container.dmgPopup.dmgEffective.text = "SUPER  ×2";
 		container.dmgPopup.dmgEffective.style.fill = '#FFE81C';
 		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#FFE81C';
 		});
-		// container.dmgPopup.dmgNum.style.fill = '#FFE81C';
 	}else if(effective == 4){
 		container.dmgPopup.dmgEffective.text = "ULTRA  ×4";
 		container.dmgPopup.dmgEffective.style.fill = '#DB00FF';
 		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#DB00FF';
 		});
-		// container.dmgPopup.dmgNum.style.fill = '#DB00FF';
 	}else if(effective == 0){
 		container.dmgPopup.dmgEffective.text = "MISS!";
 		container.dmgPopup.dmgEffective.style.fill = '#D80000';
 		container.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#D80000';
 		});
-		// container.dmgPopup.dmgNum.style.fill = '#D80000';
 	}else{
 		container.dmgPopup.dmgEffective.visible = false;
 	}
