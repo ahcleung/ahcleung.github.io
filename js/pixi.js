@@ -255,12 +255,12 @@ var turnArray = [];						//Array for turn order
 var validSkillTargetArray = [];			//Array of valid skill targets
 var validMoveTargetArray = [];			//Array of vaild move targets
 
-const heroSpriteArray = [];				//Array of hero sprite containers
-const enemySpriteArray = [];			//Array of enemy sprite containers
+// const heroSpriteArray = [];				//Array of hero sprite containers
+// const enemySpriteArray = [];			//Array of enemy sprite containers
 const skillContainerArray = [];			//Array of skill containers
 
-const actionHero = [];
-const actionEnemy = [];
+// const actionHero = [];
+// const actionEnemy = [];
 // const heroActionContainerArray = [];
 // const enemyActionContainerArray = [];
 // const attackArray = [];
@@ -1315,8 +1315,8 @@ function createSprite(direction, item, index){
 	}
 	
 	if(direction > 0){
-		heroSpriteArray.push(creatureContainer);
-		actionHero.push(creatureAction);
+		// heroSpriteArray.push(creatureContainer);
+		// actionHero.push(creatureAction);
 		// actionHero.push(spriteReady);
 		// actionHero.push(actionArray);
 
@@ -1330,8 +1330,8 @@ function createSprite(direction, item, index){
 		interfaceHeroFloatingInfo.addChild(dmgContainer);
 // 		interfaceHeroHealth.addChild(moveContainer);
 	}else{
-		enemySpriteArray.push(creatureContainer);
-		actionEnemy.push(creatureAction);
+		// enemySpriteArray.push(creatureContainer);
+		// actionEnemy.push(creatureAction);
 		// actionEnemy.push(actionArray);
 		// actionEnemy.push(spriteReady);
 
@@ -1346,6 +1346,8 @@ function createSprite(direction, item, index){
 	}
 	item.dmgContainer = dmgContainer;
 	item.healthBar = healthBar;
+	item.sprite = creatureContainer;
+	item.action = creatureAction;
 }
 
 // Resize function window
@@ -1504,26 +1506,30 @@ function resize() {
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
-	heroSpriteArray.forEach(function (item, index){
-		resizeSprites(1, item, index)	
-	});
-	enemySpriteArray.forEach(function (item, index){
-		resizeSprites(-1, item, index)	
-	});
+	// heroSpriteArray.forEach(function (item, index){
+	// 	resizeSprites(1, item, index)	
+	// });
+	// enemySpriteArray.forEach(function (item, index){
+	// 	resizeSprites(-1, item, index)	
+	// });
 
-	actionHero.forEach(function (item, index){
-		resizeAction(1, item, index)	
-	});
-	actionEnemy.forEach(function (item, index){
-		resizeAction(-1, item, index)	
-	});
+	// actionHero.forEach(function (item, index){
+	// 	resizeAction(1, item, index)	
+	// });
+	// actionEnemy.forEach(function (item, index){
+	// 	resizeAction(-1, item, index)	
+	// });
 
 	heroArray.forEach(function (item, index){
+		resizeSprites(1, item, index);
+		resizeAction(1, item, index);
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
+		resizeSprites(-1, item, index);
+		resizeAction(-1, item, index);
 		resizeHP(1, item);
 		resizeDmg(1, item);
 	});
@@ -1903,24 +1909,28 @@ function onCreatureDown(){
 					level = heroArray[selectedIndex].level;
 					accMod = heroArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						// actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						// actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+						heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
 						attack = heroArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+						heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
 						attack = heroArray[selectedIndex].satk;
 					}
 				}else{
 					level = enemyArray[selectedIndex].level;
 					accMod = enemyArray[selectedIndex].accMod;
 					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						// actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+						// actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+						enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
 						attack = enemyArray[selectedIndex].patk;
 					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+						enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+						enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
 						attack = enemyArray[selectedIndex].satk;
 					}
 				}
@@ -2055,20 +2065,8 @@ function onCreatureDown(){
 				}
 
 				if(targeted > 0 && !other){
-					// if(ifHeal){
-					// 	heroArray[targetedIndex].heal(deltaHP);			//add heal
-					// }else{
-					// 	heroArray[targetedIndex].damage(deltaHP);		//subtract damage
-					// }
-
 					updateDamage(heroArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
 				}else if(targeted < 0 && !other){
-					// if(ifHeal){
-					// 	enemyArray[targetedIndex].heal(deltaHP);			//add heal
-					// }else{
-					// 	enemyArray[targetedIndex].damage(deltaHP);			//subtract damage
-					// }
-
 					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
 				}
 			});
@@ -2194,12 +2192,20 @@ function moveCreature(movingCreature, displacement){
 			var switcher = 0;
 			if(arrayCreature.size > 1)	switcher = 1
 
-			newHPX = heroHealthXPosition[heroArray[arrayCreatureIndex].pos-1+switcher];
+			// newHPX = heroHealthXPosition[heroArray[arrayCreatureIndex].pos-1+switcher];
+			newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
 
-			TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			TweenMax.to(heroArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
-			TweenMax.to(heroArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
+			// TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(heroArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
+			// TweenMax.to(heroArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
+
+			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
+
 			// console.log(arrayCreature.pos);
 		});
 	}else{
@@ -2232,8 +2238,13 @@ function moveCreature(movingCreature, displacement){
 			newCreatureX = spriteResizeXPosition[arrayCreature.pos-1];
 			newHPX = spriteResizeXPosition[arrayCreature.pos-1];
 
-			TweenMax.to(enemySpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			TweenMax.to(actionEnemy[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(enemySpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(actionEnemy[arrayCreatureIndex], 0.5, {x: newCreatureX});
+			// TweenMax.to(enemyArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
+			// TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
+
+			TweenMax.to(enemyArray[arrayCreatureIndex].sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(enemyArray[arrayCreatureIndex].action, 0.5, {x: newCreatureX});
 			TweenMax.to(enemyArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
 			TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
 			
@@ -2693,28 +2704,48 @@ function animateBattle(attacker, defender){
 
 	defender.forEach(arrayCreature => {
 		if(arrayCreature > 0){
-			actionContainer.addChild(actionHero[Math.abs(arrayCreature)-1]);
-			actionHero[Math.abs(arrayCreature)-1].visible = true;
-			heroSpriteArray[Math.abs(arrayCreature)-1].visible = false;
-			animateArray.push(heroSpriteArray[Math.abs(arrayCreature)-1]);
+			// actionContainer.addChild(actionHero[Math.abs(arrayCreature)-1]);
+			// actionHero[Math.abs(arrayCreature)-1].visible = true;
+			// heroSpriteArray[Math.abs(arrayCreature)-1].visible = false;
+			// animateArray.push(heroSpriteArray[Math.abs(arrayCreature)-1]);
+
+			actionContainer.addChild(heroArray[Math.abs(arrayCreature)-1].action);
+			heroArray[Math.abs(arrayCreature)-1].action.visible = true;
+			heroArray[Math.abs(arrayCreature)-1].sprite.visible = false;
+			animateArray.push(heroArray[Math.abs(arrayCreature)-1].sprite);
 		}else{
-			actionContainer.addChild(actionEnemy[Math.abs(arrayCreature)-1]);
-			actionEnemy[Math.abs(arrayCreature)-1].visible = true;
-			enemySpriteArray[Math.abs(arrayCreature)-1].visible = false;
-			animateArray.push(enemySpriteArray[Math.abs(arrayCreature)-1]);
+			// actionContainer.addChild(actionEnemy[Math.abs(arrayCreature)-1]);
+			// actionEnemy[Math.abs(arrayCreature)-1].visible = true;
+			// enemySpriteArray[Math.abs(arrayCreature)-1].visible = false;
+			// animateArray.push(enemySpriteArray[Math.abs(arrayCreature)-1]);
+
+			actionContainer.addChild(enemyArray[Math.abs(arrayCreature)-1].action);
+			enemyArray[Math.abs(arrayCreature)-1].action.visible = true;
+			enemyArray[Math.abs(arrayCreature)-1].sprite.visible = false;
+			animateArray.push(enemyArray[Math.abs(arrayCreature)-1].sprite);
 		}
 	});
 
 	if(attacker > 0){
-		actionContainer.addChild(actionHero[Math.abs(attacker)-1]);
-		actionHero[Math.abs(attacker)-1].visible = true;
-		heroSpriteArray[Math.abs(attacker)-1].visible = false;
-		animateArray.push(heroSpriteArray[Math.abs(attacker)-1]);
+		// actionContainer.addChild(actionHero[Math.abs(attacker)-1]);
+		// actionHero[Math.abs(attacker)-1].visible = true;
+		// heroSpriteArray[Math.abs(attacker)-1].visible = false;
+		// animateArray.push(heroSpriteArray[Math.abs(attacker)-1]);
+
+		actionContainer.addChild(heroArray[Math.abs(attacker)-1].action);
+		heroArray[Math.abs(attacker)-1].action.visible = true;
+		heroArray[Math.abs(attacker)-1].sprite.visible = false;
+		animateArray.push(heroArray[Math.abs(attacker)-1].sprite);
 	}else{
-		actionContainer.addChild(actionEnemy[Math.abs(attacker)-1]);
-		actionEnemy[Math.abs(attacker)-1].visible = true;
-		enemySpriteArray[Math.abs(attacker)-1].visible = false;
-		animateArray.push(enemySpriteArray[Math.abs(attacker)-1]);
+		// actionContainer.addChild(actionEnemy[Math.abs(attacker)-1]);
+		// actionEnemy[Math.abs(attacker)-1].visible = true;
+		// enemySpriteArray[Math.abs(attacker)-1].visible = false;
+		// animateArray.push(enemySpriteArray[Math.abs(attacker)-1]);
+
+		actionContainer.addChild(enemyArray[Math.abs(attacker)-1].action);
+		enemyArray[Math.abs(attacker)-1].action.visible = true;
+		enemyArray[Math.abs(attacker)-1].sprite.visible = false;
+		animateArray.push(enemyArray[Math.abs(attacker)-1].sprite);
 	}
 
 	stageContainer.actionBlackTween.play(0);
@@ -2724,16 +2755,21 @@ function animateBattle(attacker, defender){
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature > 0){
-			var originalX = actionHero[Math.abs(arrayCreature)-1].x;
+			// var originalX = actionHero[Math.abs(arrayCreature)-1].x;
+			var originalX = heroArray[Math.abs(arrayCreature)-1].action.x;
 			var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
-			TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
+			// TweenMax.to(actionHero[Math.abs(arrayCreature)-1], 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
+			TweenMax.to(heroArray[Math.abs(arrayCreature)-1].action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
 
 			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
 			TweenMax.to(heroArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
 
-			actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
-			actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
-				actionHero[Math.abs(arrayCreature)-1].x = originalX;
+			// actionHero[Math.abs(arrayCreature)-1].dMissTween.play(0);
+			// actionHero[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
+			heroArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
+			heroArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
+				// actionHero[Math.abs(arrayCreature)-1].x = originalX;
+				heroArray[Math.abs(arrayCreature)-1].action.x = originalX;
 				heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
 				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
 				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
@@ -2745,13 +2781,18 @@ function animateBattle(attacker, defender){
 
 			heroShiftSizeTracker++;			
 		}else{
-			var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
-			TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			// var originalX = actionEnemy[Math.abs(arrayCreature)-1].x;
+			var originalX = enemyArray[Math.abs(arrayCreature)-1].action.x;
+			// TweenMax.to(actionEnemy[Math.abs(arrayCreature)-1], 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
 			TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
 			
-			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
-			actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
-				actionEnemy[Math.abs(arrayCreature)-1].x = originalX;
+			// actionEnemy[Math.abs(arrayCreature)-1].dMissTween.play(0);
+			// actionEnemy[Math.abs(arrayCreature)-1].dMissTween.eventCallback("onComplete", function(){
+			enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
+			enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
+				// actionEnemy[Math.abs(arrayCreature)-1].x = originalX;
+				enemyArray[Math.abs(arrayCreature)-1].action.x = originalX;
 				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
 				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
 				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
@@ -2767,30 +2808,40 @@ function animateBattle(attacker, defender){
 	});	
 
 	if(attacker > 0){
-		var originalX = actionHero[Math.abs(attacker)-1].x;
+		// var originalX = actionHero[Math.abs(attacker)-1].x;
+		var originalX = heroArray[Math.abs(attacker)-1].action.x;
 		// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
-		TweenMax.to(actionHero[Math.abs(attacker)-1], 0.25, {x:0});
+		// TweenMax.to(actionHero[Math.abs(attacker)-1], 0.25, {x:0});
+		TweenMax.to(heroArray[Math.abs(attacker)-1].action, 0.25, {x:0});
 
-		actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
-		actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+		// actionHero[Math.abs(attacker)-1].pAtkTween.play(0);
+		// actionHero[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+		heroArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
+		heroArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
 			// spriteHolder.filters = [blurFilter2];
-			actionHero[Math.abs(attacker)-1].x = originalX;
+			// actionHero[Math.abs(attacker)-1].x = originalX;
+			heroArray[Math.abs(attacker)-1].action.x = originalX;
 			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}else{
-		var originalX = actionEnemy[Math.abs(attacker)-1].x;
-		TweenMax.to(actionEnemy[Math.abs(attacker)-1], 0.25, {x:0});
+		// var originalX = actionEnemy[Math.abs(attacker)-1].x;
+		// TweenMax.to(actionEnemy[Math.abs(attacker)-1], 0.25, {x:0});
+		var originalX = enemyArray[Math.abs(attacker)-1].action.x;
+		TweenMax.to(enemyArray[Math.abs(attacker)-1].action, 0.25, {x:0});
 
-		actionEnemy[Math.abs(attacker)-1].pAtkTween.play(0);
-		actionEnemy[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+		// actionEnemy[Math.abs(attacker)-1].pAtkTween.play(0);
+		// actionEnemy[Math.abs(attacker)-1].pAtkTween.eventCallback("onComplete", function(){
+		enemyArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
+		enemyArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
 			// spriteHolder.filters = [blurFilter2];
-			actionEnemy[Math.abs(attacker)-1].x = originalX;
+			// actionEnemy[Math.abs(attacker)-1].x = originalX;
+			enemyArray[Math.abs(attacker)-1].action.x = originalX;
 			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		});
 	}
@@ -3369,8 +3420,6 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 	dmgArray.forEach(dmg => {
 		totalDmgCalc += dmg;
 	});
-
-	console.log("====" + totalDmgCalc);
 
 	if(skillHeal){
 		object.heal(totalDmgCalc);			//add heal
