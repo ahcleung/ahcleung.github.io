@@ -2009,6 +2009,7 @@ function onCreatureDown(){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
 						deltaHP = skillsList.data.skills[selectedSkill].heal;
+						dmgArray.push(skillsList.data.skills[selectedSkill].heal);
 						ifHeal = true;
 						effectiveness = 1;
 						critMultiplier = 1;
@@ -3369,7 +3370,7 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 		totalDmgCalc += dmg;
 	});
 
-	if(ifHeal){
+	if(skillHeal){
 		object.heal(totalDmgCalc);			//add heal
 	}else{
 		object.damage(totalDmgCalc);		//subtract damage
