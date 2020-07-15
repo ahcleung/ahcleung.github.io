@@ -1733,27 +1733,27 @@ function resizeAction(direction, item, index){
 	if(direction > 0){
 		// actionHero[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
-				item.scale.set(direction * 0.23, 0.23);
+				item.action.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item.scale.set(direction * 0.3, 0.3); 
+				item.action.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.scale.set(direction * 0.5, 0.5);
+				item.action.scale.set(direction * 0.5, 0.5);
 			}
 
-			item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+			item.action.x = -spriteResizeXPosition[heroArray[index].pos-1];
 
 		// });
 	}else{
 		// actionEnemy[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
-				item.scale.set(direction * 0.23, 0.23);
+				item.action.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item.scale.set(direction * 0.3, 0.3); 
+				item.action.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.scale.set(direction * 0.5, 0.5);
+				item.action.scale.set(direction * 0.5, 0.5);
 			}
 
-			item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+			item.action.x = spriteResizeXPosition[enemyArray[index].pos-1];
 
 		// });	
 	}	
@@ -1763,25 +1763,25 @@ function resizeSprites(direction, item, index){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
 	if(direction > 0){
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.23, 0.23);
+			item.sprite.scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.scale.set(direction * 0.3, 0.3); 
+			item.sprite.scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.scale.set(direction * 0.5, 0.5);
+			item.sprite.scale.set(direction * 0.5, 0.5);
 		}
 
-		item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+		item.sprite.x = -spriteResizeXPosition[heroArray[index].pos-1];
 
 	}else{
 		if(app.screen.width < 860){
-			item.scale.set(direction * 0.23, 0.23);
+			item.sprite.scale.set(direction * 0.23, 0.23);
 		}else if(app.screen.width < 1366){
-			item.scale.set(direction * 0.3, 0.3); 
+			item.sprite.scale.set(direction * 0.3, 0.3); 
 		}else{
-			item.scale.set(direction * 0.5, 0.5);
+			item.sprite.scale.set(direction * 0.5, 0.5);
 		}
 
-		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+		item.sprite.x = spriteResizeXPosition[enemyArray[index].pos-1];
 
 	}
 }
