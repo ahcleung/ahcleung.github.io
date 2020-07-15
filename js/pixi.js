@@ -3365,7 +3365,7 @@ function resizeStatus(item, index){
 
 
 function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
-	var totalDmgCalc;
+	var totalDmgCalc = 0;
 	dmgArray.forEach(dmg => {
 		totalDmgCalc += dmg;
 	});
