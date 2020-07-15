@@ -1521,15 +1521,15 @@ function resize() {
 	// });
 
 	heroArray.forEach(function (item, index){
-		resizeSprites(1, item, index);
-		resizeAction(1, item, index);
+		resizeAction(1, item.sprite, index);
+		resizeAction(1, item.action, index);
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
-		resizeSprites(-1, item, index);
-		resizeAction(-1, item, index);
+		resizeAction(-1, item.sprite, index);
+		resizeAction(-1, item.action, index);
 		resizeHP(1, item);
 		resizeDmg(1, item);
 	});
@@ -1733,27 +1733,27 @@ function resizeAction(direction, item, index){
 	if(direction > 0){
 		// actionHero[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
-				item.action.scale.set(direction * 0.23, 0.23);
+				item.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item.action.scale.set(direction * 0.3, 0.3); 
+				item.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.action.scale.set(direction * 0.5, 0.5);
+				item.scale.set(direction * 0.5, 0.5);
 			}
 
-			item.action.x = -spriteResizeXPosition[heroArray[index].pos-1];
+			item.x = -spriteResizeXPosition[heroArray[index].pos-1];
 
 		// });
 	}else{
 		// actionEnemy[index].forEach((spriteItem,spriteIndex) => {
 			if(app.screen.width < 860){
-				item.action.scale.set(direction * 0.23, 0.23);
+				item.scale.set(direction * 0.23, 0.23);
 			}else if(app.screen.width < 1366){
-				item.action.scale.set(direction * 0.3, 0.3); 
+				item.scale.set(direction * 0.3, 0.3); 
 			}else{
-				item.action.scale.set(direction * 0.5, 0.5);
+				item.scale.set(direction * 0.5, 0.5);
 			}
 
-			item.action.x = spriteResizeXPosition[enemyArray[index].pos-1];
+			item.x = spriteResizeXPosition[enemyArray[index].pos-1];
 
 		// });	
 	}	
