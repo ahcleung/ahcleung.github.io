@@ -3370,6 +3370,8 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 		totalDmgCalc += dmg;
 	});
 
+	console.log("====" + totalDmgCalc);
+
 	if(skillHeal){
 		object.heal(totalDmgCalc);			//add heal
 	}else{
