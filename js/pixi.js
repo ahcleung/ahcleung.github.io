@@ -1090,18 +1090,14 @@ function createSprite(direction, item, index){
 
 	    let statusText = new Text ("Critical" + i, statusStyle);
 		statusText.anchor.set(0.5,0.5);
-		// statusText.y = -(i*100);
 		dmgStatus.addChild(statusText);
-		// dmgStatus.statusText = statusText;
 		statusTextArray.push(statusText);
 
 		let statusImage = new PIXI.Sprite(resources.status_critical.texture);
 		statusImage.anchor.set(0.5,0.5);
-		// statusImage.y = -(40 + (i*100));
 		statusImage.scale.set(0.4);
 		dmgStatus.addChild(statusImage);
 		statusImageArray.push(statusImage);
-		// dmgStatus.statusImage = statusImage;
 	}
 
 	dmgStatus.statusTextArray = statusTextArray;
@@ -1505,31 +1501,17 @@ function resize() {
 	
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
-	
-	// heroSpriteArray.forEach(function (item, index){
-	// 	resizeSprites(1, item, index)	
-	// });
-	// enemySpriteArray.forEach(function (item, index){
-	// 	resizeSprites(-1, item, index)	
-	// });
-
-	// actionHero.forEach(function (item, index){
-	// 	resizeAction(1, item, index)	
-	// });
-	// actionEnemy.forEach(function (item, index){
-	// 	resizeAction(-1, item, index)	
-	// });
 
 	heroArray.forEach(function (item, index){
-		resizeAction(1, item.sprite, index);
-		resizeAction(1, item.action, index);
+		resizeSprite(1, item.sprite, index);
+		resizeSprite(1, item.action, index);
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
-		resizeAction(-1, item.sprite, index);
-		resizeAction(-1, item.action, index);
+		resizeSprite(-1, item.sprite, index);
+		resizeSprite(-1, item.action, index);
 		resizeHP(1, item);
 		resizeDmg(1, item);
 	});
@@ -1726,64 +1708,19 @@ function resizeHP(roster, item){
 	item.healthBar.select.x = item.healthBar.select.width/2;
 }
 
-function resizeAction(direction, item, index){
-	// item.x = index * 100;
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	
-	if(direction > 0){
-		// actionHero[index].forEach((spriteItem,spriteIndex) => {
-			if(app.screen.width < 860){
-				item.scale.set(direction * 0.23, 0.23);
-			}else if(app.screen.width < 1366){
-				item.scale.set(direction * 0.3, 0.3); 
-			}else{
-				item.scale.set(direction * 0.5, 0.5);
-			}
-
-			item.x = -spriteResizeXPosition[heroArray[index].pos-1];
-
-		// });
+function resizeSprite(direction, item, index){	
+	if(app.screen.width < 860){
+		item.scale.set(direction * 0.23, 0.23);
+	}else if(app.screen.width < 1366){
+		item.scale.set(direction * 0.3, 0.3); 
 	}else{
-		// actionEnemy[index].forEach((spriteItem,spriteIndex) => {
-			if(app.screen.width < 860){
-				item.scale.set(direction * 0.23, 0.23);
-			}else if(app.screen.width < 1366){
-				item.scale.set(direction * 0.3, 0.3); 
-			}else{
-				item.scale.set(direction * 0.5, 0.5);
-			}
-
-			item.x = spriteResizeXPosition[enemyArray[index].pos-1];
-
-		// });	
-	}	
-}
-
-function resizeSprites(direction, item, index){
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-	if(direction > 0){
-		if(app.screen.width < 860){
-			item.sprite.scale.set(direction * 0.23, 0.23);
-		}else if(app.screen.width < 1366){
-			item.sprite.scale.set(direction * 0.3, 0.3); 
-		}else{
-			item.sprite.scale.set(direction * 0.5, 0.5);
-		}
-
-		item.sprite.x = -spriteResizeXPosition[heroArray[index].pos-1];
-
-	}else{
-		if(app.screen.width < 860){
-			item.sprite.scale.set(direction * 0.23, 0.23);
-		}else if(app.screen.width < 1366){
-			item.sprite.scale.set(direction * 0.3, 0.3); 
-		}else{
-			item.sprite.scale.set(direction * 0.5, 0.5);
-		}
-
-		item.sprite.x = spriteResizeXPosition[enemyArray[index].pos-1];
-
+		item.scale.set(direction * 0.5, 0.5);
 	}
+	if(direction > 0){
+		item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+	}else{
+		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+	}	
 }
 
 function consolePrint(fromText){
