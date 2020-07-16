@@ -2355,7 +2355,7 @@ function onSkillDown(){
 							}
 							stageSide = 1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide);
+						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
 					});
 				}else{
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -2368,12 +2368,13 @@ function onSkillDown(){
 							}
 							stageSide = -1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide);
+						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
 					});
 				}
 			}			
 		}
 		validSkillTargetArray.push(columnArray);
+		validSkillObjectArray.push(columnObjectArray);
 	}
 
 	//for each target in the skill
@@ -2389,6 +2390,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							arrayCreature.healthBar.target.visible = true;					
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
+							validSkillObjectArray.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2397,6 +2399,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
+							validSkillObjectArray.push(arrayCreature);
 						}
 					}				
 				});
@@ -2407,6 +2410,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
+							validSkillObjectArray.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2415,6 +2419,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
+							validSkillObjectArray.push(arrayCreature);
 						}
 					}			
 				});
@@ -2625,6 +2630,7 @@ function onSkillDown(){
 		}
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
+	console.log("validSkillObjectArray: " + validSkillObjectArray);
 }
 
 function animateBattle(attacker, defender){
