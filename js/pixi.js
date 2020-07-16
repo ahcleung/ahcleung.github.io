@@ -2657,10 +2657,10 @@ function onSkillDown(){
 	validSkillObjectArray.forEach(object=>{
 		if(Array.isArray(object)){
 			object.forEach(object2=>{
-				console.log("validSkillObjectArray column: " + object2.pos);
+				console.log("validSkillObjectArray column: " + object2.name);
 			});
 		}else{
-			console.log("validSkillObjectArray: " + object.pos);
+			console.log("validSkillObjectArray: " + object.name);
 		}		
 	});
 	
