@@ -2279,7 +2279,10 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
 						});
 					}else{
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -2292,7 +2295,10 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
 						});
 					}
 				}else{
@@ -2307,7 +2313,10 @@ function onSkillDown(){
 								}
 								stageSide = -1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
 						});
 					}else{
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -2320,7 +2329,10 @@ function onSkillDown(){
 								}
 								stageSide = 1;
 							}else{stageSide = 0;}
-							if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
 						});
 					}
 				}
@@ -2355,7 +2367,10 @@ function onSkillDown(){
 							}
 							stageSide = 1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+						if(stageSide != 0){
+							columnArray.push((arrayCreatureIndex+1)*stageSide);
+							columnObjectArray.push(arrayCreature);
+						}
 					});
 				}else{
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -2368,7 +2383,10 @@ function onSkillDown(){
 							}
 							stageSide = -1;
 						}else{stageSide = 0;}
-						if(stageSide != 0)	columnArray.push((arrayCreatureIndex+1)*stageSide)		columnObjectArray.push(arrayCreature)
+						if(stageSide != 0){
+							columnArray.push((arrayCreatureIndex+1)*stageSide);
+							columnObjectArray.push(arrayCreature);
+						}
 					});
 				}
 			}			
