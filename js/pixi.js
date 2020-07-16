@@ -2269,9 +2269,10 @@ function onSkillDown(){
 				}else{
 					temp++;
 				}
-				
+				console.log("=================================" + temp);
 				if(this.identifier[2] > 0){
 					if(temp > 0 && !switchSide){
+
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
 								// console.log(arrayCreature.name);
@@ -2287,6 +2288,7 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
+						// columnObjectArray.push(getTargetObject());
 					}else{
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2651,7 +2653,7 @@ function onSkillDown(){
 		}
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
-	
+
 	validSkillObjectArray.forEach(object=>{
 		console.log("validSkillObjectArray: " + object.pos);
 	});
