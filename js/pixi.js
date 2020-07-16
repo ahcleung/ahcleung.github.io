@@ -2651,7 +2651,11 @@ function onSkillDown(){
 		}
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
-	console.log("validSkillObjectArray: " + validSkillObjectArray[1].pos);
+	
+	validSkillObjectArray.forEach(object=>{
+		console.log("validSkillObjectArray: " + object.pos);
+	});
+	
 }
 
 function animateBattle(attacker, defender){
