@@ -255,6 +255,9 @@ var turnArray = [];						//Array for turn order
 var validSkillTargetArray = [];			//Array of valid skill targets
 var validMoveTargetArray = [];			//Array of vaild move targets
 
+var validSkillObjectArray = [];			//Array of valid skill targets
+var validMoveObjectArray = [];			//Array of vaild move targets
+
 // const heroSpriteArray = [];				//Array of hero sprite containers
 // const enemySpriteArray = [];			//Array of enemy sprite containers
 const skillContainerArray = [];			//Array of skill containers
@@ -2648,7 +2651,7 @@ function onSkillDown(){
 		}
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
-	console.log("validSkillObjectArray: " + validSkillObjectArray[1].name);
+	console.log("validSkillObjectArray: " + validSkillObjectArray[1].pos);
 }
 
 function animateBattle(attacker, defender){
