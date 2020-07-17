@@ -3164,9 +3164,7 @@ function selectCreature(identifier, object2){
 	// 	enemyArray[identifier[1]].healthBar.turn.visible = false;
 	// }
 
-	object2.healthBar.turn.visible = false;
-	object2.healthBar.select.visible = true;
-	object2.healthBar.select.animate = true;
+	
 
 	//Direction x Index+1
 	selectedVita = identifier[0] * (identifier[1]+1);
@@ -3195,6 +3193,10 @@ function selectCreature(identifier, object2){
 		object.healthBar.move.visible = false;
 		object.healthBar.select.animate = false;
 	});
+
+	object2.healthBar.turn.visible = false;
+	object2.healthBar.select.visible = true;
+	object2.healthBar.select.animate = true;
 
 	var newSkills = [];
 	var currPos = [];
