@@ -3131,6 +3131,7 @@ function calculateTurnOrder(){
 	});
 
 	console.log(turnArray);
+	console.log(turnArray2);
 	turnArray2.forEach(object=>{
 		console.log(object.name);
 	});
