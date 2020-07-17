@@ -2048,8 +2048,9 @@ function onCreatureDown(){
 					identifier[0] = -1;
 					identifier[1] = Math.abs(turnArray[0])-1;
 				}
-				selectCreature(identifier);
+				selectCreature(identifier, turnArray2[0]);
 				turnArray.shift();
+				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
 			}
@@ -2112,8 +2113,9 @@ function onCreatureDown(){
 					identifier[0] = -1;
 					identifier[1] = Math.abs(turnArray[0])-1;
 				}
-				selectCreature(identifier);
+				selectCreature(identifier, turnArray2[0]);
 				turnArray.shift();
+				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
 			}
@@ -3052,8 +3054,9 @@ function onAdditionalSkipDown(){
 			identifier[0] = -1;
 			identifier[1] = Math.abs(turnArray[0])-1;
 		}
-		selectCreature(identifier);
+		selectCreature(identifier, turnArray2[0]);
 		turnArray.shift();
+		turnArray2.shift();
 	}else{
 		calculateTurnOrder();
 	}
