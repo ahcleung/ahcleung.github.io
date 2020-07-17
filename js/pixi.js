@@ -2285,10 +2285,10 @@ function onSkillDown(){
 							}else{stageSide = 0;}
 							if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
+								// columnObjectArray.push(arrayCreature);
 							}
 						});
-						// columnObjectArray.push(getTargetObject());
+						columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 					}else{
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2302,9 +2302,10 @@ function onSkillDown(){
 							}else{stageSide = 0;}
 							if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
+								// columnObjectArray.push(arrayCreature);
 							}
 						});
+						columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 					}
 				}else{
 					if(!switchSide){
@@ -2321,9 +2322,10 @@ function onSkillDown(){
 							}else{stageSide = 0;}
 							if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
+								// columnObjectArray.push(arrayCreature);
 							}
 						});
+						columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 					}else{
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2337,9 +2339,10 @@ function onSkillDown(){
 							}else{stageSide = 0;}
 							if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
+								// columnObjectArray.push(arrayCreature);
 							}
 						});
+						columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 					}
 				}
 			}
@@ -2376,9 +2379,10 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 						if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
-							columnObjectArray.push(arrayCreature);
+							// columnObjectArray.push(arrayCreature);
 						}
 					});
+					columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 				}else{
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
@@ -2392,9 +2396,10 @@ function onSkillDown(){
 						}else{stageSide = 0;}
 						if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
-							columnObjectArray.push(arrayCreature);
+							// columnObjectArray.push(arrayCreature);
 						}
 					});
+					columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 				}
 			}			
 		}
@@ -3498,3 +3503,23 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 
 	object.dmgContainer.dmgPopup.tween.play(0);
 }
+
+function getTargetObject(objectArray, temp, heal){
+	objectArray.forEach((arrayCreature,arrayCreatureIndex) => {
+		if(arrayCreature.pos == temp){
+			// console.log(arrayCreature.name);
+			if(heal){
+				arrayCreature.healthBar.heal.visible = true;
+			}else{
+				arrayCreature.healthBar.target.visible = true;
+			}
+			return arrayCreature;
+			// stageSide = 1;
+		// }else{stageSide = 0;}
+		// if(stageSide != 0){
+			// columnArray.push((arrayCreatureIndex+1)*stageSide);
+			
+		}
+	});
+} 
+
