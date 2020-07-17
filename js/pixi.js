@@ -2276,14 +2276,12 @@ function onSkillDown(){
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
 								// console.log(arrayCreature.name);
-								if(heal){
-									arrayCreature.healthBar.heal.visible = true;
-								}else{
-									arrayCreature.healthBar.target.visible = true;
-								}
+								// if(heal){
+								// 	arrayCreature.healthBar.heal.visible = true;
+								// }else{
+								// 	arrayCreature.healthBar.target.visible = true;
+								// }
 								stageSide = 1;
-							// }else{stageSide = 0;}
-							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2293,14 +2291,12 @@ function onSkillDown(){
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
 								// console.log(arrayCreature.name);
-								if(heal){
-									arrayCreature.healthBar.heal.visible = true;
-								}else{
-									arrayCreature.healthBar.target.visible = true;
-								}
+								// if(heal){
+								// 	arrayCreature.healthBar.heal.visible = true;
+								// }else{
+								// 	arrayCreature.healthBar.target.visible = true;
+								// }
 								stageSide = -1;
-							// }else{stageSide = 0;}
-							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2313,14 +2309,12 @@ function onSkillDown(){
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
 								// console.log(arrayCreature.name);
-								if(heal){
-									arrayCreature.healthBar.heal.visible = true;
-								}else{
-									arrayCreature.healthBar.target.visible = true;
-								}
+								// if(heal){
+								// 	arrayCreature.healthBar.heal.visible = true;
+								// }else{
+								// 	arrayCreature.healthBar.target.visible = true;
+								// }
 								stageSide = -1;
-							// }else{stageSide = 0;}
-							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2330,14 +2324,12 @@ function onSkillDown(){
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
 								// console.log(arrayCreature.name);
-								if(heal){
-									arrayCreature.healthBar.heal.visible = true;
-								}else{
-									arrayCreature.healthBar.target.visible = true;
-								}
+								// if(heal){
+								// 	arrayCreature.healthBar.heal.visible = true;
+								// }else{
+								// 	arrayCreature.healthBar.target.visible = true;
+								// }
 								stageSide = 1;
-							// }else{stageSide = 0;}
-							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2370,14 +2362,12 @@ function onSkillDown(){
 					heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
 							// console.log(arrayCreature.name);
-							if(heal){
-								arrayCreature.healthBar.heal.visible = true;
-							}else{
-								arrayCreature.healthBar.target.visible = true;
-							}
+							// if(heal){
+							// 	arrayCreature.healthBar.heal.visible = true;
+							// }else{
+							// 	arrayCreature.healthBar.target.visible = true;
+							// }
 							stageSide = 1;
-						// }else{stageSide = 0;}
-						// if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
 						}
@@ -2387,14 +2377,12 @@ function onSkillDown(){
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
 							// console.log(arrayCreature.name);
-							if(heal){
-								arrayCreature.healthBar.heal.visible = true;
-							}else{
-								arrayCreature.healthBar.target.visible = true;
-							}
+							// if(heal){
+							// 	arrayCreature.healthBar.heal.visible = true;
+							// }else{
+							// 	arrayCreature.healthBar.target.visible = true;
+							// }
 							stageSide = -1;
-						// }else{stageSide = 0;}
-						// if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
 						}
@@ -2418,7 +2406,7 @@ function onSkillDown(){
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
-							arrayCreature.healthBar.target.visible = true;					
+							// arrayCreature.healthBar.target.visible = true;					
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 							validSkillObjectArray.push(arrayCreature);
 						}
@@ -2427,7 +2415,7 @@ function onSkillDown(){
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
-							arrayCreature.healthBar.target.visible = true;
+							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 							validSkillObjectArray.push(arrayCreature);
 						}
@@ -2438,7 +2426,7 @@ function onSkillDown(){
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
 							// console.log(arrayCreature.name);
-							arrayCreature.healthBar.target.visible = true;
+							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push(arrayCreature);
 						}
@@ -2447,7 +2435,7 @@ function onSkillDown(){
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							// console.log(arrayCreature.name);
-							arrayCreature.healthBar.target.visible = true;
+							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push(arrayCreature);
 						}
@@ -2660,7 +2648,6 @@ function onSkillDown(){
 		}
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
-
 	console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 	validSkillObjectArray.forEach(object=>{
@@ -2668,10 +2655,20 @@ function onSkillDown(){
 			console.log("object: " + object);
 			object.forEach(object2=>{
 				console.log("object2 column: " + object2.name);
+				if(heal){
+					object2.healthBar.heal.visible = true;
+				}else{
+					object2.healthBar.target.visible = true;
+				}
 			});
 		}else{
 			console.log("object3: " + object.name);
-		}		
+			if(heal){
+				object.healthBar.heal.visible = true;
+			}else{
+				object.healthBar.target.visible = true;
+			}
+		}
 	});
 	
 }
