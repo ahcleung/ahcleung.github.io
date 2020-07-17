@@ -3505,6 +3505,7 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 }
 
 function getTargetObject(objectArray, temp, heal){
+	var targetedObject;
 	objectArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature.pos == temp){
 			// console.log(arrayCreature.name);
@@ -3514,7 +3515,7 @@ function getTargetObject(objectArray, temp, heal){
 				arrayCreature.healthBar.target.visible = true;
 			}
 			console.log(arrayCreature.name);
-			return arrayCreature;
+			targetedObject = arrayCreature;
 			// stageSide = 1;
 		// }else{stageSide = 0;}
 		// if(stageSide != 0){
@@ -3522,5 +3523,6 @@ function getTargetObject(objectArray, temp, heal){
 			
 		}
 	});
+	return targetedObject;
 } 
 
