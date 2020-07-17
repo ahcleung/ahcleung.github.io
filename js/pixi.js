@@ -252,6 +252,7 @@ var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
 
 var turnArray = [];						//Array for turn order
+var turnArray2 = [];					//Array for turn order
 var validSkillTargetArray = [];			//Array of valid skill targets
 var validMoveTargetArray = [];			//Array of vaild move targets
 
@@ -3076,6 +3077,7 @@ function calculateTurnOrder(){
 	var arrayCalcSpeedPositions = [];
 
 	turnArray = [];	
+	turnArray2 = [];
 
 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		var calcSpeed;
@@ -3114,12 +3116,14 @@ function calculateTurnOrder(){
 					var index = turnArray.findIndex(x => x==tempVar);
 					if (index === -1){
 						turnArray.push(tempVar);
+						turnArray2.push(heroArray[Math.abs(tempVar-1)]);
 					}else console.log("object already exists")
 				}else{
 					var tempVar = -(index2+1-heroArray.length);
 					var index = turnArray.findIndex(x => x==tempVar);
 					if (index === -1){
-						turnArray.push(tempVar);
+						turnArray.push(tempVar);						
+						turnArray2.push(enemyArray[Math.abs(tempVar-1)]);
 					}else console.log("object already exists")
 				}
 			}
@@ -3127,6 +3131,9 @@ function calculateTurnOrder(){
 	});
 
 	console.log(turnArray);
+	turnArray2.forEach(object=>{
+		console.log(object.name);
+	});
 
 	var identifier = [];
 	if(turnArray[0] > 0){
