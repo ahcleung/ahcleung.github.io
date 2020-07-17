@@ -1742,6 +1742,30 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
+	if(validSkillObjectArray.length > 0){
+		validSkillObjectArray.forEach((targeted, targetedIndex) => {
+			console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					if(this == arrayElement){
+						console.log("Correct object do things");
+						// correctTarget = true;
+						// targetedVita = targetedIndex;
+					}else{
+						console.log("Incorrect object don't do things");
+					}
+				});
+			}
+			if(this == targeted){
+				console.log("Correct object do things");
+				// correctTarget = true;
+				// targetedVita = targetedIndex;
+			}else{
+				console.log("Incorrect object don't do things");
+			}
+		});
+	}
 	if(validSkillTargetArray.length > 0){
 		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
 		console.log("Clicked skill target index: " + clickedTarget);
