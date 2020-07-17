@@ -3152,7 +3152,7 @@ function calculateTurnOrder(){
 	turnArray2.shift();
 }
 
-function selectCreature(identifier, object){	
+function selectCreature(identifier, object2){	
 	// console.log("Creature speed:" + heroArray[identifier[1]].statMod[6]);
 
 	// if(identifier[0] > 0){
@@ -3161,7 +3161,9 @@ function selectCreature(identifier, object){
 	// 	enemyArray[identifier[1]].healthBar.turn.visible = false;
 	// }
 
-	object.healthBar.turn.visible = false;
+	object2.healthBar.turn.visible = false;
+	object2.healthBar.select.visible = true;
+	object2.healthBar.select.animate = true;
 
 	//Direction x Index+1
 	selectedVita = identifier[0] * (identifier[1]+1);
@@ -3219,8 +3221,7 @@ function selectCreature(identifier, object){
 		}
 	}
 
-	object.healthBar.select.visible = true;
-	object.healthBar.select.animate = true;
+	
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
