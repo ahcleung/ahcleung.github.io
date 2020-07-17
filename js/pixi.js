@@ -1748,7 +1748,7 @@ function onCreatureDown(){
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
 					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					if(this == arrayElement){
+					if(this.parent == arrayElement){
 						console.log("Correct object do things");
 						// correctTarget = true;
 						// targetedVita = targetedIndex;
@@ -1757,7 +1757,7 @@ function onCreatureDown(){
 					}
 				});
 			}
-			if(this == targeted){
+			if(this.parent == targeted){
 				console.log("Correct object do things");
 				// correctTarget = true;
 				// targetedVita = targetedIndex;
