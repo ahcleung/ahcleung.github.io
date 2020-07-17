@@ -2282,8 +2282,8 @@ function onSkillDown(){
 									arrayCreature.healthBar.target.visible = true;
 								}
 								stageSide = 1;
-							}else{stageSide = 0;}
-							if(stageSide != 0){
+							// }else{stageSide = 0;}
+							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2299,8 +2299,8 @@ function onSkillDown(){
 									arrayCreature.healthBar.target.visible = true;
 								}
 								stageSide = -1;
-							}else{stageSide = 0;}
-							if(stageSide != 0){
+							// }else{stageSide = 0;}
+							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2319,8 +2319,8 @@ function onSkillDown(){
 									arrayCreature.healthBar.target.visible = true;
 								}
 								stageSide = -1;
-							}else{stageSide = 0;}
-							if(stageSide != 0){
+							// }else{stageSide = 0;}
+							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2336,8 +2336,8 @@ function onSkillDown(){
 									arrayCreature.healthBar.target.visible = true;
 								}
 								stageSide = 1;
-							}else{stageSide = 0;}
-							if(stageSide != 0){
+							// }else{stageSide = 0;}
+							// if(stageSide != 0){
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
 							}
@@ -2376,8 +2376,8 @@ function onSkillDown(){
 								arrayCreature.healthBar.target.visible = true;
 							}
 							stageSide = 1;
-						}else{stageSide = 0;}
-						if(stageSide != 0){
+						// }else{stageSide = 0;}
+						// if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
 						}
@@ -2393,8 +2393,8 @@ function onSkillDown(){
 								arrayCreature.healthBar.target.visible = true;
 							}
 							stageSide = -1;
-						}else{stageSide = 0;}
-						if(stageSide != 0){
+						// }else{stageSide = 0;}
+						// if(stageSide != 0){
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
 						}
