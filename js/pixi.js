@@ -2661,14 +2661,16 @@ function onSkillDown(){
 	}
 	console.log("validSkillTargetArray: " + validSkillTargetArray);
 
+	console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 	validSkillObjectArray.forEach(object=>{
 		if(Array.isArray(object)){
+			console.log("object: " + object);
 			object.forEach(object2=>{
-				console.log("validSkillObjectArray column: " + object2.name);
+				console.log("object2 column: " + object2.name);
 			});
 		}else{
-			console.log("validSkillObjectArray: " + object.name);
+			console.log("object3: " + object.name);
 		}		
 	});
 	
@@ -2816,6 +2818,7 @@ function onAdditionalMoveDown(){
 	console.log("Additional Move " + selectedVita);
 	validMoveTargetArray = [];
 	validSkillTargetArray = [];
+	validSkillObjectArray = [];
 	selectedSkill = -1
 	interfaceAdditional.visible = false;
 
@@ -3514,7 +3517,7 @@ function getTargetObject(objectArray, temp, heal){
 			}else{
 				arrayCreature.healthBar.target.visible = true;
 			}
-			console.log(arrayCreature.name);
+			// console.log(arrayCreature.name);
 			targetedObject = arrayCreature;
 			// stageSide = 1;
 		// }else{stageSide = 0;}
@@ -3524,5 +3527,4 @@ function getTargetObject(objectArray, temp, heal){
 		}
 	});
 	return targetedObject;
-} 
-
+}
