@@ -2357,9 +2357,10 @@ function onSkillDown(){
 				}else{
 					var temp = enemyArray[this.identifier[3]].pos;
 				}				
-			}			
+			}
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
+				console.log("=================================" + temp);
 				if(this.identifier[2] > 0){
 					heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
