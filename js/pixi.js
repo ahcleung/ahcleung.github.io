@@ -2271,6 +2271,7 @@ function onSkillDown(){
 				}
 				console.log("=================================" + temp);
 				if(this.identifier[2] > 0){
+					if(!switchSide){
 					// if(temp > 0 && !switchSide){
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2288,24 +2289,25 @@ function onSkillDown(){
 							}
 						});
 						// columnObjectArray.push(getTargetObject());
-					// }else{
-					// 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					// 		if(arrayCreature.pos == temp){
-					// 			// console.log(arrayCreature.name);
-					// 			if(heal){
-					// 				arrayCreature.healthBar.heal.visible = true;
-					// 			}else{
-					// 				arrayCreature.healthBar.target.visible = true;
-					// 			}
-					// 			stageSide = -1;
-					// 		}else{stageSide = 0;}
-					// 		if(stageSide != 0){
-					// 			columnArray.push((arrayCreatureIndex+1)*stageSide);
-					// 			columnObjectArray.push(arrayCreature);
-					// 		}
-					// 	});
-					// }
+					}else{
+						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								// console.log(arrayCreature.name);
+								if(heal){
+									arrayCreature.healthBar.heal.visible = true;
+								}else{
+									arrayCreature.healthBar.target.visible = true;
+								}
+								stageSide = -1;
+							}else{stageSide = 0;}
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
+						});
+					}
 				}else{
+					if(!switchSide){
 					// if(temp > 0 && !switchSide){
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2322,23 +2324,23 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
-					// }else{
-					// 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-					// 		if(arrayCreature.pos == temp){
-					// 			// console.log(arrayCreature.name);
-					// 			if(heal){
-					// 				arrayCreature.healthBar.heal.visible = true;
-					// 			}else{
-					// 				arrayCreature.healthBar.target.visible = true;
-					// 			}
-					// 			stageSide = 1;
-					// 		}else{stageSide = 0;}
-					// 		if(stageSide != 0){
-					// 			columnArray.push((arrayCreatureIndex+1)*stageSide);
-					// 			columnObjectArray.push(arrayCreature);
-					// 		}
-					// 	});
-					// }
+					}else{
+						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+							if(arrayCreature.pos == temp){
+								// console.log(arrayCreature.name);
+								if(heal){
+									arrayCreature.healthBar.heal.visible = true;
+								}else{
+									arrayCreature.healthBar.target.visible = true;
+								}
+								stageSide = 1;
+							}else{stageSide = 0;}
+							if(stageSide != 0){
+								columnArray.push((arrayCreatureIndex+1)*stageSide);
+								columnObjectArray.push(arrayCreature);
+							}
+						});
+					}
 				}
 			}
 		}
