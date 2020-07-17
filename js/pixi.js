@@ -1743,7 +1743,7 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-	console.log(this.identifier[3]);
+	console.log(this.identifier[3].name);
 	if(validSkillObjectArray.length > 0){
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
