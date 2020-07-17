@@ -3147,18 +3147,21 @@ function calculateTurnOrder(){
 		// console.log(enemySpriteArray[Math.abs(turnArray[0]-1)].identifier);
 	}
 	// console.log(identifier);
-	selectCreature(identifier);
+	selectCreature(identifier, turnArray2[0]);
 	turnArray.shift();
+	turnArray2.shift();
 }
 
-function selectCreature(identifier){	
+function selectCreature(identifier, object){	
 	// console.log("Creature speed:" + heroArray[identifier[1]].statMod[6]);
 
-	if(identifier[0] > 0){
-		heroArray[identifier[1]].healthBar.turn.visible = false;
-	}else{
-		enemyArray[identifier[1]].healthBar.turn.visible = false;
-	}
+	// if(identifier[0] > 0){
+	// 	heroArray[identifier[1]].healthBar.turn.visible = false;
+	// }else{
+	// 	enemyArray[identifier[1]].healthBar.turn.visible = false;
+	// }
+
+	object.healthBar.turn.visible = false;
 
 	//Direction x Index+1
 	selectedVita = identifier[0] * (identifier[1]+1);
@@ -3191,8 +3194,8 @@ function selectCreature(identifier){
 	var newSkills = [];
 	var currPos = [];
 	if(identifier[0] < 0){
-		enemyArray[identifier[1]].healthBar.select.visible = true;
-		enemyArray[identifier[1]].healthBar.select.animate = true;
+		// enemyArray[identifier[1]].healthBar.select.visible = true;
+		// enemyArray[identifier[1]].healthBar.select.animate = true;
 		enemyArray[identifier[1]].skills.forEach(skillID => {
 			newSkills.push(skillID);
 		});
@@ -3203,8 +3206,8 @@ function selectCreature(identifier){
 			currPos.push(enemyArray[identifier[1]].pos+1);
 		}
 	}else{
-		heroArray[identifier[1]].healthBar.select.visible = true;
-		heroArray[identifier[1]].healthBar.select.animate = true;
+		// heroArray[identifier[1]].healthBar.select.visible = true;
+		// heroArray[identifier[1]].healthBar.select.animate = true;
 		heroArray[identifier[1]].skills.forEach(skillID => {
 			newSkills.push(skillID);
 		});
@@ -3215,6 +3218,9 @@ function selectCreature(identifier){
 			currPos.push(heroArray[identifier[1]].pos+1);
 		}
 	}
+
+	object.healthBar.select.visible = true;
+	object.healthBar.select.animate = true;
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
