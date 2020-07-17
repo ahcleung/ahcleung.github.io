@@ -1743,14 +1743,14 @@ function onButtonDown(){
 
 function onCreatureDown(){
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-	console.log(this.identifier[3].name);
+	console.log(this.parent.name);
 	if(validSkillObjectArray.length > 0){
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
 					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					if(this.parent == arrayElement){
+					if(this.identifier[3] == arrayElement){
 						console.log("Correct object do things");
 						// correctTarget = true;
 						// targetedVita = targetedIndex;
@@ -1759,7 +1759,7 @@ function onCreatureDown(){
 					}
 				});
 			}
-			if(this.parent == targeted){
+			if(this.identifier[3] == targeted){
 				console.log("Correct object do things");
 				// correctTarget = true;
 				// targetedVita = targetedIndex;
