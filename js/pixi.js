@@ -3513,6 +3513,7 @@ function getTargetObject(objectArray, temp, heal){
 			}else{
 				arrayCreature.healthBar.target.visible = true;
 			}
+			console.log(arrayCreature.name);
 			return arrayCreature;
 			// stageSide = 1;
 		// }else{stageSide = 0;}
