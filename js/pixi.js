@@ -3194,37 +3194,50 @@ function selectCreature(identifier, object2){
 		object.healthBar.select.animate = false;
 	});
 
+	var newSkills = [];
+	var currPos = [];
+
 	object2.healthBar.turn.visible = false;
 	object2.healthBar.select.visible = true;
 	object2.healthBar.select.animate = true;
 
-	var newSkills = [];
-	var currPos = [];
-	if(identifier[0] < 0){
+	object2.skills.forEach(skillID=>{
+		newSkills.push(skillID);
+	});
+
+	if(object2.size == 1){
+		currPos.push(object2.pos);
+	}else if(object2.size == 2){
+		currPos.push(object2.pos);
+		currPos.push(object2.pos+1);
+	}
+
+	
+	// if(identifier[0] < 0){
 		// enemyArray[identifier[1]].healthBar.select.visible = true;
 		// enemyArray[identifier[1]].healthBar.select.animate = true;
-		enemyArray[identifier[1]].skills.forEach(skillID => {
-			newSkills.push(skillID);
-		});
-		if(enemyArray[identifier[1]].size == 1){
-			currPos.push(enemyArray[identifier[1]].pos);
-		}else if(enemyArray[identifier[1]].size == 2){
-			currPos.push(enemyArray[identifier[1]].pos);
-			currPos.push(enemyArray[identifier[1]].pos+1);
-		}
-	}else{
+		// enemyArray[identifier[1]].skills.forEach(skillID => {
+		// 	newSkills.push(skillID);
+		// });
+		// if(enemyArray[identifier[1]].size == 1){
+		// 	currPos.push(enemyArray[identifier[1]].pos);
+		// }else if(enemyArray[identifier[1]].size == 2){
+		// 	currPos.push(enemyArray[identifier[1]].pos);
+		// 	currPos.push(enemyArray[identifier[1]].pos+1);
+		// }
+	// }else{
 		// heroArray[identifier[1]].healthBar.select.visible = true;
 		// heroArray[identifier[1]].healthBar.select.animate = true;
-		heroArray[identifier[1]].skills.forEach(skillID => {
-			newSkills.push(skillID);
-		});
-		if(heroArray[identifier[1]].size == 1){
-			currPos.push(heroArray[identifier[1]].pos);
-		}else if(heroArray[identifier[1]].size == 2){
-			currPos.push(heroArray[identifier[1]].pos);
-			currPos.push(heroArray[identifier[1]].pos+1);
-		}
-	}
+		// heroArray[identifier[1]].skills.forEach(skillID => {
+		// 	newSkills.push(skillID);
+		// });
+	// 	if(heroArray[identifier[1]].size == 1){
+	// 		currPos.push(heroArray[identifier[1]].pos);
+	// 	}else if(heroArray[identifier[1]].size == 2){
+	// 		currPos.push(heroArray[identifier[1]].pos);
+	// 		currPos.push(heroArray[identifier[1]].pos+1);
+	// 	}
+	// }
 
 	
 	
