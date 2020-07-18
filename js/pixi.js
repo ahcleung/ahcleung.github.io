@@ -1766,7 +1766,12 @@ function onCreatureDown(){
 			}
 		});
 		console.log(selectedVita2.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
-		targetedVita2.forEach(object=>{console.log(object.name + "\n")})
+		if(Array.isArray(targetedVita2)){
+			targetedVita2.forEach(object=>{console.log(object.name + "\n")})
+		}else{
+			console.log(targetedVita2.name);
+		}
+		
 
 	}
 	if(validSkillTargetArray.length > 0){
