@@ -1805,7 +1805,7 @@ function onCreatureDown(){
 			var hitMod2 = 1;
 			if(accDiff2 > 0){
 				hitMod2 = (Math.abs(accDiff2) + 3)/3;
-			}else if(accDiff < 0){
+			}else if(accDiff2 < 0){
 				hitMod2 = 3/(Math.abs(accDiff2) + 3);
 			}
 
