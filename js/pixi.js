@@ -3328,14 +3328,23 @@ function onAdditionalMoveDown(){
 
 	if(selectedVita2.hero){
 		heroArray.forEach(object=>{
+			var positionCheck = [];
+			if(object.size > 1){
+				positionCheck.push(currIndex2);
+				positionCheck.push(currIndex2+1);
+			}else{
+				positionCheck.push(currIndex2);
+			}
 			for(var i = 1; i <= moveDelta2; i++){
-				if(object.pos == currIndex2-i && forward2){
-					object.healthBar.move.visible = true;
-					validMoveObjectArray.push(object);
-				}else if(object.pos == currIndex2+i && backward2){
-					object.healthBar.move.visible = true;
-					validMoveObjectArray.push(object);
-				}
+				positionCheck.forEach(position=>{
+					if(object.pos == position-i && forward2){
+						object.healthBar.move.visible = true;
+						validMoveObjectArray.push(object);
+					}else if(object.pos == position+i && backward2){
+						object.healthBar.move.visible = true;
+						validMoveObjectArray.push(object);
+					}
+				});				
 			}
 		});
 		// heroOrder.forEach((creatureInitialOrder, orderIndex) => {
@@ -3354,14 +3363,23 @@ function onAdditionalMoveDown(){
 		// });
 	}else{
 		enemyArray.forEach(object=>{
+			var positionCheck = [];
+			if(object.size > 1){
+				positionCheck.push(currIndex2);
+				positionCheck.push(currIndex2+1);
+			}else{
+				positionCheck.push(currIndex2);
+			}
 			for(var i = 1; i <= moveDelta2; i++){
-				if(object.pos == currIndex2-i && forward2){
-					object.healthBar.move.visible = true;
-					validMoveObjectArray.push(object);
-				}else if(object.pos == currIndex2+i && backward2){
-					object.healthBar.move.visible = true;
-					validMoveObjectArray.push(object);
-				}
+				positionCheck.forEach(position=>{
+					if(object.pos == position-i && forward2){
+						object.healthBar.move.visible = true;
+						validMoveObjectArray.push(object);
+					}else if(object.pos == position+i && backward2){
+						object.healthBar.move.visible = true;
+						validMoveObjectArray.push(object);
+					}
+				});				
 			}
 		});
 		// enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
