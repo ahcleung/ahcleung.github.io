@@ -1994,13 +1994,13 @@ function onCreatureDown(){
 				targeted.forEach(arrayElement => {
 					if(this.object == arrayElement){
 						correctTarget2 = true;
-						targetedVita2 = targetedIndex;
+						targetedVita2 = targeted;
 					}	
 				});
 			}
 			if(this.object == targeted){
 				correctTarget2 = true;
-				targetedVita2 = targetedIndex;
+				targetedVita2 = targeted;
 			}
 		});
 
@@ -2009,19 +2009,19 @@ function onCreatureDown(){
 
 		if(this.object.hero){
 			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveObjectArray[targetedVita2].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == targetedVita2.pos-1)								moveTo = orderIndex
 				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
 			});
 		}else{
 			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveObjectArray[targetedVita2].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == targetedVita2.pos-1)								moveTo = orderIndex
 				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
 			});
 		}
 
 		var displacement = moveFrom - moveTo;
-		
-		console.log("Displacement: " + displacement);
+
+		console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
 
 		if(correctTarget2){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
