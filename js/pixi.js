@@ -3106,7 +3106,7 @@ function animateBattle(attacker, defender){
 	TweenMax.to(attacker.action, 0.25, {x:0});
 
 	attacker.action.pAtkTween.play(0);
-	attacker.pAtkTween.eventCallback("onComplete", function(){
+	attacker.action.pAtkTween.eventCallback("onComplete", function(){
 		animateArray.forEach(item =>{
 			item.visible = true;
 		});
