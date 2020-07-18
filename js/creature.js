@@ -12,12 +12,13 @@
 ======================================================================================*/
 
 class Creature{
-	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skills=[0,0,0,0]}){
+	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skills=[0,0,0,0], hero=false}){
 		this.id = id;
 		this.level = level;
 		this.statDis = statDis;
 		this.skills = skills;
 		this.pos = 0;
+		this.hero = hero;
 		
 		// this.critDmg = Math.floor(Math.random() * 25) + 10;
 		this.critDmg = 0;
