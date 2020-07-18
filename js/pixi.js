@@ -3324,7 +3324,7 @@ function onAdditionalMoveDown(){
 
 	var tempIndex2;
 
-	console.log("validMoveObjectArray: " + object.name);
+	// console.log("validMoveObjectArray: " + object.name);
 
 	if(selectedVita2.hero){
 		heroArray.forEach(object=>{
