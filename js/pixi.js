@@ -1755,22 +1755,33 @@ function onCreatureDown(){
 					if(this.object == arrayElement){
 						console.log("Correct object do things");
 						correctTarget2 = true;
-						targetedVita2 = targeted;
+						targetedVita2 = targetedIndex;
 					}
 				});
 			}
 			if(this.object == targeted){
 				console.log("Correct object do things");
 				correctTarget2 = true;
-				targetedVita2 = targeted;
+				targetedVita2 = targetedIndex;
 			}
 		});
 		console.log(selectedVita2.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
-		if(Array.isArray(targetedVita2)){
-			targetedVita2.forEach(object=>{console.log(object.name + "\n")})
-		}else{
-			console.log(targetedVita2.name);
+		var level2 = selectedVita2.level;
+		var accMod2 = selectedVita2.accMod;
+		var attack2 = 0;
+		if(skillsList.data.skills[selectedSkill].type == "phy"){
+			attack2 = selectedVita2.patk;
+		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+			attack2 = selectedVita2.satk;
 		}
+		validSkillTargetArray[targetedVita2].forEach(targeted => {
+			console.log(targeted.name + "\n");
+		});
+		// if(Array.isArray(targetedVita2)){
+		// 	targetedVita2.forEach(object=>{console.log(object.name + "\n")})
+		// }else{
+		// 	console.log(targetedVita2.name);
+		// }
 		
 
 	}
