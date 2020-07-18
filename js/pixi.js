@@ -1888,365 +1888,389 @@ function onCreatureDown(){
 				dmgArray2[0] = 0;
 				effectiveness2 = 0;
 			}
+
+			updateDamage(targeted, effectiveness2, ifCrit2, critTracker2, dmgArray2, ifHeal2, statusNum2, skillStatusEffect2);
 		});
-		console.log("####################################################################################");
-		console.log("####################################################################################");
+
+		//If out of turns, and still have enemies, and still have heroes
+		if(turnArray.length != 0){
+			var identifier = [];
+			if(turnArray[0] > 0){
+				identifier[0] = 1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+			}else{
+				identifier[0] = -1;
+				identifier[1] = Math.abs(turnArray[0])-1;
+			}
+			selectCreature(identifier, turnArray2[0]);
+			turnArray.shift();
+			turnArray2.shift();
+		}else{
+			calculateTurnOrder();
+		}
+
+		selectedSkill = -1;
+	}else{
+		console.log("Invalid skill target");
 	}
-	if(validSkillTargetArray.length > 0){
-		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-		console.log("Clicked skill target index: " + clickedTarget);
-		var correctTarget = false;
-		var targetedVita = 0;
-		validSkillTargetArray.forEach((targeted, targetedIndex) => {
-			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(arrayElement == clickedTarget){
-						correctTarget = true;
-						targetedVita = targetedIndex;
-					}	
-				});
-			}
-			if(targeted == clickedTarget){
-				correctTarget = true;
-				targetedVita = targetedIndex;
-			}
-		});
-		if(correctTarget){
-			// console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
+	console.log("####################################################################################");
+	console.log("####################################################################################");
+	
+	// if(validSkillTargetArray.length > 0){
+	// 	clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
+	// 	console.log("Clicked skill target index: " + clickedTarget);
+	// 	var correctTarget = false;
+	// 	var targetedVita = 0;
+	// 	validSkillTargetArray.forEach((targeted, targetedIndex) => {
+	// 		if(Array.isArray(targeted)){
+	// 			targeted.forEach(arrayElement => {
+	// 				if(arrayElement == clickedTarget){
+	// 					correctTarget = true;
+	// 					targetedVita = targetedIndex;
+	// 				}	
+	// 			});
+	// 		}
+	// 		if(targeted == clickedTarget){
+	// 			correctTarget = true;
+	// 			targetedVita = targetedIndex;
+	// 		}
+	// 	});
+	// 	if(correctTarget){
+	// 		// console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
 
-			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
+	// 		animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
-			const filter1 = new PIXI.filters.ColorMatrixFilter();
-			const filter2 = new PIXI.filters.ColorMatrixFilter();
-			const filter3 = new PIXI.filters.ColorMatrixFilter();
+	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
+	// 		const filter2 = new PIXI.filters.ColorMatrixFilter();
+	// 		const filter3 = new PIXI.filters.ColorMatrixFilter();
 
-			var filtersArray = [];
+	// 		var filtersArray = [];
 
-			filter2.brightness(1.4,  true);
-			filter2.hue(175, true);
-			filter3.blackAndWhite(true);
+	// 		filter2.brightness(1.4,  true);
+	// 		filter2.hue(175, true);
+	// 		filter3.blackAndWhite(true);
 
-			// filter3.negative(true);
-			switch(skillsList.data.skills[selectedSkill].element){
-				case 1: 	//flora
-					filter1.hue(-120);
-					filtersArray = [filter1];
-					break;
-				case 2: 	//water
-					filter1.hue(-30);
-					filtersArray = [filter1];
-					break;
-				case 3:		//fire
-					filter1.hue(110);
-					filtersArray = [filter1];
-					break;
-				case 4: 	//earth
-					filter1.hue(160);
-					filtersArray = [filter1];
-					break;
-				case 5: 	//lightning
-					filtersArray = [filter2];
-					break;
-				case 6: 	//wind
-					filter1.hue(-80);
-					filtersArray = [filter1];
-					break;
-				case 7: 	//toxic
-					filter1.hue(20);
-					filtersArray = [filter1];
-					break;
-				case 8: 	//spirit
-					filter1.hue(60);
-					filtersArray = [filter1];
-					break;
-				case 9: 	//shadow	
-					filtersArray = [filter3];		
-					break;
-				default:
-					filter1.hue(0);
-					filtersArray = [filter1];
-			}
+	// 		// filter3.negative(true);
+	// 		switch(skillsList.data.skills[selectedSkill].element){
+	// 			case 1: 	//flora
+	// 				filter1.hue(-120);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 2: 	//water
+	// 				filter1.hue(-30);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 3:		//fire
+	// 				filter1.hue(110);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 4: 	//earth
+	// 				filter1.hue(160);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 5: 	//lightning
+	// 				filtersArray = [filter2];
+	// 				break;
+	// 			case 6: 	//wind
+	// 				filter1.hue(-80);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 7: 	//toxic
+	// 				filter1.hue(20);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 8: 	//spirit
+	// 				filter1.hue(60);
+	// 				filtersArray = [filter1];
+	// 				break;
+	// 			case 9: 	//shadow	
+	// 				filtersArray = [filter3];		
+	// 				break;
+	// 			default:
+	// 				filter1.hue(0);
+	// 				filtersArray = [filter1];
+	// 		}
 
-			validSkillTargetArray[targetedVita].forEach(targeted => {
-				var selectedIndex = Math.abs(selectedVita)-1;
-				var targetedIndex = Math.abs(targeted)-1;
-				var other = false;
-				var deltaHP = 0;
-				var dmgCalc = 0;
-				var level = 0;
-				var attack = 0;
-				var defense = 0;
-				var defendElements = [];
-				var effectiveness = 1;
-				var dodge = 0;
-				var dodgeMod = 0;
-				var accMod = 0;
-				var multiHit = false;
-				var skillStatusEffect = false;
-				var skillStatChange = false;
-				var statusNum = [];
-				var hitNum = 1;
-				var dmgArray = [];
-				var critTracker = [0,0,0,0,0];
-				var ifCrit = false;
-				var totalCritDmg = 0;
-				var critMultiplier = 1;
-				var ifHeal = false;
+	// 		validSkillTargetArray[targetedVita].forEach(targeted => {
+	// 			var selectedIndex = Math.abs(selectedVita)-1;
+	// 			var targetedIndex = Math.abs(targeted)-1;
+	// 			var other = false;
+	// 			var deltaHP = 0;
+	// 			var dmgCalc = 0;
+	// 			var level = 0;
+	// 			var attack = 0;
+	// 			var defense = 0;
+	// 			var defendElements = [];
+	// 			var effectiveness = 1;
+	// 			var dodge = 0;
+	// 			var dodgeMod = 0;
+	// 			var accMod = 0;
+	// 			var multiHit = false;
+	// 			var skillStatusEffect = false;
+	// 			var skillStatChange = false;
+	// 			var statusNum = [];
+	// 			var hitNum = 1;
+	// 			var dmgArray = [];
+	// 			var critTracker = [0,0,0,0,0];
+	// 			var ifCrit = false;
+	// 			var totalCritDmg = 0;
+	// 			var critMultiplier = 1;
+	// 			var ifHeal = false;
 				
 
-				//Get attack stat based on skill used
-				if(selectedVita > 0){
-					level = heroArray[selectedIndex].level;
-					accMod = heroArray[selectedIndex].accMod;
-					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						// actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						// actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
-						heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-						heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-						attack = heroArray[selectedIndex].patk;
-					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-						heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-						attack = heroArray[selectedIndex].satk;
-					}
-				}else{
-					level = enemyArray[selectedIndex].level;
-					accMod = enemyArray[selectedIndex].accMod;
-					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						// actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-						// actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
-						enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-						enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-						attack = enemyArray[selectedIndex].patk;
-					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-						enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-						attack = enemyArray[selectedIndex].satk;
-					}
-				}
+	// 			//Get attack stat based on skill used
+	// 			if(selectedVita > 0){
+	// 				level = heroArray[selectedIndex].level;
+	// 				accMod = heroArray[selectedIndex].accMod;
+	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
+	// 					// actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+	// 					// actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+	// 					heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+	// 					heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
+	// 					attack = heroArray[selectedIndex].patk;
+	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+	// 					heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+	// 					heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
+	// 					attack = heroArray[selectedIndex].satk;
+	// 				}
+	// 			}else{
+	// 				level = enemyArray[selectedIndex].level;
+	// 				accMod = enemyArray[selectedIndex].accMod;
+	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
+	// 					// actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
+	// 					// actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
+	// 					enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+	// 					enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
+	// 					attack = enemyArray[selectedIndex].patk;
+	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+	// 					enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
+	// 					enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
+	// 					attack = enemyArray[selectedIndex].satk;
+	// 				}
+	// 			}
 
-				actionLines.filters = filtersArray;
+	// 			actionLines.filters = filtersArray;
 
-				//Get defense stat based on skill used					
-				if(targeted > 0){
-					dodge = heroArray[targetedIndex].dodge;
-					dodgeMod = heroArray[targetedIndex].dodgeMod;
-					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						defense = heroArray[targetedIndex].pdef;
-					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						defense = heroArray[targetedIndex].sdef;
-					}
-					heroArray[targetedIndex].elements.forEach(element =>{
-						defendElements.push(element);
-					});
-				}else{
-					// level = enemyArray[selectedIndex].level;
-					dodge = enemyArray[targetedIndex].dodge;
-					dodgeMod = enemyArray[targetedIndex].dodgeMod;
-					if(skillsList.data.skills[selectedSkill].type == "phy"){
-						defense = enemyArray[targetedIndex].pdef;
-					}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-						defense = enemyArray[targetedIndex].sdef;
-					}
-					enemyArray[targetedIndex].elements.forEach(element =>{
-						defendElements.push(element);
-					});
-				}
+	// 			//Get defense stat based on skill used					
+	// 			if(targeted > 0){
+	// 				dodge = heroArray[targetedIndex].dodge;
+	// 				dodgeMod = heroArray[targetedIndex].dodgeMod;
+	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
+	// 					defense = heroArray[targetedIndex].pdef;
+	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+	// 					defense = heroArray[targetedIndex].sdef;
+	// 				}
+	// 				heroArray[targetedIndex].elements.forEach(element =>{
+	// 					defendElements.push(element);
+	// 				});
+	// 			}else{
+	// 				// level = enemyArray[selectedIndex].level;
+	// 				dodge = enemyArray[targetedIndex].dodge;
+	// 				dodgeMod = enemyArray[targetedIndex].dodgeMod;
+	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
+	// 					defense = enemyArray[targetedIndex].pdef;
+	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+	// 					defense = enemyArray[targetedIndex].sdef;
+	// 				}
+	// 				enemyArray[targetedIndex].elements.forEach(element =>{
+	// 					defendElements.push(element);
+	// 				});
+	// 			}
 
-				var accDiff = accMod - dodgeMod;
-				var hitMod = 1;
-				if(accDiff > 0){
-					hitMod = (Math.abs(accDiff) + 3)/3;
-				}else if(accDiff < 0){
-					hitMod = 3/(Math.abs(accDiff) + 3);
-				}
+	// 			var accDiff = accMod - dodgeMod;
+	// 			var hitMod = 1;
+	// 			if(accDiff > 0){
+	// 				hitMod = (Math.abs(accDiff) + 3)/3;
+	// 			}else if(accDiff < 0){
+	// 				hitMod = 3/(Math.abs(accDiff) + 3);
+	// 			}
 
-				if(skillsList.data.skills[selectedSkill].accuracy == 110){
-					var hitChance = 1;
-				}else{
-					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-				}
-				var hitRoll = Math.random();
+	// 			if(skillsList.data.skills[selectedSkill].accuracy == 110){
+	// 				var hitChance = 1;
+	// 			}else{
+	// 				var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
+	// 			}
+	// 			var hitRoll = Math.random();
 
-				if(hitRoll < hitChance){
-					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
-					//Get defenders elements to calculate effectiveness
-					defendElements.forEach(defendElement=>{
-						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-					});
+	// 			if(hitRoll < hitChance){
+	// 				console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
+	// 				//Get defenders elements to calculate effectiveness
+	// 				defendElements.forEach(defendElement=>{
+	// 					effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+	// 				});
 
-					//Critical hit chance
-					// var criticalChance = Math.floor(Math.random() * 10000);
-					// var crit = 1;
-					// if(criticalChance > 5000){
-					// 	crit = 1.5;
-					// }
-					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-						if(tagName == "multiple")		multiHit = true;
-						if(tagName == "status")			skillStatusEffect = true;
-						if(tagName == "statchange")		skillStatChange = true;
-					});
+	// 				//Critical hit chance
+	// 				// var criticalChance = Math.floor(Math.random() * 10000);
+	// 				// var crit = 1;
+	// 				// if(criticalChance > 5000){
+	// 				// 	crit = 1.5;
+	// 				// }
+	// 				skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+	// 					if(tagName == "multiple")		multiHit = true;
+	// 					if(tagName == "status")			skillStatusEffect = true;
+	// 					if(tagName == "statchange")		skillStatChange = true;
+	// 				});
 
-					if(multiHit){
-						hitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
-						// hitNum = 5;
-					}
+	// 				if(multiHit){
+	// 					hitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
+	// 					// hitNum = 5;
+	// 				}
 
-					if(skillStatusEffect){
-						statusNum.push(skillsList.data.skills[selectedSkill].status);
-						// hitNum = 5;
-					}
+	// 				if(skillStatusEffect){
+	// 					statusNum.push(skillsList.data.skills[selectedSkill].status);
+	// 					// hitNum = 5;
+	// 				}
 
-					if(skillStatChange){
-						// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
-						// 	statusNum.push(2);
-						// }else{
-						// 	statusNum.push(4);
-						// }
-					}
+	// 				if(skillStatChange){
+	// 					// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
+	// 					// 	statusNum.push(2);
+	// 					// }else{
+	// 					// 	statusNum.push(4);
+	// 					// }
+	// 				}
 
-					//Calculate heal amount or damage amount
-					if(skillsList.data.skills[selectedSkill].heal > 0){
-						//calculate how much to heal
-						deltaHP = skillsList.data.skills[selectedSkill].heal;
-						dmgArray.push(skillsList.data.skills[selectedSkill].heal);
-						ifHeal = true;
-						effectiveness = 1;
-						critMultiplier = 1;
-					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-						other = true;
-					}else{						
-						dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
-						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-						// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
-						for(var i = 0; i < hitNum; i++){
-							var criticalChance = Math.floor(Math.random() * 10000);
-							var critMultiplier = 1;
-							if(criticalChance > 5000){
-								critMultiplier = 1.5;
-								ifCrit = true;
-								critTracker[i] = 1;
-							}
-							var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-							if(finalDmgCalc == 0)		finalDmgCalc = 1;
-							dmgArray[i] = finalDmgCalc;
-							deltaHP += finalDmgCalc;
-						}
-					}
+	// 				//Calculate heal amount or damage amount
+	// 				if(skillsList.data.skills[selectedSkill].heal > 0){
+	// 					//calculate how much to heal
+	// 					deltaHP = skillsList.data.skills[selectedSkill].heal;
+	// 					dmgArray.push(skillsList.data.skills[selectedSkill].heal);
+	// 					ifHeal = true;
+	// 					effectiveness = 1;
+	// 					critMultiplier = 1;
+	// 				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+	// 					other = true;
+	// 				}else{						
+	// 					dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+	// 					// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
+	// 					// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
+	// 					for(var i = 0; i < hitNum; i++){
+	// 						var criticalChance = Math.floor(Math.random() * 10000);
+	// 						var critMultiplier = 1;
+	// 						if(criticalChance > 5000){
+	// 							critMultiplier = 1.5;
+	// 							ifCrit = true;
+	// 							critTracker[i] = 1;
+	// 						}
+	// 						var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+	// 						if(finalDmgCalc == 0)		finalDmgCalc = 1;
+	// 						dmgArray[i] = finalDmgCalc;
+	// 						deltaHP += finalDmgCalc;
+	// 					}
+	// 				}
 
-					if(ifCrit){
-						statusNum.push(14);
-						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
-						});
-						console.log("Critical damage: " + Math.floor(totalCritDmg));
-					}
+	// 				if(ifCrit){
+	// 					statusNum.push(14);
+	// 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+	// 						if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
+	// 					});
+	// 					console.log("Critical damage: " + Math.floor(totalCritDmg));
+	// 				}
 
-					console.log(targeted + " takes " + deltaHP + " damage");
+	// 				console.log(targeted + " takes " + deltaHP + " damage");
 
-					if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
-						moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
-					}
-				}else{
-					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-					dmgArray[0] = 0;
-					deltaHP = 0;
-					effectiveness = 0;
-				}
+	// 				if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
+	// 					moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+	// 				}
+	// 			}else{
+	// 				console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
+	// 				dmgArray[0] = 0;
+	// 				deltaHP = 0;
+	// 				effectiveness = 0;
+	// 			}
 
-				if(targeted > 0 && !other){
-					updateDamage(heroArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
-				}else if(targeted < 0 && !other){
-					updateDamage(enemyArray[targetedIndex], targetedIndex, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
-				}
-			});
+	// 			if(targeted > 0 && !other){
+	// 				updateDamage(heroArray[targetedIndex], effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
+	// 			}else if(targeted < 0 && !other){
+	// 				updateDamage(enemyArray[targetedIndex], effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
+	// 			}
+	// 		});
 		
-			//If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
-				selectCreature(identifier, turnArray2[0]);
-				turnArray.shift();
-				turnArray2.shift();
-			}else{
-				calculateTurnOrder();
-			}
+	// 		//If out of turns, and still have enemies, and still have heroes
+	// 		if(turnArray.length != 0){
+	// 			var identifier = [];
+	// 			if(turnArray[0] > 0){
+	// 				identifier[0] = 1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}else{
+	// 				identifier[0] = -1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}
+	// 			selectCreature(identifier, turnArray2[0]);
+	// 			turnArray.shift();
+	// 			turnArray2.shift();
+	// 		}else{
+	// 			calculateTurnOrder();
+	// 		}
 
-			selectedSkill = -1;
-		}else{
-			console.log("Invalid skill target");
-		}
-	}else if(validMoveTargetArray.length > 0){
-		clickedTarget = this.identifier[1];
-		console.log("Clicked move target index: " + clickedTarget);
-		var correctTarget = false;
-		var targetedVita = 0;
+	// 		selectedSkill = -1;
+	// 	}else{
+	// 		console.log("Invalid skill target");
+	// 	}
+	// }else if(validMoveTargetArray.length > 0){
+	// 	clickedTarget = this.identifier[1];
+	// 	console.log("Clicked move target index: " + clickedTarget);
+	// 	var correctTarget = false;
+	// 	var targetedVita = 0;
 
-		validMoveTargetArray.forEach((targeted, targetedIndex) => {
-			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(arrayElement == clickedTarget){
-						correctTarget = true;
-						targetedVita = targetedIndex;
-					}	
-				});
-			}
-			if(targeted == clickedTarget){
-				correctTarget = true;
-				targetedVita = targetedIndex;
-			}
-		});
+	// 	validMoveTargetArray.forEach((targeted, targetedIndex) => {
+	// 		if(Array.isArray(targeted)){
+	// 			targeted.forEach(arrayElement => {
+	// 				if(arrayElement == clickedTarget){
+	// 					correctTarget = true;
+	// 					targetedVita = targetedIndex;
+	// 				}	
+	// 			});
+	// 		}
+	// 		if(targeted == clickedTarget){
+	// 			correctTarget = true;
+	// 			targetedVita = targetedIndex;
+	// 		}
+	// 	});
 
-		var moveFrom;
-		var moveTo;
+	// 	var moveFrom;
+	// 	var moveTo;
 
-		if(selectedVita > 0){
-			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
-				if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
-			});
-		}else{
-			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
-				if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
-			});
-		}
+	// 	if(selectedVita > 0){
+	// 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 			if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
+	// 			if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
+	// 		});
+	// 	}else{
+	// 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 			if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
+	// 			if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
+	// 		});
+	// 	}
 
-		var displacement = moveFrom - moveTo;
+	// 	var displacement = moveFrom - moveTo;
 
-		if(correctTarget){
-			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-			// console.log(selectedVita + " moves: " + displacement);
-			moveCreature(selectedVita, displacement);
-			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+	// 	if(correctTarget){
+	// 		// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+	// 		// console.log(selectedVita + " moves: " + displacement);
+	// 		moveCreature(selectedVita, displacement);
+	// 		// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
-			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
-				selectCreature(identifier, turnArray2[0]);
-				turnArray.shift();
-				turnArray2.shift();
-			}else{
-				calculateTurnOrder();
-			}
-			selectedSkill = -1;
-		}else{
-			console.log("Invalid move target");
-		}
-	}
+	// 		//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+	// 		if(turnArray.length != 0){
+	// 			var identifier = [];
+	// 			if(turnArray[0] > 0){
+	// 				identifier[0] = 1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}else{
+	// 				identifier[0] = -1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}
+	// 			selectCreature(identifier, turnArray2[0]);
+	// 			turnArray.shift();
+	// 			turnArray2.shift();
+	// 		}else{
+	// 			calculateTurnOrder();
+	// 		}
+	// 		selectedSkill = -1;
+	// 	}else{
+	// 		console.log("Invalid move target");
+	// 	}
+	// }
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
@@ -3593,7 +3617,7 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 	}
 }
 
-function resizeStatus(item, index){
+function resizeStatus(item){
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	
@@ -3639,7 +3663,7 @@ function resizeStatus(item, index){
 }
 
 
-function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
+function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
 	var totalDmgCalc = 0;
 	dmgArray.forEach(dmg => {
 		totalDmgCalc += dmg;
@@ -3769,7 +3793,7 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 			object.statusSpriteArray.push(newStatusEffect);
 			object.statusArray.push(statusNumber);
 		});
-		resizeStatus(object, targetIndex);
+		resizeStatus(object);
 	}
 
 	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
