@@ -1795,7 +1795,7 @@ function onCreatureDown(){
 
 		if(correctTarget2){
 
-			// animateBattle(selectedVita2, validSkillObjectArray[targetedVita2]);
+			animateBattle(selectedVita2, validSkillObjectArray[targetedVita2]);
 
 			if(skillsList.data.skills[selectedSkill].type == "phy"){
 				attack2 = selectedVita2.patk;
@@ -2384,7 +2384,7 @@ function moveCreature(movingCreature, displacement){
 
 function onHPDown(){
 	console.log("HP:" + this.object.pos);
-	console.log("HP:" + this.object.hero);
+	console.log("If hero:" + this.object.hero);
 }
 
 function onSkillDown(){
@@ -3017,27 +3017,21 @@ function animateBattle(attacker, defender){
 	var enemyShiftSizeTracker = 0;
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
-		var originalX = arrayCreature.action.x;
-		var originalFloatX = arrayCreature.dmgContainer.x;
-
-
-
-
-		if(arrayCreature > 0){
-			var originalX = heroArray[Math.abs(arrayCreature)-1].action.x;
+		if(arrayCreature.hero){
+			var originalX = arrayCreature.action.x;
 			var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
-			TweenMax.to(heroArray[Math.abs(arrayCreature)-1].action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
+			TweenMax.to(arrayCreature.action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
 
-			if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
-			TweenMax.to(heroArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
+			if(arrayCreature.size > 1)	heroShiftSizeTracker++;
+			TweenMax.to(arrayCreature.dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
 
-			heroArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
-			heroArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
-				heroArray[Math.abs(arrayCreature)-1].action.x = originalX;
-				heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
-				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
-				heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-					heroArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
+			arrayCreature.action.dMissTween.play(0);
+			arrayCreature.action.dMissTween.eventCallback("onComplete", function(){
+				arrayCreature.action.x = originalX;
+				arrayCreature.dmgContainer.x = originalFloatX;
+				arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+				arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+					arrayCreature.statusSpriteArray.forEach(statusSprite => {
 						statusSprite.visible = true;
 					});
 				});
@@ -3045,55 +3039,110 @@ function animateBattle(attacker, defender){
 
 			heroShiftSizeTracker++;			
 		}else{
-			var originalX = enemyArray[Math.abs(arrayCreature)-1].action.x;
-			TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-			TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			var originalX = arrayCreature.action.x;
+			TweenMax.to(arrayCreature.action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+			TweenMax.to(arrayCreature.dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
 
-			enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
-			enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
-				enemyArray[Math.abs(arrayCreature)-1].action.x = originalX;
-				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
-				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
-				enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-					enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
+			arrayCreature.action.dMissTween.play(0);
+			arrayCreature.action.dMissTween.eventCallback("onComplete", function(){
+				arrayCreature.action.x = originalX;
+				arrayCreature.dmgContainer.x = originalX;
+				arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+				arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+					arrayCreature.statusSpriteArray.forEach(statusSprite => {
 						statusSprite.visible = true;
 					});
 				});
 			});
 
 			enemyShiftSizeTracker++;
-			if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	enemyShiftSizeTracker++;
-		}	
+			if(arrayCreature.size > 1)	enemyShiftSizeTracker++;
+		}
+		// if(arrayCreature > 0){
+		// 	var originalX = heroArray[Math.abs(arrayCreature)-1].action.x;
+		// 	var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
+		// 	TweenMax.to(heroArray[Math.abs(arrayCreature)-1].action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
+
+		// 	if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
+		// 	TweenMax.to(heroArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
+
+		// 	heroArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
+		// 	heroArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
+		// 		heroArray[Math.abs(arrayCreature)-1].action.x = originalX;
+		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
+		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
+		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+		// 			heroArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
+		// 				statusSprite.visible = true;
+		// 			});
+		// 		});
+		// 	});
+
+		// 	heroShiftSizeTracker++;			
+		// }else{
+		// 	var originalX = enemyArray[Math.abs(arrayCreature)-1].action.x;
+		// 	TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+		// 	TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
+
+		// 	enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
+		// 	enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
+		// 		enemyArray[Math.abs(arrayCreature)-1].action.x = originalX;
+		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
+		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
+		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+		// 			enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
+		// 				statusSprite.visible = true;
+		// 			});
+		// 		});
+		// 	});
+
+		// 	enemyShiftSizeTracker++;
+		// 	if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	enemyShiftSizeTracker++;
+		// }	
 	});	
 
-	if(attacker > 0){
-		var originalX = heroArray[Math.abs(attacker)-1].action.x;
-		// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
-		TweenMax.to(heroArray[Math.abs(attacker)-1].action, 0.25, {x:0});
+	var originalX = attacker.action.x;
+	// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
+	TweenMax.to(attacker.action, 0.25, {x:0});
 
-		heroArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
-		heroArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
-			// spriteHolder.filters = [blurFilter2];
-			heroArray[Math.abs(attacker)-1].action.x = originalX;
-			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+	attacker.action.pAtkTween.play(0);
+	attacker.pAtkTween.eventCallback("onComplete", function(){
+		animateArray.forEach(item =>{
+			item.visible = true;
 		});
-	}else{
-		var originalX = enemyArray[Math.abs(attacker)-1].action.x;
-		TweenMax.to(enemyArray[Math.abs(attacker)-1].action, 0.25, {x:0});
+		// spriteHolder.filters = [blurFilter2];
+		attacker.action.x = originalX;
+		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+	});
 
-		enemyArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
-		enemyArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
-			// spriteHolder.filters = [blurFilter2];
-			enemyArray[Math.abs(attacker)-1].action.x = originalX;
-			TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-		});
-	}
+	// if(attacker > 0){
+	// 	var originalX = heroArray[Math.abs(attacker)-1].action.x;
+	// 	// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
+	// 	TweenMax.to(heroArray[Math.abs(attacker)-1].action, 0.25, {x:0});
+
+	// 	heroArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
+	// 	heroArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
+	// 		animateArray.forEach(item =>{
+	// 			item.visible = true;
+	// 		});
+	// 		// spriteHolder.filters = [blurFilter2];
+	// 		heroArray[Math.abs(attacker)-1].action.x = originalX;
+	// 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+	// 	});
+	// }else{
+	// 	var originalX = enemyArray[Math.abs(attacker)-1].action.x;
+	// 	TweenMax.to(enemyArray[Math.abs(attacker)-1].action, 0.25, {x:0});
+
+	// 	enemyArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
+	// 	enemyArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
+	// 		animateArray.forEach(item =>{
+	// 			item.visible = true;
+	// 		});
+	// 		// spriteHolder.filters = [blurFilter2];
+	// 		enemyArray[Math.abs(attacker)-1].action.x = originalX;
+	// 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+	// 	});
+	// }
 	// actionHero[0].visible = true;
 	// actionEnemy[0].visible = true;
 
