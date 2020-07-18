@@ -2020,6 +2020,8 @@ function onCreatureDown(){
 		}
 
 		var displacement = moveFrom - moveTo;
+		
+		console.log("Displacement: " + displacement);
 
 		if(correctTarget2){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
