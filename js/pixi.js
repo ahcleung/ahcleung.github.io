@@ -2449,7 +2449,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							// arrayCreature.healthBar.target.visible = true;					
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
-							validSkillObjectArray.push(arrayCreature);
+							validSkillObjectArray.push([arrayCreature]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2458,7 +2458,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
-							validSkillObjectArray.push(arrayCreature);
+							validSkillObjectArray.push([arrayCreature]);
 						}
 					}				
 				});
@@ -2469,7 +2469,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
-							validSkillObjectArray.push(arrayCreature);
+							validSkillObjectArray.push([arrayCreature]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
@@ -2478,7 +2478,7 @@ function onSkillDown(){
 							// console.log(arrayCreature.name);
 							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
-							validSkillObjectArray.push(arrayCreature);
+							validSkillObjectArray.push([arrayCreature]);
 						}
 					}			
 				});
