@@ -2384,6 +2384,7 @@ function moveCreature(movingCreature, displacement){
 
 function onHPDown(){
 	console.log("HP:" + this.object.pos);
+	console.log("HP:" + this.object.hero);
 }
 
 function onSkillDown(){
