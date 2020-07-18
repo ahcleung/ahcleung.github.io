@@ -3330,17 +3330,17 @@ function onAdditionalMoveDown(){
 		heroArray.forEach(object=>{
 			var positionCheck = [];
 			if(object.size > 1){
-				positionCheck.push(currIndex2);
-				positionCheck.push(currIndex2+1);
+				positionCheck.push(object.pos);
+				positionCheck.push(object.pos+1);
 			}else{
-				positionCheck.push(currIndex2);
+				positionCheck.push(object.pos);
 			}
 			for(var i = 1; i <= moveDelta2; i++){
 				positionCheck.forEach(position=>{
-					if(object.pos == position-i && forward2){
+					if(position == currIndex2-i && forward2){
 						object.healthBar.move.visible = true;
 						validMoveObjectArray.push(object);
-					}else if(object.pos == position+i && backward2){
+					}else if(position == currIndex2+i && backward2){
 						object.healthBar.move.visible = true;
 						validMoveObjectArray.push(object);
 					}
@@ -3365,23 +3365,34 @@ function onAdditionalMoveDown(){
 		enemyArray.forEach(object=>{
 			var positionCheck = [];
 			if(object.size > 1){
-				positionCheck.push(currIndex2);
-				positionCheck.push(currIndex2+1);
+				positionCheck.push(object.pos);
+				positionCheck.push(object.pos+1);
 			}else{
-				positionCheck.push(currIndex2);
+				positionCheck.push(object.pos);
 			}
 			for(var i = 1; i <= moveDelta2; i++){
 				positionCheck.forEach(position=>{
-					if(object.pos == position-i && forward2){
+					if(position == currIndex2-i && forward2){
 						object.healthBar.move.visible = true;
 						validMoveObjectArray.push(object);
-					}else if(object.pos == position+i && backward2){
+					}else if(position == currIndex2+i && backward2){
 						object.healthBar.move.visible = true;
 						validMoveObjectArray.push(object);
 					}
 				});				
 			}
 		});
+		// enemyArray.forEach(object=>{
+		// 	for(var i = 1; i <= moveDelta2; i++){
+		// 		if(object.pos == currIndex2-i && forward2){
+		// 			object.healthBar.move.visible = true;
+		// 			validMoveObjectArray.push(object);
+		// 		}else if(object.pos == currIndex2+i && backward2){
+		// 			object.healthBar.move.visible = true;
+		// 			validMoveObjectArray.push(object);
+		// 		}
+		// 	}
+		// });
 		// enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
 		// 	if(creatureInitialOrder == currIndex2)	tempIndex2 = orderIndex;
 		// });
