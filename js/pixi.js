@@ -2803,8 +2803,8 @@ function onSkillDown(){
 	console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 	validSkillObjectArray.forEach(object=>{
-		if(Array.isArray(object)){
-			console.log("object: " + object);
+		// if(Array.isArray(object)){
+			// console.log("object: " + object);
 			object.forEach(object2=>{
 				console.log("object2 column: " + object2.name);
 				if(heal){
@@ -2813,14 +2813,14 @@ function onSkillDown(){
 					object2.healthBar.target.visible = true;
 				}
 			});
-		}else{
-			console.log("object3: " + object.name);
-			if(heal){
-				object.healthBar.heal.visible = true;
-			}else{
-				object.healthBar.target.visible = true;
-			}
-		}
+		// }else{
+		// 	console.log("object3: " + object.name);
+		// 	if(heal){
+		// 		object.healthBar.heal.visible = true;
+		// 	}else{
+		// 		object.healthBar.target.visible = true;
+		// 	}
+		// }
 	});
 	
 }
