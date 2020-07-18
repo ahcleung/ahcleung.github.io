@@ -275,17 +275,20 @@ const hero = [];
 hero[0] = {
 	id: 6, level: 50, 
 	skill1: 4, skill2: 1, skill3: 2, skill4: 2,
-	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0
+	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
+	hero: true
 };
 hero[1] = {
 	id: 11, level: 47, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
-	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120
+	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120,
+	hero: true
 };
 hero[2] = {
 	id: 2, level: 45, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47,
+	hero: true
 };
 // hero[3] = {
 // 	id: 11, level: 47, 
@@ -297,17 +300,20 @@ const enemy = [];
 enemy[0] = {
 	id: 9, level: 49, 
 	skill1: 4, skill2: 6, skill3: 1, skill4: 2,
-	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 0
+	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 0,
+	hero: false
 };
 enemy[1] = {
 	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
-	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0
+	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
+	hero: false
 };
 enemy[2] = {
 	id: 12, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 2,
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 0
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 0,
+	hero: false
 };
 // enemy[3] = {
 // 	id: 11, level: 45, 
@@ -420,7 +426,7 @@ function setup(){
 				item.skill2,
 				item.skill3,
 				item.skill4
-			]
+			], hero: item.hero
 		});
 		heroArray.push(newCreature);
 	});
@@ -447,7 +453,7 @@ function setup(){
 				item.skill2,
 				item.skill3,
 				item.skill4
-			]
+			], hero: item.hero
 		});
 		enemyArray.push(newCreature);
 	});
