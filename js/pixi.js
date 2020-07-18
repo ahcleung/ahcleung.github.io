@@ -1961,14 +1961,14 @@ function onCreatureDown(){
 
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
-				// var identifier = [];
-				// if(turnArray[0] > 0){
-				// 	identifier[0] = 1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }else{
-				// 	identifier[0] = -1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
 				selectCreature(identifier, turnArray2[0]);
 				// turnArray.shift();
 				turnArray2.shift();
@@ -2029,14 +2029,14 @@ function onCreatureDown(){
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
-				// var identifier = [];
-				// if(turnArray[0] > 0){
-				// 	identifier[0] = 1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }else{
-				// 	identifier[0] = -1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
 				selectCreature(identifier, turnArray2[0]);
 				// turnArray.shift();
 				turnArray2.shift();
