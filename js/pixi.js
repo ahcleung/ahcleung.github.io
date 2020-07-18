@@ -230,6 +230,7 @@ var resizeWidth = 0;
 
 //Selected element tracker
 var selectedVita = 0;
+var selectedVita2;
 var selectedSkill = -1;
 
 //Animation speed
@@ -1746,28 +1747,26 @@ function onButtonDown(){
 function onCreatureDown(){
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	if(validSkillObjectArray.length > 0){
+		var correctTarget2 = false;
+		var targetedVita2 = 0;
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
-			console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
-					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 					if(this.object == arrayElement){
 						console.log("Correct object do things");
-						// correctTarget = true;
-						// targetedVita = targetedIndex;
-					}else{
-						console.log("Incorrect object don't do things");
+						correctTarget2 = true;
+						targetedVita2 = targeted;
 					}
 				});
 			}
 			if(this.object == targeted){
 				console.log("Correct object do things");
-				// correctTarget = true;
-				// targetedVita = targetedIndex;
-			}else{
-				console.log("Incorrect object don't do things");
+				correctTarget2 = true;
+				targetedVita2 = targeted;
 			}
 		});
+		console.log(selectedVita2 + " uses " + skillsList.data.skills[selectedSkill].name + " on " + targetedVita2);
+
 	}
 	if(validSkillTargetArray.length > 0){
 		clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
@@ -1789,7 +1788,7 @@ function onCreatureDown(){
 			}
 		});
 		if(correctTarget){
-			console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
+			// console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
 
 			animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
 
@@ -2315,7 +2314,6 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
-						// columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 					}else{
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2330,7 +2328,6 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
-						// columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 					}
 				}else{
 					if(!switchSide){
@@ -2348,7 +2345,6 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
-						// columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 					}else{
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2363,7 +2359,6 @@ function onSkillDown(){
 								columnObjectArray.push(arrayCreature);
 							}
 						});
-						// columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 					}
 				}
 			}
@@ -2403,7 +2398,6 @@ function onSkillDown(){
 							columnObjectArray.push(arrayCreature);
 						}
 					});
-					// columnObjectArray.push(getTargetObject(heroArray, temp, heal));
 				}else{
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
@@ -2418,7 +2412,6 @@ function onSkillDown(){
 							columnObjectArray.push(arrayCreature);
 						}
 					});
-					// columnObjectArray.push(getTargetObject(enemyArray, temp, heal));
 				}
 			}			
 		}
@@ -3162,12 +3155,11 @@ function selectCreature(identifier, object2){
 	// 	heroArray[identifier[1]].healthBar.turn.visible = false;
 	// }else{
 	// 	enemyArray[identifier[1]].healthBar.turn.visible = false;
-	// }
-
-	
+	// }	
 
 	//Direction x Index+1
 	selectedVita = identifier[0] * (identifier[1]+1);
+	selectedVita2 = object2;
 	console.log("///////////////////////////////////////////////");
 	console.log("Turn: " + selectedVita);
 	//Reset the skillContainers
@@ -3674,26 +3666,4 @@ function updateDamage(object, targetIndex, effective, skillCrit, critTracker, dm
 	});
 
 	object.dmgContainer.dmgPopup.tween.play(0);
-}
-
-function getTargetObject(objectArray, temp, heal){
-	var targetedObject;
-	objectArray.forEach((arrayCreature,arrayCreatureIndex) => {
-		if(arrayCreature.pos == temp){
-			// console.log(arrayCreature.name);
-			if(heal){
-				arrayCreature.healthBar.heal.visible = true;
-			}else{
-				arrayCreature.healthBar.target.visible = true;
-			}
-			// console.log(arrayCreature.name);
-			targetedObject = arrayCreature;
-			return targetedObject;
-			// stageSide = 1;
-		// }else{stageSide = 0;}
-		// if(stageSide != 0){
-			// columnArray.push((arrayCreatureIndex+1)*stageSide);
-		}
-	});
-	
 }
