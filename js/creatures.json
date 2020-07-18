@@ -340,7 +340,7 @@
          "name": "Tannjoltr",
          "code": "goat2_1",
          "frames": 90,
-         "move": ["+",2],
+         "move": ["=",1],
          "elements": [
             "wind",
             "lightning"
@@ -371,7 +371,7 @@
          "name": "Tannrisear",
          "code": "goat2_2",
          "frames": 90,
-         "move": ["+",2],
+         "move": ["+",1],
          "elements": [
             "wind",
             "fire"
