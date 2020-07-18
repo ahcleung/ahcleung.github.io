@@ -1151,6 +1151,7 @@ function createSprite(direction, item, index){
 	dmgContainer.dmgPopup = dmgPopup;
 
 	const healthBar = new PIXI.Container();	
+	healthBar.object = item;
 	const healthBarIndicators = [];
 	healthBar.healthBarIndicators = healthBarIndicators;
 	
@@ -1788,6 +1789,7 @@ function onCreatureDown(){
 
 		if(correctTarget2){
 
+			// animateBattle(selectedVita2, validSkillObjectArray[targetedVita2]);
 
 			if(skillsList.data.skills[selectedSkill].type == "phy"){
 				attack2 = selectedVita2.patk;
@@ -2375,7 +2377,7 @@ function moveCreature(movingCreature, displacement){
 }
 
 function onHPDown(){
-	console.log("HP:" + this.identifier[0] * (this.identifier[1]+1));
+	console.log("HP:" + this.object.pos);
 }
 
 function onSkillDown(){
@@ -2967,30 +2969,40 @@ function animateBattle(attacker, defender){
 	var animateArray = [];
 
 	defender.forEach(arrayCreature => {
-		if(arrayCreature > 0){
-			actionContainer.addChild(heroArray[Math.abs(arrayCreature)-1].action);
-			heroArray[Math.abs(arrayCreature)-1].action.visible = true;
-			heroArray[Math.abs(arrayCreature)-1].sprite.visible = false;
-			animateArray.push(heroArray[Math.abs(arrayCreature)-1].sprite);
-		}else{
-			actionContainer.addChild(enemyArray[Math.abs(arrayCreature)-1].action);
-			enemyArray[Math.abs(arrayCreature)-1].action.visible = true;
-			enemyArray[Math.abs(arrayCreature)-1].sprite.visible = false;
-			animateArray.push(enemyArray[Math.abs(arrayCreature)-1].sprite);
-		}
+		// if(arrayCreature > 0){
+		// 	actionContainer.addChild(heroArray[Math.abs(arrayCreature)-1].action);
+		// 	heroArray[Math.abs(arrayCreature)-1].action.visible = true;
+		// 	heroArray[Math.abs(arrayCreature)-1].sprite.visible = false;
+		// 	animateArray.push(heroArray[Math.abs(arrayCreature)-1].sprite);
+		// }else{
+		// 	actionContainer.addChild(enemyArray[Math.abs(arrayCreature)-1].action);
+		// 	enemyArray[Math.abs(arrayCreature)-1].action.visible = true;
+		// 	enemyArray[Math.abs(arrayCreature)-1].sprite.visible = false;
+		// 	animateArray.push(enemyArray[Math.abs(arrayCreature)-1].sprite);
+		// }
+
+		actionContainer.addChild(arrayCreature.action);
+		arrayCreature.action.visible = true;
+		arrayCreature.sprite.visible = false;
+		animateArray.push(arrayCreature.sprite);
 	});
 
-	if(attacker > 0){
-		actionContainer.addChild(heroArray[Math.abs(attacker)-1].action);
-		heroArray[Math.abs(attacker)-1].action.visible = true;
-		heroArray[Math.abs(attacker)-1].sprite.visible = false;
-		animateArray.push(heroArray[Math.abs(attacker)-1].sprite);
-	}else{
-		actionContainer.addChild(enemyArray[Math.abs(attacker)-1].action);
-		enemyArray[Math.abs(attacker)-1].action.visible = true;
-		enemyArray[Math.abs(attacker)-1].sprite.visible = false;
-		animateArray.push(enemyArray[Math.abs(attacker)-1].sprite);
-	}
+	// if(attacker > 0){
+	// 	actionContainer.addChild(heroArray[Math.abs(attacker)-1].action);
+	// 	heroArray[Math.abs(attacker)-1].action.visible = true;
+	// 	heroArray[Math.abs(attacker)-1].sprite.visible = false;
+	// 	animateArray.push(heroArray[Math.abs(attacker)-1].sprite);
+	// }else{
+	// 	actionContainer.addChild(enemyArray[Math.abs(attacker)-1].action);
+	// 	enemyArray[Math.abs(attacker)-1].action.visible = true;
+	// 	enemyArray[Math.abs(attacker)-1].sprite.visible = false;
+	// 	animateArray.push(enemyArray[Math.abs(attacker)-1].sprite);
+	// }
+
+	actionContainer.addChild(attacker.action);
+	attacker.action.visible = true;
+	attacker.sprite.visible = false;
+	animateArray.push(attacker.sprite);
 
 	stageContainer.actionBlackTween.play(0);
 
@@ -2998,6 +3010,12 @@ function animateBattle(attacker, defender){
 	var enemyShiftSizeTracker = 0;
 
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
+		var originalX = arrayCreature.action.x;
+		var originalFloatX = arrayCreature.dmgContainer.x;
+
+
+
+
 		if(arrayCreature > 0){
 			var originalX = heroArray[Math.abs(arrayCreature)-1].action.x;
 			var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
@@ -3038,7 +3056,7 @@ function animateBattle(attacker, defender){
 
 			enemyShiftSizeTracker++;
 			if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	enemyShiftSizeTracker++;
-		}		
+		}	
 	});	
 
 	if(attacker > 0){
