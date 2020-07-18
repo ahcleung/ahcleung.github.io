@@ -3323,7 +3323,7 @@ function onAdditionalMoveDown(){
 
 	if(selectedVita2.hero){
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+			if(creatureInitialOrder == currIndex2)	tempIndex2 = orderIndex;
 		});
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 			for(var i = 0; i < moveDelta2; i++){
@@ -3338,7 +3338,7 @@ function onAdditionalMoveDown(){
 		});
 	}else{
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+			if(creatureInitialOrder == currIndex2)	tempIndex2 = orderIndex;
 		});
 
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
