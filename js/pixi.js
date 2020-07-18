@@ -1961,16 +1961,16 @@ function onCreatureDown(){
 
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
+				// var identifier = [];
+				// if(turnArray[0] > 0){
+				// 	identifier[0] = 1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }else{
+				// 	identifier[0] = -1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }
 				selectCreature(identifier, turnArray2[0]);
-				turnArray.shift();
+				// turnArray.shift();
 				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
@@ -1980,74 +1980,74 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid skill target");
 		}
-		console.log("####################################################################################");
-		console.log("####################################################################################");
+		console.log("1###################################################################################");
+		console.log("2###################################################################################");
 	}
-	// else if(validMoveObjectArray.length > 0){
-	// 	clickedTarget = this.identifier[1];
-	// 	console.log("Clicked move target index: " + clickedTarget);
-	// 	var correctTarget = false;
-	// 	var targetedVita = 0;
+	else if(validMoveObjectArray.length > 0){
+		// clickedTarget = this.identifier[1];
+		console.log("Clicked move object: " + this.object.name);
+		var correctTarget2 = false;
+		var targetedVita2 = 0;
 
-	// 	validMoveTargetArray.forEach((targeted, targetedIndex) => {
-	// 		if(Array.isArray(targeted)){
-	// 			targeted.forEach(arrayElement => {
-	// 				if(arrayElement == clickedTarget){
-	// 					correctTarget = true;
-	// 					targetedVita = targetedIndex;
-	// 				}	
-	// 			});
-	// 		}
-	// 		if(targeted == clickedTarget){
-	// 			correctTarget = true;
-	// 			targetedVita = targetedIndex;
-	// 		}
-	// 	});
+		validMoveObjectArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
+						correctTarget2 = true;
+						targetedVita2 = targetedIndex;
+					}	
+				});
+			}
+			if(this.object == targeted){
+				correctTarget2 = true;
+				targetedVita2 = targetedIndex;
+			}
+		});
 
-	// 	var moveFrom;
-	// 	var moveTo;
+		var moveFrom;
+		var moveTo;
 
-	// 	if(selectedVita > 0){
-	// 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
-	// 			if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
-	// 		});
-	// 	}else{
-	// 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
-	// 			if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
-	// 		});
-	// 	}
+		if(this.object.hero){
+			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
+			});
+		}else{
+			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
+			});
+		}
 
-	// 	var displacement = moveFrom - moveTo;
+		var displacement = moveFrom - moveTo;
 
-	// 	if(correctTarget){
-	// 		// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-	// 		// console.log(selectedVita + " moves: " + displacement);
-	// 		moveCreature(selectedVita, displacement);
-	// 		// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+		if(correctTarget2){
+			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+			// console.log(selectedVita + " moves: " + displacement);
+			moveCreature(selectedVita2, displacement);
+			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
-	// 		//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-	// 		if(turnArray.length != 0){
-	// 			var identifier = [];
-	// 			if(turnArray[0] > 0){
-	// 				identifier[0] = 1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}else{
-	// 				identifier[0] = -1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}
-	// 			selectCreature(identifier, turnArray2[0]);
-	// 			turnArray.shift();
-	// 			turnArray2.shift();
-	// 		}else{
-	// 			calculateTurnOrder();
-	// 		}
-	// 		selectedSkill = -1;
-	// 	}else{
-	// 		console.log("Invalid move target");
-	// 	}
-	// }
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				// var identifier = [];
+				// if(turnArray[0] > 0){
+				// 	identifier[0] = 1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }else{
+				// 	identifier[0] = -1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }
+				selectCreature(identifier, turnArray2[0]);
+				// turnArray.shift();
+				turnArray2.shift();
+			}else{
+				calculateTurnOrder();
+			}
+			selectedSkill = -1;
+		}else{
+			console.log("Invalid move target");
+		}
+	}
 	
 	
 	// if(validSkillTargetArray.length > 0){
@@ -2409,10 +2409,11 @@ function onCreatureDown(){
 
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
-	if(movingCreature > 0){
+
+	if(movingCreature.hero){
 		var moveFrom;
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
+			if(creatureInitialOrder == movingCreature.pos-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
@@ -2462,7 +2463,7 @@ function moveCreature(movingCreature, displacement){
 		var moveFrom;
 		//Find index number for moveTo target and moveFrom selected
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == Math.abs(movingCreature)-1)		moveFrom = orderIndex
+			if(creatureInitialOrder == movingCreature.pos-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
@@ -2493,10 +2494,10 @@ function moveCreature(movingCreature, displacement){
 			// TweenMax.to(enemyArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
 			// TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
 
-			TweenMax.to(enemyArray[arrayCreatureIndex].sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(enemyArray[arrayCreatureIndex].action, 0.5, {x: newCreatureX});
-			TweenMax.to(enemyArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
-			TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
+			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
 			
 			// console.log(arrayCreature.pos);
 		});
