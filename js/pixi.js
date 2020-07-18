@@ -1872,7 +1872,7 @@ function onCreatureDown(){
 					}
 				}
 
-				if(ifCrit){
+				if(ifCrit2){
 					statusNum2.push(14);
 					dmgArray2.forEach((dmgArrayNum, dmgArrayIndex) => {
 						if(critTracker2[dmgArrayIndex] == 1)		totalCritDmg2 = totalCritDmg2 + (dmgArrayNum/3)
