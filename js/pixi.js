@@ -3322,6 +3322,20 @@ function onAdditionalMoveDown(){
 		backward2 = true;
 	}
 
+	// var currPosition = [];
+	// //set of positions occupied
+	// if(selectedVita2.size > 1){
+	// 	currPosition.push(selectedVita2.pos);
+	// 	currPosition.push(selectedVita2.pos+1);
+	// }else{
+	// 	currPosition.push(selectedVita2.pos);
+	// }
+
+	// var moveablePositions = [];
+	// currPositions.forEach(position=>{
+	// 	moveablePositions.push(position)
+	// });
+
 	if(selectedVita2.hero){
 		heroArray.forEach(object=>{
 			if(object != selectedVita2){
@@ -3337,7 +3351,7 @@ function onAdditionalMoveDown(){
 						if(position == selectedVita2.pos-i && forward2){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
-						}else if(position == selectedVita2.pos+i && backward2){
+						}else if(position == selectedVita2.pos+i+selectedVita2.size-1 && backward2){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
 						}
@@ -3360,7 +3374,7 @@ function onAdditionalMoveDown(){
 						if(position == selectedVita2.pos-i && forward2){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
-						}else if(position == selectedVita2.pos+i && backward2){
+						}else if(position == selectedVita2.pos+i+selectedVita2.size-1 && backward2){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
 						}
