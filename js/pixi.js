@@ -3324,23 +3324,25 @@ function onAdditionalMoveDown(){
 
 	if(selectedVita2.hero){
 		heroArray.forEach(object=>{
-			var positionCheck = [];
-			if(object.size > 1){
-				positionCheck.push(object.pos);
-				positionCheck.push(object.pos+1);
-			}else{
-				positionCheck.push(object.pos);
-			}
-			for(var i = 1; i <= moveDelta2; i++){
-				positionCheck.forEach(position=>{
-					if(position == selectedVita2.pos-i && forward2){
-						object.healthBar.move.visible = true;
-						validMoveObjectArray.push(object);
-					}else if(position == selectedVita2.pos+i && backward2){
-						object.healthBar.move.visible = true;
-						validMoveObjectArray.push(object);
-					}
-				});				
+			if(object != selectedVita2){
+				var positionCheck = [];
+				if(object.size > 1){
+					positionCheck.push(object.pos);
+					positionCheck.push(object.pos+1);
+				}else{
+					positionCheck.push(object.pos);
+				}
+				for(var i = 1; i <= moveDelta2; i++){
+					positionCheck.forEach(position=>{
+						if(position == selectedVita2.pos-i && forward2){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}else if(position == selectedVita2.pos+i && backward2){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}
+					});				
+				}
 			}
 		});
 	}else{
