@@ -1774,7 +1774,7 @@ function onCreatureDown(){
 		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 			attack2 = selectedVita2.satk;
 		}
-		validSkillTargetArray[targetedVita2].forEach(targeted => {
+		validSkillObjectArray[targetedVita2].forEach(targeted => {
 			console.log(targeted.name + "\n");
 		});
 		// if(Array.isArray(targetedVita2)){
