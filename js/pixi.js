@@ -1151,7 +1151,6 @@ function createSprite(direction, item, index){
 	dmgContainer.dmgPopup = dmgPopup;
 
 	const healthBar = new PIXI.Container();	
-	healthBar.object = item;
 	const healthBarIndicators = [];
 	healthBar.healthBarIndicators = healthBarIndicators;
 	
@@ -1164,6 +1163,7 @@ function createSprite(direction, item, index){
 
 	//Make healthbar interactive
 	outerBar.identifier = [direction, index];
+	outerBar.object = item;
 	outerBar.buttonMode = true;
 	outerBar.interactive = true;
 	outerBar
