@@ -1766,6 +1766,7 @@ function onCreatureDown(){
 			}
 		});
 		console.log(selectedVita2.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+
 		var level2 = selectedVita2.level;
 		var accMod2 = selectedVita2.accMod;
 		var attack2 = 0;
@@ -1785,136 +1786,206 @@ function onCreatureDown(){
 		var ifHeal2 = false;
 		var dmgCalc2 = 0;
 
-		if(skillsList.data.skills[selectedSkill].type == "phy"){
-			attack2 = selectedVita2.patk;
-		}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-			attack2 = selectedVita2.satk;
-		}
-		validSkillObjectArray[targetedVita2].forEach(targeted => {
-			var dodge2 = targeted.dodge;
-			var dodgeMod2 = targeted.dodgeMod;
+		if(correctTarget2){
+
+
 			if(skillsList.data.skills[selectedSkill].type == "phy"){
-				defense2 = targeted.pdef;
+				attack2 = selectedVita2.patk;
 			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-				defense2 = targeted.sdef;
+				attack2 = selectedVita2.satk;
 			}
-			targeted.elements.forEach(element =>{
-				defendElements2.push(element);
-			});
-			var accDiff2 = accMod2 - dodgeMod2;
-			var hitMod2 = 1;
-			if(accDiff2 > 0){
-				hitMod2 = (Math.abs(accDiff2) + 3)/3;
-			}else if(accDiff2 < 0){
-				hitMod2 = 3/(Math.abs(accDiff2) + 3);
-			}
-
-			if(skillsList.data.skills[selectedSkill].accuracy == 110){
-				var hitChance2 = 1;
-			}else{
-				var hitChance2 = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge2/200)) * hitMod2;
-			}
-			var hitRoll2 = Math.random();
-
-			if(hitRoll2 < hitChance2){
-				console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : HIT");
-				//Get defenders elements to calculate effectiveness
-				defendElements2.forEach(defendElement=>{
-					effectiveness2 = effectiveness2 * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+			validSkillObjectArray[targetedVita2].forEach(targeted => {
+				var dodge2 = targeted.dodge;
+				var dodgeMod2 = targeted.dodgeMod;
+				if(skillsList.data.skills[selectedSkill].type == "phy"){
+					defense2 = targeted.pdef;
+				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+					defense2 = targeted.sdef;
+				}
+				targeted.elements.forEach(element =>{
+					defendElements2.push(element);
 				});
-
-				skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-					if(tagName == "multiple")		multiHit2 = true;
-					if(tagName == "status")			skillStatusEffect2 = true;
-					if(tagName == "statchange")		skillStatChange2 = true;
-				});
-
-				if(multiHit2){
-					hitNum2 = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
-					// hitNum = 5;
+				var accDiff2 = accMod2 - dodgeMod2;
+				var hitMod2 = 1;
+				if(accDiff2 > 0){
+					hitMod2 = (Math.abs(accDiff2) + 3)/3;
+				}else if(accDiff2 < 0){
+					hitMod2 = 3/(Math.abs(accDiff2) + 3);
 				}
 
-				if(skillStatusEffect2){
-					statusNum2.push(skillsList.data.skills[selectedSkill].status);
-					// hitNum = 5;
+				if(skillsList.data.skills[selectedSkill].accuracy == 110){
+					var hitChance2 = 1;
+				}else{
+					var hitChance2 = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge2/200)) * hitMod2;
 				}
+				var hitRoll2 = Math.random();
 
-				if(skillStatChange2){
-					// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
-					// 	statusNum.push(2);
-					// }else{
-					// 	statusNum.push(4);
-					// }
-				}
-
-				//Calculate heal amount or damage amount
-				if(skillsList.data.skills[selectedSkill].heal > 0){
-					//calculate how much to heal
-					dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
-					ifHeal2 = true;
-					effectiveness2 = 1;
-					critMultiplier2 = 1;
-				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-					// other = true;
-				}else{						
-					dmgCalc2 = Math.round((((((2*level2/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack2/defense2))/150) + 2)*effectiveness2);
-					for(var i = 0; i < hitNum2; i++){
-						var criticalChance2 = Math.floor(Math.random() * 10000);
-						var critMultiplier2 = 1;
-						if(criticalChance2 > 5000){
-							critMultiplier2 = 1.5;
-							ifCrit2 = true;
-							critTracker2[i] = 1;
-						}
-						var finalDmgCalc2 = Math.floor(dmgCalc2 * critMultiplier2 * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-						if(finalDmgCalc2 == 0)		finalDmgCalc2 = 1;
-						dmgArray2[i] = finalDmgCalc2;
-					}
-				}
-
-				if(ifCrit2){
-					statusNum2.push(14);
-					dmgArray2.forEach((dmgArrayNum, dmgArrayIndex) => {
-						if(critTracker2[dmgArrayIndex] == 1)		totalCritDmg2 = totalCritDmg2 + (dmgArrayNum/3)
+				if(hitRoll2 < hitChance2){
+					console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : HIT");
+					//Get defenders elements to calculate effectiveness
+					defendElements2.forEach(defendElement=>{
+						effectiveness2 = effectiveness2 * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
 					});
-					console.log("Critical damage2: " + Math.floor(totalCritDmg2));
+
+					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+						if(tagName == "multiple")		multiHit2 = true;
+						if(tagName == "status")			skillStatusEffect2 = true;
+						if(tagName == "statchange")		skillStatChange2 = true;
+					});
+
+					if(multiHit2){
+						hitNum2 = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
+						// hitNum = 5;
+					}
+
+					if(skillStatusEffect2){
+						statusNum2.push(skillsList.data.skills[selectedSkill].status);
+						// hitNum = 5;
+					}
+
+					if(skillStatChange2){
+						// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
+						// 	statusNum.push(2);
+						// }else{
+						// 	statusNum.push(4);
+						// }
+					}
+
+					//Calculate heal amount or damage amount
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						//calculate how much to heal
+						dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
+						ifHeal2 = true;
+						effectiveness2 = 1;
+						critMultiplier2 = 1;
+					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+						// other = true;
+					}else{						
+						dmgCalc2 = Math.round((((((2*level2/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack2/defense2))/150) + 2)*effectiveness2);
+						for(var i = 0; i < hitNum2; i++){
+							var criticalChance2 = Math.floor(Math.random() * 10000);
+							var critMultiplier2 = 1;
+							if(criticalChance2 > 5000){
+								critMultiplier2 = 1.5;
+								ifCrit2 = true;
+								critTracker2[i] = 1;
+							}
+							var finalDmgCalc2 = Math.floor(dmgCalc2 * critMultiplier2 * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							if(finalDmgCalc2 == 0)		finalDmgCalc2 = 1;
+							dmgArray2[i] = finalDmgCalc2;
+						}
+					}
+
+					if(ifCrit2){
+						statusNum2.push(14);
+						dmgArray2.forEach((dmgArrayNum, dmgArrayIndex) => {
+							if(critTracker2[dmgArrayIndex] == 1)		totalCritDmg2 = totalCritDmg2 + (dmgArrayNum/3)
+						});
+						console.log("Critical damage2: " + Math.floor(totalCritDmg2));
+					}
+
+					var deltaHP2 = 0;
+					dmgArray2.forEach(dmgArray2Num => {deltaHP2 += dmgArray2Num;});
+					console.log("Total damage: " + deltaHP2);
+				}else{
+					console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : MISS");
+					dmgArray2[0] = 0;
+					effectiveness2 = 0;
 				}
 
-				var deltaHP2 = 0;
-				dmgArray2.forEach(dmgArray2Num => {deltaHP2 += dmgArray2Num;});
-				console.log("Total damage: " + deltaHP2);
+				updateDamage(targeted, effectiveness2, ifCrit2, critTracker2, dmgArray2, ifHeal2, statusNum2, skillStatusEffect2);
+			});
+
+			//If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
+				selectCreature(identifier, turnArray2[0]);
+				turnArray.shift();
+				turnArray2.shift();
 			}else{
-				console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : MISS");
-				dmgArray2[0] = 0;
-				effectiveness2 = 0;
+				calculateTurnOrder();
 			}
 
-			updateDamage(targeted, effectiveness2, ifCrit2, critTracker2, dmgArray2, ifHeal2, statusNum2, skillStatusEffect2);
-		});
-
-		//If out of turns, and still have enemies, and still have heroes
-		if(turnArray.length != 0){
-			var identifier = [];
-			if(turnArray[0] > 0){
-				identifier[0] = 1;
-				identifier[1] = Math.abs(turnArray[0])-1;
-			}else{
-				identifier[0] = -1;
-				identifier[1] = Math.abs(turnArray[0])-1;
-			}
-			selectCreature(identifier, turnArray2[0]);
-			turnArray.shift();
-			turnArray2.shift();
+			selectedSkill = -1;
 		}else{
-			calculateTurnOrder();
+			console.log("Invalid skill target");
 		}
-
-		selectedSkill = -1;
-	}else{
-		console.log("Invalid skill target");
 	}
 	console.log("####################################################################################");
 	console.log("####################################################################################");
+
+	}else if(validMoveTargetArray.length > 0){
+		clickedTarget = this.identifier[1];
+		console.log("Clicked move target index: " + clickedTarget);
+		var correctTarget = false;
+		var targetedVita = 0;
+
+		validMoveTargetArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(arrayElement == clickedTarget){
+						correctTarget = true;
+						targetedVita = targetedIndex;
+					}	
+				});
+			}
+			if(targeted == clickedTarget){
+				correctTarget = true;
+				targetedVita = targetedIndex;
+			}
+		});
+
+		var moveFrom;
+		var moveTo;
+
+		if(selectedVita > 0){
+			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
+				if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
+			});
+		}else{
+			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
+				if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
+			});
+		}
+
+		var displacement = moveFrom - moveTo;
+
+		if(correctTarget){
+			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+			// console.log(selectedVita + " moves: " + displacement);
+			moveCreature(selectedVita, displacement);
+			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
+				selectCreature(identifier, turnArray2[0]);
+				turnArray.shift();
+				turnArray2.shift();
+			}else{
+				calculateTurnOrder();
+			}
+			selectedSkill = -1;
+		}else{
+			console.log("Invalid move target");
+		}
+	}
 	
 	// if(validSkillTargetArray.length > 0){
 	// 	clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
