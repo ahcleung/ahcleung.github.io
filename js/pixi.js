@@ -2009,12 +2009,12 @@ function onCreatureDown(){
 
 		if(this.object.hero){
 			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveTargetArray[targetedVita].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita2].pos-1)		moveTo = orderIndex
 				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
 			});
 		}else{
 			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveTargetArray[targetedVita].pos-1)		moveTo = orderIndex
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita2].pos-1)		moveTo = orderIndex
 				if(creatureInitialOrder == this.object.pos-1)								moveFrom = orderIndex
 			});
 		}
