@@ -1857,7 +1857,7 @@ function onCreatureDown(){
 				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 					// other = true;
 				}else{						
-					dmgCalc2 = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack2/defense2))/150) + 2)*effectiveness2);
+					dmgCalc2 = Math.round((((((2*level2/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack2/defense2))/150) + 2)*effectiveness2);
 					for(var i = 0; i < hitNum2; i++){
 						var criticalChance2 = Math.floor(Math.random() * 10000);
 						var critMultiplier2 = 1;
@@ -1879,6 +1879,10 @@ function onCreatureDown(){
 					});
 					console.log("Critical damage2: " + Math.floor(totalCritDmg2));
 				}
+
+				var deltaHP2 = 0;
+				dmgArray2.forEach(dmgArray2Num => {deltaHP2 += dmgArray2Num;});
+				console.log("Total damage: " + deltaHP2);
 			}else{
 				console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : MISS");
 				dmgArray2[0] = 0;
