@@ -3352,6 +3352,9 @@ function onAdditionalMoveDown(){
 			}
 		});
 	}
+	validMoveObjectArray.forEach(object=>{
+		console.log("validMoveObjectArray: " + object.name);
+	});
 
 
 	if(selectedVita > 0){
@@ -3417,9 +3420,7 @@ function onAdditionalMoveDown(){
 	}
 	console.log("validMoveTargetArray: " + validMoveTargetArray);
 
-	validMoveObjectArray.forEach(object=>{
-		console.log("validMoveObjectArray: " + object.name);
-	});
+
 }
 
 function onAdditionalItemDown(){
@@ -3554,6 +3555,7 @@ function selectCreature(identifier, object2){
 	selectedVita2 = object2;
 	console.log("///////////////////////////////////////////////");
 	console.log("Turn: " + selectedVita);
+	console.log("Turn: " + selectedVita2.name);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
