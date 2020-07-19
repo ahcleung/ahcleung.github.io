@@ -2128,7 +2128,23 @@ function moveCreature(movingCreature, displacement){
 			if(movingCreature == object)		moveFrom = objectIndex;
 			if(displacement == object)			moveTo = objectIndex;
 		});
-		console.log(movingCreature.name + "at: " + moveFrom + " wants to move to: " + displacement.name + "at: " + moveTo);
+		console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
+		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
+
+		heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
+
+		heroArray.forEach((object,objectIndex)=>{
+			if(objectIndex == 0){
+				object.pos = 1;
+			}else if(heroArray[objectIndex-1].size == 2){
+				object.pos = heroArray[objectIndex-1].pos + 2;
+			}else{
+				object.pos = heroArray[objectIndex-1].pos + 1;
+			}
+		});
+
+		heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
+		
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
