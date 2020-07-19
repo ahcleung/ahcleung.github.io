@@ -1918,7 +1918,11 @@ function onCreatureDown(){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
 						dmgArray2 = [];
-						dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
+						
+						for(var i = 0; i < hitNum2; i++){
+							dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
+						}
+						
 						ifHeal2 = true;
 						effectiveness2 = 1;
 						critMultiplier2 = 1;
