@@ -2159,12 +2159,6 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
-
-		// heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
-
-		// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-			
-		// });
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
@@ -2962,68 +2956,68 @@ function onAdditionalMoveDown(){
 	});
 
 
-	if(selectedVita > 0){
-		var currIndex = Math.abs(selectedVita)-1;
-		var moveDelta = heroArray[Math.abs(selectedVita)-1].move[1];
-		var forward = false;
-		var backward = false;
-		if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
-			forward = true;
-		}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
-			backward = true;
-		}else{
-			forward = true;
-			backward = true;
-		}
+	// if(selectedVita > 0){
+	// 	var currIndex = Math.abs(selectedVita)-1;
+	// 	var moveDelta = heroArray[Math.abs(selectedVita)-1].move[1];
+	// 	var forward = false;
+	// 	var backward = false;
+	// 	if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
+	// 		forward = true;
+	// 	}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
+	// 		backward = true;
+	// 	}else{
+	// 		forward = true;
+	// 		backward = true;
+	// 	}
 
-		var tempIndex;
-		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
-		});
+	// 	var tempIndex;
+	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+	// 	});
 
-		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			for(var i = 0; i < moveDelta; i++){
-				if(orderIndex == tempIndex+1+i && backward){
-					heroArray[creatureInitialOrder].healthBar.move.visible = true;
-					validMoveTargetArray.push(creatureInitialOrder);
-				}else if(orderIndex == tempIndex-1-i && forward){
-					heroArray[creatureInitialOrder].healthBar.move.visible = true;
-					validMoveTargetArray.push(creatureInitialOrder);
-				}
-			}
-		});
-	}else{
-		var currIndex = Math.abs(selectedVita)-1;
-		var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
-		var forward = false;
-		var backward = false;
-		if(enemyArray[Math.abs(selectedVita)-1].move[0] == "+"){
-			forward = true;
-		}else if(enemyArray[Math.abs(selectedVita)-1].move[0] == "-"){
-			backward = true;
-		}else{
-			forward = true;
-			backward = true;
-		}
+	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		for(var i = 0; i < moveDelta; i++){
+	// 			if(orderIndex == tempIndex+1+i && backward){
+	// 				heroArray[creatureInitialOrder].healthBar.move.visible = true;
+	// 				validMoveTargetArray.push(creatureInitialOrder);
+	// 			}else if(orderIndex == tempIndex-1-i && forward){
+	// 				heroArray[creatureInitialOrder].healthBar.move.visible = true;
+	// 				validMoveTargetArray.push(creatureInitialOrder);
+	// 			}
+	// 		}
+	// 	});
+	// }else{
+	// 	var currIndex = Math.abs(selectedVita)-1;
+	// 	var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
+	// 	var forward = false;
+	// 	var backward = false;
+	// 	if(enemyArray[Math.abs(selectedVita)-1].move[0] == "+"){
+	// 		forward = true;
+	// 	}else if(enemyArray[Math.abs(selectedVita)-1].move[0] == "-"){
+	// 		backward = true;
+	// 	}else{
+	// 		forward = true;
+	// 		backward = true;
+	// 	}
 
-		var tempIndex;
-		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
-		});
+	// 	var tempIndex;
+	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
+	// 	});
 
-		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			for(var i = 0; i < moveDelta; i++){
-				if(orderIndex == tempIndex+1+i && backward){
-					enemyArray[creatureInitialOrder].healthBar.move.visible = true;
-					validMoveTargetArray.push(creatureInitialOrder);
-				}else if(orderIndex == tempIndex-1-i && forward){
-					enemyArray[creatureInitialOrder].healthBar.move.visible = true;
-					validMoveTargetArray.push(creatureInitialOrder);
-				}
-			}
-		});
-	}
-	console.log("validMoveTargetArray: " + validMoveTargetArray);
+	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		for(var i = 0; i < moveDelta; i++){
+	// 			if(orderIndex == tempIndex+1+i && backward){
+	// 				enemyArray[creatureInitialOrder].healthBar.move.visible = true;
+	// 				validMoveTargetArray.push(creatureInitialOrder);
+	// 			}else if(orderIndex == tempIndex-1-i && forward){
+	// 				enemyArray[creatureInitialOrder].healthBar.move.visible = true;
+	// 				validMoveTargetArray.push(creatureInitialOrder);
+	// 			}
+	// 		}
+	// 	});
+	// }
+	// console.log("validMoveTargetArray: " + validMoveTargetArray);
 
 
 }
