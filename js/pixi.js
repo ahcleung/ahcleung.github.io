@@ -2146,7 +2146,7 @@ function moveCreature(movingCreature, displacement){
 			var newCreatureX;
 			var newHPX;
 
-			newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
+			newCreatureX = -spriteResizeXPosition[object.pos-1];
 
 			//Hero HP and dmg containers
 			var switcher = 0;
