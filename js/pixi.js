@@ -3181,10 +3181,10 @@ function selectCreature(identifier, object2){
 	// }	
 
 	//Direction x Index+1
-	selectedVita = identifier[0] * (identifier[1]+1);
+	// selectedVita = identifier[0] * (identifier[1]+1);
 	selectedVita2 = object2;
 	console.log("///////////////////////////////////////////////");
-	console.log("Turn: " + selectedVita);
+	// console.log("Turn: " + selectedVita);
 	console.log("Turn: " + selectedVita2.name);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
