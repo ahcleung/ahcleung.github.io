@@ -2121,8 +2121,14 @@ function onCreatureDown(){
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move to: " + displacement.name);
+	var moveFrom;
+	var moveTo;
 	if(movingCreature.hero){
-		// console.log(movingCreature.name + " wants to move to: " + displacement.name);
+		heroArray.forEach((object,objectIndex)=>{
+			if(movingCreature == object)		moveFrom = objectIndex;
+			if(displacement == object)			moveTo = objectIndex;
+		});
+		console.log(movingCreature.name + "at: " + moveFrom + " wants to move to: " + displacement.name + "at: " + moveTo);
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
