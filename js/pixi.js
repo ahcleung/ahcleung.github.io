@@ -2131,7 +2131,7 @@ function moveCreature(movingCreature, displacement){
 		console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
-		heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
+		// heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
 
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2141,11 +2141,7 @@ function moveCreature(movingCreature, displacement){
 			}else{
 				object.pos = heroArray[objectIndex-1].pos + 1;
 			}
-		});
 
-		heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
-
-		heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 			//Hero Creature
 			var newCreatureX;
 			var newHPX;
@@ -2154,15 +2150,21 @@ function moveCreature(movingCreature, displacement){
 
 			//Hero HP and dmg containers
 			var switcher = 0;
-			if(arrayCreature.size > 1)	switcher = 1
+			if(object.size > 1)	switcher = 1
 
-			newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
+			newHPX = heroHealthXPosition[object.pos-1+switcher];
 
-			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
+			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
+
+		// heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
+
+		// heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			
+		// });
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
