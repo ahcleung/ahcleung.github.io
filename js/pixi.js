@@ -2096,7 +2096,7 @@ function onCreatureDown(){
 			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
+			if(turnArray2.length != 0){
 				var identifier = [];
 				if(turnArray[0] > 0){
 					identifier[0] = 1;
@@ -2325,11 +2325,12 @@ function onSkillDown(){
 		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
 			var switchSide = false;
 			//Get position to increment from
-			if(this.identifier[2] > 0){
-				var temp = heroArray[this.identifier[3]].pos;
-			}else{
-				var temp = enemyArray[this.identifier[3]].pos;
-			}			
+			var temp = selectedVita2.pos;
+			// if(this.identifier[2] > 0){
+			// 	var temp = heroArray[this.identifier[3]].pos;
+			// }else{
+			// 	var temp = enemyArray[this.identifier[3]].pos;
+			// }			
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
@@ -2339,7 +2340,8 @@ function onSkillDown(){
 					temp++;
 				}
 				console.log("=================================" + temp);
-				if(this.identifier[2] > 0){
+				if(selectedVita2.hero){
+				// if(this.identifier[2] > 0){
 					if(!switchSide){
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
@@ -2382,15 +2384,19 @@ function onSkillDown(){
 		//Behind
 		else{
 			//Get position to increment from
-			if(this.identifier[2] > 0){
-				var temp = heroArray[this.identifier[3]].pos + heroArray[this.identifier[3]].size - 1;
-			}else{
-				var temp = enemyArray[this.identifier[3]].pos + enemyArray[this.identifier[3]].size - 1;
-			}
+			// if(this.identifier[2] > 0){
+			// 	var temp = heroArray[this.identifier[3]].pos + heroArray[this.identifier[3]].size - 1;
+			// }else{
+			// 	var temp = enemyArray[this.identifier[3]].pos + enemyArray[this.identifier[3]].size - 1;
+			// }
+
+			var temp = selectedVita2.pos + selectedVita2.size - 1;
+
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
 				console.log("=================================" + temp);
-				if(this.identifier[2] > 0){
+				if(selectedVita2.hero){
+				// if(this.identifier[2] > 0){
 					heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
 							stageSide = 1;
@@ -2419,7 +2425,8 @@ function onSkillDown(){
 		if(skillTarget == 1){
 			var posTracker = skillTargetIndex + 1;
 			//if targeting enemies or heroes
-			if(this.identifier[2] > 0){
+			if(selectedVita2.hero){
+			// if(this.identifier[2] > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){			
