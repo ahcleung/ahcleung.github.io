@@ -2477,7 +2477,7 @@ function onSkillDown(){
 		var array11 = [];
 		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
 		if(joinedSeveral == "0,0,1"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
@@ -2515,7 +2515,7 @@ function onSkillDown(){
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "0,1,0"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
@@ -2553,7 +2553,7 @@ function onSkillDown(){
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,0,0"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
@@ -2591,7 +2591,7 @@ function onSkillDown(){
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,1,0"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
@@ -2629,7 +2629,7 @@ function onSkillDown(){
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "0,1,1"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
@@ -2667,7 +2667,7 @@ function onSkillDown(){
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,1,1"){
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
@@ -2707,7 +2707,7 @@ function onSkillDown(){
 		}else if(joinedSeveral == "1,0,1"){
 			var array2 = [];
 			var array22 = [];
-			if(selectedVita > 0){
+			if(selectedVita2.hero){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
