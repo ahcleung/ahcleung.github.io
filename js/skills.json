@@ -39,9 +39,9 @@
 				0,0,0,0
 			],
 			"tags":[
-				"column"
+				"column", "multiple"
 			],
-			"multiple": [0,0],
+			"multiple": [2,2],
 			"status": 0,
 			"hazard": [0,0],
 			"turns": 0,
@@ -50,7 +50,7 @@
 			"column": [2,2,-1,1],
 			"statchange" : [0, 0],
 			"several":[0,0,0],
-			"heal": 30
+			"heal": 15
 		},
 		{
 			"name": "Fire wall",
