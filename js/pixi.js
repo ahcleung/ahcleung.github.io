@@ -2530,7 +2530,7 @@ function moveCreature(movingCreature, displacement){
 		var moveFrom;
 		//Find index number for moveTo target and moveFrom selected
 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == movingCreature.pos-1)		moveFrom = orderIndex
+			if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
