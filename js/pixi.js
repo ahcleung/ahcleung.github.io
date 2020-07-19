@@ -1918,7 +1918,7 @@ function onCreatureDown(){
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
 						dmgArray2 = [];
-						
+
 						for(var i = 0; i < hitNum2; i++){
 							dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
 						}
@@ -1965,16 +1965,17 @@ function onCreatureDown(){
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
-				selectCreature(identifier, turnArray2[0]);
+			if(turnArray2.length != 0){
+				// var identifier = [];
+				// if(turnArray[0] > 0){
+				// 	identifier[0] = 1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }else{
+				// 	identifier[0] = -1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }
+				// selectCreature(identifier, turnArray2[0]);
+				selectCreature(turnArray2[0]);
 				// turnArray.shift();
 				turnArray2.shift();
 			}else{
@@ -2102,15 +2103,16 @@ function onCreatureDown(){
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray2.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
-				selectCreature(identifier, turnArray2[0]);
+				// var identifier = [];
+				// if(turnArray[0] > 0){
+				// 	identifier[0] = 1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }else{
+				// 	identifier[0] = -1;
+				// 	identifier[1] = Math.abs(turnArray[0])-1;
+				// }
+				// selectCreature(identifier, turnArray2[0]);
+				selectCreature(turnArray2[0]);
 				// turnArray.shift();
 				turnArray2.shift();
 			}else{
@@ -3066,17 +3068,18 @@ function onAdditionalItemDown(){
 
 function onAdditionalSkipDown(){
 	console.log("Additional Skip");
-	if(turnArray.length != 0){
-		var identifier = [];
-		if(turnArray[0] > 0){
-			identifier[0] = 1;
-			identifier[1] = Math.abs(turnArray[0])-1;
-		}else{
-			identifier[0] = -1;
-			identifier[1] = Math.abs(turnArray[0])-1;
-		}
-		selectCreature(identifier, turnArray2[0]);
-		turnArray.shift();
+	if(turnArray2.length != 0){
+		// var identifier = [];
+		// if(turnArray[0] > 0){
+		// 	identifier[0] = 1;
+		// 	identifier[1] = Math.abs(turnArray[0])-1;
+		// }else{
+		// 	identifier[0] = -1;
+		// 	identifier[1] = Math.abs(turnArray[0])-1;
+		// }
+		// selectCreature(identifier, turnArray2[0]);
+		selectCreature(turnArray2[0]);
+		// turnArray.shift();
 		turnArray2.shift();
 	}else{
 		calculateTurnOrder();
@@ -3160,23 +3163,23 @@ function calculateTurnOrder(){
 		console.log(object.name);
 	});
 
-	var identifier = [];
-	if(turnArray[0] > 0){
-		identifier[0] = 1;
-		identifier[1] = Math.abs(turnArray[0])-1;
-		// console.log(heroSpriteArray[Math.abs(turnArray[0]-1)].identifier);
-	}else{
-		identifier[0] = -1;
-		identifier[1] = Math.abs(turnArray[0])-1;
-		// console.log(enemySpriteArray[Math.abs(turnArray[0]-1)].identifier);
-	}
+	// var identifier = [];
+	// if(turnArray[0] > 0){
+	// 	identifier[0] = 1;
+	// 	identifier[1] = Math.abs(turnArray[0])-1;
+	// 	// console.log(heroSpriteArray[Math.abs(turnArray[0]-1)].identifier);
+	// }else{
+	// 	identifier[0] = -1;
+	// 	identifier[1] = Math.abs(turnArray[0])-1;
+	// 	// console.log(enemySpriteArray[Math.abs(turnArray[0]-1)].identifier);
+	// }
 	// console.log(identifier);
-	selectCreature(identifier, turnArray2[0]);
-	turnArray.shift();
+	selectCreature(turnArray2[0]);
+	// turnArray.shift();
 	turnArray2.shift();
 }
 
-function selectCreature(identifier, object2){	
+function selectCreature(object2){	
 	// console.log("Creature speed:" + heroArray[identifier[1]].statMod[6]);
 
 	// if(identifier[0] > 0){
