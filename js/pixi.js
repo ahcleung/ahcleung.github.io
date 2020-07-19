@@ -2480,7 +2480,7 @@ function moveCreature(movingCreature, displacement){
 	if(movingCreature > 0){
 		var moveFrom;
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == movingCreature.pos-1)		moveFrom = orderIndex
+			if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
 		});
 
 		var moveTo = moveFrom - displacement;
