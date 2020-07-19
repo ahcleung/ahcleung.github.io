@@ -1982,51 +1982,48 @@ function onCreatureDown(){
 		}
 		console.log("1###################################################################################");
 		console.log("2###################################################################################");
-	}
-	else if(validMoveObjectArray.length > 0){
-		// clickedTarget = this.identifier[1];
-		console.log("Clicked move object: " + this.object.name);
-		var correctTarget2 = false;
-		var targetedVita2 = 0;
+	}else if(validMoveTargetArray.length > 0){
+		clickedTarget = this.identifier[1];
+		console.log("Clicked move target index: " + clickedTarget);
+		var correctTarget = false;
+		var targetedVita = 0;
 
-		validMoveObjectArray.forEach((targeted, targetedIndex) => {
+		validMoveTargetArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
 				targeted.forEach(arrayElement => {
-					if(this.object == arrayElement){
-						correctTarget2 = true;
-						targetedVita2 = targeted;
+					if(arrayElement == clickedTarget){
+						correctTarget = true;
+						targetedVita = targetedIndex;
 					}	
 				});
 			}
-			if(this.object == targeted){
-				correctTarget2 = true;
-				targetedVita2 = targeted;
+			if(targeted == clickedTarget){
+				correctTarget = true;
+				targetedVita = targetedIndex;
 			}
 		});
 
 		var moveFrom;
 		var moveTo;
 
-		if(this.object.hero){
+		if(selectedVita > 0){
 			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-				if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+				if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
+				if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
 			});
 		}else{
 			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-				if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
+				if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
 			});
 		}
 
 		var displacement = moveFrom - moveTo;
 
-		console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
-
-		if(correctTarget2){
+		if(correctTarget){
 			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
 			// console.log(selectedVita + " moves: " + displacement);
-			moveCreature(selectedVita2, displacement);
+			moveCreature(selectedVita, displacement);
 			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
@@ -2040,7 +2037,7 @@ function onCreatureDown(){
 					identifier[1] = Math.abs(turnArray[0])-1;
 				}
 				selectCreature(identifier, turnArray2[0]);
-				// turnArray.shift();
+				turnArray.shift();
 				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
@@ -2049,7 +2046,75 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid move target");
 		}
-	}
+	}	
+	// }
+	// else if(validMoveObjectArray.length > 0){
+	// 	// clickedTarget = this.identifier[1];
+	// 	console.log("Clicked move object: " + this.object.name);
+	// 	var correctTarget2 = false;
+	// 	var targetedVita2 = 0;
+
+	// 	validMoveObjectArray.forEach((targeted, targetedIndex) => {
+	// 		if(Array.isArray(targeted)){
+	// 			targeted.forEach(arrayElement => {
+	// 				if(this.object == arrayElement){
+	// 					correctTarget2 = true;
+	// 					targetedVita2 = targeted;
+	// 				}	
+	// 			});
+	// 		}
+	// 		if(this.object == targeted){
+	// 			correctTarget2 = true;
+	// 			targetedVita2 = targeted;
+	// 		}
+	// 	});
+
+	// 	var moveFrom;
+	// 	var moveTo;
+
+	// 	if(this.object.hero){
+	// 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 			if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
+	// 			if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+	// 		});
+	// 	}else{
+	// 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 			if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
+	// 			if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+	// 		});
+	// 	}
+
+	// 	var displacement = moveFrom - moveTo;
+
+	// 	console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
+
+	// 	if(correctTarget2){
+	// 		// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+	// 		// console.log(selectedVita + " moves: " + displacement);
+	// 		moveCreature(selectedVita2, displacement);
+	// 		// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+
+	// 		//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+	// 		if(turnArray.length != 0){
+	// 			var identifier = [];
+	// 			if(turnArray[0] > 0){
+	// 				identifier[0] = 1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}else{
+	// 				identifier[0] = -1;
+	// 				identifier[1] = Math.abs(turnArray[0])-1;
+	// 			}
+	// 			selectCreature(identifier, turnArray2[0]);
+	// 			// turnArray.shift();
+	// 			turnArray2.shift();
+	// 		}else{
+	// 			calculateTurnOrder();
+	// 		}
+	// 		selectedSkill = -1;
+	// 	}else{
+	// 		console.log("Invalid move target");
+	// 	}
+	// }
 	
 	
 	// if(validSkillTargetArray.length > 0){
@@ -2412,7 +2477,7 @@ function onCreatureDown(){
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
 
-	if(movingCreature.hero){
+	if(movingCreature > 0){
 		var moveFrom;
 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
 			if(creatureInitialOrder == movingCreature.pos-1)		moveFrom = orderIndex
