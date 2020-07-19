@@ -2121,8 +2121,7 @@ function onCreatureDown(){
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move to: " + displacement.name);
-	var moveFrom;
-	var moveTo;
+	var moveFrom, moveTo;
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
@@ -2143,8 +2142,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			//Hero Creature
-			var newCreatureX;
-			var newHPX;
+			var newCreatureX, newHPX;
 
 			newCreatureX = -spriteResizeXPosition[object.pos-1];
 
@@ -2161,6 +2159,32 @@ function moveCreature(movingCreature, displacement){
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
+		enemyArray.forEach((object,objectIndex)=>{
+			if(movingCreature == object)		moveFrom = objectIndex;
+			if(displacement == object)			moveTo = objectIndex;
+		});
+		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
+
+		enemyArray.forEach((object,objectIndex)=>{
+			if(objectIndex == 0){
+				object.pos = 1;
+			}else if(enemyArray[objectIndex-1].size == 2){
+				object.pos = enemyArray[objectIndex-1].pos + 2;
+			}else{
+				object.pos = enemyArray[objectIndex-1].pos + 1;
+			}
+
+			//Enemy Creature
+			var newCreatureX, newHPX;
+
+			newCreatureX = spriteResizeXPosition[object.pos-1];
+			newHPX = spriteResizeXPosition[object.pos-1];
+
+			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
+		});
 	}
 	// if(movingCreature > 0){
 	// 	var moveFrom;
