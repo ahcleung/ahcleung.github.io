@@ -3292,7 +3292,8 @@ function selectCreature(identifier, object2){
 		}
 		
 		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
-		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID, identifier[0], identifier[1]];
+		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID];
+		// skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID, identifier[0], identifier[1]];
 		skillContainerArray[skillContainerIndex].skillName.text = skillsList.data.skills[skillID].name;		
 		skillsList.data.skills[skillID].position.forEach((skillPos, skillPosIndex) => {
 			if(skillPos == 1){				
