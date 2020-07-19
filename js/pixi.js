@@ -1917,6 +1917,7 @@ function onCreatureDown(){
 					//Calculate heal amount or damage amount
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
+						dmgArray2 = [];
 						dmgArray2.push(skillsList.data.skills[selectedSkill].heal);
 						ifHeal2 = true;
 						effectiveness2 = 1;
