@@ -2826,7 +2826,7 @@ function animateBattle(attacker, defender){
 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
 		if(arrayCreature.hero){
 			var originalX = arrayCreature.action.x;
-			var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
+			var originalFloatX = arrayCreature.dmgContainer.x;
 			TweenMax.to(arrayCreature.action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
 
 			if(arrayCreature.size > 1)	heroShiftSizeTracker++;
