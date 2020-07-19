@@ -2144,7 +2144,25 @@ function moveCreature(movingCreature, displacement){
 		});
 
 		heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
-		
+
+		heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+			//Hero Creature
+			var newCreatureX;
+			var newHPX;
+
+			newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
+
+			//Hero HP and dmg containers
+			var switcher = 0;
+			if(arrayCreature.size > 1)	switcher = 1
+
+			newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
+
+			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
+			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
+		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
