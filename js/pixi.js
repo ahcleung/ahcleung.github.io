@@ -1982,432 +1982,8 @@ function onCreatureDown(){
 		}
 		console.log("1###################################################################################");
 		console.log("2###################################################################################");
-	}else if(validMoveTargetArray.length > 0){
-		clickedTarget = this.identifier[1];
-		console.log("Clicked move target index: " + clickedTarget);
-		var correctTarget = false;
-		var targetedVita = 0;
-
-		validMoveTargetArray.forEach((targeted, targetedIndex) => {
-			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(arrayElement == clickedTarget){
-						correctTarget = true;
-						targetedVita = targetedIndex;
-					}	
-				});
-			}
-			if(targeted == clickedTarget){
-				correctTarget = true;
-				targetedVita = targetedIndex;
-			}
-		});
-
-		var moveFrom;
-		var moveTo;
-
-		if(selectedVita > 0){
-			heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
-				if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
-			});
-		}else{
-			enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-				if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
-				if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
-			});
-		}
-
-		var displacement = moveFrom - moveTo;
-
-		if(correctTarget){
-			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-			// console.log(selectedVita + " moves: " + displacement);
-			moveCreature(selectedVita, displacement);
-			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
-
-			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				var identifier = [];
-				if(turnArray[0] > 0){
-					identifier[0] = 1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}else{
-					identifier[0] = -1;
-					identifier[1] = Math.abs(turnArray[0])-1;
-				}
-				selectCreature(identifier, turnArray2[0]);
-				turnArray.shift();
-				turnArray2.shift();
-			}else{
-				calculateTurnOrder();
-			}
-			selectedSkill = -1;
-		}else{
-			console.log("Invalid move target");
-		}
-	}	
 	// }
-	// else if(validMoveObjectArray.length > 0){
-	// 	// clickedTarget = this.identifier[1];
-	// 	console.log("Clicked move object: " + this.object.name);
-	// 	var correctTarget2 = false;
-	// 	var targetedVita2 = 0;
-
-	// 	validMoveObjectArray.forEach((targeted, targetedIndex) => {
-	// 		if(Array.isArray(targeted)){
-	// 			targeted.forEach(arrayElement => {
-	// 				if(this.object == arrayElement){
-	// 					correctTarget2 = true;
-	// 					targetedVita2 = targeted;
-	// 				}	
-	// 			});
-	// 		}
-	// 		if(this.object == targeted){
-	// 			correctTarget2 = true;
-	// 			targetedVita2 = targeted;
-	// 		}
-	// 	});
-
-	// 	var moveFrom;
-	// 	var moveTo;
-
-	// 	if(this.object.hero){
-	// 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-	// 			if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
-	// 		});
-	// 	}else{
-	// 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-	// 			if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
-	// 		});
-	// 	}
-
-	// 	var displacement = moveFrom - moveTo;
-
-	// 	console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
-
-	// 	if(correctTarget2){
-	// 		// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-	// 		// console.log(selectedVita + " moves: " + displacement);
-	// 		moveCreature(selectedVita2, displacement);
-	// 		// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
-
-	// 		//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-	// 		if(turnArray.length != 0){
-	// 			var identifier = [];
-	// 			if(turnArray[0] > 0){
-	// 				identifier[0] = 1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}else{
-	// 				identifier[0] = -1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}
-	// 			selectCreature(identifier, turnArray2[0]);
-	// 			// turnArray.shift();
-	// 			turnArray2.shift();
-	// 		}else{
-	// 			calculateTurnOrder();
-	// 		}
-	// 		selectedSkill = -1;
-	// 	}else{
-	// 		console.log("Invalid move target");
-	// 	}
-	// }
-	
-	
-	// if(validSkillTargetArray.length > 0){
-	// 	clickedTarget = this.identifier[0] * (this.identifier[1]+1);				//direction * index+1
-	// 	console.log("Clicked skill target index: " + clickedTarget);
-	// 	var correctTarget = false;
-	// 	var targetedVita = 0;
-	// 	validSkillTargetArray.forEach((targeted, targetedIndex) => {
-	// 		if(Array.isArray(targeted)){
-	// 			targeted.forEach(arrayElement => {
-	// 				if(arrayElement == clickedTarget){
-	// 					correctTarget = true;
-	// 					targetedVita = targetedIndex;
-	// 				}	
-	// 			});
-	// 		}
-	// 		if(targeted == clickedTarget){
-	// 			correctTarget = true;
-	// 			targetedVita = targetedIndex;
-	// 		}
-	// 	});
-	// 	if(correctTarget){
-	// 		// console.log(selectedVita + " uses " + skillsList.data.skills[selectedSkill].name + " on " + validSkillTargetArray[targetedVita]);
-
-	// 		animateBattle(selectedVita, validSkillTargetArray[targetedVita]);
-
-	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
-	// 		const filter2 = new PIXI.filters.ColorMatrixFilter();
-	// 		const filter3 = new PIXI.filters.ColorMatrixFilter();
-
-	// 		var filtersArray = [];
-
-	// 		filter2.brightness(1.4,  true);
-	// 		filter2.hue(175, true);
-	// 		filter3.blackAndWhite(true);
-
-	// 		// filter3.negative(true);
-	// 		switch(skillsList.data.skills[selectedSkill].element){
-	// 			case 1: 	//flora
-	// 				filter1.hue(-120);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 2: 	//water
-	// 				filter1.hue(-30);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 3:		//fire
-	// 				filter1.hue(110);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 4: 	//earth
-	// 				filter1.hue(160);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 5: 	//lightning
-	// 				filtersArray = [filter2];
-	// 				break;
-	// 			case 6: 	//wind
-	// 				filter1.hue(-80);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 7: 	//toxic
-	// 				filter1.hue(20);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 8: 	//spirit
-	// 				filter1.hue(60);
-	// 				filtersArray = [filter1];
-	// 				break;
-	// 			case 9: 	//shadow	
-	// 				filtersArray = [filter3];		
-	// 				break;
-	// 			default:
-	// 				filter1.hue(0);
-	// 				filtersArray = [filter1];
-	// 		}
-
-	// 		validSkillTargetArray[targetedVita].forEach(targeted => {
-	// 			var selectedIndex = Math.abs(selectedVita)-1;
-	// 			var targetedIndex = Math.abs(targeted)-1;
-	// 			var other = false;
-	// 			var deltaHP = 0;
-	// 			var dmgCalc = 0;
-	// 			var level = 0;
-	// 			var attack = 0;
-	// 			var defense = 0;
-	// 			var defendElements = [];
-	// 			var effectiveness = 1;
-	// 			var dodge = 0;
-	// 			var dodgeMod = 0;
-	// 			var accMod = 0;
-	// 			var multiHit = false;
-	// 			var skillStatusEffect = false;
-	// 			var skillStatChange = false;
-	// 			var statusNum = [];
-	// 			var hitNum = 1;
-	// 			var dmgArray = [];
-	// 			var critTracker = [0,0,0,0,0];
-	// 			var ifCrit = false;
-	// 			var totalCritDmg = 0;
-	// 			var critMultiplier = 1;
-	// 			var ifHeal = false;
-				
-
-	// 			//Get attack stat based on skill used
-	// 			if(selectedVita > 0){
-	// 				level = heroArray[selectedIndex].level;
-	// 				accMod = heroArray[selectedIndex].accMod;
-	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
-	// 					// actionHero[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-	// 					// actionHero[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
-	// 					heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-	// 					heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-	// 					attack = heroArray[selectedIndex].patk;
-	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-	// 					heroArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-	// 					heroArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-	// 					attack = heroArray[selectedIndex].satk;
-	// 				}
-	// 			}else{
-	// 				level = enemyArray[selectedIndex].level;
-	// 				accMod = enemyArray[selectedIndex].accMod;
-	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
-	// 					// actionEnemy[Math.abs(selectedVita)-1].fxTop.filters = filtersArray;
-	// 					// actionEnemy[Math.abs(selectedVita)-1].fxBack.filters = filtersArray;
-	// 					enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-	// 					enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-	// 					attack = enemyArray[selectedIndex].patk;
-	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-	// 					enemyArray[Math.abs(selectedVita)-1].action.fxTop.filters = filtersArray;
-	// 					enemyArray[Math.abs(selectedVita)-1].action.fxBack.filters = filtersArray;
-	// 					attack = enemyArray[selectedIndex].satk;
-	// 				}
-	// 			}
-
-	// 			actionLines.filters = filtersArray;
-
-	// 			//Get defense stat based on skill used					
-	// 			if(targeted > 0){
-	// 				dodge = heroArray[targetedIndex].dodge;
-	// 				dodgeMod = heroArray[targetedIndex].dodgeMod;
-	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
-	// 					defense = heroArray[targetedIndex].pdef;
-	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-	// 					defense = heroArray[targetedIndex].sdef;
-	// 				}
-	// 				heroArray[targetedIndex].elements.forEach(element =>{
-	// 					defendElements.push(element);
-	// 				});
-	// 			}else{
-	// 				// level = enemyArray[selectedIndex].level;
-	// 				dodge = enemyArray[targetedIndex].dodge;
-	// 				dodgeMod = enemyArray[targetedIndex].dodgeMod;
-	// 				if(skillsList.data.skills[selectedSkill].type == "phy"){
-	// 					defense = enemyArray[targetedIndex].pdef;
-	// 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-	// 					defense = enemyArray[targetedIndex].sdef;
-	// 				}
-	// 				enemyArray[targetedIndex].elements.forEach(element =>{
-	// 					defendElements.push(element);
-	// 				});
-	// 			}
-
-	// 			var accDiff = accMod - dodgeMod;
-	// 			var hitMod = 1;
-	// 			if(accDiff > 0){
-	// 				hitMod = (Math.abs(accDiff) + 3)/3;
-	// 			}else if(accDiff < 0){
-	// 				hitMod = 3/(Math.abs(accDiff) + 3);
-	// 			}
-
-	// 			if(skillsList.data.skills[selectedSkill].accuracy == 110){
-	// 				var hitChance = 1;
-	// 			}else{
-	// 				var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-	// 			}
-	// 			var hitRoll = Math.random();
-
-	// 			if(hitRoll < hitChance){
-	// 				console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
-	// 				//Get defenders elements to calculate effectiveness
-	// 				defendElements.forEach(defendElement=>{
-	// 					effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-	// 				});
-
-	// 				//Critical hit chance
-	// 				// var criticalChance = Math.floor(Math.random() * 10000);
-	// 				// var crit = 1;
-	// 				// if(criticalChance > 5000){
-	// 				// 	crit = 1.5;
-	// 				// }
-	// 				skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-	// 					if(tagName == "multiple")		multiHit = true;
-	// 					if(tagName == "status")			skillStatusEffect = true;
-	// 					if(tagName == "statchange")		skillStatChange = true;
-	// 				});
-
-	// 				if(multiHit){
-	// 					hitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
-	// 					// hitNum = 5;
-	// 				}
-
-	// 				if(skillStatusEffect){
-	// 					statusNum.push(skillsList.data.skills[selectedSkill].status);
-	// 					// hitNum = 5;
-	// 				}
-
-	// 				if(skillStatChange){
-	// 					// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
-	// 					// 	statusNum.push(2);
-	// 					// }else{
-	// 					// 	statusNum.push(4);
-	// 					// }
-	// 				}
-
-	// 				//Calculate heal amount or damage amount
-	// 				if(skillsList.data.skills[selectedSkill].heal > 0){
-	// 					//calculate how much to heal
-	// 					deltaHP = skillsList.data.skills[selectedSkill].heal;
-	// 					dmgArray.push(skillsList.data.skills[selectedSkill].heal);
-	// 					ifHeal = true;
-	// 					effectiveness = 1;
-	// 					critMultiplier = 1;
-	// 				}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-	// 					other = true;
-	// 				}else{						
-	// 					dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
-	// 					// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness*crit);
-	// 					// deltaHP = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100)*effectiveness*crit);
-	// 					for(var i = 0; i < hitNum; i++){
-	// 						var criticalChance = Math.floor(Math.random() * 10000);
-	// 						var critMultiplier = 1;
-	// 						if(criticalChance > 5000){
-	// 							critMultiplier = 1.5;
-	// 							ifCrit = true;
-	// 							critTracker[i] = 1;
-	// 						}
-	// 						var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-	// 						if(finalDmgCalc == 0)		finalDmgCalc = 1;
-	// 						dmgArray[i] = finalDmgCalc;
-	// 						deltaHP += finalDmgCalc;
-	// 					}
-	// 				}
-
-	// 				if(ifCrit){
-	// 					statusNum.push(14);
-	// 					dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-	// 						if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
-	// 					});
-	// 					console.log("Critical damage: " + Math.floor(totalCritDmg));
-	// 				}
-
-	// 				console.log(targeted + " takes " + deltaHP + " damage");
-
-	// 				if(skillsList.data.skills[selectedSkill].displace[0] != 0){				
-	// 					moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
-	// 				}
-	// 			}else{
-	// 				console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-	// 				dmgArray[0] = 0;
-	// 				deltaHP = 0;
-	// 				effectiveness = 0;
-	// 			}
-
-	// 			if(targeted > 0 && !other){
-	// 				updateDamage(heroArray[targetedIndex], effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
-	// 			}else if(targeted < 0 && !other){
-	// 				updateDamage(enemyArray[targetedIndex], effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, skillStatusEffect);
-	// 			}
-	// 		});
-		
-	// 		//If out of turns, and still have enemies, and still have heroes
-	// 		if(turnArray.length != 0){
-	// 			var identifier = [];
-	// 			if(turnArray[0] > 0){
-	// 				identifier[0] = 1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}else{
-	// 				identifier[0] = -1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}
-	// 			selectCreature(identifier, turnArray2[0]);
-	// 			turnArray.shift();
-	// 			turnArray2.shift();
-	// 		}else{
-	// 			calculateTurnOrder();
-	// 		}
-
-	// 		selectedSkill = -1;
-	// 	}else{
-	// 		console.log("Invalid skill target");
-	// 	}
-	// }else if(validMoveTargetArray.length > 0){
+	// else if(validMoveTargetArray.length > 0){
 	// 	clickedTarget = this.identifier[1];
 	// 	console.log("Clicked move target index: " + clickedTarget);
 	// 	var correctTarget = false;
@@ -2471,104 +2047,158 @@ function onCreatureDown(){
 	// 	}else{
 	// 		console.log("Invalid move target");
 	// 	}
-	// }
+	// }	
+	}
+	else if(validMoveObjectArray.length > 0){
+		// clickedTarget = this.identifier[1];
+		console.log("Clicked move object: " + this.object.name);
+		var correctTarget2 = false;
+		var targetedVita2 = 0;
+
+		validMoveObjectArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
+						correctTarget2 = true;
+						targetedVita2 = targeted;
+					}	
+				});
+			}
+			if(this.object == targeted){
+				correctTarget2 = true;
+				targetedVita2 = targeted;
+			}
+		});
+
+		// var moveFrom;
+		// var moveTo;
+
+		// if(this.object.hero){
+		// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+		// 		if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
+		// 		if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+		// 	});
+		// }else{
+		// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+		// 		if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
+		// 		if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
+		// 	});
+		// }
+
+		// var displacement = moveFrom - moveTo;
+
+		// console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
+
+		if(correctTarget2){
+			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
+			// console.log(selectedVita + " moves: " + displacement);
+			moveCreature(selectedVita2, targetedVita2);
+			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
+
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				var identifier = [];
+				if(turnArray[0] > 0){
+					identifier[0] = 1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}else{
+					identifier[0] = -1;
+					identifier[1] = Math.abs(turnArray[0])-1;
+				}
+				selectCreature(identifier, turnArray2[0]);
+				// turnArray.shift();
+				turnArray2.shift();
+			}else{
+				calculateTurnOrder();
+			}
+			selectedSkill = -1;
+		}else{
+			console.log("Invalid move target");
+		}
+	}
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
-
-	if(movingCreature > 0){
-		var moveFrom;
-		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
-		});
-
-		var moveTo = moveFrom - displacement;
-		console.log(moveFrom + " wants to move to: " + moveTo);
-		heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
-
-		heroOrder.forEach((creatureIndex,arrayIndex) => {
-			if(arrayIndex == 0){
-				heroArray[creatureIndex].pos = 1;
-			}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
-				heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
-			}else{
-				heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
-			}
-		});
-
-		heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-			//Hero Creature
-			var newCreatureX;
-			var newHPX;
-
-			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-
-			newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
-
-			//Hero HP and dmg containers
-			var switcher = 0;
-			if(arrayCreature.size > 1)	switcher = 1
-
-			// newHPX = heroHealthXPosition[heroArray[arrayCreatureIndex].pos-1+switcher];
-			newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
-
-			// TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			// TweenMax.to(heroSpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			// TweenMax.to(actionHero[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			// TweenMax.to(heroArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
-			// TweenMax.to(heroArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
-
-			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
-
-			// console.log(arrayCreature.pos);
-		});
+	console.log(movingCreature.name + " wants to move to: " + displacement.name);
+	if(movingCreature.hero){
+		// console.log(movingCreature.name + " wants to move to: " + displacement.name);
 	}else{
-		var moveFrom;
-		//Find index number for moveTo target and moveFrom selected
-		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-			if(creatureInitialOrder == Math.abs(movingCreature)-1)		moveFrom = orderIndex
-		});
-
-		var moveTo = moveFrom - displacement;
-		console.log(moveFrom + " wants to move to: " + moveTo);
-		enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
-
-		enemyOrder.forEach((creatureIndex,arrayIndex) => {
-			if(arrayIndex == 0){
-				enemyArray[creatureIndex].pos = 1;
-			}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
-				enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
-			}else{
-				enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
-			}
-		});
-
-		enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-			//Enemy Creature
-			var newCreatureX;
-			var newHPX;
-
-			// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
-			newCreatureX = spriteResizeXPosition[arrayCreature.pos-1];
-			newHPX = spriteResizeXPosition[arrayCreature.pos-1];
-
-			// TweenMax.to(enemySpriteArray[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			// TweenMax.to(actionEnemy[arrayCreatureIndex], 0.5, {x: newCreatureX});
-			// TweenMax.to(enemyArray[arrayCreatureIndex].healthBar, 0.5, {x: newHPX});
-			// TweenMax.to(enemyArray[arrayCreatureIndex].dmgContainer, 0.5, {x: newHPX});
-
-			TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
-			TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
-			
-			// console.log(arrayCreature.pos);
-		});
+		// console.log(moveFrom + " wants to move to: " + moveTo);
 	}
+	// if(movingCreature > 0){
+	// 	var moveFrom;
+	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
+	// 	});
+
+	// 	var moveTo = moveFrom - displacement;
+	// 	console.log(moveFrom + " wants to move to: " + moveTo);
+	// 	heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
+
+	// 	heroOrder.forEach((creatureIndex,arrayIndex) => {
+	// 		if(arrayIndex == 0){
+	// 			heroArray[creatureIndex].pos = 1;
+	// 		}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
+	// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
+	// 		}else{
+	// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
+	// 		}
+	// 	});
+
+	// 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
+	// 		//Hero Creature
+	// 		var newCreatureX;
+	// 		var newHPX;
+
+	// 		newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
+
+	// 		//Hero HP and dmg containers
+	// 		var switcher = 0;
+	// 		if(arrayCreature.size > 1)	switcher = 1
+
+	// 		newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
+
+	// 		TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
+	// 		TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
+	// 		TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
+	// 		TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
+	// 	});
+	// }else{
+	// 	var moveFrom;
+	// 	//Find index number for moveTo target and moveFrom selected
+	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
+	// 		if(creatureInitialOrder == Math.abs(movingCreature)-1)		moveFrom = orderIndex
+	// 	});
+
+	// 	var moveTo = moveFrom - displacement;
+	// 	console.log(moveFrom + " wants to move to: " + moveTo);
+	// 	enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
+
+	// 	enemyOrder.forEach((creatureIndex,arrayIndex) => {
+	// 		if(arrayIndex == 0){
+	// 			enemyArray[creatureIndex].pos = 1;
+	// 		}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
+	// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
+	// 		}else{
+	// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
+	// 		}
+	// 	});
+
+	// 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
+	// 		//Enemy Creature
+	// 		var newCreatureX;
+	// 		var newHPX;
+
+	// 		newCreatureX = spriteResizeXPosition[arrayCreature.pos-1];
+	// 		newHPX = spriteResizeXPosition[arrayCreature.pos-1];
+
+	// 		TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
+	// 		TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
+	// 		TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
+	// 		TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
+	// 	});
+	// }
 }
 
 function onHPDown(){
@@ -2651,15 +2281,8 @@ function onSkillDown(){
 				console.log("=================================" + temp);
 				if(this.identifier[2] > 0){
 					if(!switchSide){
-					// if(temp > 0 && !switchSide){
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								// console.log(arrayCreature.name);
-								// if(heal){
-								// 	arrayCreature.healthBar.heal.visible = true;
-								// }else{
-								// 	arrayCreature.healthBar.target.visible = true;
-								// }
 								stageSide = 1;
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
@@ -2668,12 +2291,6 @@ function onSkillDown(){
 					}else{
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								// console.log(arrayCreature.name);
-								// if(heal){
-								// 	arrayCreature.healthBar.heal.visible = true;
-								// }else{
-								// 	arrayCreature.healthBar.target.visible = true;
-								// }
 								stageSide = -1;
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
@@ -2685,12 +2302,6 @@ function onSkillDown(){
 					// if(temp > 0 && !switchSide){
 						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								// console.log(arrayCreature.name);
-								// if(heal){
-								// 	arrayCreature.healthBar.heal.visible = true;
-								// }else{
-								// 	arrayCreature.healthBar.target.visible = true;
-								// }
 								stageSide = -1;
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
@@ -2699,12 +2310,6 @@ function onSkillDown(){
 					}else{
 						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 							if(arrayCreature.pos == temp){
-								// console.log(arrayCreature.name);
-								// if(heal){
-								// 	arrayCreature.healthBar.heal.visible = true;
-								// }else{
-								// 	arrayCreature.healthBar.target.visible = true;
-								// }
 								stageSide = 1;
 								columnArray.push((arrayCreatureIndex+1)*stageSide);
 								columnObjectArray.push(arrayCreature);
@@ -2718,18 +2323,8 @@ function onSkillDown(){
 		else{
 			//Get position to increment from
 			if(this.identifier[2] > 0){
-				// if(heroArray[this.identifier[3]].size == 2){
-				// 	var temp = heroArray[this.identifier[3]].pos+1;
-				// }else{
-				// 	var temp = heroArray[this.identifier[3]].pos;
-				// }
 				var temp = heroArray[this.identifier[3]].pos + heroArray[this.identifier[3]].size - 1;
 			}else{
-				// if(enemyArray[this.identifier[3]].size == 2){
-				// 	var temp = enemyArray[this.identifier[3]].pos+1;
-				// }else{
-				// 	var temp = enemyArray[this.identifier[3]].pos;
-				// }
 				var temp = enemyArray[this.identifier[3]].pos + enemyArray[this.identifier[3]].size - 1;
 			}
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
@@ -2738,12 +2333,6 @@ function onSkillDown(){
 				if(this.identifier[2] > 0){
 					heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
-							// console.log(arrayCreature.name);
-							// if(heal){
-							// 	arrayCreature.healthBar.heal.visible = true;
-							// }else{
-							// 	arrayCreature.healthBar.target.visible = true;
-							// }
 							stageSide = 1;
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
@@ -2752,12 +2341,6 @@ function onSkillDown(){
 				}else{
 					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 						if(arrayCreature.pos == temp){
-							// console.log(arrayCreature.name);
-							// if(heal){
-							// 	arrayCreature.healthBar.heal.visible = true;
-							// }else{
-							// 	arrayCreature.healthBar.target.visible = true;
-							// }
 							stageSide = -1;
 							columnArray.push((arrayCreatureIndex+1)*stageSide);
 							columnObjectArray.push(arrayCreature);
@@ -2779,9 +2362,7 @@ function onSkillDown(){
 			if(this.identifier[2] > 0){
 				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
-						if(posTracker == arrayCreature.pos){
-							// console.log(arrayCreature.name);
-							// arrayCreature.healthBar.target.visible = true;					
+						if(posTracker == arrayCreature.pos){			
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
@@ -2789,8 +2370,6 @@ function onSkillDown(){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							// console.log(arrayCreature.name);
-							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
@@ -2800,8 +2379,6 @@ function onSkillDown(){
 				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							// console.log(arrayCreature.name);
-							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
@@ -2809,8 +2386,6 @@ function onSkillDown(){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							// console.log(arrayCreature.name);
-							// arrayCreature.healthBar.target.visible = true;
 							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
@@ -3165,35 +2740,11 @@ function animateBattle(attacker, defender){
 	var animateArray = [];
 
 	defender.forEach(arrayCreature => {
-		// if(arrayCreature > 0){
-		// 	actionContainer.addChild(heroArray[Math.abs(arrayCreature)-1].action);
-		// 	heroArray[Math.abs(arrayCreature)-1].action.visible = true;
-		// 	heroArray[Math.abs(arrayCreature)-1].sprite.visible = false;
-		// 	animateArray.push(heroArray[Math.abs(arrayCreature)-1].sprite);
-		// }else{
-		// 	actionContainer.addChild(enemyArray[Math.abs(arrayCreature)-1].action);
-		// 	enemyArray[Math.abs(arrayCreature)-1].action.visible = true;
-		// 	enemyArray[Math.abs(arrayCreature)-1].sprite.visible = false;
-		// 	animateArray.push(enemyArray[Math.abs(arrayCreature)-1].sprite);
-		// }
-
 		actionContainer.addChild(arrayCreature.action);
 		arrayCreature.action.visible = true;
 		arrayCreature.sprite.visible = false;
 		animateArray.push(arrayCreature.sprite);
 	});
-
-	// if(attacker > 0){
-	// 	actionContainer.addChild(heroArray[Math.abs(attacker)-1].action);
-	// 	heroArray[Math.abs(attacker)-1].action.visible = true;
-	// 	heroArray[Math.abs(attacker)-1].sprite.visible = false;
-	// 	animateArray.push(heroArray[Math.abs(attacker)-1].sprite);
-	// }else{
-	// 	actionContainer.addChild(enemyArray[Math.abs(attacker)-1].action);
-	// 	enemyArray[Math.abs(attacker)-1].action.visible = true;
-	// 	enemyArray[Math.abs(attacker)-1].sprite.visible = false;
-	// 	animateArray.push(enemyArray[Math.abs(attacker)-1].sprite);
-	// }
 
 	actionContainer.addChild(attacker.action);
 	attacker.action.visible = true;
@@ -3246,52 +2797,10 @@ function animateBattle(attacker, defender){
 
 			enemyShiftSizeTracker++;
 			if(arrayCreature.size > 1)	enemyShiftSizeTracker++;
-		}
-		// if(arrayCreature > 0){
-		// 	var originalX = heroArray[Math.abs(arrayCreature)-1].action.x;
-		// 	var originalFloatX = heroArray[Math.abs(arrayCreature)-1].dmgContainer.x;
-		// 	TweenMax.to(heroArray[Math.abs(arrayCreature)-1].action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
-
-		// 	if(heroArray[Math.abs(arrayCreature)-1].size > 1)	heroShiftSizeTracker++;
-		// 	TweenMax.to(heroArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
-
-		// 	heroArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
-		// 	heroArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
-		// 		heroArray[Math.abs(arrayCreature)-1].action.x = originalX;
-		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalFloatX;
-		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
-		// 		heroArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-		// 			heroArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
-		// 				statusSprite.visible = true;
-		// 			});
-		// 		});
-		// 	});
-
-		// 	heroShiftSizeTracker++;			
-		// }else{
-		// 	var originalX = enemyArray[Math.abs(arrayCreature)-1].action.x;
-		// 	TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-		// 	TweenMax.to(enemyArray[Math.abs(arrayCreature)-1].dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-
-		// 	enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.play(0);
-		// 	enemyArray[Math.abs(arrayCreature)-1].action.dMissTween.eventCallback("onComplete", function(){
-		// 		enemyArray[Math.abs(arrayCreature)-1].action.x = originalX;
-		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.x = originalX;
-		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.play(0);
-		// 		enemyArray[Math.abs(arrayCreature)-1].dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-		// 			enemyArray[Math.abs(arrayCreature)-1].statusSpriteArray.forEach(statusSprite => {
-		// 				statusSprite.visible = true;
-		// 			});
-		// 		});
-		// 	});
-
-		// 	enemyShiftSizeTracker++;
-		// 	if(enemyArray[Math.abs(arrayCreature)-1].size > 1)	enemyShiftSizeTracker++;
-		// }	
+		}	
 	});	
 
 	var originalX = attacker.action.x;
-	// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
 	TweenMax.to(attacker.action, 0.25, {x:0});
 
 	attacker.action.pAtkTween.play(0);
@@ -3299,39 +2808,10 @@ function animateBattle(attacker, defender){
 		animateArray.forEach(item =>{
 			item.visible = true;
 		});
-		// spriteHolder.filters = [blurFilter2];
 		attacker.action.x = originalX;
 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 	});
 
-	// if(attacker > 0){
-	// 	var originalX = heroArray[Math.abs(attacker)-1].action.x;
-	// 	// console.log("X1: " + actionHero[Math.abs(attacker)-1].x);
-	// 	TweenMax.to(heroArray[Math.abs(attacker)-1].action, 0.25, {x:0});
-
-	// 	heroArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
-	// 	heroArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
-	// 		animateArray.forEach(item =>{
-	// 			item.visible = true;
-	// 		});
-	// 		// spriteHolder.filters = [blurFilter2];
-	// 		heroArray[Math.abs(attacker)-1].action.x = originalX;
-	// 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-	// 	});
-	// }else{
-	// 	var originalX = enemyArray[Math.abs(attacker)-1].action.x;
-	// 	TweenMax.to(enemyArray[Math.abs(attacker)-1].action, 0.25, {x:0});
-
-	// 	enemyArray[Math.abs(attacker)-1].action.pAtkTween.play(0);
-	// 	enemyArray[Math.abs(attacker)-1].action.pAtkTween.eventCallback("onComplete", function(){
-	// 		animateArray.forEach(item =>{
-	// 			item.visible = true;
-	// 		});
-	// 		// spriteHolder.filters = [blurFilter2];
-	// 		enemyArray[Math.abs(attacker)-1].action.x = originalX;
-	// 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-	// 	});
-	// }
 	// actionHero[0].visible = true;
 	// actionEnemy[0].visible = true;
 
