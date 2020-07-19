@@ -3322,20 +3322,6 @@ function onAdditionalMoveDown(){
 		backward2 = true;
 	}
 
-	// var currPosition = [];
-	// //set of positions occupied
-	// if(selectedVita2.size > 1){
-	// 	currPosition.push(selectedVita2.pos);
-	// 	currPosition.push(selectedVita2.pos+1);
-	// }else{
-	// 	currPosition.push(selectedVita2.pos);
-	// }
-
-	// var moveablePositions = [];
-	// currPositions.forEach(position=>{
-	// 	moveablePositions.push(position)
-	// });
-
 	if(selectedVita2.hero){
 		heroArray.forEach(object=>{
 			if(object != selectedVita2){
