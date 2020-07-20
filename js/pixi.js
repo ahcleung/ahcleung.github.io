@@ -250,7 +250,7 @@ const additionalArray = [];				//Array of additional menu buttons
 var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
 
-var turnArray = [];						//Array for turn order
+// var turnArray = [];						//Array for turn order
 var turnArray2 = [];					//Array for turn order
 
 var validSkillObjectArray = [];			//Array of valid skill targets
@@ -1768,25 +1768,10 @@ function onCreatureDown(){
 		});
 		console.log(selectedVita2.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 
-
 		var level2 = selectedVita2.level;
 		var accMod2 = selectedVita2.accMod;
 		var attack2 = 0;
-		var defense2 = 0;
-		var defendElements2 = [];
-		var effectiveness2 = 1;
-		var multiHit2 = false;
-		var skillStatusEffect2 = false;
-		var skillStatChange2 = false;
-		var statusNum2 = [];
-		var hitNum2 = 1;
-		var dmgArray2 = [];
-		var critTracker2 = [0,0,0,0,0];
-		var ifCrit2 = false;
-		var totalCritDmg2 = 0;
-		var critMultiplier2 = 1;
-		var ifHeal2 = false;
-		var dmgCalc2 = 0;
+		
 
 		if(correctTarget2){
 
@@ -1853,8 +1838,25 @@ function onCreatureDown(){
 			}
 
 			validSkillObjectArray[targetedVita2].forEach(targeted => {
+				var defense2 = 0;
+				var hitNum2 = 1;
+				var dmgArray2 = [];
+				var defendElements2 = [];
+				var effectiveness2 = 1;
+				var multiHit2 = false;
+				var skillStatusEffect2 = false;
+				var skillStatChange2 = false;
+				var statusNum2 = [];
+				var critTracker2 = [0,0,0,0,0];
+				var ifCrit2 = false;
+				var totalCritDmg2 = 0;
+				var critMultiplier2 = 1;
+				var ifHeal2 = false;
+				var dmgCalc2 = 0;
+
 				var dodge2 = targeted.dodge;
 				var dodgeMod2 = targeted.dodgeMod;
+				
 				if(skillsList.data.skills[selectedSkill].type == "phy"){
 					defense2 = targeted.pdef;
 				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2751,7 +2753,7 @@ function calculateTurnOrder(){
 	var arrayCalcSpeedSorted = [];
 	var arrayCalcSpeedPositions = [];
 
-	turnArray = [];	
+	// turnArray = [];	
 	turnArray2 = [];
 
 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
@@ -2787,39 +2789,21 @@ function calculateTurnOrder(){
 		arrayCalcSpeedPositions.forEach((speedNum2,index2) => {
 			if(speedNum == speedNum2){
 				if(index2 < heroArray.length){
-					// var tempObj = heroArray[index2];
 					var index = turnArray2.findIndex(element => element == heroArray[index2]);
 					if (index === -1){
 						turnArray2.push(heroArray[index2]);
 					}else console.log("object already exists")
-
-
-
-
-					// var tempVar = index2+1;
-					// var index = turnArray.findIndex(x => x==tempVar);
-					// if (index === -1){
-					// 	turnArray.push(tempVar);
-					// 	turnArray2.push(heroArray[Math.abs(tempVar)-1]);
-					// }else console.log("object already exists")
 				}else{
 					var index = turnArray2.findIndex(element => element == enemyArray[index2-heroArray.length]);
 					if (index === -1){
 						turnArray2.push(enemyArray[index2-heroArray.length]);
 					}else console.log("object already exists")
-
-					// var tempVar = -(index2+1-heroArray.length);
-					// var index = turnArray.findIndex(x => x==tempVar);
-					// if (index === -1){
-					// 	turnArray.push(tempVar);						
-					// 	turnArray2.push(enemyArray[Math.abs(tempVar)-1]);
-					// }else console.log("object already exists")
 				}
 			}
 		});
 	});
 
-	console.log(turnArray);
+	// console.log(turnArray);
 	console.log(turnArray2);
 	turnArray2.forEach(object=>{
 		console.log(object.name);
