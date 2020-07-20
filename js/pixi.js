@@ -2032,16 +2032,13 @@ function onCreatureDown(){
 
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
-	// console.log(movingCreature.name + " wants to move to: " + displacement.name);
+	console.log(movingCreature.name + " wants to move shift: " + displacement);
 	var moveFrom, moveTo;
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
-			// if(displacement == object)			moveTo = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
-		// console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
-		console.log(moveFrom-moveTo);
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
 		heroArray.forEach((object,objectIndex)=>{
@@ -2072,10 +2069,8 @@ function moveCreature(movingCreature, displacement){
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 		enemyArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
-			// if(displacement == object)			moveTo = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
-		console.log(moveFrom-moveTo);
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
 
 		enemyArray.forEach((object,objectIndex)=>{
