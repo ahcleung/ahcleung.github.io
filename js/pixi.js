@@ -2072,8 +2072,9 @@ function moveCreature(movingCreature, displacement){
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 		enemyArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
-			if(displacement == object)			moveTo = objectIndex;
+			// if(displacement == object)			moveTo = objectIndex;
 		});
+		moveTo = moveFrom - displacement;
 		console.log(moveFrom-moveTo);
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
 
