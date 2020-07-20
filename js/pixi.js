@@ -2060,6 +2060,7 @@ function moveCreature(movingCreature, displacement){
 			if(movingCreature == object)		moveFrom = objectIndex;
 			if(displacement == object)			moveTo = objectIndex;
 		});
+		console.log(moveFrom-moveTo);
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
 
 		enemyArray.forEach((object,objectIndex)=>{
