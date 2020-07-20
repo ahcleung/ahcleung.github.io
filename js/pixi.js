@@ -2803,12 +2803,17 @@ function calculateTurnOrder(){
 					// 	turnArray2.push(heroArray[Math.abs(tempVar)-1]);
 					// }else console.log("object already exists")
 				}else{
-					var tempVar = -(index2+1-heroArray.length);
-					var index = turnArray.findIndex(x => x==tempVar);
+					var index = turnArray2.findIndex(element => element == enemyArray[index2-heroArray.length]);
 					if (index === -1){
-						turnArray.push(tempVar);						
-						turnArray2.push(enemyArray[Math.abs(tempVar)-1]);
+						turnArray2.push(enemyArray[index2-heroArray.length]);
 					}else console.log("object already exists")
+
+					// var tempVar = -(index2+1-heroArray.length);
+					// var index = turnArray.findIndex(x => x==tempVar);
+					// if (index === -1){
+					// 	turnArray.push(tempVar);						
+					// 	turnArray2.push(enemyArray[Math.abs(tempVar)-1]);
+					// }else console.log("object already exists")
 				}
 			}
 		});
