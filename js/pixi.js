@@ -1767,6 +1767,7 @@ function onCreatureDown(){
 			}
 		});
 		console.log(selectedVita2.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		
 
 		var level2 = selectedVita2.level;
 		var accMod2 = selectedVita2.accMod;
@@ -1952,7 +1953,7 @@ function onCreatureDown(){
 
 					if(skillsList.data.skills[selectedSkill].displace[0] != 0){
 
-						moveCreature(targetedVita2, skillsList.data.skills[selectedSkill].displace[0]);
+						moveCreature(validSkillObjectArray[targetedVita2], skillsList.data.skills[selectedSkill].displace[0]);
 						// moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
 					}
 				}else{
