@@ -2001,7 +2001,20 @@ function onCreatureDown(){
 		});
 
 		if(correctTarget2){
-			moveCreature(selectedVita2, targetedVita2);
+			var moveTo, moveFrom, displacement;
+			if(selectedVita2.hero){				
+				heroArray.forEach((object,objectIndex)=>{
+					if(selectedVita2 == object)			moveFrom = objectIndex;
+					if(targetedVita2 == object)			moveTo = objectIndex;
+				});
+			}else{
+				enemyArray.forEach((object,objectIndex)=>{
+					if(selectedVita2 == object)			moveFrom = objectIndex;
+					if(targetedVita2 == object)			moveTo = objectIndex;
+				});
+			}
+			displacement = moveFrom - moveTo;
+			moveCreature(selectedVita2, displacement);
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray2.length != 0){
@@ -2019,14 +2032,15 @@ function onCreatureDown(){
 
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
-	console.log(movingCreature.name + " wants to move to: " + displacement.name);
+	// console.log(movingCreature.name + " wants to move to: " + displacement.name);
 	var moveFrom, moveTo;
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
-			if(displacement == object)			moveTo = objectIndex;
+			// if(displacement == object)			moveTo = objectIndex;
 		});
-		console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
+		moveTo = moveFrom - displacement;
+		// console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
 		console.log(moveFrom-moveTo);
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
