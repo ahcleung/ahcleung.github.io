@@ -244,8 +244,6 @@ const factory = dragonBones.PixiFactory.factory;
 const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
-var heroOrder = [];						//Track hero positioning
-var enemyOrder = [];					//Track enemy positioning
 
 // var heroResizePosition = [];
 // var enemyResizePosition = [];
@@ -254,8 +252,6 @@ var heroHealthXPosition = [];
 
 var turnArray = [];						//Array for turn order
 var turnArray2 = [];					//Array for turn order
-var validSkillTargetArray = [];			//Array of valid skill targets
-var validMoveTargetArray = [];			//Array of vaild move targets
 
 var validSkillObjectArray = [];			//Array of valid skill targets
 var validMoveObjectArray = [];			//Array of vaild move targets
@@ -1330,7 +1326,6 @@ function createSprite(direction, item, index){
 		// actionHero.push(actionArray);
 
 		// heroActionContainerArray.push(creatureAction);
-		heroOrder.push(index);
 // 		moveHeroContainerArray.push(moveContainer);
 		
 		heroSprites.addChild(creatureContainer);
@@ -1344,7 +1339,6 @@ function createSprite(direction, item, index){
 		// actionEnemy.push(actionArray);
 		// actionEnemy.push(spriteReady);
 
-		enemyOrder.push(index);
 // 		moveEnemyContainerArray.push(moveContainer);
 		
 		enemySprites.addChild(creatureContainer);
@@ -1955,6 +1949,12 @@ function onCreatureDown(){
 					var deltaHP2 = 0;
 					dmgArray2.forEach(dmgArray2Num => {deltaHP2 += dmgArray2Num;});
 					console.log("Total damage: " + deltaHP2);
+
+					if(skillsList.data.skills[selectedSkill].displace[0] != 0){
+
+						moveCreature(targetedVita2, skillsList.data.skills[selectedSkill].displace[0]);
+						// moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
+					}
 				}else{
 					console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : MISS");
 					dmgArray2[0] = 0;
@@ -1966,17 +1966,7 @@ function onCreatureDown(){
 
 			//If out of turns, and still have enemies, and still have heroes
 			if(turnArray2.length != 0){
-				// var identifier = [];
-				// if(turnArray[0] > 0){
-				// 	identifier[0] = 1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }else{
-				// 	identifier[0] = -1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }
-				// selectCreature(identifier, turnArray2[0]);
 				selectCreature(turnArray2[0]);
-				// turnArray.shift();
 				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
@@ -1987,73 +1977,7 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 		console.log("1###################################################################################");
-		console.log("2###################################################################################");
-	// }
-	// else if(validMoveTargetArray.length > 0){
-	// 	clickedTarget = this.identifier[1];
-	// 	console.log("Clicked move target index: " + clickedTarget);
-	// 	var correctTarget = false;
-	// 	var targetedVita = 0;
-
-	// 	validMoveTargetArray.forEach((targeted, targetedIndex) => {
-	// 		if(Array.isArray(targeted)){
-	// 			targeted.forEach(arrayElement => {
-	// 				if(arrayElement == clickedTarget){
-	// 					correctTarget = true;
-	// 					targetedVita = targetedIndex;
-	// 				}	
-	// 			});
-	// 		}
-	// 		if(targeted == clickedTarget){
-	// 			correctTarget = true;
-	// 			targetedVita = targetedIndex;
-	// 		}
-	// 	});
-
-	// 	var moveFrom;
-	// 	var moveTo;
-
-	// 	if(selectedVita > 0){
-	// 		heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == validMoveTargetArray[targetedVita])				moveTo = orderIndex
-	// 			if(creatureInitialOrder == selectedVita-1)									moveFrom = orderIndex
-	// 		});
-	// 	}else{
-	// 		enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 			if(creatureInitialOrder == Math.abs(validMoveTargetArray[targetedVita]))	moveTo = orderIndex
-	// 			if(creatureInitialOrder == Math.abs(selectedVita)-1)						moveFrom = orderIndex
-	// 		});
-	// 	}
-
-	// 	var displacement = moveFrom - moveTo;
-
-	// 	if(correctTarget){
-	// 		// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-	// 		// console.log(selectedVita + " moves: " + displacement);
-	// 		moveCreature(selectedVita, displacement);
-	// 		// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
-
-	// 		//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-	// 		if(turnArray.length != 0){
-	// 			var identifier = [];
-	// 			if(turnArray[0] > 0){
-	// 				identifier[0] = 1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}else{
-	// 				identifier[0] = -1;
-	// 				identifier[1] = Math.abs(turnArray[0])-1;
-	// 			}
-	// 			selectCreature(identifier, turnArray2[0]);
-	// 			turnArray.shift();
-	// 			turnArray2.shift();
-	// 		}else{
-	// 			calculateTurnOrder();
-	// 		}
-	// 		selectedSkill = -1;
-	// 	}else{
-	// 		console.log("Invalid move target");
-	// 	}
-	// }	
+		console.log("2###################################################################################");	
 	}
 	else if(validMoveObjectArray.length > 0){
 		// clickedTarget = this.identifier[1];
@@ -2076,44 +2000,12 @@ function onCreatureDown(){
 			}
 		});
 
-		// var moveFrom;
-		// var moveTo;
-
-		// if(this.object.hero){
-		// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-		// 		if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-		// 		if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
-		// 	});
-		// }else{
-		// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-		// 		if(creatureInitialOrder == (targetedVita2.pos-1))								moveTo = orderIndex
-		// 		if(creatureInitialOrder == (this.object.pos-1))								moveFrom = orderIndex
-		// 	});
-		// }
-
-		// var displacement = moveFrom - moveTo;
-
-		// console.log("Displacement: " + displacement + ", movefrom: " + moveFrom + ", moveto: " + moveTo);
-
 		if(correctTarget2){
-			// console.log(selectedVita + " moves to: " + validMoveTargetArray[targetedVita]);		//Hero index moves to targetindex
-			// console.log(selectedVita + " moves: " + displacement);
 			moveCreature(selectedVita2, targetedVita2);
-			// moveCreature(selectedVita, validMoveTargetArray[targetedVita]);
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray2.length != 0){
-				// var identifier = [];
-				// if(turnArray[0] > 0){
-				// 	identifier[0] = 1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }else{
-				// 	identifier[0] = -1;
-				// 	identifier[1] = Math.abs(turnArray[0])-1;
-				// }
-				// selectCreature(identifier, turnArray2[0]);
 				selectCreature(turnArray2[0]);
-				// turnArray.shift();
 				turnArray2.shift();
 			}else{
 				calculateTurnOrder();
@@ -2135,9 +2027,8 @@ function moveCreature(movingCreature, displacement){
 			if(displacement == object)			moveTo = objectIndex;
 		});
 		console.log(movingCreature.name + " at: " + moveFrom + " wants to move to: " + displacement.name + " at: " + moveTo);
+		console.log(moveFrom-moveTo);
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
-
-		// heroArray.forEach((object,objectIndex)=>{	console.log(object.name + "at: " + object.pos + "\n")});
 
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2150,7 +2041,6 @@ function moveCreature(movingCreature, displacement){
 
 			//Hero Creature
 			var newCreatureX, newHPX;
-
 			newCreatureX = -spriteResizeXPosition[object.pos-1];
 
 			//Hero HP and dmg containers
@@ -2183,7 +2073,6 @@ function moveCreature(movingCreature, displacement){
 
 			//Enemy Creature
 			var newCreatureX, newHPX;
-
 			newCreatureX = spriteResizeXPosition[object.pos-1];
 			newHPX = spriteResizeXPosition[object.pos-1];
 
@@ -2193,79 +2082,6 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
-	// if(movingCreature > 0){
-	// 	var moveFrom;
-	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		if(creatureInitialOrder == movingCreature-1)		moveFrom = orderIndex
-	// 	});
-
-	// 	var moveTo = moveFrom - displacement;
-	// 	console.log(moveFrom + " wants to move to: " + moveTo);
-	// 	heroOrder.splice(moveTo, 0, heroOrder.splice(moveFrom,1)[0]);
-
-	// 	heroOrder.forEach((creatureIndex,arrayIndex) => {
-	// 		if(arrayIndex == 0){
-	// 			heroArray[creatureIndex].pos = 1;
-	// 		}else if(heroArray[heroOrder[arrayIndex-1]].size == 2){
-	// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 2;
-	// 		}else{
-	// 			heroArray[creatureIndex].pos = heroArray[heroOrder[arrayIndex-1]].pos + 1;
-	// 		}
-	// 	});
-
-	// 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-	// 		//Hero Creature
-	// 		var newCreatureX;
-	// 		var newHPX;
-
-	// 		newCreatureX = -spriteResizeXPosition[arrayCreature.pos-1];
-
-	// 		//Hero HP and dmg containers
-	// 		var switcher = 0;
-	// 		if(arrayCreature.size > 1)	switcher = 1
-
-	// 		newHPX = heroHealthXPosition[arrayCreature.pos-1+switcher];
-
-	// 		TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
-	// 		TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
-	// 		TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
-	// 		TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
-	// 	});
-	// }else{
-	// 	var moveFrom;
-	// 	//Find index number for moveTo target and moveFrom selected
-	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		if(creatureInitialOrder == Math.abs(movingCreature)-1)		moveFrom = orderIndex
-	// 	});
-
-	// 	var moveTo = moveFrom - displacement;
-	// 	console.log(moveFrom + " wants to move to: " + moveTo);
-	// 	enemyOrder.splice(moveTo, 0, enemyOrder.splice(moveFrom,1)[0]);
-
-	// 	enemyOrder.forEach((creatureIndex,arrayIndex) => {
-	// 		if(arrayIndex == 0){
-	// 			enemyArray[creatureIndex].pos = 1;
-	// 		}else if(enemyArray[enemyOrder[arrayIndex-1]].size == 2){
-	// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 2;
-	// 		}else{
-	// 			enemyArray[creatureIndex].pos = enemyArray[enemyOrder[arrayIndex-1]].pos + 1;
-	// 		}
-	// 	});
-
-	// 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-	// 		//Enemy Creature
-	// 		var newCreatureX;
-	// 		var newHPX;
-
-	// 		newCreatureX = spriteResizeXPosition[arrayCreature.pos-1];
-	// 		newHPX = spriteResizeXPosition[arrayCreature.pos-1];
-
-	// 		TweenMax.to(arrayCreature.sprite, 0.5, {x: newCreatureX});
-	// 		TweenMax.to(arrayCreature.action, 0.5, {x: newCreatureX});
-	// 		TweenMax.to(arrayCreature.healthBar, 0.5, {x: newHPX});
-	// 		TweenMax.to(arrayCreature.dmgContainer, 0.5, {x: newHPX});
-	// 	});
-	// }
 }
 
 function onHPDown(){
@@ -2319,25 +2135,15 @@ function onSkillDown(){
 			displace = true;
 		}
 	});
-	
-	validMoveTargetArray = [];
-	validSkillTargetArray = [];
 	validMoveObjectArray = [];
 	validSkillObjectArray = [];
-	var stageSide = 0;
 	if(column){
-		var columnArray = [];
 		var columnObjectArray = [];
 		//Ahead
 		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
 			var switchSide = false;
 			//Get position to increment from
-			var temp = selectedVita2.pos;
-			// if(this.identifier[2] > 0){
-			// 	var temp = heroArray[this.identifier[3]].pos;
-			// }else{
-			// 	var temp = enemyArray[this.identifier[3]].pos;
-			// }			
+			var temp = selectedVita2.pos;			
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
@@ -2346,43 +2152,24 @@ function onSkillDown(){
 				}else{
 					temp++;
 				}
-				console.log("=================================" + temp);
 				if(selectedVita2.hero){
-				// if(this.identifier[2] > 0){
 					if(!switchSide){
-						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-							if(arrayCreature.pos == temp){
-								stageSide = 1;
-								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
-							}
+						heroArray.forEach(arrayCreature => {
+							if(arrayCreature.pos == temp)		columnObjectArray.push(arrayCreature)
 						});
 					}else{
-						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-							if(arrayCreature.pos == temp){
-								stageSide = -1;
-								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
-							}
+						enemyArray.forEach(arrayCreature => {
+							if(arrayCreature.pos == temp)		columnObjectArray.push(arrayCreature)
 						});
 					}
 				}else{
 					if(!switchSide){
-					// if(temp > 0 && !switchSide){
-						enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-							if(arrayCreature.pos == temp){
-								stageSide = -1;
-								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
-							}
+						enemyArray.forEach(arrayCreature => {
+							if(arrayCreature.pos == temp)		columnObjectArray.push(arrayCreature)
 						});
 					}else{
-						heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-							if(arrayCreature.pos == temp){
-								stageSide = 1;
-								columnArray.push((arrayCreatureIndex+1)*stageSide);
-								columnObjectArray.push(arrayCreature);
-							}
+						heroArray.forEach(arrayCreature => {
+							if(arrayCreature.pos == temp)		columnObjectArray.push(arrayCreature)
 						});
 					}
 				}
@@ -2391,38 +2178,22 @@ function onSkillDown(){
 		//Behind
 		else{
 			//Get position to increment from
-			// if(this.identifier[2] > 0){
-			// 	var temp = heroArray[this.identifier[3]].pos + heroArray[this.identifier[3]].size - 1;
-			// }else{
-			// 	var temp = enemyArray[this.identifier[3]].pos + enemyArray[this.identifier[3]].size - 1;
-			// }
-
 			var temp = selectedVita2.pos + selectedVita2.size - 1;
 
 			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
 				temp++;
 				console.log("=================================" + temp);
 				if(selectedVita2.hero){
-				// if(this.identifier[2] > 0){
-					heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-						if(arrayCreature.pos == temp){
-							stageSide = 1;
-							columnArray.push((arrayCreatureIndex+1)*stageSide);
-							columnObjectArray.push(arrayCreature);
-						}
+					heroArray.forEach(arrayCreature => {
+						if(arrayCreature.pos == temp)			columnObjectArray.push(arrayCreature)
 					});
 				}else{
-					enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-						if(arrayCreature.pos == temp){
-							stageSide = -1;
-							columnArray.push((arrayCreatureIndex+1)*stageSide);
-							columnObjectArray.push(arrayCreature);
-						}
+					enemyArray.forEach(arrayCreature => {
+						if(arrayCreature.pos == temp)			columnObjectArray.push(arrayCreature)
 					});
 				}
 			}			
 		}
-		validSkillTargetArray.push(columnArray);
 		validSkillObjectArray.push(columnObjectArray);
 	}
 
@@ -2433,34 +2204,29 @@ function onSkillDown(){
 			var posTracker = skillTargetIndex + 1;
 			//if targeting enemies or heroes
 			if(selectedVita2.hero){
-			// if(this.identifier[2] > 0){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
-						if(posTracker == arrayCreature.pos){			
-							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
+						if(posTracker == arrayCreature.pos){
 							validSkillObjectArray.push([arrayCreature]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							validSkillTargetArray.push([(arrayCreatureIndex+1)*-1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
 					}				
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(posTracker == arrayCreature.pos){
-							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
-							validSkillTargetArray.push([arrayCreatureIndex+1]);
 							validSkillObjectArray.push([arrayCreature]);
 						}
 					}			
@@ -2480,309 +2246,260 @@ function onSkillDown(){
 	//[110]
 	//[111]
 	if(several){
-		var array1 = [];
 		var array11 = [];
 		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
 		if(joinedSeveral == "0,0,1"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}	
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}	
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}	
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "0,1,0"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}	
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}	
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}	
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}	
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,0,0"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}	
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}	
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,1,0"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "0,1,1"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,1,1"){
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}
 				});
 			}
-			validSkillTargetArray = [];
-			validSkillTargetArray = [array1];
 			validSkillObjectArray = [];
 			validSkillObjectArray = [array11];
 		}else if(joinedSeveral == "1,0,1"){
-			var array2 = [];
 			var array22 = [];
 			if(selectedVita2.hero){
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push((arrayCreatureIndex+1)*-1);
 							array11.push(arrayCreature);
 						}
 					}
 				});
-				enemyArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				enemyArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array2.push((arrayCreatureIndex+1)*-1);
 							array22.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array2.push((arrayCreatureIndex+1)*-1);
 							array22.push(arrayCreature);
 						}
 					}
 				});
 			}else{
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array1.push((arrayCreatureIndex+1));
 							array11.push(arrayCreature);
 						}
 					}
 				});
-				heroArray.forEach((arrayCreature, arrayCreatureIndex) => {
+				heroArray.forEach(arrayCreature => {
 					if(arrayCreature.size == 1){
 						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array2.push((arrayCreatureIndex+1));
 							array22.push(arrayCreature);
 						}
 					}else if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array2.push((arrayCreatureIndex+1));
 							array22.push(arrayCreature);
 						}
 					}
 				});
 			}
-			// validSkillTargetArray = [];
-			validSkillTargetArray = [array1, array2];
 			validSkillObjectArray = [array11, array22];
 		}
 	}
-	console.log("validSkillTargetArray: " + validSkillTargetArray);
 	console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 	validSkillObjectArray.forEach(object=>{
@@ -2909,9 +2626,7 @@ function onAdditionalCancelDown(){
 function onAdditionalMoveDown(){
 	// console.log("Additional Move " + selectedVita);
 	console.log("Additional Move " + selectedVita2.name);
-	validMoveTargetArray = [];
 	validMoveObjectArray = [];
-	validSkillTargetArray = [];
 	validSkillObjectArray = [];
 	selectedSkill = -1
 	interfaceAdditional.visible = false;
@@ -2928,7 +2643,6 @@ function onAdditionalMoveDown(){
 		skillContainer.selected.visible = false;
 	});
 
-	// var currIndex2 = selectedVita2.pos;
 	var moveDelta2 = selectedVita2.move[1];
 	var forward2= false;
 	var backward2 = false;
@@ -2992,72 +2706,6 @@ function onAdditionalMoveDown(){
 	validMoveObjectArray.forEach(object=>{
 		console.log("validMoveObjectArray: " + object.name);
 	});
-
-
-	// if(selectedVita > 0){
-	// 	var currIndex = Math.abs(selectedVita)-1;
-	// 	var moveDelta = heroArray[Math.abs(selectedVita)-1].move[1];
-	// 	var forward = false;
-	// 	var backward = false;
-	// 	if(heroArray[Math.abs(selectedVita)-1].move[0] == "+"){
-	// 		forward = true;
-	// 	}else if(heroArray[Math.abs(selectedVita)-1].move[0] == "-"){
-	// 		backward = true;
-	// 	}else{
-	// 		forward = true;
-	// 		backward = true;
-	// 	}
-
-	// 	var tempIndex;
-	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
-	// 	});
-
-	// 	heroOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		for(var i = 0; i < moveDelta; i++){
-	// 			if(orderIndex == tempIndex+1+i && backward){
-	// 				heroArray[creatureInitialOrder].healthBar.move.visible = true;
-	// 				validMoveTargetArray.push(creatureInitialOrder);
-	// 			}else if(orderIndex == tempIndex-1-i && forward){
-	// 				heroArray[creatureInitialOrder].healthBar.move.visible = true;
-	// 				validMoveTargetArray.push(creatureInitialOrder);
-	// 			}
-	// 		}
-	// 	});
-	// }else{
-	// 	var currIndex = Math.abs(selectedVita)-1;
-	// 	var moveDelta = enemyArray[Math.abs(selectedVita)-1].move[1];
-	// 	var forward = false;
-	// 	var backward = false;
-	// 	if(enemyArray[Math.abs(selectedVita)-1].move[0] == "+"){
-	// 		forward = true;
-	// 	}else if(enemyArray[Math.abs(selectedVita)-1].move[0] == "-"){
-	// 		backward = true;
-	// 	}else{
-	// 		forward = true;
-	// 		backward = true;
-	// 	}
-
-	// 	var tempIndex;
-	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		if(creatureInitialOrder == currIndex)	tempIndex = orderIndex;
-	// 	});
-
-	// 	enemyOrder.forEach((creatureInitialOrder, orderIndex) => {
-	// 		for(var i = 0; i < moveDelta; i++){
-	// 			if(orderIndex == tempIndex+1+i && backward){
-	// 				enemyArray[creatureInitialOrder].healthBar.move.visible = true;
-	// 				validMoveTargetArray.push(creatureInitialOrder);
-	// 			}else if(orderIndex == tempIndex-1-i && forward){
-	// 				enemyArray[creatureInitialOrder].healthBar.move.visible = true;
-	// 				validMoveTargetArray.push(creatureInitialOrder);
-	// 			}
-	// 		}
-	// 	});
-	// }
-	// console.log("validMoveTargetArray: " + validMoveTargetArray);
-
-
 }
 
 function onAdditionalItemDown(){
@@ -3069,17 +2717,7 @@ function onAdditionalItemDown(){
 function onAdditionalSkipDown(){
 	console.log("Additional Skip");
 	if(turnArray2.length != 0){
-		// var identifier = [];
-		// if(turnArray[0] > 0){
-		// 	identifier[0] = 1;
-		// 	identifier[1] = Math.abs(turnArray[0])-1;
-		// }else{
-		// 	identifier[0] = -1;
-		// 	identifier[1] = Math.abs(turnArray[0])-1;
-		// }
-		// selectCreature(identifier, turnArray2[0]);
 		selectCreature(turnArray2[0]);
-		// turnArray.shift();
 		turnArray2.shift();
 	}else{
 		calculateTurnOrder();
@@ -3163,36 +2801,12 @@ function calculateTurnOrder(){
 		console.log(object.name);
 	});
 
-	// var identifier = [];
-	// if(turnArray[0] > 0){
-	// 	identifier[0] = 1;
-	// 	identifier[1] = Math.abs(turnArray[0])-1;
-	// 	// console.log(heroSpriteArray[Math.abs(turnArray[0]-1)].identifier);
-	// }else{
-	// 	identifier[0] = -1;
-	// 	identifier[1] = Math.abs(turnArray[0])-1;
-	// 	// console.log(enemySpriteArray[Math.abs(turnArray[0]-1)].identifier);
-	// }
-	// console.log(identifier);
 	selectCreature(turnArray2[0]);
-	// turnArray.shift();
 	turnArray2.shift();
 }
 
 function selectCreature(object2){	
-	// console.log("Creature speed:" + heroArray[identifier[1]].statMod[6]);
-
-	// if(identifier[0] > 0){
-	// 	heroArray[identifier[1]].healthBar.turn.visible = false;
-	// }else{
-	// 	enemyArray[identifier[1]].healthBar.turn.visible = false;
-	// }	
-
-	//Direction x Index+1
-	// selectedVita = identifier[0] * (identifier[1]+1);
 	selectedVita2 = object2;
-	console.log("///////////////////////////////////////////////");
-	// console.log("Turn: " + selectedVita);
 	console.log("Turn: " + selectedVita2.name);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
@@ -3234,36 +2848,7 @@ function selectCreature(object2){
 	}else if(object2.size == 2){
 		currPos.push(object2.pos);
 		currPos.push(object2.pos+1);
-	}
-
-	
-	// if(identifier[0] < 0){
-		// enemyArray[identifier[1]].healthBar.select.visible = true;
-		// enemyArray[identifier[1]].healthBar.select.animate = true;
-		// enemyArray[identifier[1]].skills.forEach(skillID => {
-		// 	newSkills.push(skillID);
-		// });
-		// if(enemyArray[identifier[1]].size == 1){
-		// 	currPos.push(enemyArray[identifier[1]].pos);
-		// }else if(enemyArray[identifier[1]].size == 2){
-		// 	currPos.push(enemyArray[identifier[1]].pos);
-		// 	currPos.push(enemyArray[identifier[1]].pos+1);
-		// }
-	// }else{
-		// heroArray[identifier[1]].healthBar.select.visible = true;
-		// heroArray[identifier[1]].healthBar.select.animate = true;
-		// heroArray[identifier[1]].skills.forEach(skillID => {
-		// 	newSkills.push(skillID);
-		// });
-	// 	if(heroArray[identifier[1]].size == 1){
-	// 		currPos.push(heroArray[identifier[1]].pos);
-	// 	}else if(heroArray[identifier[1]].size == 2){
-	// 		currPos.push(heroArray[identifier[1]].pos);
-	// 		currPos.push(heroArray[identifier[1]].pos+1);
-	// 	}
-	// }
-
-	
+	}	
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		switch(skillsList.data.skills[skillID].element){
