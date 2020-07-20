@@ -1952,9 +1952,7 @@ function onCreatureDown(){
 					console.log("Total damage: " + deltaHP2);
 
 					if(skillsList.data.skills[selectedSkill].displace[0] != 0){
-
 						moveCreature(targeted, skillsList.data.skills[selectedSkill].displace[0]);
-						// moveCreature(validSkillTargetArray[targetedVita], skillsList.data.skills[selectedSkill].displace[0]);
 					}
 				}else{
 					console.log("Hit chance2: " + hitChance2 + " Hit roll2: " + hitRoll2 + " : MISS");
@@ -2789,12 +2787,21 @@ function calculateTurnOrder(){
 		arrayCalcSpeedPositions.forEach((speedNum2,index2) => {
 			if(speedNum == speedNum2){
 				if(index2 < heroArray.length){
-					var tempVar = index2+1;
-					var index = turnArray.findIndex(x => x==tempVar);
+					// var tempObj = heroArray[index2];
+					var index = turnArray2.findIndex(element => element == heroArray[index2]);
 					if (index === -1){
-						turnArray.push(tempVar);
-						turnArray2.push(heroArray[Math.abs(tempVar)-1]);
+						turnArray2.push(heroArray[index2]);
 					}else console.log("object already exists")
+
+
+
+
+					// var tempVar = index2+1;
+					// var index = turnArray.findIndex(x => x==tempVar);
+					// if (index === -1){
+					// 	turnArray.push(tempVar);
+					// 	turnArray2.push(heroArray[Math.abs(tempVar)-1]);
+					// }else console.log("object already exists")
 				}else{
 					var tempVar = -(index2+1-heroArray.length);
 					var index = turnArray.findIndex(x => x==tempVar);
