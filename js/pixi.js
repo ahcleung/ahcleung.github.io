@@ -1510,13 +1510,13 @@ function resize() {
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
-	enemyHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
+	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 
 	heroHazard.forEach((hazard, index)=>{
 		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
 	});
 	enemyHazard.forEach((hazard, index)=>{
-		hazard.x = spriteResizeXPosition[index] + (spriteResizeXPosition[1]/2);
+		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
 	});
 
 	heroArray.forEach(function (item, index){
