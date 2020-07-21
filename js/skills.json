@@ -221,7 +221,7 @@
 				0,0,1,1
 			],
 			"tags":[
-				"status", "statchange", "turns"
+				"statchange", "turns"
 			],
 			"multiple": [0,0],
 			"status": 0,
@@ -247,7 +247,7 @@
 				1,1,0,0
 			],
 			"tags":[
-				"multiple", "status", "statchange", "turns"
+				"multiple", "statchange", "turns"
 			],
 			"multiple": [2,0],
 			"status": 0,
