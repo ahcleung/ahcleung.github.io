@@ -1808,7 +1808,7 @@ function onCreatureDown(){
 				var tagMultiple = false;
 				var tagStatus = false;
 				var tagStatChange = false;
-				var statTarget = 0;
+				var statTarget = targeted;
 				var statusNum = [];
 				var critTracker = [0,0,0,0,0];
 				var skillCrit = false;
@@ -1867,8 +1867,6 @@ function onCreatureDown(){
 					if(tagStatChange){
 						if(skillsList.data.skills[selectedSkill].statchange[0]){
 							statTarget = selectedVita;
-						}else{
-							statTarget = targeted;
 						}
 
 						if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
