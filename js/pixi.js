@@ -361,14 +361,14 @@ function setup(){
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
 	
-	heroSprites.x = app.screen.width/2;
-	heroSprites.y = app.screen.height/2;
+	// heroSprites.x = app.screen.width/2;
+	// heroSprites.y = app.screen.height/2;
 
-	heroHazardContainer.x = app.screen.width/2;
-	heroHazardContainer.y = app.screen.height/2;
+	// heroHazardContainer.x = app.screen.width/2;
+	// heroHazardContainer.y = app.screen.height/2;
 	
-	enemySprites.x = app.screen.width/2;
-	enemySprites.y = app.screen.height/2;
+	// enemySprites.x = app.screen.width/2;
+	// enemySprites.y = app.screen.height/2;
 
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
@@ -1505,8 +1505,10 @@ function resize() {
 		skillContainer.targetText.y = skillContainer.rect.height*3/4;
 	});
 	
+
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
+	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
