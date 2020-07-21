@@ -508,7 +508,7 @@ function setup(){
 		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
 		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-		fume.animation.gotoAndPlayByFrame('idle', 0);
+		fume.animation.gotoAndPlayByFrame('fume2', 0);
 		fume.y = 100*i;
 		heroHazard.push(fume);
 		hazardContainer.addChild(fume);
