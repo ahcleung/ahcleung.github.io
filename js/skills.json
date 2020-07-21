@@ -53,7 +53,7 @@
 			"heal": 15
 		},
 		{
-			"name": "Fire wall",
+			"name": "Torch ground",
 			"element": 2,
 			"type": "spe",
 			"power": 20,
