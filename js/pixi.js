@@ -509,7 +509,7 @@ function setup(){
 
 		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
 		fume.animation.gotoAndPlayByFrame('fume2', 0);
-		fume.y = 100*i;
+		fume.x = 100*i;
 		heroHazard.push(fume);
 		hazardContainer.addChild(fume);
 	}
@@ -1430,6 +1430,10 @@ function resize() {
 	heroHealthXPosition[1] = (resizeWidth + healthSpacing) * 2;
 	heroHealthXPosition[2] = resizeWidth + healthSpacing;
 	heroHealthXPosition[3] = 0;
+
+	heroHazard.forEach((hazard, index)=>{
+		hazard.x = spriteResizeXPosition[index];
+	});
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
