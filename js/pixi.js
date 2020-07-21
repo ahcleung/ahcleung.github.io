@@ -1876,6 +1876,7 @@ function onCreatureDown(){
 						}else{
 							statusNum.push(4);
 						}
+						console.log(statTarget.name + " stat updated with: " + statusNum);
 					}
 
 					//Calculate heal amount or damage amount
