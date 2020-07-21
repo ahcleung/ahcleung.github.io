@@ -3136,10 +3136,10 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		dmgNumArrayItem.visible = false;
 	});
 
-	skillStatusTarget.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+	object.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
 		dmgStatusImageItem.visible = false;
 	});
-	skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 		dmgStatusTextItem.visible = false;
 	});
 
