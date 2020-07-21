@@ -143,6 +143,10 @@ loader
 		{name:'element_toxic', url:'img/element_toxic.png'},
 		{name:'element_spirit', url:'img/element_spirit.png'},
 		{name:'element_shadow', url:'img/element_shadow.png'},
+
+		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
+		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
+		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -240,6 +244,11 @@ const factory = dragonBones.PixiFactory.factory;
 const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
+
+const heroHazard = [];
+const enemyHazard = [];
+
+const hazardContainer = new PIXI.Container();
 
 var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
@@ -489,6 +498,23 @@ function setup(){
 
 	interfaceHolder.addChild(interfaceHeroHealth);
 	interfaceHolder.addChild(interfaceEnemyHealth);
+
+	for(var i = 0; i < 4; i++){
+		// {name:'fume2_skeleton', url:'img/fume2_ske.json'},
+		// {name:'fume2_texture_json', url:'img/fume2_tex.json'},
+		// {name:'fume2_texture_png', url:'img/fume2_tex.png'},
+
+		factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+
+		const fume = factory.buildArmatureDisplay(fume2, fume2);
+		fume.animation.gotoAndPlayByFrame('idle', 0);
+		fume.y = 100*i;
+		heroHazard.push(fume);
+		hazardContainer.addChild(fume);
+	}
+
+	spriteHolder.addChild(hazardContainer);
 
 	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
