@@ -1811,10 +1811,8 @@ function onCreatureDown(){
 				var statusNum = [];
 				var critTracker = [0,0,0,0,0];
 				var ifCrit = false;
-				var totalCritDmg = 0;
 				var critMultiplier = 1;
 				var ifHeal = false;
-				var dmgCalc = 0;
 
 				var dodge = targeted.dodge;
 				var dodgeMod = targeted.dodgeMod;
@@ -1846,7 +1844,8 @@ function onCreatureDown(){
 					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
 					//Get defenders elements to calculate effectiveness
 					defendElements.forEach(defendElement=>{
-						effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+						// effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+						effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
 					});
 
 					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
@@ -1888,7 +1887,7 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						// other = true;
 					}else{						
-						dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						var dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
 						for(var i = 0; i < multiHitNum; i++){
 							var criticalChance = Math.floor(Math.random() * 10000);
 							var critMultiplier = 1;
@@ -1904,9 +1903,11 @@ function onCreatureDown(){
 					}
 
 					if(ifCrit){
+						var totalCritDmg = 0;
 						statusNum.push(14);
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
+							// if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
+							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
 						});
 						console.log("Critical damage2: " + Math.floor(totalCritDmg));
 					}
