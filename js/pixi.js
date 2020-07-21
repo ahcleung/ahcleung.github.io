@@ -1941,7 +1941,7 @@ function onCreatureDown(){
 					effectiveness = 0;
 				}
 
-				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, ,attackerStatus, defenderStatus, tagStatus, statTarget);
+				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget);
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
