@@ -1505,15 +1505,17 @@ function resize() {
 		skillContainer.targetText.y = skillContainer.rect.height*3/4;
 	});
 	
-
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 
+	heroHazard.forEach((hazard, index)=>{
+		hazard.x = spriteResizeXPosition[index];
+	});
+
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
-		resizeSprite(1, heroHazard[index], index);
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
