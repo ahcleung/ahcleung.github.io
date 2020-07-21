@@ -507,7 +507,7 @@ function setup(){
 		factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-		const fume = factory.buildArmatureDisplay(fume2, fume2);
+		const fume = factory.buildArmatureDisplay(fume2, Fume2);
 		fume.animation.gotoAndPlayByFrame('idle', 0);
 		fume.y = 100*i;
 		heroHazard.push(fume);
