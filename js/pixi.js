@@ -513,12 +513,12 @@ function setup(){
 
 		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
 		fume.animation.gotoAndPlayByFrame('fume2', 0);
-		fume.x = 100*i;
+		// fume.x = 100*i;
 		heroHazard.push(fume);
 		heroHazardContainer.addChild(fume);
 	}
 
-	spriteHolder.addChild(hazardContainer);
+	spriteHolder.addChild(heroHazardContainer);
 
 	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
