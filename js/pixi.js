@@ -248,7 +248,8 @@ const additionalArray = [];				//Array of additional menu buttons
 const heroHazard = [];
 const enemyHazard = [];
 
-const hazardContainer = new PIXI.Container();
+const heroHazardContainer = new PIXI.Container();
+const enemyHazardContainer = new PIXI.Container();
 
 var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
@@ -362,6 +363,9 @@ function setup(){
 	
 	heroSprites.x = app.screen.width/2;
 	heroSprites.y = app.screen.height/2;
+
+	heroHazardContainer.x = app.screen.width/2;
+	heroHazardContainer.y = app.screen.height/2;
 	
 	enemySprites.x = app.screen.width/2;
 	enemySprites.y = app.screen.height/2;
@@ -511,7 +515,7 @@ function setup(){
 		fume.animation.gotoAndPlayByFrame('fume2', 0);
 		fume.x = 100*i;
 		heroHazard.push(fume);
-		hazardContainer.addChild(fume);
+		heroHazardContainer.addChild(fume);
 	}
 
 	spriteHolder.addChild(hazardContainer);
@@ -1431,9 +1435,9 @@ function resize() {
 	heroHealthXPosition[2] = resizeWidth + healthSpacing;
 	heroHealthXPosition[3] = 0;
 
-	heroHazard.forEach((hazard, index)=>{
-		hazard.x = spriteResizeXPosition[index];
-	});
+	// heroHazard.forEach((hazard, index)=>{
+	// 	hazard.x = spriteResizeXPosition[index];
+	// });
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
@@ -1507,6 +1511,7 @@ function resize() {
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
+		resizeSprite(1, heroHazard[index], index);
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
