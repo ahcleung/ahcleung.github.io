@@ -1865,6 +1865,7 @@ function onCreatureDown(){
 					}
 
 					if(tagStatChange){
+						tagStatus = true;
 						if(skillsList.data.skills[selectedSkill].statchange[0]){
 							statTarget = selectedVita;
 						}
@@ -1913,7 +1914,7 @@ function onCreatureDown(){
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
 						});
-						console.log("Critical damage2: " + Math.floor(totalCritDmg));
+						console.log("Critical damage: " + Math.floor(totalCritDmg));
 					}
 
 					var deltaHP = 0;
