@@ -1808,6 +1808,7 @@ function onCreatureDown(){
 				var tagMultiple = false;
 				var tagStatus = false;
 				var tagStatChange = false;
+				var statTarget = 0;
 				var statusNum = [];
 				var critTracker = [0,0,0,0,0];
 				var skillCrit = false;
@@ -1864,11 +1865,17 @@ function onCreatureDown(){
 					}
 
 					if(tagStatChange){
-						// if(skillsList.data.skills[selectedSkill].statchange[1] > 0){
-						// 	statusNum.push(2);
-						// }else{
-						// 	statusNum.push(4);
-						// }
+						if(skillsList.data.skills[selectedSkill].statchange[0]){
+							statTarget = selectedVita;
+						}else{
+							statTarget = targeted;
+						}
+
+						if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
+							statusNum.push(2);
+						}else{
+							statusNum.push(4);
+						}
 					}
 
 					//Calculate heal amount or damage amount
@@ -1923,7 +1930,7 @@ function onCreatureDown(){
 					effectiveness = 0;
 				}
 
-				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, statusNum, tagStatus);
+				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, statusNum, tagStatus, statTarget);
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
@@ -2571,6 +2578,12 @@ function animateBattle(attacker, defender){
 		});
 		attacker.action.x = originalX;
 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+		attacker.dmgContainer.dmgStatus.tween.play(0);
+		attacker.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+			attacker.statusSpriteArray.forEach(statusSprite => {
+				statusSprite.visible = true;
+			});
+		});
 	});
 
 	// actionHero[0].pAtkTween.play(0);
@@ -3103,7 +3116,7 @@ function resizeStatus(item){
 }
 
 
-function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus){
+function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, statusNumArray, skillStatus, skillStatusTarget){
 	var totalDmgCalc = 0;
 	dmgArray.forEach(dmg => {
 		totalDmgCalc += dmg;
@@ -3224,16 +3237,16 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 
 	if(skillStatus){
 		statusNumArray.forEach((statusNumber, statusNumberIndex)=>{
-			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 			let newStatusEffect = statusEffectSprite(statusNumber);
 			updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
 			newStatusEffect.visible = false;
-			object.healthBar.addChild(newStatusEffect);
-			object.statusSpriteArray.push(newStatusEffect);
-			object.statusArray.push(statusNumber);
+			skillStatusTarget.healthBar.addChild(newStatusEffect);
+			skillStatusTarget.statusSpriteArray.push(newStatusEffect);
+			skillStatusTarget.statusArray.push(statusNumber);
 		});
-		resizeStatus(object);
+		resizeStatus(skillStatusTarget);
 	}
 
 	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
