@@ -1810,9 +1810,9 @@ function onCreatureDown(){
 				var tagStatChange = false;
 				var statusNum = [];
 				var critTracker = [0,0,0,0,0];
-				var ifCrit = false;
+				var skillCrit = false;
 				var critMultiplier = 1;
-				var ifHeal = false;
+				var skillHeal = false;
 
 				var dodge = targeted.dodge;
 				var dodgeMod = targeted.dodgeMod;
@@ -1844,7 +1844,6 @@ function onCreatureDown(){
 					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
 					//Get defenders elements to calculate effectiveness
 					defendElements.forEach(defendElement=>{
-						// effectiveness = effectiveness * elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
 						effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
 					});
 
@@ -1881,7 +1880,7 @@ function onCreatureDown(){
 							dmgArray.push(skillsList.data.skills[selectedSkill].heal);
 						}
 						
-						ifHeal = true;
+						skillHeal = true;
 						effectiveness = 1;
 						critMultiplier = 1;
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
@@ -1893,7 +1892,7 @@ function onCreatureDown(){
 							var critMultiplier = 1;
 							if(criticalChance > 5000){
 								critMultiplier = 1.5;
-								ifCrit = true;
+								skillCrit = true;
 								critTracker[i] = 1;
 							}
 							var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
@@ -1902,11 +1901,10 @@ function onCreatureDown(){
 						}
 					}
 
-					if(ifCrit){
+					if(skillCrit){
 						var totalCritDmg = 0;
 						statusNum.push(14);
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							// if(critTracker[dmgArrayIndex] == 1)		totalCritDmg = totalCritDmg + (dmgArrayNum/3)
 							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
 						});
 						console.log("Critical damage2: " + Math.floor(totalCritDmg));
@@ -1925,7 +1923,7 @@ function onCreatureDown(){
 					effectiveness = 0;
 				}
 
-				updateDamage(targeted, effectiveness, ifCrit, critTracker, dmgArray, ifHeal, statusNum, tagStatus);
+				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, statusNum, tagStatus);
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
@@ -2058,12 +2056,11 @@ function moveCreature(movingCreature, displacement){
 }
 
 function onHPDown(){
-	console.log("HP:" + this.object.pos);
-	console.log("If hero:" + this.object.hero);
+	// console.log("HP:" + this.object.pos);
+	console.log("Name: " + this.object.name + "Stats: " + this.object.statMod);
 }
 
 function onSkillDown(){
-
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.target.visible = false;
 		enemyObject.healthBar.heal.visible = false;
@@ -2475,8 +2472,8 @@ function onSkillDown(){
 	}
 	console.log("validSkillObjectArray: " + validSkillObjectArray);
 
-	validSkillObjectArray.forEach(object=>{
-		object.forEach(object2=>{
+	validSkillObjectArray.forEach(object1=>{
+		object1.forEach(object2=>{
 			console.log("object2 column: " + object2.name);
 			if(heal){
 				object2.healthBar.heal.visible = true;
@@ -2612,16 +2609,16 @@ function onAdditionalMoveDown(){
 		skillContainer.selected.visible = false;
 	});
 
-	var moveDelta2 = selectedVita.move[1];
-	var forward2= false;
-	var backward2 = false;
+	var moveDelta = selectedVita.move[1];
+	var forward= false;
+	var backward = false;
 	if(selectedVita.move[0] == "+"){
-		forward2 = true;
+		forward = true;
 	}else if(selectedVita.move[0] == "-"){
-		backward2 = true;
+		backward = true;
 	}else{
-		forward2 = true;
-		backward2 = true;
+		forward = true;
+		backward = true;
 	}
 
 	if(selectedVita.hero){
@@ -2634,12 +2631,12 @@ function onAdditionalMoveDown(){
 				}else{
 					positionCheck.push(object.pos);
 				}
-				for(var i = 1; i <= moveDelta2; i++){
+				for(var i = 1; i <= moveDelta; i++){
 					positionCheck.forEach(position=>{
-						if(position == selectedVita.pos-i && forward2){
+						if(position == selectedVita.pos-i && forward){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
-						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward2){
+						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
 						}
@@ -2657,12 +2654,12 @@ function onAdditionalMoveDown(){
 				}else{
 					positionCheck.push(object.pos);
 				}
-				for(var i = 1; i <= moveDelta2; i++){
+				for(var i = 1; i <= moveDelta; i++){
 					positionCheck.forEach(position=>{
-						if(position == selectedVita.pos-i && forward2){
+						if(position == selectedVita.pos-i && forward){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
-						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward2){
+						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
 							object.healthBar.move.visible = true;
 							validMoveObjectArray.push(object);
 						}
