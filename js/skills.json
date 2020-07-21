@@ -230,7 +230,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [true, "spd", 1],
+			"statchange" : [true, 6, 1],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -256,7 +256,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [false,"spd", -1],
+			"statchange" : [false,6, -1],
 			"several":[0,0,0],
 			"heal": 0
 		},
