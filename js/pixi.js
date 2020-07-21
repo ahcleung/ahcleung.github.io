@@ -1866,11 +1866,14 @@ function onCreatureDown(){
 						// hitNum = 5;
 					}
 
+					//[hp, dodge, patk, pdef, satk, sdef, spd, acc]
 					if(tagStatChange){
 						tagStatus = true;
 						if(skillsList.data.skills[selectedSkill].statchange[0]){
 							statTarget = selectedVita;
 						}
+
+						statTarget.statMod[skillsList.data.skills[selectedSkill].statchange[1]] += skillsList.data.skills[selectedSkill].statchange[2];
 
 						if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
 							statusNum.push(2);
