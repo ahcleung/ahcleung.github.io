@@ -22,7 +22,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -48,7 +48,7 @@
 			"splash": 0.5,
 			"displace": [0],
 			"column": [2,2,-1,1],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 15
 		},
@@ -74,7 +74,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -100,7 +100,7 @@
 			"splash": 0,
 			"displace": [1],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -126,7 +126,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [3,0.5,1,-1],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -152,7 +152,7 @@
 			"splash": 0,
 			"displace": [-2],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -178,7 +178,7 @@
 			"splash": 0,
 			"displace": [1],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -204,7 +204,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [0, 0],
+			"statchange" : [false, 0, 0],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -230,7 +230,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : ["spd", 1],
+			"statchange" : [true, "spd", 1],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -256,7 +256,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : ["spd", -1],
+			"statchange" : [false,"spd", -1],
 			"several":[0,0,0],
 			"heal": 0
 		},
@@ -282,7 +282,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [0,0],
+			"statchange" : [false,0,0],
 			"several":[1,0,1],
 			"heal": 0
 		},
@@ -308,7 +308,7 @@
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [0,0],
+			"statchange" : [false,0,0],
 			"several":[0,0,1],
 			"heal": 0
 		}
