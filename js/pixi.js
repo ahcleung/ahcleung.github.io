@@ -3240,7 +3240,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
 			let newStatusEffect = statusEffectSprite(statusNumber);
-			updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
+			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber, statusNumberIndex);
 			newStatusEffect.visible = false;
 			skillStatusTarget.healthBar.addChild(newStatusEffect);
 			skillStatusTarget.statusSpriteArray.push(newStatusEffect);
