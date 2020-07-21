@@ -3141,6 +3141,12 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 		dmgStatusTextItem.visible = false;
 	});
+	skillStatusTarget.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+		dmgStatusImageItem.visible = false;
+	});
+	skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+		dmgStatusTextItem.visible = false;
+	});
 
 	if(effective == 0.25){
 		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
