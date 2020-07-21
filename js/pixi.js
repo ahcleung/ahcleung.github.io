@@ -1087,7 +1087,7 @@ function createSprite(direction, item, index){
 		let statusImage = new PIXI.Sprite(resources.status_critical.texture);
 		statusImage.anchor.set(0.5,0.5);
 		statusImage.scale.set(0.4);
-		statusText.visible = false;
+		statusImage.visible = false;
 		dmgStatus.addChild(statusImage);
 		statusImageArray.push(statusImage);
 	}
