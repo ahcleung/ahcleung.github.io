@@ -503,22 +503,24 @@ function setup(){
 	interfaceHolder.addChild(interfaceHeroHealth);
 	interfaceHolder.addChild(interfaceEnemyHealth);
 
-	for(var i = 0; i < 4; i++){
-		// {name:'fume2_skeleton', url:'img/fume2_ske.json'},
-		// {name:'fume2_texture_json', url:'img/fume2_tex.json'},
-		// {name:'fume2_texture_png', url:'img/fume2_tex.png'},
-
+	for(var i = 0; i < 8; i++){
 		factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
 		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
 		fume.animation.gotoAndPlayByFrame('fume2', 0);
 		// fume.x = 100*i;
-		heroHazard.push(fume);
-		heroHazardContainer.addChild(fume);
+		if(i<4){
+			heroHazard.push(fume);
+			heroHazardContainer.addChild(fume);
+		}else{
+			enemyHazard.push(fume);
+			enemyHazardContainer.addChild(fume);
+		}
 	}
 
 	spriteHolder.addChild(heroHazardContainer);
+	spriteHolder.addChild(enemyHazardContainer);
 
 	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
@@ -1508,9 +1510,13 @@ function resize() {
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
+	enemyHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 
 	heroHazard.forEach((hazard, index)=>{
 		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+	});
+	enemyHazard.forEach((hazard, index)=>{
+		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
 	});
 
 	heroArray.forEach(function (item, index){
