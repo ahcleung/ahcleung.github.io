@@ -1516,7 +1516,7 @@ function resize() {
 		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
 	});
 	enemyHazard.forEach((hazard, index)=>{
-		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
+		hazard.x = spriteResizeXPosition[index] + (spriteResizeXPosition[1]/2);
 	});
 
 	heroArray.forEach(function (item, index){
