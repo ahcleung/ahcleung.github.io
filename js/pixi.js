@@ -1510,7 +1510,7 @@ function resize() {
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 
 	heroHazard.forEach((hazard, index)=>{
-		hazard.x = -spriteResizeXPosition[index];
+		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[0]/2);
 	});
 
 	heroArray.forEach(function (item, index){
