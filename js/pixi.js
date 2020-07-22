@@ -2077,7 +2077,7 @@ function onCreatureDown(){
 				});
 
 				fieldHeroHazard.forEach(arrayItem =>{
-					dmgArray = [];
+					// dmgArray = [];
 					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
 				});
 			}else{
@@ -2087,16 +2087,20 @@ function onCreatureDown(){
 				});
 
 				fieldEnemyHazard.forEach(arrayItem =>{
-					dmgArray = [];
 					if(arrayItem[0] == moveTo){
-						console.log("ENEMY DAMAGE FROM HAZARD");
+						dmgArray = [];
 						dmgArray.push(arrayItem[2]);
-						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-							selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-						});
+						effective = 1;
+						updateDamage(selectedVita, effective, false, 0, dmgArray, false, 0, 0, false, 0)
+						// dmgArray = [];
+						// console.log("ENEMY DAMAGE FROM HAZARD");
+						// dmgArray.push(arrayItem[2]);
+						// dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+						// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+						// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						// });
 
-						selectedVita.dmgContainer.dmgPopup.tween.play(0);
+						// selectedVita.dmgContainer.dmgPopup.tween.play(0);
 					}			
 				});
 			}
