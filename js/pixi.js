@@ -2713,6 +2713,8 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
+	// enemyHazardSprite.push(fume);
+	enemyHazardContainer.removeChild(enemyHazardSprite[0]);
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
