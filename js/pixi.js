@@ -2122,14 +2122,14 @@ function onCreatureDown(){
 								dmgArray = [];
 								dmgArray.push(arrayItem[2]);
 								// effective = 1;
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+								updateDamage(enemyObject, effectiveness, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
 								dmgArray.push(arrayItem[2]);
 								// effective = 1;
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+								updateDamage(enemyObject, effectiveness, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
 					});
