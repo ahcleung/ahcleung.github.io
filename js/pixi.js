@@ -1942,16 +1942,20 @@ function onCreatureDown(){
 					}
 
 					if(tagHazard){
+						factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+						const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+						fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 						if(targeted.hero){
 							if(targeted.size > 1){
 								// heroHazardSprite[targeted.pos].visible = true;
 								//[position, hazardType, damage, turn]
 								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-								factory.parseDragonBonesData(resources['fume2_skeleton'].data);
-								factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+								// factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+								// factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-								const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-								fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+								// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+								// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 								// fume.visible = false;
 								// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
 								fume.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
@@ -1960,8 +1964,7 @@ function onCreatureDown(){
 							}
 							// heroHazardSprite[targeted.pos-1].visible = true;
 							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-							const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-							fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+							
 							// fume.visible = false;
 							// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
 							fume.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
@@ -1970,10 +1973,25 @@ function onCreatureDown(){
 						}else{
 							if(targeted.size > 1){
 								// enemyHazardSprite[targeted.pos].visible = true;
-								fieldEnemyHazard[targeted.pos] = skillsList.data.skills[selectedSkill].hazard[0];
+								// fieldEnemyHazard[targeted.pos] = skillsList.data.skills[selectedSkill].hazard[0];
+								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+								// factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+								// factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+
+								// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+								// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+								// fume.visible = false;
+								// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+								fume.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
+								enemyHazardSprite.push(fume);
+								enemyHazardContainer.addChild(fume);
 							}
 							// enemyHazardSprite[targeted.pos-1].visible = true;
-							fieldEnemyHazard[targeted.pos-1] = skillsList.data.skills[selectedSkill].hazard[0];
+							// fieldEnemyHazard[targeted.pos-1] = skillsList.data.skills[selectedSkill].hazard[0];
+							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+							fume.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
+							enemyHazardSprite.push(fume);
+							enemyHazardContainer.addChild(fume);
 						}
 					}
 
