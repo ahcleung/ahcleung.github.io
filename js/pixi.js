@@ -1946,6 +1946,8 @@ function onCreatureDown(){
 						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 						const fume = factory.buildArmatureDisplay('fume2', 'fume2');
 						fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
+						fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 						if(targeted.hero){
 							if(targeted.size > 1){
 								// heroHazardSprite[targeted.pos].visible = true;
@@ -1958,9 +1960,9 @@ function onCreatureDown(){
 								// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 								// fume.visible = false;
 								// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
-								fume.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
-								heroHazardSprite.push(fume);
-								heroHazardContainer.addChild(fume);
+								fume2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
+								heroHazardSprite.push(fume2);
+								heroHazardContainer.addChild(fume2);
 							}
 							// heroHazardSprite[targeted.pos-1].visible = true;
 							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
@@ -1982,9 +1984,9 @@ function onCreatureDown(){
 								// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 								// fume.visible = false;
 								// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
-								fume.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
-								enemyHazardSprite.push(fume);
-								enemyHazardContainer.addChild(fume);
+								fume2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
+								enemyHazardSprite.push(fume2);
+								enemyHazardContainer.addChild(fume2);
 							}
 							// enemyHazardSprite[targeted.pos-1].visible = true;
 							// fieldEnemyHazard[targeted.pos-1] = skillsList.data.skills[selectedSkill].hazard[0];
