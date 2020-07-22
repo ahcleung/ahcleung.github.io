@@ -2714,7 +2714,7 @@ function onAdditionalDown(){
 	interfaceAdditional.visible = true;
 
 	// enemyHazardSprite.push(fume);
-	enemyHazardContainer.removeChild(enemyHazardSprite[0]);
+	enemyHazardContainer.removeChild(enemyHazardSprite[1]);
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
