@@ -2121,13 +2121,13 @@ function onCreatureDown(){
 						if(enemyObject.size > 1){
 							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
-								dmgArray.push(arrayItem[2]*effective);
+								dmgArray.push(Math.round(arrayItem[2]*effective));
 								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
-								dmgArray.push(arrayItem[2]*effective);
+								dmgArray.push(Math.round(arrayItem[2]*effective));
 								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
