@@ -1405,7 +1405,7 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
-	var hazardSize = 0.75;
+	var hazardSize = 0.66;
 	
 	if(app.screen.width < 860){
 		margin = 10;
