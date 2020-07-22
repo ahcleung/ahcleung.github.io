@@ -1520,11 +1520,11 @@ function resize() {
 
 	heroHazardSprite.forEach((hazard, index)=>{
 		hazard.scale.set(hazardSize, hazardSize);
-		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+		hazard.x = -(spriteResizeXPosition[fieldHeroHazard[index][0]] + spriteResizeXPosition[1]/2);
 	});
 	enemyHazardSprite.forEach((hazard, index)=>{
 		hazard.scale.set(-hazardSize, hazardSize);
-		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
+		hazard.x = spriteResizeXPosition[fieldEnemyHazard[index][0]] + spriteResizeXPosition[1]/2;
 	});
 
 	heroArray.forEach(function (item, index){
