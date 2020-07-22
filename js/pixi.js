@@ -1854,6 +1854,7 @@ function onCreatureDown(){
 				var tagMultiple = false;
 				var tagStatus = false;
 				var tagStatChange = false;
+				var tagHazard = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
@@ -1899,6 +1900,7 @@ function onCreatureDown(){
 						if(tagName == "multiple")		tagMultiple = true;
 						if(tagName == "status")			tagStatus = true;
 						if(tagName == "statchange")		tagStatChange = true;
+						if(tagName == "hazard")			tagHazard = true;
 					});
 
 					if(tagMultiple){
@@ -1931,6 +1933,20 @@ function onCreatureDown(){
 
 						statTarget.statMod[skillsList.data.skills[selectedSkill].statchange[1]] += skillsList.data.skills[selectedSkill].statchange[2];
 						// console.log(statTarget.name + " stat updated with: " + defenderStatus);
+					}
+
+					if(tagHazard){
+						if(targeted.hero){
+							if(targeted.size > 1){
+								heroHazard[targeted.pos].visible = false;
+							}
+							heroHazard[targeted.pos-1].visible = false;
+						}else{
+							if(targeted.size > 1){
+								enemyHazard[targeted.pos].visible = false;
+							}
+							enemyHazard[targeted.pos-1].visible = false;
+						}
 					}
 
 					//Calculate heal amount or damage amount
