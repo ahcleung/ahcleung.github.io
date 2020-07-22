@@ -2086,26 +2086,23 @@ function onCreatureDown(){
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
 
-				fieldEnemyHazard.forEach(arrayItem =>{
-					if(arrayItem[0] == moveTo){
-						dmgArray = [];
-						dmgArray.push(arrayItem[2]);
-						effective = 1;
-						updateDamage(selectedVita, effective, false, 0, dmgArray, false, 0, 0, false, 0)
-						// dmgArray = [];
-						// console.log("ENEMY DAMAGE FROM HAZARD");
-						// dmgArray.push(arrayItem[2]);
-						// dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-						// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-						// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-						// });
-
-						// selectedVita.dmgContainer.dmgPopup.tween.play(0);
-					}			
-				});
+				
 			}
 			displacement = moveFrom - moveTo;
 			moveCreature(selectedVita, displacement);
+			if(selectedVita.hero){
+			}else{
+				fieldEnemyHazard.forEach(arrayItem =>{
+					enemyArray.forEach(enemyObject =>{
+						if(arrayItem[0] == enemyObject.pos){
+							dmgArray = [];
+							dmgArray.push(arrayItem[2]);
+							effective = 1;
+							updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+						}
+					});
+				});
+			}
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 			if(turnArray.length != 0){
