@@ -2119,7 +2119,7 @@ function onCreatureDown(){
 						// 	effective *= elementList.data.elements[hazardElement][defendElement];
 						// });
 						if(enemyObject.size > 1){
-							if(arrayItem[0]+1 == enemyObject.pos+1){
+							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
 								dmgArray.push(arrayItem[2]);
 								effective = 1;
