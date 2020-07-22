@@ -1406,7 +1406,7 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
-	
+	var hazardMargin = 50;
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1419,7 +1419,8 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 20);
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
-		hazardSize = 0.5;
+		hazardSize = 0.4;
+		hazardMargin = 30;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
@@ -1431,7 +1432,8 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
-		hazardSize = 0.7;
+		hazardSize = 0.6;
+		hazardMargin = 40;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
@@ -1444,6 +1446,7 @@ function resize() {
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
 		hazardSize = 0.8;
+		hazardMargin = 50;
 	}
 
 	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
@@ -1530,8 +1533,8 @@ function resize() {
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 
-	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4+margin);
-	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4+margin);
+	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4+hazardMargin);
+	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4+hazardMargin);
 
 	heroHazardSprite.forEach((hazard, index)=>{
 		hazard.scale.set(hazardSize, hazardSize);
