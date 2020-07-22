@@ -232,6 +232,7 @@ var skillSpacer = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 var resizeWidth = 0;
+var hazardSize = 0.5;
 
 //Selected element tracker
 var selectedVita;
@@ -1405,7 +1406,7 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
-	var hazardSize = 0.5;
+	
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1442,7 +1443,7 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
-		hazardSize = 0.4;
+		hazardSize = 0.5;
 	}
 
 	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
@@ -1970,9 +1971,13 @@ function onCreatureDown(){
 
 						const fume = new PIXI.Sprite(resources.hazard_lit.texture);
 						fume.anchor.set(0.5,1);
+						
 						const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
 						fume2.anchor.set(0.5,1);
+
 						if(targeted.hero){
+							fume.scale.set(hazardSize,hazardSize);
+							fume2.scale.set(hazardSize,hazardSize);
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
 								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
@@ -1985,6 +1990,8 @@ function onCreatureDown(){
 							heroHazardSprite.push(fume);
 							heroHazardContainer.addChild(fume);
 						}else{
+							fume.scale.set(-hazardSize,hazardSize);
+							fume2.scale.set(-hazardSize,hazardSize);
 							if(targeted.size > 1){
 								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
 								fume2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
