@@ -509,6 +509,7 @@ function setup(){
 
 		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
 		fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+		fume.visible = false;
 		// fume.x = 100*i;
 		if(i<4){
 			heroHazard.push(fume);
@@ -1938,14 +1939,14 @@ function onCreatureDown(){
 					if(tagHazard){
 						if(targeted.hero){
 							if(targeted.size > 1){
-								heroHazard[targeted.pos].visible = false;
+								heroHazard[targeted.pos].visible = true;
 							}
-							heroHazard[targeted.pos-1].visible = false;
+							heroHazard[targeted.pos-1].visible = true;
 						}else{
 							if(targeted.size > 1){
-								enemyHazard[targeted.pos].visible = false;
+								enemyHazard[targeted.pos].visible = true;
 							}
-							enemyHazard[targeted.pos-1].visible = false;
+							enemyHazard[targeted.pos-1].visible = true;
 						}
 					}
 
