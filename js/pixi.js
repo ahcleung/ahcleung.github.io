@@ -2043,6 +2043,7 @@ function onCreatureDown(){
 			}
 
 			selectedSkill = -1;
+			validSkillObjectArray = [];
 		}else{
 			console.log("Invalid skill target");
 		}	
@@ -2092,44 +2093,44 @@ function onCreatureDown(){
 			}else{
 				fieldEnemyHazard.forEach(arrayItem =>{
 					enemyArray.forEach(enemyObject =>{
-						var defendElements = [];
-						var effectiveness = 1;
-						enemyObject.elements.forEach(element =>{
-							defendElements.push(element);
-						});
-						var hazardElement = 0;
-						switch(arrayItem[1]){
-							case 1: 
-								hazardElement = 2;
-								break;
-							case 2:
-								hazardElement = 1;
-								break;
-							case 3:
-								hazardElement = 3;
-								break;
-							case 4:
-								hazardElement = 7;
-								break;
-							default:
-								hazardElement = 1;
-						}
-						defendElements.forEach(defendElement=>{
-							effectiveness *= elementList.data.elements[hazardElement][defendElement];
-						});
+						// var defendElements = [];
+						// var effective = 1;
+						// enemyObject.elements.forEach(element =>{
+						// 	defendElements.push(element);
+						// });
+						// var hazardElement = 0;
+						// switch(arrayItem[1]){
+						// 	case 1: 
+						// 		hazardElement = 2;
+						// 		break;
+						// 	case 2:
+						// 		hazardElement = 1;
+						// 		break;
+						// 	case 3:
+						// 		hazardElement = 3;
+						// 		break;
+						// 	case 4:
+						// 		hazardElement = 7;
+						// 		break;
+						// 	default:
+						// 		hazardElement = 1;
+						// }
+						// defendElements.forEach(defendElement=>{
+						// 	effective *= elementList.data.elements[hazardElement][defendElement];
+						// });
 						if(enemyObject.size > 1){
 							if(arrayItem[0]+1 == enemyObject.pos+1){
 								dmgArray = [];
 								dmgArray.push(arrayItem[2]);
-								// effective = 1;
-								updateDamage(enemyObject, effectiveness, false, 0, dmgArray, false, 0, 0, false, 0);
+								effective = 1;
+								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
 								dmgArray.push(arrayItem[2]);
-								// effective = 1;
-								updateDamage(enemyObject, effectiveness, false, 0, dmgArray, false, 0, 0, false, 0);
+								effective = 1;
+								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
 					});
@@ -2144,6 +2145,7 @@ function onCreatureDown(){
 				calculateTurnOrder();
 			}
 			selectedSkill = -1;
+			validMoveObjectArray = [];
 		}else{
 			console.log("Invalid move target");
 		}
