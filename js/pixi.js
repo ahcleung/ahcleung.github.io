@@ -1393,6 +1393,7 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
+	var hazardSize = 1;
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1405,6 +1406,7 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 20);
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
+		hazardSize = 0.5;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
@@ -1416,6 +1418,7 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
+		hazardSize = 0.75;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
@@ -1515,12 +1518,14 @@ function resize() {
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 
-	// heroHazardSprite.forEach((hazard, index)=>{
-	// 	hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
-	// });
-	// enemyHazardSprite.forEach((hazard, index)=>{
-	// 	hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
-	// });
+	heroHazardSprite.forEach((hazard, index)=>{
+		hazard.scale.set(hazardSize, hazardSize);
+		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+	});
+	enemyHazardSprite.forEach((hazard, index)=>{
+		hazard.scale.set(-hazardSize, hazardSize);
+		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
+	});
 
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
@@ -2713,14 +2718,14 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
-	// enemyHazardSprite.push(fume);
-	console.log("1: " + enemyHazardSprite);
-	enemyHazardContainer.removeChild(enemyHazardSprite[1]);
-	console.log("2: " + enemyHazardSprite);
-	enemyHazardSprite[1].destroy();
-	console.log("3: " + enemyHazardSprite);
-	enemyHazardSprite.splice(1,1);
-	console.log("4: " + enemyHazardSprite);
+	// Remove hazard
+	// console.log("1: " + enemyHazardSprite);
+	// enemyHazardContainer.removeChild(enemyHazardSprite[1]);
+	// console.log("2: " + enemyHazardSprite);
+	// enemyHazardSprite[1].destroy();
+	// console.log("3: " + enemyHazardSprite);
+	// enemyHazardSprite.splice(1,1);
+	// console.log("4: " + enemyHazardSprite);
 
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
