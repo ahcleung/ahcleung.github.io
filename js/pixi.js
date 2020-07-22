@@ -2092,6 +2092,31 @@ function onCreatureDown(){
 			}else{
 				fieldEnemyHazard.forEach(arrayItem =>{
 					enemyArray.forEach(enemyObject =>{
+						var defendElements = [];
+						var effectiveness = 1;
+						enemyObject.elements.forEach(element =>{
+							defendElements.push(element);
+						});
+						var hazardElement = 0;
+						switch(arrayItem[1]){
+							case 1: 
+								hazardElement = 2;
+								break;
+							case 2:
+								hazardElement = 1;
+								break;
+							case 3:
+								hazardElement = 3;
+								break;
+							case 4:
+								hazardElement = 7;
+								break;
+							default:
+								hazardElement = 1;
+						}
+						defendElements.forEach(defendElement=>{
+							effectiveness *= elementList.data.elements[hazardElement][defendElement];
+						});
 						if(enemyObject.size > 1){
 							if(arrayItem[0]+1 == enemyObject.pos+1){
 								dmgArray = [];
