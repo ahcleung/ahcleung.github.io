@@ -527,7 +527,7 @@ function setup(){
 			heroHazardSprite.push(fume);
 			heroHazardContainer.addChild(fume);
 		}else{
-			fieldHeroHazard.push([i+1-4,1,10,5]);
+			fieldEnemyHazard.push([i+1-4,1,10,5]);
 			enemyHazardSprite.push(fume);
 			enemyHazardContainer.addChild(fume);
 		}
