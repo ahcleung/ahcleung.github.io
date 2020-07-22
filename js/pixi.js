@@ -1445,7 +1445,7 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
-		hazardSize = 0.78;
+		hazardSize = 0.75;
 		hazardMargin = 50;
 	}
 
