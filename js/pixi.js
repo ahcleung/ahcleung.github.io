@@ -523,9 +523,11 @@ function setup(){
 		// const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
 		// fume2.anchor.set(0.5,1);
 		if(i<4){
+			fieldHeroHazard.push([i+1,1,10,5]);
 			heroHazardSprite.push(fume);
 			heroHazardContainer.addChild(fume);
 		}else{
+			fieldHeroHazard.push([i+1-4,1,10,5]);
 			enemyHazardSprite.push(fume);
 			enemyHazardContainer.addChild(fume);
 		}
