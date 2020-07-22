@@ -2070,13 +2070,14 @@ function onCreatureDown(){
 
 		if(correctTarget){
 			var moveTo, moveFrom, displacement;
-			if(selectedVita.hero){				
+			if(selectedVita.hero){
 				heroArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
 
 				fieldHeroHazard.forEach(arrayItem =>{
+					dmgArray = [];
 					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
 				});
 			}else{
@@ -2086,7 +2087,17 @@ function onCreatureDown(){
 				});
 
 				fieldEnemyHazard.forEach(arrayItem =>{
-					if(arrayItem[0] == moveTo)			console.log("ENEMY DAMAGE FROM HAZARD");
+					dmgArray = [];
+					if(arrayItem[0] == moveTo){
+						console.log("ENEMY DAMAGE FROM HAZARD");
+						dmgArray.push(arrayItem[2]);
+						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+							selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+							selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+						});
+
+						selectedVita.dmgContainer.dmgPopup.tween.play(0);
+					}			
 				});
 			}
 			displacement = moveFrom - moveTo;
