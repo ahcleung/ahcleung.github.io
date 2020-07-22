@@ -35,6 +35,10 @@ loader
 		"js/skills.json",
 		"js/elements.json",
 
+		{name:'hazard_lit', url:'img/hazard_lit.png'},
+		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
+		{name:'hazard_spores', url:'img/hazard_spores.png'},
+
 		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
 		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
 		{name:'gorilla3_p_back', url:'img/gorilla3_p_back.png'},
@@ -1949,10 +1953,13 @@ function onCreatureDown(){
 					if(tagHazard){
 						factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
-						const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-						fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
-						fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+						// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
+						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+
+						const fume1 = new PIXI.Sprite(resources.hazard_lit);
+						const fume2 = new PIXI.Sprite(resources.hazard_lit);
 						if(targeted.hero){
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
