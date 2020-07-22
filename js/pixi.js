@@ -2714,7 +2714,14 @@ function onAdditionalDown(){
 	interfaceAdditional.visible = true;
 
 	// enemyHazardSprite.push(fume);
+	console.log("1: " + enemyHazardSprite);
 	enemyHazardContainer.removeChild(enemyHazardSprite[1]);
+	console.log("2: " + enemyHazardSprite);
+	enemyHazardSprite[1].destroy();
+	console.log("3: " + enemyHazardSprite);
+	enemyHazardSprite.splice(1,1);
+	console.log("4: " + enemyHazardSprite);
+
 	// 0xccffcc
 	// backgroundImage.tint = 0x3D85C6;	
 }
