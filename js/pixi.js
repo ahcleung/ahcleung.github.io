@@ -510,22 +510,28 @@ function setup(){
 	interfaceHolder.addChild(interfaceHeroHealth);
 	interfaceHolder.addChild(interfaceEnemyHealth);
 
-	// for(var i = 0; i < 8; i++){
-	// 	factory.parseDragonBonesData(resources['fume2_skeleton'].data);
-	// 	factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+	for(var i = 0; i < 8; i++){
+		factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-	// 	const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-	// 	fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-	// 	fume.visible = false;
-	// 	// fume.x = 100*i;
-	// 	if(i<4){
-	// 		heroHazardSprite.push(fume);
-	// 		heroHazardContainer.addChild(fume);
-	// 	}else{
-	// 		enemyHazardSprite.push(fume);
-	// 		enemyHazardContainer.addChild(fume);
-	// 	}
-	// }
+		// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+		// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+		// fume.visible = false;
+		// fume.x = 100*i;
+		const fume = new PIXI.Sprite(resources.hazard_lit.texture);
+		fume.anchor.set(0.5,1);
+		// const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+		// fume2.anchor.set(0.5,1);
+		if(i<4){
+			heroHazardSprite.push(fume);
+			heroHazardContainer.addChild(fume);
+		}else{
+			enemyHazardSprite.push(fume);
+			enemyHazardContainer.addChild(fume);
+		}
+	}
+
+
 	spriteHolder.addChild(heroHazardContainer);
 	spriteHolder.addChild(enemyHazardContainer);
 
@@ -1520,8 +1526,8 @@ function resize() {
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 
-	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4-50);
-	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4-50);
+	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4+margin);
+	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4+margin);
 
 	heroHazardSprite.forEach((hazard, index)=>{
 		hazard.scale.set(hazardSize, hazardSize);
