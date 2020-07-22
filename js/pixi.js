@@ -2085,8 +2085,6 @@ function onCreatureDown(){
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
-
-				
 			}
 			displacement = moveFrom - moveTo;
 			moveCreature(selectedVita, displacement);
@@ -2094,7 +2092,7 @@ function onCreatureDown(){
 			}else{
 				fieldEnemyHazard.forEach(arrayItem =>{
 					enemyArray.forEach(enemyObject =>{
-						if(arrayItem[0] == enemyObject.pos){
+						if(arrayItem[0]+1 == enemyObject.pos){
 							dmgArray = [];
 							dmgArray.push(arrayItem[2]);
 							effective = 1;
