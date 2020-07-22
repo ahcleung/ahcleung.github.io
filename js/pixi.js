@@ -245,8 +245,11 @@ const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 
-const heroHazard = [];
-const enemyHazard = [];
+const heroHazardSprite = [];
+const enemyHazardSprite = [];
+
+const fieldHeroHazard = [];
+const fieldEnemyHazard = [];
 
 const heroHazardContainer = new PIXI.Container();
 const enemyHazardContainer = new PIXI.Container();
@@ -503,22 +506,22 @@ function setup(){
 	interfaceHolder.addChild(interfaceHeroHealth);
 	interfaceHolder.addChild(interfaceEnemyHealth);
 
-	for(var i = 0; i < 8; i++){
-		factory.parseDragonBonesData(resources['fume2_skeleton'].data);
-		factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+	// for(var i = 0; i < 8; i++){
+	// 	factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+	// 	factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-		const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-		fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-		fume.visible = false;
-		// fume.x = 100*i;
-		if(i<4){
-			heroHazard.push(fume);
-			heroHazardContainer.addChild(fume);
-		}else{
-			enemyHazard.push(fume);
-			enemyHazardContainer.addChild(fume);
-		}
-	}
+	// 	const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+	// 	fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+	// 	fume.visible = false;
+	// 	// fume.x = 100*i;
+	// 	if(i<4){
+	// 		heroHazardSprite.push(fume);
+	// 		heroHazardContainer.addChild(fume);
+	// 	}else{
+	// 		enemyHazardSprite.push(fume);
+	// 		enemyHazardContainer.addChild(fume);
+	// 	}
+	// }
 	spriteHolder.addChild(heroHazardContainer);
 	spriteHolder.addChild(enemyHazardContainer);
 
@@ -1512,12 +1515,12 @@ function resize() {
 	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 
-	heroHazard.forEach((hazard, index)=>{
-		hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
-	});
-	enemyHazard.forEach((hazard, index)=>{
-		hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
-	});
+	// heroHazardSprite.forEach((hazard, index)=>{
+	// 	hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+	// });
+	// enemyHazardSprite.forEach((hazard, index)=>{
+	// 	hazard.x = spriteResizeXPosition[index] + spriteResizeXPosition[1]/2;
+	// });
 
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
@@ -1856,6 +1859,7 @@ function onCreatureDown(){
 				var tagStatus = false;
 				var tagStatChange = false;
 				var tagHazard = false;
+				var tagTurns = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
@@ -1902,6 +1906,7 @@ function onCreatureDown(){
 						if(tagName == "status")			tagStatus = true;
 						if(tagName == "statchange")		tagStatChange = true;
 						if(tagName == "hazard")			tagHazard = true;
+						if(tagName == "turns")			tagTurns = true;
 					});
 
 					if(tagMultiple){
@@ -1939,14 +1944,36 @@ function onCreatureDown(){
 					if(tagHazard){
 						if(targeted.hero){
 							if(targeted.size > 1){
-								heroHazard[targeted.pos].visible = true;
+								// heroHazardSprite[targeted.pos].visible = true;
+								//[position, hazardType, damage, turn]
+								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+								factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+								factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+
+								const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+								fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+								// fume.visible = false;
+								// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+								fume.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
+								heroHazardSprite.push(fume);
+								heroHazardContainer.addChild(fume);
 							}
-							heroHazard[targeted.pos-1].visible = true;
+							// heroHazardSprite[targeted.pos-1].visible = true;
+							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+							const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+							fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+							// fume.visible = false;
+							// hazard.x = -(spriteResizeXPosition[index] + spriteResizeXPosition[1]/2);
+							fume.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
+							heroHazardSprite.push(fume);
+							heroHazardContainer.addChild(fume);
 						}else{
 							if(targeted.size > 1){
-								enemyHazard[targeted.pos].visible = true;
+								// enemyHazardSprite[targeted.pos].visible = true;
+								fieldEnemyHazard[targeted.pos] = skillsList.data.skills[selectedSkill].hazard[0];
 							}
-							enemyHazard[targeted.pos-1].visible = true;
+							// enemyHazardSprite[targeted.pos-1].visible = true;
+							fieldEnemyHazard[targeted.pos-1] = skillsList.data.skills[selectedSkill].hazard[0];
 						}
 					}
 
@@ -2002,7 +2029,7 @@ function onCreatureDown(){
 					effectiveness = 0;
 				}
 
-				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget);
+				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget, tagHazard);
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
