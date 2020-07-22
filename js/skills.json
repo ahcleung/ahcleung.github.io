@@ -65,7 +65,7 @@
 				1,1,1,1
 			],
 			"tags":[
-				"multiple", "status", "turns"
+				"hazard", "status", "turns"
 			],
 			"multiple": [2,5],
 			"status": 4,
