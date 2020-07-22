@@ -1969,10 +1969,10 @@ function onCreatureDown(){
 						// const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
 						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 
-						const fume = new PIXI.Sprite(resources.hazard_spikes.texture);
+						const fume = new PIXI.Sprite(resources.hazard_lit.texture);
 						fume.anchor.set(0.5,1);
 						
-						const fume2 = new PIXI.Sprite(resources.hazard_spikes.texture);
+						const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
 						fume2.anchor.set(0.5,1);
 
 						if(targeted.hero){
