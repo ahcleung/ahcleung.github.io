@@ -1959,7 +1959,9 @@ function onCreatureDown(){
 						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 
 						const fume = new PIXI.Sprite(resources.hazard_lit);
+						fume.anchor.set(0,0.5);
 						const fume2 = new PIXI.Sprite(resources.hazard_lit);
+						fume2.anchor.set(0,0.5);
 						if(targeted.hero){
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
