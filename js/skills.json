@@ -69,7 +69,7 @@
 			],
 			"multiple": [2,5],
 			"status": 4,
-			"hazard": [3, 10,"current"],
+			"hazard": [1, 10,"current"],
 			"turns": 5,
 			"splash": 0,
 			"displace": [0],
