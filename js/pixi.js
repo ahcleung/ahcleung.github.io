@@ -1420,7 +1420,7 @@ function resize() {
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
 		hazardSize = 0.35;
-		hazardMargin = 30;
+		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
