@@ -7,10 +7,10 @@
 			"power": 20,
 			"accuracy": 100,
 			"position": [
-				0,0,1,1
+				1,1,1,1
 			],
 			"target": [
-				0,0,1,1
+				1,1,1,1
 			],
 			"tags":[
 				"hazard", "turns"
