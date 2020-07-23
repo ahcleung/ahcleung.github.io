@@ -1971,8 +1971,7 @@ function onCreatureDown(){
 						// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 						// const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
 						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						const fume;
-						const fume2;
+						let fume, fume2;
 						switch(skillsList.data.skills[selectedSkill].hazard[0]){
 							case 1:
 								fume = new PIXI.Sprite(resources.hazard_lit.texture);
