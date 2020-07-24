@@ -2137,9 +2137,10 @@ function onCreatureDown(){
 			}else{
 				
 				enemyArray.forEach(enemyObject =>{
-					var effective = 1;
+					var effective;
 					var dmgArray = [];
 					fieldEnemyHazard.forEach(arrayItem =>{
+						effective = 1;
 						var defendElements = [];						
 						enemyObject.elements.forEach(element =>{
 							defendElements.push(element);
