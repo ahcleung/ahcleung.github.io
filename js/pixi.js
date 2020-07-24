@@ -2166,17 +2166,18 @@ function onCreatureDown(){
 							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
 								dmgArray.push(Math.round(arrayItem[2]*effective));
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+								
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
 								dmgArray = [];
 								dmgArray.push(Math.round(arrayItem[2]*effective));
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
 					});
 				});
+				updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 			}
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
