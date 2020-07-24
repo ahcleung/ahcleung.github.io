@@ -2135,8 +2135,9 @@ function onCreatureDown(){
 			moveCreature(selectedVita, displacement);
 			if(selectedVita.hero){
 			}else{
-				fieldEnemyHazard.forEach(arrayItem =>{
-					enemyArray.forEach(enemyObject =>{
+				
+				enemyArray.forEach(enemyObject =>{
+					fieldEnemyHazard.forEach(arrayItem =>{
 						var defendElements = [];
 						var effective = 1;
 						enemyObject.elements.forEach(element =>{
@@ -2176,8 +2177,8 @@ function onCreatureDown(){
 							}
 						}						
 					});
+					updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 				});
-				updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 			}
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
