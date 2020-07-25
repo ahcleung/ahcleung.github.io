@@ -2459,11 +2459,11 @@ function onSkillDown(){
 									if(arrayCreature2.size == 2){
 										var pos3 = arrayCreature2.pos;
 										var pos4 = arrayCreature2.pos + 1;
-										if(arrayCreature2.pos+1 == pos1-1)
+										if(arrayCreature2.pos+1 == pos1-1){}
 										// if(pos3 == posTracker-1 || pos4 == posTracker-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										else if(arrayCreature2.pos == pos2+1)
+										else if(arrayCreature2.pos == pos2+1){}
 										// if(pos3 == posTracker+1 || pos4 == posTracker+1){
 											arrayTarget.push(arrayCreature2);
 										}
