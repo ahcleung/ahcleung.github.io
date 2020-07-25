@@ -2429,19 +2429,19 @@ function onSkillDown(){
 								arrayTarget.push(arrayCreature);
 								enemyArray.forEach(arrayCreature2 =>{
 									if(arrayCreature2.size == 2){
-										var pos1 = arrayCreature2.pos;
-										var pos2 = arrayCreature2.pos + 1;
-										if(pos1 == posTracker-1 || pos2 == posTracker-1){
+										// var pos1 = arrayCreature2.pos;
+										// var pos2 = arrayCreature2.pos + 1;
+										if(arrayCreature2.pos + 1 == posTracker-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(pos1 == posTracker+1 || pos2 == posTracker+1){
+										else if(arrayCreature2.pos == posTracker+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}else{
 										if(arrayCreature2.pos == posTracker-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(arrayCreature2.pos == posTracker+1){
+										else if(arrayCreature2.pos == posTracker+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}									
@@ -2454,21 +2454,24 @@ function onSkillDown(){
 							var pos2 = arrayCreature.pos + 1;
 							if(posTracker == pos1 || posTracker == pos2){
 								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
 								enemyArray.forEach(arrayCreature2 =>{
 									if(arrayCreature2.size == 2){
 										var pos3 = arrayCreature2.pos;
 										var pos4 = arrayCreature2.pos + 1;
-										if(pos3 == posTracker-1 || pos4 == posTracker-1){
+										if(arrayCreature2.pos+1 == pos1-1)
+										// if(pos3 == posTracker-1 || pos4 == posTracker-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(pos3 == posTracker+1 || pos4 == posTracker+1){
+										else if(arrayCreature2.pos == pos2+1)
+										// if(pos3 == posTracker+1 || pos4 == posTracker+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}else{
-										if(arrayCreature2.pos == posTracker-1){
+										if(arrayCreature2.pos == pos1-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(arrayCreature2.pos == posTracker+1){
+										if(arrayCreature2.pos == pos2+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}									
