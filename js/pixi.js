@@ -2137,10 +2137,10 @@ function onCreatureDown(){
 			}else{
 				
 				enemyArray.forEach(enemyObject =>{
-					var effective;
+					var effective = [];
 					var dmgArray = [];
 					fieldEnemyHazard.forEach(arrayItem =>{
-						effective = 1;
+						var effectiveCalc = 1;
 						var defendElements = [];						
 						enemyObject.elements.forEach(element =>{
 							defendElements.push(element);
@@ -2163,18 +2163,19 @@ function onCreatureDown(){
 								hazardElement = 1;
 						}
 						defendElements.forEach(defendElement=>{
-							effective *= elementList.data.elements[hazardElement][defendElement];
+							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
 						});
 						if(enemyObject.size > 1){
 							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
 								
-								dmgArray.push(Math.round(arrayItem[2]*effective));
-								
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
 								// dmgArray = [];
-								dmgArray.push(Math.round(arrayItem[2]*effective));
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
 								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
@@ -3352,38 +3353,55 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		dmgStatusTextItem.visible = false;
 	});
 
-	if(effective == 0.25){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#9D9D9D';
-		});
-	}else if(effective == 0.5){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFFFFF';
-		});
-	}else if(effective == 2){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFE81C';
-		});
-	}else if(effective == 4){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#DB00FF';
-		});
-	}else if(effective == 0){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#D80000';
+	if(Array.isArray(effective)){
+		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		effective.forEach((effectiveNum, effectiveIndex) => {
+			var colour = '#ffffff';
+			if(effectiveNum == 0.25){
+				colour = '#9D9D9D';
+			}else if(effectiveNum == 0.5){
+				colour = '#FFFFFF';
+			}else if(effectiveNum == 2){
+				colour = '#FFE81C';
+			}else if(effectiveNum == 4){
+				colour = '#DB00FF';
+			}
+			object.dmgContainer.dmgPopup.dmgNumArray[effectiveIndex].style.fill = colour;
 		});
 	}else{
-		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		if(effective == 0.25){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#9D9D9D';
+			});
+		}else if(effective == 0.5){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFFFFF';
+			});
+		}else if(effective == 2){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFE81C';
+			});
+		}else if(effective == 4){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#DB00FF';
+			});
+		}else if(effective == 0){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#D80000';
+			});
+		}else{
+			object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		}
 	}
 	
 	if(skillCrit){
