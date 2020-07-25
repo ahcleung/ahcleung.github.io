@@ -1883,6 +1883,7 @@ function onCreatureDown(){
 				var tagStatChange = false;
 				var tagHazard = false;
 				var tagTurns = false;
+				var tagSplash = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
@@ -1930,6 +1931,7 @@ function onCreatureDown(){
 						if(tagName == "statchange")		tagStatChange = true;
 						if(tagName == "hazard")			tagHazard = true;
 						if(tagName == "turns")			tagTurns = true;
+						if(tagName == "splash")			tagSplash = true;
 					});
 
 					if(tagMultiple){
@@ -2290,6 +2292,7 @@ function onSkillDown(){
 	var several = false;
 	var displace = false;
 	var heal = false;
+	var splash = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]
@@ -2307,12 +2310,9 @@ function onSkillDown(){
 				heal = false;	
 			}
 		}
-		if(tagName == "several"){
-			several = true;
-		}
-		if(tagName == "displace"){
-			displace = true;
-		}
+		if(tagName == "several")		several = true
+		if(tagName == "displace")		displace = true
+		if(tagName == "splash")			splash = true
 	});
 	validMoveObjectArray = [];
 	validSkillObjectArray = [];
@@ -2414,6 +2414,67 @@ function onSkillDown(){
 		}
 	});
 
+	if(splash){
+		validSkillObjectArray = [];
+		skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+			//if the position is a valid target
+			if(skillTarget == 1){
+				var posTracker = skillTargetIndex + 1;
+				//if targeting enemies or heroes
+				if(selectedVita.hero){
+					enemyArray.forEach((arrayCreature, arrayIndex) => {
+						if(arrayCreature.size == 1){
+							if(posTracker == arrayCreature.pos){
+								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
+								enemyArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										var pos1 = arrayCreature2.pos;
+										var pos2 = arrayCreature2.pos + 1;
+										if(pos1 == posTracker-1 || pos2 == posTracker-1){
+											arrayTarget.push(arrayCreature2);
+										}
+										if(pos1 == posTracker+1 || pos2 == posTracker+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else{
+										if(arrayCreature2.pos == posTracker-1){
+											arrayTarget.push(arrayCreature2);
+										}
+										if(arrayCreature2.pos == posTracker+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}									
+								});
+								//push whatever is in pos-1 and pos+1
+								validSkillObjectArray.push(arrayTarget);
+							}
+						}else if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								validSkillObjectArray.push([arrayCreature]);
+							}
+						}				
+					});
+				}else{
+					heroArray.forEach((arrayCreature, arrayIndex) => {
+						if(arrayCreature.size == 1){
+							if(posTracker == arrayCreature.pos){
+								validSkillObjectArray.push([arrayCreature]);
+							}
+						}else if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								validSkillObjectArray.push([arrayCreature]);
+							}
+						}			
+					});
+				}
+			}
+		});
+	}
 	// console.log(validSkillTargetArray);
 	//validSkillTargetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
@@ -2683,7 +2744,7 @@ function onSkillDown(){
 
 	validSkillObjectArray.forEach(object1=>{
 		object1.forEach(object2=>{
-			console.log("object2 column: " + object2.name);
+			console.log("Target: " + object2.name);
 			if(heal){
 				object2.healthBar.heal.visible = true;
 			}else{
