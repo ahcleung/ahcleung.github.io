@@ -2456,12 +2456,12 @@ function onSkillDown(){
 								var arrayTarget = [];
 								enemyArray.forEach(arrayCreature2 =>{
 									if(arrayCreature2.size == 2){
-										var pos1 = arrayCreature2.pos;
-										var pos2 = arrayCreature2.pos + 1;
-										if(pos1 == posTracker-1 || pos2 == posTracker-1){
+										var pos3 = arrayCreature2.pos;
+										var pos4 = arrayCreature2.pos + 1;
+										if(pos3 == posTracker-1 || pos4 == posTracker-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(pos1 == posTracker+1 || pos2 == posTracker+1){
+										if(pos3 == posTracker+1 || pos4 == posTracker+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}else{
