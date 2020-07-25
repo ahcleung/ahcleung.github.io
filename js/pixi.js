@@ -3356,7 +3356,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 	if(Array.isArray(effective)){
 		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		effective.forEach((effectiveNum, effectiveIndex) => {
-			var colour = '#ffffff';
+			var colour = '#D80000';
 			if(effectiveNum == 0.25){
 				colour = '#9D9D9D';
 			}else if(effectiveNum == 0.5){
