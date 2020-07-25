@@ -279,13 +279,13 @@ hero[0] = {
 hero[1] = {
 	id: 11, level: 47, 
 	skill1: 4, skill2: 10, skill3: 8, skill4: 2,
-	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120,
+	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 0,
 	hero: true
 };
 hero[2] = {
 	id: 2, level: 45, 
 	skill1: 4, skill2: 10, skill3: 12, skill4: 0,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 120,
 	hero: true
 };
 // hero[3] = {
