@@ -2453,7 +2453,28 @@ function onSkillDown(){
 							var pos1 = arrayCreature.pos;
 							var pos2 = arrayCreature.pos + 1;
 							if(posTracker == pos1 || posTracker == pos2){
-								validSkillObjectArray.push([arrayCreature]);
+								var arrayTarget = [];
+								enemyArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										var pos1 = arrayCreature2.pos;
+										var pos2 = arrayCreature2.pos + 1;
+										if(pos1 == posTracker-1 || pos2 == posTracker-1){
+											arrayTarget.push(arrayCreature2);
+										}
+										if(pos1 == posTracker+1 || pos2 == posTracker+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else{
+										if(arrayCreature2.pos == posTracker-1){
+											arrayTarget.push(arrayCreature2);
+										}
+										if(arrayCreature2.pos == posTracker+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}									
+								});
+								validSkillObjectArray.push(arrayTarget);
+								// validSkillObjectArray.push([arrayCreature]);
 							}
 						}				
 					});
