@@ -2461,7 +2461,9 @@ function onSkillDown(){
 		});
 	}
 
+
 	if(splash){
+		validSkillObjectArray = [];
 		if(selectedVita.hero){
 			enemyArray.forEach(arrayCreature =>{
 				var targeted = false;
