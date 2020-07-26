@@ -2471,7 +2471,7 @@ function onSkillDown(){
 										if(arrayCreature2.pos == pos1-1){
 											arrayTarget.push(arrayCreature2);
 										}
-										if(arrayCreature2.pos == pos2+1){
+										else if(arrayCreature2.pos == pos2+1){
 											arrayTarget.push(arrayCreature2);
 										}
 									}									
