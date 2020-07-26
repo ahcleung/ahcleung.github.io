@@ -2413,6 +2413,27 @@ function onSkillDown(){
 			}
 		}
 	});
+	validSkillObjectArray = [];
+	if(selectedVita.hero){
+		enemyArray.forEach(arrayCreature =>{
+			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				if(skillTarget == 1){
+					var posTracker = skillTargetIndex+1;
+					if(arrayCreature.size == 2){
+						var pos1 = arrayCreature.pos;
+						var pos2 = arrayCreature.pos + 1;
+						if(posTracker == pos1 || posTracker == pos2){
+							validSkillObjectArray.push([arrayCreature]);
+						}
+					}else{
+						if(posTracker == arrayCreature.pos){
+							validSkillObjectArray.push([arrayCreature]);
+						}
+					}
+				}
+			});
+		});
+	}
 
 	// if(splash){
 	// 	validSkillObjectArray = [];
@@ -2502,7 +2523,7 @@ function onSkillDown(){
 	// 	});
 	// }
 
-	
+
 	// console.log(validSkillTargetArray);
 	//validSkillTargetArray [1, 2, 4] = [[1,2],[2,4]]
 	//several [1, 0, 1]
