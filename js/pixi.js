@@ -2413,18 +2413,20 @@ function onSkillDown(){
 	// 		}
 	// 	}
 	// });
-	
+
 	// validSkillObjectArray = [];
 	if(selectedVita.hero){
 		enemyArray.forEach(arrayCreature =>{
+			var skip = false;
 			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
-				if(skillTarget == 1){
+				if(skillTarget == 1 && !skip){
 					var posTracker = skillTargetIndex+1;
 					if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							validSkillObjectArray.push([arrayCreature]);
+							skip = true;
 						}
 					}else{
 						if(posTracker == arrayCreature.pos){
