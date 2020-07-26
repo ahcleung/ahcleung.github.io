@@ -1786,23 +1786,39 @@ function onCreatureDown(){
 	if(validSkillObjectArray.length > 0){
 		var correctTarget = false;
 		var targetedVitaIndex = 0;
+		var tagSplash = false;
+		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+			if(tagName == "splash")			tagSplash = true;
+		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(this.object == arrayElement){
-						console.log("Correct object do things");
+				if(tagSplash){
+					if(this.object == targeted[0]){
+						console.log("Correct array object do things");
 						correctTarget = true;
 						targetedVitaIndex = targetedIndex;
 					}
-				});
+				}
+				else{
+					targeted.forEach(arrayElement => {
+						if(this.object == arrayElement){
+							console.log("Correct array object do things");
+							correctTarget = true;
+							targetedVitaIndex = targetedIndex;
+						}
+					});
+				}
 			}
 			if(this.object == targeted){
-				console.log("Correct object do things");
+				console.log("Correct single object do things");
 				correctTarget = true;
 				targetedVitaIndex = targetedIndex;
 			}
 		});
 		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+			console.log(arrayElement.name + "\n");
+		});
 
 		var level = selectedVita.level;
 		var accMod = selectedVita.accMod;
@@ -1883,7 +1899,6 @@ function onCreatureDown(){
 				var tagStatChange = false;
 				var tagHazard = false;
 				var tagTurns = false;
-				var tagSplash = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
