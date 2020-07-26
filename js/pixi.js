@@ -2446,6 +2446,7 @@ function onSkillDown(){
 										}
 									}									
 								});
+								console.log("11");
 								//push whatever is in pos-1 and pos+1
 								validSkillObjectArray.push(arrayTarget);
 							}
@@ -2476,6 +2477,7 @@ function onSkillDown(){
 										}
 									}									
 								});
+								console.log("22");
 								validSkillObjectArray.push(arrayTarget);
 								// validSkillObjectArray.push([arrayCreature]);
 							}
