@@ -1815,25 +1815,29 @@ function onCreatureDown(){
 				targetedVitaIndex = targetedIndex;
 			}
 		});
+
+		//Rearrange array for splash targets
+		if(tagSplash){
+			var tempArray = [];
+			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+				tempArray[arrayElement.pos-1] = arrayElement;
+				
+			});
+			var filtered = tempArray.filter(function (el) {
+				return el != null;
+			});
+
+			filtered.forEach(arrayElement =>{
+				console.log(arrayElement.name + "\n");
+			});
+
+			validSkillObjectArray[targetedVitaIndex] = filtered;
+		}
+
 		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 			console.log(arrayElement.name + "\n");
 		});
-
-		var tempArray = [];
-		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
-			tempArray[arrayElement.pos-1] = arrayElement;
-			
-		});
-		var filtered = tempArray.filter(function (el) {
-			return el != null;
-		});
-
-		filtered.forEach(arrayElement =>{
-			console.log(arrayElement.name + "\n");
-		});
-
-		validSkillObjectArray[targetedVitaIndex] = filtered;
 
 		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
@@ -1846,12 +1850,7 @@ function onCreatureDown(){
 		
 		if(correctTarget){
 
-			// if(tagSplash){
-			// 	animateBattle(selectedVita, [validSkillObjectArray[targetedVitaIndex][0]]);
-			// }else{
-				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
-			// }
-			
+			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);			
 
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
 			const filter2 = new PIXI.filters.ColorMatrixFilter();
@@ -1931,6 +1930,7 @@ function onCreatureDown(){
 				var skillCrit = false;
 				var critMultiplier = 1;
 				var skillHeal = false;
+				var skillPower = skillsList.data.skills[selectedSkill].power;
 
 				var dodge = targeted.dodge;
 				var dodgeMod = targeted.dodgeMod;
@@ -2065,6 +2065,12 @@ function onCreatureDown(){
 						}
 					}
 
+					if(tagSplash){
+						if(this.object != targeted){
+							skillPower *= skillsList.data.skills[selectedSkill].splash;
+						}
+					}
+
 					//Calculate heal amount or damage amount
 					if(skillsList.data.skills[selectedSkill].heal > 0){
 						//calculate how much to heal
@@ -2080,7 +2086,7 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						// other = true;
 					}else{						
-						var dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						var dmgCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 						for(var i = 0; i < multiHitNum; i++){
 							var criticalChance = Math.floor(Math.random() * 10000);
 							var critMultiplier = 1;
