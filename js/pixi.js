@@ -2067,7 +2067,7 @@ function onCreatureDown(){
 
 					if(tagSplash){
 						if(this.object != targeted){
-							skillPower *= skillsList.data.skills[selectedSkill].splash;
+							// skillPower *= skillsList.data.skills[selectedSkill].splash;
 						}
 					}
 
