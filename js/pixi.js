@@ -1820,7 +1820,23 @@ function onCreatureDown(){
 			console.log(arrayElement.name + "\n");
 		});
 
+		var tempArray = [];
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+			tempArray[arrayElement.pos-1] = arrayElement;
+			
+		});
+		var filtered = tempArray.filter(function (el) {
+			return el != null;
+		});
+		
+		filtered.forEach(arrayElement =>{
+			console.log(arrayElement.name + "\n");
+		});
 
+		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+		// 	console.log(arrayElement.name + "\n");
+		// });
 
 		var level = selectedVita.level;
 		var accMod = selectedVita.accMod;
