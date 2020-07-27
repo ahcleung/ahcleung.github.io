@@ -1820,13 +1820,20 @@ function onCreatureDown(){
 			console.log(arrayElement.name + "\n");
 		});
 
+
+
 		var level = selectedVita.level;
 		var accMod = selectedVita.accMod;
 		var attack = 0;
 		
 		if(correctTarget){
 
-			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
+			if(tagSplash){
+				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex][0]);
+			}else{
+				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
+			}
+			
 
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
 			const filter2 = new PIXI.filters.ColorMatrixFilter();
