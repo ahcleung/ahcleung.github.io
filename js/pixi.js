@@ -1828,10 +1828,12 @@ function onCreatureDown(){
 		var filtered = tempArray.filter(function (el) {
 			return el != null;
 		});
-		
+
 		filtered.forEach(arrayElement =>{
 			console.log(arrayElement.name + "\n");
 		});
+
+		validSkillObjectArray[targetedVitaIndex] = filtered;
 
 		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
@@ -1844,11 +1846,11 @@ function onCreatureDown(){
 		
 		if(correctTarget){
 
-			if(tagSplash){
-				animateBattle(selectedVita, [validSkillObjectArray[targetedVitaIndex][0]]);
-			}else{
+			// if(tagSplash){
+			// 	animateBattle(selectedVita, [validSkillObjectArray[targetedVitaIndex][0]]);
+			// }else{
 				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
-			}
+			// }
 			
 
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
