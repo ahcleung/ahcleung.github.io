@@ -325,7 +325,7 @@
 				1,1,1,1
 			],
 			"tags":[
-				"splash"
+				"several"
 			],
 			"multiple": [0,0],
 			"status": 0,
@@ -335,7 +335,7 @@
 			"displace": [0],
 			"column": [0,0,0,0],
 			"statchange" : [false,0,0],
-			"several":[0,0,0],
+			"several":[1,0,1],
 			"heal": 0
 		}
 	]
