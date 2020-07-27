@@ -2067,9 +2067,11 @@ function onCreatureDown(){
 
 					if(tagSplash){
 						if(this.object != targeted){
-							// skillPower *= skillsList.data.skills[selectedSkill].splash;
+							skillPower *= skillsList.data.skills[selectedSkill].splash;
 						}
 					}
+
+					console.log("Skill power: " + skillPower);
 
 					//Calculate heal amount or damage amount
 					if(skillsList.data.skills[selectedSkill].heal > 0){
