@@ -1829,7 +1829,7 @@ function onCreatureDown(){
 		if(correctTarget){
 
 			if(tagSplash){
-				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex][0]);
+				animateBattle(selectedVita, [validSkillObjectArray[targetedVitaIndex][0]]);
 			}else{
 				animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			}
