@@ -3740,9 +3740,9 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 			dmgStatusTextItem.visible = false;
 		});
+		var statusCounter = 0;
 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
 			var statusStored = false;
-			var statusCounter = 0;
 			object.statusArray.forEach(statusElement =>{
 				if(statusElement[0] == statusNumber)	statusStored = true
 			});
