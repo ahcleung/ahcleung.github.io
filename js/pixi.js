@@ -2324,7 +2324,7 @@ function onHPDown(){
 		console.log(status);
 		var tracker = false;
 		creatureStatusInfo.forEach(statusTracked =>{
-			if(statusTracked == status[0])		tracker = true;
+			if(statusTracked[0] == status[0])		tracker = true;
 		});
 		if(!tracker){
 			switch(status[0]){
