@@ -2319,7 +2319,7 @@ function moveCreature(movingCreature, displacement){
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
 	var creatureStatusInfo = [];
-	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod + "\nStatus: " + );
+	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		switch(status[0]){
 			case 1:
@@ -2368,7 +2368,7 @@ function onHPDown(){
 				creatureStatusInfo.push("Buff");
 		}
 	});
-	console.log(creatureStatusInfo);
+	console.log("Status: " + creatureStatusInfo);
 }
 
 function onSkillDown(){
