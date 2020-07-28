@@ -212,11 +212,12 @@
 				1,1,1,1
 			],
 			"tags":[
-				"multiple", "statchange", "turns"
+				"multiple", "statchange", "turns", "status"
 			],
 			"multiple": [2,2],
 			"turns": 5,
-			"statchange": [false,6,-1]
+			"statchange": [false,6,-1],
+			"status": 8
 		},
 		{
 			"name": "Soul wreck",
