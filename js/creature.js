@@ -52,10 +52,12 @@ class Creature{
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
 		
+		//hp, dodge, patk, pdef, satk, sdef, spd, acc
 		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
-			[Math.floor(Math.random() * 14) + 1, 1],
-			[Math.floor(Math.random() * 14) + 1, 3, 5]
+		//[status, turn, statNum, value]
+			[3,1],
+			[4,3,2,-1]
 			// ,
 			// [Math.floor(Math.random() * 14) + 1, 2],
 			// [Math.floor(Math.random() * 14) + 1, 2],
