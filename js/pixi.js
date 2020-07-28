@@ -1923,6 +1923,7 @@ function onCreatureDown(){
 				var tagStatChange = false;
 				var tagHazard = false;
 				var tagTurns = false;
+				var tagDisplace = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
@@ -1972,6 +1973,7 @@ function onCreatureDown(){
 						if(tagName == "hazard")			tagHazard = true;
 						if(tagName == "turns")			tagTurns = true;
 						if(tagName == "splash")			tagSplash = true;
+						if(tagName == "displace")		tagDisplace = true;
 					});
 
 					if(tagMultiple){
@@ -2116,7 +2118,7 @@ function onCreatureDown(){
 					dmgArray.forEach(dmgArrayNum => {deltaHP += dmgArrayNum;});
 					console.log("Total damage: " + deltaHP);
 
-					if(skillsList.data.skills[selectedSkill].displace[0] != 0){
+					if(tagDisplace){
 						moveCreature(targeted, skillsList.data.skills[selectedSkill].displace[0]);
 					}
 				}else{
