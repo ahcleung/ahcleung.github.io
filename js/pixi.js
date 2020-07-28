@@ -1982,7 +1982,7 @@ function onCreatureDown(){
 					}
 
 					if(tagStatus){
-						defenderStatus.push(skillsList.data.skills[selectedSkill].status);
+						defenderStatus.push([skillsList.data.skills[selectedSkill].status,skillsList.data.skills[selectedSkill].turns]);
 						// hitNum = 5;
 					}
 
@@ -1998,9 +1998,9 @@ function onCreatureDown(){
 							}
 						}else{
 							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-								defenderStatus.push(2);
+								defenderStatus.push([2,skillsList.data.skills[selectedSkill].turns,skillsList.data.skills[selectedSkill].statchange[1]],skillsList.data.skills[selectedSkill].statchange[2]);
 							}else{
-								defenderStatus.push(4);
+								defenderStatus.push([4,skillsList.data.skills[selectedSkill].turns,skillsList.data.skills[selectedSkill].statchange[1]],skillsList.data.skills[selectedSkill].statchange[2]]);
 							}
 						}
 
@@ -3795,19 +3795,19 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
 			var statusStored = false;
 			object.statusArray.forEach(statusElement =>{
-				if(statusElement[0] == statusNumber)	statusStored = true
+				if(statusElement[0] == statusNumber[0])	statusStored = true
 			});
 			if(!statusStored){
 				object.dmgContainer.dmgStatus.statusImageArray[statusCounter].visible = true;
 				object.dmgContainer.dmgStatus.statusTextArray[statusCounter].visible = true;
-				let newStatusEffect = statusEffectSprite(statusNumber);
-				updateDmgStatus(object.dmgContainer, statusNumber, statusCounter);
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);
+				updateDmgStatus(object.dmgContainer, statusNumber[0], statusCounter);
 				newStatusEffect.visible = false;
 				object.healthBar.addChild(newStatusEffect);
 				object.statusSpriteArray.push(newStatusEffect);
 				statusCounter++;
 			}
-			object.statusArray.push([statusNumber]);
+			object.statusArray.push(statusNumber);
 		});
 		resizeStatus(object);
 		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
