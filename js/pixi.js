@@ -1998,9 +1998,9 @@ function onCreatureDown(){
 							}
 						}else{
 							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-								defenderStatus.push([2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]);
+								defenderStatus.push([2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
 							}else{
-								defenderStatus.push([4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]);
+								defenderStatus.push([4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
 							}
 						}
 
