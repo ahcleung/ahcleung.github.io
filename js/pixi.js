@@ -3747,8 +3747,8 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 				if(statusElement[0] == statusNumber)	statusStored = true
 			});
 			if(!statusStored){
-				object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-				object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+				object.dmgContainer.dmgStatus.statusImageArray[statusCounter].visible = true;
+				object.dmgContainer.dmgStatus.statusTextArray[statusCounter].visible = true;
 				let newStatusEffect = statusEffectSprite(statusNumber);
 				updateDmgStatus(object.dmgContainer, statusNumber, statusCounter);
 				newStatusEffect.visible = false;
