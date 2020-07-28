@@ -2321,6 +2321,7 @@ function onHPDown(){
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
+		console.log(status);
 		switch(status[0]){
 			case 1:
 				creatureStatusInfo.push("Bleed");
