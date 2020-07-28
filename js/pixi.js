@@ -3741,13 +3741,19 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 			dmgStatusTextItem.visible = false;
 		});
 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
-			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-			let newStatusEffect = statusEffectSprite(statusNumber);
-			updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
-			newStatusEffect.visible = false;
-			object.healthBar.addChild(newStatusEffect);
-			object.statusSpriteArray.push(newStatusEffect);
+			var statusStored = false;
+			object.statusArray.forEach(statusElement =>{
+				if(statusElement[0] == statusNumber)	statusStored = true
+			});
+			if(!statusStored){
+				object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+				object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+				let newStatusEffect = statusEffectSprite(statusNumber);
+				updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
+				newStatusEffect.visible = false;
+				object.healthBar.addChild(newStatusEffect);
+				object.statusSpriteArray.push(newStatusEffect);
+			}
 			object.statusArray.push(statusNumber);
 		});
 		resizeStatus(object);
