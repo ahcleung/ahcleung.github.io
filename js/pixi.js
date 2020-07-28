@@ -3807,7 +3807,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 				object.statusSpriteArray.push(newStatusEffect);
 				statusCounter++;
 			}
-			object.statusArray.push(statusNumber);
+			object.statusArray.push([statusNumber]);
 		});
 		resizeStatus(object);
 		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
@@ -3818,7 +3818,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 			newStatusEffect.visible = false;
 			skillStatusTarget.healthBar.addChild(newStatusEffect);
 			skillStatusTarget.statusSpriteArray.push(newStatusEffect);
-			skillStatusTarget.statusArray.push(statusNumber);
+			skillStatusTarget.statusArray.push([statusNumber]);
 		});
 		resizeStatus(skillStatusTarget);
 	}
