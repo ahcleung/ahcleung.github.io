@@ -206,10 +206,10 @@
 			"power": 15,
 			"accuracy": 80,
 			"position": [
-				0,0,1,1
+				1,1,1,1
 			],
 			"target": [
-				1,1,0,0
+				1,1,1,1
 			],
 			"tags":[
 				"multiple", "statchange", "turns"
