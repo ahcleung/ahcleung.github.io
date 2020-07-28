@@ -35,6 +35,10 @@ loader
 		"js/skills.json",
 		"js/elements.json",
 
+		{name:'hazard_lit', url:'img/hazard_lit.png'},
+		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
+		{name:'hazard_spores', url:'img/hazard_spores.png'},
+
 		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
 		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
 		{name:'gorilla3_p_back', url:'img/gorilla3_p_back.png'},
@@ -228,6 +232,7 @@ var skillSpacer = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 var resizeWidth = 0;
+var hazardSize = 0.5;
 
 //Selected element tracker
 var selectedVita;
@@ -273,14 +278,14 @@ hero[0] = {
 };
 hero[1] = {
 	id: 11, level: 47, 
-	skill1: 4, skill2: 10, skill3: 8, skill4: 2,
-	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120,
+	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
+	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 60,
 	hero: true
 };
 hero[2] = {
 	id: 2, level: 45, 
-	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 47,
+	skill1: 4, skill2: 11, skill3: 12, skill4: 1,
+	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 120,
 	hero: true
 };
 // hero[3] = {
@@ -510,18 +515,26 @@ function setup(){
 	// 	factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 	// 	factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-	// 	const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-	// 	fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-	// 	fume.visible = false;
+	// 	// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+	// 	// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+	// 	// fume.visible = false;
 	// 	// fume.x = 100*i;
+	// 	const fume = new PIXI.Sprite(resources.hazard_lit.texture);
+	// 	fume.anchor.set(0.5,1);
+	// 	// const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+	// 	// fume2.anchor.set(0.5,1);
 	// 	if(i<4){
+	// 		fieldHeroHazard.push([i+1,1,10,5]);
 	// 		heroHazardSprite.push(fume);
 	// 		heroHazardContainer.addChild(fume);
 	// 	}else{
+	// 		fieldEnemyHazard.push([i+1-4,1,10,5]);
 	// 		enemyHazardSprite.push(fume);
 	// 		enemyHazardContainer.addChild(fume);
 	// 	}
 	// }
+
+
 	spriteHolder.addChild(heroHazardContainer);
 	spriteHolder.addChild(enemyHazardContainer);
 
@@ -1393,7 +1406,7 @@ function resize() {
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
-	var hazardSize = 1;
+	var hazardMargin = 50;
 	
 	if(app.screen.width < 860){
 		margin = 10;
@@ -1406,7 +1419,8 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 20);
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
-		hazardSize = 0.5;
+		hazardSize = 0.35;
+		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
 		margin = 15;
 		healthSpacing = 10;
@@ -1418,7 +1432,8 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
-		hazardSize = 0.75;
+		hazardSize = 0.58;
+		hazardMargin = 40;
 	}else{
 		margin = 50;
 		healthSpacing = 20;
@@ -1430,6 +1445,8 @@ function resize() {
 		interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
+		hazardSize = 0.75;
+		hazardMargin = 50;
 	}
 
 	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
@@ -1515,8 +1532,9 @@ function resize() {
 	
 	heroSprites.position.set(app.screen.width/2-margin, app.screen.height*3/4);
 	enemySprites.position.set(app.screen.width/2+margin, app.screen.height*3/4);
-	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4);
-	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4);
+
+	heroHazardContainer.position.set(app.screen.width/2-margin, app.screen.height*3/4+hazardMargin);
+	enemyHazardContainer.position.set(app.screen.width/2+margin, app.screen.height*3/4+hazardMargin);
 
 	heroHazardSprite.forEach((hazard, index)=>{
 		hazard.scale.set(hazardSize, hazardSize);
@@ -1768,23 +1786,63 @@ function onCreatureDown(){
 	if(validSkillObjectArray.length > 0){
 		var correctTarget = false;
 		var targetedVitaIndex = 0;
+		var tagSplash = false;
+		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+			if(tagName == "splash")			tagSplash = true;
+		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(this.object == arrayElement){
-						console.log("Correct object do things");
+				if(tagSplash){
+					if(this.object == targeted[0]){
+						console.log("Correct array object do things");
 						correctTarget = true;
 						targetedVitaIndex = targetedIndex;
 					}
-				});
+				}
+				else{
+					targeted.forEach(arrayElement => {
+						if(this.object == arrayElement){
+							console.log("Correct array object do things");
+							correctTarget = true;
+							targetedVitaIndex = targetedIndex;
+						}
+					});
+				}
 			}
 			if(this.object == targeted){
-				console.log("Correct object do things");
+				console.log("Correct single object do things");
 				correctTarget = true;
 				targetedVitaIndex = targetedIndex;
 			}
 		});
+
+		//Rearrange array for splash targets
+		if(tagSplash){
+			var tempArray = [];
+			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+				tempArray[arrayElement.pos-1] = arrayElement;
+				
+			});
+			var filtered = tempArray.filter(function (el) {
+				return el != null;
+			});
+
+			filtered.forEach(arrayElement =>{
+				console.log(arrayElement.name + "\n");
+			});
+
+			validSkillObjectArray[targetedVitaIndex] = filtered;
+		}
+
 		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+			console.log(arrayElement.name + "\n");
+		});
+
+		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+		// 	console.log(arrayElement.name + "\n");
+		// });
 
 		var level = selectedVita.level;
 		var accMod = selectedVita.accMod;
@@ -1792,7 +1850,7 @@ function onCreatureDown(){
 		
 		if(correctTarget){
 
-			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);
+			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);			
 
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
 			const filter2 = new PIXI.filters.ColorMatrixFilter();
@@ -1865,6 +1923,7 @@ function onCreatureDown(){
 				var tagStatChange = false;
 				var tagHazard = false;
 				var tagTurns = false;
+				var tagDisplace = false;
 				var statTarget = targeted;
 				var defenderStatus = [];
 				var attackerStatus = [];
@@ -1872,6 +1931,7 @@ function onCreatureDown(){
 				var skillCrit = false;
 				var critMultiplier = 1;
 				var skillHeal = false;
+				var skillPower = skillsList.data.skills[selectedSkill].power;
 
 				var dodge = targeted.dodge;
 				var dodgeMod = targeted.dodgeMod;
@@ -1912,6 +1972,8 @@ function onCreatureDown(){
 						if(tagName == "statchange")		tagStatChange = true;
 						if(tagName == "hazard")			tagHazard = true;
 						if(tagName == "turns")			tagTurns = true;
+						if(tagName == "splash")			tagSplash = true;
+						if(tagName == "displace")		tagDisplace = true;
 					});
 
 					if(tagMultiple){
@@ -1920,7 +1982,7 @@ function onCreatureDown(){
 					}
 
 					if(tagStatus){
-						defenderStatus.push(skillsList.data.skills[selectedSkill].status);
+						defenderStatus.push([skillsList.data.skills[selectedSkill].status,skillsList.data.skills[selectedSkill].turns]);
 						// hitNum = 5;
 					}
 
@@ -1936,9 +1998,9 @@ function onCreatureDown(){
 							}
 						}else{
 							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-								defenderStatus.push(2);
+								defenderStatus.push([2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
 							}else{
-								defenderStatus.push(4);
+								defenderStatus.push([4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
 							}
 						}
 
@@ -1949,11 +2011,35 @@ function onCreatureDown(){
 					if(tagHazard){
 						factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
-						const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-						fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
-						fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
+						// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
+						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						let fume, fume2;
+						switch(skillsList.data.skills[selectedSkill].hazard[0]){
+							case 1:
+								fume = new PIXI.Sprite(resources.hazard_lit.texture);
+								fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+								break;
+							case 2:
+								fume = new PIXI.Sprite(resources.hazard_spikes.texture);
+								fume2 = new PIXI.Sprite(resources.hazard_spikes.texture);
+								break;
+							case 3:
+								fume = new PIXI.Sprite(resources.hazard_spores.texture);
+								fume2 = new PIXI.Sprite(resources.hazard_spores.texture);
+								break;
+							default:
+								fume = new PIXI.Sprite(resources.hazard_lit.texture);
+								fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+						}
+						
+						fume.anchor.set(0.5,1);	
+						fume2.anchor.set(0.5,1);
+
 						if(targeted.hero){
+							fume.scale.set(hazardSize,hazardSize);
+							fume2.scale.set(hazardSize,hazardSize);
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
 								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
@@ -1966,6 +2052,8 @@ function onCreatureDown(){
 							heroHazardSprite.push(fume);
 							heroHazardContainer.addChild(fume);
 						}else{
+							fume.scale.set(-hazardSize,hazardSize);
+							fume2.scale.set(-hazardSize,hazardSize);
 							if(targeted.size > 1){
 								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
 								fume2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
@@ -1978,6 +2066,14 @@ function onCreatureDown(){
 							enemyHazardContainer.addChild(fume);
 						}
 					}
+
+					if(tagSplash){
+						if(this.object != targeted){
+							skillPower *= skillsList.data.skills[selectedSkill].splash;
+						}
+					}
+
+					console.log("Skill power: " + skillPower);
 
 					//Calculate heal amount or damage amount
 					if(skillsList.data.skills[selectedSkill].heal > 0){
@@ -1994,7 +2090,7 @@ function onCreatureDown(){
 					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
 						// other = true;
 					}else{						
-						var dmgCalc = Math.round((((((2*level/5) + 2) * skillsList.data.skills[selectedSkill].power * (attack/defense))/150) + 2)*effectiveness);
+						var dmgCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 						for(var i = 0; i < multiHitNum; i++){
 							var criticalChance = Math.floor(Math.random() * 10000);
 							var critMultiplier = 1;
@@ -2011,7 +2107,7 @@ function onCreatureDown(){
 
 					if(skillCrit){
 						var totalCritDmg = 0;
-						defenderStatus.push(14);
+						defenderStatus.push([14]);
 						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
 							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
 						});
@@ -2022,7 +2118,7 @@ function onCreatureDown(){
 					dmgArray.forEach(dmgArrayNum => {deltaHP += dmgArrayNum;});
 					console.log("Total damage: " + deltaHP);
 
-					if(skillsList.data.skills[selectedSkill].displace[0] != 0){
+					if(tagDisplace){
 						moveCreature(targeted, skillsList.data.skills[selectedSkill].displace[0]);
 					}
 				}else{
@@ -2091,49 +2187,52 @@ function onCreatureDown(){
 			moveCreature(selectedVita, displacement);
 			if(selectedVita.hero){
 			}else{
-				fieldEnemyHazard.forEach(arrayItem =>{
-					enemyArray.forEach(enemyObject =>{
-						// var defendElements = [];
-						// var effective = 1;
-						// enemyObject.elements.forEach(element =>{
-						// 	defendElements.push(element);
-						// });
-						// var hazardElement = 0;
-						// switch(arrayItem[1]){
-						// 	case 1: 
-						// 		hazardElement = 2;
-						// 		break;
-						// 	case 2:
-						// 		hazardElement = 1;
-						// 		break;
-						// 	case 3:
-						// 		hazardElement = 3;
-						// 		break;
-						// 	case 4:
-						// 		hazardElement = 7;
-						// 		break;
-						// 	default:
-						// 		hazardElement = 1;
-						// }
-						// defendElements.forEach(defendElement=>{
-						// 	effective *= elementList.data.elements[hazardElement][defendElement];
-						// });
+				
+				enemyArray.forEach(enemyObject =>{
+					var effective = [];
+					var dmgArray = [];
+					fieldEnemyHazard.forEach(arrayItem =>{
+						var effectiveCalc = 1;
+						var defendElements = [];						
+						enemyObject.elements.forEach(element =>{
+							defendElements.push(element);
+						});
+						var hazardElement = 0;
+						switch(arrayItem[1]){
+							case 1: 
+								hazardElement = 2;
+								break;
+							case 2:
+								hazardElement = 1;
+								break;
+							case 3:
+								hazardElement = 3;
+								break;
+							case 4:
+								hazardElement = 7;
+								break;
+							default:
+								hazardElement = 1;
+						}
+						defendElements.forEach(defendElement=>{
+							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+						});
 						if(enemyObject.size > 1){
-							if(arrayItem[0]+1 == enemyObject.pos+1){
-								dmgArray = [];
-								dmgArray.push(arrayItem[2]);
-								effective = 1;
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
+								
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
 							}
 						}else{
 							if(arrayItem[0]+1 == enemyObject.pos){
-								dmgArray = [];
-								dmgArray.push(arrayItem[2]);
-								effective = 1;
-								updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+								// dmgArray = [];
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 							}
 						}						
 					});
+					updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 				});
 			}
 
@@ -2219,7 +2318,64 @@ function moveCreature(movingCreature, displacement){
 
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
-	console.log("Name: " + this.object.name + " || Stats: " + this.object.statMod);
+	var creatureStatusInfo = [];
+	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod);
+	this.object.statusArray.forEach(status =>{
+		console.log(status);
+		var tracker = false;
+		creatureStatusInfo.forEach(statusTracked =>{
+			if(statusTracked[0] == status[0])		tracker = true;
+		});
+		if(!tracker){
+			switch(status[0]){
+				case 1:
+					creatureStatusInfo.push("Bleed");
+					break;
+				case 2:
+					creatureStatusInfo.push("Buff");
+					break;
+				case 3:
+					creatureStatusInfo.push("Burned");
+					break;
+				case 4:
+					creatureStatusInfo.push("Debuff");
+					break;
+				case 5:
+					creatureStatusInfo.push("Depressed");
+					break;
+				case 6:
+					creatureStatusInfo.push("Guard");
+					break;
+				case 7:
+					creatureStatusInfo.push("Immune");
+					break;
+				case 8:
+					creatureStatusInfo.push("Paralyzed");
+					break;
+				case 9:
+					ccreatureStatusInfo.push("Poisoned");
+					break;
+				case 10:
+					creatureStatusInfo.push("Recover");
+					break;
+				case 11:
+					creatureStatusInfo.push("Secured");
+					break;
+				case 12:
+					creatureStatusInfo.push("Silenced");
+					break;
+				case 13:
+					creatureStatusInfo.push("Stunned");
+					break;
+				case 14:
+					creatureStatusInfo.push("Critical");
+					break;
+				default:
+					creatureStatusInfo.push("Buff");
+			}
+		}
+	});
+	console.log("Status: " + creatureStatusInfo);
 }
 
 function onSkillDown(){
@@ -2243,6 +2399,7 @@ function onSkillDown(){
 	var several = false;
 	var displace = false;
 	var heal = false;
+	var splash = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column"){
 			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]
@@ -2260,12 +2417,9 @@ function onSkillDown(){
 				heal = false;	
 			}
 		}
-		if(tagName == "several"){
-			several = true;
-		}
-		if(tagName == "displace"){
-			displace = true;
-		}
+		if(tagName == "several")		several = true
+		if(tagName == "displace")		displace = true
+		if(tagName == "splash")			splash = true
 	});
 	validMoveObjectArray = [];
 	validSkillObjectArray = [];
@@ -2330,42 +2484,262 @@ function onSkillDown(){
 	}
 
 	//for each target in the skill
-	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
-		//if the position is a valid target
-		if(skillTarget == 1){
-			var posTracker = skillTargetIndex + 1;
-			//if targeting enemies or heroes
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(posTracker == arrayCreature.pos){
-							validSkillObjectArray.push([arrayCreature]);
-						}
-					}else if(arrayCreature.size == 2){
+	// skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+	// 	//if the position is a valid target
+	// 	if(skillTarget == 1){
+	// 		var posTracker = skillTargetIndex + 1;
+	// 		//if targeting enemies or heroes
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(posTracker == arrayCreature.pos){
+	// 						validSkillObjectArray.push([arrayCreature]);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(posTracker == pos1 || posTracker == pos2){
+	// 						validSkillObjectArray.push([arrayCreature]);
+	// 					}
+	// 				}				
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(posTracker == arrayCreature.pos){
+	// 						validSkillObjectArray.push([arrayCreature]);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(posTracker == pos1 || posTracker == pos2){
+	// 						validSkillObjectArray.push([arrayCreature]);
+	// 					}
+	// 				}			
+	// 			});
+	// 		}
+	// 	}
+	// });
+
+	// validSkillObjectArray = [];
+	if(selectedVita.hero){
+		enemyArray.forEach(arrayCreature =>{
+			var targeted = false;
+			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				if(skillTarget == 1 && !targeted){
+					var posTracker = skillTargetIndex+1;
+					if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							validSkillObjectArray.push([arrayCreature]);
+							targeted = true;
 						}
-					}				
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
+					}else{
 						if(posTracker == arrayCreature.pos){
 							validSkillObjectArray.push([arrayCreature]);
+							targeted = true;
 						}
-					}else if(arrayCreature.size == 2){
+					}
+				}
+			});
+		});
+	}else{
+		heroArray.forEach(arrayCreature =>{
+			var targeted = false;
+			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				if(skillTarget == 1 && !targeted){
+					var posTracker = skillTargetIndex+1;
+					if(arrayCreature.size == 2){
 						var pos1 = arrayCreature.pos;
 						var pos2 = arrayCreature.pos + 1;
 						if(posTracker == pos1 || posTracker == pos2){
 							validSkillObjectArray.push([arrayCreature]);
+							targeted = true;
 						}
-					}			
+					}else{
+						if(posTracker == arrayCreature.pos){
+							validSkillObjectArray.push([arrayCreature]);
+							targeted = true;
+						}
+					}
+				}
+			});
+		});
+	}
+
+
+	if(splash){
+		validSkillObjectArray = [];
+		if(selectedVita.hero){
+			enemyArray.forEach(arrayCreature =>{
+				var targeted = false;
+				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+					if(skillTarget == 1 && !targeted){
+						var posTracker = skillTargetIndex+1;
+						if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
+								enemyArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										if(arrayCreature2.pos+1 == pos1-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == pos2+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else if(arrayCreature2.size == 1){
+										if(arrayCreature2.pos == pos1-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == pos2+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}
+								});
+								validSkillObjectArray.push(arrayTarget);
+								targeted = true;
+							}
+						}else{
+							if(posTracker == arrayCreature.pos){
+								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
+								enemyArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										if(arrayCreature2.pos+1 == arrayCreature.pos-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == arrayCreature.pos+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else if(arrayCreature2.size == 1){
+										if(arrayCreature2.pos == arrayCreature.pos-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == arrayCreature.pos+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}
+								});
+								validSkillObjectArray.push(arrayTarget);
+								targeted = true;
+							}
+						}
+					}
 				});
-			}
+			});
+		}else{
+			heroArray.forEach(arrayCreature =>{
+				var targeted = false;
+				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+					if(skillTarget == 1 && !targeted){
+						var posTracker = skillTargetIndex+1;
+						if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
+						}else{
+							if(posTracker == arrayCreature.pos){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
+						}
+					}
+				});
+			});
 		}
-	});
+	}
+
+	// if(splash){
+	// 	validSkillObjectArray = [];
+	// 	skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+	// 		//if the position is a valid target
+	// 		if(skillTarget == 1){
+	// 			var posTracker = skillTargetIndex + 1;
+	// 			//if targeting enemies or heroes
+	// 			if(selectedVita.hero){
+	// 				enemyArray.forEach((arrayCreature, arrayIndex) => {
+	// 					if(arrayCreature.size == 1){
+	// 						if(posTracker == arrayCreature.pos){
+	// 							var arrayTarget = [];
+	// 							arrayTarget.push(arrayCreature);
+	// 							enemyArray.forEach(arrayCreature2 =>{
+	// 								if(arrayCreature2.size == 2){
+	// 									// var pos1 = arrayCreature2.pos;
+	// 									// var pos2 = arrayCreature2.pos + 1;
+	// 									if(arrayCreature2.pos + 1 == posTracker-1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 									else if(arrayCreature2.pos == posTracker+1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 								}else{
+	// 									if(arrayCreature2.pos == posTracker-1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 									else if(arrayCreature2.pos == posTracker+1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 								}									
+	// 							});
+	// 							console.log("11");
+	// 							//push whatever is in pos-1 and pos+1
+	// 							validSkillObjectArray.push(arrayTarget);
+	// 						}
+	// 					}else if(arrayCreature.size == 2){
+	// 						var pos1 = arrayCreature.pos;
+	// 						var pos2 = arrayCreature.pos + 1;
+	// 						if(posTracker == pos1 || posTracker == pos2){
+	// 							var arrayTarget = [];
+	// 							arrayTarget.push(arrayCreature);
+	// 							enemyArray.forEach(arrayCreature2 =>{
+	// 								if(arrayCreature2.size == 2){
+	// 									var pos3 = arrayCreature2.pos;
+	// 									var pos4 = arrayCreature2.pos + 1;
+	// 									if(arrayCreature2.pos+1 == pos1-1){
+	// 									// if(pos3 == posTracker-1 || pos4 == posTracker-1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 									else if(arrayCreature2.pos == pos2+1){
+	// 									// if(pos3 == posTracker+1 || pos4 == posTracker+1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 								}else{
+	// 									if(arrayCreature2.pos == pos1-1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 									else if(arrayCreature2.pos == pos2+1){
+	// 										arrayTarget.push(arrayCreature2);
+	// 									}
+	// 								}									
+	// 							});
+	// 							console.log("22");
+	// 							validSkillObjectArray.push(arrayTarget);
+	// 							// validSkillObjectArray.push([arrayCreature]);
+	// 						}
+	// 					}				
+	// 				});
+	// 			}else{
+	// 				heroArray.forEach((arrayCreature, arrayIndex) => {
+	// 					if(arrayCreature.size == 1){
+	// 						if(posTracker == arrayCreature.pos){
+	// 							validSkillObjectArray.push([arrayCreature]);
+	// 						}
+	// 					}else if(arrayCreature.size == 2){
+	// 						var pos1 = arrayCreature.pos;
+	// 						var pos2 = arrayCreature.pos + 1;
+	// 						if(posTracker == pos1 || posTracker == pos2){
+	// 							validSkillObjectArray.push([arrayCreature]);
+	// 						}
+	// 					}			
+	// 				});
+	// 			}
+	// 		}
+	// 	});
+	// }
+
 
 	// console.log(validSkillTargetArray);
 	//validSkillTargetArray [1, 2, 4] = [[1,2],[2,4]]
@@ -2636,7 +3010,7 @@ function onSkillDown(){
 
 	validSkillObjectArray.forEach(object1=>{
 		object1.forEach(object2=>{
-			console.log("object2 column: " + object2.name);
+			console.log("Target: " + object2.name);
 			if(heal){
 				object2.healthBar.heal.visible = true;
 			}else{
@@ -3306,38 +3680,55 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		dmgStatusTextItem.visible = false;
 	});
 
-	if(effective == 0.25){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#9D9D9D';
-		});
-	}else if(effective == 0.5){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFFFFF';
-		});
-	}else if(effective == 2){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#FFE81C';
-		});
-	}else if(effective == 4){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#DB00FF';
-		});
-	}else if(effective == 0){
-		object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
-		object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#D80000';
+	if(Array.isArray(effective)){
+		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		effective.forEach((effectiveNum, effectiveIndex) => {
+			var colour = '#D80000';
+			if(effectiveNum == 0.25){
+				colour = '#9D9D9D';
+			}else if(effectiveNum == 0.5){
+				colour = '#FFFFFF';
+			}else if(effectiveNum == 2){
+				colour = '#FFE81C';
+			}else if(effectiveNum == 4){
+				colour = '#DB00FF';
+			}
+			object.dmgContainer.dmgPopup.dmgNumArray[effectiveIndex].style.fill = colour;
 		});
 	}else{
-		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		if(effective == 0.25){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#9D9D9D';
+			});
+		}else if(effective == 0.5){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFFFFF';
+			});
+		}else if(effective == 2){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFE81C';
+			});
+		}else if(effective == 4){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#DB00FF';
+			});
+		}else if(effective == 0){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#D80000';
+			});
+		}else{
+			object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		}
 	}
 	
 	if(skillCrit){
@@ -3406,14 +3797,22 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 			dmgStatusTextItem.visible = false;
 		});
+		var statusCounter = 0;
 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
-			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-			let newStatusEffect = statusEffectSprite(statusNumber);
-			updateDmgStatus(object.dmgContainer, statusNumber, statusNumberIndex);
-			newStatusEffect.visible = false;
-			object.healthBar.addChild(newStatusEffect);
-			object.statusSpriteArray.push(newStatusEffect);
+			var statusStored = false;
+			object.statusArray.forEach(statusElement =>{
+				if(statusElement[0] == statusNumber[0])	statusStored = true
+			});
+			if(!statusStored){
+				object.dmgContainer.dmgStatus.statusImageArray[statusCounter].visible = true;
+				object.dmgContainer.dmgStatus.statusTextArray[statusCounter].visible = true;
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);
+				updateDmgStatus(object.dmgContainer, statusNumber[0], statusCounter);
+				newStatusEffect.visible = false;
+				object.healthBar.addChild(newStatusEffect);
+				object.statusSpriteArray.push(newStatusEffect);
+				statusCounter++;
+			}
 			object.statusArray.push(statusNumber);
 		});
 		resizeStatus(object);
@@ -3425,7 +3824,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 			newStatusEffect.visible = false;
 			skillStatusTarget.healthBar.addChild(newStatusEffect);
 			skillStatusTarget.statusSpriteArray.push(newStatusEffect);
-			skillStatusTarget.statusArray.push(statusNumber);
+			skillStatusTarget.statusArray.push([statusNumber]);
 		});
 		resizeStatus(skillStatusTarget);
 	}
