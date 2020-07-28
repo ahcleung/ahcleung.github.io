@@ -2322,51 +2322,57 @@ function onHPDown(){
 	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		console.log(status);
-		switch(status[0]){
-			case 1:
-				creatureStatusInfo.push("Bleed");
-				break;
-			case 2:
-				creatureStatusInfo.push("Buff");
-				break;
-			case 3:
-				creatureStatusInfo.push("Burned");
-				break;
-			case 4:
-				creatureStatusInfo.push("Debuff");
-				break;
-			case 5:
-				creatureStatusInfo.push("Depressed");
-				break;
-			case 6:
-				creatureStatusInfo.push("Guard");
-				break;
-			case 7:
-				creatureStatusInfo.push("Immune");
-				break;
-			case 8:
-				creatureStatusInfo.push("Paralyzed");
-				break;
-			case 9:
-				ccreatureStatusInfo.push("Poisoned");
-				break;
-			case 10:
-				creatureStatusInfo.push("Recover");
-				break;
-			case 11:
-				creatureStatusInfo.push("Secured");
-				break;
-			case 12:
-				creatureStatusInfo.push("Silenced");
-				break;
-			case 13:
-				creatureStatusInfo.push("Stunned");
-				break;
-			case 14:
-				creatureStatusInfo.push("Critical");
-				break;
-			default:
-				creatureStatusInfo.push("Buff");
+		var tracker = false;
+		creatureStatusInfo.forEach(statusTracked =>{
+			if(statusTracked == status[0])		tracker = true;
+		});
+		if(!tracker){
+			switch(status[0]){
+				case 1:
+					creatureStatusInfo.push("Bleed");
+					break;
+				case 2:
+					creatureStatusInfo.push("Buff");
+					break;
+				case 3:
+					creatureStatusInfo.push("Burned");
+					break;
+				case 4:
+					creatureStatusInfo.push("Debuff");
+					break;
+				case 5:
+					creatureStatusInfo.push("Depressed");
+					break;
+				case 6:
+					creatureStatusInfo.push("Guard");
+					break;
+				case 7:
+					creatureStatusInfo.push("Immune");
+					break;
+				case 8:
+					creatureStatusInfo.push("Paralyzed");
+					break;
+				case 9:
+					ccreatureStatusInfo.push("Poisoned");
+					break;
+				case 10:
+					creatureStatusInfo.push("Recover");
+					break;
+				case 11:
+					creatureStatusInfo.push("Secured");
+					break;
+				case 12:
+					creatureStatusInfo.push("Silenced");
+					break;
+				case 13:
+					creatureStatusInfo.push("Stunned");
+					break;
+				case 14:
+					creatureStatusInfo.push("Critical");
+					break;
+				default:
+					creatureStatusInfo.push("Buff");
+			}
 		}
 	});
 	console.log("Status: " + creatureStatusInfo);
