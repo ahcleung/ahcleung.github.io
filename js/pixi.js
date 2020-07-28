@@ -2318,7 +2318,7 @@ function moveCreature(movingCreature, displacement){
 
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
-	console.log("Name: " + this.object.name + " || Stats: " + this.object.statMod);
+	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod + "\nStatus: " + this.object.statusArray);
 }
 
 function onSkillDown(){
