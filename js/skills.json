@@ -1,7 +1,7 @@
 {
 	"skills" : [
 		{
-			"name": "Spike trap",
+			"name": "######",
 			"element": 4,
 			"type": "phy",
 			"power": 20,
@@ -17,14 +17,32 @@
 			],
 			"multiple": [0,0],
 			"status": 0,
-			"hazard": [2,10,"cover"],
-			"turns": 5,
+			"hazard": [0,0],
+			"turns": 0,
 			"splash": 0,
 			"displace": [0],
 			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
+			"statchange": [false,0,0],
 			"several":[0,0,0],
 			"heal": 0
+		},
+		{
+			"name": "Spike trap",
+			"element": 4,
+			"type": "phy",
+			"power": 20,
+			"accuracy": 100,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"hazard": [2,10],
+			"turns": 5
 		},
 		{
 			"name": "Heal wave",
@@ -42,275 +60,8 @@
 				"column", "multiple"
 			],
 			"multiple": [2,2],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0.5,
-			"displace": [0],
 			"column": [2,2,-1,1],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
 			"heal": 15
-		},
-		{
-			"name": "Torch ground",
-			"element": 2,
-			"type": "spe",
-			"power": 20,
-			"accuracy": 100,
-			"position": [
-				0,1,1,1
-			],
-			"target": [
-				1,1,1,1
-			],
-			"tags":[
-				"hazard", "status", "turns"
-			],
-			"multiple": [2,5],
-			"status": 4,
-			"hazard": [1, 10,"current"],
-			"turns": 5,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Tectonic shift",
-			"element": 4,
-			"type": "phy",
-			"power": 20,
-			"accuracy": 90,
-			"position": [
-				0,1,1,0
-			],
-			"target": [
-				0,1,1,0
-			],
-			"tags":[
-				"displace"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [1],
-			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Water geyser",
-			"element": 5,
-			"type": "spe",
-			"power": 40,
-			"accuracy": 80,
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				0,0,0,0
-			],
-			"tags":[
-				"column"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [0],
-			"column": [3,0.5,1,-1],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Aeropush",
-			"element": 6,
-			"type": "spe",
-			"power": 30,
-			"accuracy": 80,
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				1,1,0,0
-			],
-			"tags":[
-				"displace"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [-2],
-			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Uproot",
-			"element": 1,
-			"type": "oth",
-			"power": 0,
-			"accuracy": 100,
-			"position": [
-				1,1,0,0
-			],
-			"target": [
-				0,1,1,0
-			],
-			"tags":[
-				"displace"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [1],
-			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Airburst",
-			"element": 6,
-			"type": "spe",
-			"power": 60,
-			"accuracy": 100,
-			"position": [
-				0,1,1,0
-			],
-			"target": [
-				0,1,1,0
-			],
-			"tags":[
-
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false, 0, 0],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Wind rush",
-			"element": 6,
-			"type": "spe",
-			"power": 40,
-			"accuracy": 80,
-			"position": [
-				0,0,1,1
-			],
-			"target": [
-				0,0,1,1
-			],
-			"tags":[
-				"statchange", "turns"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 5,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [true, 6, 1],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Volt punch",
-			"element": 5,
-			"type": "phy",
-			"power": 15,
-			"accuracy": 80,
-			"position": [
-				0,0,1,1
-			],
-			"target": [
-				1,1,0,0
-			],
-			"tags":[
-				"multiple", "statchange", "turns"
-			],
-			"multiple": [2,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 5,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false,6, -1],
-			"several":[0,0,0],
-			"heal": 0
-		},
-		{
-			"name": "Soul wreck",
-			"element": 8,
-			"type": "phy",
-			"power": 60,
-			"accuracy": 80,
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				1,1,1,1
-			],
-			"tags":[
-				"several"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false,0,0],
-			"several":[1,0,1],
-			"heal": 0
-		},
-		{
-			"name": "Void slash",
-			"element": 9,
-			"type": "phy",
-			"power": 60,
-			"accuracy": 70,
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				0,0,1,1
-			],
-			"tags":[
-				"several"
-			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false,0,0],
-			"several":[0,0,1],
-			"heal": 0
 		},
 		{
 			"name": "Lightning strike",
@@ -327,16 +78,310 @@
 			"tags":[
 				"splash"
 			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0,0],
-			"turns": 0,
-			"splash": 0.5,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange" : [false,0,0],
-			"several":[0,0,0],
-			"heal": 0
+			"splash": 0.5
+		},
+		{
+			"name": "Torch ground",
+			"element": 2,
+			"type": "spe",
+			"power": 20,
+			"accuracy": 100,
+			"position": [
+				0,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"hazard", "status", "turns"
+			],
+			"status": 4,
+			"hazard": [1,10],
+			"turns": 5
+		},
+		{
+			"name": "Tectonic shift",
+			"element": 4,
+			"type": "phy",
+			"power": 20,
+			"accuracy": 90,
+			"position": [
+				0,1,1,0
+			],
+			"target": [
+				0,1,1,0
+			],
+			"tags":[
+				"displace"
+			],
+			"displace": [1]
+		},
+		{
+			"name": "Water geyser",
+			"element": 5,
+			"type": "spe",
+			"power": 40,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				0,0,0,0
+			],
+			"tags":[
+				"column"
+			],
+			"column": [3,0.5,1,-1]
+		},
+		{
+			"name": "Aeropush",
+			"element": 6,
+			"type": "spe",
+			"power": 30,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,0,0
+			],
+			"tags":[
+				"displace"
+			],
+			"displace": [-2]
+		},
+		{
+			"name": "Uproot",
+			"element": 1,
+			"type": "oth",
+			"power": 0,
+			"accuracy": 100,
+			"position": [
+				1,1,0,0
+			],
+			"target": [
+				0,1,1,0
+			],
+			"tags":[
+				"displace"
+			],
+			"displace": [1]
+		},
+		{
+			"name": "Airburst",
+			"element": 6,
+			"type": "spe",
+			"power": 60,
+			"accuracy": 100,
+			"position": [
+				0,1,1,0
+			],
+			"target": [
+				0,1,1,0
+			],
+			"tags":[]
+		},
+		{
+			"name": "Wind rush",
+			"element": 6,
+			"type": "spe",
+			"power": 40,
+			"accuracy": 80,
+			"position": [
+				0,0,1,1
+			],
+			"target": [
+				0,0,1,1
+			],
+			"tags":[
+				"statchange", "turns"
+			],
+			"turns": 5,
+			"statchange": [true, 6, 1]
+		},
+		{
+			"name": "Volt punch",
+			"element": 5,
+			"type": "phy",
+			"power": 15,
+			"accuracy": 80,
+			"position": [
+				0,0,1,1
+			],
+			"target": [
+				1,1,0,0
+			],
+			"tags":[
+				"multiple", "statchange", "turns"
+			],
+			"multiple": [2,2],
+			"turns": 5,
+			"statchange": [false,6,-1]
+		},
+		{
+			"name": "Soul wreck",
+			"element": 8,
+			"type": "phy",
+			"power": 60,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,0,0
+			],
+			"tags":[
+				"several"
+			],
+			"several":[1,0,0]
+		},
+		{
+			"name": "Void slash",
+			"element": 9,
+			"type": "phy",
+			"power": 60,
+			"accuracy": 70,
+			"position": [
+				0,0,1,1
+			],
+			"target": [
+				0,1,1,0
+			],
+			"tags":[
+				"several"
+			],
+			"several":[0,1,0]
+		},
+		{
+			"name": "Blight",
+			"element": 7,
+			"type": "oth",
+			"power": 0,
+			"accuracy": 100,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"status", "turns"
+			],
+			"status": 9,
+			"turns": 5
+		},
+		{
+			"name": "Flare kick",
+			"element": 3,
+			"type": "phy",
+			"power": 50,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[]
+		},
+		{
+			"name": "Mind melt",
+			"element": 8,
+			"type": "spe",
+			"power": 30,
+			"accuracy": 70,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"status", "turns"
+			],
+			"status": 13,
+			"turns": 1
+		},
+		{
+			"name": "Spirit barrage",
+			"element": 8,
+			"type": "spe",
+			"power": 20,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"multiple"
+			],
+			"multiple": [2,5]
+		},
+		{
+			"name": "Toxic spore",
+			"element": 7,
+			"type": "oth",
+			"power": 0,
+			"accuracy": 100,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"hazard": [3,10],
+			"turns": 5
+		},
+		{
+			"name": "Poison slash",
+			"element": 7,
+			"type": "phy",
+			"power": 60,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[]
+		},
+		{
+			"name": "Horrify",
+			"element": 9,
+			"type": "spe",
+			"power": 20,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"status", "turns"
+			],
+			"status": 8,
+			"turns": 5
+		},
+		{
+			"name": "#Acidic spit",
+			"element": 7,
+			"type": "spe",
+			"power": 75,
+			"accuracy": 80,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[]
 		}
 	]
 }
