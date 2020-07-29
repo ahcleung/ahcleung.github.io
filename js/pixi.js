@@ -1782,7 +1782,7 @@ function onButtonDown(){
 }
 
 function onCreatureDown(){
-	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	// console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	if(validSkillObjectArray.length > 0){
 		var correctTarget = false;
 		var targetedVitaIndex = 0;
@@ -1794,7 +1794,7 @@ function onCreatureDown(){
 			if(Array.isArray(targeted)){
 				if(tagSplash){
 					if(this.object == targeted[0]){
-						console.log("Correct array object do things");
+						// console.log("Correct array object do things");
 						correctTarget = true;
 						targetedVitaIndex = targetedIndex;
 					}
@@ -1802,18 +1802,18 @@ function onCreatureDown(){
 				else{
 					targeted.forEach(arrayElement => {
 						if(this.object == arrayElement){
-							console.log("Correct array object do things");
+							// console.log("Correct array object do things");
 							correctTarget = true;
 							targetedVitaIndex = targetedIndex;
 						}
 					});
 				}
 			}
-			if(this.object == targeted){
-				console.log("Correct single object do things");
-				correctTarget = true;
-				targetedVitaIndex = targetedIndex;
-			}
+			// if(this.object == targeted){
+			// 	// console.log("Correct single object do things");
+			// 	correctTarget = true;
+			// 	targetedVitaIndex = targetedIndex;
+			// }
 		});
 
 		//Rearrange array for splash targets
@@ -3098,7 +3098,7 @@ function onSkillDown(){
 			validSkillObjectArray = [array11, array22];
 		}
 	}
-	console.log("validSkillObjectArray: " + validSkillObjectArray);
+	// console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 	validSkillObjectArray.forEach(object1=>{
 		object1.forEach(object2=>{
@@ -3426,6 +3426,7 @@ function calculateTurnOrder(){
 
 function selectCreature(object2){	
 	selectedVita = object2;
+	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("Turn: " + selectedVita.name);
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
