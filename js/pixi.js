@@ -233,6 +233,7 @@ var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 var resizeWidth = 0;
 var hazardSize = 0.5;
+var turnNumber = 0;
 
 //Selected element tracker
 var selectedVita;
@@ -3293,6 +3294,9 @@ function onAdditionalSkipDown(){
 }
 
 function calculateTurnOrder(){
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
 	});
