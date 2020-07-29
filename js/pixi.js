@@ -2322,7 +2322,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			if(object != tempArray[objectIndex]){
-				console.log(object.name);
+				// console.log(object.name);
 				movedCreature.push(object);
 			}
 
@@ -2362,7 +2362,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			if(object != tempArray[objectIndex]){
-				console.log(object.name);
+				// console.log(object.name);
 				movedCreature.push(object);
 			}
 
