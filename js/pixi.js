@@ -2327,72 +2327,73 @@ function onHPDown(){
 			if(statusTracked == status[0])		tracker = true;
 		});
 		if(!tracker){
-			switch(status[0]){
-				case 1:
-					// creatureStatusInfo.push("Bleed");
-					creatureStatusInfo.push(1);
-					break;
-				case 2:
-					// creatureStatusInfo.push("Buff");
-					creatureStatusInfo.push(2);
-					break;
-				case 3:
-					// creatureStatusInfo.push("Burned");
-					creatureStatusInfo.push(3);
-					break;
-				case 4:
-					// creatureStatusInfo.push("Debuff");
-					creatureStatusInfo.push(4);
-					break;
-				case 5:
-					// creatureStatusInfo.push("Depressed");
-					creatureStatusInfo.push(5);
-					break;
-				case 6:
-					// creatureStatusInfo.push("Guard");
-					creatureStatusInfo.push(6);
-					break;
-				case 7:
-					// creatureStatusInfo.push("Immune");
-					creatureStatusInfo.push(7);
-					break;
-				case 8:
-					// creatureStatusInfo.push("Paralyzed");
-					creatureStatusInfo.push(8);
-					break;
-				case 9:
-					// ccreatureStatusInfo.push("Poisoned");
-					creatureStatusInfo.push(9);
-					break;
-				case 10:
-					// creatureStatusInfo.push("Recover");
-					creatureStatusInfo.push(10);
-					break;
-				case 11:
-					// creatureStatusInfo.push("Secured");
-					creatureStatusInfo.push(11);
-					break;
-				case 12:
-					// creatureStatusInfo.push("Silenced");
-					creatureStatusInfo.push(12);
-					break;
-				case 13:
-					// creatureStatusInfo.push("Stunned");
-					creatureStatusInfo.push(13);
-					break;
-				case 14:
-					// creatureStatusInfo.push("Critical");
-					creatureStatusInfo.push(14);
-					break;
-				default:
-					creatureStatusInfo.push("Buff");
-					creatureStatusInfo.push(2);
-			}
+			creatureStatusInfo.push(status[0]);
 		}
 	});
 	// console.log("Status: " + creatureStatusInfo);
 	creatureStatusInfo.forEach(statusNum =>{
-		console.log(statusNum + ":");
+		switch(statusNum){
+			case 1:
+				console.log("Bleed:");
+				// creatureStatusInfo.push(1);
+				break;
+			case 2:
+				console.log("Buff:");
+				// creatureStatusInfo.push(2);
+				break;
+			case 3:
+				console.log("Burned:");
+				// creatureStatusInfo.push(3);
+				break;
+			case 4:
+				console.log("Debuff:");
+				// creatureStatusInfo.push(4);
+				break;
+			case 5:
+				console.log("Depressed:");
+				// creatureStatusInfo.push(5);
+				break;
+			case 6:
+				console.log("Guard:");
+				// creatureStatusInfo.push(6);
+				break;
+			case 7:
+				console.log("Immune:");
+				// creatureStatusInfo.push(7);
+				break;
+			case 8:
+				console.log("Paralyzed:");
+				// creatureStatusInfo.push(8);
+				break;
+			case 9:
+				console.log("Poisoned:");
+				// creatureStatusInfo.push(9);
+				break;
+			case 10:
+				console.log("Recover:");
+				// creatureStatusInfo.push(10);
+				break;
+			case 11:
+				console.log("Secured:");
+				// creatureStatusInfo.push(11);
+				break;
+			case 12:
+				console.log("Silenced:");
+				// creatureStatusInfo.push(12);
+				break;
+			case 13:
+				console.log("Stunned:");
+				// creatureStatusInfo.push(13);
+				break;
+			case 14:
+				console.log("Critical:");
+				// creatureStatusInfo.push(14);
+				break;
+			default:
+				console.log("Buff:");
+				// creatureStatusInfo.push(2);
+		}
+		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
 			if(status[0] == statusNum){
 				if(statusNum == 4){
