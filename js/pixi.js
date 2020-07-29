@@ -2294,15 +2294,19 @@ function onCreatureDown(){
 	}
 }
 
+var movedCreature = [];
+
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move shift: " + displacement);
 	var moveFrom, moveTo;
+	var tempArray = [];
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
+		tempArray = heroArray;
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
 		heroArray.forEach((object,objectIndex)=>{
@@ -2312,6 +2316,10 @@ function moveCreature(movingCreature, displacement){
 				object.pos = heroArray[objectIndex-1].pos + 2;
 			}else{
 				object.pos = heroArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex]){
+				movedCreature.push(object);
 			}
 
 			//Hero Creature
@@ -2357,6 +2365,10 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
+	console.log("Creatures that moved:");
+	movedCreature.forEach(object=>{
+		console.log(object.name);
+	});
 }
 
 function onHPDown(){
