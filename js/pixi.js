@@ -2386,7 +2386,7 @@ function onHPDown(){
 				// creatureStatusInfo.push(13);
 				break;
 			case 14:
-				console.log("Critical:");
+				console.log("Critical damage:");
 				// creatureStatusInfo.push(14);
 				break;
 			default:
@@ -3863,16 +3863,16 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 			object.statusArray.forEach(statusElement =>{
 				if(statusElement[0] == statusNumber[0])	statusStored = true
 			});
-			if(!statusStored){
-				object.dmgContainer.dmgStatus.statusImageArray[statusCounter].visible = true;
-				object.dmgContainer.dmgStatus.statusTextArray[statusCounter].visible = true;
-				let newStatusEffect = statusEffectSprite(statusNumber[0]);
-				updateDmgStatus(object.dmgContainer, statusNumber[0], statusCounter);
+			if(!statusStored){				
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);				
 				newStatusEffect.visible = false;
 				object.healthBar.addChild(newStatusEffect);
 				object.statusSpriteArray.push(newStatusEffect);
 				statusCounter++;
 			}
+			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+			updateDmgStatus(object.dmgContainer, statusNumber[0], statusNumberIndex);
 			object.statusArray.push(statusNumber);
 		});
 		resizeStatus(object);
