@@ -264,6 +264,7 @@ var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
 
 var turnArray = [];					//Array for turn order
+var movedCreature = [];
 
 var validSkillObjectArray = [];			//Array of valid skill targets
 var validMoveObjectArray = [];			//Array of vaild move targ
@@ -2186,7 +2187,7 @@ function onCreatureDown(){
 			displacement = moveFrom - moveTo;
 			moveCreature(selectedVita, displacement);
 			if(selectedVita.hero){
-				heroArray.forEach(heroObject =>{
+				movedCreature.forEach(heroObject =>{
 					var effective = [];
 					var dmgArray = [];
 					fieldHeroHazard.forEach(arrayItem =>{
@@ -2294,8 +2295,6 @@ function onCreatureDown(){
 	}
 }
 
-var movedCreature = [];
-
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move shift: " + displacement);
@@ -2321,10 +2320,7 @@ function moveCreature(movingCreature, displacement){
 				object.pos = heroArray[objectIndex-1].pos + 1;
 			}
 
-			if(object != tempArray[objectIndex]){
-				// console.log(object.name);
-				movedCreature.push(object);
-			}
+			if(object != tempArray[objectIndex])		movedCreature.push(object)
 
 			//Hero Creature
 			var newCreatureX, newHPX;
@@ -2361,10 +2357,7 @@ function moveCreature(movingCreature, displacement){
 				object.pos = enemyArray[objectIndex-1].pos + 1;
 			}
 
-			if(object != tempArray[objectIndex]){
-				// console.log(object.name);
-				movedCreature.push(object);
-			}
+			if(object != tempArray[objectIndex])		movedCreature.push(object)
 
 			//Enemy Creature
 			var newCreatureX, newHPX;
@@ -2377,10 +2370,10 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
-	console.log("Creatures that moved:");
-	movedCreature.forEach(object=>{
-		console.log(object.name);
-	});
+	// console.log("Creatures that moved:");
+	// movedCreature.forEach(object=>{
+	// 	console.log(object.name);
+	// });
 }
 
 function onHPDown(){
@@ -2513,22 +2506,9 @@ function onSkillDown(){
 	var heal = false;
 	var splash = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
-		if(tagName == "column"){
-			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]
-
-			column = true;
-			// if(this.identifier[2] > 0){
-			// 	console.log("column => from: " + heroArray[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			// }else{
-			// 	console.log("column => from: " + enemyArray[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			// }
-			
-			if(skillsList.data.skills[this.identifier[1]].column[3] > 0){
-				heal = true;
-			}else{
-				heal = false;	
-			}
-		}
+		if(tagName == "column")			column = true;
+			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
+		if(tagName == "heal")			heal = true;
 		if(tagName == "several")		several = true
 		if(tagName == "displace")		displace = true
 		if(tagName == "splash")			splash = true
