@@ -264,6 +264,7 @@ var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
 
 var turnArray = [];					//Array for turn order
+var movedCreature = [];
 
 var validSkillObjectArray = [];			//Array of valid skill targets
 var validMoveObjectArray = [];			//Array of vaild move targ
@@ -2186,9 +2187,53 @@ function onCreatureDown(){
 			displacement = moveFrom - moveTo;
 			moveCreature(selectedVita, displacement);
 			if(selectedVita.hero){
+				movedCreature.forEach(heroObject =>{
+					var effective = [];
+					var dmgArray = [];
+					fieldHeroHazard.forEach(arrayItem =>{
+						var effectiveCalc = 1;
+						var defendElements = [];						
+						heroObject.elements.forEach(element =>{
+							defendElements.push(element);
+						});
+						var hazardElement = 0;
+						switch(arrayItem[1]){
+							case 1: 
+								hazardElement = 2;
+								break;
+							case 2:
+								hazardElement = 1;
+								break;
+							case 3:
+								hazardElement = 3;
+								break;
+							case 4:
+								hazardElement = 7;
+								break;
+							default:
+								hazardElement = 1;
+						}
+						defendElements.forEach(defendElement=>{
+							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+						});
+						if(heroObject.size > 1){
+							if(arrayItem[0]+1 == heroObject.pos+1 || arrayItem[0]+1 == heroObject.pos){
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+							}
+						}else{
+							if(arrayItem[0]+1 == heroObject.pos){
+								// dmgArray = [];
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+							}
+						}						
+					});
+					updateDamage(heroObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+				});
 			}else{
-				
-				enemyArray.forEach(enemyObject =>{
+				movedCreature.forEach(enemyObject =>{
 					var effective = [];
 					var dmgArray = [];
 					fieldEnemyHazard.forEach(arrayItem =>{
@@ -2219,7 +2264,6 @@ function onCreatureDown(){
 						});
 						if(enemyObject.size > 1){
 							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
-								
 								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
 								effective.push(effectiveCalc);
 							}
@@ -2255,11 +2299,16 @@ function onCreatureDown(){
 function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move shift: " + displacement);
 	var moveFrom, moveTo;
+	var tempArray = [];
+	movedCreature = []
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
+		heroArray.forEach(object=>{
+			tempArray.push(object);
+		});
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
 		heroArray.forEach((object,objectIndex)=>{
@@ -2269,6 +2318,11 @@ function moveCreature(movingCreature, displacement){
 				object.pos = heroArray[objectIndex-1].pos + 2;
 			}else{
 				object.pos = heroArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex]){
+				// console.log(object.name);
+				movedCreature.push(object);
 			}
 
 			//Hero Creature
@@ -2292,7 +2346,10 @@ function moveCreature(movingCreature, displacement){
 			if(movingCreature == object)		moveFrom = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
-		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
+		enemyArray.forEach(object=>{
+			tempArray.push(object);
+		});
+		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
 
 		enemyArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2301,6 +2358,11 @@ function moveCreature(movingCreature, displacement){
 				object.pos = enemyArray[objectIndex-1].pos + 2;
 			}else{
 				object.pos = enemyArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex]){
+				// console.log(object.name);
+				movedCreature.push(object);
 			}
 
 			//Enemy Creature
@@ -2314,6 +2376,10 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
+	console.log("Creatures that moved:");
+	movedCreature.forEach(object=>{
+		console.log(object.name);
+	});
 }
 
 function onHPDown(){
@@ -2446,22 +2512,9 @@ function onSkillDown(){
 	var heal = false;
 	var splash = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
-		if(tagName == "column"){
-			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]
-
-			column = true;
-			// if(this.identifier[2] > 0){
-			// 	console.log("column => from: " + heroArray[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			// }else{
-			// 	console.log("column => from: " + enemyArray[this.identifier[3]].name + " to: " + skillsList.data.skills[this.identifier[1]][tagName][0]);
-			// }
-			
-			if(skillsList.data.skills[this.identifier[1]].column[3] > 0){
-				heal = true;
-			}else{
-				heal = false;	
-			}
-		}
+		if(tagName == "column")			column = true;
+			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
+		if(tagName == "heal")			heal = true;
 		if(tagName == "several")		several = true
 		if(tagName == "displace")		displace = true
 		if(tagName == "splash")			splash = true
@@ -3300,9 +3353,11 @@ function calculateTurnOrder(){
 
 	if(turnNumber > 1){
 		fieldHeroHazard.forEach(hazardElement =>{
+			hazardElement[3]--;
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 		fieldEnemyHazard.forEach(hazardElement =>{
+			hazardElement[3]--;
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 	}
