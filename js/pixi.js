@@ -2306,19 +2306,25 @@ function moveCreature(movingCreature, displacement){
 			if(movingCreature == object)		moveFrom = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
-		tempArray = heroArray;
+		heroArray.forEach(object=>{
+			tempArray.push(object);
+		});
 
 		tempArray.forEach(object=>{
+			console.log(object.name);
+		});
+		heroArray.forEach(object=>{
 			console.log(object.name);
 		});
 
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
-		heroArray.forEach(object=>{
+		tempArray.forEach(object=>{
 			console.log(object.name);
 		});
-
-		
+		heroArray.forEach(object=>{
+			console.log(object.name);
+		});	
 
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
