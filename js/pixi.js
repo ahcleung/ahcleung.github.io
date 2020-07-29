@@ -2318,6 +2318,7 @@ function moveCreature(movingCreature, displacement){
 			console.log(object.name);
 		});
 
+		console.log("-----------------");
 
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2329,6 +2330,7 @@ function moveCreature(movingCreature, displacement){
 			}
 
 			if(object != tempArray[objectIndex]){
+				console.log(object.name);
 				movedCreature.push(object);
 			}
 
