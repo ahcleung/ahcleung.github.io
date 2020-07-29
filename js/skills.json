@@ -42,7 +42,7 @@
 				"hazard", "turns"
 			],
 			"hazard": [2,10],
-			"turns": 3
+			"turns": 2
 		},
 		{
 			"name": "Heal wave",
@@ -97,7 +97,7 @@
 			],
 			"status": 4,
 			"hazard": [1,10],
-			"turns": 3
+			"turns": 2
 		},
 		{
 			"name": "Tectonic shift",
@@ -336,7 +336,7 @@
 				"hazard", "turns"
 			],
 			"hazard": [3,10],
-			"turns": 5
+			"turns": 2
 		},
 		{
 			"name": "Poison slash",
