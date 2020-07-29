@@ -2055,12 +2055,12 @@ function onCreatureDown(){
 							hazardSprite.scale.set(-hazardSize,hazardSize);
 							hazardSprite2.scale.set(-hazardSize,hazardSize);
 							if(targeted.size > 1){
-								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
 								hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
 								enemyHazardSprite.push(hazardSprite2);
 								enemyHazardContainer.addChild(hazardSprite2);
 							}
-							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
 							hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
 							enemyHazardSprite.push(hazardSprite);
 							enemyHazardContainer.addChild(hazardSprite);
