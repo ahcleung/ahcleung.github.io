@@ -2390,7 +2390,23 @@ function onHPDown(){
 			}
 		}
 	});
-	console.log("Status: " + creatureStatusInfo);
+	// console.log("Status: " + creatureStatusInfo);
+	creatureStatusInfo.forEach(statusNum =>{
+		console.log(statusNum + ":");
+		this.object.statusArray.forEach(status =>{
+			if(status[0] == statusNum){
+				if(statusNum == 4){
+					console.log(status[2] + " " + status[3] + " [" + status[1] + "]");
+				}
+				if(statusNum == 14){
+					console.log("-" + this.object.critDmg);
+				}
+				if(statusNum == 3){
+					console.log("10 Dmg" + " [" + status[1] + "]");
+				}
+			}
+		});
+	});
 }
 
 function onSkillDown(){
