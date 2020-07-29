@@ -516,26 +516,24 @@ function setup(){
 	// 	factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 	// 	factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
 
-	// 	// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-	// 	// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-	// 	// fume.visible = false;
-	// 	// fume.x = 100*i;
-	// 	const fume = new PIXI.Sprite(resources.hazard_lit.texture);
-	// 	fume.anchor.set(0.5,1);
-	// 	// const fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
-	// 	// fume2.anchor.set(0.5,1);
+	// 	// const hazardSprite = factory.buildArmatureDisplay('fume2', 'fume2');
+	// 	// hazardSprite.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+	// 	// hazardSprite.visible = false;
+	// 	// hazardSprite.x = 100*i;
+	// 	const hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+	// 	hazardSprite.anchor.set(0.5,1);
+	// 	// const hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
+	// 	// hazardSprite2.anchor.set(0.5,1);
 	// 	if(i<4){
 	// 		fieldHeroHazard.push([i+1,1,10,5]);
-	// 		heroHazardSprite.push(fume);
-	// 		heroHazardContainer.addChild(fume);
+	// 		heroHazardSprite.push(hazardSprite);
+	// 		heroHazardContainer.addChild(hazardSprite);
 	// 	}else{
 	// 		fieldEnemyHazard.push([i+1-4,1,10,5]);
-	// 		enemyHazardSprite.push(fume);
-	// 		enemyHazardContainer.addChild(fume);
+	// 		enemyHazardSprite.push(hazardSprite);
+	// 		enemyHazardContainer.addChild(hazardSprite);
 	// 	}
 	// }
-
-
 	spriteHolder.addChild(heroHazardContainer);
 	spriteHolder.addChild(enemyHazardContainer);
 
@@ -2012,59 +2010,59 @@ function onCreatureDown(){
 					if(tagHazard){
 						factory.parseDragonBonesData(resources['fume2_skeleton'].data);
 						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
-						// const fume = factory.buildArmatureDisplay('fume2', 'fume2');
-						// fume.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						// const fume2 = factory.buildArmatureDisplay('fume2', 'fume2');
-						// fume2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						let fume, fume2;
+						// const hazardSprite = factory.buildArmatureDisplay('fume2', 'fume2');
+						// hazardSprite.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const hazardSprite2 = factory.buildArmatureDisplay('fume2', 'fume2');
+						// hazardSprite2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						let hazardSprite, hazardSprite2;
 						switch(skillsList.data.skills[selectedSkill].hazard[0]){
 							case 1:
-								fume = new PIXI.Sprite(resources.hazard_lit.texture);
-								fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
 								break;
 							case 2:
-								fume = new PIXI.Sprite(resources.hazard_spikes.texture);
-								fume2 = new PIXI.Sprite(resources.hazard_spikes.texture);
+								hazardSprite = new PIXI.Sprite(resources.hazard_spikes.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_spikes.texture);
 								break;
 							case 3:
-								fume = new PIXI.Sprite(resources.hazard_spores.texture);
-								fume2 = new PIXI.Sprite(resources.hazard_spores.texture);
+								hazardSprite = new PIXI.Sprite(resources.hazard_spores.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_spores.texture);
 								break;
 							default:
-								fume = new PIXI.Sprite(resources.hazard_lit.texture);
-								fume2 = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
 						}
 						
-						fume.anchor.set(0.5,1);	
-						fume2.anchor.set(0.5,1);
+						hazardSprite.anchor.set(0.5,1);	
+						hazardSprite2.anchor.set(0.5,1);
 
 						if(targeted.hero){
-							fume.scale.set(hazardSize,hazardSize);
-							fume2.scale.set(hazardSize,hazardSize);
+							hazardSprite.scale.set(hazardSize,hazardSize);
+							hazardSprite2.scale.set(hazardSize,hazardSize);
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
 								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-								fume2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
-								heroHazardSprite.push(fume2);
-								heroHazardContainer.addChild(fume2);
+								hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
+								heroHazardSprite.push(hazardSprite2);
+								heroHazardContainer.addChild(hazardSprite2);
 							}
 							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-							fume.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
-							heroHazardSprite.push(fume);
-							heroHazardContainer.addChild(fume);
+							hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
+							heroHazardSprite.push(hazardSprite);
+							heroHazardContainer.addChild(hazardSprite);
 						}else{
-							fume.scale.set(-hazardSize,hazardSize);
-							fume2.scale.set(-hazardSize,hazardSize);
+							hazardSprite.scale.set(-hazardSize,hazardSize);
+							hazardSprite2.scale.set(-hazardSize,hazardSize);
 							if(targeted.size > 1){
 								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-								fume2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
-								enemyHazardSprite.push(fume2);
-								enemyHazardContainer.addChild(fume2);
+								hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
+								enemyHazardSprite.push(hazardSprite2);
+								enemyHazardContainer.addChild(hazardSprite2);
 							}
 							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
-							fume.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
-							enemyHazardSprite.push(fume);
-							enemyHazardContainer.addChild(fume);
+							hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
+							enemyHazardSprite.push(hazardSprite);
+							enemyHazardContainer.addChild(hazardSprite);
 						}
 					}
 
@@ -3298,6 +3296,16 @@ function calculateTurnOrder(){
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+	if(turnNumber > 1){
+		fieldHeroHazard.forEach(hazardElement =>{
+			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
+		});
+		fieldEnemyHazard.forEach(hazardElement =>{
+			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
+		});
+	}
+
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
 	});
