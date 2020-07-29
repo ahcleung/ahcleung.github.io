@@ -2310,21 +2310,7 @@ function moveCreature(movingCreature, displacement){
 			tempArray.push(object);
 		});
 
-		tempArray.forEach(object=>{
-			console.log(object.name);
-		});
-		heroArray.forEach(object=>{
-			console.log(object.name);
-		});
-
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
-
-		tempArray.forEach(object=>{
-			console.log(object.name);
-		});
-		heroArray.forEach(object=>{
-			console.log(object.name);
-		});	
 
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2334,10 +2320,6 @@ function moveCreature(movingCreature, displacement){
 			}else{
 				object.pos = heroArray[objectIndex-1].pos + 1;
 			}
-			console.log("-----------------------------------");
-			console.log(object.name);
-			console.log(tempArray[objectIndex].name);
-			console.log("-----------------------------------");
 
 			if(object != tempArray[objectIndex]){
 				console.log(object.name);
@@ -2366,6 +2348,9 @@ function moveCreature(movingCreature, displacement){
 		});
 		moveTo = moveFrom - displacement;
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
+		enemyArray.forEach(object=>{
+			tempArray.push(object);
+		});
 
 		enemyArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -2374,6 +2359,11 @@ function moveCreature(movingCreature, displacement){
 				object.pos = enemyArray[objectIndex-1].pos + 2;
 			}else{
 				object.pos = enemyArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex]){
+				console.log(object.name);
+				movedCreature.push(object);
 			}
 
 			//Enemy Creature
