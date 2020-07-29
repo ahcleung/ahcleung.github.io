@@ -2232,7 +2232,7 @@ function onCreatureDown(){
 					updateDamage(heroObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 				});
 			}else{
-				enemyArray.forEach(enemyObject =>{
+				movedCreature.forEach(enemyObject =>{
 					var effective = [];
 					var dmgArray = [];
 					fieldEnemyHazard.forEach(arrayItem =>{
