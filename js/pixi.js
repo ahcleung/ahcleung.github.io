@@ -3295,9 +3295,9 @@ function onAdditionalSkipDown(){
 
 function calculateTurnOrder(){
 	turnNumber++;
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
 	});
