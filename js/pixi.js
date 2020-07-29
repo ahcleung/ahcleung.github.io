@@ -2008,8 +2008,9 @@ function onCreatureDown(){
 					}
 
 					if(tagHazard){
-						factory.parseDragonBonesData(resources['fume2_skeleton'].data);
-						factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+						// factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+						// factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+
 						// const hazardSprite = factory.buildArmatureDisplay('fume2', 'fume2');
 						// hazardSprite.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
 						// const hazardSprite2 = factory.buildArmatureDisplay('fume2', 'fume2');
@@ -2041,12 +2042,12 @@ function onCreatureDown(){
 							hazardSprite2.scale.set(hazardSize,hazardSize);
 							if(targeted.size > 1){
 								//[position, hazardType, damage, turn]
-								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
 								hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
 								heroHazardSprite.push(hazardSprite2);
 								heroHazardContainer.addChild(hazardSprite2);
 							}
-							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns[0]]);
+							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
 							hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
 							heroHazardSprite.push(hazardSprite);
 							heroHazardContainer.addChild(hazardSprite);
