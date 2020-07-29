@@ -2404,6 +2404,9 @@ function onHPDown(){
 				if(statusNum == 3){
 					console.log("10 Dmg" + " [" + status[1] + "]");
 				}
+				if(statusNum == 8){
+					console.log("[" + status[1] + "]");
+				}
 			}
 		});
 	});
