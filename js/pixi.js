@@ -2335,68 +2335,53 @@ function onHPDown(){
 		switch(statusNum){
 			case 1:
 				console.log("Bleed:");
-				// creatureStatusInfo.push(1);
 				break;
 			case 2:
 				console.log("Buff:");
-				// creatureStatusInfo.push(2);
 				break;
 			case 3:
 				console.log("Burned:");
-				// creatureStatusInfo.push(3);
 				break;
 			case 4:
 				console.log("Debuff:");
-				// creatureStatusInfo.push(4);
 				break;
 			case 5:
 				console.log("Depressed:");
-				// creatureStatusInfo.push(5);
 				break;
 			case 6:
 				console.log("Guard:");
-				// creatureStatusInfo.push(6);
 				break;
 			case 7:
 				console.log("Immune:");
-				// creatureStatusInfo.push(7);
 				break;
 			case 8:
 				console.log("Paralyzed:");
-				// creatureStatusInfo.push(8);
 				break;
 			case 9:
 				console.log("Poisoned:");
-				// creatureStatusInfo.push(9);
 				break;
 			case 10:
 				console.log("Recover:");
-				// creatureStatusInfo.push(10);
 				break;
 			case 11:
 				console.log("Secured:");
-				// creatureStatusInfo.push(11);
 				break;
 			case 12:
 				console.log("Silenced:");
-				// creatureStatusInfo.push(12);
 				break;
 			case 13:
 				console.log("Stunned:");
-				// creatureStatusInfo.push(13);
 				break;
 			case 14:
 				console.log("Critical damage:");
-				// creatureStatusInfo.push(14);
 				break;
 			default:
 				console.log("Buff:");
-				// creatureStatusInfo.push(2);
 		}
 		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
 			if(status[0] == statusNum){
-				if(statusNum == 4){
+				if(statusNum == 4 || statusNum == 2){
 					switch(status[2]+1){
 						case 1:
 							console.log("HP " + status[3] + " [" + status[1] + "]");
@@ -2414,7 +2399,7 @@ function onHPDown(){
 							console.log("Special attack " + status[3] + " [" + status[1] + "]");
 							break;
 						case 6:
-							console.log("Physical defense" + status[3] + " [" + status[1] + "]");
+							console.log("Special defense " + status[3] + " [" + status[1] + "]");
 							break;
 						case 7:
 							console.log("Speed " + status[3] + " [" + status[1] + "]");
@@ -3857,18 +3842,16 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
 			dmgStatusTextItem.visible = false;
 		});
-		var statusCounter = 0;
 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
 			var statusStored = false;
 			object.statusArray.forEach(statusElement =>{
 				if(statusElement[0] == statusNumber[0])	statusStored = true
 			});
-			if(!statusStored){				
+			if(!statusStored){
 				let newStatusEffect = statusEffectSprite(statusNumber[0]);				
 				newStatusEffect.visible = false;
 				object.healthBar.addChild(newStatusEffect);
 				object.statusSpriteArray.push(newStatusEffect);
-				statusCounter++;
 			}
 			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
 			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
@@ -3877,13 +3860,19 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		});
 		resizeStatus(object);
 		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
+			var statusStored = false;
+			object.statusArray.forEach(statusElement =>{
+				if(statusElement[0] == statusNumber[0])	statusStored = true
+			});
+			if(!statusStored){
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);
+				newStatusEffect.visible = false;
+				skillStatusTarget.healthBar.addChild(newStatusEffect);
+				skillStatusTarget.statusSpriteArray.push(newStatusEffect);
+			}
 			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-			let newStatusEffect = statusEffectSprite(statusNumber);
-			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber, statusNumberIndex);
-			newStatusEffect.visible = false;
-			skillStatusTarget.healthBar.addChild(newStatusEffect);
-			skillStatusTarget.statusSpriteArray.push(newStatusEffect);
+			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;			
+			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber[0], statusNumberIndex);			
 			skillStatusTarget.statusArray.push([statusNumber]);
 		});
 		resizeStatus(skillStatusTarget);
