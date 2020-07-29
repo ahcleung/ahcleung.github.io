@@ -2397,7 +2397,32 @@ function onHPDown(){
 		this.object.statusArray.forEach(status =>{
 			if(status[0] == statusNum){
 				if(statusNum == 4){
-					console.log(status[2] + " " + status[3] + " [" + status[1] + "]");
+					switch(status[2]+1){
+						case 1:
+							console.log("HP " + status[3] + " [" + status[1] + "]");
+							break;
+						case 2:
+							console.log("Dodge " + status[3] + " [" + status[1] + "]");
+							break;
+						case 3:
+							console.log("Physical attack " + status[3] + " [" + status[1] + "]");
+							break;
+						case 4:
+							console.log("Physical defense " + status[3] + " [" + status[1] + "]");
+							break;
+						case 5:
+							console.log("Special attack " + status[3] + " [" + status[1] + "]");
+							break;
+						case 6:
+							console.log("Physical defense" + status[3] + " [" + status[1] + "]");
+							break;
+						case 7:
+							console.log("Speed " + status[3] + " [" + status[1] + "]");
+							break;
+						case 8:
+							console.log("Accuracy " + status[3] + " [" + status[1] + "]");
+							break;
+					}					
 				}
 				if(statusNum == 14){
 					console.log("-" + this.object.critDmg);
