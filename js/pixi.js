@@ -2301,6 +2301,7 @@ function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move shift: " + displacement);
 	var moveFrom, moveTo;
 	var tempArray = [];
+	movedCreature = []
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
