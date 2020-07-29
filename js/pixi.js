@@ -3300,9 +3300,11 @@ function calculateTurnOrder(){
 
 	if(turnNumber > 1){
 		fieldHeroHazard.forEach(hazardElement =>{
+			hazardElement[3]--;
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 		fieldEnemyHazard.forEach(hazardElement =>{
+			hazardElement[3]--;
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 	}
