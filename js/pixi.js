@@ -2310,7 +2310,6 @@ function moveCreature(movingCreature, displacement){
 		heroArray.forEach(object=>{
 			tempArray.push(object);
 		});
-
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
 		heroArray.forEach((object,objectIndex)=>{
@@ -2348,10 +2347,10 @@ function moveCreature(movingCreature, displacement){
 			if(movingCreature == object)		moveFrom = objectIndex;
 		});
 		moveTo = moveFrom - displacement;
-		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
 		enemyArray.forEach(object=>{
 			tempArray.push(object);
 		});
+		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
 
 		enemyArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
