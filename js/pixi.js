@@ -3367,13 +3367,16 @@ function calculateTurnOrder(){
 			}
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
+		console.log(deletion);
+		deletion.sort(function(a,b){ return b - a; });
+		console.log(deletion);
 	}
 
-	deletion.forEach(arrayNum =>{
-		enemyHazardContainer.removeChild(arrayNum);
-		enemyHazardSprite[arrayNum].destroy();
-		enemyHazardSprite.splice(arrayNum,1);
-	});
+	// deletion.forEach(arrayNum =>{
+	// 	enemyHazardContainer.removeChild(arrayNum);
+	// 	enemyHazardSprite[arrayNum].destroy();
+	// 	enemyHazardSprite.splice(arrayNum,1);
+	// });
 
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
