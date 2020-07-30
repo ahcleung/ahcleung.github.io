@@ -3344,50 +3344,46 @@ function calculateTurnOrder(){
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	var deletion = [];
+	var enemyHazardDeletion = [];
+	var heroHazardDeletion = [];
 	if(turnNumber > 1){
 		fieldHeroHazard.forEach(hazardElement =>{
 			hazardElement[3]--;
-			if(hazardElement[3] == 0){
-					// Remove hazard
-					console.log("1: " + heroHazardSprite);
-					heroHazardContainer.removeChild(heroHazardSprite[1]);
-					console.log("2: " + heroHazardSprite);
-					heroHazardSprite[1].destroy();
-					console.log("3: " + heroHazardSprite);
-					heroHazardSprite.splice(1,1);
-					console.log("4: " + heroHazardSprite);
+			if(hazardElement[3] < 0){
+				heroHazardDeletion.push(hazardElementIndex);
 			}
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 		fieldEnemyHazard.forEach((hazardElement,hazardElementIndex) =>{
 			hazardElement[3]--;
-			if(hazardElement[3] == 0){
-				deletion.push(hazardElementIndex);
+			if(hazardElement[3] < 0){
+				enemyHazardDeletion.push(hazardElementIndex);
 			}
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
-		console.log(deletion);
-		deletion.sort(function(a,b){ return b - a; });			//sort it so it's largest to smallest
-		console.log(deletion);
-		// for (var i = deletion.length -1; i >= 0; i--){
-		// 	enemyHazardContainer.removeChild(deletion[i]);
-		// 	enemyHazardSprite[deletion[i]].destroy();
-  //  			enemyHazardSprite.splice(deletion[i],1);
-  //  		}
-   		deletion.forEach(arrayNum =>{
+		// console.log(enemyHazardDeletion);
+		heroHazardDeletion.sort(function(a,b){ return b - a; });
+		heroHazardDeletion.forEach(arrayNum =>{
+			heroHazardContainer.removeChild(arrayNum);
+			heroHazardSprite[arrayNum].destroy();
+			heroHazardSprite.splice(arrayNum,1);
+			fieldHeroHazard.splice(arrayNum,1);
+		});
+
+		enemyHazardDeletion.sort(function(a,b){ return b - a; });			//sort it so it's largest to smallest
+		enemyHazardDeletion.forEach(arrayNum =>{
 			enemyHazardContainer.removeChild(arrayNum);
 			enemyHazardSprite[arrayNum].destroy();
 			enemyHazardSprite.splice(arrayNum,1);
 			fieldEnemyHazard.splice(arrayNum,1);
 		});
+		// console.log(enemyHazardDeletion);
+		// for (var i = enemyHazardDeletion.length -1; i >= 0; i--){
+		// 	enemyHazardContainer.removeChild(enemyHazardDeletion[i]);
+		// 	enemyHazardSprite[enemyHazardDeletion[i]].destroy();
+  //  			enemyHazardSprite.splice(enemyHazardDeletion[i],1);
+  //  		}
 	}
-
-	// deletion.forEach(arrayNum =>{
-	// 	enemyHazardContainer.removeChild(arrayNum);
-	// 	enemyHazardSprite[arrayNum].destroy();
-	// 	enemyHazardSprite.splice(arrayNum,1);
-	// });
 
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
