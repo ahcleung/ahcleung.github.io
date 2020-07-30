@@ -3368,7 +3368,7 @@ function calculateTurnOrder(){
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 		console.log(deletion);
-		deletion.sort(function(a,b){ return b - a; });
+		deletion.sort(function(a,b){ return b - a; });			//sort it so it's largest to smallest
 		console.log(deletion);
 		// for (var i = deletion.length -1; i >= 0; i--){
 		// 	enemyHazardContainer.removeChild(deletion[i]);
@@ -3379,7 +3379,6 @@ function calculateTurnOrder(){
 			enemyHazardContainer.removeChild(arrayNum);
 			enemyHazardSprite[arrayNum].destroy();
 			enemyHazardSprite.splice(arrayNum,1);
-			fieldEnemyHazard[arrayNum].destroy();
 			fieldEnemyHazard.splice(arrayNum,1);
 		});
 	}
