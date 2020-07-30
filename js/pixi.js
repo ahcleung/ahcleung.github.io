@@ -3344,7 +3344,7 @@ function calculateTurnOrder(){
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
+	var deletion = [];
 	if(turnNumber > 1){
 		fieldHeroHazard.forEach(hazardElement =>{
 			hazardElement[3]--;
@@ -3363,18 +3363,17 @@ function calculateTurnOrder(){
 		fieldEnemyHazard.forEach((hazardElement,hazardElementIndex) =>{
 			hazardElement[3]--;
 			if(hazardElement[3] == 0){
-					// Remove hazard
-					// console.log("1: " + enemyHazardSprite);
-					enemyHazardContainer.removeChild(enemyHazardSprite[hazardElementIndex]);
-					// console.log("2: " + enemyHazardSprite);
-					enemyHazardSprite[hazardElementIndex].destroy();
-					// console.log("3: " + enemyHazardSprite);
-					enemyHazardSprite.splice(hazardElementIndex,1);
-					// console.log("4: " + enemyHazardSprite);
+				deletion.push(hazardElementIndex);
 			}
 			console.log("Position: " + hazardElement[0] + "Turns: " + hazardElement[3]);
 		});
 	}
+
+	deletion.forEach(arrayNum =>{
+		heroHazardContainer.removeChild(arrayNum);
+		heroHazardSprite[arrayNum].destroy();
+		heroHazardSprite.splice(arrayNum,1);
+	});
 
 	enemyArray.forEach(enemyObject=>{
 		enemyObject.healthBar.turn.visible = true;
