@@ -3379,6 +3379,8 @@ function calculateTurnOrder(){
 			enemyHazardContainer.removeChild(arrayNum);
 			enemyHazardSprite[arrayNum].destroy();
 			enemyHazardSprite.splice(arrayNum,1);
+			fieldEnemyHazard[arrayNum].destroy();
+			fieldEnemyHazard.splice(arrayNum,1);
 		});
 	}
 
