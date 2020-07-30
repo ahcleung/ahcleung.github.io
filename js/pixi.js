@@ -3347,7 +3347,7 @@ function calculateTurnOrder(){
 	var enemyHazardDeletion = [];
 	var heroHazardDeletion = [];
 	if(turnNumber > 1){
-		fieldHeroHazard.forEach(hazardElement =>{
+		fieldHeroHazard.forEach((hazardElement,hazardElementIndex) =>{
 			hazardElement[3]--;
 			if(hazardElement[3] < 0){
 				heroHazardDeletion.push(hazardElementIndex);
