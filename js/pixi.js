@@ -3370,11 +3370,16 @@ function calculateTurnOrder(){
 		console.log(deletion);
 		deletion.sort(function(a,b){ return b - a; });
 		console.log(deletion);
-		for (var i = deletion.length -1; i >= 0; i--){
-			enemyHazardContainer.removeChild(deletion[i]);
-			enemyHazardSprite[deletion[i]].destroy();
-   			enemyHazardSprite.splice(deletion[i],1);
-   		}
+		// for (var i = deletion.length -1; i >= 0; i--){
+		// 	enemyHazardContainer.removeChild(deletion[i]);
+		// 	enemyHazardSprite[deletion[i]].destroy();
+  //  			enemyHazardSprite.splice(deletion[i],1);
+  //  		}
+   		deletion.forEach(arrayNum =>{
+			enemyHazardContainer.removeChild(arrayNum);
+			enemyHazardSprite[arrayNum].destroy();
+			enemyHazardSprite.splice(arrayNum,1);
+		});
 	}
 
 	// deletion.forEach(arrayNum =>{
