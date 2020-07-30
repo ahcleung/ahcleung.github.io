@@ -3370,9 +3370,9 @@ function calculateTurnOrder(){
 	}
 
 	deletion.forEach(arrayNum =>{
-		heroHazardContainer.removeChild(arrayNum);
-		heroHazardSprite[arrayNum].destroy();
-		heroHazardSprite.splice(arrayNum,1);
+		enemyHazardContainer.removeChild(arrayNum);
+		enemyHazardSprite[arrayNum].destroy();
+		enemyHazardSprite.splice(arrayNum,1);
 	});
 
 	enemyArray.forEach(enemyObject=>{
