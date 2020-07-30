@@ -3215,7 +3215,7 @@ function onAdditionalDown(){
 	console.log("Additional");
 	interfaceAdditional.visible = true;
 
-	Remove hazard
+	//Remove hazard
 	console.log("1: " + enemyHazardSprite);
 	enemyHazardContainer.removeChild(enemyHazardSprite[1]);
 	console.log("2: " + enemyHazardSprite);
