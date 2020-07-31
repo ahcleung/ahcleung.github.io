@@ -850,8 +850,8 @@ function setup(){
 	interfaceHolder.addChild(interfaceAdditional);
 	
 	//Add containers to stage
-
 	app.stage.addChild(stageContainer);
+	app.stage.addChild(turnText);
 	app.stage.addChild(interfaceHeroFloatingInfo);				//Hero damage UI
 	app.stage.addChild(interfaceEnemyFloatingInfo);				//Enemy damage UI
 
