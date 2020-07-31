@@ -195,7 +195,7 @@ function loadProgressHandler(loader, resource) {
 const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 
-let state, onScreenStats, consoleScreen;
+let state, onScreenStats, consoleScreen, turnText;
 
 var styleFontFamily = 'Arvo';
 
@@ -370,6 +370,18 @@ function setup(){
 	textureAdditionalMove = PIXI.Texture.from('img/ability_move.png');
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
+
+	const turnStyle = new PIXI.TextStyle({
+        fontFamily: 'Arvo',
+        fontSize: 50,
+        fontWeight: 700,
+		fill: '#D80000',	
+		stroke: '#222222',
+   		strokeThickness: 10,
+    });
+
+    turnText = new Text(turnNumber, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+    turnText.anchor.set(0.5, 0.5);
 	
 	// heroSprites.x = app.screen.width/2;
 	// heroSprites.y = app.screen.height/2;
@@ -874,6 +886,7 @@ function play(delta){
 		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
 
+	turnText.text = turnNumber;
 	heroArray.forEach(object => {
 		if(object.healthBar.select.animate == true){
 			object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
@@ -1404,6 +1417,8 @@ function resize() {
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
+
+	turnText.position.set(app.screen.width/2, 40);
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
