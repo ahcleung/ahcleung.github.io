@@ -380,8 +380,8 @@ function setup(){
    		strokeThickness: 10,
     });
 
-    turnText = new Text(turnNumber, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
-    turnText.anchor.set(0.5, 0.5);
+    turnText = new Text(turnNumber, {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
+    turnText.anchor.set(0.5, 0);
 	
 	// heroSprites.x = app.screen.width/2;
 	// heroSprites.y = app.screen.height/2;
@@ -1417,8 +1417,6 @@ function resize() {
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
-
-	turnText.position.set(app.screen.width/2, 40);
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
@@ -1682,6 +1680,8 @@ function resizeHP(roster, item){
 		item.healthBar.turn.y = resizeHeight + 2;
 	}
 	
+	turnText.position.set(app.screen.width/2, resizeHeight);
+
 	item.healthBar.outer.height = resizeHeight;
 	item.healthBar.inner.height = resizeHeight;
 
