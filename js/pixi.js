@@ -1806,7 +1806,7 @@ function onCreatureDown(){
 			if(tagName == "splash")			tagSplash = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
-			if(Array.isArray(targeted)){
+			// if(Array.isArray(targeted)){
 				if(tagSplash){
 					if(this.object == targeted[0]){
 						// console.log("Correct array object do things");
@@ -1823,7 +1823,7 @@ function onCreatureDown(){
 						}
 					});
 				}
-			}
+			// }
 			// if(this.object == targeted){
 			// 	// console.log("Correct single object do things");
 			// 	correctTarget = true;
