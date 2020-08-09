@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.08
+*Version:         1.09
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
