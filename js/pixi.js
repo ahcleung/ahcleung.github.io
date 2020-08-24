@@ -3477,12 +3477,12 @@ function calculateTurnOrder(){
 function selectCreature(object2){	
 	selectedVita = object2;
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-	console.log("Turn: " + selectedVita.pos);
-	console.log("Turn: " + selectedVita.sprite.identifier);
+	console.log("Turn: " + selectedVita.name);
+	console.log("Turn: " + selectedVita.sprite.identifier[0]);
 
 	selectTween = new TimelineMax();
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.55, y:.55});
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.5, y:0.5});
+	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.2, y:spriteScale*1.2});
+	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
 
 
 	//Reset the skillContainers
