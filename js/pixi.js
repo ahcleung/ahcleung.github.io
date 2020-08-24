@@ -3477,8 +3477,8 @@ function calculateTurnOrder(){
 function selectCreature(object2){	
 	selectedVita = object2;
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-	console.log("Turn: " + selectedVita.name);
-	console.log("Turn: " + selectedVita.identifier[0]);
+	console.log("Turn: " + selectedVita.pos);
+	console.log("Turn: " + selectedVita.sprite.identifier);
 
 	selectTween = new TimelineMax();
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.55, y:.55});
