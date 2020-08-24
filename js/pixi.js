@@ -3475,8 +3475,8 @@ function selectCreature(object2){
 	console.log("Turn: " + selectedVita.scale);
 
 	selectTween = new TimelineMax();
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.35, y:.35});
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.3, y:0.3});
+	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.55, y:.55});
+	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.5, y:0.5});
 
 
 	//Reset the skillContainers
