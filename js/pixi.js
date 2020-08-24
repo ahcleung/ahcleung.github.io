@@ -3472,6 +3472,12 @@ function selectCreature(object2){
 	selectedVita = object2;
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("Turn: " + selectedVita.name);
+
+	selectTween = new TimelineMax();
+	selectTween.to(selectedVita, 0.2, {scale:1.5});
+	selectTween.to(selectedVita, 0.2, {scale:1});
+
+
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
