@@ -234,6 +234,7 @@ var skillNameFontSize = 28;
 var resizeWidth = 0;
 var hazardSize = 0.5;
 var turnNumber = 0;
+var spriteScale = 0;
 
 //Selected element tracker
 var selectedVita;
@@ -1768,12 +1769,17 @@ function resizeHP(roster, item){
 
 function resizeSprite(direction, item, index){	
 	if(app.screen.width < 860){
-		item.scale.set(direction * 0.23, 0.23);
+		spriteScale = 0.23;
+		// item.scale.set(direction * 0.23, 0.23);
 	}else if(app.screen.width < 1366){
-		item.scale.set(direction * 0.3, 0.3); 
+		spriteScale = 0.3;
+		// item.scale.set(direction * 0.3, 0.3); 
 	}else{
-		item.scale.set(direction * 0.5, 0.5);
+		spriteScale = 0.5;
+		// item.scale.set(direction * 0.5, 0.5);
 	}
+	item.scale.set(direction * spriteScale, spriteScale);
+
 	if(direction > 0){
 		item.x = -spriteResizeXPosition[heroArray[index].pos-1];
 	}else{
@@ -3472,7 +3478,7 @@ function selectCreature(object2){
 	selectedVita = object2;
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("Turn: " + selectedVita.name);
-	console.log("Turn: " + selectedVita.scale);
+	console.log("Turn: " + selectedVita.identifier[0]);
 
 	selectTween = new TimelineMax();
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:0.55, y:.55});
