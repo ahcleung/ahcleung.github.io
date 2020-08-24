@@ -3482,9 +3482,9 @@ function selectCreature(object2){
 
 	selectTween = new TimelineMax();
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:2},0);
+	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:2, y:2},0);
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
+	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1, y:1},0.2);
 
 
 	//Reset the skillContainers
