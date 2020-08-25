@@ -1316,16 +1316,6 @@ function createSprite(direction, item, index){
 			select.indicatorBar1 = indicatorBar1;
 			select.addChild(indicatorBar2);
 			select.indicatorBar2 = indicatorBar2;
-
-			// var selectTween = new TimelineMax({paused: true});
-			var selectWidth = select.width;
-			var selectTween = new TimelineMax({paused:true, repeat:-1});
-			// selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeInOut});
-			// selectTween.to(select.scale, 1, {x:1, ease:Sine.easeInOut});
-			selectTween.to(select, 1, {width:selectWidth+10, ease:Sine.easeInOut});
-			selectTween.to(select, 1, {width:selectWidth, ease:Sine.easeInOut});
-			select.animate = selectTween;
-
 			healthBar.addChild(select);
 			healthBar.select = select;
 			healthBar.select.visible = false;
@@ -3520,7 +3510,14 @@ function selectCreature(object2){
 	var currPos = [];
 
 	selectCreatureTween = new TimelineMax({onComplete: function(){
-		selectedVita.healthBar.select.animate.restart();
+					// var selectTween = new TimelineMax({paused: true});
+			var selectWidth = selectedVita.healthBar.select.width;
+			var selectTween = new TimelineMax({paused:true, repeat:-1});
+			// selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeInOut});
+			// selectTween.to(select.scale, 1, {x:1, ease:Sine.easeInOut});
+			selectTween.to(selectedVita.healthBar.select, 1, {width:selectWidth+10, ease:Sine.easeInOut});
+			selectTween.to(selectedVita.healthBar.select, 1, {width:selectWidth, ease:Sine.easeInOut});
+			selectedVita.healthBar.select.animate = selectTween;
 	}});
 	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
 	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
