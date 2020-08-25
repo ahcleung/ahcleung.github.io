@@ -3501,7 +3501,7 @@ function selectCreature(object2){
 		object.healthBar.target.visible = false;
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
-		object.healthBar.select.aniamte.kill();
+		object.healthBar.select.animate.kill();
 		// object.healthBar.select.animate = false;
 	});
 	heroArray.forEach(object=>{
@@ -3509,7 +3509,7 @@ function selectCreature(object2){
 		object.healthBar.target.visible = false;
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
-		object.healthBar.select.aniamte.kill();
+		object.healthBar.select.animate.kill();
 		// object.healthBar.select.animate = false;
 	});
 
