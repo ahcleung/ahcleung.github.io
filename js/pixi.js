@@ -3517,7 +3517,7 @@ function selectCreature(object2){
 	var currPos = [];
 
 	selectCreatureTween = new TimelineMax({onComplete: function(){
-		selectedVita.healthBar.select.aniamte.restart();
+		selectedVita.healthBar.select.animate.restart();
 	}});
 	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
 	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
