@@ -1319,8 +1319,8 @@ function createSprite(direction, item, index){
 
 			// var selectTween = new TimelineMax({paused: true});
 			var selectTween = new TimelineMax({repeat:-1});
-			selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeIn});
-			selectTween.to(select.scale, 1, {x:1, ease:Sine.easeOut});
+			selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeInOut});
+			selectTween.to(select.scale, 1, {x:1, ease:Sine.easeInOut});
 
 			healthBar.addChild(select);
 			healthBar.select = select;
