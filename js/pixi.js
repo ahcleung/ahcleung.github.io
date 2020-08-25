@@ -3516,8 +3516,8 @@ function selectCreature(object2){
 	selectCreatureTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
 		var selectWidth = selectedVita.healthBar.select.width;
-		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
-		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth, ease:Sine.easeInOut});
+		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 0.5, {width:selectWidth+20, ease:Sine.easeInOut});
+		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1.5, {width:selectWidth, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.play(0);
 	}});
 	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
