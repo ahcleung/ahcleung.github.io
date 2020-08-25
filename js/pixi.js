@@ -3519,13 +3519,13 @@ function selectCreature(object2){
 		
 		// selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeInOut});
 		// selectTween.to(select.scale, 1, {x:1, ease:Sine.easeInOut});
-		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+10, ease:Sine.easeInOut});
+		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.play(0);
 		// selectedVita.healthBar.select.animate = selectTween;
 	}});
 	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
+	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.25},0);
 	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
 	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
 
