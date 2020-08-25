@@ -1318,7 +1318,7 @@ function createSprite(direction, item, index){
 			select.indicatorBar2 = indicatorBar2;
 
 			// var selectTween = new TimelineMax({paused: true});
-			var selectTween = new TimelineMax();
+			var selectTween = new TimelineMax({repeat:-1});
 			selectTween.to(select.scale, 0.2, {x:1.5});
 			selectTween.to(select.scale, 0.2, {x:1});
 
