@@ -1318,9 +1318,10 @@ function createSprite(direction, item, index){
 			select.indicatorBar2 = indicatorBar2;
 
 			// var selectTween = new TimelineMax({paused: true});
-			var selectTween = new TimelineMax({repeat:-1});
+			var selectTween = new TimelineMax({paused:true, repeat:-1});
 			selectTween.to(select.scale, 1, {x:1.05, ease:Sine.easeInOut});
 			selectTween.to(select.scale, 1, {x:1, ease:Sine.easeInOut});
+			select.animate = selectTween;
 
 			healthBar.addChild(select);
 			healthBar.select = select;
@@ -3486,13 +3487,6 @@ function selectCreature(object2){
 	console.log("Turn: " + selectedVita.name);
 	console.log("Turn: " + selectedVita.sprite.identifier[0]);
 
-	selectTween = new TimelineMax();
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
-	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
-
-
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.selected.visible = false;
@@ -3507,22 +3501,32 @@ function selectCreature(object2){
 		object.healthBar.target.visible = false;
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
-		object.healthBar.select.animate = false;
+		object.healthBar.select.aniamte.kill();
+		// object.healthBar.select.animate = false;
 	});
 	heroArray.forEach(object=>{
 		object.healthBar.select.visible = false;
 		object.healthBar.target.visible = false;
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
-		object.healthBar.select.animate = false;
+		object.healthBar.select.aniamte.kill();
+		// object.healthBar.select.animate = false;
 	});
 
 	var newSkills = [];
 	var currPos = [];
 
+	selectCreatureTween = new TimelineMax({onComplete: function(){
+		selectedVita.healthBar.select.aniamte.restart();
+	}});
+	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
+	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
+	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
+	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
+
 	object2.healthBar.turn.visible = false;
 	object2.healthBar.select.visible = true;
-	object2.healthBar.select.animate = true;
+	// object2.healthBar.select.animate = true;
 
 	object2.skills.forEach(skillID=>{
 		newSkills.push(skillID);
