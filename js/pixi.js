@@ -1316,6 +1316,12 @@ function createSprite(direction, item, index){
 			select.indicatorBar1 = indicatorBar1;
 			select.addChild(indicatorBar2);
 			select.indicatorBar2 = indicatorBar2;
+
+			// var selectTween = new TimelineMax({paused: true});
+			var selectTween = new TimelineMax();
+			selectTween.to(select.scale, 0.2, {x:1.5});
+			selectTween.to(select.scale, 0.2, {x:1});
+
 			healthBar.addChild(select);
 			healthBar.select = select;
 			healthBar.select.visible = false;
@@ -3482,7 +3488,7 @@ function selectCreature(object2){
 
 	selectTween = new TimelineMax();
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:2},0);
+	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.5},0);
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
 	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
 
