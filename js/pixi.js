@@ -888,16 +888,16 @@ function play(delta){
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
 
 	turnText.text = turnNumber;
-	heroArray.forEach(object => {
-		if(object.healthBar.select.animate == true){
-			object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-		}
-	});
-	enemyArray.forEach(object => {
-		if(object.healthBar.select.animate == true){
-			object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-		}
-	});
+	// heroArray.forEach(object => {
+	// 	if(object.healthBar.select.animate == true){
+	// 		object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+	// 	}
+	// });
+	// enemyArray.forEach(object => {
+	// 	if(object.healthBar.select.animate == true){
+	// 		object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
+	// 	}
+	// });
 }
 
 // Listen for animate update
@@ -3482,9 +3482,9 @@ function selectCreature(object2){
 
 	selectTween = new TimelineMax();
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:2, y:2},0);
+	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:2},0);
 	selectTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
-	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1, y:1},0.2);
+	selectTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
 
 
 	//Reset the skillContainers
