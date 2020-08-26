@@ -2309,15 +2309,15 @@ function onCreatureDown(){
 				});
 			}
 
-			// //Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-			// selectedSkill = -1;
-			// validMoveObjectArray = [];
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				selectCreature(turnArray[0]);
+				turnArray.shift();
+			}else{
+				calculateTurnOrder();
+			}
+			selectedSkill = -1;
+			validMoveObjectArray = [];
 		}else{
 			console.log("Invalid move target");
 		}
@@ -2364,17 +2364,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-				//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-				if(turnArray.length != 0){
-					selectCreature(turnArray[0]);
-					turnArray.shift();
-				}else{
-					calculateTurnOrder();
-				}
-				selectedSkill = -1;
-				validMoveObjectArray = [];
-			}});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
@@ -2406,17 +2396,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-				//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-				if(turnArray.length != 0){
-					selectCreature(turnArray[0]);
-					turnArray.shift();
-				}else{
-					calculateTurnOrder();
-				}
-				selectedSkill = -1;
-				validMoveObjectArray = [];
-			}});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
 	// console.log("Creatures that moved:");
