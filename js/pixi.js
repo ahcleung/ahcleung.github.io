@@ -2364,7 +2364,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX}, onComplete:function(){
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 				if(turnArray.length != 0){
 					selectCreature(turnArray[0]);
@@ -2374,7 +2374,7 @@ function moveCreature(movingCreature, displacement){
 				}
 				selectedSkill = -1;
 				validMoveObjectArray = [];
-			});
+			}});
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
@@ -2406,7 +2406,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX}, onComplete:function(){
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 				if(turnArray.length != 0){
 					selectCreature(turnArray[0]);
@@ -2416,7 +2416,7 @@ function moveCreature(movingCreature, displacement){
 				}
 				selectedSkill = -1;
 				validMoveObjectArray = [];
-			});
+			}});
 	}
 	// console.log("Creatures that moved:");
 	// movedCreature.forEach(object=>{
