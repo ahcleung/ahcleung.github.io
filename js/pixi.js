@@ -2417,6 +2417,7 @@ function moveCreature(movingCreature, displacement){
 				selectedSkill = -1;
 				validMoveObjectArray = [];
 			}});
+		});
 	}
 	// console.log("Creatures that moved:");
 	// movedCreature.forEach(object=>{
