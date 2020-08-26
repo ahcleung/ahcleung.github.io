@@ -235,6 +235,7 @@ var resizeWidth = 0;
 var hazardSize = 0.5;
 var turnNumber = 0;
 var spriteScale = 0;
+var userInput = false;
 
 //Selected element tracker
 var selectedVita;
@@ -1878,7 +1879,7 @@ function onCreatureDown(){
 		var attack = 0;
 		
 		if(correctTarget){
-
+			userInput = true;
 			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);			
 
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
@@ -2310,14 +2311,15 @@ function onCreatureDown(){
 			}
 
 			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				selectCreature(turnArray[0]);
-				turnArray.shift();
-			}else{
-				calculateTurnOrder();
-			}
-			selectedSkill = -1;
-			validMoveObjectArray = [];
+			// if(turnArray.length != 0){
+			// 	selectCreature(turnArray[0]);
+			// 	turnArray.shift();
+			// }else{
+			// 	calculateTurnOrder();
+			// }
+			// selectedSkill = -1;
+			// validMoveObjectArray = [];
+			if(userInput)	endTurn();
 		}else{
 			console.log("Invalid move target");
 		}
@@ -3233,15 +3235,8 @@ function animateBattle(attacker, defender){
 			attacker.statusSpriteArray.forEach(statusSprite => {
 				statusSprite.visible = true;
 			});
-			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				selectCreature(turnArray[0]);
-				turnArray.shift();
-			}else{
-				calculateTurnOrder();
-			}
-			selectedSkill = -1;
-			validMoveObjectArray = [];
+
+			endTurn();
 		});
 	});
 
@@ -3492,6 +3487,7 @@ function calculateTurnOrder(){
 }
 
 function selectCreature(object2){	
+	userInput = false;
 	selectedVita = object2;
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("Turn: " + selectedVita.name);
@@ -3963,6 +3959,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
 			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+				if(userInput)	endTurn();
 			}});
 		tween.to(object.healthBar.dmgBarContainer.dmgBar
 			, 1, {ease:Expo.easeIn, alpha:0});
@@ -3976,6 +3973,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 				width: newWidth
 			}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
 			object.healthBar.dmgBarContainer.dmgBar.visible = false;
+			if(userInput)	endTurn();
 		}});
 
 		object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
@@ -4033,4 +4031,16 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 	});
 
 	object.dmgContainer.dmgPopup.tween.play(0);
+}
+
+function endTurn(){
+	//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+	if(turnArray.length != 0){
+		selectCreature(turnArray[0]);
+		turnArray.shift();
+	}else{
+		calculateTurnOrder();
+	}
+	selectedSkill = -1;
+	validMoveObjectArray = [];
 }
