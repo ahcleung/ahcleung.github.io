@@ -2157,15 +2157,15 @@ function onCreatureDown(){
 			});
 
 			//If out of turns, and still have enemies, and still have heroes
-			if(turnArray.length != 0){
-				selectCreature(turnArray[0]);
-				turnArray.shift();
-			}else{
-				calculateTurnOrder();
-			}
+			// if(turnArray.length != 0){
+			// 	selectCreature(turnArray[0]);
+			// 	turnArray.shift();
+			// }else{
+			// 	calculateTurnOrder();
+			// }
 
-			selectedSkill = -1;
-			validSkillObjectArray = [];
+			// selectedSkill = -1;
+			// validSkillObjectArray = [];
 		}else{
 			console.log("Invalid skill target");
 		}	
@@ -2305,15 +2305,15 @@ function onCreatureDown(){
 				});
 			}
 
-			// //Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-			// selectedSkill = -1;
-			// validMoveObjectArray = [];
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			if(turnArray.length != 0){
+				selectCreature(turnArray[0]);
+				turnArray.shift();
+			}else{
+				calculateTurnOrder();
+			}
+			selectedSkill = -1;
+			validMoveObjectArray = [];
 		}else{
 			console.log("Invalid move target");
 		}
