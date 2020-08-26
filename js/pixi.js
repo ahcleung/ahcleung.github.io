@@ -1809,6 +1809,10 @@ function onButtonDown(){
 function onCreatureDown(){
 	// console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	if(validSkillObjectArray.length > 0){
+		skillContainerArray.forEach(skillContainer=>{
+			skillContainer.interactive = false;
+		});
+		
 		var correctTarget = false;
 		var targetedVitaIndex = 0;
 		var tagSplash = false;
@@ -3522,17 +3526,17 @@ function selectCreature(object2){
 	var newSkills = [];
 	var currPos = [];
 
-	selectCreatureTween = new TimelineMax({onComplete: function(){
+	selectSpriteTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
 		var selectWidth = selectedVita.healthBar.select.width;
 		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.play(0);
 	}});
-	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
-	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.25},0);
-	selectCreatureTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
-	selectCreatureTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
+	selectSpriteTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale*1.1, y:spriteScale*1.1});
+	selectSpriteTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1.25},0);
+	selectSpriteTween.to(selectedVita.sprite.scale, 0.2, {x:selectedVita.sprite.identifier[0]*spriteScale, y:spriteScale});
+	selectSpriteTween.to(selectedVita.healthBar.select.scale, 0.2, {x:1},0.2);
 
 	object2.healthBar.turn.visible = false;
 	object2.healthBar.select.visible = true;
