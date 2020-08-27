@@ -796,7 +796,7 @@ function setup(){
 	btnSettings.accessibleTitle = "Fullscreen button";
 	btnSettings
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onButtonDown);
+        .on('pointerdown', onMenuDown);
     interfaceHolder.addChild(btnSettings);
 	
 	btnAdditional = new PIXI.Sprite(textureAdditional);				//Button additional
@@ -901,6 +901,15 @@ function play(delta){
 	// });
 }
 
+function consolePrint(fromText){
+	console.log(
+		fromText + 
+		"\nResolution: " + app.renderer.resolution +
+		"\nRendererWidth: " + app.renderer.width + 
+		"\nRendererHeight: " + app.renderer.height
+		);
+}
+
 // Listen for animate update
 // app.ticker.add((delta) => {
 // 	// rotate the container!
@@ -915,6 +924,58 @@ function setPos(item, index, array){
 	}else{
 		item.pos = array[index-1].pos + 1;	
 	}	
+}
+
+function statusEffectSprite(identifier){
+	let statusEffectIcon;
+	switch(identifier){
+		case 1:
+			statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
+			break;
+		case 2:
+			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+			break;
+		case 3:
+			statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
+			break;
+		case 4:
+			statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
+			break;
+		case 5:
+			statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
+			break;
+		case 6:
+			statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
+			break;
+		case 7:
+			statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
+			break;
+		case 8:
+			statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
+			break;
+		case 9:
+			statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
+			break;
+		case 10:
+			statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
+			break;
+		case 11:
+			statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
+			break;
+		case 12:
+			statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
+			break;
+		case 13:
+			statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
+			break;
+		case 14:
+			statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
+			break;
+		default:
+			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+			
+	}
+	return statusEffectIcon;
 }
 
 function createSprite(direction, item, index){
@@ -1792,620 +1853,184 @@ function resizeSprite(direction, item, index){
 	}	
 }
 
-function consolePrint(fromText){
-	console.log(
-		fromText + 
-		"\nResolution: " + app.renderer.resolution +
-		"\nRendererWidth: " + app.renderer.width + 
-		"\nRendererHeight: " + app.renderer.height
-		);
+function resizeStatus(item){
+	var resizeHeight = 40;
+	var statusSpacing = 5;
+	
+	if(app.screen.width < 860){
+		resizeHeight = 20;
+		statusSpacing = 2;
+	}else if(app.screen.width < 1366){
+		resizeHeight = 30;
+		statusSpacing = 4;
+	}else{
+		resizeHeight = 40;
+		statusSpacing = 5;
+	}
+	
+	if(item.size > 1){
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}
+		});
+	}else{
+		item.statusSpriteArray.forEach((statusSprite, index) => {
+			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
+			statusSprite.height = statusSprite.width;
+			if(index < 4){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
+				statusSprite.y = resizeHeight + statusSpacing*2;
+			}else if(index < 8){
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
+				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
+			}else{
+				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
+				statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
+			}
+		});
+	}
 }
 
-function onButtonDown(){
+function onMenuDown(){
 	if (screenfull.isEnabled) {
 		screenfull.toggle();
 	}
 }
 
-function onCreatureDown(){
-	// console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-	if(validSkillObjectArray.length > 0){
-		skillContainerArray.forEach(skillContainer=>{
-			skillContainer.interactive = false;
-		});
+function onAdditionalDown(){
+// 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
+	console.log("Additional");
+	interfaceAdditional.visible = true;
 
-		var correctTarget = false;
-		var targetedVitaIndex = 0;
-		var tagSplash = false;
-		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-			if(tagName == "splash")			tagSplash = true;
-		});
-		validSkillObjectArray.forEach((targeted, targetedIndex) => {
-			// if(Array.isArray(targeted)){
-				if(tagSplash){
-					if(this.object == targeted[0]){
-						// console.log("Correct array object do things");
-						correctTarget = true;
-						targetedVitaIndex = targetedIndex;
-					}
-				}
-				else{
-					targeted.forEach(arrayElement => {
-						if(this.object == arrayElement){
-							// console.log("Correct array object do things");
-							correctTarget = true;
-							targetedVitaIndex = targetedIndex;
-						}
-					});
-				}
-			// }
-			// if(this.object == targeted){
-			// 	// console.log("Correct single object do things");
-			// 	correctTarget = true;
-			// 	targetedVitaIndex = targetedIndex;
-			// }
-		});
+	//Remove hazard
+	// console.log("1: " + enemyHazardSprite);
+	// enemyHazardContainer.removeChild(enemyHazardSprite[1]);
+	// console.log("2: " + enemyHazardSprite);
+	// enemyHazardSprite[1].destroy();
+	// console.log("3: " + enemyHazardSprite);
+	// enemyHazardSprite.splice(1,1);
+	// console.log("4: " + enemyHazardSprite);
 
-		//Rearrange array for splash targets
-		if(tagSplash){
-			var tempArray = [];
-			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
-				tempArray[arrayElement.pos-1] = arrayElement;
-				
-			});
-			var filtered = tempArray.filter(function (el) {
-				return el != null;
-			});
-
-			filtered.forEach(arrayElement =>{
-				console.log(arrayElement.name + "\n");
-			});
-
-			validSkillObjectArray[targetedVitaIndex] = filtered;
-		}
-
-		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
-		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
-			console.log(arrayElement.name + "\n");
-		});
-
-		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
-		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
-		// 	console.log(arrayElement.name + "\n");
-		// });
-
-		var level = selectedVita.level;
-		var accMod = selectedVita.accMod;
-		var attack = 0;
-		
-		if(correctTarget){
-			userInput = true;
-			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);			
-
-			const filter1 = new PIXI.filters.ColorMatrixFilter();
-			const filter2 = new PIXI.filters.ColorMatrixFilter();
-			const filter3 = new PIXI.filters.ColorMatrixFilter();
-
-			var filtersArray = [];
-
-			filter2.brightness(1.4,  true);
-			filter2.hue(175, true);
-			filter3.blackAndWhite(true);
-
-			// filter3.negative(true);
-			switch(skillsList.data.skills[selectedSkill].element){
-				case 1: 	//flora
-					filter1.hue(-120);
-					filtersArray = [filter1];
-					break;
-				case 2: 	//water
-					filter1.hue(-30);
-					filtersArray = [filter1];
-					break;
-				case 3:		//fire
-					filter1.hue(110);
-					filtersArray = [filter1];
-					break;
-				case 4: 	//earth
-					filter1.hue(160);
-					filtersArray = [filter1];
-					break;
-				case 5: 	//lightning
-					filtersArray = [filter2];
-					break;
-				case 6: 	//wind
-					filter1.hue(-80);
-					filtersArray = [filter1];
-					break;
-				case 7: 	//toxic
-					filter1.hue(20);
-					filtersArray = [filter1];
-					break;
-				case 8: 	//spirit
-					filter1.hue(60);
-					filtersArray = [filter1];
-					break;
-				case 9: 	//shadow	
-					filtersArray = [filter3];		
-					break;
-				default:
-					filter1.hue(0);
-					filtersArray = [filter1];
-			}
-
-			selectedVita.action.fxTop.filters = filtersArray;
-			selectedVita.action.fxBack.filters = filtersArray;
-
-			if(skillsList.data.skills[selectedSkill].type == "phy"){
-				attack = selectedVita.patk;				
-			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-				attack = selectedVita.satk;
-			}
-
-			validSkillObjectArray[targetedVitaIndex].forEach(targeted => {
-				var defense = 0;
-				var multiHitNum = 1;
-				var dmgArray = [];
-				var defendElements = [];
-				var effectiveness = 1;
-				var tagMultiple = false;
-				var tagStatus = false;
-				var tagStatChange = false;
-				var tagHazard = false;
-				var tagTurns = false;
-				var tagDisplace = false;
-				var statTarget = targeted;
-				var defenderStatus = [];
-				var attackerStatus = [];
-				var critTracker = [0,0,0,0,0];
-				var skillCrit = false;
-				var critMultiplier = 1;
-				var skillHeal = false;
-				var skillPower = skillsList.data.skills[selectedSkill].power;
-
-				var dodge = targeted.dodge;
-				var dodgeMod = targeted.dodgeMod;
-
-				if(skillsList.data.skills[selectedSkill].type == "phy"){
-					defense = targeted.pdef;
-				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
-					defense = targeted.sdef;
-				}
-				targeted.elements.forEach(element =>{
-					defendElements.push(element);
-				});
-				var accDiff = accMod - dodgeMod;
-				var hitMod = 1;
-				if(accDiff > 0){
-					hitMod = (Math.abs(accDiff) + 3)/3;
-				}else if(accDiff < 0){
-					hitMod = 3/(Math.abs(accDiff) + 3);
-				}
-
-				if(skillsList.data.skills[selectedSkill].accuracy == 110){
-					var hitChance = 1;
-				}else{
-					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
-				}
-				var hitRoll = Math.random();
-
-				if(hitRoll < hitChance){
-					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
-					//Get defenders elements to calculate effectiveness
-					defendElements.forEach(defendElement=>{
-						effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
-					});
-
-					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
-						if(tagName == "multiple")		tagMultiple = true;
-						if(tagName == "status")			tagStatus = true;
-						if(tagName == "statchange")		tagStatChange = true;
-						if(tagName == "hazard")			tagHazard = true;
-						if(tagName == "turns")			tagTurns = true;
-						if(tagName == "splash")			tagSplash = true;
-						if(tagName == "displace")		tagDisplace = true;
-					});
-
-					if(tagMultiple){
-						multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
-						// hitNum = 5;
-					}
-
-					if(tagStatus){
-						defenderStatus.push([skillsList.data.skills[selectedSkill].status,skillsList.data.skills[selectedSkill].turns]);
-						// hitNum = 5;
-					}
-
-					//[hp, dodge, patk, pdef, satk, sdef, spd, acc]
-					if(tagStatChange){
-						tagStatus = true;
-						if(skillsList.data.skills[selectedSkill].statchange[0]){
-							statTarget = selectedVita;
-							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-								attackerStatus.push(2);
-							}else{
-								attackerStatus.push(4);
-							}
-						}else{
-							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-								defenderStatus.push([2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
-							}else{
-								defenderStatus.push([4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
-							}
-						}
-
-						statTarget.statMod[skillsList.data.skills[selectedSkill].statchange[1]] += skillsList.data.skills[selectedSkill].statchange[2];
-						// console.log(statTarget.name + " stat updated with: " + defenderStatus);
-					}
-
-					if(tagHazard){
-						// factory.parseDragonBonesData(resources['fume2_skeleton'].data);
-						// factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
-
-						// const hazardSprite = factory.buildArmatureDisplay('fume2', 'fume2');
-						// hazardSprite.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						// const hazardSprite2 = factory.buildArmatureDisplay('fume2', 'fume2');
-						// hazardSprite2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
-						let hazardSprite, hazardSprite2;
-						switch(skillsList.data.skills[selectedSkill].hazard[0]){
-							case 1:
-								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
-								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
-								break;
-							case 2:
-								hazardSprite = new PIXI.Sprite(resources.hazard_spikes.texture);
-								hazardSprite2 = new PIXI.Sprite(resources.hazard_spikes.texture);
-								break;
-							case 3:
-								hazardSprite = new PIXI.Sprite(resources.hazard_spores.texture);
-								hazardSprite2 = new PIXI.Sprite(resources.hazard_spores.texture);
-								break;
-							default:
-								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
-								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
-						}
-						
-						hazardSprite.anchor.set(0.5,1);	
-						hazardSprite2.anchor.set(0.5,1);
-
-						if(targeted.hero){
-							hazardSprite.scale.set(hazardSize,hazardSize);
-							hazardSprite2.scale.set(hazardSize,hazardSize);
-							if(targeted.size > 1){
-								//[position, hazardType, damage, turn]
-								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
-								hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
-								heroHazardSprite.push(hazardSprite2);
-								heroHazardContainer.addChild(hazardSprite2);
-							}
-							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
-							hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
-							heroHazardSprite.push(hazardSprite);
-							heroHazardContainer.addChild(hazardSprite);
-						}else{
-							hazardSprite.scale.set(-hazardSize,hazardSize);
-							hazardSprite2.scale.set(-hazardSize,hazardSize);
-							if(targeted.size > 1){
-								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
-								hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
-								enemyHazardSprite.push(hazardSprite2);
-								enemyHazardContainer.addChild(hazardSprite2);
-							}
-							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
-							hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
-							enemyHazardSprite.push(hazardSprite);
-							enemyHazardContainer.addChild(hazardSprite);
-						}
-					}
-
-					if(tagSplash){
-						if(this.object != targeted){
-							skillPower *= skillsList.data.skills[selectedSkill].splash;
-						}
-					}
-
-					console.log("Skill power: " + skillPower);
-
-					//Calculate heal amount or damage amount
-					if(skillsList.data.skills[selectedSkill].heal > 0){
-						//calculate how much to heal
-						dmgArray = [];
-
-						for(var i = 0; i < multiHitNum; i++){
-							dmgArray.push(skillsList.data.skills[selectedSkill].heal);
-						}
-						
-						skillHeal = true;
-						effectiveness = 1;
-						critMultiplier = 1;
-					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
-						// other = true;
-					}else{						
-						var dmgCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
-						for(var i = 0; i < multiHitNum; i++){
-							var criticalChance = Math.floor(Math.random() * 10000);
-							var critMultiplier = 1;
-							if(criticalChance > 5000){
-								critMultiplier = 1.5;
-								skillCrit = true;
-								critTracker[i] = 1;
-							}
-							var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-							if(finalDmgCalc == 0)		finalDmgCalc = 1;
-							dmgArray[i] = finalDmgCalc;
-						}
-					}
-
-					if(skillCrit){
-						var totalCritDmg = 0;
-						defenderStatus.push([14]);
-						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
-						});
-						console.log("Critical damage: " + Math.floor(totalCritDmg));
-					}
-
-					var deltaHP = 0;
-					dmgArray.forEach(dmgArrayNum => {deltaHP += dmgArrayNum;});
-					console.log("Total damage: " + deltaHP);
-
-					if(tagDisplace){
-						moveCreature(targeted, skillsList.data.skills[selectedSkill].displace[0]);
-					}
-				}else{
-					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
-					dmgArray[0] = 0;
-					effectiveness = 0;
-				}
-
-				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget, tagHazard);
-			});
-
-			//If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-
-			// selectedSkill = -1;
-			// validSkillObjectArray = [];
-		}else{
-			console.log("Invalid skill target");
-		}	
-	}
-	else if(validMoveObjectArray.length > 0){
-		// clickedTarget = this.identifier[1];
-		console.log("Clicked move object: " + this.object.name);
-		var correctTarget = false;
-		var targetedVita = 0;
-
-		validMoveObjectArray.forEach((targeted, targetedIndex) => {
-			if(Array.isArray(targeted)){
-				targeted.forEach(arrayElement => {
-					if(this.object == arrayElement){
-						correctTarget = true;
-						targetedVita = targeted;
-					}	
-				});
-			}
-			if(this.object == targeted){
-				correctTarget = true;
-				targetedVita = targeted;
-			}
-		});
-
-		if(correctTarget){
-			userInput = true;
-			var moveTo, moveFrom, displacement;
-			if(selectedVita.hero){
-				heroArray.forEach((object,objectIndex)=>{
-					if(selectedVita == object)			moveFrom = objectIndex;
-					if(targetedVita == object)			moveTo = objectIndex;
-				});
-
-				fieldHeroHazard.forEach(arrayItem =>{
-					// dmgArray = [];
-					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				});
-			}else{
-				enemyArray.forEach((object,objectIndex)=>{
-					if(selectedVita == object)			moveFrom = objectIndex;
-					if(targetedVita == object)			moveTo = objectIndex;
-				});
-			}
-			displacement = moveFrom - moveTo;
-			moveCreature(selectedVita, displacement);
-			if(selectedVita.hero){
-				movedCreature.forEach(heroObject =>{
-					var effective = [];
-					var dmgArray = [];
-					fieldHeroHazard.forEach(arrayItem =>{
-						var effectiveCalc = 1;
-						var defendElements = [];						
-						heroObject.elements.forEach(element =>{
-							defendElements.push(element);
-						});
-						var hazardElement = 0;
-						switch(arrayItem[1]){
-							case 1: 
-								hazardElement = 2;
-								break;
-							case 2:
-								hazardElement = 1;
-								break;
-							case 3:
-								hazardElement = 3;
-								break;
-							case 4:
-								hazardElement = 7;
-								break;
-							default:
-								hazardElement = 1;
-						}
-						defendElements.forEach(defendElement=>{
-							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
-						});
-						if(heroObject.size > 1){
-							if(arrayItem[0]+1 == heroObject.pos+1 || arrayItem[0]+1 == heroObject.pos){
-								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-								effective.push(effectiveCalc);
-							}
-						}else{
-							if(arrayItem[0]+1 == heroObject.pos){
-								// dmgArray = [];
-								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-								effective.push(effectiveCalc);
-								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
-							}
-						}						
-					});
-					updateDamage(heroObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
-				});
-			}else{
-				movedCreature.forEach(enemyObject =>{
-					var effective = [];
-					var dmgArray = [];
-					fieldEnemyHazard.forEach(arrayItem =>{
-						var effectiveCalc = 1;
-						var defendElements = [];						
-						enemyObject.elements.forEach(element =>{
-							defendElements.push(element);
-						});
-						var hazardElement = 0;
-						switch(arrayItem[1]){
-							case 1: 
-								hazardElement = 2;
-								break;
-							case 2:
-								hazardElement = 1;
-								break;
-							case 3:
-								hazardElement = 3;
-								break;
-							case 4:
-								hazardElement = 7;
-								break;
-							default:
-								hazardElement = 1;
-						}
-						defendElements.forEach(defendElement=>{
-							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
-						});
-						if(enemyObject.size > 1){
-							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
-								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-								effective.push(effectiveCalc);
-							}
-						}else{
-							if(arrayItem[0]+1 == enemyObject.pos){
-								// dmgArray = [];
-								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-								effective.push(effectiveCalc);
-								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
-							}
-						}						
-					});
-					updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
-				});
-			}
-
-			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-			// selectedSkill = -1;
-			// validMoveObjectArray = [];
-			if(userInput)	endTurn();
-		}else{
-			console.log("Invalid move target");
-		}
-	}
+	// 0xccffcc
+	// backgroundImage.tint = 0x3D85C6;	
 }
 
-//function moveCreature(movingCreature, displace(1, -2))
-function moveCreature(movingCreature, displacement){
-	console.log(movingCreature.name + " wants to move shift: " + displacement);
-	var moveFrom, moveTo;
-	var tempArray = [];
-	movedCreature = []
-	if(movingCreature.hero){
-		heroArray.forEach((object,objectIndex)=>{
-			if(movingCreature == object)		moveFrom = objectIndex;
-		});
-		moveTo = moveFrom - displacement;
+function onAdditionalCancelDown(){
+	console.log("Additional Cancel");
+	interfaceAdditional.visible = false;
+}
+
+function onAdditionalMoveDown(){
+	console.log("Additional Move " + selectedVita.name);
+	validMoveObjectArray = [];
+	validSkillObjectArray = [];
+	selectedSkill = -1
+	interfaceAdditional.visible = false;
+
+	enemyArray.forEach(enemyObject=>{
+		enemyObject.healthBar.target.visible = false;
+		enemyObject.healthBar.heal.visible = false;
+	});
+	heroArray.forEach(heroObject=>{
+		heroObject.healthBar.target.visible = false;
+		heroObject.healthBar.heal.visible = false;
+	});
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+	});
+
+	var moveDelta = selectedVita.move[1];
+	var forward= false;
+	var backward = false;
+	if(selectedVita.move[0] == "+"){
+		forward = true;
+	}else if(selectedVita.move[0] == "-"){
+		backward = true;
+	}else{
+		forward = true;
+		backward = true;
+	}
+
+	if(selectedVita.hero){
 		heroArray.forEach(object=>{
-			tempArray.push(object);
-		});
-		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
-
-		heroArray.forEach((object,objectIndex)=>{
-			if(objectIndex == 0){
-				object.pos = 1;
-			}else if(heroArray[objectIndex-1].size == 2){
-				object.pos = heroArray[objectIndex-1].pos + 2;
-			}else{
-				object.pos = heroArray[objectIndex-1].pos + 1;
+			if(object != selectedVita){
+				var positionCheck = [];
+				if(object.size > 1){
+					positionCheck.push(object.pos);
+					positionCheck.push(object.pos+1);
+				}else{
+					positionCheck.push(object.pos);
+				}
+				for(var i = 1; i <= moveDelta; i++){
+					positionCheck.forEach(position=>{
+						if(position == selectedVita.pos-i && forward){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}
+					});				
+				}
 			}
-
-			if(object != tempArray[objectIndex])		movedCreature.push(object)
-
-			//Hero Creature
-			var newCreatureX, newHPX;
-			newCreatureX = -spriteResizeXPosition[object.pos-1];
-
-			//Hero HP and dmg containers
-			var switcher = 0;
-			if(object.size > 1)	switcher = 1
-
-			newHPX = heroHealthXPosition[object.pos-1+switcher];
-
-			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}else{
-		// console.log(moveFrom + " wants to move to: " + moveTo);
-		enemyArray.forEach((object,objectIndex)=>{
-			if(movingCreature == object)		moveFrom = objectIndex;
-		});
-		moveTo = moveFrom - displacement;
 		enemyArray.forEach(object=>{
-			tempArray.push(object);
-		});
-		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
-
-		enemyArray.forEach((object,objectIndex)=>{
-			if(objectIndex == 0){
-				object.pos = 1;
-			}else if(enemyArray[objectIndex-1].size == 2){
-				object.pos = enemyArray[objectIndex-1].pos + 2;
-			}else{
-				object.pos = enemyArray[objectIndex-1].pos + 1;
+			if(object != selectedVita){
+				var positionCheck = [];
+				if(object.size > 1){
+					positionCheck.push(object.pos);
+					positionCheck.push(object.pos+1);
+				}else{
+					positionCheck.push(object.pos);
+				}
+				for(var i = 1; i <= moveDelta; i++){
+					positionCheck.forEach(position=>{
+						if(position == selectedVita.pos-i && forward){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
+							object.healthBar.move.visible = true;
+							validMoveObjectArray.push(object);
+						}
+					});				
+				}
 			}
-
-			if(object != tempArray[objectIndex])		movedCreature.push(object)
-
-			//Enemy Creature
-			var newCreatureX, newHPX;
-			newCreatureX = spriteResizeXPosition[object.pos-1];
-			newHPX = spriteResizeXPosition[object.pos-1];
-
-			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
 		});
 	}
-	// console.log("Creatures that moved:");
-	// movedCreature.forEach(object=>{
-	// 	console.log(object.name);
-	// });
+
+	validMoveObjectArray.forEach(object=>{
+		console.log("validMoveObjectArray: " + object.name);
+	});
+}
+
+function onAdditionalItemDown(){
+	console.log("Additional Item");
+	onScreenStats.visible = true;
+	consoleScreen.visible = true;
+}
+
+function onAdditionalSkipDown(){
+	console.log("Additional Skip");
+	if(turnArray.length != 0){
+		selectCreature(turnArray[0]);
+		turnArray.shift();
+	}else{
+		calculateTurnOrder();
+	}
+
+	selectedSkill = -1;
+
+	interfaceAdditional.visible = false;
+	// onScreenStats.visible = false;
+	// consoleScreen.visible = false;
 }
 
 function onHPDown(){
@@ -3145,6 +2770,607 @@ function onSkillDown(){
 	
 }
 
+function onCreatureDown(){
+	// console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	if(validSkillObjectArray.length > 0){
+		skillContainerArray.forEach(skillContainer=>{
+			skillContainer.interactive = false;
+		});
+
+		var correctTarget = false;
+		var targetedVitaIndex = 0;
+		var tagSplash = false;
+		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+			if(tagName == "splash")			tagSplash = true;
+		});
+		validSkillObjectArray.forEach((targeted, targetedIndex) => {
+			// if(Array.isArray(targeted)){
+				if(tagSplash){
+					if(this.object == targeted[0]){
+						// console.log("Correct array object do things");
+						correctTarget = true;
+						targetedVitaIndex = targetedIndex;
+					}
+				}
+				else{
+					targeted.forEach(arrayElement => {
+						if(this.object == arrayElement){
+							// console.log("Correct array object do things");
+							correctTarget = true;
+							targetedVitaIndex = targetedIndex;
+						}
+					});
+				}
+			// }
+			// if(this.object == targeted){
+			// 	// console.log("Correct single object do things");
+			// 	correctTarget = true;
+			// 	targetedVitaIndex = targetedIndex;
+			// }
+		});
+
+		//Rearrange array for splash targets
+		if(tagSplash){
+			var tempArray = [];
+			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+				tempArray[arrayElement.pos-1] = arrayElement;
+				
+			});
+			var filtered = tempArray.filter(function (el) {
+				return el != null;
+			});
+
+			filtered.forEach(arrayElement =>{
+				console.log(arrayElement.name + "\n");
+			});
+
+			validSkillObjectArray[targetedVitaIndex] = filtered;
+		}
+
+		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+			console.log(arrayElement.name + "\n");
+		});
+
+		// console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		// validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+		// 	console.log(arrayElement.name + "\n");
+		// });
+
+		var level = selectedVita.level;
+		var accMod = selectedVita.accMod;
+		var attack = 0;
+		
+		if(correctTarget){
+			userInput = true;
+			animateBattle(selectedVita, validSkillObjectArray[targetedVitaIndex]);			
+
+			const filter1 = new PIXI.filters.ColorMatrixFilter();
+			const filter2 = new PIXI.filters.ColorMatrixFilter();
+			const filter3 = new PIXI.filters.ColorMatrixFilter();
+
+			var filtersArray = [];
+
+			filter2.brightness(1.4,  true);
+			filter2.hue(175, true);
+			filter3.blackAndWhite(true);
+
+			// filter3.negative(true);
+			switch(skillsList.data.skills[selectedSkill].element){
+				case 1: 	//flora
+					filter1.hue(-120);
+					filtersArray = [filter1];
+					break;
+				case 2: 	//water
+					filter1.hue(-30);
+					filtersArray = [filter1];
+					break;
+				case 3:		//fire
+					filter1.hue(110);
+					filtersArray = [filter1];
+					break;
+				case 4: 	//earth
+					filter1.hue(160);
+					filtersArray = [filter1];
+					break;
+				case 5: 	//lightning
+					filtersArray = [filter2];
+					break;
+				case 6: 	//wind
+					filter1.hue(-80);
+					filtersArray = [filter1];
+					break;
+				case 7: 	//toxic
+					filter1.hue(20);
+					filtersArray = [filter1];
+					break;
+				case 8: 	//spirit
+					filter1.hue(60);
+					filtersArray = [filter1];
+					break;
+				case 9: 	//shadow	
+					filtersArray = [filter3];		
+					break;
+				default:
+					filter1.hue(0);
+					filtersArray = [filter1];
+			}
+
+			selectedVita.action.fxTop.filters = filtersArray;
+			selectedVita.action.fxBack.filters = filtersArray;
+
+			if(skillsList.data.skills[selectedSkill].type == "phy"){
+				attack = selectedVita.patk;				
+			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+				attack = selectedVita.satk;
+			}
+
+			validSkillObjectArray[targetedVitaIndex].forEach(targeted => {
+				var defense = 0;
+				var multiHitNum = 1;
+				var dmgArray = [];
+				var defendElements = [];
+				var effectiveness = 1;
+				var tagMultiple = false;
+				var tagStatus = false;
+				var tagStatChange = false;
+				var tagHazard = false;
+				var tagTurns = false;
+				var tagDisplace = false;
+				var statTarget = targeted;
+				var defenderStatus = [];
+				var attackerStatus = [];
+				var critTracker = [0,0,0,0,0];
+				var skillCrit = false;
+				var critMultiplier = 1;
+				var skillHeal = false;
+				var skillPower = skillsList.data.skills[selectedSkill].power;
+
+				var dodge = targeted.dodge;
+				var dodgeMod = targeted.dodgeMod;
+
+				if(skillsList.data.skills[selectedSkill].type == "phy"){
+					defense = targeted.pdef;
+				}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+					defense = targeted.sdef;
+				}
+				targeted.elements.forEach(element =>{
+					defendElements.push(element);
+				});
+				var accDiff = accMod - dodgeMod;
+				var hitMod = 1;
+				if(accDiff > 0){
+					hitMod = (Math.abs(accDiff) + 3)/3;
+				}else if(accDiff < 0){
+					hitMod = 3/(Math.abs(accDiff) + 3);
+				}
+
+				if(skillsList.data.skills[selectedSkill].accuracy == 110){
+					var hitChance = 1;
+				}else{
+					var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (dodge/200)) * hitMod;
+				}
+				var hitRoll = Math.random();
+
+				if(hitRoll < hitChance){
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : HIT");
+					//Get defenders elements to calculate effectiveness
+					defendElements.forEach(defendElement=>{
+						effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][defendElement];
+					});
+
+					skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+						if(tagName == "multiple")		tagMultiple = true;
+						if(tagName == "status")			tagStatus = true;
+						if(tagName == "statchange")		tagStatChange = true;
+						if(tagName == "hazard")			tagHazard = true;
+						if(tagName == "turns")			tagTurns = true;
+						if(tagName == "splash")			tagSplash = true;
+						if(tagName == "displace")		tagDisplace = true;
+					});
+
+					if(tagMultiple){
+						multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
+						// hitNum = 5;
+					}
+
+					if(tagStatus){
+						defenderStatus.push([skillsList.data.skills[selectedSkill].status,skillsList.data.skills[selectedSkill].turns]);
+						// hitNum = 5;
+					}
+
+					//[hp, dodge, patk, pdef, satk, sdef, spd, acc]
+					if(tagStatChange){
+						tagStatus = true;
+						if(skillsList.data.skills[selectedSkill].statchange[0]){
+							statTarget = selectedVita;
+							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
+								attackerStatus.push(2);
+							}else{
+								attackerStatus.push(4);
+							}
+						}else{
+							if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
+								defenderStatus.push([2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
+							}else{
+								defenderStatus.push([4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]]);
+							}
+						}
+
+						statTarget.statMod[skillsList.data.skills[selectedSkill].statchange[1]] += skillsList.data.skills[selectedSkill].statchange[2];
+						// console.log(statTarget.name + " stat updated with: " + defenderStatus);
+					}
+
+					if(tagHazard){
+						// factory.parseDragonBonesData(resources['fume2_skeleton'].data);
+						// factory.parseTextureAtlasData(resources['fume2_texture_json'].data, resources['fume2_texture_png'].texture);
+
+						// const hazardSprite = factory.buildArmatureDisplay('fume2', 'fume2');
+						// hazardSprite.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						// const hazardSprite2 = factory.buildArmatureDisplay('fume2', 'fume2');
+						// hazardSprite2.animation.gotoAndPlayByFrame('fume2', Math.floor(Math.random() * 45) + 1);
+						let hazardSprite, hazardSprite2;
+						switch(skillsList.data.skills[selectedSkill].hazard[0]){
+							case 1:
+								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
+								break;
+							case 2:
+								hazardSprite = new PIXI.Sprite(resources.hazard_spikes.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_spikes.texture);
+								break;
+							case 3:
+								hazardSprite = new PIXI.Sprite(resources.hazard_spores.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_spores.texture);
+								break;
+							default:
+								hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+								hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
+						}
+						
+						hazardSprite.anchor.set(0.5,1);	
+						hazardSprite2.anchor.set(0.5,1);
+
+						if(targeted.hero){
+							hazardSprite.scale.set(hazardSize,hazardSize);
+							hazardSprite2.scale.set(hazardSize,hazardSize);
+							if(targeted.size > 1){
+								//[position, hazardType, damage, turn]
+								fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+								hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
+								heroHazardSprite.push(hazardSprite2);
+								heroHazardContainer.addChild(hazardSprite2);
+							}
+							fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
+							heroHazardSprite.push(hazardSprite);
+							heroHazardContainer.addChild(hazardSprite);
+						}else{
+							hazardSprite.scale.set(-hazardSize,hazardSize);
+							hazardSprite2.scale.set(-hazardSize,hazardSize);
+							if(targeted.size > 1){
+								fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+								hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
+								enemyHazardSprite.push(hazardSprite2);
+								enemyHazardContainer.addChild(hazardSprite2);
+							}
+							fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
+							enemyHazardSprite.push(hazardSprite);
+							enemyHazardContainer.addChild(hazardSprite);
+						}
+					}
+
+					if(tagSplash){
+						if(this.object != targeted){
+							skillPower *= skillsList.data.skills[selectedSkill].splash;
+						}
+					}
+
+					console.log("Skill power: " + skillPower);
+
+					//Calculate heal amount or damage amount
+					if(skillsList.data.skills[selectedSkill].heal > 0){
+						//calculate how much to heal
+						dmgArray = [];
+
+						for(var i = 0; i < multiHitNum; i++){
+							dmgArray.push(skillsList.data.skills[selectedSkill].heal);
+						}
+						
+						skillHeal = true;
+						effectiveness = 1;
+						critMultiplier = 1;
+					}else if(skillsList.data.skills[selectedSkill].type == "oth"){
+						// other = true;
+					}else{						
+						var dmgCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
+						for(var i = 0; i < multiHitNum; i++){
+							var criticalChance = Math.floor(Math.random() * 10000);
+							var critMultiplier = 1;
+							if(criticalChance > 5000){
+								critMultiplier = 1.5;
+								skillCrit = true;
+								critTracker[i] = 1;
+							}
+							var finalDmgCalc = Math.floor(dmgCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+							if(finalDmgCalc == 0)		finalDmgCalc = 1;
+							dmgArray[i] = finalDmgCalc;
+						}
+					}
+
+					if(skillCrit){
+						var totalCritDmg = 0;
+						defenderStatus.push([14]);
+						dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+							if(critTracker[dmgArrayIndex] == 1)		totalCritDmg += (dmgArrayNum/3)
+						});
+						console.log("Critical damage: " + Math.floor(totalCritDmg));
+					}
+
+					var deltaHP = 0;
+					dmgArray.forEach(dmgArrayNum => {deltaHP += dmgArrayNum;});
+					console.log("Total damage: " + deltaHP);
+
+					if(tagDisplace){
+						moveCreature(targeted, skillsList.data.skills[selectedSkill].displace[0]);
+					}
+				}else{
+					console.log("Hit chance: " + hitChance + " Hit roll: " + hitRoll + " : MISS");
+					dmgArray[0] = 0;
+					effectiveness = 0;
+				}
+
+				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget, tagHazard);
+			});
+
+			//If out of turns, and still have enemies, and still have heroes
+			// if(turnArray.length != 0){
+			// 	selectCreature(turnArray[0]);
+			// 	turnArray.shift();
+			// }else{
+			// 	calculateTurnOrder();
+			// }
+
+			// selectedSkill = -1;
+			// validSkillObjectArray = [];
+		}else{
+			console.log("Invalid skill target");
+		}	
+	}
+	else if(validMoveObjectArray.length > 0){
+		// clickedTarget = this.identifier[1];
+		console.log("Clicked move object: " + this.object.name);
+		var correctTarget = false;
+		var targetedVita = 0;
+
+		validMoveObjectArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
+						correctTarget = true;
+						targetedVita = targeted;
+					}	
+				});
+			}
+			if(this.object == targeted){
+				correctTarget = true;
+				targetedVita = targeted;
+			}
+		});
+
+		if(correctTarget){
+			userInput = true;
+			var moveTo, moveFrom, displacement;
+			if(selectedVita.hero){
+				heroArray.forEach((object,objectIndex)=>{
+					if(selectedVita == object)			moveFrom = objectIndex;
+					if(targetedVita == object)			moveTo = objectIndex;
+				});
+
+				fieldHeroHazard.forEach(arrayItem =>{
+					// dmgArray = [];
+					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+				});
+			}else{
+				enemyArray.forEach((object,objectIndex)=>{
+					if(selectedVita == object)			moveFrom = objectIndex;
+					if(targetedVita == object)			moveTo = objectIndex;
+				});
+			}
+			displacement = moveFrom - moveTo;
+			moveCreature(selectedVita, displacement);
+			if(selectedVita.hero){
+				movedCreature.forEach(heroObject =>{
+					var effective = [];
+					var dmgArray = [];
+					fieldHeroHazard.forEach(arrayItem =>{
+						var effectiveCalc = 1;
+						var defendElements = [];						
+						heroObject.elements.forEach(element =>{
+							defendElements.push(element);
+						});
+						var hazardElement = 0;
+						switch(arrayItem[1]){
+							case 1: 
+								hazardElement = 2;
+								break;
+							case 2:
+								hazardElement = 1;
+								break;
+							case 3:
+								hazardElement = 3;
+								break;
+							case 4:
+								hazardElement = 7;
+								break;
+							default:
+								hazardElement = 1;
+						}
+						defendElements.forEach(defendElement=>{
+							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+						});
+						if(heroObject.size > 1){
+							if(arrayItem[0]+1 == heroObject.pos+1 || arrayItem[0]+1 == heroObject.pos){
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+							}
+						}else{
+							if(arrayItem[0]+1 == heroObject.pos){
+								// dmgArray = [];
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+							}
+						}						
+					});
+					updateDamage(heroObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+				});
+			}else{
+				movedCreature.forEach(enemyObject =>{
+					var effective = [];
+					var dmgArray = [];
+					fieldEnemyHazard.forEach(arrayItem =>{
+						var effectiveCalc = 1;
+						var defendElements = [];						
+						enemyObject.elements.forEach(element =>{
+							defendElements.push(element);
+						});
+						var hazardElement = 0;
+						switch(arrayItem[1]){
+							case 1: 
+								hazardElement = 2;
+								break;
+							case 2:
+								hazardElement = 1;
+								break;
+							case 3:
+								hazardElement = 3;
+								break;
+							case 4:
+								hazardElement = 7;
+								break;
+							default:
+								hazardElement = 1;
+						}
+						defendElements.forEach(defendElement=>{
+							effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+						});
+						if(enemyObject.size > 1){
+							if(arrayItem[0]+1 == enemyObject.pos+1 || arrayItem[0]+1 == enemyObject.pos){
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+							}
+						}else{
+							if(arrayItem[0]+1 == enemyObject.pos){
+								// dmgArray = [];
+								dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+								effective.push(effectiveCalc);
+								// updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+							}
+						}						
+					});
+					updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
+				});
+			}
+
+			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
+			// if(turnArray.length != 0){
+			// 	selectCreature(turnArray[0]);
+			// 	turnArray.shift();
+			// }else{
+			// 	calculateTurnOrder();
+			// }
+			// selectedSkill = -1;
+			// validMoveObjectArray = [];
+			if(userInput)	endTurn();
+		}else{
+			console.log("Invalid move target");
+		}
+	}
+}
+
+//function moveCreature(movingCreature, displace(1, -2))
+function moveCreature(movingCreature, displacement){
+	console.log(movingCreature.name + " wants to move shift: " + displacement);
+	var moveFrom, moveTo;
+	var tempArray = [];
+	movedCreature = []
+	if(movingCreature.hero){
+		heroArray.forEach((object,objectIndex)=>{
+			if(movingCreature == object)		moveFrom = objectIndex;
+		});
+		moveTo = moveFrom - displacement;
+		heroArray.forEach(object=>{
+			tempArray.push(object);
+		});
+		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
+
+		heroArray.forEach((object,objectIndex)=>{
+			if(objectIndex == 0){
+				object.pos = 1;
+			}else if(heroArray[objectIndex-1].size == 2){
+				object.pos = heroArray[objectIndex-1].pos + 2;
+			}else{
+				object.pos = heroArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex])		movedCreature.push(object)
+
+			//Hero Creature
+			var newCreatureX, newHPX;
+			newCreatureX = -spriteResizeXPosition[object.pos-1];
+
+			//Hero HP and dmg containers
+			var switcher = 0;
+			if(object.size > 1)	switcher = 1
+
+			newHPX = heroHealthXPosition[object.pos-1+switcher];
+
+			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
+		});
+	}else{
+		// console.log(moveFrom + " wants to move to: " + moveTo);
+		enemyArray.forEach((object,objectIndex)=>{
+			if(movingCreature == object)		moveFrom = objectIndex;
+		});
+		moveTo = moveFrom - displacement;
+		enemyArray.forEach(object=>{
+			tempArray.push(object);
+		});
+		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
+
+		enemyArray.forEach((object,objectIndex)=>{
+			if(objectIndex == 0){
+				object.pos = 1;
+			}else if(enemyArray[objectIndex-1].size == 2){
+				object.pos = enemyArray[objectIndex-1].pos + 2;
+			}else{
+				object.pos = enemyArray[objectIndex-1].pos + 1;
+			}
+
+			if(object != tempArray[objectIndex])		movedCreature.push(object)
+
+			//Enemy Creature
+			var newCreatureX, newHPX;
+			newCreatureX = spriteResizeXPosition[object.pos-1];
+			newHPX = spriteResizeXPosition[object.pos-1];
+
+			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
+		});
+	}
+	// console.log("Creatures that moved:");
+	// movedCreature.forEach(object=>{
+	// 	console.log(object.name);
+	// });
+}
+
 function animateBattle(attacker, defender){
 	const blurFilter1 = new PIXI.filters.BlurFilter();
 	// const blurFilter2 = new PIXI.filters.BlurFilter();
@@ -3244,133 +3470,289 @@ function animateBattle(attacker, defender){
 	// actionHero[0].pAtkTween.play(0);
 }
 
-function onAdditionalDown(){
-// 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
-	console.log("Additional");
-	interfaceAdditional.visible = true;
-
-	//Remove hazard
-	// console.log("1: " + enemyHazardSprite);
-	// enemyHazardContainer.removeChild(enemyHazardSprite[1]);
-	// console.log("2: " + enemyHazardSprite);
-	// enemyHazardSprite[1].destroy();
-	// console.log("3: " + enemyHazardSprite);
-	// enemyHazardSprite.splice(1,1);
-	// console.log("4: " + enemyHazardSprite);
-
-	// 0xccffcc
-	// backgroundImage.tint = 0x3D85C6;	
+function updateDmgStatus(container, newStatus, newStatusIndex){
+	switch(newStatus){
+		case 1:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
+			break;
+		case 2:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
+			break;
+		case 3:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
+			break;
+		case 4:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
+			break;
+		case 5:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
+			break;
+		case 6:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
+			break;
+		case 7:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
+			break;
+		case 8:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
+			break;
+		case 9:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
+			break;
+		case 10:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
+			break;
+		case 11:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
+			break;
+		case 12:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
+			break;
+		case 13:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
+			break;
+		case 14:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
+			break;
+		default:
+			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
+			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
+	}
 }
 
-function onAdditionalCancelDown(){
-	console.log("Additional Cancel");
-	interfaceAdditional.visible = false;
-}
-
-function onAdditionalMoveDown(){
-	console.log("Additional Move " + selectedVita.name);
-	validMoveObjectArray = [];
-	validSkillObjectArray = [];
-	selectedSkill = -1
-	interfaceAdditional.visible = false;
-
-	enemyArray.forEach(enemyObject=>{
-		enemyObject.healthBar.target.visible = false;
-		enemyObject.healthBar.heal.visible = false;
-	});
-	heroArray.forEach(heroObject=>{
-		heroObject.healthBar.target.visible = false;
-		heroObject.healthBar.heal.visible = false;
-	});
-	skillContainerArray.forEach(skillContainer=>{
-		skillContainer.selected.visible = false;
+function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, skillStatus, skillStatusTarget){
+	var totalDmgCalc = 0;
+	dmgArray.forEach(dmg => {
+		totalDmgCalc += dmg;
 	});
 
-	var moveDelta = selectedVita.move[1];
-	var forward= false;
-	var backward = false;
-	if(selectedVita.move[0] == "+"){
-		forward = true;
-	}else if(selectedVita.move[0] == "-"){
-		backward = true;
+	if(skillHeal){
+		object.heal(totalDmgCalc);			//add heal
 	}else{
-		forward = true;
-		backward = true;
+		object.damage(totalDmgCalc);		//subtract damage
 	}
 
-	if(selectedVita.hero){
-		heroArray.forEach(object=>{
-			if(object != selectedVita){
-				var positionCheck = [];
-				if(object.size > 1){
-					positionCheck.push(object.pos);
-					positionCheck.push(object.pos+1);
-				}else{
-					positionCheck.push(object.pos);
-				}
-				for(var i = 1; i <= moveDelta; i++){
-					positionCheck.forEach(position=>{
-						if(position == selectedVita.pos-i && forward){
-							object.healthBar.move.visible = true;
-							validMoveObjectArray.push(object);
-						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
-							object.healthBar.move.visible = true;
-							validMoveObjectArray.push(object);
-						}
-					});				
-				}
+	object.dmgContainer.dmgPopup.dmgEffective.visible = true;
+	object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+		dmgNumArrayItem.style.fill = '#D80000';
+		dmgNumArrayItem.style.stroke = '#222222';
+		dmgNumArrayItem.visible = false;
+	});
+
+	object.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+		dmgStatusImageItem.visible = false;
+	});
+	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+		dmgStatusTextItem.visible = false;
+	});
+
+	if(Array.isArray(effective)){
+		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		effective.forEach((effectiveNum, effectiveIndex) => {
+			var colour = '#D80000';
+			if(effectiveNum == 0.25){
+				colour = '#9D9D9D';
+			}else if(effectiveNum == 0.5){
+				colour = '#FFFFFF';
+			}else if(effectiveNum == 2){
+				colour = '#FFE81C';
+			}else if(effectiveNum == 4){
+				colour = '#DB00FF';
 			}
+			object.dmgContainer.dmgPopup.dmgNumArray[effectiveIndex].style.fill = colour;
 		});
 	}else{
-		enemyArray.forEach(object=>{
-			if(object != selectedVita){
-				var positionCheck = [];
-				if(object.size > 1){
-					positionCheck.push(object.pos);
-					positionCheck.push(object.pos+1);
-				}else{
-					positionCheck.push(object.pos);
-				}
-				for(var i = 1; i <= moveDelta; i++){
-					positionCheck.forEach(position=>{
-						if(position == selectedVita.pos-i && forward){
-							object.healthBar.move.visible = true;
-							validMoveObjectArray.push(object);
-						}else if(position == selectedVita.pos+i+selectedVita.size-1 && backward){
-							object.healthBar.move.visible = true;
-							validMoveObjectArray.push(object);
-						}
-					});				
-				}
+		if(effective == 0.25){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#9D9D9D';
+			});
+		}else if(effective == 0.5){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFFFFF';
+			});
+		}else if(effective == 2){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#FFE81C';
+			});
+		}else if(effective == 4){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#DB00FF';
+			});
+		}else if(effective == 0){
+			object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#D80000';
+			});
+		}else{
+			object.dmgContainer.dmgPopup.dmgEffective.visible = false;
+		}
+	}
+	
+	if(skillCrit){
+		var critTotal = 0;
+		dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+			if(critTracker[dmgArrayIndex] == 1)		critTotal = critTotal + (dmgArrayNum/3)
+		});
+
+		object.criticalHit(Math.floor(critTotal));
+
+		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
+
+		TweenMax.fromTo(object.healthBar.critDmgBar
+			, 1, {
+				width: object.healthBar.critDmgBar.width
+			}, {delay: 1.75, ease:Expo.easeIn, width:newCritWidth});
+
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
+			if(critTracker[dmgNumArrayIndex] == 1){
+				dmgNumArrayItem.style.fill = '#ff7b00';
+				dmgNumArrayItem.style.stroke = '#4E2600';
 			}
 		});
 	}
 
-	validMoveObjectArray.forEach(object=>{
-		console.log("validMoveObjectArray: " + object.name);
-	});
-}
+	if(skillHeal){
+		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#1bc617';
+			dmgNumArrayItem.style.stroke = '#052805';
+		});
 
-function onAdditionalItemDown(){
-	console.log("Additional Item");
-	onScreenStats.visible = true;
-	consoleScreen.visible = true;
-}
+		var newWidth = (object.healthBar.outer.width * (object.hp/object.overallHP)) - object.healthBar.inner.width;
 
-function onAdditionalSkipDown(){
-	console.log("Additional Skip");
-	if(turnArray.length != 0){
-		selectCreature(turnArray[0]);
-		turnArray.shift();
+		object.healthBar.dmgBarContainer.x = object.healthBar.inner.width;
+		object.healthBar.dmgBarContainer.dmgBar.visible = true;
+		var tween = new TimelineMax({onComplete: function(){
+			object.healthBar.dmgBarContainer.dmgBar.visible = false;	
+			object.healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
+		}});
+		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
+			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+				if(userInput)	endTurn();
+			}});
+		tween.to(object.healthBar.dmgBarContainer.dmgBar
+			, 1, {ease:Expo.easeIn, alpha:0});
 	}else{
-		calculateTurnOrder();
+		var newWidth = object.healthBar.inner.width - (object.healthBar.outer.width * (object.hp/object.overallHP));
+
+		object.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+		object.healthBar.dmgBarContainer.dmgBar.visible = true;
+		TweenMax.fromTo(object.healthBar.dmgBarContainer.dmgBar
+			, 1, {
+				width: newWidth
+			}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+			object.healthBar.dmgBarContainer.dmgBar.visible = false;
+			if(userInput)	endTurn();
+		}});
+
+		object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
+		object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
 	}
 
-	selectedSkill = -1;
+	if(skillStatus){
+		skillStatusTarget.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
+			dmgStatusImageItem.visible = false;
+		});
+		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
+			dmgStatusTextItem.visible = false;
+		});
+		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
+			var statusStored = false;
+			object.statusArray.forEach(statusElement =>{
+				if(statusElement[0] == statusNumber[0])	statusStored = true
+			});
+			if(!statusStored){
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);				
+				newStatusEffect.visible = false;
+				object.healthBar.addChild(newStatusEffect);
+				object.statusSpriteArray.push(newStatusEffect);
+			}
+			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
+			updateDmgStatus(object.dmgContainer, statusNumber[0], statusNumberIndex);
+			object.statusArray.push(statusNumber);
+		});
+		resizeStatus(object);
+		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
+			var statusStored = false;
+			object.statusArray.forEach(statusElement =>{
+				if(statusElement[0] == statusNumber[0])	statusStored = true
+			});
+			if(!statusStored){
+				let newStatusEffect = statusEffectSprite(statusNumber[0]);
+				newStatusEffect.visible = false;
+				skillStatusTarget.healthBar.addChild(newStatusEffect);
+				skillStatusTarget.statusSpriteArray.push(newStatusEffect);
+			}
+			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
+			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;			
+			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber[0], statusNumberIndex);			
+			skillStatusTarget.statusArray.push([statusNumber]);
+		});
+		resizeStatus(skillStatusTarget);
+	}
 
-	interfaceAdditional.visible = false;
-	// onScreenStats.visible = false;
-	// consoleScreen.visible = false;
+	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
+
+	dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
+		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
+		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
+	});
+
+	object.dmgContainer.dmgPopup.tween.play(0);
 }
 
 function calculateTurnOrder(){
@@ -3649,389 +4031,6 @@ function selectCreature(object2){
 			});
 		}
 	});	
-}
-
-function statusEffectSprite(identifier){
-	let statusEffectIcon;
-	switch(identifier){
-		case 1:
-			statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
-			break;
-		case 2:
-			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-			break;
-		case 3:
-			statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
-			break;
-		case 4:
-			statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
-			break;
-		case 5:
-			statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
-			break;
-		case 6:
-			statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
-			break;
-		case 7:
-			statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
-			break;
-		case 8:
-			statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
-			break;
-		case 9:
-			statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
-			break;
-		case 10:
-			statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
-			break;
-		case 11:
-			statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-			break;
-		case 12:
-			statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
-			break;
-		case 13:
-			statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
-			break;
-		case 14:
-			statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
-			break;
-		default:
-			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-			
-	}
-	return statusEffectIcon;
-}
-
-function updateDmgStatus(container, newStatus, newStatusIndex){
-	switch(newStatus){
-		case 1:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
-			break;
-		case 2:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
-			break;
-		case 3:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
-			break;
-		case 4:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
-			break;
-		case 5:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
-			break;
-		case 6:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
-			break;
-		case 7:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
-			break;
-		case 8:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
-			break;
-		case 9:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
-			break;
-		case 10:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
-			break;
-		case 11:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
-			break;
-		case 12:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
-			break;
-		case 13:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
-			break;
-		case 14:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
-			break;
-		default:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
-			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
-			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
-	}
-}
-
-function resizeStatus(item){
-	var resizeHeight = 40;
-	var statusSpacing = 5;
-	
-	if(app.screen.width < 860){
-		resizeHeight = 20;
-		statusSpacing = 2;
-	}else if(app.screen.width < 1366){
-		resizeHeight = 30;
-		statusSpacing = 4;
-	}else{
-		resizeHeight = 40;
-		statusSpacing = 5;
-	}
-	
-	if(item.size > 1){
-		item.statusSpriteArray.forEach((statusSprite, index) => {
-			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-			statusSprite.height = statusSprite.width;
-			if(index < 8){
-				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-				statusSprite.y = resizeHeight + statusSpacing*2;
-			}else{
-				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-			}
-		});
-	}else{
-		item.statusSpriteArray.forEach((statusSprite, index) => {
-			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
-			statusSprite.height = statusSprite.width;
-			if(index < 4){
-				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*index);
-				statusSprite.y = resizeHeight + statusSpacing*2;
-			}else if(index < 8){
-				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-4));
-				statusSprite.y = resizeHeight + statusSpacing*3 + statusSprite.height;
-			}else{
-				statusSprite.x = statusSpacing + ((statusSpacing + statusSprite.width)*(index-8));
-				statusSprite.y = resizeHeight + statusSpacing*4 + statusSprite.height*2;
-			}
-		});
-	}
-}
-
-
-function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, skillStatus, skillStatusTarget){
-	var totalDmgCalc = 0;
-	dmgArray.forEach(dmg => {
-		totalDmgCalc += dmg;
-	});
-
-	if(skillHeal){
-		object.heal(totalDmgCalc);			//add heal
-	}else{
-		object.damage(totalDmgCalc);		//subtract damage
-	}
-
-	object.dmgContainer.dmgPopup.dmgEffective.visible = true;
-	object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-		dmgNumArrayItem.style.fill = '#D80000';
-		dmgNumArrayItem.style.stroke = '#222222';
-		dmgNumArrayItem.visible = false;
-	});
-
-	object.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-		dmgStatusImageItem.visible = false;
-	});
-	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-		dmgStatusTextItem.visible = false;
-	});
-
-	if(Array.isArray(effective)){
-		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
-		effective.forEach((effectiveNum, effectiveIndex) => {
-			var colour = '#D80000';
-			if(effectiveNum == 0.25){
-				colour = '#9D9D9D';
-			}else if(effectiveNum == 0.5){
-				colour = '#FFFFFF';
-			}else if(effectiveNum == 2){
-				colour = '#FFE81C';
-			}else if(effectiveNum == 4){
-				colour = '#DB00FF';
-			}
-			object.dmgContainer.dmgPopup.dmgNumArray[effectiveIndex].style.fill = colour;
-		});
-	}else{
-		if(effective == 0.25){
-			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#9D9D9D';
-			});
-		}else if(effective == 0.5){
-			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#FFFFFF';
-			});
-		}else if(effective == 2){
-			object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
-			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#FFE81C';
-			});
-		}else if(effective == 4){
-			object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#DB00FF';
-			});
-		}else if(effective == 0){
-			object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
-			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
-			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#D80000';
-			});
-		}else{
-			object.dmgContainer.dmgPopup.dmgEffective.visible = false;
-		}
-	}
-	
-	if(skillCrit){
-		var critTotal = 0;
-		dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-			if(critTracker[dmgArrayIndex] == 1)		critTotal = critTotal + (dmgArrayNum/3)
-		});
-
-		object.criticalHit(Math.floor(critTotal));
-
-		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
-
-		TweenMax.fromTo(object.healthBar.critDmgBar
-			, 1, {
-				width: object.healthBar.critDmgBar.width
-			}, {delay: 1.75, ease:Expo.easeIn, width:newCritWidth});
-
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
-			if(critTracker[dmgNumArrayIndex] == 1){
-				dmgNumArrayItem.style.fill = '#ff7b00';
-				dmgNumArrayItem.style.stroke = '#4E2600';
-			}
-		});
-	}
-
-	if(skillHeal){
-		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-			dmgNumArrayItem.style.fill = '#1bc617';
-			dmgNumArrayItem.style.stroke = '#052805';
-		});
-
-		var newWidth = (object.healthBar.outer.width * (object.hp/object.overallHP)) - object.healthBar.inner.width;
-
-		object.healthBar.dmgBarContainer.x = object.healthBar.inner.width;
-		object.healthBar.dmgBarContainer.dmgBar.visible = true;
-		var tween = new TimelineMax({onComplete: function(){
-			object.healthBar.dmgBarContainer.dmgBar.visible = false;	
-			object.healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
-		}});
-		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
-			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
-				if(userInput)	endTurn();
-			}});
-		tween.to(object.healthBar.dmgBarContainer.dmgBar
-			, 1, {ease:Expo.easeIn, alpha:0});
-	}else{
-		var newWidth = object.healthBar.inner.width - (object.healthBar.outer.width * (object.hp/object.overallHP));
-
-		object.healthBar.dmgBarContainer.dmgBar.width = newWidth;
-		object.healthBar.dmgBarContainer.dmgBar.visible = true;
-		TweenMax.fromTo(object.healthBar.dmgBarContainer.dmgBar
-			, 1, {
-				width: newWidth
-			}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-			object.healthBar.dmgBarContainer.dmgBar.visible = false;
-			if(userInput)	endTurn();
-		}});
-
-		object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
-		object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
-	}
-
-	if(skillStatus){
-		skillStatusTarget.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-			dmgStatusImageItem.visible = false;
-		});
-		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-			dmgStatusTextItem.visible = false;
-		});
-		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
-			var statusStored = false;
-			object.statusArray.forEach(statusElement =>{
-				if(statusElement[0] == statusNumber[0])	statusStored = true
-			});
-			if(!statusStored){
-				let newStatusEffect = statusEffectSprite(statusNumber[0]);				
-				newStatusEffect.visible = false;
-				object.healthBar.addChild(newStatusEffect);
-				object.statusSpriteArray.push(newStatusEffect);
-			}
-			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-			updateDmgStatus(object.dmgContainer, statusNumber[0], statusNumberIndex);
-			object.statusArray.push(statusNumber);
-		});
-		resizeStatus(object);
-		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
-			var statusStored = false;
-			object.statusArray.forEach(statusElement =>{
-				if(statusElement[0] == statusNumber[0])	statusStored = true
-			});
-			if(!statusStored){
-				let newStatusEffect = statusEffectSprite(statusNumber[0]);
-				newStatusEffect.visible = false;
-				skillStatusTarget.healthBar.addChild(newStatusEffect);
-				skillStatusTarget.statusSpriteArray.push(newStatusEffect);
-			}
-			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;			
-			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber[0], statusNumberIndex);			
-			skillStatusTarget.statusArray.push([statusNumber]);
-		});
-		resizeStatus(skillStatusTarget);
-	}
-
-	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
-
-	dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-	});
-
-	object.dmgContainer.dmgPopup.tween.play(0);
 }
 
 function endTurn(){
