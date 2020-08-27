@@ -2197,6 +2197,7 @@ function onCreatureDown(){
 		});
 
 		if(correctTarget){
+			userInput = true;
 			var moveTo, moveFrom, displacement;
 			if(selectedVita.hero){
 				heroArray.forEach((object,objectIndex)=>{
