@@ -4034,6 +4034,7 @@ function selectCreature(object2){
 }
 
 function endTurn(){
+	userInput = false;
 	//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
 	if(turnArray.length != 0){
 		selectCreature(turnArray[0]);
