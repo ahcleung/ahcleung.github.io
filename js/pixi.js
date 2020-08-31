@@ -3462,8 +3462,8 @@ function animateBattle(attacker, defender){
 			attacker.statusSpriteArray.forEach(statusSprite => {
 				statusSprite.visible = true;
 			});
-
-			endTurn();
+			if(userInput)	endTurn();
+			// endTurn();
 		});
 	});
 
