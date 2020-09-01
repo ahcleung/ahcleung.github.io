@@ -3283,7 +3283,7 @@ function onCreatureDown(){
 			// }
 			// selectedSkill = -1;
 			// validMoveObjectArray = [];
-			if(userInput)	endTurn();
+			// if(userInput)	endTurn();
 		}else{
 			console.log("Invalid move target");
 		}
@@ -3330,7 +3330,9 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+				if(userInput)	endTurn();
+			}});
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
@@ -3362,7 +3364,9 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX});
+			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+				if(userInput)	endTurn();
+			}});
 		});
 	}
 	// console.log("Creatures that moved:");
