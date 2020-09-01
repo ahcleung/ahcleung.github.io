@@ -3681,10 +3681,11 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
 			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
-				if(userInput)	endTurn();
 			}});
 		tween.to(object.healthBar.dmgBarContainer.dmgBar
-			, 1, {ease:Expo.easeIn, alpha:0});
+			, 1, {ease:Expo.easeIn, alpha:0, onComplete:function(){
+				if(userInput)	endTurn();
+			}});
 	}else{
 		var newWidth = object.healthBar.inner.width - (object.healthBar.outer.width * (object.hp/object.overallHP));
 
