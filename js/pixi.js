@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.09
+*Version:         1.10
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -212,14 +212,6 @@ const interfaceHolder = new PIXI.Container();
 const actionContainer = new PIXI.Container();
 const stageContainer = new PIXI.Container();
 
-// const rectTemp = new PIXI.Graphics();
-
-// const tempContainer = new PIXI.Container();
-// const tempContainer2 = new PIXI.Container();
-// var actionTween1;
-
-// const rectHero = new PIXI.Graphics();
-// const rectEnemy = new PIXI.Graphics();
 var backgroundImage, actionLines, actionBlack;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
@@ -288,7 +280,7 @@ hero[1] = {
 };
 hero[2] = {
 	id: 2, level: 45, 
-	skill1: 4, skill2: 11, skill3: 12, skill4: 1,
+	skill1: 4, skill2: 11, skill3: 12, skill4: 5,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 120,
 	hero: true
 };
@@ -384,15 +376,6 @@ function setup(){
 
     turnText = new Text(turnNumber, {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
     turnText.anchor.set(0.5, 0);
-	
-	// heroSprites.x = app.screen.width/2;
-	// heroSprites.y = app.screen.height/2;
-
-	// heroHazardContainer.x = app.screen.width/2;
-	// heroHazardContainer.y = app.screen.height/2;
-	
-	// enemySprites.x = app.screen.width/2;
-	// enemySprites.y = app.screen.height/2;
 
 	//Read from firestore
 // 	db.collection("vita").get().then((querySnapshot) => {
@@ -781,7 +764,6 @@ function setup(){
 	consoleScreen.visible = false;
 	//Console print setup phase
 	consoleScreen.text = "Setup" + consoleScreen.text;
-
 	
 	btnSettings = new PIXI.Sprite(textureSettings);					//Button settings
     	btnSettings.buttonMode = true;
@@ -887,18 +869,7 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
-
 	turnText.text = turnNumber;
-	// heroArray.forEach(object => {
-	// 	if(object.healthBar.select.animate == true){
-	// 		object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-	// 	}
-	// });
-	// enemyArray.forEach(object => {
-	// 	if(object.healthBar.select.animate == true){
-	// 		object.healthBar.select.width = object.healthBar.select.indicatorBar1.width + (Math.cos(phase) + 1) * 10 + 1;
-	// 	}
-	// });
 }
 
 function consolePrint(fromText){
@@ -1132,24 +1103,6 @@ function createSprite(direction, item, index){
 	// }});
 
 	creatureAction.dMissTween = dMissTween;
-
-	// creatureAction.visible = false;
-
-	// spriteReady.visible = false;
-	// creatureAction.addChild(spriteReady);
-	// creatureAction.ready = spriteReady;
-
-	// actionContainer.addChild(creatureAction);
-	
-	
-	// if(item.size == 2){		
-	// 	creatureContainer.scale.set(direction * 0.5, 0.5);
-	// 	creatureAction.scale.set(direction * 0.30, 0.30);
-	// }else{
-	// 	creatureContainer.scale.set(direction * 0.33, 0.33);
-	// 	creatureAction.scale.set(direction * 0.25, 0.25);
-	// }
-	
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
@@ -1474,16 +1427,9 @@ function resize() {
 	}
 	backgroundImage.position.set(app.screen.width/2, app.screen.height/2);
 	actionLines.position.set((app.screen.width/2)-25, (app.screen.height/2)-25);
-
-	// rectTemp.position.set(app.screen.width/2, app.screen.height/2);
 	actionBlack.width = app.screen.width+100;
 	actionBlack.height = app.screen.height+100;
-	// actionBlack.position.set(0, app.screen.height/2);
-	// actionBlack.position.set(0, 0);
-
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
-	// tempContainer.position.set(app.screen.width/2, app.screen.height*3/4);
-	// tempContainer2.position.set(app.screen.width/2+margin, app.screen.height*3/4);
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
@@ -1539,10 +1485,6 @@ function resize() {
 	heroHealthXPosition[1] = (resizeWidth + healthSpacing) * 2;
 	heroHealthXPosition[2] = resizeWidth + healthSpacing;
 	heroHealthXPosition[3] = 0;
-
-	// heroHazard.forEach((hazard, index)=>{
-	// 	hazard.x = spriteResizeXPosition[index];
-	// });
 	
 	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
 	
@@ -1583,29 +1525,18 @@ function resize() {
 		skillContainer.skillElement.height = skillContainer.skillElement.width * 2.3;
 		skillContainer.skillElement.x = skillSpacer;
 		skillContainer.skillElement.y = skillContainer.rect.height/2;
-		
+
 		skillContainer.markerContainer.width = (skillContainer.rect.width/3)*2;
 		skillContainer.markerContainer.height = skillContainer.markerContainer.width/12;
-// 		skillContainer.posMarkerContainer.scale.set(skillContainer.skillElement.width);
-		
-		skillContainer.targetText.style.fontSize = targetTextFontSize;
+
 		skillContainer.skillName.style.fontSize = skillNameFontSize;
-		
 		skillContainer.skillName.x = skillContainer.rect.width/6;
 		skillContainer.skillName.y = skillContainer.rect.height/3;
-		
-// 		skillContainer.skillName.x = skillContainer.rect.width;
-// 		skillContainer.skillName.y = 0;
-		
-// 		skillContainer.skillID.x = (skillContainer.rect.width/15)*14;
-// 		skillContainer.skillID.y = (skillContainer.rect.height/3)*2;
-		
-// 		skillContainer.posMarkerContainer.x = 0;
-// 		skillContainer.posMarkerContainer.y = 0;
-		
+
 		skillContainer.markerContainer.x = skillContainer.rect.width/6;
 		skillContainer.markerContainer.y = skillContainer.rect.height*3/4;
-		
+
+		skillContainer.targetText.style.fontSize = targetTextFontSize;
 		skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
 		skillContainer.targetText.y = skillContainer.rect.height*3/4;
 	});
@@ -1836,13 +1767,10 @@ function resizeHP(roster, item){
 function resizeSprite(direction, item, index){	
 	if(app.screen.width < 860){
 		spriteScale = 0.23;
-		// item.scale.set(direction * 0.23, 0.23);
 	}else if(app.screen.width < 1366){
 		spriteScale = 0.3;
-		// item.scale.set(direction * 0.3, 0.3); 
 	}else{
 		spriteScale = 0.5;
-		// item.scale.set(direction * 0.5, 0.5);
 	}
 	item.scale.set(direction * spriteScale, spriteScale);
 
@@ -2232,45 +2160,6 @@ function onSkillDown(){
 		validSkillObjectArray.push(columnObjectArray);
 	}
 
-	//for each target in the skill
-	// skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
-	// 	//if the position is a valid target
-	// 	if(skillTarget == 1){
-	// 		var posTracker = skillTargetIndex + 1;
-	// 		//if targeting enemies or heroes
-	// 		if(selectedVita.hero){
-	// 			enemyArray.forEach(arrayCreature => {
-	// 				if(arrayCreature.size == 1){
-	// 					if(posTracker == arrayCreature.pos){
-	// 						validSkillObjectArray.push([arrayCreature]);
-	// 					}
-	// 				}else if(arrayCreature.size == 2){
-	// 					var pos1 = arrayCreature.pos;
-	// 					var pos2 = arrayCreature.pos + 1;
-	// 					if(posTracker == pos1 || posTracker == pos2){
-	// 						validSkillObjectArray.push([arrayCreature]);
-	// 					}
-	// 				}				
-	// 			});
-	// 		}else{
-	// 			heroArray.forEach(arrayCreature => {
-	// 				if(arrayCreature.size == 1){
-	// 					if(posTracker == arrayCreature.pos){
-	// 						validSkillObjectArray.push([arrayCreature]);
-	// 					}
-	// 				}else if(arrayCreature.size == 2){
-	// 					var pos1 = arrayCreature.pos;
-	// 					var pos2 = arrayCreature.pos + 1;
-	// 					if(posTracker == pos1 || posTracker == pos2){
-	// 						validSkillObjectArray.push([arrayCreature]);
-	// 					}
-	// 				}			
-	// 			});
-	// 		}
-	// 	}
-	// });
-
-	// validSkillObjectArray = [];
 	if(selectedVita.hero){
 		enemyArray.forEach(arrayCreature =>{
 			var targeted = false;
@@ -2316,7 +2205,6 @@ function onSkillDown(){
 			});
 		});
 	}
-
 
 	if(splash){
 		validSkillObjectArray = [];
@@ -2784,29 +2672,22 @@ function onCreatureDown(){
 			if(tagName == "splash")			tagSplash = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
-			// if(Array.isArray(targeted)){
-				if(tagSplash){
-					if(this.object == targeted[0]){
+			if(tagSplash){
+				if(this.object == targeted[0]){
+					// console.log("Correct array object do things");
+					correctTarget = true;
+					targetedVitaIndex = targetedIndex;
+				}
+			}
+			else{
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
 						// console.log("Correct array object do things");
 						correctTarget = true;
 						targetedVitaIndex = targetedIndex;
 					}
-				}
-				else{
-					targeted.forEach(arrayElement => {
-						if(this.object == arrayElement){
-							// console.log("Correct array object do things");
-							correctTarget = true;
-							targetedVitaIndex = targetedIndex;
-						}
-					});
-				}
-			// }
-			// if(this.object == targeted){
-			// 	// console.log("Correct single object do things");
-			// 	correctTarget = true;
-			// 	targetedVitaIndex = targetedIndex;
-			// }
+				});
+			}
 		});
 
 		//Rearrange array for splash targets
@@ -3123,17 +3004,6 @@ function onCreatureDown(){
 
 				updateDamage(targeted, effectiveness, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, tagStatus, statTarget, tagHazard);
 			});
-
-			//If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-
-			// selectedSkill = -1;
-			// validSkillObjectArray = [];
 		}else{
 			console.log("Invalid skill target");
 		}	
@@ -3273,17 +3143,6 @@ function onCreatureDown(){
 					updateDamage(enemyObject, effective, false, 0, dmgArray, false, 0, 0, false, 0);
 				});
 			}
-
-			//Get next turn Vita. If out of turns, and still have enemies, and still have heroes
-			// if(turnArray.length != 0){
-			// 	selectCreature(turnArray[0]);
-			// 	turnArray.shift();
-			// }else{
-			// 	calculateTurnOrder();
-			// }
-			// selectedSkill = -1;
-			// validMoveObjectArray = [];
-			// if(userInput)	endTurn();
 		}else{
 			console.log("Invalid move target");
 		}
@@ -3369,10 +3228,6 @@ function moveCreature(movingCreature, displacement){
 			}});
 		});
 	}
-	// console.log("Creatures that moved:");
-	// movedCreature.forEach(object=>{
-	// 	console.log(object.name);
-	// });
 }
 
 function animateBattle(attacker, defender){
@@ -3467,10 +3322,8 @@ function animateBattle(attacker, defender){
 				statusSprite.visible = true;
 			});
 			if(userInput)	endTurn();
-			// endTurn();
 		});
 	});
-
 	// actionHero[0].pAtkTween.play(0);
 }
 
@@ -3798,12 +3651,6 @@ function calculateTurnOrder(){
 			enemyHazardSprite.splice(arrayNum,1);
 			fieldEnemyHazard.splice(arrayNum,1);
 		});
-		// console.log(enemyHazardDeletion);
-		// for (var i = enemyHazardDeletion.length -1; i >= 0; i--){
-		// 	enemyHazardContainer.removeChild(enemyHazardDeletion[i]);
-		// 	enemyHazardSprite[enemyHazardDeletion[i]].destroy();
-  //  			enemyHazardSprite.splice(enemyHazardDeletion[i],1);
-  //  		}
 	}
 
 	enemyArray.forEach(enemyObject=>{
@@ -3864,8 +3711,6 @@ function calculateTurnOrder(){
 			}
 		});
 	});
-
-	// console.log(turnArray);
 	turnArray.forEach(object=>{
 		console.log(object.name);
 	});
