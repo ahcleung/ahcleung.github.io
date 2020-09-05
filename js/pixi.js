@@ -2669,7 +2669,7 @@ function onCreatureDown(){
 function calculateHit(attacker, defender){
 	var hitArray = [];
 	var attackerAccMod = attacker.accMod;
-	validSkillObjectArray[defender].forEach(targeted =>{
+	defender.forEach(targeted =>{
 		var defenderDodge = targeted.dodge;
 		var defenderDodgeMod = targeted.dodgeMod;
 		var accDifference = attackerAccMod - defenderDodgeMod;
