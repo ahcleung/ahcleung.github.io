@@ -2578,6 +2578,9 @@ function onCreatureDown(){
 		var correctTarget = false;
 		var targetedVitaIndex = 0;
 		var tagSplash = false;
+		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+			if(tagName == "splash")			tagSplash = true;
+		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
 				if(this.object == targeted[0]){
@@ -2617,7 +2620,7 @@ function onCreatureDown(){
 		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 			console.log(arrayElement.name + "\n");
 		});
-		
+
 	}else if(validMoveObjectArray.length > 0){
 
 	}
