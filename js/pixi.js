@@ -2666,7 +2666,7 @@ function onCreatureDown(){
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
 }
 
-function calculateDamage(attacker, defender){
+function calculateHit(attacker, defender){
 	var hitArray = [];
 	var attackerAccMod = attacker.accMod;
 	validSkillObjectArray[defender].forEach(targeted =>{
@@ -2693,6 +2693,7 @@ function calculateDamage(attacker, defender){
 			hitArray.push("Miss");
 		}
 	});
+	return hitArray;
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
