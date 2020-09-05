@@ -2570,7 +2570,57 @@ function onSkillDown(){
 }
 
 function onCreatureDown(){
-	console.log(this.object.name);
+	// console.log(this.object.name);
+	if(validSkillObjectArray.length > 0){
+		skillContainerArray.forEach(skillContainer=>{
+			skillContainer.interactive = false;
+		});
+		var correctTarget = false;
+		var targetedVitaIndex = 0;
+		var tagSplash = false;
+		validSkillObjectArray.forEach((targeted, targetedIndex) => {
+			if(tagSplash){
+				if(this.object == targeted[0]){
+					correctTarget = true;
+					targetedVitaIndex = targetedIndex;
+				}
+			}
+			else{
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
+						correctTarget = true;
+						targetedVitaIndex = targetedIndex;
+					}
+				});
+			}
+		});
+
+		//Rearrange array for splash targets
+		if(tagSplash){
+			var tempArray = [];
+			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+				tempArray[arrayElement.pos-1] = arrayElement;
+				
+			});
+			var filtered = tempArray.filter(function (el) {
+				return el != null;
+			});
+
+			filtered.forEach(arrayElement =>{
+				console.log(arrayElement.name + "\n");
+			});
+
+			validSkillObjectArray[targetedVitaIndex] = filtered;
+		}
+
+		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+			console.log(arrayElement.name + "\n");
+		});
+		
+	}else if(validMoveObjectArray.length > 0){
+
+	}
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
