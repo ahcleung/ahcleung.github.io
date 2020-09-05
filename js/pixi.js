@@ -2616,11 +2616,14 @@ function onCreatureDown(){
 			validSkillObjectArray[targetedVitaIndex] = filtered;
 		}
 
-		console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
-		validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
-			console.log(arrayElement.name + "\n");
-		});
-
+		if(correctTarget){
+			console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
+				console.log(arrayElement.name + "\n");
+			});
+		}else{
+			console.log("Invalid skill target");
+		}
 	}else if(validMoveObjectArray.length > 0){
 
 	}
