@@ -2585,6 +2585,12 @@ function onCreatureDown(){
 		});
 		var targetedVitaIndex = 0;
 		var tagSplash = false;
+		var tagMultiple = false;
+		var tagStatus = false;
+		var tagStatChange = false;
+		var tagHazard = false;
+		var tagTurns = false;
+		var tagDisplace = false;
 		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 			if(tagName == "splash")			tagSplash = true;
 		});
@@ -2624,7 +2630,8 @@ function onCreatureDown(){
 				console.log(arrayElement.name + "\n");
 			});
 
-			// calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex]);
+			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
+			console.log("Hit/miss: " + hitArray);
 		}else{
 			console.log("Invalid skill target");
 		}
@@ -2660,7 +2667,32 @@ function onCreatureDown(){
 }
 
 function calculateDamage(attacker, defender){
+	var hitArray = [];
+	var attackerAccMod = attacker.accMod;
+	validSkillObjectArray[defender].forEach(targeted =>{
+		var defenderDodge = targeted.dodge;
+		var defenderDodgeMod = targeted.dodgeMod;
+		var accDifference = attackerAccMod - defenderDodgeMod;
+		var hitMod = 1;
+		if(accDifference > 0){
+			hitMod = (Math.abs(accDifference) + 3)/3;
+		}else if(accDiff < 0){
+			hitMod = 3/(Math.abs(accDifference) + 3);
+		}
 
+		if(skillsList.data.skills[selectedSkill].accuracy == 110){
+			var hitChance = 1;
+		}else{
+			var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (defenderDodge/200)) * hitMod;
+		}
+		var hitRoll = Math.random();
+
+		if(hitRoll < hitChance){
+			hitArray.push("Hit");
+		}else{
+			hitArray.push("Miss");
+		}
+	});
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
