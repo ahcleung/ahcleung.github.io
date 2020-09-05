@@ -2573,7 +2573,14 @@ function onCreatureDown(){
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
+	var animateBattle = false;
+	var animateDamage = false;
+	var animateMove = false;
+	var animateStatus = false;
+	var animateHealth = false;
+
 	if(validSkillObjectArray.length > 0){
+		animateBattle = true;
 		skillContainerArray.forEach(skillContainer=>{
 			skillContainer.interactive = false;
 		});
@@ -2623,8 +2630,10 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveObjectArray.length > 0){
-
+		animateMove = true;
 	}
+
+	console.log("animateBattle: " + animateBattle + "\nanimateDamage: " + animateDamage + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
