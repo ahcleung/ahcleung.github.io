@@ -2570,7 +2570,7 @@ function onSkillDown(){
 }
 
 function onCreatureDown(){
-	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
 	if(validSkillObjectArray.length > 0){
@@ -2605,16 +2605,10 @@ function onCreatureDown(){
 			var tempArray = [];
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 				tempArray[arrayElement.pos-1] = arrayElement;
-				
 			});
 			var filtered = tempArray.filter(function (el) {
 				return el != null;
 			});
-
-			filtered.forEach(arrayElement =>{
-				console.log(arrayElement.name + "\n");
-			});
-
 			validSkillObjectArray[targetedVitaIndex] = filtered;
 		}
 
@@ -2623,6 +2617,8 @@ function onCreatureDown(){
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 				console.log(arrayElement.name + "\n");
 			});
+
+			// calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 		}else{
 			console.log("Invalid skill target");
 		}
@@ -2631,7 +2627,11 @@ function onCreatureDown(){
 	}
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
-	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
+}
+
+function calculateDamage(attacker, defender){
+
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
