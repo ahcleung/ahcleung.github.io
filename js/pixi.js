@@ -2676,7 +2676,7 @@ function calculateHit(attacker, defender){
 		var hitMod = 1;
 		if(accDifference > 0){
 			hitMod = (Math.abs(accDifference) + 3)/3;
-		}else if(accDiff < 0){
+		}else if(accDifference < 0){
 			hitMod = 3/(Math.abs(accDifference) + 3);
 		}
 
