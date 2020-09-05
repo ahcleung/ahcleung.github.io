@@ -2578,13 +2578,11 @@ function onCreatureDown(){
 	var animateMove = false;
 	var animateStatus = false;
 	var animateHealth = false;
-
+	var correctTarget = false;
 	if(validSkillObjectArray.length > 0){
-		animateBattle = true;
 		skillContainerArray.forEach(skillContainer=>{
 			skillContainer.interactive = false;
 		});
-		var correctTarget = false;
 		var targetedVitaIndex = 0;
 		var tagSplash = false;
 		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
@@ -2620,6 +2618,7 @@ function onCreatureDown(){
 		}
 
 		if(correctTarget){
+			animateBattle = true;
 			console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 				console.log(arrayElement.name + "\n");
@@ -2630,7 +2629,28 @@ function onCreatureDown(){
 			console.log("Invalid skill target");
 		}
 	}else if(validMoveObjectArray.length > 0){
-		animateMove = true;
+		var targetedVita = 0;
+		validMoveObjectArray.forEach((targeted, targetedIndex) => {
+			if(Array.isArray(targeted)){
+				targeted.forEach(arrayElement => {
+					if(this.object == arrayElement){
+						correctTarget = true;
+						targetedVita = targeted;
+					}	
+				});
+			}
+			if(this.object == targeted){
+				correctTarget = true;
+				targetedVita = targeted;
+			}
+		});
+
+		if(correctTarget){
+			animateMove = true;
+			console.log(selectedVita.name + " moves with " + targetedVita.name);
+		}else{
+			console.log("Invalid move target");	
+		}
 	}
 
 	console.log("animateBattle: " + animateBattle + "\nanimateDamage: " + animateDamage + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
