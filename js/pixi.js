@@ -2750,7 +2750,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}			
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
-			dmgArray.push([[0],[0]]);
+			dmgArray.push([[0],[false]]);
 		}
 	});
 	return dmgArray;
