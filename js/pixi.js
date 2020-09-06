@@ -2733,6 +2733,7 @@ function calculateDamage(attacker, defender, hitArray){
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 			
 			var dmgNumbers = [];
+			var critTracker = [];
 			for(var i = 0; i < multiHitNum; i++){
 				var criticalChance = Math.floor(Math.random() * 10000);
 				var critMultiplier = 1;
@@ -2742,13 +2743,14 @@ function calculateDamage(attacker, defender, hitArray){
 					ifCrit = true;
 					// critTracker[i] = 1;
 				}
+				critTracker.push(ifCrit);
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
 				dmgNumbers.push(finalDmgCalc);
 			}			
-			dmgArray.push(dmgNumbers);
+			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
-			dmgArray.push([0]);
+			dmgArray.push([[0],[0]]);
 		}
 	});
 	return dmgArray;
