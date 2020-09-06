@@ -3318,6 +3318,7 @@ function calculateTurnOrder(){
 			}
 		});
 	});
+	console.log("\n");
 	turnArray.forEach((object, objectIndex)=>{
 		console.log(objectIndex+1 + ": " + object.name);
 	});
