@@ -2741,11 +2741,11 @@ function calculateDamage(attacker, defender, hitArray){
 				if(criticalChance > 5000){
 					critMultiplier = 1.5;
 					ifCrit = true;
-					// critTracker[i] = 1;
 				}
-				critTracker.push(ifCrit);
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
+
+				critTracker.push(ifCrit);
 				dmgNumbers.push(finalDmgCalc);
 			}			
 			dmgArray.push([dmgNumbers,critTracker]);
@@ -3223,7 +3223,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 function calculateTurnOrder(){
 	turnNumber++;
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@@   " + "TURN " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	var enemyHazardDeletion = [];
 	var heroHazardDeletion = [];
@@ -3329,7 +3329,8 @@ function calculateTurnOrder(){
 function selectCreature(object2){	
 	userInput = false;
 	selectedVita = object2;
-	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	console.log("\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 	console.log("Turn: " + selectedVita.name);
 	console.log("Turn: " + selectedVita.sprite.identifier[0]);
 
