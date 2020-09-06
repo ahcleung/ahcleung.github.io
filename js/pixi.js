@@ -280,7 +280,7 @@ hero[1] = {
 };
 hero[2] = {
 	id: 2, level: 45, 
-	skill1: 4, skill2: 11, skill3: 3, skill4: 5,
+	skill1: 17, skill2: 11, skill3: 3, skill4: 5,
 	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 120,
 	hero: true
 };
@@ -2715,6 +2715,13 @@ function calculateDamage(attacker, defender, hitArray){
 	}
 	defender.forEach((targeted, targetedIndex) => {
 		if(hitArray[targetedIndex]){
+			var multiHitNum = 1;
+			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+				if(tagName == "multiple"){
+					multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
+				}
+			});
+
 			if(skillsList.data.skills[selectedSkill].type == "phy"){
 				defense = targeted.pdef;
 			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
@@ -2723,23 +2730,25 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.elements.forEach(element =>{
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
 			});
-
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 			
-			var criticalChance = Math.floor(Math.random() * 10000);
-			var critMultiplier = 1;
-			var ifCrit = false;
-			if(criticalChance > 5000){
-				critMultiplier = 1.5;
-				ifCrit = true;
-				// critTracker[i] = 1;
-			}
-
-			var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-			
-			dmgArray.push([finalDmgCalc,ifCrit]);
+			var dmgNumbers = [];
+			for(var i = 0; i < multiHitNum; i++){
+				var criticalChance = Math.floor(Math.random() * 10000);
+				var critMultiplier = 1;
+				var ifCrit = false;
+				if(criticalChance > 5000){
+					critMultiplier = 1.5;
+					ifCrit = true;
+					// critTracker[i] = 1;
+				}
+				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+				if(finalDmgCalc == 0)	finalDmgCalc = 1;
+				dmgNumbers.push(finalDmgCalc);
+			}			
+			dmgArray.push(dmgNumbers);
 		}else{
-			dmgArray.push([0,false]);
+			dmgArray.push([0]);
 		}
 	});
 	return dmgArray;
