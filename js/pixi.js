@@ -3222,9 +3222,10 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 
 function calculateTurnOrder(){
 	turnNumber++;
-	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	var enemyHazardDeletion = [];
 	var heroHazardDeletion = [];
 	if(turnNumber > 1){
