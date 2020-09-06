@@ -3222,10 +3222,9 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 
 function calculateTurnOrder(){
 	turnNumber++;
-
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@@@@@");
-	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n");
 	var enemyHazardDeletion = [];
 	var heroHazardDeletion = [];
 	if(turnNumber > 1){
@@ -3322,6 +3321,9 @@ function calculateTurnOrder(){
 	turnArray.forEach(object=>{
 		console.log(object.name);
 	});
+	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n");
 
 	selectCreature(turnArray[0]);
 	turnArray.shift();
