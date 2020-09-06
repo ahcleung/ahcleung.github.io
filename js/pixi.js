@@ -3223,7 +3223,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 function calculateTurnOrder(){
 	turnNumber++;
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   " + "ROUND " + turnNumber + "   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n");
 	var enemyHazardDeletion = [];
 	var heroHazardDeletion = [];
@@ -3279,7 +3279,7 @@ function calculateTurnOrder(){
 		}else{
 			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
-		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
+		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
@@ -3290,7 +3290,7 @@ function calculateTurnOrder(){
 		}else{
 			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
 		}
-		console.log(arrayCreatureIndex + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
+		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
