@@ -3318,8 +3318,8 @@ function calculateTurnOrder(){
 			}
 		});
 	});
-	turnArray.forEach(object=>{
-		console.log(object.name);
+	turnArray.forEach((object, objectIndex)=>{
+		console.log(objectIndex+1 + ": " + object.name);
 	});
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
