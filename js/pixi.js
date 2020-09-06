@@ -2632,6 +2632,8 @@ function onCreatureDown(){
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			console.log("Hit/miss: " + hitArray);
+			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
+			console.log("Damage: " + dmgArray);
 		}else{
 			console.log("Invalid skill target");
 		}
@@ -2688,12 +2690,47 @@ function calculateHit(attacker, defender){
 		var hitRoll = Math.random();
 
 		if(hitRoll < hitChance){
-			hitArray.push("Hit");
+			hitArray.push(true);
 		}else{
-			hitArray.push("Miss");
+			hitArray.push(false);
 		}
 	});
 	return hitArray;
+}
+
+function calculateDamage(attacker, defender, hitArray){
+	var dmgArray = [];
+	var level = attacker.level;
+	var attack = 0;
+	var attackerElements = [];
+	var defense = 0;
+	// var defenderElements = [];
+	var effectiveness = 1;
+	var skillPower = skillsList.data.skills[selectedSkill].power;
+
+	if(skillsList.data.skills[selectedSkill].type == "phy"){
+		attack = attacker.patk;
+	}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+		attack = attacker.satk;
+	}
+	defender.forEach((targeted, targetedIndex) => {
+		if(hitArray[targetedIndex]){
+			if(skillsList.data.skills[selectedSkill].type == "phy"){
+				defense = targeted.pdef;
+			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+				defense = targeted.sdef;
+			}
+			targeted.elements.forEach(element =>{
+				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
+			});
+
+			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
+			dmgArray.push(damageCalc);
+		}else{
+			dmgArray.push(0);
+		}
+	});
+	return dmgArray;
 }
 
 //function moveCreature(movingCreature, displace(1, -2))
