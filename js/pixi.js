@@ -2725,9 +2725,21 @@ function calculateDamage(attacker, defender, hitArray){
 			});
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
-			dmgArray.push(damageCalc);
+			
+			var criticalChance = Math.floor(Math.random() * 10000);
+			var critMultiplier = 1;
+			var ifCrit = false;
+			if(criticalChance > 5000){
+				critMultiplier = 1.5;
+				ifCrit = true;
+				// critTracker[i] = 1;
+			}
+
+			var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+			
+			dmgArray.push([finalDmgCalc,ifCrit]);
 		}else{
-			dmgArray.push(0);
+			dmgArray.push([0,false]);
 		}
 	});
 	return dmgArray;
