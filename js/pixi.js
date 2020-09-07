@@ -2765,7 +2765,7 @@ function calculateDamage(attacker, defender, hitArray){
 					}
 					targeted.dmgContainer.dmgStatus.statusImageArray[0].visible = true;
 					targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
-					updateDmgStatus(object.dmgContainer, newStatus[0], 0);
+					updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
 					targeted.statusArray.push(newStatus);
 					resizeStatus(targeted);
 				}
