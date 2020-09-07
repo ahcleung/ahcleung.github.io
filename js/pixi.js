@@ -305,7 +305,7 @@ enemy[1] = {
 };
 enemy[2] = {
 	id: 12, level: 45, 
-	skill1: 4, skill2: 1, skill3: 5, skill4: 2,
+	skill1: 4, skill2: 8, skill3: 5, skill4: 2,
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 40, statSDEF: 0, statSPD: 0,
 	hero: false
 };
@@ -2598,6 +2598,7 @@ function onCreatureDown(){
 		var tagDisplace = false;
 		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 			if(tagName == "splash")			tagSplash = true;
+			if(tagName == "displace")		tagDisplace = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
@@ -2630,6 +2631,8 @@ function onCreatureDown(){
 
 		if(correctTarget){
 			animateBattle = true;
+			if(skillsList.data.skills[selectedSkill].power > 0)		animateDamage = true;
+
 			console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 				console.log(arrayElement.name + "\n");
@@ -2637,6 +2640,11 @@ function onCreatureDown(){
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			console.log("Hit/miss: " + hitArray);
+			if(tagDisplace){
+				hitArray.forEach(hitValue =>{
+					if(hitValue)	animateMove = true;
+				});
+			}
 			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
 			console.log("Damage: " + dmgArray);
 		}else{
