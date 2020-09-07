@@ -2739,7 +2739,7 @@ function calculateDamage(attacker, defender, hitArray){
 				dmgNumArrayItem.style.stroke = '#222222';
 				dmgNumArrayItem.visible = false;
 			});	
-			
+
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "multiple"){
@@ -2755,31 +2755,31 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.elements.forEach(element =>{
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
 			});
-			if(effective == 0.25){
+			if(effectiveness == 0.25){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#9D9D9D';
 				});
-			}else if(effective == 0.5){
+			}else if(effectiveness == 0.5){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#FFFFFF';
 				});
-			}else if(effective == 2){
+			}else if(effectiveness == 2){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#FFE81C';
 				});
-			}else if(effective == 4){
+			}else if(effectiveness == 4){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#DB00FF';
 				});
-			}else if(effective == 0){
+			}else if(effectiveness == 0){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
