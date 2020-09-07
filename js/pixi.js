@@ -2732,14 +2732,14 @@ function calculateDamage(attacker, defender, hitArray){
 		attack = attacker.satk;
 	}
 	defender.forEach((targeted, targetedIndex) => {
-		if(hitArray[targetedIndex] && skillPower > 0){
-			targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
-			targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-				dmgNumArrayItem.style.fill = '#D80000';
-				dmgNumArrayItem.style.stroke = '#222222';
-				dmgNumArrayItem.visible = false;
-			});	
+		targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
+		targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#D80000';
+			dmgNumArrayItem.style.stroke = '#222222';
+			dmgNumArrayItem.visible = false;
+		});	
 
+		if(hitArray[targetedIndex] && skillPower > 0){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "multiple"){
@@ -2779,12 +2779,6 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#DB00FF';
 				});
-			}else if(effectiveness == 0){
-				targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
-				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
-				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-					dmgNumArrayItem.style.fill = '#D80000';
-				});
 			}else{
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
@@ -2814,6 +2808,15 @@ function calculateDamage(attacker, defender, hitArray){
 			}			
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
+			targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+			targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+			targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#D80000';
+			});
+			
+			targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
+			targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = 0;
+
 			dmgArray.push([[0],[false]]);
 		}
 	});
