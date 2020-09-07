@@ -2748,7 +2748,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 				if(tagName == "status"){
 					var newStatus = [skillsList.data.skills[selectedSkill].status, 1];
-					for(var i = 0, i < 3, i++){
+					for(var i = 0; i < 3; i++){
 						targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
 						targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
 					}
