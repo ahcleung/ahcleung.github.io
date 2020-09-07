@@ -290,7 +290,7 @@
 			"element": 8,
 			"type": "spe",
 			"power": 30,
-			"accuracy": 70,
+			"accuracy": 95,
 			"position": [
 				1,1,1,1
 			],
