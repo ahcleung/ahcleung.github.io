@@ -2727,7 +2727,7 @@ function calculateDamage(attacker, defender, hitArray){
 		attack = attacker.satk;
 	}
 	defender.forEach((targeted, targetedIndex) => {
-		if(hitArray[targetedIndex]){
+		if(hitArray[targetedIndex] && skillPower > 0){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "multiple"){
