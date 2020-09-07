@@ -2678,55 +2678,8 @@ function onCreatureDown(){
 		}
 	}
 
-	if(animateBattle){
-		var animateArray = [];
-		//Camera shake
-		TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
-			TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
-		}});
-
-		stageContainer.actionBlackTween.play(0);
-		validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
-			actionContainer.addChild(arrayCreature.action);
-			arrayCreature.action.visible = true;
-			arrayCreature.sprite.visible = false;
-			animateArray.push(arrayCreature.sprite);
-			
-			arrayCreature.action.dMissTween.play(0);
-			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
-		});
-
-		actionContainer.addChild(selectedVita.action);
-		selectedVita.action.visible = true;
-		selectedVita.sprite.visible = false;
-		animateArray.push(selectedVita.sprite);
-		selectedVita.action.pAtkTween.play(0);
-
-		selectedVita.action.pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
-			if(animateStatus){
-				validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
-					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-						if(animateHealth){
-							console.log("animateHealth");
-						}else{
-							endTurn();
-						}
-					});
-				});
-			}else if(animateHealth){
-				console.log("animateHealth");
-				endTurn();
-			}else{
-				endTurn();
-			}
-		});
-	}else if(animateMove){
-
-	}
+	animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
+	
 	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
@@ -2820,6 +2773,59 @@ function calculateDamage(attacker, defender, hitArray){
 	});
 	return dmgArray;
 }
+
+function animationSequence(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove){
+	if(animateBattle){
+		var animateArray = [];
+		//Camera shake
+		TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+			TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
+		}});
+
+		stageContainer.actionBlackTween.play(0);
+		defender.forEach(arrayCreature=>{
+			actionContainer.addChild(arrayCreature.action);
+			arrayCreature.action.visible = true;
+			arrayCreature.sprite.visible = false;
+			animateArray.push(arrayCreature.sprite);
+			
+			arrayCreature.action.dMissTween.play(0);
+			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+		});
+
+		actionContainer.addChild(attacker.action);
+		attacker.action.visible = true;
+		attacker.sprite.visible = false;
+		animateArray.push(attacker.sprite);
+		attacker.action.pAtkTween.play(0);
+
+		attacker.action.pAtkTween.eventCallback("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
+			if(animateStatus){
+				defender.forEach(arrayCreature=>{
+					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+						if(animateHealth){
+							console.log("animateHealth");
+						}else{
+							endTurn();
+						}
+					});
+				});
+			}else if(animateHealth){
+				console.log("animateHealth");
+				endTurn();
+			}else{
+				endTurn();
+			}
+		});
+	}else if(animateMove){
+
+	}
+}
+
 
 //function moveCreature(movingCreature, displace(1, -2))
 function moveCreature(movingCreature, displacement){
