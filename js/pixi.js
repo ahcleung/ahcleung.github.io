@@ -2579,7 +2579,7 @@ function onCreatureDown(){
 	console.log("================================  DAMAGE  CALCULATIONS  ================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
 	var animateBattle = false;
-	var animateDamage = false;
+	var animatePopup = false;
 	var animateMove = false;
 	var animateStatus = false;
 	var animateHealth = false;
@@ -2632,7 +2632,7 @@ function onCreatureDown(){
 
 		if(correctTarget){
 			animateBattle = true;
-			if(skillsList.data.skills[selectedSkill].power > 0)		animateDamage = true;
+			animatePopup = true;
 
 			console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
@@ -2647,6 +2647,9 @@ function onCreatureDown(){
 			});
 			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
 			console.log("Damage: " + dmgArray);
+			dmgArray.forEach(dmgValue => {
+				if(dmgValue[0] > 0)				animateHealth = true;
+			});
 		}else{
 			console.log("Invalid skill target");
 		}
@@ -2675,7 +2678,7 @@ function onCreatureDown(){
 		}
 	}
 
-	console.log("animateBattle: " + animateBattle + "\nanimateDamage: " + animateDamage + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
+	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
