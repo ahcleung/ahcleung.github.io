@@ -2739,7 +2739,7 @@ function calculateDamage(attacker, defender, hitArray){
 			dmgNumArrayItem.visible = false;
 		});	
 
-		if(hitArray[targetedIndex] && skillPower > 0){
+		if(hitArray[targetedIndex]){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "multiple"){
