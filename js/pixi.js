@@ -2830,7 +2830,12 @@ function calculateDamage(attacker, defender, hitArray){
 
 				critTracker.push(ifCrit);
 				dmgNumbers.push(finalDmgCalc);
-			}			
+			}
+
+			if(skillPower == 0){
+				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
+				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			}
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
 			targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
