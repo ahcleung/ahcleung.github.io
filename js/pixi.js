@@ -2768,6 +2768,7 @@ function calculateDamage(attacker, defender, hitArray){
 					updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
 					targeted.statusArray.push(newStatus);
 					resizeStatus(targeted);
+					console.log(">>>>>>>>>status effect<<<<<")
 				}
 			});
 
