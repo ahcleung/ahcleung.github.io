@@ -2745,6 +2745,30 @@ function calculateDamage(attacker, defender, hitArray){
 				if(tagName == "multiple"){
 					multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
 				}
+
+				if(tagName == "status"){
+					var newStatus = [skillsList.data.skills[selectedSkill].status, 1];
+					for(var i = 0, i < 3, i++){
+						targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+						targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+					}
+					var statusStored = false;
+					targeted.statusArray.forEach(storedStatus =>{
+						if(storedStatus[0] == newStatus[0])		statusStored = true;
+					});
+
+					if(!statusStored){
+						let newStatusEffect = statusEffectSprite(newStatus[0]);				
+						newStatusEffect.visible = false;
+						targeted.healthBar.addChild(newStatusEffect);
+						targeted.statusSpriteArray.push(newStatusEffect);
+					}
+					targeted.dmgContainer.dmgStatus.statusImageArray[0].visible = true;
+					targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
+					updateDmgStatus(object.dmgContainer, newStatus[0], 0);
+					targeted.statusArray.push(newStatus);
+					resizeStatus(targeted);
+				}
 			});
 
 			if(skillsList.data.skills[selectedSkill].type == "phy"){
@@ -2840,6 +2864,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			arrayCreature.action.dMissTween.play(0);
 			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+
+			//Maybe move to calculateDamage
+			// for(var i = 0, i < 3, i++){
+			// 	arrayCreature.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+			// 	arrayCreature.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+			// }
 		});
 
 		actionContainer.addChild(attacker.action);
@@ -2848,14 +2878,27 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		animateArray.push(attacker.sprite);
 		attacker.action.pAtkTween.play(0);
 
+		//Maybe move to calculateDamage
+		// for(var i = 0, i < 3, i++){
+		// 	attacker.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+		// 	attacker.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+		// }
+
 		attacker.action.pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
 				item.visible = true;
 			});
 			if(animateStatus){
+				attacker.dmgContainer.dmgStatus.play(0);
 				defender.forEach(arrayCreature=>{
 					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
 					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+						attacker.statusSpriteArray.forEach(statusSprite=>{
+							statusSprite.visible = true;
+						});
+						arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+							statusSprite.visible = true;
+						});
 						if(animateHealth){
 							console.log("animateHealth");
 						}else{
@@ -2863,6 +2906,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 						}
 					});
 				});
+
 			}else if(animateHealth){
 				console.log("animateHealth");
 				endTurn();
