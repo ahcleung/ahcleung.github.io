@@ -2733,6 +2733,13 @@ function calculateDamage(attacker, defender, hitArray){
 	}
 	defender.forEach((targeted, targetedIndex) => {
 		if(hitArray[targetedIndex] && skillPower > 0){
+			targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
+			targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+				dmgNumArrayItem.style.fill = '#D80000';
+				dmgNumArrayItem.style.stroke = '#222222';
+				dmgNumArrayItem.visible = false;
+			});	
+			
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "multiple"){
@@ -2748,6 +2755,40 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.elements.forEach(element =>{
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
 			});
+			if(effective == 0.25){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#9D9D9D';
+				});
+			}else if(effective == 0.5){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#FFFFFF';
+				});
+			}else if(effective == 2){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#FFE81C';
+				});
+			}else if(effective == 4){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#DB00FF';
+				});
+			}else if(effective == 0){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#D80000';
+				});
+			}else{
+				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			}
+
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 			
 			var dmgNumbers = [];
@@ -2759,9 +2800,14 @@ function calculateDamage(attacker, defender, hitArray){
 				if(criticalChance > 5000){
 					critMultiplier = 1.5;
 					ifCrit = true;
+					targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
+					targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 				}
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
+
+				targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
+				targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
 
 				critTracker.push(ifCrit);
 				dmgNumbers.push(finalDmgCalc);
