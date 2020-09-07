@@ -2679,12 +2679,29 @@ function onCreatureDown(){
 	}
 
 	if(animateBattle){
+		var animateArray = [];
+		//Camera shake
+		TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+			TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
+		}});
+
 		stageContainer.actionBlackTween.play(0);
 		validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
+			actionContainer.addChild(arrayCreature.action);
+			arrayCreature.action.visible = true;
+			arrayCreature.sprite.visible = false;
+			animateArray.push(arrayCreature.sprite);
+			
 			arrayCreature.action.dMissTween.play(0);
 			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
 		});
+
+		actionContainer.addChild(selectedVita.action);
+		selectedVita.action.visible = true;
+		selectedVita.sprite.visible = false;
+		animateArray.push(selectedVita.sprite);
 		selectedVita.action.pAtkTween.play(0);
+
 		selectedVita.action.pAtkTween.eventCallback("onComplete", function(){
 			if(animateStatus){
 				validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
@@ -3382,7 +3399,7 @@ function selectCreature(object2){
 	selectedVita = object2;
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 	console.log("Turn: " + selectedVita.name);
-	console.log("Turn: " + selectedVita.sprite.identifier[0]);
+	console.log("Side: " + selectedVita.sprite.identifier[0]);
 
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
