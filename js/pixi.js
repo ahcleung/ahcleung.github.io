@@ -2703,6 +2703,9 @@ function onCreatureDown(){
 		selectedVita.action.pAtkTween.play(0);
 
 		selectedVita.action.pAtkTween.eventCallback("onComplete", function(){
+			animateArray.forEach(item =>{
+				item.visible = true;
+			});
 			if(animateStatus){
 				validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
 					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
