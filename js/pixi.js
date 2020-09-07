@@ -2678,6 +2678,35 @@ function onCreatureDown(){
 		}
 	}
 
+	if(animateBattle){
+		stageContainer.actionBlackTween.play(0);
+		validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
+			arrayCreature.action.dMissTween.play(0);
+			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+		});
+		selectedVita.action.pAtkTween.play(0);
+		selectedVita.action.pAtkTween.eventCallback("onComplete", function(){
+			if(animateStatus){
+				validSkillObjectArray[targetedVitaIndex].forEach(arrayCreature=>{
+					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+						if(animateHealth){
+							console.log("animateHealth");
+						}else{
+							endTurn();
+						}
+					});
+				});
+			}else if(animateHealth){
+				console.log("animateHealth");
+				endTurn();
+			}else{
+				endTurn();
+			}
+		});
+	}else if(animateMove){
+
+	}
 	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
