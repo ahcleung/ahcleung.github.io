@@ -2084,7 +2084,9 @@ function onSkillDown(){
 	});
 	skillContainerArray[this.identifier[0]].selected.visible = true;
 	selectedSkill = this.identifier[1];						//Skill ID
-	console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
+	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>> Skill: " + skillsList.data.skills[this.identifier[1]].name + " <<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
+
+	// console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
 	var column = false;
 	var several = false;
 	var displace = false;
