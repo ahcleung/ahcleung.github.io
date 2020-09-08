@@ -383,6 +383,24 @@
 				1,1,1,1
 			],
 			"tags":[]
+		},
+		{
+			"name": "Implant",
+			"element": 1,
+			"type": "oth",
+			"power": 0,
+			"accuracy": 110,
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				0,0,0,0
+			],
+			"tags":[
+				"self", "status", "turns"
+			],
+			"status": 11,
+			"turns": 5
 		}
 	]
 }
