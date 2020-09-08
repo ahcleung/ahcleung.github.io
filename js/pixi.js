@@ -2610,7 +2610,7 @@ function onSkillDown(){
 	validSkillObjectArray.forEach(object1=>{
 		object1.forEach(object2=>{
 			console.log("Target: " + object2.name);
-			if(heal){
+			if(heal || self || team){
 				object2.healthBar.heal.visible = true;
 			}else{
 				object2.healthBar.target.visible = true;
