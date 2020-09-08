@@ -3653,6 +3653,7 @@ function selectCreature(object2){
 			else if(tagName == "self"){
 				skillSelf = true;
 				skillContainerArray[skillContainerIndex].targetText.text = "Self";
+				skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
 			}
 			// console.log(skillsList.data.skills[skillID][tagName]);
 		});
