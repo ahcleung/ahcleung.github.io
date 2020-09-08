@@ -2112,6 +2112,8 @@ function onSkillDown(){
 	var displace = false;
 	var heal = false;
 	var splash = false;
+	var self = false;
+	var team = false;
 	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column")			column = true;
 			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
@@ -2119,6 +2121,8 @@ function onSkillDown(){
 		if(tagName == "several")		several = true
 		if(tagName == "displace")		displace = true
 		if(tagName == "splash")			splash = true
+		if(tagName == "self")			self = true
+		if(tagName == "team")			team = true
 	});
 	validMoveObjectArray = [];
 	validSkillObjectArray = [];
@@ -2183,27 +2187,52 @@ function onSkillDown(){
 	}
 
 	if(selectedVita.hero){
-		enemyArray.forEach(arrayCreature =>{
-			var targeted = false;
-			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
-				if(skillTarget == 1 && !targeted){
-					var posTracker = skillTargetIndex+1;
-					if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(posTracker == pos1 || posTracker == pos2){
-							validSkillObjectArray.push([arrayCreature]);
-							targeted = true;
-						}
-					}else{
-						if(posTracker == arrayCreature.pos){
-							validSkillObjectArray.push([arrayCreature]);
-							targeted = true;
+		if(team){
+			heroArray.forEach(arrayCreature =>{
+				var targeted = false;
+				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+					if(skillTarget == 1 && !targeted){
+						var posTracker = skillTargetIndex+1;
+						if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
+						}else{
+							if(posTracker == arrayCreature.pos){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
 						}
 					}
-				}
+				});
 			});
-		});
+		}
+		else{
+			enemyArray.forEach(arrayCreature =>{
+				var targeted = false;
+				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+					if(skillTarget == 1 && !targeted){
+						var posTracker = skillTargetIndex+1;
+						if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(posTracker == pos1 || posTracker == pos2){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
+						}else{
+							if(posTracker == arrayCreature.pos){
+								validSkillObjectArray.push([arrayCreature]);
+								targeted = true;
+							}
+						}
+					}
+				});
+			});
+		}
 	}else{
 		heroArray.forEach(arrayCreature =>{
 			var targeted = false;
