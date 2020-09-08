@@ -57,7 +57,7 @@
 				0,0,0,0
 			],
 			"tags":[
-				"column", "multiple"
+				"column", "multiple", "heal"
 			],
 			"multiple": [2,2],
 			"column": [2,2,-1,1],
