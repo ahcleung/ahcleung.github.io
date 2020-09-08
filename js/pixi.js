@@ -598,6 +598,9 @@ function setup(){
 		const markerPositionContainer = new PIXI.Container();
 		const markerTargetArray = [];
 		const markerTargetContainer = new PIXI.Container();
+		const markerTargetTeamArray = [];
+		const markerTargetTeamContainer = new PIXI.Container();
+
 		
 		for (var j = 0; j < 3; j++){
 			for (var k = 0; k < 4; k++){
@@ -608,12 +611,19 @@ function setup(){
 				defaultMarker.angle = 45;
 
 				let posMarker = new PIXI.Graphics();
+				let posMarker2 = new PIXI.Graphics();
 				if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-				else if(j == 1)		posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+				else if(j == 1){
+					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+					posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				}	
 
 				posMarker.x = 25 * k;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
+				posMarker2.x = 25 * k;
+				posMarker2.pivot.set(0.5);
+				posMarker2.angle = 45;
 
 				if(j == 0){
 					markerPositionArray.push(posMarker);
@@ -623,6 +633,9 @@ function setup(){
 					markerTargetArray.push(posMarker);
 					markerTargetContainer.addChild(defaultMarker);
 					markerTargetContainer.addChild(posMarker);
+
+					markerTargetTeamArray.push(posMarker2);
+					markerTargetTeamContainer.addChild(posMarker2);
 				}
 			}
 		}
@@ -3654,6 +3667,9 @@ function selectCreature(object2){
 				skillSelf = true;
 				skillContainerArray[skillContainerIndex].targetText.text = "Self";
 				skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
+			}
+			else if(tagName == "team"){
+
 			}
 			// console.log(skillsList.data.skills[skillID][tagName]);
 		});
