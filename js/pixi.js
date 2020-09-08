@@ -685,6 +685,7 @@ function setup(){
 		skillContainer.markerTargetArray = markerTargetArray;
 		skillContainer.markerTargetContainer = markerTargetContainer;
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
+		skillContainer.markerTargetTeamContainer.visible = false;
 		
 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
@@ -3534,6 +3535,7 @@ function selectCreature(object2){
 		skillContainer.buttonMode = false;
 		skillContainer.interactive = false;
 		skillContainer.markerTargetSeveralContainer.visible = false;
+		skillContainer.markerTargetTeamContainer.visible = false;
 	});
 
 	enemyArray.forEach(object=>{
@@ -3671,7 +3673,8 @@ function selectCreature(object2){
 				skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
 			}
 			else if(tagName == "team"){
-
+				skillContainerArray[skillContainerIndex].markerTargetTeamContainer.visible = true;
+				skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
 			}
 			// console.log(skillsList.data.skills[skillID][tagName]);
 		});

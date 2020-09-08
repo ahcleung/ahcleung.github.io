@@ -397,7 +397,7 @@
 				0,0,0,0
 			],
 			"tags":[
-				"self", "status", "turns"
+				"team", "status", "turns"
 			],
 			"status": 11,
 			"turns": 5
