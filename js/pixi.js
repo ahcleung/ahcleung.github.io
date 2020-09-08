@@ -3624,6 +3624,7 @@ function selectCreature(object2){
 		
 		// console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
 		var column = false;
+		var skillSelf = false;
 		skillsList.data.skills[skillID].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
@@ -3649,10 +3650,14 @@ function selectCreature(object2){
 					}
 				});
 			}
+			else if(tagName == "self"){
+				skillSelf = true;
+				skillContainerArray[skillContainerIndex].targetText.text = "Self";
+			}
 			// console.log(skillsList.data.skills[skillID][tagName]);
 		});
 		
-		if(column){
+		if(column || skillSelf){
 			skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
 			skillContainerArray[skillContainerIndex].targetText.visible = true;
 		}else{
