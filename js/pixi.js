@@ -600,7 +600,6 @@ function setup(){
 		const markerTargetContainer = new PIXI.Container();
 		const markerTargetTeamArray = [];
 		const markerTargetTeamContainer = new PIXI.Container();
-
 		
 		for (var j = 0; j < 3; j++){
 			for (var k = 0; k < 4; k++){
@@ -664,6 +663,7 @@ function setup(){
 		}
 
 		markerTargetContainer.x = 123;
+		markerTargetTeamContainer.x = 123;
 		markerSpacerContainer.x = 123;
 
 		markerTargetSeveralContainer.x = 135;		
@@ -671,6 +671,7 @@ function setup(){
 		markerContainer.addChild(markerSpacerContainer);
 		markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
+		markerContainer.addChild(markerTargetTeamContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);		
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
@@ -683,6 +684,7 @@ function setup(){
 		skillContainer.markerPositionContainer = markerPositionContainer;		
 		skillContainer.markerTargetArray = markerTargetArray;
 		skillContainer.markerTargetContainer = markerTargetContainer;
+		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		
 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 		targetText.anchor.set(0, 0.5);
