@@ -684,6 +684,7 @@ function setup(){
 		skillContainer.markerPositionContainer = markerPositionContainer;		
 		skillContainer.markerTargetArray = markerTargetArray;
 		skillContainer.markerTargetContainer = markerTargetContainer;
+		skillContainer.markerTargetTeamArray = markerTargetTeamArray;
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
 		
