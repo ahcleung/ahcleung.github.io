@@ -3675,6 +3675,13 @@ function selectCreature(object2){
 			else if(tagName == "team"){
 				skillContainerArray[skillContainerIndex].markerTargetTeamContainer.visible = true;
 				skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
+				skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
+					if(skillTarget == 1){
+						skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = true;
+					}else{
+						skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = false;
+					}
+				});
 			}
 			// console.log(skillsList.data.skills[skillID][tagName]);
 		});
