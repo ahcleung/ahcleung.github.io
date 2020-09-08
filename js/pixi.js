@@ -2258,7 +2258,7 @@ function onSkillDown(){
 	}
 	if(self){
 		validSkillObjectArray = [];
-		validSkillObjectArray.push(selectedVita);
+		validSkillObjectArray.push([selectedVita]);
 	}
 	if(splash){
 		validSkillObjectArray = [];
