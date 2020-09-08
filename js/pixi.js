@@ -2256,7 +2256,10 @@ function onSkillDown(){
 			});
 		});
 	}
-
+	if(self){
+		validSkillObjectArray = [];
+		validSkillObjectArray.push(selectedVita);
+	}
 	if(splash){
 		validSkillObjectArray = [];
 		if(selectedVita.hero){
