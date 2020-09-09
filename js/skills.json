@@ -197,7 +197,7 @@
 				"statchange", "turns"
 			],
 			"turns": 5,
-			"statchange": [true, 6, 1],
+			"statchange": [true, 6, 1]
 		},
 		{
 			"name": "Volt punch",
