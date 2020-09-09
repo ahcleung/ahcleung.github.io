@@ -2669,6 +2669,7 @@ function onCreatureDown(){
 			if(tagName == "splash")			tagSplash = true;
 			if(tagName == "displace")		tagDisplace = true;
 			if(tagName == "status")			tagStatus = true;
+			if(tagName == "statchange")		tagStatus = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
