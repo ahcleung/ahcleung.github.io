@@ -2621,8 +2621,9 @@ function onSkillDown(){
 				if(object2 == selectedVita){
 					object2.healthBar.select.animate.kill(0);
 					object2.healthBar.select.visible = false;
-					object2.healthBar.heal.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
-					object2.healthBar.heal.animate.to(selectedVita.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
+					var healWidth = object2.healthBar.heal.width;
+					object2.healthBar.heal.animate.to(object2.healthBar.heal, 1, {width:healWidth+20, ease:Sine.easeInOut});
+					object2.healthBar.heal.animate.to(object2.healthBar.heal, 0.5, {width:healWidth, ease:Sine.easeInOut});
 					object2.healthBar.heal.animate.play(0);
 					object2.healthBar.heal.visible = true;
 				}else{
