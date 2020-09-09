@@ -3598,6 +3598,7 @@ function selectCreature(object2){
 		object.healthBar.move.visible = false;
 		object.healthBar.select.animate.kill();
 		object.healthBar.heal.animate.kill();
+		object.healthBar.heal.width = target.width;
 		// object.healthBar.select.animate = false;
 	});
 	heroArray.forEach(object=>{
@@ -3607,6 +3608,7 @@ function selectCreature(object2){
 		object.healthBar.move.visible = false;
 		object.healthBar.select.animate.kill();
 		object.healthBar.heal.animate.kill();
+		object.healthBar.heal.width = target.width;
 		// object.healthBar.select.animate = false;
 	});
 
