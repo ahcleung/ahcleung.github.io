@@ -2621,7 +2621,7 @@ function onSkillDown(){
 			console.log("Target: " + object2.name);
 			if(heal || self || team){
 				if(object2 == selectedVita){
-					object2.healthBar.select.animate.kill(0);
+					object2.healthBar.select.animate.kill();
 					object2.healthBar.select.visible = false;
 					var healWidth = object2.healthBar.heal.width;
 					object2.healthBar.heal.animate.to(object2.healthBar.heal, 1, {width:healWidth+20, ease:Sine.easeInOut});
@@ -3597,6 +3597,7 @@ function selectCreature(object2){
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
 		object.healthBar.select.animate.kill();
+		object.healthBar.heal.animate.kill();
 		// object.healthBar.select.animate = false;
 	});
 	heroArray.forEach(object=>{
@@ -3605,6 +3606,7 @@ function selectCreature(object2){
 		object.healthBar.heal.visible = false;
 		object.healthBar.move.visible = false;
 		object.healthBar.select.animate.kill();
+		object.healthBar.heal.animate.kill();
 		// object.healthBar.select.animate = false;
 	});
 
