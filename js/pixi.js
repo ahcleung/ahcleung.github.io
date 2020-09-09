@@ -3015,24 +3015,23 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				item.visible = true;
 			});
 			if(animateStatus){
+				attacker.dmgContainer.dmgStatus.tween.play(0);
 				defender.forEach(arrayCreature=>{
 					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-				});
-				attacker.dmgContainer.dmgStatus.tween.play(0);
-				attacker.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-					attacker.statusSpriteArray.forEach(statusSprite=>{
-						statusSprite.visible = true;
-					});
-					defender.forEach(arrayCreature=>{
+					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+						attacker.statusSpriteArray.forEach(statusSprite=>{
+							statusSprite.visible = true;
+						});
 						arrayCreature.statusSpriteArray.forEach(statusSprite=>{
 							statusSprite.visible = true;
 						});
+						if(animateHealth){
+							console.log("animateHealth");
+							endTurn();
+						}else{
+							endTurn();
+						}
 					});
-					if(animateHealth){
-						console.log("animateHealth");
-					}else{
-						endTurn();
-					}
 				});
 
 			}else if(animateHealth){
