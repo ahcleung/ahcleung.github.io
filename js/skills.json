@@ -194,11 +194,10 @@
 				0,0,1,1
 			],
 			"tags":[
-				"statchange", "turns", "status"
+				"statchange", "turns"
 			],
 			"turns": 5,
 			"statchange": [true, 6, 1],
-			"status": 2
 		},
 		{
 			"name": "Volt punch",

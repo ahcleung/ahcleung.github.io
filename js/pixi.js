@@ -2840,7 +2840,54 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 				
 				if(tagName == "statchange"){
+					if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
+						var newStatus = [2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]];
+					}else{
+						var newStatus = [4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]];
+					}
+					if(skillsList.data.skills[selectedSkill].statchange[0]){
+						for(var i = 0; i < 3; i++){
+							selectedVita.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+							selectedVita.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+						}
+						var statusStored = false;
+						selectedVita.statusArray.forEach(storedStatus =>{
+							if(storedStatus[0] == newStatus[0])		statusStored = true;
+						});
 
+						if(!statusStored){
+							let newStatusEffect = statusEffectSprite(newStatus[0]);				
+							newStatusEffect.visible = false;
+							selectedVita.healthBar.addChild(newStatusEffect);
+							selectedVita.statusSpriteArray.push(newStatusEffect);
+						}
+						selectedVita.dmgContainer.dmgStatus.statusImageArray[0].visible = true;
+						selectedVita.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
+						updateDmgStatus(selectedVita.dmgContainer, newStatus[0], 0);
+						selectedVita.statusArray.push(newStatus);
+						resizeStatus(selectedVita);
+					}else{
+						for(var i = 0; i < 3; i++){
+							targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+							targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+						}
+						var statusStored = false;
+						targeted.statusArray.forEach(storedStatus =>{
+							if(storedStatus[0] == newStatus[0])		statusStored = true;
+						});
+
+						if(!statusStored){
+							let newStatusEffect = statusEffectSprite(newStatus[0]);				
+							newStatusEffect.visible = false;
+							targeted.healthBar.addChild(newStatusEffect);
+							targeted.statusSpriteArray.push(newStatusEffect);
+						}
+						targeted.dmgContainer.dmgStatus.statusImageArray[0].visible = true;
+						targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
+						updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
+						targeted.statusArray.push(newStatus);
+						resizeStatus(targeted);
+					}					
 				}
 			});
 
