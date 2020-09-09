@@ -2614,9 +2614,17 @@ function onSkillDown(){
 		object1.forEach(object2=>{
 			console.log("Target: " + object2.name);
 			if(heal || self || team){
-				object2.healthBar.heal.visible = true;
+				if(object2 == selectedVita){
+					object2.healthBar.heal.visible = true;
+				}else{
+					object2.healthBar.heal.visible = true;	
+				}
 			}else{
-				object2.healthBar.target.visible = true;
+				if(object2 == selectedVita){
+					object2.healthBar.target.visible = true;
+				}else{
+					object2.healthBar.target.visible = true;
+				}
 			}
 		});
 	});
