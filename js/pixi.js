@@ -3019,7 +3019,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
 				});
 				attacker.dmgContainer.dmgStatus.tween.play(0);
-				attacker.dmgContainer.dmgStatus.tween.tween.eventCallback("onComplete", function(){
+				attacker.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
 					attacker.statusSpriteArray.forEach(statusSprite=>{
 						statusSprite.visible = true;
 					});
