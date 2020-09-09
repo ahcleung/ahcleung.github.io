@@ -1783,6 +1783,8 @@ function resizeHP(roster, item){
 	
 	item.healthBar.select.pivot.x = item.healthBar.select.width/2;
 	item.healthBar.select.x = item.healthBar.select.width/2;
+	item.healthBar.heal.pivot.x = item.healthBar.heal.width/2;
+	item.healthBar.heal.x = item.healthBar.heal.width/2;
 }
 
 function resizeSprite(direction, item, index){	
