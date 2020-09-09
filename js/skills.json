@@ -371,7 +371,7 @@
 			"turns": 5
 		},
 		{
-			"name": "#Acidic spit",
+			"name": "Acidic spit",
 			"element": 7,
 			"type": "spe",
 			"power": 75,
