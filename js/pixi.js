@@ -2815,7 +2815,7 @@ function calculateDamage(attacker, defender, hitArray){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
-					totalDamage = skillsList.data.skills[selectedSkill].heal;
+					
 					skillHeal = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 						dmgNumArrayItem.style.fill = '#1bc617';
@@ -2952,6 +2952,7 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
+				if(skillHeal)			finalDmgCalc = skillsList.data.skills[selectedSkill].heal;
 				totalDamage += finalDmgCalc;
 
 				targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
@@ -2962,6 +2963,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			if(skillHeal){
+				// dmgNumbers.push(totalDamage);
 				targeted.heal(totalDamage);	
 			}else{
 				targeted.damage(totalDamage);
