@@ -2963,17 +2963,16 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			if(skillHeal){
-				// dmgNumbers.push(totalDamage);
 				targeted.heal(totalDamage);	
 			}else{
 				targeted.damage(totalDamage);
 			}
 			
+			// if(skillPower == 0){
+			// 	targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
+			// 	targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			// }
 
-			if(skillPower == 0){
-				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
-				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
-			}
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
 			targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
