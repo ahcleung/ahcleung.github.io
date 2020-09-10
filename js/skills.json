@@ -57,11 +57,10 @@
 				0,0,0,0
 			],
 			"tags":[
-				"column", "multiple", "heal"
+				"column", "heal"
 			],
-			"multiple": [2,2],
 			"column": [2,2,-1,1],
-			"heal": 15
+			"heal": 30
 		},
 		{
 			"name": "Lightning strike",

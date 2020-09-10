@@ -2795,6 +2795,8 @@ function calculateDamage(attacker, defender, hitArray){
 	// var defenderElements = [];
 	var effectiveness = 1;
 	var skillPower = skillsList.data.skills[selectedSkill].power;
+	var totalDamage = 0;
+	var skillHeal = false;
 
 	if(skillsList.data.skills[selectedSkill].type == "phy"){
 		attack = attacker.patk;
@@ -2812,6 +2814,14 @@ function calculateDamage(attacker, defender, hitArray){
 		if(hitArray[targetedIndex]){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+				if(tagName == "heal"){
+					totalDamage = skillsList.data.skills[selectedSkill].heal;
+					skillHeal = true;
+					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+						dmgNumArrayItem.style.fill = '#1bc617';
+						dmgNumArrayItem.style.stroke = '#052805';
+					});
+				}
 				if(tagName == "multiple"){
 					multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
 				}
@@ -2942,6 +2952,7 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
+				totalDamage += finalDmgCalc;
 
 				targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
@@ -2949,6 +2960,13 @@ function calculateDamage(attacker, defender, hitArray){
 				critTracker.push(ifCrit);
 				dmgNumbers.push(finalDmgCalc);
 			}
+
+			if(skillHeal){
+				targeted.heal(totalDamage);	
+			}else{
+				targeted.damage(totalDamage);
+			}
+			
 
 			if(skillPower == 0){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
