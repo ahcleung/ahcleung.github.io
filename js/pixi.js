@@ -2908,34 +2908,32 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.elements.forEach(element =>{
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
 			});
-			if(!skillHeal){
-				if(effectiveness == 0.25){
-					targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-					targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#9D9D9D';
-					});
-				}else if(effectiveness == 0.5){
-					targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-					targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#FFFFFF';
-					});
-				}else if(effectiveness == 2){
-					targeted.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
-					targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#FFE81C';
-					});
-				}else if(effectiveness == 4){
-					targeted.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-					targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-						dmgNumArrayItem.style.fill = '#DB00FF';
-					});
-				}else{
-					targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
-				}
+			if(effectiveness == 0.25 && !skillHeal){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#9D9D9D';
+				});
+			}else if(effectiveness == 0.5 && !skillHeal){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#FFFFFF';
+				});
+			}else if(effectiveness == 2 && !skillHeal){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#FFE81C';
+				});
+			}else if(effectiveness == 4 && !skillHeal){
+				targeted.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
+				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+					dmgNumArrayItem.style.fill = '#DB00FF';
+				});
+			}else{
+				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
