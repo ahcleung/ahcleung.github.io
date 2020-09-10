@@ -2944,7 +2944,7 @@ function calculateDamage(attacker, defender, hitArray){
 				var criticalChance = Math.floor(Math.random() * 10000);
 				var critMultiplier = 1;
 				var ifCrit = false;
-				if(criticalChance > 5000){
+				if(criticalChance > 5000 && !skillHeal){
 					critMultiplier = 1.5;
 					ifCrit = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
