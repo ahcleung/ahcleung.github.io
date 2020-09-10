@@ -2846,11 +2846,13 @@ function calculateDamage(attacker, defender, hitArray){
 					}else{
 						var newStatus = [4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]];
 					}
-					if(skillsList.data.skills[selectedSkill].statchange[0]){
-						for(var i = 0; i < 3; i++){
-							selectedVita.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
-							selectedVita.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
-						}
+					for(var i = 0; i < 3; i++){
+						selectedVita.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+						selectedVita.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+						targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+						targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+					}
+					if(skillsList.data.skills[selectedSkill].statchange[0]){	
 						var statusStored = false;
 						selectedVita.statusArray.forEach(storedStatus =>{
 							if(storedStatus[0] == newStatus[0])		statusStored = true;
@@ -2868,10 +2870,6 @@ function calculateDamage(attacker, defender, hitArray){
 						selectedVita.statusArray.push(newStatus);
 						resizeStatus(selectedVita);
 					}else{
-						for(var i = 0; i < 3; i++){
-							targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
-							targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
-						}
 						var statusStored = false;
 						targeted.statusArray.forEach(storedStatus =>{
 							if(storedStatus[0] == newStatus[0])		statusStored = true;
