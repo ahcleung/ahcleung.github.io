@@ -1987,7 +1987,7 @@ function onAdditionalSkipDown(){
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
 	var creatureStatusInfo = [];
-	console.log("Name: " + this.object.name + "\nStats: " + this.object.statMod);
+	console.log("Name: " + this.object.name + "HP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		console.log(status);
 		var tracker = false;
@@ -2815,7 +2815,6 @@ function calculateDamage(attacker, defender, hitArray){
 			var multiHitNum = 1;
 			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
-					
 					skillHeal = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 						dmgNumArrayItem.style.fill = '#1bc617';
