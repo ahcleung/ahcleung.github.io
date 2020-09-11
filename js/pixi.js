@@ -3006,12 +3006,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			arrayCreature.action.dMissTween.play(0);
 			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
-
-			//Maybe move to calculateDamage
-			// for(var i = 0, i < 3, i++){
-			// 	arrayCreature.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
-			// 	arrayCreature.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
-			// }
 		});
 
 		actionContainer.addChild(attacker.action);
@@ -3019,12 +3013,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		attacker.sprite.visible = false;
 		animateArray.push(attacker.sprite);
 		attacker.action.pAtkTween.play(0);
-
-		//Maybe move to calculateDamage
-		// for(var i = 0, i < 3, i++){
-		// 	attacker.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
-		// 	attacker.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
-		// }
 
 		attacker.action.pAtkTween.eventCallback("onComplete", function(){
 			animateArray.forEach(item =>{
