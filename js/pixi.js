@@ -3047,9 +3047,9 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							statusSprite.visible = true;
 						});
 						if(animateHealth){
-							ddefender.forEach(arrayCreature=>{
+							defender.forEach(arrayCreature=>{
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-							}
+							});
 							console.log("animateHealth");
 							endTurn();
 						}else{
@@ -3061,7 +3061,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}else if(animateHealth){
 				defender.forEach(arrayCreature=>{
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-				}
+				});
 				console.log("animateHealth");
 				endTurn();
 			}else{
