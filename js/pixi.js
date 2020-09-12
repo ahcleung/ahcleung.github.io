@@ -2968,19 +2968,18 @@ function calculateDamage(attacker, defender, hitArray){
 			if(skillHeal){
 				targeted.heal(totalDamage);
 			}else{
-				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/object.overallHP));
+				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(object.healthBar.dmgBarContainer.dmgBar
+				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 1, {
 						width: newWidth
 					}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-						object.healthBar.dmgBarContainer.dmgBar.visible = false;
-					if(userInput)	endTurn();
+						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
 				}});
 
-				object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
-				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
+				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 
 				targeted.damage(totalDamage);
 			}
