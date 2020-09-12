@@ -2940,7 +2940,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
-			
+			console.log("damageCalc: " + damageCalc);
 			var dmgNumbers = [];
 			var critTracker = [];
 			for(var i = 0; i < multiHitNum; i++){
@@ -2956,6 +2956,7 @@ function calculateDamage(attacker, defender, hitArray){
 				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 				if(finalDmgCalc == 0)	finalDmgCalc = 1;
 				if(skillHeal)			finalDmgCalc = skillsList.data.skills[selectedSkill].heal;
+				console.log("finalDmgCalc: " + finalDmgCalc);
 				totalDamage += finalDmgCalc;
 
 				targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
