@@ -2975,7 +2975,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 1, {
 						width: newWidth
-					}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+					}, {ease:Expo.easeIn, width:0, onComplete: function(){
 						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
 				}});
 
@@ -3060,9 +3060,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}else if(animateHealth){
 				defender.forEach(arrayCreature=>{
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+						endTurn();
+					});
 				});
 				console.log("animateHealth");
-				endTurn();
+				
 			}else{
 				endTurn();
 			}
