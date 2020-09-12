@@ -3075,7 +3075,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.kill();
+									arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.killAll();
 									if(userInput)	endTurn();
 								});
 							});
@@ -3091,7 +3091,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.kill();
+						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.killAll();
 						if(userInput)	endTurn();
 					});
 				});
