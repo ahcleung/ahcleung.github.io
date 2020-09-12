@@ -2965,6 +2965,12 @@ function calculateDamage(attacker, defender, hitArray){
 				dmgNumbers.push(finalDmgCalc);
 			}
 
+			if(skillsList.data.skills[selectedSkill].type == "oth"){
+				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
+				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+				dmgNumbers = [0];
+			}
+
 			if(skillHeal){
 				targeted.heal(totalDamage);
 			}else{
@@ -2983,11 +2989,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
 			
-			if(skillsList.data.skills[selectedSkill].type == "oth"){
-				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
-				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
-				dmgNumbers = [0];
-			}
+
 
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
