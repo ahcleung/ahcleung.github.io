@@ -2971,12 +2971,12 @@ function calculateDamage(attacker, defender, hitArray){
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
-					, 1, {
-						width: newWidth
-					}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
-				}});
+				// targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
+				// 	, 1, {
+				// 		width: newWidth
+				// 	}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+				// 		targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
+				// }});
 
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
@@ -3048,7 +3048,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 						});
 						if(animateHealth){
 							defender.forEach(arrayCreature=>{
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+								// arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 							});
 							console.log("animateHealth");
 							endTurn();
@@ -3060,7 +3060,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			}else if(animateHealth){
 				defender.forEach(arrayCreature=>{
-					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+					// arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 				});
 				console.log("animateHealth");
 				endTurn();
