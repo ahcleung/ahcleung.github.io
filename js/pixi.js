@@ -2978,6 +2978,17 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.heal(totalDamage);
 				dmgNumbers.push(totalDamage);
 				critTracker.push(false);
+
+				var newWidth = (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP)) - targeted.healthBar.inner.width;
+				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.inner.width;
+				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
+				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
+					, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+						targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
+					}});
+				targeted.healthBar.dmgBarContainer.dmgBar.animate.to(targeted.healthBar.dmgBarContainer.dmgBar
+					, 1, {ease:Expo.easeIn, alpha:0});
+
 			}else{
 				targeted.damage(totalDamage);
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
