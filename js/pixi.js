@@ -2722,7 +2722,7 @@ function onCreatureDown(){
 			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
 			console.log("Damage: " + dmgArray);
 			dmgArray.forEach(dmgValue => {
-				if(dmgValue[0] > 0)				animateHealth = true;
+				if(dmgValue[0][0] > 0)				animateHealth = true;
 			});
 		}else{
 			console.log("Invalid skill target");
