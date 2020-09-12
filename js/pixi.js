@@ -2795,7 +2795,7 @@ function calculateDamage(attacker, defender, hitArray){
 	var level = attacker.level;
 	var attack = 0;
 	var attackerElements = [];
-	var defense = 0;
+	var defense = 1;
 	// var defenderElements = [];
 	var effectiveness = 1;
 	var skillPower = skillsList.data.skills[selectedSkill].power;
@@ -2940,7 +2940,9 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
+
 			console.log("damageCalc: " + damageCalc);
+
 			var dmgNumbers = [];
 			var critTracker = [];
 			for(var i = 0; i < multiHitNum; i++){
