@@ -2967,10 +2967,10 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.damage(totalDamage);
 			}
 			
-			// if(skillPower == 0){
-			// 	targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
-			// 	targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
-			// }
+			if(skillsList.data.skills[selectedSkill].type == "oth"){
+				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
+				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			}
 
 			dmgArray.push([dmgNumbers,critTracker]);
 		}else{
