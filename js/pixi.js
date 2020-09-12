@@ -2983,7 +2983,7 @@ function calculateDamage(attacker, defender, hitArray){
 				var newWidth = (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP)) - targeted.healthBar.inner.width;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.inner.width;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
+				// targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
 				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 0.75 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 						targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
@@ -2996,7 +2996,7 @@ function calculateDamage(attacker, defender, hitArray){
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
+				// targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
 				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 1, {
 						width: newWidth
@@ -3075,6 +3075,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+									arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.kill();
 									if(userInput)	endTurn();
 								});
 							});
@@ -3090,6 +3091,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.kill();
 						if(userInput)	endTurn();
 					});
 				});
