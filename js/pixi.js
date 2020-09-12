@@ -2657,6 +2657,7 @@ function onCreatureDown(){
 	var animateStatus = false;
 	var animateHealth = false;
 	var correctTarget = false;
+	userInput = true;
 	if(validSkillObjectArray.length > 0){
 		skillContainerArray.forEach(skillContainer=>{
 			skillContainer.interactive = false;
@@ -3072,12 +3073,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									endTurn();
+									if(userInput)	endTurn();
 								});
 							});
 							console.log("animateHealth");
 						}else{
-							endTurn();
+							if(userInput)	endTurn();
 						}
 					});
 				});
@@ -3087,12 +3088,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-						endTurn();
+						if(userInput)	endTurn();
 					});
 				});
 				console.log("animateHealth");
 			}else{
-				endTurn();
+				if(userInput)	endTurn();
 			}
 		});
 	}else if(animateMove){
