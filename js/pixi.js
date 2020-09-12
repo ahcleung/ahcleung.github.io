@@ -2986,6 +2986,7 @@ function calculateDamage(attacker, defender, hitArray){
 			if(skillsList.data.skills[selectedSkill].type == "oth"){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+				dmgNumbers = [0];
 			}
 
 			dmgArray.push([dmgNumbers,critTracker]);
