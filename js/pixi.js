@@ -2973,6 +2973,8 @@ function calculateDamage(attacker, defender, hitArray){
 
 			if(skillHeal){
 				totalDamage = skillsList.data.skills[selectedSkill].heal;
+				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
+				targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = totalDamage;
 				targeted.heal(totalDamage);
 			}else{
 				targeted.damage(totalDamage);
