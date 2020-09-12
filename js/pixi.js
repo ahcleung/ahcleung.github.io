@@ -3083,6 +3083,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				defender.forEach(arrayCreature=>{
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
 						endTurn();
 					});
 				});
