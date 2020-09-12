@@ -1272,8 +1272,8 @@ function createSprite(direction, item, index){
 	dmgBar.alpha = 0.9;
 	dmgBar.visible = false;
 
-	var dmgBarTween = new TimelineMax({paused:true});
-	dmgBar.animate = dmgBarTween;
+	// var dmgBarTween = new TimelineMax({paused:true});
+	// dmgBar.animate = dmgBarTween;
 
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
@@ -2984,26 +2984,29 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.inner.width;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
 				// targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
+				var dmgBarTween = new TimelineMax({paused:true});
+				
+				dmgBarTween.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 0.75 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 						targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 					}});
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.to(targeted.healthBar.dmgBarContainer.dmgBar
+				dmgBarTween.to(targeted.healthBar.dmgBarContainer.dmgBar
 					, 0.25, {ease:Expo.easeIn, alpha:0});
-
+				dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
 				// targeted.healthBar.dmgBarContainer.dmgBar.animate.kill();
-				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
+				var dmgBarTween = new TimelineMax({paused:true});
+				dmgBarTween.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
 					, 1, {
 						width: newWidth
 					}, {ease:Expo.easeIn, width:0, onComplete: function(){
 						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
 				}});
-
+				dmgBar.animate = dmgBarTween;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
@@ -3075,7 +3078,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.killAll();
 									if(userInput)	endTurn();
 								});
 							});
@@ -3091,7 +3093,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.killAll();
 						if(userInput)	endTurn();
 					});
 				});
