@@ -3070,9 +3070,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 						if(animateHealth){
 							defender.forEach(arrayCreature=>{
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+									endTurn();
+								});
 							});
 							console.log("animateHealth");
-							endTurn();
 						}else{
 							endTurn();
 						}
@@ -3088,7 +3091,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					});
 				});
 				console.log("animateHealth");
-				
 			}else{
 				endTurn();
 			}
