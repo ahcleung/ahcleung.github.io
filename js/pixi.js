@@ -2801,11 +2801,14 @@ function calculateDamage(attacker, defender, hitArray){
 	var skillPower = skillsList.data.skills[selectedSkill].power;
 	var totalDamage = 0;
 	var skillHeal = false;
+	var skillOther = false;
 
 	if(skillsList.data.skills[selectedSkill].type == "phy"){
 		attack = attacker.patk;
 	}else if(skillsList.data.skills[selectedSkill].type == "spe"){
 		attack = attacker.satk;
+	}else{
+		skillOther = true;
 	}
 	defender.forEach((targeted, targetedIndex) => {
 		targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
@@ -2940,35 +2943,36 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
-
 			console.log("damageCalc: " + damageCalc);
 
 			var dmgNumbers = [];
 			var critTracker = [];
-			for(var i = 0; i < multiHitNum; i++){
-				var criticalChance = Math.floor(Math.random() * 10000);
-				var critMultiplier = 1;
-				var ifCrit = false;
-				if(criticalChance > 5000 && !skillHeal){
-					critMultiplier = 1.5;
-					ifCrit = true;
-					targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
-					targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
+			if(!skillOther){
+				for(var i = 0; i < multiHitNum; i++){
+					var criticalChance = Math.floor(Math.random() * 10000);
+					var critMultiplier = 1;
+					var ifCrit = false;
+					if(criticalChance > 5000 && !skillHeal){
+						critMultiplier = 1.5;
+						ifCrit = true;
+						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
+						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
+					}
+					var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+					if(finalDmgCalc == 0)	finalDmgCalc = 1;
+					console.log("finalDmgCalc: " + finalDmgCalc);
+					totalDamage += finalDmgCalc;
+
+					targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
+					targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
+
+					critTracker.push(ifCrit);
+					dmgNumbers.push(finalDmgCalc);
 				}
-				var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
-				if(finalDmgCalc == 0)	finalDmgCalc = 1;
-				if(skillHeal)			finalDmgCalc = skillsList.data.skills[selectedSkill].heal;
-				console.log("finalDmgCalc: " + finalDmgCalc);
-				totalDamage += finalDmgCalc;
-
-				targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
-				targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
-
-				critTracker.push(ifCrit);
-				dmgNumbers.push(finalDmgCalc);
 			}
 
 			if(skillHeal){
+				totalDamage = skillsList.data.skills[selectedSkill].heal;
 				targeted.heal(totalDamage);
 			}else{
 				targeted.damage(totalDamage);
@@ -2986,7 +2990,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
 			
-			if(skillsList.data.skills[selectedSkill].type == "oth"){
+			if(skillsList.data.skills[selectedSkill].type == "oth" && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
