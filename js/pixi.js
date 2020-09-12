@@ -1271,6 +1271,10 @@ function createSprite(direction, item, index){
 	dmgBar.endFill();
 	dmgBar.alpha = 0.9;
 	dmgBar.visible = false;
+
+	var dmgBarTween = new TimelineMax({paused:true});
+	dmgBar.animate = dmgBarTween;
+
 	dmgBarContainer.addChild(dmgBar);
 	dmgBarContainer.dmgBar = dmgBar;
 	healthBar.addChild(dmgBarContainer);
@@ -2964,6 +2968,20 @@ function calculateDamage(attacker, defender, hitArray){
 			if(skillHeal){
 				targeted.heal(totalDamage);
 			}else{
+				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/object.overallHP));
+				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
+				targeted.healthBar.dmgBarContainer.dmgBar.animate.fromTo(object.healthBar.dmgBarContainer.dmgBar
+					, 1, {
+						width: newWidth
+					}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
+						object.healthBar.dmgBarContainer.dmgBar.visible = false;
+					if(userInput)	endTurn();
+				}});
+
+				object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
+				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
+
 				targeted.damage(totalDamage);
 			}
 			
@@ -3030,6 +3048,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							statusSprite.visible = true;
 						});
 						if(animateHealth){
+							defender.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 							console.log("animateHealth");
 							endTurn();
 						}else{
@@ -3039,6 +3058,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				});
 
 			}else if(animateHealth){
+				defender.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 				console.log("animateHealth");
 				endTurn();
 			}else{
