@@ -1,6 +1,6 @@
 {
    "elements" : [
-      {
+    {
       "name": "Flora",
       "effect": [
         0.5,
@@ -11,115 +11,120 @@
         1,
         0.5,    
         1,
-        1]
-      },
-      {
-      "name": "Flora",
-      "flora": 0.5,
-      "water": 2,
-      "fire": 0.5,
-      "earth": 2,
-      "lightning": 1,
-      "wind": 1,
-      "toxic": 0.5,    
-      "spirit": 1,
-      "shadow": 1
+        1
+      ]
     },
     {
       "name": "Water",
-      "flora": 0.5,
-      "water": 0.5,
-      "fire": 2,
-      "earth": 2,
-      "lightning": 1,
-      "wind": 1,
-      "toxic": 1,    
-      "spirit": 1,
-      "shadow": 1
+      "effect": [
+        0.5,
+        0.5,
+        2,
+        2,
+        1,
+        1,
+        1,    
+        1,
+        1
+      ]
     },
     {
       "name": "Fire",
-      "flora": 2,
-      "water": 0.5,
-      "fire": 0.5,
-      "earth": 1,
-      "lightning": 1,
-      "wind": 0.5,
-      "toxic": 1,    
-      "spirit": 2,
-      "shadow": 1
+      "effect": [
+        2,
+        0.5,
+        0.5,
+        1,
+        1,
+        0.5,
+        1,    
+        2,
+        1
+      ]
     },
     {
       "name": "Earth",
-      "flora": 0.5,
-      "water": 1,
-      "fire": 2,
-      "earth": 1,
-      "lightning": 2,
-      "wind": 0.5,
-      "toxic": 2,    
-      "spirit": 1,
-      "shadow": 1
+      "effect": [
+        0.5,
+        1,
+        2,
+        1,
+        2,
+        0.5,
+        2,    
+        1,
+        1
+      ]
     },
     {
       "name": "Lightning",
-      "flora": 1,
-      "water": 2,
-      "fire": 1,
-      "earth": 0.5,
-      "lightning": 1,
-      "wind": 2,
-      "toxic": 1,    
-      "spirit": 2,
-      "shadow": 0.5
+      "effect": [
+        1,
+        2,
+        1,
+        0.5,
+        1,
+        2,
+        1,    
+        2,
+        0.5
+      ]
     },
     {
       "name": "Wind",
-      "flora": 1,
-      "water": 1,
-      "fire": 1,
-      "earth": 2,
-      "lightning": 0.5,
-      "wind": 1,
-      "toxic": 1,    
-      "spirit": 1,
-      "shadow": 2
+      "effect": [
+        1,
+        1,
+        1,
+        2,
+        0.5,
+        1,
+        1,    
+        1,
+        2
+      ]
     },
     {
       "name": "Toxic",
-      "flora": 2,
-      "water": 1,
-      "fire": 1,
-      "earth": 0.5,
-      "lightning": 1,
-      "wind": 2,
-      "toxic": 2,    
-      "spirit": 0.5,
-      "shadow": 1
+      "effect": [
+        2,
+        1,
+        1,
+        0.5,
+        1,
+        2,
+        2,    
+        0.5,
+        1
+      ]
     },
     {
       "name": "Spirit",
-      "flora": 1,
-      "water": 1,
-      "fire": 0.5,
-      "earth": 1,
-      "lightning": 1,
-      "wind": 1,
-      "toxic": 2,    
-      "spirit": 0.5,
-      "shadow": 2
+      "effect": [
+        1,
+        1,
+        0.5,
+        1,
+        1,
+        1,
+        2,    
+        0.5,
+        2
+      ]
     },
     {
       "name": "Shadow",
-      "flora": 1,
-      "water": 1,
-      "fire": 1,
-      "earth": 1,
-      "lightning": 2,
-      "wind": 0.5,
-      "toxic": 1,    
-      "spirit": 2,
-      "shadow": 1
+      "effect": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        0.5,
+        1,    
+        2,
+        1
+      ]
     }
   ]
 }
