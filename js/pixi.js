@@ -2992,7 +2992,7 @@ function calculateDamage(attacker, defender, hitArray){
 					}});
 				dmgBarTween.to(targeted.healthBar.dmgBarContainer.dmgBar
 					, 0.25, {ease:Expo.easeIn, alpha:0});
-				dmgBar.animate = dmgBarTween;
+				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
@@ -3006,7 +3006,7 @@ function calculateDamage(attacker, defender, hitArray){
 					}, {ease:Expo.easeIn, width:0, onComplete: function(){
 						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
 				}});
-				dmgBar.animate = dmgBarTween;
+				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
