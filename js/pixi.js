@@ -2922,7 +2922,7 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.elements.forEach(element =>{
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1][element];
 			});
-			console.log("effectiveness: " + damageCalc);
+			console.log("effectiveness: " + effectiveness);
 			if(effectiveness == 0.25 && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
