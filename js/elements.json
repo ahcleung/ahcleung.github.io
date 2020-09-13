@@ -2,6 +2,19 @@
    "elements" : [
       {
       "name": "Flora",
+      "effect": [
+        0.5,
+        2,
+        0.5,
+        2,
+        1,
+        1,
+        0.5,    
+        1,
+        1]
+      },
+      {
+      "name": "Flora",
       "flora": 0.5,
       "water": 2,
       "fire": 0.5,
