@@ -2987,11 +2987,11 @@ function calculateDamage(attacker, defender, hitArray){
 				var dmgBarTween = new TimelineMax({paused:true});
 				
 				dmgBarTween.fromTo(targeted.healthBar.dmgBarContainer.dmgBar
-					, 0.75 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
+					, 0.5 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
 						targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 					}});
 				dmgBarTween.to(targeted.healthBar.dmgBarContainer.dmgBar
-					, 0.25, {ease:Expo.easeIn, alpha:0});
+					, 0.5, {ease:Expo.easeIn, alpha:0});
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
