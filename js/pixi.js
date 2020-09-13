@@ -2954,15 +2954,17 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
 
-			var randModifier = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
-
-			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB*randModifier);
+			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
 			console.log("damageCalc: " + damageCalc);
 
 			var dmgNumbers = [];
 			var critTracker = [];
 			if(!skillOther){
 				for(var i = 0; i < multiHitNum; i++){
+					var randModifier = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
+					damageCalc = Math.floor(damageCalc*randModifier);
+					console.log("damageCalc: " + damageCalc);
+
 					var criticalChance = Math.floor(Math.random() * 10000);
 					var critMultiplier = 1;
 					var ifCrit = false;
