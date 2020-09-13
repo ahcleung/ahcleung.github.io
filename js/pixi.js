@@ -2795,8 +2795,7 @@ function calculateDamage(attacker, defender, hitArray){
 	var dmgArray = [];
 	var level = attacker.level;
 	var attack = 0;
-	var SEAB = 1;
-	// var attackerElements = [];
+	var attackerElements = [];
 	var defense = 1;
 	// var defenderElements = [];
 	var effectiveness = 1;
@@ -2812,11 +2811,12 @@ function calculateDamage(attacker, defender, hitArray){
 	}else{
 		skillOther = true;
 	}
-	
-	attacker.elements.forEach(creatureElement =>{
-		if(creatureElement == skillsList.data.skills[selectedSkill].element)		SEAB = 1.5;
-	});
 
+	var STAB = 1;
+	attacker.elements.forEach(creatureElement =>{
+		if(creatureElement == skillsList.data.skills[selectedSkill].element)		STAB = 1.5;
+	});
+	
 	defender.forEach((targeted, targetedIndex) => {
 		targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
 		targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
@@ -2949,8 +2949,6 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
 
-			var randomMod = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
-			console.log("randomMod: " + randomMod);
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 			console.log("damageCalc: " + damageCalc);
 
@@ -2967,7 +2965,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 					}
-					var finalDmgCalc = Math.floor(damageCalc*critMultiplier);
+					var finalDmgCalc = Math.floor(damageCalc * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
 					console.log("finalDmgCalc: " + finalDmgCalc);
 					totalDamage += finalDmgCalc;
