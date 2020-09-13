@@ -5,9 +5,7 @@
          "code": "gorilla1",
          "frames": 60,
          "move": ["=",1],
-         "elements": [
-            "earth"
-         ],
+         "elements": [4],
          "hp": 60,
          "dodge": 7,
          "patk": 68,
@@ -35,9 +33,7 @@
          "code": "gorilla2",
          "frames": 60,
          "move": ["=",1],
-         "elements": [
-            "earth"
-         ],
+         "elements": [4],
          "hp": 75,
          "dodge": 8,
          "patk": 80,
@@ -65,10 +61,7 @@
          "code": "gorilla3",
          "frames": 46,
          "move": ["=",1],
-         "elements": [
-            "earth",
-            "spirit"
-         ],
+         "elements": [4,8],
          "hp": 99,
          "dodge": 8,
          "patk": 95,
@@ -96,9 +89,7 @@
          "code": "racoon1",
          "frames": 60,
          "move": ["=",2],
-         "elements": [
-            "lightning"
-         ],
+         "elements": [5],
          "hp": 57,
          "dodge": 10,
          "patk": 61,
@@ -126,10 +117,7 @@
          "code": "racoon2",
          "frames": 60,
          "move": ["=",2],
-         "elements": [
-            "lightning",
-            "shadow"
-         ],
+         "elements": [5,9],
          "hp": 64,
          "dodge": 12,
          "patk": 78,
@@ -157,10 +145,7 @@
          "code": "racoon3",
          "frames": 60,
          "move": ["=",2],
-         "elements": [
-            "lightning",
-            "shadow"
-         ],
+         "elements": [5,9],
          "hp": 75,
          "dodge": 15,
          "patk": 90,
@@ -188,9 +173,7 @@
          "code": "toad1",
          "frames": 60,
          "move": ["=",1],
-         "elements": [
-            "wind"
-         ],
+         "elements": [6],
          "hp": 55,
          "dodge": 8,
          "patk": 43,
@@ -218,9 +201,7 @@
          "code": "toad2",
          "frames": 60,
          "move": ["=",1],
-         "elements": [
-            "wind"
-         ],
+         "elements": [6],
          "hp": 70,
          "dodge": 9,
          "patk": 53,
@@ -248,10 +229,7 @@
          "code": "toad3",
          "frames": 62,
          "move": ["=",1],
-         "elements": [
-            "wind",
-            "toxic"
-         ],
+         "elements": [6,7],
          "hp": 85,
          "dodge": 10,
          "patk": 74,
@@ -279,10 +257,7 @@
          "code": "hel1",
          "frames": 48,
          "move": ["-",2],
-         "elements": [
-            "shadow",
-            "toxic"
-         ],
+         "elements": [9,7],
          "hp": 59,
          "dodge": 7,
          "patk": 70,
@@ -310,10 +285,7 @@
          "code": "hel2",
          "frames": 55,
          "move": ["-",2],
-         "elements": [
-            "shadow",
-            "toxic"
-         ],
+         "elements": [9,7],
          "hp": 76,
          "dodge": 8,
          "patk": 89,
@@ -341,10 +313,7 @@
          "code": "goat2_1",
          "frames": 90,
          "move": ["=",1],
-         "elements": [
-            "wind",
-            "lightning"
-         ],
+         "elements": [6,5],
          "hp": 86,
          "dodge": 9,
          "patk": 74,
@@ -372,10 +341,7 @@
          "code": "goat2_2",
          "frames": 90,
          "move": ["+",1],
-         "elements": [
-            "wind",
-            "fire"
-         ],
+         "elements": [6,3],
          "hp": 86,
          "dodge": 9,
          "patk": 74,
