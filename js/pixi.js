@@ -2811,6 +2811,13 @@ function calculateDamage(attacker, defender, hitArray){
 	}else{
 		skillOther = true;
 	}
+
+	var STAB = 1;
+	attacker.elements.forEach(creatureElement =>{
+		if(creatureElement == skillsList.data.skills[selectedSkill].element){
+			STAB = 1.5;
+		}
+	});
 	defender.forEach((targeted, targetedIndex) => {
 		targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
 		targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
@@ -2959,7 +2966,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 					}
-					var finalDmgCalc = Math.floor(damageCalc * critMultiplier * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
+					var finalDmgCalc = Math.floor(damageCalc * ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100));
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
 					console.log("finalDmgCalc: " + finalDmgCalc);
 					totalDamage += finalDmgCalc;
