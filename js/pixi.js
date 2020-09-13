@@ -2818,6 +2818,7 @@ function calculateDamage(attacker, defender, hitArray){
 			STAB = 1.5;
 		}
 	});
+	console.log("STAB: " + STAB);
 	defender.forEach((targeted, targetedIndex) => {
 		targeted.dmgContainer.dmgPopup.dmgEffective.visible = true;
 		targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
