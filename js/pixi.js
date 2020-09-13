@@ -2967,7 +2967,7 @@ function calculateDamage(attacker, defender, hitArray){
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
 
-					critTracker.push(ifCrit);
+					critTracker.push(finalDmgCalc-damageCalc);
 					dmgNumbers.push(finalDmgCalc);
 				}
 			}
