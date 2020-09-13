@@ -2969,7 +2969,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 					}
-					var finalDmgCalc = Math.floor(damageCalc *);
+					var finalDmgCalc = Math.floor(damageCalc * critMultiplier);
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
 					console.log("finalDmgCalc: " + finalDmgCalc);
 					totalDamage += finalDmgCalc;
