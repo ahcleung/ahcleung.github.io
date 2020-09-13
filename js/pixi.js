@@ -2795,7 +2795,7 @@ function calculateDamage(attacker, defender, hitArray){
 	var dmgArray = [];
 	var level = attacker.level;
 	var attack = 0;
-	var SEAB = 1.5;
+	var SEAB = 1;
 	// var attackerElements = [];
 	var defense = 1;
 	// var defenderElements = [];
@@ -2951,7 +2951,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 			var randomMod = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
 			console.log("randomMod: " + randomMod);
-			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
+			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
 			console.log("damageCalc: " + damageCalc);
 
 			var dmgNumbers = [];
