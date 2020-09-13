@@ -2920,9 +2920,9 @@ function calculateDamage(attacker, defender, hitArray){
 				defense = targeted.sdef;
 			}
 			targeted.elements.forEach(element =>{
-				console.log("effectiveness: " + skillsList.data.skills[selectedSkill].element-1);
-				console.log("effectiveness: " + element);
-				console.log("effectiveness: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element]);
+				// console.log("effectiveness: " + skillsList.data.skills[selectedSkill].element-1);
+				// console.log("effectiveness: " + element);
+				// console.log("effectiveness: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element]);
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element];
 			});
 			console.log("effectiveness: " + effectiveness);
@@ -2956,7 +2956,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 			var randModifier = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
 
-			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness);
+			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB*randModifier);
 			console.log("damageCalc: " + damageCalc);
 
 			var dmgNumbers = [];
