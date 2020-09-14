@@ -1,6 +1,20 @@
 {
    "elements" : [
     {
+      "name": "element",
+      "effect": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,    
+        0,
+        0
+      ]
+    },
+    {
       "name": "Flora",
       "effect": [
         0.5,
