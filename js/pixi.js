@@ -2924,8 +2924,8 @@ function calculateDamage(attacker, defender, hitArray){
 				console.log("effectiveness: " + element1);
 				var element2 = element-1;
 				console.log("effectiveness: " + element2);
-				console.log("effectiveness: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element]);
-				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element];
+				console.log("effectiveness: " + elementList.data.elements[element1]["effect"][element2]);
+				effectiveness *= elementList.data.elements[element1]["effect"][element2];
 			});
 			console.log("effectiveness: " + effectiveness);
 			if(effectiveness == 0.25 && !skillHeal){
