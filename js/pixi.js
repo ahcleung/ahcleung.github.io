@@ -2920,8 +2920,10 @@ function calculateDamage(attacker, defender, hitArray){
 				defense = targeted.sdef;
 			}
 			targeted.elements.forEach(element =>{
-				console.log("effectiveness: " + skillsList.data.skills[selectedSkill].element);
-				console.log("effectiveness: " + element);
+				var element1 = skillsList.data.skills[selectedSkill].element-1;
+				console.log("effectiveness: " + element1);
+				var element2 = element-1;
+				console.log("effectiveness: " + element2);
 				console.log("effectiveness: " + elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element]);
 				effectiveness *= elementList.data.elements[skillsList.data.skills[selectedSkill].element-1]["effect"][element];
 			});
