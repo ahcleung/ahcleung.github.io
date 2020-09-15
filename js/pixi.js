@@ -2973,6 +2973,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 					critTracker.push(finalDmgCalc-damageCalc);
 					dmgNumbers.push(finalDmgCalc);
+					dmgArray.push([dmgNumbers,critTracker]);
 				}
 			}
 
@@ -3058,7 +3059,7 @@ function calculateDamage(attacker, defender, hitArray){
 				resizeStatus(targeted);
 			}
 
-			dmgArray.push([dmgNumbers,critTracker]);
+			
 		}else{
 			targeted.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
 			targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
