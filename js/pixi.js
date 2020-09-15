@@ -3023,7 +3023,6 @@ function calculateDamage(attacker, defender, hitArray){
 							width: targeted.healthBar.critDmgBar.width
 						}, {ease:Expo.easeIn, width:newCritWidth});
 					targeted.healthBar.critDmgBar.animate = critBarTween;
-
 				}
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
@@ -3080,7 +3079,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			arrayCreature.action.dMissTween.play(0);
 			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
-			arrayCreature.healthBar.critDmgBar.animate.play(0);
 		});
 
 		actionContainer.addChild(attacker.action);
@@ -3106,6 +3104,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 						});
 						if(animateHealth){
 							defender.forEach(arrayCreature=>{
+								arrayCreature.healthBar.critDmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
