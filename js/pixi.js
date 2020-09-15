@@ -1991,7 +1991,7 @@ function onAdditionalSkipDown(){
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
 	var creatureStatusInfo = [];
-	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nCrit: " + this.critDmg + "\nStats: " + this.object.statMod);
+	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nCrit: " + this.object.critDmg + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		console.log(status);
 		var tracker = false;
