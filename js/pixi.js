@@ -2973,10 +2973,11 @@ function calculateDamage(attacker, defender, hitArray){
 
 					critTracker.push(finalDmgCalc-damageCalc);
 					dmgNumbers.push(finalDmgCalc);
-					dmgArray.push([dmgNumbers,critTracker]);
+					dmgArray.push([dmgNumbers,critTracker]);	//May not need dmgNumber and critTracker
 				}
 			}
 
+			//Move on top of skill damage calculations
 			if(skillHeal){
 				totalDamage = skillsList.data.skills[selectedSkill].heal;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
@@ -3070,7 +3071,7 @@ function calculateDamage(attacker, defender, hitArray){
 			targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
 			targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = 0;
 
-			dmgArray.push([[0],[false]]);
+			dmgArray.push([[0],[0]]);
 		}
 	});
 	return dmgArray;
