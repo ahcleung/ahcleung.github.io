@@ -1991,7 +1991,7 @@ function onAdditionalSkipDown(){
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
 	var creatureStatusInfo = [];
-	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
+	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nCrit: " + this.critDmg + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		console.log(status);
 		var tracker = false;
@@ -3015,7 +3015,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}else{
 				targeted.damage(totalDamage);
 				if(critDamage > 0){
-					targeted.damage(critDamage);
+					targeted.criticalHit(critDamage);
 					var newCritWidth = -(targeted.healthBar.outer.width * (targeted.critDmg/targeted.overallHP));
 					var critBarTween = new TimelineMax({paused:true});
 					critBarTween.fromTo(targeted.healthBar.critDmgBar
