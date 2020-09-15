@@ -2805,6 +2805,8 @@ function calculateDamage(attacker, defender, hitArray){
 	var critDamage = 0;
 	var skillHeal = false;
 	var skillOther = false;
+	var skillStatus = false;
+	var targetStatus = [];
 
 	if(skillsList.data.skills[selectedSkill].type == "phy"){
 		attack = attacker.patk;
@@ -2842,27 +2844,10 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 
 				if(tagName == "status"){
-					var newStatus = [skillsList.data.skills[selectedSkill].status, 1];
-					for(var i = 0; i < 3; i++){
-						targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
-						targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
-					}
-					var statusStored = false;
-					targeted.statusArray.forEach(storedStatus =>{
-						if(storedStatus[0] == newStatus[0])		statusStored = true;
-					});
+					skillStatus = true;
+					targetStatus.push([skillsList.data.skills[selectedSkill].status, 1]);
 
-					if(!statusStored){
-						let newStatusEffect = statusEffectSprite(newStatus[0]);				
-						newStatusEffect.visible = false;
-						targeted.healthBar.addChild(newStatusEffect);
-						targeted.statusSpriteArray.push(newStatusEffect);
-					}
-					targeted.dmgContainer.dmgStatus.statusImageArray[0].visible = true;
-					targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
-					updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
-					targeted.statusArray.push(newStatus);
-					resizeStatus(targeted);
+					
 				}
 				
 				if(tagName == "statchange"){
@@ -3025,6 +3010,7 @@ function calculateDamage(attacker, defender, hitArray){
 							targeted.newCrit = false;
 						}});
 					targeted.healthBar.critDmgBar.animate = critBarTween;
+					targetStatus.push([14]);
 				}
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
@@ -3045,6 +3031,31 @@ function calculateDamage(attacker, defender, hitArray){
 			if(skillsList.data.skills[selectedSkill].type == "oth" && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			}
+
+			if(skillStatus){
+				for(var i = 0; i < 3; i++){
+					targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
+					targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
+				}
+				targetStatus.forEach(statusElement=>{
+					var statusStored = false;
+					targeted.statusArray.forEach((storedStatus, statusIndex) =>{
+						if(storedStatus[0] == statusElement[0])		statusStored = true;
+					});
+
+					if(!statusStored){
+						let newStatusEffect = statusEffectSprite(statusElement[0]);				
+						newStatusEffect.visible = false;
+						targeted.healthBar.addChild(newStatusEffect);
+						targeted.statusSpriteArray.push(newStatusEffect);
+					}
+					targeted.dmgContainer.dmgStatus.statusImageArray[statusIndex].visible = true;
+					targeted.dmgContainer.dmgStatus.statusTextArray[statusIndex].visible = true;
+					updateDmgStatus(targeted.dmgContainer, statusElement[0], statusIndex);
+					targeted.statusArray.push(statusElement);
+				});
+				resizeStatus(targeted);
 			}
 
 			dmgArray.push([dmgNumbers,critTracker]);
