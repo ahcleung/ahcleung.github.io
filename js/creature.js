@@ -22,6 +22,8 @@ class Creature{
 		
 		// this.critDmg = Math.floor(Math.random() * 25) + 10;
 		this.critDmg = 0;
+		this.newCrit = false;
+		this.newMove = false;
 		
 		const creatureList = resources["js/creatures.json"];				//Load creature JSON list
 		
@@ -87,6 +89,7 @@ class Creature{
 	}
 
 	criticalHit(critAmount){
+		this.newCrit = true;
 		this.critDmg += critAmount;
 		this.EHP = this.overallHP - this.critDmg;
 	}
