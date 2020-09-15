@@ -2802,6 +2802,7 @@ function calculateDamage(attacker, defender, hitArray){
 	var effectiveness = 1;
 	var skillPower = skillsList.data.skills[selectedSkill].power;
 	var totalDamage = 0;
+	var critDamage = 0;
 	var skillHeal = false;
 	var skillOther = false;
 
@@ -2980,6 +2981,7 @@ function calculateDamage(attacker, defender, hitArray){
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
 					console.log("finalDmgCalc: " + finalDmgCalc);
 					totalDamage += finalDmgCalc;
+					critDamage += finalDmgCalc-damageCalc;
 
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
@@ -3012,6 +3014,17 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
+				if(critDamage > 0){
+					targeted.damage(critDamage);
+					var newCritWidth = -(targeted.healthBar.outer.width * (targeted.critDmg/targeted.overallHP));
+					var critBarTween = new TimelineMax({paused:true});
+					critBarTween.fromTo(targeted.healthBar.critDmgBar
+						, 1, {
+							width: targeted.healthBar.critDmgBar.width
+						}, {ease:Expo.easeIn, width:newCritWidth});
+					targeted.healthBar.critDmgBar.animate = critBarTween;
+
+				}
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 				targeted.healthBar.dmgBarContainer.dmgBar.visible = true;
@@ -3067,6 +3080,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			arrayCreature.action.dMissTween.play(0);
 			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+			arrayCreature.healthBar.critDmgBar.animate.play(0);
 		});
 
 		actionContainer.addChild(attacker.action);
