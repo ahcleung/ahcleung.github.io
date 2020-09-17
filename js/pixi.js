@@ -2985,6 +2985,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.heal(totalDamage);
 				dmgNumbers.push(totalDamage);
 				critTracker.push(false);
+				dmgArray.push([dmgNumbers,critTracker]);
 
 				var newWidth = (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP)) - targeted.healthBar.inner.width;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.inner.width;
