@@ -2056,39 +2056,39 @@ function onHPDown(){
 				if(statusNum == 4 || statusNum == 2){
 					switch(status[2]+1){
 						case 1:
-							console.log("HP " + status[3] + " [" + status[1] + "]");
+							console.log("	HP " + status[3] + " [" + status[1] + "]");
 							break;
 						case 2:
-							console.log("Dodge " + status[3] + " [" + status[1] + "]");
+							console.log("	Dodge " + status[3] + " [" + status[1] + "]");
 							break;
 						case 3:
-							console.log("Physical attack " + status[3] + " [" + status[1] + "]");
+							console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
 							break;
 						case 4:
-							console.log("Physical defense " + status[3] + " [" + status[1] + "]");
+							console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
 							break;
 						case 5:
-							console.log("Special attack " + status[3] + " [" + status[1] + "]");
+							console.log("	Special attack " + status[3] + " [" + status[1] + "]");
 							break;
 						case 6:
-							console.log("Special defense " + status[3] + " [" + status[1] + "]");
+							console.log("	Special defense " + status[3] + " [" + status[1] + "]");
 							break;
 						case 7:
-							console.log("Speed " + status[3] + " [" + status[1] + "]");
+							console.log("	Speed " + status[3] + " [" + status[1] + "]");
 							break;
 						case 8:
-							console.log("Accuracy " + status[3] + " [" + status[1] + "]");
+							console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
 							break;
 					}					
 				}
 				if(statusNum == 14){
-					console.log("-" + this.object.critDmg);
+					console.log("	-" + this.object.critDmg);
 				}
 				if(statusNum == 3){
-					console.log("10 Dmg" + " [" + status[1] + "]");
+					console.log("	10 Dmg" + " [" + status[1] + "]");
 				}
 				if(statusNum == 8){
-					console.log("[" + status[1] + "]");
+					console.log("	[" + status[1] + "]");
 				}
 			}
 		});
