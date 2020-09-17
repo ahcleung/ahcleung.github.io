@@ -2945,8 +2945,8 @@ function calculateDamage(attacker, defender, hitArray){
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
 			// console.log("damageCalc: " + damageCalc);
 
-			var dmgNumbers = [];
-			var critTracker = [];
+			// var dmgNumbers = [];
+			// var critTracker = [];
 			if(!skillOther){
 				for(var i = 0; i < multiHitNum; i++){
 					var randModifier = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
@@ -2971,21 +2971,20 @@ function calculateDamage(attacker, defender, hitArray){
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].visible = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray[i].text = finalDmgCalc;
 
-					critTracker.push(finalDmgCalc-damageCalc);
-					dmgNumbers.push(finalDmgCalc);
-					dmgArray.push([dmgNumbers,critTracker]);	//May not need dmgNumber and critTracker
+					// critTracker.push(finalDmgCalc-damageCalc);
+					// dmgNumbers.push(finalDmgCalc);
+					dmgArray.push([finalDmgCalc,finalDmgCalc-damageCalc]);	//May not need dmgNumber and critTracker
 				}
 			}
 
-			//Move on top of skill damage calculations
 			if(skillHeal){
 				totalDamage = skillsList.data.skills[selectedSkill].heal;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = totalDamage;
 				targeted.heal(totalDamage);
-				dmgNumbers.push(totalDamage);
-				critTracker.push(false);
-				dmgArray.push([dmgNumbers,critTracker]);
+				// dmgNumbers.push(totalDamage);
+				// critTracker.push(false);
+				dmgArray.push([totalDamage,0]);
 
 				var newWidth = (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP)) - targeted.healthBar.inner.width;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.inner.width;
