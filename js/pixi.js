@@ -2949,6 +2949,7 @@ function calculateDamage(attacker, defender, hitArray){
 			// var dmgNumbers = [];
 			// var critTracker = [];
 			if(!skillOther){
+				var ifCrit = false;
 				for(var i = 0; i < multiHitNum; i++){
 					var randModifier = ((Math.floor(Math.random() * (100 - 85 + 1) + 85))/100);
 					damageCalc = Math.floor(damageCalc*randModifier);
@@ -2956,14 +2957,12 @@ function calculateDamage(attacker, defender, hitArray){
 
 					var criticalChance = Math.floor(Math.random() * 10000);
 					var critMultiplier = 1;
-					var ifCrit = false;
 					if(criticalChance > 5000){
 						critMultiplier = 1.5;
 						ifCrit = true;
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 						skillStatus = true;
-						targetStatus.push([14]);
 					}
 					var finalDmgCalc = Math.floor(damageCalc * critMultiplier);
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
@@ -2978,6 +2977,7 @@ function calculateDamage(attacker, defender, hitArray){
 					// dmgNumbers.push(finalDmgCalc);
 					dmgArray.push([finalDmgCalc,finalDmgCalc-damageCalc]);	//May not need dmgNumber and critTracker
 				}
+				if(ifCrit)		targetStatus.push([14]);
 			}
 
 			if(skillHeal){
