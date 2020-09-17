@@ -2785,7 +2785,7 @@ function calculateHit(attacker, defender){
 		}
 		var hitRoll = Math.random();
 
-		console.log("AccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + " HitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
+		console.log("AccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + "\nHitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
 
 		if(hitRoll < hitChance){
 			hitArray.push(true);
