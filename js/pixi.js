@@ -2820,7 +2820,6 @@ function calculateDamage(attacker, defender, hitArray){
 	}else{
 		skillOther = true;
 	}
-
 	
 	attacker.elements.forEach(creatureElement =>{
 		if(creatureElement == skillsList.data.skills[selectedSkill].element)		SEAB = 1.5;
@@ -2912,13 +2911,9 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 			targeted.elements.forEach(element =>{
 				var element1 = skillsList.data.skills[selectedSkill].element-1;
-				// console.log("effectiveness: " + element1);
 				var element2 = element-1;
-				// console.log("effectiveness: " + element2);
-				// console.log("effectiveness: " + elementList.data.elements[element1]["effect"][element2]);
 				effectiveness *= elementList.data.elements[element1]["effect"][element2];
 			});
-			console.log("effectiveness: " + effectiveness);
 			if(effectiveness == 0.25 && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
 				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
@@ -2948,6 +2943,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
+			console.log("Level: " level + " SkillPower: " + skillPower + " Attack: " + attack + " Defense: " + defense + " Effectiveness: " + effectiveness + " SEAB: " + SEAB);
 			// console.log("damageCalc: " + damageCalc);
 
 			// var dmgNumbers = [];
