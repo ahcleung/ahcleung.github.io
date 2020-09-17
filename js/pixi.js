@@ -2897,7 +2897,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
 						updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
 						targeted.statusArray.push(newStatus);
-						selectedVita.statMod[newStatus[2]] += newStatus[3];
+						targeted.statMod[newStatus[2]] += newStatus[3];
 						resizeStatus(targeted);
 					}					
 				}
