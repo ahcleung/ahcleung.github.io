@@ -2722,6 +2722,8 @@ function onCreatureDown(){
 			});
 			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
 			console.log(dmgArray);
+			console.log(dmgArray[0]);
+			console.log(dmgArray[0][0]);
 			dmgArray.forEach(dmgValue => {
 				if(dmgValue[0][0] > 0)				animateHealth = true;
 			});
