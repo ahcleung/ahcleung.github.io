@@ -2963,7 +2963,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
 						skillStatus = true;
-						targetStatus.push(14);
+						targetStatus.push([14]);
 					}
 					var finalDmgCalc = Math.floor(damageCalc * critMultiplier);
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
@@ -3015,7 +3015,7 @@ function calculateDamage(attacker, defender, hitArray){
 							targeted.newCrit = false;
 						}});
 					targeted.healthBar.critDmgBar.animate = critBarTween;
-					targetStatus.push([14]);
+					// targetStatus.push([14]);
 				}
 				var newWidth = targeted.healthBar.inner.width - (targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP));
 				targeted.healthBar.dmgBarContainer.dmgBar.width = newWidth;
