@@ -2879,6 +2879,7 @@ function calculateDamage(attacker, defender, hitArray){
 						selectedVita.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
 						updateDmgStatus(selectedVita.dmgContainer, newStatus[0], 0);
 						selectedVita.statusArray.push(newStatus);
+						selectedVita.statMod[newStatus[2]] += newStatus[3];
 						resizeStatus(selectedVita);
 					}else{
 						var statusStored = false;
@@ -2896,6 +2897,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgStatus.statusTextArray[0].visible = true;
 						updateDmgStatus(targeted.dmgContainer, newStatus[0], 0);
 						targeted.statusArray.push(newStatus);
+						selectedVita.statMod[newStatus[2]] += newStatus[3];
 						resizeStatus(targeted);
 					}					
 				}
