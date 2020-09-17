@@ -2785,6 +2785,8 @@ function calculateHit(attacker, defender){
 		}
 		var hitRoll = Math.random();
 
+		console.log("AccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + " HitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
+
 		if(hitRoll < hitChance){
 			hitArray.push(true);
 		}else{
@@ -2910,10 +2912,10 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 			targeted.elements.forEach(element =>{
 				var element1 = skillsList.data.skills[selectedSkill].element-1;
-				console.log("effectiveness: " + element1);
+				// console.log("effectiveness: " + element1);
 				var element2 = element-1;
-				console.log("effectiveness: " + element2);
-				console.log("effectiveness: " + elementList.data.elements[element1]["effect"][element2]);
+				// console.log("effectiveness: " + element2);
+				// console.log("effectiveness: " + elementList.data.elements[element1]["effect"][element2]);
 				effectiveness *= elementList.data.elements[element1]["effect"][element2];
 			});
 			console.log("effectiveness: " + effectiveness);
