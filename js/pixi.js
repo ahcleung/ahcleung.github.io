@@ -2721,11 +2721,12 @@ function onCreatureDown(){
 				if(hitValue && tagStatus)		animateStatus = true;
 			});
 			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
-			console.log(dmgArray);
-			console.log(dmgArray[0]);
-			console.log(dmgArray[0][0]);
+			console.log("Damage: " + dmgArray);
+			// console.log(dmgArray[0]);
+			// console.log(dmgArray[0][0]);
 			dmgArray.forEach(dmgValue => {
 				if(dmgValue[0] > 0)				animateHealth = true;
+				if(dmgValue[1] > 0)				animateStatus = true;
 			});
 		}else{
 			console.log("Invalid skill target");
