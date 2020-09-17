@@ -1993,7 +1993,7 @@ function onHPDown(){
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nCrit: " + this.object.critDmg + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
-		console.log(status);
+		// console.log(status);
 		var tracker = false;
 		creatureStatusInfo.forEach(statusTracked =>{
 			if(statusTracked == status[0])		tracker = true;
@@ -2848,7 +2848,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 				if(tagName == "status"){
 					skillStatus = true;
-					targetStatus.push([skillsList.data.skills[selectedSkill].status, 1]);
+					targetStatus.push([skillsList.data.skills[selectedSkill].status, skillsList.data.skills[selectedSkill].turns]);
 				}
 				
 				if(tagName == "statchange"){
