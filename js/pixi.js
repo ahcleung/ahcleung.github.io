@@ -3043,6 +3043,7 @@ function calculateDamage(attacker, defender, hitArray){
 					targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
 					targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
 				}
+				console.log("Status: " + targetStatus);
 				targetStatus.forEach((statusElement, statusIndex)=>{
 					var statusStored = false;
 					targeted.statusArray.forEach(storedStatus =>{
