@@ -2848,8 +2848,6 @@ function calculateDamage(attacker, defender, hitArray){
 				if(tagName == "status"){
 					skillStatus = true;
 					targetStatus.push([skillsList.data.skills[selectedSkill].status, 1]);
-
-					
 				}
 				
 				if(tagName == "statchange"){
@@ -2963,6 +2961,8 @@ function calculateDamage(attacker, defender, hitArray){
 						ifCrit = true;
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.fill = '#ff7b00';
 						targeted.dmgContainer.dmgPopup.dmgNumArray[i].style.stroke = '#4E2600';
+						skillStatus = true;
+						targetStatus.push(14);
 					}
 					var finalDmgCalc = Math.floor(damageCalc * critMultiplier);
 					if(finalDmgCalc == 0)	finalDmgCalc = 1;
