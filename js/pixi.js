@@ -3121,23 +3121,25 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 						arrayCreature.statusSpriteArray.forEach(statusSprite=>{
 							statusSprite.visible = true;
 						});
-						if(animateHealth){
-							defender.forEach(arrayCreature=>{
-								if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									if(userInput)	endTurn();
-								});
-							});
-							console.log("animateHealth");
-						}else{
-							if(userInput)	endTurn();
-						}
+						// if(animateHealth){
+						// 	defender.forEach(arrayCreature=>{
+						// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+						// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+						// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+						// 			arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+						// 			if(userInput)	endTurn();
+						// 		});
+						// 	});
+						// 	console.log("animateHealth");
+						// }else{
+						// 	if(userInput)	endTurn();
+						// }
 					});
 				});
 
-			}else if(animateHealth){
+			}
+
+			if(animateHealth){
 				defender.forEach(arrayCreature=>{
 					if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
 					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
