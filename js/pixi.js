@@ -2725,7 +2725,7 @@ function onCreatureDown(){
 			console.log(dmgArray[0]);
 			console.log(dmgArray[0][0]);
 			dmgArray.forEach(dmgValue => {
-				if(dmgValue[0][0] > 0)				animateHealth = true;
+				if(dmgValue[0] > 0)				animateHealth = true;
 			});
 		}else{
 			console.log("Invalid skill target");
