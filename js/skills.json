@@ -215,7 +215,7 @@
 			],
 			"multiple": [2,2],
 			"turns": 5,
-			"statchange": [false,6,-1],
+			"statchange": [false,1,-1],
 			"status": 8
 		},
 		{
