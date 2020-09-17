@@ -53,7 +53,8 @@ class Creature{
 			creatureList.data.creatures[this.id].sdef + this.statDis[5],
 			creatureList.data.creatures[this.id].spd + this.statDis[6]
 		];
-		
+
+		// 0, 	  1,    2,    3,    4,    5,   6,   7
 		//hp, dodge, patk, pdef, satk, sdef, spd, acc
 		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
 		this.statusArray = [
