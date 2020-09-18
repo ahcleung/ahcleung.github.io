@@ -3776,14 +3776,20 @@ function selectCreature(object2){
 	var newSkills = [];
 	var currPos = [];
 
-	var dmgStatus = [];
+	var dmgStatusArray = [];
 	selectedVita.statusArray.forEach(storedStatus =>{
 		if(storedStatus[0] == 1 || storedStatus[0] == 3 || storedStatus[0] == 5 || storedStatus[0] == 9 || storedStatus[0] == 10){
-			dmgStatus.push(storedStatus[0]);
+			dmgStatusArray.push(storedStatus[0]);
 		}
 	});
 
-	console.log(dmgStatus);
+	console.log(dmgStatusArray);
+	dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+	});
+
+	selectedVita.dmgContainer.dmgPopup.tween.play(0);
 
 	selectSpriteTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
