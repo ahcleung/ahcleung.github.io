@@ -1140,6 +1140,7 @@ function createSprite(direction, item, index){
 		dmgNum.anchor.set(0.5, 0.5);
 		if (i%2 != 0)	dmgNum.x = 50;
 		dmgNum.y = -(i*50);
+		dmgNum.visible = false;
 		dmgNumArray.push(dmgNum);
 		dmgPopup.addChild(dmgNum);
 	}
@@ -1156,6 +1157,7 @@ function createSprite(direction, item, index){
 	let dmgEffective = new Text ("Poor  x0.25", dmgEffectiveStyle);
 	dmgEffective.anchor.set(0.5, 0.5);
 	dmgEffective.y = 50;
+	dmgEffective.visible = false;
 	dmgPopup.addChild(dmgEffective);
 	dmgPopup.dmgEffective = dmgEffective;
 
@@ -3785,6 +3787,8 @@ function selectCreature(object2){
 
 	console.log(dmgStatusArray);
 	dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 	});
