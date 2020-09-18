@@ -3797,6 +3797,9 @@ function calculateTurnOrder(){
 
 function selectCreature(object2){	
 	userInput = false;
+	validSkillObjectArray = [];
+	validMoveObjectArray = [];
+	
 	selectedVita = object2;
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 	console.log("Turn: " + selectedVita.name);
