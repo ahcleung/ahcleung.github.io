@@ -3858,13 +3858,12 @@ function selectCreature(object2){
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 
 		selectedVita.dmgContainer.dmgPopup.tween.play(0);
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-			selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
+		selectedVita.dmgContainer.dmgPopup.tween.eventCallback("onComplete", function(){
+			selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+			selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
+			});
 		});
-		// selectedVita.dmgContainer.dmgPopup.tween.eventCallback("onComplete", function(){
-			
-		// });
 	}
 
 	selectSpriteTween = new TimelineMax({onComplete: function(){
