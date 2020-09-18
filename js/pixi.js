@@ -3099,7 +3099,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			animateArray.push(arrayCreature.sprite);
 			
 			arrayCreature.action.dMissTween.play(0);
-			arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+			arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
 		});
 
 		actionContainer.addChild(attacker.action);
