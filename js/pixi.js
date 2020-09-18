@@ -1096,13 +1096,14 @@ function createSprite(direction, item, index){
 	creatureAction.pReadyTween = pReadyTween;
 	creatureAction.pAtkTween = pAtkTween;
 
-	dMissTween = new TimelineMax({paused: true});
-	dMissTween.to(sprite_d_ready, 0, {alpha:1});
+	dReadyTween = new TimelineMax({paused: true});
+	dReadyTween.to(sprite_d_ready, 0, {alpha:1});
 	// dMissTween.to(creatureAction, 0.5, {x:0});
-	dMissTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
+	dReadyTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		sprite_d_miss.visible = true;
 	}});
+	dMissTween = new TimelineMax({paused: true});
 	dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
 		sprite_d_miss.visible = false;
 		creatureAction.visible = false;
@@ -1121,7 +1122,7 @@ function createSprite(direction, item, index){
 	// 	creatureAction.visible = false;
 	// 	actionContainer.removeChild(creatureAction);
 	// }});
-
+	creatureAction.dReadyTween = dReadyTween;
 	creatureAction.dMissTween = dMissTween;
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
@@ -3118,7 +3119,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature.sprite);
 			
-			// arrayCreature.action.pReadyTween.play(0);
+			arrayCreature.action.dReadyTween.play(0);
 			// arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
 		});
 		actionContainer.addChild(attacker.action);
