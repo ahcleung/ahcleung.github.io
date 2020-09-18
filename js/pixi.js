@@ -3785,15 +3785,41 @@ function selectCreature(object2){
 		}
 	});
 
-	console.log(dmgStatusArray);
-	dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
-		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
-		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
-		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
-		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-	});
+	if(dmgStatusArray.length > 0){
+		var dmgTotal = 0;
+		console.log(dmgStatusArray);
+		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
+			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
+			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
+			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
+			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+			dmgTotal += 10;
+		});
 
-	selectedVita.dmgContainer.dmgPopup.tween.play(0);
+		selectedVita.damage(dmgTotal);
+		var newWidth = selectedVita.healthBar.inner.width - (selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP));
+		selectedVita.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+		selectedVita.healthBar.dmgBarContainer.dmgBar.visible = true;
+		// selectedVita.healthBar.dmgBarContainer.dmgBar.animate.kill();
+		var dmgBarTween = new TimelineMax({paused:true});
+		dmgBarTween.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
+			, 1, {
+				width: newWidth
+			}, {ease:Expo.easeIn, width:0, onComplete: function(){
+				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
+		}});
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
+		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
+		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
+
+		selectedVita.dmgContainer.dmgPopup.tween.play(0);
+		selectedVita.dmgContainer.dmgPopup.tween.eventCallback("onComplete", function(){
+			selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+			selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
+			});
+		});
+	}
 
 	selectSpriteTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
