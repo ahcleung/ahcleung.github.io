@@ -3847,8 +3847,23 @@ function selectCreature(object2){
 		var dmgTotal = 0;
 		console.log(dmgStatusArray);
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
-			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
-			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
+			if(dmgStatus == 1){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
+			}else if (dmgStatus == 3){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
+			}else if (dmgStatus == 5){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
+			}else if (dmgStatus == 9){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
+			}else if (dmgStatus == 10){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
+			}
+			
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 			dmgTotal += 10;
