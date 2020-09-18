@@ -3168,6 +3168,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
 								statusSprite.visible = true;
 							});
+							if(userInput)	endTurn();
 							// if(animateHealth){
 							// 	defender.forEach(arrayCreature=>{
 							// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
