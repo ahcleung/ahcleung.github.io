@@ -2782,6 +2782,8 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid move target");	
 		}
+	}else{
+		console.log("Action not selected");	
 	}
 
 	animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
@@ -3799,7 +3801,7 @@ function selectCreature(object2){
 	userInput = false;
 	validSkillObjectArray = [];
 	validMoveObjectArray = [];
-	
+
 	selectedVita = object2;
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 	console.log("Turn: " + selectedVita.name);
