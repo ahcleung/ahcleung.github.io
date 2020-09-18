@@ -3776,6 +3776,15 @@ function selectCreature(object2){
 	var newSkills = [];
 	var currPos = [];
 
+	var dmgStatus = [];
+	selectedVita.statusArray.forEach(storedStatus =>{
+		if(storedStatus[0] == 1 || storedStatus[0] == 3 || storedStatus[0] == 5 || storedStatus[0] == 9 || storedStatus[0] == 10){
+			dmgStatus.push(storedStatus[0]);
+		}
+	});
+
+	console.log(dmgStatus);
+
 	selectSpriteTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
 		var selectWidth = selectedVita.healthBar.select.width;
