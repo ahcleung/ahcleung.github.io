@@ -3110,78 +3110,81 @@ function calculateDamage(attacker, defender, hitArray){
 
 function animationSequence(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove){
 	if(animateBattle){
-		var animateArray = [];
-		//Camera shake
-		TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
-			TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
-		}});
-
 		stageContainer.actionBlackTween.play(0);
-		defender.forEach(arrayCreature=>{
-			actionContainer.addChild(arrayCreature.action);
-			arrayCreature.action.visible = true;
-			arrayCreature.sprite.visible = false;
-			animateArray.push(arrayCreature.sprite);
-			
-			arrayCreature.action.dMissTween.play(0);
-			// arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
-		});
+		attacker.action.pReadyTween.play(0);
+		attacker.action.pReadyTween.eventCallback("onComplete", function(){
+			var animateArray = [];
+			//Camera shake
+			TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+				TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
+			}});
 
-		actionContainer.addChild(attacker.action);
-		attacker.action.visible = true;
-		attacker.sprite.visible = false;
-		animateArray.push(attacker.sprite);
-		attacker.action.pAtkTween.play(0);
-
-		attacker.action.pAtkTween.eventCallback("onComplete", function(){
-			animateArray.forEach(item =>{
-				item.visible = true;
-			});
 			defender.forEach(arrayCreature=>{
-				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+				actionContainer.addChild(arrayCreature.action);
+				arrayCreature.action.visible = true;
+				arrayCreature.sprite.visible = false;
+				animateArray.push(arrayCreature.sprite);
+				
+				arrayCreature.action.dMissTween.play(0);
+				// arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
 			});
-			if(animateStatus){
-				attacker.dmgContainer.dmgStatus.tween.play(0);
-				defender.forEach(arrayCreature=>{
-					arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-					arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-						attacker.statusSpriteArray.forEach(statusSprite=>{
-							statusSprite.visible = true;
-						});
-						arrayCreature.statusSpriteArray.forEach(statusSprite=>{
-							statusSprite.visible = true;
-						});
-						// if(animateHealth){
-						// 	defender.forEach(arrayCreature=>{
-						// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-						// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-						// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-						// 			arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-						// 			if(userInput)	endTurn();
-						// 		});
-						// 	});
-						// 	console.log("animateHealth");
-						// }else{
-						// 	if(userInput)	endTurn();
-						// }
-					});
-				});
 
-			}
+			actionContainer.addChild(attacker.action);
+			attacker.action.visible = true;
+			attacker.sprite.visible = false;
+			animateArray.push(attacker.sprite);
+			attacker.action.pAtkTween.play(0);
 
-			if(animateHealth){
-				defender.forEach(arrayCreature=>{
-					if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-						if(userInput)	endTurn();
-					});
+			attacker.action.pAtkTween.eventCallback("onComplete", function(){
+				animateArray.forEach(item =>{
+					item.visible = true;
 				});
-				console.log("animateHealth");
-			}else{
-				if(userInput)	endTurn();
-			}
+				defender.forEach(arrayCreature=>{
+					arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+				});
+				if(animateStatus){
+					attacker.dmgContainer.dmgStatus.tween.play(0);
+					defender.forEach(arrayCreature=>{
+						arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+						arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+							attacker.statusSpriteArray.forEach(statusSprite=>{
+								statusSprite.visible = true;
+							});
+							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+								statusSprite.visible = true;
+							});
+							// if(animateHealth){
+							// 	defender.forEach(arrayCreature=>{
+							// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+							// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+							// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+							// 			arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+							// 			if(userInput)	endTurn();
+							// 		});
+							// 	});
+							// 	console.log("animateHealth");
+							// }else{
+							// 	if(userInput)	endTurn();
+							// }
+						});
+					});
+
+				}
+
+				if(animateHealth){
+					defender.forEach(arrayCreature=>{
+						if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+							arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+							if(userInput)	endTurn();
+						});
+					});
+					console.log("animateHealth");
+				}else{
+					if(userInput)	endTurn();
+				}
+			});
 		});
 	}else if(animateMove){
 
