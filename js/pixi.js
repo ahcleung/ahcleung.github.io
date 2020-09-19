@@ -3144,6 +3144,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			attacker.action.pAtkTween.play(0);
 
+			 if(animateMove){
+				moveCreature(defender[0], defender[0].newMove);
+			}
+
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
 					item.visible = true;
@@ -3205,7 +3209,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			});
 		});
 	}
-	if(animateMove){
+	else if(animateMove){
 		moveCreature(defender[0], defender[0].newMove);
 	}
 }
