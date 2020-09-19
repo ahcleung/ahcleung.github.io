@@ -3186,7 +3186,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
 								statusSprite.visible = true;
 							});
-							if(userInput){
+							if(userInput && !animateHealth){
 								console.log("endTurn2");
 								endTurn();
 							}	
