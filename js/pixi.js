@@ -2881,6 +2881,10 @@ function calculateDamage(attacker, defender, hitArray){
 					skillStatus = true;
 					targetStatus.push([skillsList.data.skills[selectedSkill].status, skillsList.data.skills[selectedSkill].turns]);
 				}
+
+				if(tagName == "displace"){
+					targetStatus.newMove = skillsList.data.skills[selectedSkill].displace[0];
+				}
 				
 				if(tagName == "statchange"){
 					if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
@@ -3120,9 +3124,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature.sprite);
-			
 			arrayCreature.action.dReadyTween.play(0);
-			// arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
 		});
 		actionContainer.addChild(attacker.action);
 		animateArray.push(attacker.sprite);
@@ -3130,25 +3132,15 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		attacker.sprite.visible = false;		
 		attacker.action.pReadyTween.play(0);
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
-			
 			//Camera shake
 			TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 				TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 			}});
 
-			defender.forEach(arrayCreature=>{
-				// actionContainer.addChild(arrayCreature.action);
-				// arrayCreature.action.visible = true;
-				// arrayCreature.sprite.visible = false;
-				// animateArray.push(arrayCreature.sprite);
-				
+			defender.forEach(arrayCreature=>{				
 				arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
-				// arrayCreature.dmgContainer.dmgPopup.tween.play(0);			//remove delay maybe and push to oncomplete function below
 			});
-
-			
-			
 			
 			attacker.action.pAtkTween.play(0);
 
@@ -3156,9 +3148,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				animateArray.forEach(item =>{
 					item.visible = true;
 				});
-				// defender.forEach(arrayCreature=>{
-					
-				// });
 				if(animateStatus){
 					attacker.dmgContainer.dmgStatus.tween.play(0);
 					if(animateHealth){
@@ -3216,7 +3205,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			});
 		});
 	}else if(animateMove){
-
+		
 	}
 }
 
