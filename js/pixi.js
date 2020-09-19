@@ -3890,23 +3890,23 @@ function selectCreature(object2){
 		console.log("newWidth: " + newWidth);
 		selectedVita.healthBar.dmgBarContainer.dmgBar.visible = true;
 		// selectedVita.healthBar.dmgBarContainer.dmgBar.animate.kill();
-		var dmgBarTween2 = new TimelineMax({paused:true});
-		dmgBarTween2.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
+		var dmgBarTween = new TimelineMax({paused:true});
+		dmgBarTween.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
 			, 1, {
 				width: newWidth
-			}, {ease:Expo.easeIn, width:0, onComplete: function(){
+			}, {delay:0.1, ease:Expo.easeIn, width:0, onComplete: function(){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2 = dmgBarTween2;
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 		console.log("TWEEN");
 		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 
 		selectedVita.dmgContainer.dmgPopup.tween.play(0);
 		console.log("dmgPopup tween");
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2.play(0);
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 		console.log("dmgBar tween");
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2.eventCallback("onComplete", function(){
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 			selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
 			console.log("new HP");
 		});
