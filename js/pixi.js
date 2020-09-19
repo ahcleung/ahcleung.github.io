@@ -294,7 +294,7 @@ const enemy = [];
 enemy[0] = {
 	id: 9, level: 49, 
 	skill1: 4, skill2: 6, skill3: 1, skill4: 2,
-	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 0,
+	statDODG: 70, statHP: 20, statPATK: 0, statPDEF: 40, statSATK: 60, statSDEF: 0, statSPD: 60,
 	hero: false
 };
 enemy[1] = {
