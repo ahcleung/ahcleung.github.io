@@ -23,7 +23,7 @@ class Creature{
 		// this.critDmg = Math.floor(Math.random() * 25) + 10;
 		this.critDmg = 0;
 		this.newCrit = false;
-		this.newMove = false;
+		this.newMove = 0;
 		
 		const creatureList = resources["js/creatures.json"];				//Load creature JSON list
 		
