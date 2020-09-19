@@ -3168,7 +3168,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									if(userInput)	endTurn();
+									if(userInput){
+										console.log("endTurn1");
+										endTurn();
+									}	
 								});
 							}			
 						});
@@ -3183,7 +3186,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
 								statusSprite.visible = true;
 							});
-							if(userInput)	endTurn();
+							if(userInput){
+								console.log("endTurn2");
+								endTurn();
+							}	
 							// if(animateHealth){
 							// 	defender.forEach(arrayCreature=>{
 							// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
@@ -3208,13 +3214,19 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 								arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-								if(userInput)	endTurn();
+								if(userInput){
+									console.log("endTurn3");
+									endTurn();
+								}	
 							});
 						}
 					});
 					console.log("animateHealth");
 				}else{
-					if(userInput)	endTurn();
+					if(userInput){
+						console.log("endTurn4");
+						endTurn();
+					}	
 				}
 			});
 		});
@@ -3894,7 +3906,7 @@ function selectCreature(object2){
 		dmgBarTween.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
 			, 1, {
 				width: newWidth
-			}, {delay:0.1, ease:Expo.easeIn, width:0, onComplete: function(){
+			}, {ease:Expo.easeIn, width:0, onComplete: function(){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
