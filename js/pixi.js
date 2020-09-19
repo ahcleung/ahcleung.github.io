@@ -3256,6 +3256,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+				object.newMove = 0;
 				// if(userInput)	endTurn();
 			}});
 		});
@@ -3290,6 +3291,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+				object.newMove = 0;
 				// if(userInput)	endTurn();
 			}});
 		});
