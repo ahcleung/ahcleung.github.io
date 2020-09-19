@@ -3897,16 +3897,16 @@ function selectCreature(object2){
 			}, {ease:Expo.easeIn, width:0, onComplete: function(){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween2;
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2 = dmgBarTween2;
 		console.log("TWEEN");
 		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 
 		selectedVita.dmgContainer.dmgPopup.tween.play(0);
 		console.log("dmgPopup tween");
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2.play(0);
 		console.log("dmgBar tween");
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate2.eventCallback("onComplete", function(){
 			selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
 			console.log("new HP");
 		});
