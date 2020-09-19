@@ -3206,7 +3206,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		});
 	}
 	if(animateMove){
-		moveCreature(defender, defender.newMove);
+		moveCreature(defender[0], defender[0].newMove);
 	}
 }
 
