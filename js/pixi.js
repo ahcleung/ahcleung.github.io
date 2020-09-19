@@ -2883,7 +2883,7 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 
 				if(tagName == "displace"){
-					targetStatus.newMove = skillsList.data.skills[selectedSkill].displace[0];
+					targeted.newMove = skillsList.data.skills[selectedSkill].displace[0];
 				}
 				
 				if(tagName == "statchange"){
