@@ -3199,7 +3199,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				else if(animateHealth){
 					defender.forEach(arrayCreature=>{
 						if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+						if(arrayCreature.newHP)			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 						arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 							arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
 							if(userInput)	endTurn();
