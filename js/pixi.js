@@ -3019,6 +3019,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = totalDamage;
 				targeted.heal(totalDamage);
+				targeted.newHP = true;
 				// dmgNumbers.push(totalDamage);
 				// critTracker.push(false);
 				dmgArray.push([totalDamage,0]);
@@ -3038,6 +3039,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
+				targeted.newHP = true;
 				if(critDamage > 0){
 					targeted.criticalHit(critDamage);
 					var newCritWidth = -(targeted.healthBar.outer.width * (targeted.critDmg/targeted.overallHP));
@@ -3061,6 +3063,7 @@ function calculateDamage(attacker, defender, hitArray){
 						width: newWidth
 					}, {ease:Expo.easeIn, width:0, onComplete: function(){
 						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
+						targeted.newHP = false;
 				}});
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 				targeted.healthBar.dmgBarContainer.x = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
@@ -3157,7 +3160,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					if(animateHealth){
 						defender.forEach(arrayCreature=>{
 							if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+							if(arrayCreature.newHP)			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
 							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 								arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
 								if(userInput)	endTurn();
