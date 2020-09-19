@@ -3890,14 +3890,14 @@ function selectCreature(object2){
 		console.log("newWidth: " + newWidth);
 		selectedVita.healthBar.dmgBarContainer.dmgBar.visible = true;
 		// selectedVita.healthBar.dmgBarContainer.dmgBar.animate.kill();
-		var dmgBarTween = new TimelineMax({paused:true});
-		dmgBarTween.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
+		var dmgBarTween2 = new TimelineMax({paused:true});
+		dmgBarTween2.fromTo(selectedVita.healthBar.dmgBarContainer.dmgBar
 			, 1, {
 				width: newWidth
 			}, {ease:Expo.easeIn, width:0, onComplete: function(){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
-		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
+		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween2;
 		console.log("TWEEN");
 		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
