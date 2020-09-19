@@ -3882,8 +3882,9 @@ function selectCreature(object2){
 			console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
 
-		console.log("dmgTotal: " + dmgTotal);
+		console.log("dmgTotal1: " + selectedVita.hp);
 		selectedVita.damage(dmgTotal);
+		console.log("dmgTotal2: " + selectedVita.hp);
 		var newWidth = selectedVita.healthBar.inner.width - (selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP));
 		selectedVita.healthBar.dmgBarContainer.dmgBar.width = newWidth;
 		console.log("newWidth: " + newWidth);
