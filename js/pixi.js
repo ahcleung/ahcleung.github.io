@@ -3854,6 +3854,7 @@ function selectCreature(object2){
 	if(dmgStatusArray.length > 0){
 		var dmgTotal = 0;
 		console.log(dmgStatusArray);
+		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
 			if(dmgStatus == 1){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
