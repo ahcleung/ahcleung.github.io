@@ -3204,8 +3204,9 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				}
 			});
 		});
-	}else if(animateMove){
-		
+	}
+	if(animateMove){
+		moveCreature(defender, defender.newMove);
 	}
 }
 
