@@ -3144,7 +3144,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			
 			attacker.action.pAtkTween.play(0);
 
-			 if(animateMove){
+			if(animateMove){
 				moveCreature(defender[0], defender[0].newMove);
 			}
 
@@ -3256,7 +3256,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-				if(userInput)	endTurn();
+				// if(userInput)	endTurn();
 			}});
 		});
 	}else{
@@ -3290,7 +3290,7 @@ function moveCreature(movingCreature, displacement){
 			TweenMax.to(object.action, 0.5, {x: newCreatureX});
 			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
 			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-				if(userInput)	endTurn();
+				// if(userInput)	endTurn();
 			}});
 		});
 	}
