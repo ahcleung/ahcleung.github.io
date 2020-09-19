@@ -3199,7 +3199,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 							// }
 						});
 					});
-
 				}
 
 				else if(animateHealth){
@@ -3880,11 +3879,14 @@ function selectCreature(object2){
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 			dmgTotal += 10;
+			console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
 
+		console.log("dmgTotal: " + dmgTotal);
 		selectedVita.damage(dmgTotal);
 		var newWidth = selectedVita.healthBar.inner.width - (selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP));
 		selectedVita.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+		console.log("newWidth: " + newWidth);
 		selectedVita.healthBar.dmgBarContainer.dmgBar.visible = true;
 		// selectedVita.healthBar.dmgBarContainer.dmgBar.animate.kill();
 		var dmgBarTween = new TimelineMax({paused:true});
@@ -3895,13 +3897,17 @@ function selectCreature(object2){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
+		console.log("TWEEN");
 		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 
 		selectedVita.dmgContainer.dmgPopup.tween.play(0);
+		console.log("dmgPopup tween");
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+		console.log("dmgBar tween");
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 			selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
+			console.log("new HP");
 		});
 		// selectedVita.dmgContainer.dmgPopup.tween.eventCallback("onComplete", function(){
 			
