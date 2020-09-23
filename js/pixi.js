@@ -258,7 +258,7 @@ var spriteResizeXPosition = [];
 var heroHealthXPosition = [];
 
 var turnArray = [];					//Array for turn order
-var movedCreature = [];
+// var movedCreature = [];
 
 var validSkillObjectArray = [];			//Array of valid skill targets
 var validMoveObjectArray = [];			//Array of vaild move targ
@@ -3152,7 +3152,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			attacker.action.pAtkTween.play(0);
 
 			if(animateMove){
-				moveCreature(defender[0], defender[0].newMove);
+				var movedCreatureArray = moveCreature(defender[0], defender[0].newMove);
+				movedCreatureArray.forEach(creatureObject=>{
+					creatureObject.moveTween.play(0);
+				});
 			}
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
@@ -3232,7 +3235,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		});
 	}
 	else if(animateMove){
-		moveCreature(defender[0], defender[0].newMove);
+		var movedCreatureArray = moveCreature(defender[0], defender[0].newMove);
+		movedCreatureArray.forEach(creatureObject=>{
+			creatureObject.moveTween.play(0);
+		});
 	}
 }
 
@@ -3242,7 +3248,7 @@ function moveCreature(movingCreature, displacement){
 	console.log(movingCreature.name + " wants to move shift: " + displacement);
 	var moveFrom, moveTo;
 	var tempArray = [];
-	movedCreature = []
+	var movedCreature = [];
 	if(movingCreature.hero){
 		heroArray.forEach((object,objectIndex)=>{
 			if(movingCreature == object)		moveFrom = objectIndex;
@@ -3274,13 +3280,23 @@ function moveCreature(movingCreature, displacement){
 
 			newHPX = heroHealthXPosition[object.pos-1+switcher];
 
-			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+			var moveTween = new TimelineMax({paused:true});
+			moveTween.to(object.sprite, 0.5, {x: newCreatureX});
+			moveTween.to(object.action, 0.5, {x: newCreatureX});
+			moveTween.to(object.healthBar, 0.5, {x: newHPX});
+			moveTween.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				object.newMove = 0;
 				// if(userInput)	endTurn();
 			}});
+
+			object.moveTween = moveTween;
+			// TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			// TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			// TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			// TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+			// 	object.newMove = 0;
+			// 	// if(userInput)	endTurn();
+			// }});
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
@@ -3309,15 +3325,26 @@ function moveCreature(movingCreature, displacement){
 			newCreatureX = spriteResizeXPosition[object.pos-1];
 			newHPX = spriteResizeXPosition[object.pos-1];
 
-			TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+			var moveTween = new TimelineMax({paused:true});
+			moveTween.to(object.sprite, 0.5, {x: newCreatureX});
+			moveTween.to(object.action, 0.5, {x: newCreatureX});
+			moveTween.to(object.healthBar, 0.5, {x: newHPX});
+			moveTween.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				object.newMove = 0;
 				// if(userInput)	endTurn();
 			}});
+
+			object.moveTween = moveTween;
+			// TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
+			// TweenMax.to(object.action, 0.5, {x: newCreatureX});
+			// TweenMax.to(object.healthBar, 0.5, {x: newHPX});
+			// TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
+			// 	object.newMove = 0;
+			// 	// if(userInput)	endTurn();
+			// }});
 		});
 	}
+	return movedCreature;
 }
 
 function animateBattle(attacker, defender){
