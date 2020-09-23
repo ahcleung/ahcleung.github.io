@@ -2679,6 +2679,7 @@ function onCreatureDown(){
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("================================  DAMAGE  CALCULATIONS  ================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
+	var targetedVitaIndex = 0;
 	var animateBattle = false;
 	var animatePopup = false;
 	var animateMove = false;
@@ -2689,8 +2690,7 @@ function onCreatureDown(){
 	if(validSkillObjectArray.length > 0){
 		skillContainerArray.forEach(skillContainer=>{
 			skillContainer.interactive = false;
-		});
-		var targetedVitaIndex = 0;
+		});		
 		var tagSplash = false;
 		var tagMultiple = false;
 		var tagStatus = false;
@@ -2759,6 +2759,7 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid skill target");
 		}
+		animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
 	}else if(validMoveObjectArray.length > 0){
 		var targetedVita = 0;
 		validMoveObjectArray.forEach((targeted, targetedIndex) => {
@@ -2767,12 +2768,14 @@ function onCreatureDown(){
 					if(this.object == arrayElement){
 						correctTarget = true;
 						targetedVita = targeted;
+						targetedVitaIndex = targetedIndex;
 					}	
 				});
 			}
 			if(this.object == targeted){
 				correctTarget = true;
 				targetedVita = targeted;
+				targetedVitaIndex = targetedIndex;
 			}
 		});
 
@@ -2782,11 +2785,12 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid move target");	
 		}
+		animationSequence(selectedVita, validMoveObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
 	}else{
 		console.log("Action not selected");	
 	}
 
-	animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
+	
 	
 	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
