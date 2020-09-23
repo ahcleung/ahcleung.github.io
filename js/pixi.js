@@ -2782,10 +2782,29 @@ function onCreatureDown(){
 		if(correctTarget){
 			animateMove = true;
 			console.log(selectedVita.name + " moves with " + targetedVita.name);
+			var moveTo, moveFrom, displacement;
+			if(selectedVita.hero){
+				heroArray.forEach((object,objectIndex)=>{
+					if(selectedVita == object)			moveFrom = objectIndex;
+					if(targetedVita == object)			moveTo = objectIndex;
+				});
+
+				// fieldHeroHazard.forEach(arrayItem =>{
+				// 	// dmgArray = [];
+				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+				// });
+			}else{
+				enemyArray.forEach((object,objectIndex)=>{
+					if(selectedVita == object)			moveFrom = objectIndex;
+					if(targetedVita == object)			moveTo = objectIndex;
+				});
+			}
+			displacement = moveFrom - moveTo;
+			selectedVita.newMove = displacement;
 		}else{
 			console.log("Invalid move target");	
 		}
-		animationSequence(selectedVita, validMoveObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
+		animationSequence(selectedVita, [selectedVita], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
 	}else{
 		console.log("Action not selected");	
 	}
