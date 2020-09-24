@@ -2913,6 +2913,7 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 
 				if(tagName == "hazard"){
+					console.log("HAZARD");
 					let hazardSprite, hazardSprite2;
 					switch(skillsList.data.skills[selectedSkill].hazard[0]){
 						case 1:
