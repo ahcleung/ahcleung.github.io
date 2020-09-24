@@ -3455,6 +3455,7 @@ function moveCreature(movingCreature, displacement){
 
 		movedCreature.forEach(creatureObject =>{
 			var newDamage = 0;
+			var dmgHazardArray = [];
 			console.log(fieldEnemyHazard);
 			fieldEnemyHazard.forEach(hazardItem =>{
 				if(hazardItem[0] == moveTo){
@@ -3485,20 +3486,20 @@ function moveCreature(movingCreature, displacement){
 					console.log("Effectiveness: " + effectiveCalc);
 					if(creatureObject.size > 1){
 						if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
-							newDamage = Math.round(hazardItem[2]*effectiveCalc);
-							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
 							// effective.push(effectiveCalc);
 						}
 					}else{
 						if(hazardItem[0]+1 == creatureObject.pos){
-							newDamage = Math.round(hazardItem[2]*effectiveCalc);
-							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
 							// effective.push(effectiveCalc);
 						}
 					}
 				}
 			});
-			console.log(creatureObject.name + " takes " + newDamage + " hazard damage");
+			console.log(creatureObject.name + " takes " + dmgHazardArray + " hazard damage");
 		});
 	}
 	return movedCreature;
