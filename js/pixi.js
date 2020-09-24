@@ -3336,51 +3336,6 @@ function moveCreature(movingCreature, displacement){
 		});
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
-		fieldHeroHazard.forEach(arrayItem =>{
-			if(arrayItem[0] == moveTo){
-				var effectiveCalc = 1;
-				var defendElements = [];
-				movingCreature.elements.forEach(element =>{
-					defendElements.push(element);
-				});
-				var hazardElement = 0;
-				switch(arrayItem[1]){
-					case 1: 
-						hazardElement = 2;
-						break;
-					case 2:
-						hazardElement = 1;
-						break;
-					case 3:
-						hazardElement = 3;
-						break;
-					case 4:
-						hazardElement = 7;
-						break;
-					default:
-						hazardElement = 1;
-				}
-				defendElements.forEach(defendElement=>{
-					effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
-				});
-				var newDamage = 0;
-				if(movingCreature.size > 1){
-					if(arrayItem[0]+1 == movingCreature.pos+1 || arrayItem[0]+1 == movingCreature.pos){
-						newDamage = Math.round(arrayItem[2]*effectiveCalc);
-						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
-					}
-				}else{
-					if(arrayItem[0]+1 == movingCreature.pos){
-						newDamage = Math.round(arrayItem[2]*effectiveCalc);
-						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
-					}
-				}
-				console.log(movingCreature.name + "takes " + newDamage + "hazard damage");
-			}
-		});
-
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
 				object.pos = 1;
@@ -3412,6 +3367,54 @@ function moveCreature(movingCreature, displacement){
 
 			object.moveTween = moveTween;
 		});
+
+		movedCreature.forEach(creatureObject =>{
+			var newDamage = 0;
+			fieldHeroHazard.forEach(hazardItem =>{
+				if(hazardItem[0] == moveTo){
+					var effectiveCalc = 1;					
+					var hazardElement = 0;
+					switch(hazardItem[1]){
+						case 1: 
+							hazardElement = 2;
+							break;
+						case 2:
+							hazardElement = 1;
+							break;
+						case 3:
+							hazardElement = 3;
+							break;
+						case 4:
+							hazardElement = 7;
+							break;
+						default:
+							hazardElement = 1;
+					}
+					creatureObject.elements.forEach(creatureElement =>{
+						effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
+						// defendElements.push(element);
+					});
+					// defendElements.forEach(defendElement=>{
+					// 	effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+					// });
+					
+					if(creatureObject.size > 1){
+						if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
+							newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// effective.push(effectiveCalc);
+						}
+					}else{
+						if(hazardItem[0]+1 == creatureObject.pos){
+							newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// effective.push(effectiveCalc);
+						}
+					}
+				}
+			});
+			console.log(creatureObject.name + " takes " + newDamage + " hazard damage");
+		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 		enemyArray.forEach((object,objectIndex)=>{
@@ -3421,52 +3424,7 @@ function moveCreature(movingCreature, displacement){
 		enemyArray.forEach(object=>{
 			tempArray.push(object);
 		});
-		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
-
-		fieldEnemyHazard.forEach(arrayItem =>{
-			if(arrayItem[0] == moveTo){
-				var effectiveCalc = 1;
-				var defendElements = [];
-				movingCreature.elements.forEach(element =>{
-					defendElements.push(element);
-				});
-				var hazardElement = 0;
-				switch(arrayItem[1]){
-					case 1: 
-						hazardElement = 2;
-						break;
-					case 2:
-						hazardElement = 1;
-						break;
-					case 3:
-						hazardElement = 3;
-						break;
-					case 4:
-						hazardElement = 7;
-						break;
-					default:
-						hazardElement = 1;
-				}
-				defendElements.forEach(defendElement=>{
-					effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
-				});
-				var newDamage = 0;
-				if(movingCreature.size > 1){
-					if(arrayItem[0]+1 == movingCreature.pos+1 || arrayItem[0]+1 == movingCreature.pos){
-						newDamage = Math.round(arrayItem[2]*effectiveCalc);
-						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
-					}
-				}else{
-					if(arrayItem[0]+1 == movingCreature.pos){
-						newDamage = Math.round(arrayItem[2]*effectiveCalc);
-						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
-					}
-				}
-				console.log(movingCreature.name + "takes " + newDamage + "hazard damage");
-			}
-		});
+		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);
 
 		enemyArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
@@ -3493,6 +3451,51 @@ function moveCreature(movingCreature, displacement){
 			}},0);
 
 			object.moveTween = moveTween;
+		});
+
+		movedCreature.forEach(creatureObject =>{
+			fieldEnemyHazard.forEach(hazardItem =>{
+				if(hazardItem[0] == moveTo){
+					var effectiveCalc = 1;
+					var defendElements = [];
+					var hazardElement = 0;
+					switch(hazardItem[1]){
+						case 1: 
+							hazardElement = 2;
+							break;
+						case 2:
+							hazardElement = 1;
+							break;
+						case 3:
+							hazardElement = 3;
+							break;
+						case 4:
+							hazardElement = 7;
+							break;
+						default:
+							hazardElement = 1;
+					}
+					creatureObject.elements.forEach(creatureElement =>{
+						effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
+						// defendElements.push(element);
+					});
+					var newDamage = 0;
+					if(creatureObject.size > 1){
+						if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
+							newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// effective.push(effectiveCalc);
+						}
+					}else{
+						if(hazardItem[0]+1 == creatureObject.pos){
+							newDamage = Math.round(hazardItem[2]*effectiveCalc);
+							// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
+							// effective.push(effectiveCalc);
+						}
+					}
+				}
+			});
+			console.log(creatureObject.name + " takes " + newDamage + " hazard damage");
 		});
 	}
 	return movedCreature;
