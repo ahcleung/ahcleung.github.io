@@ -3502,7 +3502,8 @@ function moveCreature(movingCreature, displacement){
 					}
 				}
 			});
-			console.log(creatureObject.name + " takes " + dmgHazardArray + " hazard damage");
+			console.log(creatureObject.name + " takes hazard damage");
+			console.log(dmgHazardArray);
 		});
 	}
 	return movedCreature;
