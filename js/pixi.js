@@ -2789,21 +2789,11 @@ function onCreatureDown(){
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
-
-				// fieldHeroHazard.forEach(arrayItem =>{
-				// 	// dmgArray = [];
-				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				// });
 			}else{
 				enemyArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
-
-				// fieldEnemyHazard.forEach(arrayItem =>{
-				// 	// dmgArray = [];
-				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				// });
 			}
 			displacement = moveFrom - moveTo;
 			selectedVita.newMove = displacement;
@@ -3347,7 +3337,48 @@ function moveCreature(movingCreature, displacement){
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
 		fieldHeroHazard.forEach(arrayItem =>{
-			if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+			if(arrayItem[0] == moveTo){
+				var effectiveCalc = 1;
+				var defendElements = [];
+				movingCreature.elements.forEach(element =>{
+					defendElements.push(element);
+				});
+				var hazardElement = 0;
+				switch(arrayItem[1]){
+					case 1: 
+						hazardElement = 2;
+						break;
+					case 2:
+						hazardElement = 1;
+						break;
+					case 3:
+						hazardElement = 3;
+						break;
+					case 4:
+						hazardElement = 7;
+						break;
+					default:
+						hazardElement = 1;
+				}
+				defendElements.forEach(defendElement=>{
+					effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+				});
+				var newDamage = 0;
+				if(movingCreature.size > 1){
+					if(arrayItem[0]+1 == movingCreature.pos+1 || arrayItem[0]+1 == movingCreature.pos){
+						newDamage = Math.round(arrayItem[2]*effectiveCalc);
+						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
+					}
+				}else{
+					if(arrayItem[0]+1 == movingCreature.pos){
+						newDamage = Math.round(arrayItem[2]*effectiveCalc);
+						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
+					}
+				}
+				console.log(movingCreature.name + "takes " + newDamage + "hazard damage");
+			}
 		});
 
 		heroArray.forEach((object,objectIndex)=>{
@@ -3393,7 +3424,48 @@ function moveCreature(movingCreature, displacement){
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
 
 		fieldEnemyHazard.forEach(arrayItem =>{
-			if(arrayItem[0] == moveTo)			console.log("ENEMY DAMAGE FROM HAZARD");
+			if(arrayItem[0] == moveTo){
+				var effectiveCalc = 1;
+				var defendElements = [];
+				movingCreature.elements.forEach(element =>{
+					defendElements.push(element);
+				});
+				var hazardElement = 0;
+				switch(arrayItem[1]){
+					case 1: 
+						hazardElement = 2;
+						break;
+					case 2:
+						hazardElement = 1;
+						break;
+					case 3:
+						hazardElement = 3;
+						break;
+					case 4:
+						hazardElement = 7;
+						break;
+					default:
+						hazardElement = 1;
+				}
+				defendElements.forEach(defendElement=>{
+					effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
+				});
+				var newDamage = 0;
+				if(movingCreature.size > 1){
+					if(arrayItem[0]+1 == movingCreature.pos+1 || arrayItem[0]+1 == movingCreature.pos){
+						newDamage = Math.round(arrayItem[2]*effectiveCalc);
+						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
+					}
+				}else{
+					if(arrayItem[0]+1 == movingCreature.pos){
+						newDamage = Math.round(arrayItem[2]*effectiveCalc);
+						// dmgArray.push(Math.round(arrayItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
+					}
+				}
+				console.log(movingCreature.name + "takes " + newDamage + "hazard damage");
+			}
 		});
 
 		enemyArray.forEach((object,objectIndex)=>{
