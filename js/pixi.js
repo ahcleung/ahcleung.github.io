@@ -2703,6 +2703,7 @@ function onCreatureDown(){
 			if(tagName == "displace")		tagDisplace = true;
 			if(tagName == "status")			tagStatus = true;
 			if(tagName == "statchange")		tagStatus = true;
+			if(tagName == "hazard")			tagHazard = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
@@ -2808,8 +2809,6 @@ function onCreatureDown(){
 	}else{
 		console.log("Action not selected");	
 	}
-
-	
 	
 	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -2911,6 +2910,59 @@ function calculateDamage(attacker, defender, hitArray){
 
 				if(tagName == "displace"){
 					targeted.newMove = skillsList.data.skills[selectedSkill].displace[0];
+				}
+
+				if(tagName == "hazard"){
+					let hazardSprite, hazardSprite2;
+					switch(skillsList.data.skills[selectedSkill].hazard[0]){
+						case 1:
+							hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+							hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
+							break;
+						case 2:
+							hazardSprite = new PIXI.Sprite(resources.hazard_spikes.texture);
+							hazardSprite2 = new PIXI.Sprite(resources.hazard_spikes.texture);
+							break;
+						case 3:
+							hazardSprite = new PIXI.Sprite(resources.hazard_spores.texture);
+							hazardSprite2 = new PIXI.Sprite(resources.hazard_spores.texture);
+							break;
+						default:
+							hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
+							hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
+					}
+					
+					hazardSprite.anchor.set(0.5,1);	
+					hazardSprite2.anchor.set(0.5,1);
+
+					if(targeted.hero){
+						hazardSprite.scale.set(hazardSize,hazardSize);
+						hazardSprite2.scale.set(hazardSize,hazardSize);
+						if(targeted.size > 1){
+							//[position, hazardType, damage, turn]
+							fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
+							heroHazardSprite.push(hazardSprite2);
+							heroHazardContainer.addChild(hazardSprite2);
+						}
+						fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+						hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
+						heroHazardSprite.push(hazardSprite);
+						heroHazardContainer.addChild(hazardSprite);
+					}else{
+						hazardSprite.scale.set(-hazardSize,hazardSize);
+						hazardSprite2.scale.set(-hazardSize,hazardSize);
+						if(targeted.size > 1){
+							fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
+							enemyHazardSprite.push(hazardSprite2);
+							enemyHazardContainer.addChild(hazardSprite2);
+						}
+						fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+						hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
+						enemyHazardSprite.push(hazardSprite);
+						enemyHazardContainer.addChild(hazardSprite);
+					}
 				}
 				
 				if(tagName == "statchange"){
