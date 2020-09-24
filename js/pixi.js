@@ -3479,7 +3479,10 @@ function moveCreature(movingCreature, displacement){
 							hazardElement = 1;
 					}
 					creatureObject.elements.forEach(creatureElement =>{
-						effectiveCalc *= elementList.data.elements[hazardElement]["effect"][creatureElement];
+						// var element1 = skillsList.data.skills[selectedSkill].element-1;
+						var element2 = creatureElement-1;
+						effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+						// effectiveCalc *= elementList.data.elements[hazardElement]["effect"][creatureElement];
 						// effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
 						// defendElements.push(element);
 					});
