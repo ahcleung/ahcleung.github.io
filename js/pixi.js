@@ -4013,6 +4013,7 @@ function selectCreature(object2){
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 	console.log("Turn: " + selectedVita.name);
 	console.log("Side: " + selectedVita.sprite.identifier[0]);
+	console.log("Position: " + selectedVita.pos);
 
 	//Reset the skillContainers
 	skillContainerArray.forEach(skillContainer=>{
