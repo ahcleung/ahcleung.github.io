@@ -3478,7 +3478,8 @@ function moveCreature(movingCreature, displacement){
 							hazardElement = 1;
 					}
 					creatureObject.elements.forEach(creatureElement =>{
-						effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
+						effectiveCalc *= elementList.data.elements[hazardElement]["effect"][creatureElement];
+						// effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
 						// defendElements.push(element);
 					});
 					console.log("Effectiveness: " + effectiveCalc);
