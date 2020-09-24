@@ -3454,6 +3454,7 @@ function moveCreature(movingCreature, displacement){
 		});
 
 		movedCreature.forEach(creatureObject =>{
+			var newDamage = 0;
 			fieldEnemyHazard.forEach(hazardItem =>{
 				if(hazardItem[0] == moveTo){
 					var effectiveCalc = 1;
