@@ -2790,20 +2790,20 @@ function onCreatureDown(){
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
 
-				fieldHeroHazard.forEach(arrayItem =>{
-					// dmgArray = [];
-					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				});
+				// fieldHeroHazard.forEach(arrayItem =>{
+				// 	// dmgArray = [];
+				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+				// });
 			}else{
 				enemyArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
 
-				fieldEnemyHazard.forEach(arrayItem =>{
-					// dmgArray = [];
-					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				});
+				// fieldEnemyHazard.forEach(arrayItem =>{
+				// 	// dmgArray = [];
+				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+				// });
 			}
 			displacement = moveFrom - moveTo;
 			selectedVita.newMove = displacement;
@@ -3346,6 +3346,10 @@ function moveCreature(movingCreature, displacement){
 		});
 		heroArray.splice(moveTo, 0, heroArray.splice(moveFrom,1)[0]);
 
+		fieldHeroHazard.forEach(arrayItem =>{
+			if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+		});
+
 		heroArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
 				object.pos = 1;
@@ -3387,6 +3391,10 @@ function moveCreature(movingCreature, displacement){
 			tempArray.push(object);
 		});
 		enemyArray.splice(moveTo, 0, enemyArray.splice(moveFrom,1)[0]);		
+
+		fieldEnemyHazard.forEach(arrayItem =>{
+			if(arrayItem[0] == moveTo)			console.log("ENEMY DAMAGE FROM HAZARD");
+		});
 
 		enemyArray.forEach((object,objectIndex)=>{
 			if(objectIndex == 0){
