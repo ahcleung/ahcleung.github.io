@@ -2790,14 +2790,19 @@ function onCreatureDown(){
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
 
-				// fieldHeroHazard.forEach(arrayItem =>{
-				// 	// dmgArray = [];
-				// 	if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
-				// });
+				fieldHeroHazard.forEach(arrayItem =>{
+					// dmgArray = [];
+					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
+				});
 			}else{
 				enemyArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
+				});
+
+				fieldEnemyHazard.forEach(arrayItem =>{
+					// dmgArray = [];
+					if(arrayItem[0] == moveTo)			console.log("HERO DAMAGE FROM HAZARD");
 				});
 			}
 			displacement = moveFrom - moveTo;
@@ -3368,17 +3373,9 @@ function moveCreature(movingCreature, displacement){
 			moveTween.to(object.healthBar, 0.5, {x: newHPX},0);
 			moveTween.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				object.newMove = 0;
-				// if(userInput)	endTurn();
 			}},0);
 
 			object.moveTween = moveTween;
-			// TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			// TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			// TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			// TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-			// 	object.newMove = 0;
-			// 	// if(userInput)	endTurn();
-			// }});
 		});
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
@@ -3413,17 +3410,9 @@ function moveCreature(movingCreature, displacement){
 			moveTween.to(object.healthBar, 0.5, {x: newHPX},0);
 			moveTween.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
 				object.newMove = 0;
-				// if(userInput)	endTurn();
 			}},0);
 
 			object.moveTween = moveTween;
-			// TweenMax.to(object.sprite, 0.5, {x: newCreatureX});
-			// TweenMax.to(object.action, 0.5, {x: newCreatureX});
-			// TweenMax.to(object.healthBar, 0.5, {x: newHPX});
-			// TweenMax.to(object.dmgContainer, 0.5, {x: newHPX, onComplete:function(){
-			// 	object.newMove = 0;
-			// 	// if(userInput)	endTurn();
-			// }});
 		});
 	}
 	return movedCreature;
