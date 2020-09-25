@@ -3476,6 +3476,7 @@ function moveCreature(movingCreature, displacement){
 			object.moveTween = moveTween;
 		});
 
+		//maybe make hazard only do damage on the creature's turn
 		movedCreature.forEach(creatureObject =>{
 			var newDamage = 0;
 			var dmgHazardArray = [];
