@@ -3487,6 +3487,8 @@ function moveCreature(movingCreature, displacement){
 						// defendElements.push(element);
 					});
 					console.log("Effectiveness: " + effectiveCalc);
+					console.log(hazardItem[0]+1);
+					console.log(creatureObject.pos);
 					if(creatureObject.size > 1){
 						if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
 							// newDamage = Math.round(hazardItem[2]*effectiveCalc);
