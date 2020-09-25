@@ -4122,6 +4122,55 @@ function selectCreature(object2){
 		}
 	});
 
+	if(selectedVita.hero){
+
+	}else{
+		var newDamage = 0;
+		var dmgHazardArray = [];
+		var effectiveHazardArray = [];
+		fieldEnemyHazard.forEach(hazardItem=>{
+			var effectiveCalc = 1;
+			var defendElements = [];
+			var hazardElement = 0;
+			switch(hazardItem[1]){
+				case 1: 
+					hazardElement = 2;
+					break;
+				case 2:
+					hazardElement = 1;
+					break;
+				case 3:
+					hazardElement = 3;
+					break;
+				case 4:
+					hazardElement = 7;
+					break;
+				default:
+					hazardElement = 1;
+			}
+			selectedVita.elements.forEach(creatureElement =>{
+				var element2 = creatureElement-1;
+				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+			});
+			console.log("Effectiveness: " + effectiveCalc);
+			console.log(hazardItem[0]+1);
+			console.log(selectedVita.pos);
+			if(selectedVita.size > 1){
+				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
+					console.log("HAZARD DAMAGE");
+					dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+					effectiveHazardArray.push(effectiveCalc);
+				}
+			}else{
+				if(hazardItem[0]+1 == selectedVita.pos){
+					console.log("HAZARD DAMAGE");
+					dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+					effectiveHazardArray.push(effectiveCalc);
+				}
+			}
+		});
+	}
+
 	if(dmgStatusArray.length > 0){
 		var dmgTotal = 0;
 		console.log(dmgStatusArray);
