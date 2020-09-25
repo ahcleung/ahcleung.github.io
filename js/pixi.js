@@ -3456,6 +3456,7 @@ function moveCreature(movingCreature, displacement){
 		movedCreature.forEach(creatureObject =>{
 			var newDamage = 0;
 			var dmgHazardArray = [];
+			var effectiveHazardArray = [];
 			console.log(fieldEnemyHazard);
 			fieldEnemyHazard.forEach(hazardItem =>{
 				var effectiveCalc = 1;
@@ -3486,20 +3487,63 @@ function moveCreature(movingCreature, displacement){
 				console.log(creatureObject.pos);
 				if(creatureObject.size > 1){
 					if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
-						// newDamage = Math.round(hazardItem[2]*effectiveCalc);
 						dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
+						effectiveHazardArray.push(effectiveCalc);
 					}
 				}else{
 					if(hazardItem[0]+1 == creatureObject.pos){
-						// newDamage = Math.round(hazardItem[2]*effectiveCalc);
 						dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-						// effective.push(effectiveCalc);
+						effectiveHazardArray.push(effectiveCalc);
 					}
 				}
 			});
 			console.log(creatureObject.name + " takes hazard damage");
 			console.log(dmgHazardArray);
+			creatureObject.dmgContainer.dmgPopup.dmgEffective.visible = false;
+			var dmgTotal = 0;
+			dmgHazardArray.forEach((hazardDamageNumber, dmgIndex) =>{
+				if(effectiveCalc[dmgIndex] == 0.25){
+					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#9D9D9D';
+				}else if(effectiveCalc[dmgIndex] == 0.5){
+					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFFFFF';
+				}else if(effectiveCalc[dmgIndex] == 2){
+					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFE81C';
+				}else if(effectiveCalc[dmgIndex] == 4){
+					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#DB00FF';
+				}
+
+				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
+				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = hazardDamageNumber;
+				dmgTotal += hazardDamageNumber;
+			});
+			console.log("dmgTotal1: " + creatureObject.hp);
+			creatureObject.damage(dmgTotal);
+			console.log("dmgTotal2: " + creatureObject.hp);
+			var newWidth = creatureObject.healthBar.inner.width - (creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP));
+			creatureObject.healthBar.dmgBarContainer.dmgBar.width = newWidth;
+			console.log("newWidth: " + newWidth);
+			creatureObject.healthBar.dmgBarContainer.dmgBar.visible = true;
+			// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.kill();
+			var dmgBarTween = new TimelineMax({paused:true});
+			dmgBarTween.fromTo(creatureObject.healthBar.dmgBarContainer.dmgBar
+				, 1, {
+					width: newWidth
+				}, {ease:Expo.easeIn, width:0, onComplete: function(){
+					creatureObject.healthBar.dmgBarContainer.dmgBar.visible = false;
+			}});
+			creatureObject.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
+			console.log("TWEEN");
+			creatureObject.healthBar.dmgBarContainer.x = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
+			creatureObject.healthBar.inner.width = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
+
+			creatureObject.dmgContainer.dmgPopup.tween.play(0);
+			console.log("dmgPopup tween");
+			creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+			console.log("dmgBar tween");
+			creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
+				console.log("new HP");
+			});
 		});
 	}
 	return movedCreature;
