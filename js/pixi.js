@@ -3458,49 +3458,43 @@ function moveCreature(movingCreature, displacement){
 			var dmgHazardArray = [];
 			console.log(fieldEnemyHazard);
 			fieldEnemyHazard.forEach(hazardItem =>{
-				if(hazardItem[0] == moveTo){
-					var effectiveCalc = 1;
-					var defendElements = [];
-					var hazardElement = 0;
-					switch(hazardItem[1]){
-						case 1: 
-							hazardElement = 2;
-							break;
-						case 2:
-							hazardElement = 1;
-							break;
-						case 3:
-							hazardElement = 3;
-							break;
-						case 4:
-							hazardElement = 7;
-							break;
-						default:
-							hazardElement = 1;
+				var effectiveCalc = 1;
+				var defendElements = [];
+				var hazardElement = 0;
+				switch(hazardItem[1]){
+					case 1: 
+						hazardElement = 2;
+						break;
+					case 2:
+						hazardElement = 1;
+						break;
+					case 3:
+						hazardElement = 3;
+						break;
+					case 4:
+						hazardElement = 7;
+						break;
+					default:
+						hazardElement = 1;
+				}
+				creatureObject.elements.forEach(creatureElement =>{
+					var element2 = creatureElement-1;
+					effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+				});
+				console.log("Effectiveness: " + effectiveCalc);
+				console.log(hazardItem[0]+1);
+				console.log(creatureObject.pos);
+				if(creatureObject.size > 1){
+					if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
+						// newDamage = Math.round(hazardItem[2]*effectiveCalc);
+						dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
 					}
-					creatureObject.elements.forEach(creatureElement =>{
-						// var element1 = skillsList.data.skills[selectedSkill].element-1;
-						var element2 = creatureElement-1;
-						effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
-						// effectiveCalc *= elementList.data.elements[hazardElement]["effect"][creatureElement];
-						// effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
-						// defendElements.push(element);
-					});
-					console.log("Effectiveness: " + effectiveCalc);
-					console.log(hazardItem[0]+1);
-					console.log(creatureObject.pos);
-					if(creatureObject.size > 1){
-						if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
-							// newDamage = Math.round(hazardItem[2]*effectiveCalc);
-							dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-							// effective.push(effectiveCalc);
-						}
-					}else{
-						if(hazardItem[0]+1 == creatureObject.pos){
-							// newDamage = Math.round(hazardItem[2]*effectiveCalc);
-							dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-							// effective.push(effectiveCalc);
-						}
+				}else{
+					if(hazardItem[0]+1 == creatureObject.pos){
+						// newDamage = Math.round(hazardItem[2]*effectiveCalc);
+						dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+						// effective.push(effectiveCalc);
 					}
 				}
 			});
