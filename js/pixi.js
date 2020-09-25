@@ -2789,10 +2789,18 @@ function onCreatureDown(){
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
+				fieldHeroHazard.forEach(arrayItem =>{
+					// dmgArray = [];
+					if(arrayItem[0] == moveTo)			animateHealth = true;
+				});
 			}else{
 				enemyArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
+				});
+				fieldEnemyHazard.forEach(arrayItem =>{
+					// dmgArray = [];
+					if(arrayItem[0] == moveTo)			animateHealth = true;
 				});
 			}
 			displacement = moveFrom - moveTo;
@@ -3310,10 +3318,25 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		movedCreatureArray.forEach(creatureObject=>{
 			creatureObject.moveTween.play(0);
 			creatureObject.moveTween.eventCallback("onComplete", function(){
-				if(userInput){
-					console.log("moveEndTurn");
-					endTurn();
-				}	
+				if(animateHealth){
+					creatureObject.dmgContainer.dmgPopup.tween.play(0);
+					console.log("dmgPopup tween");
+					creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+					console.log("dmgBar tween");
+					creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+						creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
+						console.log("new HP");
+						if(userInput){
+							console.log("moveEndTurn");
+							endTurn();
+						}
+					});
+				}else{
+					if(userInput){
+						console.log("moveEndTurn");
+						endTurn();
+					}
+				}
 			});
 		});
 	}
@@ -3502,6 +3525,7 @@ function moveCreature(movingCreature, displacement){
 			creatureObject.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			var dmgTotal = 0;
 			dmgHazardArray.forEach((hazardDamageNumber, dmgIndex) =>{
+				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.stroke = '#222222';
 				if(effectiveHazardArray[dmgIndex] == 0.25){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#9D9D9D';
 				}else if(effectiveHazardArray[dmgIndex] == 0.5){
@@ -3510,8 +3534,9 @@ function moveCreature(movingCreature, displacement){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFE81C';
 				}else if(effectiveHazardArray[dmgIndex] == 4){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#DB00FF';
+				}else{
+					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#D80000';
 				}
-
 				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].visible = true;
 				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].text = hazardDamageNumber;
 				dmgTotal += hazardDamageNumber;
@@ -3536,14 +3561,14 @@ function moveCreature(movingCreature, displacement){
 			creatureObject.healthBar.dmgBarContainer.x = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
 			creatureObject.healthBar.inner.width = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
 
-			creatureObject.dmgContainer.dmgPopup.tween.play(0);
-			console.log("dmgPopup tween");
-			creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-			console.log("dmgBar tween");
-			creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-				creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
-				console.log("new HP");
-			});
+			// creatureObject.dmgContainer.dmgPopup.tween.play(0);
+			// console.log("dmgPopup tween");
+			// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+			// console.log("dmgBar tween");
+			// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+			// 	creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
+			// 	console.log("new HP");
+			// });
 		});
 	}
 	return movedCreature;
