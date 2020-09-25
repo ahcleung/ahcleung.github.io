@@ -3512,8 +3512,8 @@ function moveCreature(movingCreature, displacement){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#DB00FF';
 				}
 
-				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
-				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = hazardDamageNumber;
+				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].visible = true;
+				creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].text = hazardDamageNumber;
 				dmgTotal += hazardDamageNumber;
 			});
 			console.log("dmgTotal1: " + creatureObject.hp);
