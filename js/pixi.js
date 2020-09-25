@@ -3502,13 +3502,13 @@ function moveCreature(movingCreature, displacement){
 			creatureObject.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			var dmgTotal = 0;
 			dmgHazardArray.forEach((hazardDamageNumber, dmgIndex) =>{
-				if(effectiveCalc[dmgIndex] == 0.25){
+				if(effectiveHazardArray[dmgIndex] == 0.25){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#9D9D9D';
-				}else if(effectiveCalc[dmgIndex] == 0.5){
+				}else if(effectiveHazardArray[dmgIndex] == 0.5){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFFFFF';
-				}else if(effectiveCalc[dmgIndex] == 2){
+				}else if(effectiveHazardArray[dmgIndex] == 2){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFE81C';
-				}else if(effectiveCalc[dmgIndex] == 4){
+				}else if(effectiveHazardArray[dmgIndex] == 4){
 					creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#DB00FF';
 				}
 
