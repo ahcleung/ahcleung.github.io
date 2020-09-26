@@ -4090,19 +4090,16 @@ function selectCreature(object2){
 				}
 				dmgTotal += dmgStatus[1];
 			}
-			
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
-			
-			
-			console.log("dmgStatusIndex: " + dmgStatusIndex);
+			// console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
 
-		console.log("dmgTotal1: " + selectedVita.hp);
+		// console.log("dmgTotal1: " + selectedVita.hp);
 		selectedVita.damage(dmgTotal);
-		console.log("dmgTotal2: " + selectedVita.hp);
+		// console.log("dmgTotal2: " + selectedVita.hp);
 		var newWidth = selectedVita.healthBar.inner.width - (selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP));
 		selectedVita.healthBar.dmgBarContainer.dmgBar.width = newWidth;
-		console.log("newWidth: " + newWidth);
+		// console.log("newWidth: " + newWidth);
 		selectedVita.healthBar.dmgBarContainer.dmgBar.visible = true;
 		// selectedVita.healthBar.dmgBarContainer.dmgBar.animate.kill();
 		var dmgBarTween = new TimelineMax({paused:true});
@@ -4113,17 +4110,17 @@ function selectCreature(object2){
 				selectedVita.healthBar.dmgBarContainer.dmgBar.visible = false;
 		}});
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
-		console.log("TWEEN");
+		// console.log("TWEEN");
 		selectedVita.healthBar.dmgBarContainer.x = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 		selectedVita.healthBar.inner.width = selectedVita.healthBar.outer.width * (selectedVita.hp/selectedVita.overallHP);
 
 		selectedVita.dmgContainer.dmgPopup.tween.play(0);
-		console.log("dmgPopup tween");
+		// console.log("dmgPopup tween");
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-		console.log("dmgBar tween");
+		// console.log("dmgBar tween");
 		selectedVita.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
 			selectedVita.healthBar.textHP.text = selectedVita.hp + " / " + selectedVita.EHP;
-			console.log("new HP");
+			// console.log("new HP");
 		});
 		// selectedVita.dmgContainer.dmgPopup.tween.eventCallback("onComplete", function(){
 			
