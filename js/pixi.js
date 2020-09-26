@@ -2789,19 +2789,19 @@ function onCreatureDown(){
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
-				fieldHeroHazard.forEach(arrayItem =>{
-					// dmgArray = [];
-					if(arrayItem[0] == moveTo)			animateHealth = true;
-				});
+				// fieldHeroHazard.forEach(arrayItem =>{
+				// 	// dmgArray = [];
+				// 	if(arrayItem[0] == moveTo)			animateHealth = true;
+				// });
 			}else{
 				enemyArray.forEach((object,objectIndex)=>{
 					if(selectedVita == object)			moveFrom = objectIndex;
 					if(targetedVita == object)			moveTo = objectIndex;
 				});
-				fieldEnemyHazard.forEach(arrayItem =>{
-					// dmgArray = [];
-					if(arrayItem[0] == moveTo)			animateHealth = true;
-				});
+				// fieldEnemyHazard.forEach(arrayItem =>{
+				// 	// dmgArray = [];
+				// 	if(arrayItem[0] == moveTo)			animateHealth = true;
+				// });
 			}
 			displacement = moveFrom - moveTo;
 			selectedVita.newMove = displacement;
@@ -3318,25 +3318,25 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		movedCreatureArray.forEach(creatureObject=>{
 			creatureObject.moveTween.play(0);
 			creatureObject.moveTween.eventCallback("onComplete", function(){
-				if(animateHealth){
-					creatureObject.dmgContainer.dmgPopup.tween.play(0);
-					console.log("dmgPopup tween");
-					creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-					console.log("dmgBar tween");
-					creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-						creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
-						console.log("new HP");
-						if(userInput){
-							console.log("moveEndTurn");
-							endTurn();
-						}
-					});
-				}else{
+				// if(animateHealth){
+				// 	creatureObject.dmgContainer.dmgPopup.tween.play(0);
+				// 	console.log("dmgPopup tween");
+				// 	creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 	console.log("dmgBar tween");
+				// 	creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 		creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
+				// 		console.log("new HP");
+				// 		if(userInput){
+				// 			console.log("moveEndTurn");
+				// 			endTurn();
+				// 		}
+				// 	});
+				// }else{
 					if(userInput){
 						console.log("moveEndTurn");
 						endTurn();
 					}
-				}
+				// }
 			});
 		});
 	}
