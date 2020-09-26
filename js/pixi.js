@@ -3318,25 +3318,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		movedCreatureArray.forEach(creatureObject=>{
 			creatureObject.moveTween.play(0);
 			creatureObject.moveTween.eventCallback("onComplete", function(){
-				// if(animateHealth){
-				// 	creatureObject.dmgContainer.dmgPopup.tween.play(0);
-				// 	console.log("dmgPopup tween");
-				// 	creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-				// 	console.log("dmgBar tween");
-				// 	creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-				// 		creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
-				// 		console.log("new HP");
-				// 		if(userInput){
-				// 			console.log("moveEndTurn");
-				// 			endTurn();
-				// 		}
-				// 	});
-				// }else{
-					if(userInput){
-						console.log("moveEndTurn");
-						endTurn();
-					}
-				// }
+				if(userInput){
+					console.log("moveEndTurn");
+					endTurn();
+				}
 			});
 		});
 	}
@@ -3390,54 +3375,6 @@ function moveCreature(movingCreature, displacement){
 
 			object.moveTween = moveTween;
 		});
-
-		// movedCreature.forEach(creatureObject =>{
-		// 	var newDamage = 0;
-		// 	fieldHeroHazard.forEach(hazardItem =>{
-		// 		if(hazardItem[0] == moveTo){
-		// 			var effectiveCalc = 1;					
-		// 			var hazardElement = 0;
-		// 			switch(hazardItem[1]){
-		// 				case 1: 
-		// 					hazardElement = 2;
-		// 					break;
-		// 				case 2:
-		// 					hazardElement = 1;
-		// 					break;
-		// 				case 3:
-		// 					hazardElement = 3;
-		// 					break;
-		// 				case 4:
-		// 					hazardElement = 7;
-		// 					break;
-		// 				default:
-		// 					hazardElement = 1;
-		// 			}
-		// 			creatureObject.elements.forEach(creatureElement =>{
-		// 				effectiveCalc *= elementList.data.elements[hazardElement][creatureElement];
-		// 				// defendElements.push(element);
-		// 			});
-		// 			// defendElements.forEach(defendElement=>{
-		// 			// 	effectiveCalc *= elementList.data.elements[hazardElement][defendElement];
-		// 			// });
-					
-		// 			if(creatureObject.size > 1){
-		// 				if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
-		// 					newDamage = Math.round(hazardItem[2]*effectiveCalc);
-		// 					// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
-		// 					// effective.push(effectiveCalc);
-		// 				}
-		// 			}else{
-		// 				if(hazardItem[0]+1 == creatureObject.pos){
-		// 					newDamage = Math.round(hazardItem[2]*effectiveCalc);
-		// 					// dmgArray.push(Math.round(hazardItem[2]*effectiveCalc));
-		// 					// effective.push(effectiveCalc);
-		// 				}
-		// 			}
-		// 		}
-		// 	});
-		// 	console.log(creatureObject.name + " takes " + newDamage + " hazard damage");
-		// });
 	}else{
 		// console.log(moveFrom + " wants to move to: " + moveTo);
 		enemyArray.forEach((object,objectIndex)=>{
@@ -3475,102 +3412,6 @@ function moveCreature(movingCreature, displacement){
 
 			object.moveTween = moveTween;
 		});
-
-		//maybe make hazard only do damage on the creature's turn
-		// movedCreature.forEach(creatureObject =>{
-		// 	var newDamage = 0;
-		// 	var dmgHazardArray = [];
-		// 	var effectiveHazardArray = [];
-		// 	console.log(fieldEnemyHazard);
-		// 	fieldEnemyHazard.forEach(hazardItem =>{
-		// 		var effectiveCalc = 1;
-		// 		var defendElements = [];
-		// 		var hazardElement = 0;
-		// 		switch(hazardItem[1]){
-		// 			case 1: 
-		// 				hazardElement = 2;
-		// 				break;
-		// 			case 2:
-		// 				hazardElement = 1;
-		// 				break;
-		// 			case 3:
-		// 				hazardElement = 3;
-		// 				break;
-		// 			case 4:
-		// 				hazardElement = 7;
-		// 				break;
-		// 			default:
-		// 				hazardElement = 1;
-		// 		}
-		// 		creatureObject.elements.forEach(creatureElement =>{
-		// 			var element2 = creatureElement-1;
-		// 			effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
-		// 		});
-		// 		console.log("Effectiveness: " + effectiveCalc);
-		// 		console.log(hazardItem[0]+1);
-		// 		console.log(creatureObject.pos);
-		// 		if(creatureObject.size > 1){
-		// 			if(hazardItem[0]+1 == creatureObject.pos+1 || hazardItem[0]+1 == creatureObject.pos){
-		// 				dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-		// 				effectiveHazardArray.push(effectiveCalc);
-		// 			}
-		// 		}else{
-		// 			if(hazardItem[0]+1 == creatureObject.pos){
-		// 				dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-		// 				effectiveHazardArray.push(effectiveCalc);
-		// 			}
-		// 		}
-		// 	});
-		// 	console.log(creatureObject.name + " takes hazard damage");
-		// 	console.log(dmgHazardArray);
-		// 	creatureObject.dmgContainer.dmgPopup.dmgEffective.visible = false;
-		// 	var dmgTotal = 0;
-		// 	dmgHazardArray.forEach((hazardDamageNumber, dmgIndex) =>{
-		// 		creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.stroke = '#222222';
-		// 		if(effectiveHazardArray[dmgIndex] == 0.25){
-		// 			creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#9D9D9D';
-		// 		}else if(effectiveHazardArray[dmgIndex] == 0.5){
-		// 			creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFFFFF';
-		// 		}else if(effectiveHazardArray[dmgIndex] == 2){
-		// 			creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#FFE81C';
-		// 		}else if(effectiveHazardArray[dmgIndex] == 4){
-		// 			creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#DB00FF';
-		// 		}else{
-		// 			creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].style.fill = '#D80000';
-		// 		}
-		// 		creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].visible = true;
-		// 		creatureObject.dmgContainer.dmgPopup.dmgNumArray[dmgIndex].text = hazardDamageNumber;
-		// 		dmgTotal += hazardDamageNumber;
-		// 	});
-		// 	console.log("dmgTotal1: " + creatureObject.hp);
-		// 	creatureObject.damage(dmgTotal);
-		// 	console.log("dmgTotal2: " + creatureObject.hp);
-		// 	var newWidth = creatureObject.healthBar.inner.width - (creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP));
-		// 	creatureObject.healthBar.dmgBarContainer.dmgBar.width = newWidth;
-		// 	console.log("newWidth: " + newWidth);
-		// 	creatureObject.healthBar.dmgBarContainer.dmgBar.visible = true;
-		// 	// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.kill();
-		// 	var dmgBarTween = new TimelineMax({paused:true});
-		// 	dmgBarTween.fromTo(creatureObject.healthBar.dmgBarContainer.dmgBar
-		// 		, 1, {
-		// 			width: newWidth
-		// 		}, {ease:Expo.easeIn, width:0, onComplete: function(){
-		// 			creatureObject.healthBar.dmgBarContainer.dmgBar.visible = false;
-		// 	}});
-		// 	creatureObject.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
-		// 	console.log("TWEEN");
-		// 	creatureObject.healthBar.dmgBarContainer.x = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
-		// 	creatureObject.healthBar.inner.width = creatureObject.healthBar.outer.width * (creatureObject.hp/creatureObject.overallHP);
-
-		// 	// creatureObject.dmgContainer.dmgPopup.tween.play(0);
-		// 	// console.log("dmgPopup tween");
-		// 	// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-		// 	// console.log("dmgBar tween");
-		// 	// creatureObject.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-		// 	// 	creatureObject.healthBar.textHP.text = creatureObject.hp + " / " + creatureObject.EHP;
-		// 	// 	console.log("new HP");
-		// 	// });
-		// });
 	}
 	return movedCreature;
 }
@@ -4123,14 +3964,8 @@ function selectCreature(object2){
 	});
 
 	if(selectedVita.hero){
-
-	}else{
-		// var newDamage = 0;
-		// var dmgHazardArray = [];
-		// var effectiveHazardArray = [];
-		fieldEnemyHazard.forEach(hazardItem=>{
+		fieldHeroHazard.forEach(hazardItem=>{
 			var effectiveCalc = 1;
-			// var defendElements = [];
 			var hazardElement = 0;
 			switch(hazardItem[1]){
 				case 1: 
@@ -4152,21 +3987,50 @@ function selectCreature(object2){
 				var element2 = creatureElement-1;
 				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
 			});
-			// console.log("Effectiveness: " + effectiveCalc);
-			// console.log(hazardItem[0]+1);
-			// console.log(selectedVita.pos);
 			if(selectedVita.size > 1){
 				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
 					console.log("HAZARD DAMAGE");
-					// dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-					// effectiveHazardArray.push(effectiveCalc);
 					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
 				}
 			}else{
 				if(hazardItem[0]+1 == selectedVita.pos){
 					console.log("HAZARD DAMAGE");
-					// dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-					// effectiveHazardArray.push(effectiveCalc);
+					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
+				}
+			}
+		});
+	}else{
+		fieldEnemyHazard.forEach(hazardItem=>{
+			var effectiveCalc = 1;
+			var hazardElement = 0;
+			switch(hazardItem[1]){
+				case 1: 
+					hazardElement = 2;
+					break;
+				case 2:
+					hazardElement = 1;
+					break;
+				case 3:
+					hazardElement = 3;
+					break;
+				case 4:
+					hazardElement = 7;
+					break;
+				default:
+					hazardElement = 1;
+			}
+			selectedVita.elements.forEach(creatureElement =>{
+				var element2 = creatureElement-1;
+				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+			});
+			if(selectedVita.size > 1){
+				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
+					console.log("HAZARD DAMAGE");
+					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
+				}
+			}else{
+				if(hazardItem[0]+1 == selectedVita.pos){
+					console.log("HAZARD DAMAGE");
 					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
 				}
 			}
@@ -4178,32 +4042,32 @@ function selectCreature(object2){
 		console.log(dmgStatusArray);
 		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
-			if(dmgStatus[0] == 1){
+			if(dmgStatus[0] == 1){		//bleed
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 				dmgTotal += 10;
-			}else if (dmgStatus[0] == 3){
+			}else if (dmgStatus[0] == 3){		//burn
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 				dmgTotal += 10;
-			}else if (dmgStatus[0] == 5){
+			}else if (dmgStatus[0] == 5){		//depressed
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 				dmgTotal += 10;
-			}else if (dmgStatus[0] == 9){
+			}else if (dmgStatus[0] == 9){		//poisoned
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 				dmgTotal += 10;
-			}else if (dmgStatus[0] == 10){
+			}else if (dmgStatus[0] == 10){		//recover
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
 				dmgTotal += 10;
-			}else{
+			}else{			//hazard
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
 				if(dmgStatus[2] == 0.25){
 					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#9D9D9D';
