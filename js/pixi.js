@@ -4125,12 +4125,12 @@ function selectCreature(object2){
 	if(selectedVita.hero){
 
 	}else{
-		var newDamage = 0;
-		var dmgHazardArray = [];
-		var effectiveHazardArray = [];
+		// var newDamage = 0;
+		// var dmgHazardArray = [];
+		// var effectiveHazardArray = [];
 		fieldEnemyHazard.forEach(hazardItem=>{
 			var effectiveCalc = 1;
-			var defendElements = [];
+			// var defendElements = [];
 			var hazardElement = 0;
 			switch(hazardItem[1]){
 				case 1: 
@@ -4152,9 +4152,9 @@ function selectCreature(object2){
 				var element2 = creatureElement-1;
 				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
 			});
-			console.log("Effectiveness: " + effectiveCalc);
-			console.log(hazardItem[0]+1);
-			console.log(selectedVita.pos);
+			// console.log("Effectiveness: " + effectiveCalc);
+			// console.log(hazardItem[0]+1);
+			// console.log(selectedVita.pos);
 			if(selectedVita.size > 1){
 				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
 					console.log("HAZARD DAMAGE");
