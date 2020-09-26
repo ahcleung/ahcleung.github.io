@@ -4050,8 +4050,11 @@ function selectCreature(object2){
 			}else if (dmgStatus[0] == 3){		//burn
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				dmgTotal += 10;
+				var statusDamage = Math.round(selectedVita.EHP/16);
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+				dmgTotal += statusDamage;
+				// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				// dmgTotal += 10;
 			}else if (dmgStatus[0] == 5){		//depressed
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
