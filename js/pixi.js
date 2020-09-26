@@ -4118,7 +4118,7 @@ function selectCreature(object2){
 	var dmgStatusArray = [];
 	selectedVita.statusArray.forEach(storedStatus =>{
 		if(storedStatus[0] == 1 || storedStatus[0] == 3 || storedStatus[0] == 5 || storedStatus[0] == 9 || storedStatus[0] == 10){
-			dmgStatusArray.push(storedStatus[0]);
+			dmgStatusArray.push([storedStatus[0]]);
 		}
 	});
 
@@ -4158,14 +4158,16 @@ function selectCreature(object2){
 			if(selectedVita.size > 1){
 				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
 					console.log("HAZARD DAMAGE");
-					dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-					effectiveHazardArray.push(effectiveCalc);
+					// dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+					// effectiveHazardArray.push(effectiveCalc);
+					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
 				}
 			}else{
 				if(hazardItem[0]+1 == selectedVita.pos){
 					console.log("HAZARD DAMAGE");
-					dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
-					effectiveHazardArray.push(effectiveCalc);
+					// dmgHazardArray.push(Math.round(hazardItem[2]*effectiveCalc));
+					// effectiveHazardArray.push(effectiveCalc);
+					dmgStatusArray.push([11,Math.round(hazardItem[2]*effectiveCalc),effectiveCalc]);
 				}
 			}
 		});
@@ -4176,26 +4178,55 @@ function selectCreature(object2){
 		console.log(dmgStatusArray);
 		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
-			if(dmgStatus == 1){
+			if(dmgStatus[0] == 1){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
-			}else if (dmgStatus == 3){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				dmgTotal += 10;
+			}else if (dmgStatus[0] == 3){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
-			}else if (dmgStatus == 5){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				dmgTotal += 10;
+			}else if (dmgStatus[0] == 5){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
-			}else if (dmgStatus == 9){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				dmgTotal += 10;
+			}else if (dmgStatus[0] == 9){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
-			}else if (dmgStatus == 10){
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				dmgTotal += 10;
+			}else if (dmgStatus[0] == 10){
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+				dmgTotal += 10;
+			}else{
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
+				if(dmgStatus[2] == 0.25){
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#9D9D9D';
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+				}else if(dmgStatus[2] == 0.5){
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFFFFF';
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+				}else if(dmgStatus[2] == 2){
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFE81C';
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+				}else if(dmgStatus[2] == 4){
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DB00FF';
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+				}else if(dmgStatus[2] == 0){
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
+					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+				}
+				dmgTotal += dmgStatus[1];
 			}
 			
 			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
-			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-			dmgTotal += 10;
+			
+			
 			console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
 
