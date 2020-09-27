@@ -4040,6 +4040,11 @@ function selectCreature(object2){
 	}
 
 	if(dmgStatusArray.length > 0){
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
+			dmgNumArrayItem.style.fill = '#D80000';
+			dmgNumArrayItem.style.stroke = '#222222';
+			dmgNumArrayItem.visible = false;
+		});	
 		var dmgTotal = 0;
 		console.log(dmgStatusArray);
 		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
