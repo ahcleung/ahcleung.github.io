@@ -4001,6 +4001,7 @@ function selectCreature(object2){
 		});
 	}else{
 		fieldEnemyHazard.forEach(hazardItem=>{
+			console.log(hazardItem[1]);
 			var effectiveCalc = 1;
 			var hazardElement = 0;
 			switch(hazardItem[1]){
@@ -4045,8 +4046,9 @@ function selectCreature(object2){
 			if(dmgStatus[0] == 1){		//bleed
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				dmgTotal += 10;
+				var statusDamage = Math.floor(selectedVita.EHP/16);
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+				dmgTotal += statusDamage;
 			}else if (dmgStatus[0] == 3){		//burn
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
@@ -4058,18 +4060,21 @@ function selectCreature(object2){
 			}else if (dmgStatus[0] == 5){		//depressed
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				dmgTotal += 10;
+				var statusDamage = Math.floor(selectedVita.EHP/16);
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+				dmgTotal += statusDamage;
 			}else if (dmgStatus[0] == 9){		//poisoned
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				dmgTotal += 10;
+				var statusDamage = Math.floor(selectedVita.EHP/16);
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+				dmgTotal += statusDamage;
 			}else if (dmgStatus[0] == 10){		//recover
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				dmgTotal += 10;
+				var statusDamage = Math.floor(selectedVita.EHP/16);
+				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+				dmgTotal += statusDamage;
 			}else{			//hazard
 				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
 				if(dmgStatus[2] == 0.25){
