@@ -4001,6 +4001,7 @@ function selectCreature(object2){
 		});
 	}else{
 		fieldEnemyHazard.forEach(hazardItem=>{
+			console.log(fieldEnemyHazard);
 			console.log(hazardItem[1]);
 			var effectiveCalc = 1;
 			var hazardElement = 0;
