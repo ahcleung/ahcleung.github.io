@@ -212,7 +212,9 @@ const interfaceHolder = new PIXI.Container();
 const actionContainer = new PIXI.Container();
 const stageContainer = new PIXI.Container();
 
-var backgroundImage, actionLines, actionBlack, creatureInfo;
+const creatureInfo = new PIXI.Container();
+
+var backgroundImage, actionLines, actionBlack, creatureInfoBG;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
@@ -861,10 +863,12 @@ function setup(){
 	app.stage.addChild(onScreenStats);
 	app.stage.addChild(consoleScreen);
 
-	creatureInfo = new PIXI.Graphics();
-	creatureInfo.beginFill(0x000000);
-	creatureInfo.drawRect(10, 10, app.screen.width+50, app.screen.height+50);
-	creatureInfo.endFill();
+	creatureInfoBG = new PIXI.Graphics();
+	creatureInfoBG.beginFill(0x000000);
+	creatureInfoBG.drawRect(10, 10, app.screen.width+50, app.screen.height+50);
+	creatureInfoBG.endFill();
+	creautreInfo.addChild(creatureInfoBG);
+
 	app.stage.addChild(creatureInfo);
 
 	//Resize the screen
@@ -1490,8 +1494,8 @@ function resize() {
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 
-	creatureInfo.width = app.screen.width-20;
-	creatureInfo.height = app.screen.height-20;
+	creatureInfoBG.width = app.screen.width-20;
+	creatureInfoBG.height = app.screen.height-20;
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
