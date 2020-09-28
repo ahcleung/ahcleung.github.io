@@ -2060,7 +2060,19 @@ function onInfoCloseDown(){
 	creatureInfo.visible = false;
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = true;
+	});
+
+	heroArray.forEach(creature=>{
+		creature.sprite.interactive = true;
+		creature.healthBar.outer.interactive = true;
 	});	
+	enemyArray.forEach(creature=>{
+		creature.sprite.interactive = true;
+		creature.healthBar.outer.interactive = true;
+	});	
+
+	btnAdditional.interactive = true;
+	btnSettings.interactive = true;
 }
 
 function onHPDown(){
@@ -2072,10 +2084,15 @@ function onHPDown(){
 
 	heroArray.forEach(creature=>{
 		creature.sprite.interactive = false;
+		creature.healthBar.outer.interactive = false;
 	});	
 	enemyArray.forEach(creature=>{
 		creature.sprite.interactive = false;
+		creature.healthBar.outer.interactive = false;
 	});	
+
+	btnAdditional.interactive = false;
+	btnSettings.interactive = false;
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
