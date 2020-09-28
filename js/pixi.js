@@ -214,10 +214,12 @@ const stageContainer = new PIXI.Container();
 
 const creatureInfo = new PIXI.Container();
 
-var backgroundImage, actionLines, actionBlack, creatureInfoBG;
+var backgroundImage, actionLines, actionBlack;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
+
+var creatureInfoBG, btnInfoClose;
 
 //Interface spacing variables
 var healthSpacing = 20;
@@ -870,6 +872,16 @@ function setup(){
 	creatureInfoBG.alpha = 0.9;
 	creatureInfo.addChild(creatureInfoBG);
 
+	btnInfoClose = new PIXI.Sprite(textureAdditionalCancel);	//Button additional cancel
+	// btnAdditionalCancel.anchor.set(0,1);
+	btnInfoClose.buttonMode = true;
+    	btnInfoClose.interactive = true;
+	btnInfoClose
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onAdditionalCancelDown);	
+	creatureInfo.addChild(btnInfoClose);
+	// additionalArray.push(btnAdditionalCancel);
+
 	app.stage.addChild(creatureInfo);
 
 	//Resize the screen
@@ -1495,10 +1507,10 @@ function resize() {
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 
-	creatureInfoBG.width = app.screen.width-20;
-	creatureInfoBG.height = app.screen.height-20;
-	creatureInfoBG.x = 10;
-	creatureInfoBG.y = 10;
+	creatureInfoBG.width = app.screen.width-40;
+	creatureInfoBG.height = app.screen.height-40;
+	creatureInfoBG.x = 20;
+	creatureInfoBG.y = 20;
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
@@ -1571,6 +1583,11 @@ function resize() {
 		additionalBtn.y = -index * btnSettings.width;
 	});
 	
+	btnInfoClose.width = btnSettings.width;
+	btnInfoClose.height = btnSettings.width;
+	btnInfoClose.x = app.screen.width/2;
+	btnInfoClose.y = app.screen.height/2;
+
 	interfaceAdditional.position.set(margin, app.screen.height - margin);
 	
 	skillContainerArray.forEach((skillContainer, index) => {
