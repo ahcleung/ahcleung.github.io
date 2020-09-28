@@ -212,7 +212,7 @@ const interfaceHolder = new PIXI.Container();
 const actionContainer = new PIXI.Container();
 const stageContainer = new PIXI.Container();
 
-var backgroundImage, actionLines, actionBlack;
+var backgroundImage, actionLines, actionBlack, creatureInfo;
 var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
@@ -861,7 +861,7 @@ function setup(){
 	app.stage.addChild(onScreenStats);
 	app.stage.addChild(consoleScreen);
 
-	var creatureInfo = new PIXI.Graphics();
+	creatureInfo = new PIXI.Graphics();
 	creatureInfo.beginFill(0x000000);
 	creatureInfo.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	creatureInfo.endFill();
