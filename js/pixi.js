@@ -865,9 +865,9 @@ function setup(){
 
 	creatureInfoBG = new PIXI.Graphics();
 	creatureInfoBG.beginFill(0x000000);
-	creatureInfoBG.drawRect(10, 10, app.screen.width+50, app.screen.height+50);
+	creatureInfoBG.drawRect(0, 0, app.screen.width+50, app.screen.height+50);
 	creatureInfoBG.endFill();
-	creatureInfoBG.anchor.set(0.5);
+	// creatureInfoBG.anchor.set(0.5);
 	creatureInfo.addChild(creatureInfoBG);
 
 	app.stage.addChild(creatureInfo);
@@ -1497,7 +1497,6 @@ function resize() {
 
 	creatureInfoBG.width = app.screen.width-20;
 	creatureInfoBG.height = app.screen.height-20;
-	creatureInfoBG.position.set(app.screen.width/2, app.screen.height/2);
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
