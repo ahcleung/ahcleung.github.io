@@ -886,6 +886,7 @@ function setup(){
 	blurFilterInfo.blur = 10;
 
 	stageContainer.filters = [blurFilterInfo];
+	interfaceHolder.filters = [blurFilterInfo];
 
 	app.stage.addChild(creatureInfo);
 
