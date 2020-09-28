@@ -2058,11 +2058,18 @@ function onInfoCloseDown(){
 	console.log("Info close");
 	blurFilterInfo.blur = 0;
 	creatureInfo.visible = false;
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.interactive = true;
+	});	
 }
 
 function onHPDown(){
 	blurFilterInfo.blur = 30;
 	creatureInfo.visible = true;
+	skillContainerArray.forEach(skillContainer=>{
+		skillContainer.interactive = false;
+	});	
+
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
