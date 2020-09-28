@@ -878,7 +878,7 @@ function setup(){
     	btnInfoClose.interactive = true;
 	btnInfoClose
         // set the mousedown and touchstart callback...
-        .on('pointerdown', onAdditionalCancelDown);	
+        .on('pointerdown', onInfoCloseDown);	
 	creatureInfo.addChild(btnInfoClose);
 	// additionalArray.push(btnAdditionalCancel);
 
@@ -2047,6 +2047,11 @@ function onAdditionalSkipDown(){
 	interfaceAdditional.visible = false;
 	// onScreenStats.visible = false;
 	// consoleScreen.visible = false;
+}
+
+function onInfoCloseDown(){
+	console.log("Info close");
+	creatureInfo.visible = false;
 }
 
 function onHPDown(){
