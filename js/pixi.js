@@ -2070,6 +2070,13 @@ function onHPDown(){
 		skillContainer.interactive = false;
 	});	
 
+	heroArray.forEach(creature=>{
+		creature.sprite.interactive = false;
+	});	
+	enemyArray.forEach(creature=>{
+		creature.sprite.interactive = false;
+	});	
+
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
