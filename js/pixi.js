@@ -883,8 +883,6 @@ function setup(){
 	creatureInfo.addChild(btnInfoClose);
 	// additionalArray.push(btnAdditionalCancel);
 
-	blurFilterInfo.blur = 10;
-
 	turnText.filters = [blurFilterInfo];
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
@@ -2063,7 +2061,7 @@ function onInfoCloseDown(){
 }
 
 function onHPDown(){
-	blurFilterInfo.blur = 10;
+	blurFilterInfo.blur = 20;
 	creatureInfo.visible = true;
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
