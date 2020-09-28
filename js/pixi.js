@@ -867,7 +867,7 @@ function setup(){
 	app.stage.addChild(consoleScreen);
 
 	creatureInfoBG = new PIXI.Graphics();
-	creatureInfoBG.beginFill(0x000000);
+	creatureInfoBG.beginFill(0x222222);
 	creatureInfoBG.drawRect(0, 0, app.screen.width+50, app.screen.height+50);
 	creatureInfoBG.endFill();
 	creatureInfoBG.alpha = 0.9;
@@ -2061,7 +2061,7 @@ function onInfoCloseDown(){
 }
 
 function onHPDown(){
-	blurFilterInfo.blur = 20;
+	blurFilterInfo.blur = 30;
 	creatureInfo.visible = true;
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
