@@ -867,7 +867,7 @@ function setup(){
 	creatureInfoBG.beginFill(0x000000);
 	creatureInfoBG.drawRect(10, 10, app.screen.width+50, app.screen.height+50);
 	creatureInfoBG.endFill();
-	creautreInfo.addChild(creatureInfoBG);
+	creatureInfo.addChild(creatureInfoBG);
 
 	app.stage.addChild(creatureInfo);
 
