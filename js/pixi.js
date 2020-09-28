@@ -2058,10 +2058,12 @@ function onAdditionalSkipDown(){
 
 function onInfoCloseDown(){
 	console.log("Info close");
+	blurFilterInfo.blur = 0;
 	creatureInfo.visible = false;
 }
 
 function onHPDown(){
+	blurFilterInfo.blur = 10;
 	creatureInfo.visible = true;
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
