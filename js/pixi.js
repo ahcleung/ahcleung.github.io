@@ -863,7 +863,7 @@ function setup(){
 
 	creatureInfo = new PIXI.Graphics();
 	creatureInfo.beginFill(0x000000);
-	creatureInfo.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
+	creatureInfo.drawRect(25, 25, app.screen.width+50, app.screen.height+50);
 	creatureInfo.endFill();
 	app.stage.addChild(creatureInfo);
 
