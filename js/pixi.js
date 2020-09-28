@@ -882,6 +882,11 @@ function setup(){
 	creatureInfo.addChild(btnInfoClose);
 	// additionalArray.push(btnAdditionalCancel);
 
+	const blurFilterInfo = new PIXI.filters.BlurFilter();
+	blurFilterInfo.blur = 10;
+
+	stageContainer.filters = [blurFilterInfo];
+
 	app.stage.addChild(creatureInfo);
 
 	//Resize the screen
@@ -2055,7 +2060,6 @@ function onInfoCloseDown(){
 }
 
 function onHPDown(){
-	// console.log("HP:" + this.object.pos);
 	creatureInfo.visible = true;
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
