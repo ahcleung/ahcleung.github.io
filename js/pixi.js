@@ -220,6 +220,7 @@ var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textu
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
 
 var creatureInfoBG, btnInfoClose;
+const blurFilterInfo;
 
 //Interface spacing variables
 var healthSpacing = 20;
@@ -882,7 +883,7 @@ function setup(){
 	creatureInfo.addChild(btnInfoClose);
 	// additionalArray.push(btnAdditionalCancel);
 
-	const blurFilterInfo = new PIXI.filters.BlurFilter();
+	blurFilterInfo = new PIXI.filters.BlurFilter();
 	blurFilterInfo.blur = 10;
 
 	turnText.filters = [blurFilterInfo];
