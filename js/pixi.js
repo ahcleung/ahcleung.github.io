@@ -858,8 +858,14 @@ function setup(){
 
 	app.stage.addChild(interfaceHolder);
 	
-	app.stage.addChild(onScreenStats);	
+	app.stage.addChild(onScreenStats);
 	app.stage.addChild(consoleScreen);
+
+	var creatureInfo = new PIXI.Graphics();
+	creatureInfo.beginFill(0x000000);
+	creatureInfo.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
+	creatureInfo.endFill();
+	app.stage.addChild(creatureInfo);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1483,6 +1489,9 @@ function resize() {
 	actionBlack.width = app.screen.width+100;
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
+
+	creatureInfo.width = app.screen.width+100;
+	creatureInfo.height = app.screen.height+100;
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
