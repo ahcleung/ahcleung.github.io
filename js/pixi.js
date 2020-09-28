@@ -2056,6 +2056,7 @@ function onInfoCloseDown(){
 
 function onHPDown(){
 	// console.log("HP:" + this.object.pos);
+	creatureInfo.visible = true;
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
