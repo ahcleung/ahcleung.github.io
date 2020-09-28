@@ -1494,8 +1494,9 @@ function resize() {
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 
-	creatureInfoBG.width = app.screen.width-30;
-	creatureInfoBG.height = app.screen.height-30;
+	creatureInfoBG.width = app.screen.width-20;
+	creatureInfoBG.height = app.screen.height-20;
+	creatureInfoBG.position.set(app.screen.width/2, app.screen.height/2);
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
