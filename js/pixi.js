@@ -885,6 +885,7 @@ function setup(){
 	const blurFilterInfo = new PIXI.filters.BlurFilter();
 	blurFilterInfo.blur = 10;
 
+	turnText.filters = [blurFilterInfo];
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
 
