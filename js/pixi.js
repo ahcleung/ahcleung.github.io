@@ -2169,7 +2169,7 @@ function onHPDown(){
 			text.x = textOriginX;
 			text.y = textOriginY + (textIndex * 40);
 		}else{
-			text.x = textOriginX + 125;
+			text.x = textOriginX + 140;
 			text.y = textOriginY + ((textIndex-1) * 40);
 		}
 	});
