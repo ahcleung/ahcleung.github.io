@@ -280,7 +280,7 @@ hero[0] = {
 };
 hero[1] = {
 	id: 11, level: 47, 
-	skill1: 4, skill2: 10, skill3: 11, skill4: 3,
+	skill1: 1, skill2: 10, skill3: 11, skill4: 3,
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 3, statSATK: 0, statSDEF: 20, statSPD: 120,
 	hero: true
 };
@@ -1906,12 +1906,7 @@ function resizeHP(roster, item){
 	item.healthBar.heal.pivot.x = item.healthBar.heal.width/2;
 	item.healthBar.heal.x = item.healthBar.heal.width/2;
 
-	// if(item.healthBar.select.animate.isActive()){
-	// item.healthBar.select.animate.kill(null,item.healthBar.select);
-
-	console.log(item.healthBar.select.animate.getChildren());
 	item.healthBar.select.animate.clear();
-	// }	
 	var selectWidth = item.healthBar.outer.width;
 	item.healthBar.select.width = item.healthBar.outer.width;
 	item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
@@ -2200,14 +2195,16 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = textOriginX + 100;
-	creatureInfo.info_main_element[0].y = textOriginY + 240;
+	creatureInfo.info_main_element[0].y = textOriginY + 300;
 	creatureInfo.info_main_element[1].x = textOriginX + 400;
-	creatureInfo.info_main_element[1].y = textOriginY + 240;
+	creatureInfo.info_main_element[1].y = textOriginY + 300;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	this.object.elements.forEach((element, elementIndex) =>{
+		var skillElement;
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
+
 		}else if(element == 2){
 			creatureInfo.info_main_element[elementIndex].text = "Water";
 		}else if(element == 3){
@@ -2225,7 +2222,43 @@ function onHPDown(){
 		}else if(element == 9){
 			creatureInfo.info_main_element[elementIndex].text = "Shadow";
 		}
+
 	});
+
+	// var skillElement;
+	// 	switch(skillsList.data.skills[heroArray[1].skills[i]].element){
+	// 		case 1:
+	// 			skillElement = new PIXI.Sprite(resources.element_earth.texture);
+	// 			break;
+	// 		case 2:
+	// 			skillElement = new PIXI.Sprite(resources.element_fire.texture);
+	// 			break;
+	// 		case 3:
+	// 			skillElement = new PIXI.Sprite(resources.element_flora.texture);
+	// 			break;
+	// 		case 4:
+	// 			skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+	// 			break;
+	// 		case 5:
+	// 			skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+	// 			break;
+	// 		case 6:
+	// 			skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+	// 			break;
+	// 		case 7:
+	// 			skillElement = new PIXI.Sprite(resources.element_toxic.texture);
+	// 			break;
+	// 		case 8:
+	// 			skillElement = new PIXI.Sprite(resources.element_water.texture);
+	// 			break;
+	// 		case 9:
+	// 			skillElement = new PIXI.Sprite(resources.element_wind.texture);
+	// 			break;
+	// 		default:
+	// 			skillElement = new PIXI.Sprite(resources.element_fire.texture);
+	// 			break;
+	// 	}
+	// 	skillElement.anchor.set(0, 0.5);
 
 	// console.log(this.object.elements);
 

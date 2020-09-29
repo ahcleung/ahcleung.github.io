@@ -81,7 +81,7 @@
 		},
 		{
 			"name": "Torch ground",
-			"element": 2,
+			"element": 3,
 			"type": "spe",
 			"power": 20,
 			"accuracy": 100,
