@@ -2187,7 +2187,34 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	console.log(this.object.elements);
+	creatureInfo.info_main_text[0].x = app.screen.width/2;
+	creatureInfo.info_main_text[0].y = app.screen.height*4/5;
+	creatureInfo.info_main_text[1].x = app.screen.width/2 + 400;
+	creatureInfo.info_main_text[1].y = app.screen.height*4/5;
+	this.object.elements.forEach((element, elementIndex) =>{
+		if(element == 1){
+			creatureInfo.info_main_text[elementIndex].text = "Flora";
+		}else if(element == 2){
+			creatureInfo.info_main_text[elementIndex].text = "Water";
+		}else if(element == 3){
+			creatureInfo.info_main_text[elementIndex].text = "Fire";
+		}else if(element == 4){
+			creatureInfo.info_main_text[elementIndex].text = "Earth";
+		}else if(element == 5){
+			creatureInfo.info_main_text[elementIndex].text = "Lightning";
+		}else if(element == 6){
+			creatureInfo.info_main_text[elementIndex].text = "Wind";
+		}else if(element == 7){
+			creatureInfo.info_main_text[elementIndex].text = "Toxic";
+		}else if(element == 8){
+			creatureInfo.info_main_text[elementIndex].text = "Spirit";
+		}else if(element == 9){
+			creatureInfo.info_main_text[elementIndex].text = "Shadow";
+		}
+		
+	});
+
+	// console.log(this.object.elements);
 
 	// creatureInfo.info_main_element[0].forEach((text,textIndex) =>{
 	// 	if(textIndex%2 == 0){
