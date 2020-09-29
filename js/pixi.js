@@ -903,6 +903,12 @@ function setup(){
 	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_level2);
 	creatureInfo.addChild(info_main_level2);
+	let info_main_species1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_species1);
+	creatureInfo.addChild(info_main_species1);
+	let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_text.push(info_main_species2);
+	creatureInfo.addChild(info_main_species2);
 
 	// let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	// let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
@@ -2154,19 +2160,20 @@ function onHPDown(){
 
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/3;
-	
+
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
 			text.x = textOriginX;
 			text.y = textOriginY + (textIndex * 25);
 		}else{
-			text.x = textOriginX + 100;
+			text.x = textOriginX + 125;
 			text.y = textOriginY + ((textIndex-1) * 25);
 		}
 	});
 
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
+	creatureInfo.info_main_text[5].text = this.object.name;
 
 	// creatureInfo.infoName.text = "Name: " + this.object.name;
 	// creatureInfo.infoName.x = app.screen.width/2;
