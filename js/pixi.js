@@ -1909,7 +1909,7 @@ function resizeHP(roster, item){
 	// if(item.healthBar.select.animate.isActive()){
 		item.healthBar.select.animate.clear();
 	// }	
-	var selectWidth = item.healthBar.select.width;
+	var selectWidth = item.healthBar.outer.width;
 	item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 	item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
 	item.healthBar.select.animate.play(0);
@@ -4357,7 +4357,7 @@ function selectCreature(object2){
 
 	selectSpriteTween = new TimelineMax({onComplete: function(){
 		// var selectTween = new TimelineMax({paused: true});
-		var selectWidth = selectedVita.healthBar.select.width;
+		var selectWidth = selectedVita.healthBar.outer.width;
 		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.to(selectedVita.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
 		selectedVita.healthBar.select.animate.play(0);
