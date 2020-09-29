@@ -1698,8 +1698,8 @@ function resize() {
 	
 	btnInfoClose.width = btnSettings.width;
 	btnInfoClose.height = btnSettings.width;
-	btnInfoClose.x = app.screen.width*4/5;
-	btnInfoClose.y = app.screen.height*4/5;
+	btnInfoClose.x = app.screen.width*5/6;
+	btnInfoClose.y = app.screen.height/6;
 
 	interfaceAdditional.position.set(margin, app.screen.height - margin);
 	
@@ -2302,7 +2302,7 @@ function onHPDown(){
 	});
 
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = 300;
+		btn.rect.width = 200;
 		btn.rect.height = 80;
 		btn.selected.stroke.width = 300;
 		btn.selected.stroke.height = 80;
