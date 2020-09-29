@@ -2107,7 +2107,7 @@ function onHPDown(){
 	const armatureHero = factory.buildArmatureDisplay(this.object.code, this.object.code);
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * this.object.frames) + 1);
 	// creatureInfo.addChild(armatureHero);
-	const creatureInfoSprite = new PIXI.Container();
+	// const creatureInfoSprite = new PIXI.Container();
 
 	if(app.screen.width < 860){
 		spriteScale = 0.23;
