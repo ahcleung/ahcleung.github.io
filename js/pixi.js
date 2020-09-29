@@ -883,10 +883,11 @@ function setup(){
 	creatureInfo.addChild(btnInfoClose);
 	// additionalArray.push(btnAdditionalCancel);
 
+	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
-	
+
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
 
