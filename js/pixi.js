@@ -2162,12 +2162,12 @@ function onHPDown(){
 	creatureInfo.addChild(creatureInfoSprite);
 
 	var textOriginX = app.screen.width/2;
-	var textOriginY = app.screen.height/4;
+	var textOriginY = app.screen.height/5;
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
 			text.x = textOriginX;
-			text.y = textOriginY + (textIndex * 30);
+			text.y = textOriginY + (textIndex * 40);
 		}else{
 			text.x = textOriginX + 125;
 			text.y = textOriginY + ((textIndex-1) * 40);
