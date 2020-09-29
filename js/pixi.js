@@ -2306,8 +2306,8 @@ function onHPDown(){
 		btn.rect.height = app.screen.height/14;
 		// btn.selected.stroke.width = 300;
 		// btn.selected.stroke.height = 80;
-		btn.infoBtnText.x = 100;
-		btn.infoBtnText.y = 40;
+		btn.infoBtnText.x = btn.rect.width/2;
+		btn.infoBtnText.y = btn.rect.height/2;
 		btn.x = (btnIndex * 300) + 100 + (btnIndex * 25);
 		btn.y = app.screen.height*4/5;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
