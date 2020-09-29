@@ -2062,7 +2062,7 @@ function onInfoCloseDown(){
 	blurFilterInfo.blur = 0;
 	creatureInfo.visible = false;
 
-	creatureInfoSprite.destroy();
+	creatureInfoSprite.getChildAt(0).destroy;
 	// heroHazardSprite[arrayNum].destroy();
 
 	skillContainerArray.forEach(skillContainer=>{
