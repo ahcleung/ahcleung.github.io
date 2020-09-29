@@ -961,7 +961,7 @@ function setup(){
 		.on('pointerdown', onSkillDown);
 		
 		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
-		infoBtnText.anchor.set(0, 0.5);
+		// infoBtnText.anchor.set(0.5, 0.5);
 		
 		infoRect.beginFill(0x636363).drawRect(0, 0, 50, 50);
 		infoRect.x = 0;
@@ -988,7 +988,7 @@ function setup(){
 		// infoBtn.selected.visible = false;
 		
 		infoBtn.addChild(infoBtnText);
-		// infoBtn.infoBtnText = infoBtnText;
+		infoBtn.infoBtnText = infoBtnText;
 		
 		infoBtnArray.push(infoBtn);
 		creatureInfo.addChild(infoBtn);
@@ -1619,11 +1619,6 @@ function resize() {
 	actionBlack.width = app.screen.width+100;
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
-
-	creatureInfoBG.width = app.screen.width-40;
-	creatureInfoBG.height = app.screen.height-40;
-	creatureInfoBG.x = 20;
-	creatureInfoBG.y = 20;
 	
 	var skillSelectPadding = 5;
 	var hazardMargin = 50;
@@ -1696,6 +1691,11 @@ function resize() {
 		additionalBtn.y = -index * btnSettings.width;
 	});
 	
+	creatureInfoBG.width = app.screen.width-40;
+	creatureInfoBG.height = app.screen.height-40;
+	creatureInfoBG.x = 20;
+	creatureInfoBG.y = 20;
+
 	btnInfoClose.width = btnSettings.width;
 	btnInfoClose.height = btnSettings.width;
 	btnInfoClose.x = app.screen.width*5/6;
@@ -2306,7 +2306,9 @@ function onHPDown(){
 		btn.rect.height = 80;
 		// btn.selected.stroke.width = 300;
 		// btn.selected.stroke.height = 80;
-		btn.x = btnIndex * 400;
+		btn.infoBtnText.x = 100;
+		btn.infoBtnText.y = 40;
+		btn.x = btnIndex * 300 + 100;
 		btn.y = app.screen.height*4/5;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
 		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
