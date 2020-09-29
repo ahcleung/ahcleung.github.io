@@ -2302,8 +2302,8 @@ function onHPDown(){
 	});
 
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = 200;
-		btn.rect.height = 80;
+		btn.rect.width = app.screen.width/6;
+		btn.rect.height = app.screen.height/14;
 		// btn.selected.stroke.width = 300;
 		// btn.selected.stroke.height = 80;
 		btn.infoBtnText.x = 100;
