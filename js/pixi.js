@@ -889,17 +889,34 @@ function setup(){
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
 
-	let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
-	let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	var info_main_text = [];
+
+	let info_main_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_name1);
+	creatureInfo.addChild(info_main_name1);
+	let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_text.push(info_main_name2);
+	creatureInfo.addChild(info_main_name2);
+	let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_level1);
+	creatureInfo.addChild(info_main_level1);
+	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_text.push(info_main_level2);
+	creatureInfo.addChild(info_main_level2);
+
+	// let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	// let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	// infoName.anchor.set(0.5);
-	infoName.x = 0;
-	infoName.y = 0;
-	creatureInfo.addChild(infoName);
-	creatureInfo.infoName = infoName;
-	infoLevel.x = 0;
-	infoLevel.y = 50;
-	creatureInfo.addChild(infoLevel);
-	creatureInfo.infoLevel = infoLevel;
+	// infoName.x = 0;
+	// infoName.y = 0;
+	// creatureInfo.addChild(infoName);
+	// creatureInfo.infoName = infoName;
+	// infoLevel.x = 0;
+	// infoLevel.y = 50;
+	// creatureInfo.addChild(infoLevel);
+	// creatureInfo.infoLevel = infoLevel;
+
+	creatureInfo.info_main_text = info_main_text;
 
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
@@ -2135,12 +2152,22 @@ function onHPDown(){
 
 	creatureInfo.addChild(creatureInfoSprite);
 
-	creatureInfo.infoName.text = "Name: " + this.object.name;
-	creatureInfo.infoName.x = app.screen.width/2;
-	creatureInfo.infoName.y = app.screen.height/3;
-	creatureInfo.infoLevel.text = "Level: " + this.object.level;
-	creatureInfo.infoLevel.x = app.screen.width/2;
-	creatureInfo.infoLevel.y = app.screen.height/3 + 50;
+	creatureInfo.info_main_text.forEach((text,textIndex) =>{
+		if(textIndex%2 == 0){
+			text.x = 0;
+			text.y = (textIndex-1) * 25;
+		}else{
+			text.x = 50;
+			text.y = textIndex * 25;
+		}
+	});
+
+	// creatureInfo.infoName.text = "Name: " + this.object.name;
+	// creatureInfo.infoName.x = app.screen.width/2;
+	// creatureInfo.infoName.y = app.screen.height/3;
+	// creatureInfo.infoLevel.text = "Level: " + this.object.level;
+	// creatureInfo.infoLevel.x = app.screen.width/2;
+	// creatureInfo.infoLevel.y = app.screen.height/3 + 50;
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
