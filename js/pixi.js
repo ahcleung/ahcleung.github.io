@@ -2123,6 +2123,10 @@ function onHPDown(){
 
 	creatureInfo.addChild(creatureInfoSprite);
 
+	let infoName = new Text(this.object.name, {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'center'});
+	infoName.anchor.set(0.5);
+	creatureInfo.addChild(infoName);
+
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
