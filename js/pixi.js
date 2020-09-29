@@ -961,7 +961,7 @@ function setup(){
 		.on('pointerdown', onSkillDown);
 		
 		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
-		// infoBtnText.anchor.set(0.5, 0.5);
+		infoBtnText.anchor.set(0.5, 0.5);
 		
 		infoRect.beginFill(0x636363).drawRect(0, 0, 50, 50);
 		infoRect.x = 0;
