@@ -1906,6 +1906,7 @@ function resizeHP(roster, item){
 	item.healthBar.heal.pivot.x = item.healthBar.heal.width/2;
 	item.healthBar.heal.x = item.healthBar.heal.width/2;
 
+	item.healthBar.select.animate.stop();
 	var selectWidth = item.healthBar.select.width;
 	item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 	item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
