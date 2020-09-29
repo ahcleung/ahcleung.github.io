@@ -889,7 +889,7 @@ function setup(){
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
 
-	let infoName = new Text("Name: " + this.object.name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'center'});
+	let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'center'});
 	infoName.anchor.set(0.5);
 	infoName.x = app.screen.width/2;
 	infoName.y = app.screen.width/3;
