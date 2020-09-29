@@ -2125,6 +2125,8 @@ function onHPDown(){
 
 	let infoName = new Text(this.object.name, {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'center'});
 	infoName.anchor.set(0.5);
+	infoName.x = app.screen.width/2;
+	infoName.x = app.screen.width/3;
 	creatureInfo.addChild(infoName);
 
 	var creatureStatusInfo = [];
