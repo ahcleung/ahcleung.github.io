@@ -1913,7 +1913,7 @@ function resizeHP(roster, item){
 	item.healthBar.select.animate.clear();
 	// }	
 	var selectWidth = item.healthBar.outer.width;
-	// item.healthBar.select.width = 
+	item.healthBar.select.width = item.healthBar.outer.width;
 	item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
 	item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
 	item.healthBar.select.animate.play(0);
