@@ -2187,10 +2187,10 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_element[0].x = app.screen.width/2;
-	creatureInfo.info_main_element[0].y = app.screen.height*4/5;
+	creatureInfo.info_main_element[0].x = app.screen.width/2 + 100;
+	creatureInfo.info_main_element[0].y = app.screen.height/5 + 160;
 	creatureInfo.info_main_element[1].x = app.screen.width/2 + 400;
-	creatureInfo.info_main_element[1].y = app.screen.height*4/5;
+	creatureInfo.info_main_element[1].y = app.screen.height/5 + 160;
 	this.object.elements.forEach((element, elementIndex) =>{
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
