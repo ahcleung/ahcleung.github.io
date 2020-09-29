@@ -2204,14 +2204,19 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].y = textOriginY + 400;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
+	creatureInfo.info_main_element[0].visible = false;
+	creatureInfo.info_main_element[1].visible = false;
 
 	creatureInfo.info_main_elementIcon[0].x = textOriginX + 25;
-	creatureInfo.info_main_elementIcon[0].y = textOriginY + 400;
+	creatureInfo.info_main_elementIcon[0].y = textOriginY + 350;
 	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
-	creatureInfo.info_main_elementIcon[1].y = textOriginY + 400;
+	creatureInfo.info_main_elementIcon[1].y = textOriginY + 350;
+	creatureInfo.info_main_elementIcon[0].visible = false;
+	creatureInfo.info_main_elementIcon[1].visible = false;
 
 	this.object.elements.forEach((element, elementIndex) =>{
-		var skillElement;
+		creatureInfo.info_main_element[elementIndex].visible = true;
+		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
