@@ -1788,7 +1788,6 @@ function resizeHP(roster, item){
 	var indicatorBar2Y = -20;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
-	item.healthBar.select.animate.kill(null,item.healthBar.select);
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
@@ -1908,7 +1907,10 @@ function resizeHP(roster, item){
 	item.healthBar.heal.x = item.healthBar.heal.width/2;
 
 	// if(item.healthBar.select.animate.isActive()){
-		
+	// item.healthBar.select.animate.kill(null,item.healthBar.select);
+
+	console.log(item.healthBar.select.animate.getChildren());
+	item.healthBar.select.animate.clear();
 	// }	
 	var selectWidth = item.healthBar.outer.width;
 	// item.healthBar.select.width = 
