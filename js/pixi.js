@@ -2096,8 +2096,8 @@ function onHPDown(){
 	btnAdditional.interactive = false;
 	btnSettings.interactive = false;
 
-	factory.parseDragonBonesData(resources[this.object.code + '_skeleton'].data);
-	factory.parseTextureAtlasData(resources[this.object.code + '_texture_json'].data, resources[this.object.code + '_texture_png'].texture);
+	// factory.parseDragonBonesData(resources[this.object.code + '_skeleton'].data);
+	// factory.parseTextureAtlasData(resources[this.object.code + '_texture_json'].data, resources[this.object.code + '_texture_png'].texture);
 
 	const armatureHero = factory.buildArmatureDisplay(this.object.code, this.object.code);
 	creatureInfo.addChild(armatureHero);
