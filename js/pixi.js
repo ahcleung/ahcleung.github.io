@@ -960,35 +960,35 @@ function setup(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onSkillDown);
 		
-		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
 		infoBtnText.anchor.set(0, 0.5);
 		
-		infoRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		infoRect.beginFill(0x636363).drawRect(0, 0, 50, 50);
 		infoRect.x = 0;
 		infoRect.y = 0;
 		
 		infoBtn.addChild(infoRect);
 		infoBtn.rect = infoRect;
 		
-		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-		infoSelectStroke.x = 0;
-		infoSelectStroke.y = 0;		
-		infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		infoSelectFill.x = 0;
-		infoSelectFill.y = 0;
+		// infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		// infoSelectStroke.x = 0;
+		// infoSelectStroke.y = 0;		
+		// infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		// infoSelectFill.x = 0;
+		// infoSelectFill.y = 0;
 		
-		infoBtnSelect.addChild(infoSelectStroke);
-		infoBtnSelect.addChild(infoSelectFill);
-		infoBtnSelect.stroke = infoSelectStroke;
-		infoBtnSelect.fill = infoSelectFill;
+		// infoBtnSelect.addChild(infoSelectStroke);
+		// infoBtnSelect.addChild(infoSelectFill);
+		// infoBtnSelect.stroke = infoSelectStroke;
+		// infoBtnSelect.fill = infoSelectFill;
 				
-		infoBtn.addChild(infoBtnSelect);
-		infoBtn.selected = infoBtnSelect;
+		// infoBtn.addChild(infoBtnSelect);
+		// infoBtn.selected = infoBtnSelect;
 		
-		infoBtn.selected.visible = false;
+		// infoBtn.selected.visible = false;
 		
 		infoBtn.addChild(infoBtnText);
-		infoBtn.infoBtnText = infoBtnText;
+		// infoBtn.infoBtnText = infoBtnText;
 		
 		infoBtnArray.push(infoBtn);
 		creatureInfo.addChild(infoBtn);
@@ -2306,7 +2306,7 @@ function onHPDown(){
 		btn.rect.height = 80;
 		btn.selected.stroke.width = 300;
 		btn.selected.stroke.height = 80;
-		btn.x = btnIndex * 50;
+		btn.x = btnIndex * 400;
 		btn.y = app.screen.height*4/5;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
 		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
