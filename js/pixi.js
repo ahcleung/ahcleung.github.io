@@ -909,9 +909,17 @@ function setup(){
 	let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_species2);
 	creatureInfo.addChild(info_main_species2);
-	let info_main_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
-	info_main_text.push(info_main_type1);
-	creatureInfo.addChild(info_main_type1);
+	let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_element1);
+	creatureInfo.addChild(info_main_element1);
+
+	var info_main_element = [];
+	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_element.push(info_main_element2);
+	creatureInfo.addChild(info_main_element2);
+	let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_element.push(info_main_element3);
+	creatureInfo.addChild(info_main_element3);
 
 	// let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	// let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
@@ -926,6 +934,7 @@ function setup(){
 	// creatureInfo.infoLevel = infoLevel;
 
 	creatureInfo.info_main_text = info_main_text;
+	creatureInfo.info_main_element = info_main_element;
 
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
@@ -2178,12 +2187,17 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	// creatureInfo.infoName.text = "Name: " + this.object.name;
-	// creatureInfo.infoName.x = app.screen.width/2;
-	// creatureInfo.infoName.y = app.screen.height/3;
-	// creatureInfo.infoLevel.text = "Level: " + this.object.level;
-	// creatureInfo.infoLevel.x = app.screen.width/2;
-	// creatureInfo.infoLevel.y = app.screen.height/3 + 50;
+	console.log(this.object.elements);
+
+	// creatureInfo.info_main_element[0].forEach((text,textIndex) =>{
+	// 	if(textIndex%2 == 0){
+	// 		text.x = textOriginX;
+	// 		text.y = textOriginY + (textIndex * 40);
+	// 	}else{
+	// 		text.x = textOriginX + 140;
+	// 		text.y = textOriginY + ((textIndex-1) * 40);
+	// 	}
+	// });
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
