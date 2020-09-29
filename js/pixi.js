@@ -1788,7 +1788,7 @@ function resizeHP(roster, item){
 	var indicatorBar2Y = -20;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
-	item.healthBar.select.animate.clear();
+	item.healthBar.select.animate.kill();
 	
 	if(app.screen.width < 860){
 		resizeHeight = 20;
