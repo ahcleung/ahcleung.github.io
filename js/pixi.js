@@ -2157,10 +2157,13 @@ function onHPDown(){
 			text.x = 0;
 			text.y = textIndex * 25;
 		}else{
-			text.x = 50;
+			text.x = 200;
 			text.y = (textIndex-1) * 25;
 		}
 	});
+	
+	creatureInfo.info_main_text[1].text = this.object.name;
+	creatureInfo.info_main_text[3].text = this.object.level;
 
 	// creatureInfo.infoName.text = "Name: " + this.object.name;
 	// creatureInfo.infoName.x = app.screen.width/2;
