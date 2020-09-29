@@ -222,6 +222,7 @@ var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip
 var creatureInfoBG, btnInfoClose;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
 const creatureInfoSprite = new PIXI.Container();
+var creatureInfoArray = [];
 
 //Interface spacing variables
 var healthSpacing = 20;
@@ -2062,7 +2063,7 @@ function onInfoCloseDown(){
 	blurFilterInfo.blur = 0;
 	creatureInfo.visible = false;
 
-	creatureInfoSprite.getChildAt(0).destroy;
+	creatureInfoSprite.getChildAt(0).destroy();
 	// heroHazardSprite[arrayNum].destroy();
 
 	skillContainerArray.forEach(skillContainer=>{
@@ -2106,6 +2107,7 @@ function onHPDown(){
 
 	const armatureHero = factory.buildArmatureDisplay(this.object.code, this.object.code);
 	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * this.object.frames) + 1);
+	creatureInfoArray.push(armatureHero);
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
