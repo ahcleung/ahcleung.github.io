@@ -915,9 +915,11 @@ function setup(){
 
 	var info_main_element = [];
 	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_element2.anchor.set(0,0.5);
 	info_main_element.push(info_main_element2);
 	creatureInfo.addChild(info_main_element2);
 	let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_element3.anchor.set(0,0.5);
 	info_main_element.push(info_main_element3);
 	creatureInfo.addChild(info_main_element3);
 
@@ -926,9 +928,13 @@ function setup(){
 
 	var info_main_elementIcon = [];
 	var info_main_elementIcon1 = new PIXI.Sprite(resources.element_flora.texture);
+	info_main_elementIcon1.scale.set(0.5);
+	info_main_elementIcon1.anchor.set(0,0.5);
 	creatureInfo.addChild(info_main_elementIcon1);
 	info_main_elementIcon.push(info_main_elementIcon1);
 	var info_main_elementIcon2 = new PIXI.Sprite(resources.element_flora.texture);
+	info_main_elementIcon2.scale.set(0.5);
+	info_main_elementIcon2.anchor.set(0,0.5);
 	creatureInfo.addChild(info_main_elementIcon2);
 	info_main_elementIcon.push(info_main_elementIcon2);
 
@@ -2201,7 +2207,6 @@ function onHPDown(){
 
 	creatureInfo.info_main_elementIcon[0].x = textOriginX + 25;
 	creatureInfo.info_main_elementIcon[0].y = textOriginY + 300;
-	creatureInfo.info_main_elementIcon[0].scale.set(0.5);
 	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
 	creatureInfo.info_main_elementIcon[1].y = textOriginY + 300;
 
