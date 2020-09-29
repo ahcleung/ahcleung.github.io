@@ -221,6 +221,7 @@ var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip
 
 var creatureInfoBG, btnInfoClose;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
+const creatureInfoSprite = new PIXI.Container();
 
 //Interface spacing variables
 var healthSpacing = 20;
@@ -2060,6 +2061,10 @@ function onInfoCloseDown(){
 	console.log("Info close");
 	blurFilterInfo.blur = 0;
 	creatureInfo.visible = false;
+
+	creatureInfoSprite.destroy();
+	// heroHazardSprite[arrayNum].destroy();
+
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = true;
 	});
