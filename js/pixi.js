@@ -2155,10 +2155,10 @@ function onHPDown(){
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
 			text.x = 0;
-			text.y = (textIndex-1) * 25;
+			text.y = textIndex * 25;
 		}else{
 			text.x = 50;
-			text.y = textIndex * 25;
+			text.y = (textIndex-1) * 25;
 		}
 	});
 
