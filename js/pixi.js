@@ -890,7 +890,7 @@ function setup(){
 	interfaceHolder.filters = [blurFilterInfo];
 
 	let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	infoName.anchor.set(0.5);
+	// infoName.anchor.set(0.5);
 	infoName.x = 0;
 	infoName.y = 0;
 	creatureInfo.addChild(infoName);
