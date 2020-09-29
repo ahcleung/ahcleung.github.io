@@ -2110,16 +2110,16 @@ function onHPDown(){
 	// const creatureInfoSprite = new PIXI.Container();
 
 	if(app.screen.width < 860){
-		spriteScale = 0.23;
-	}else if(app.screen.width < 1366){
 		spriteScale = 0.3;
-	}else{
+	}else if(app.screen.width < 1366){
 		spriteScale = 0.5;
+	}else{
+		spriteScale = 0.6;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(spriteScale,spriteScale);
-	creatureInfoSprite.position.set(app.screen.width/2, app.screen.height/2);
+	creatureInfoSprite.position.set(app.screen.width/3, app.screen.height*3/4);
 
 	creatureInfo.addChild(creatureInfoSprite);
 
