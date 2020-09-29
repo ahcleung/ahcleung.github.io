@@ -2152,16 +2152,19 @@ function onHPDown(){
 
 	creatureInfo.addChild(creatureInfoSprite);
 
+	var textOriginX = app.screen.width/2;
+	var textOriginY = app.screen.height/3;
+	
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
-			text.x = 0;
-			text.y = textIndex * 25;
+			text.x = textOriginX;
+			text.y = textOriginY + (textIndex * 25);
 		}else{
-			text.x = 200;
-			text.y = (textIndex-1) * 25;
+			text.x = textOriginX + 100;
+			text.y = textOriginY + ((textIndex-1) * 25);
 		}
 	});
-	
+
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
 
