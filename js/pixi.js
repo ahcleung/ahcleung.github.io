@@ -890,11 +890,16 @@ function setup(){
 	interfaceHolder.filters = [blurFilterInfo];
 
 	let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	// infoName.anchor.set(0.5);
 	infoName.x = 0;
 	infoName.y = 0;
 	creatureInfo.addChild(infoName);
 	creatureInfo.infoName = infoName;
+	infoLevel.x = 0;
+	infoLevel.y = 50;
+	creatureInfo.addChild(infoLevel);
+	creatureInfo.infoLevel = infoLevel;
 
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
@@ -2131,6 +2136,7 @@ function onHPDown(){
 	creatureInfo.addChild(creatureInfoSprite);
 
 	creatureInfo.infoName.text = "Name: " + this.object.name;
+	creatureInfo.infoLevel.text = "Level: " + this.object.level;
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
