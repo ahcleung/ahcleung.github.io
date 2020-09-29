@@ -223,6 +223,8 @@ var creatureInfoBG, btnInfoClose;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
 const creatureInfoSprite = new PIXI.Container();
 
+const infoBtnArray = [];	
+
 //Interface spacing variables
 var healthSpacing = 20;
 var margin = 50;
@@ -939,6 +941,58 @@ function setup(){
 	info_main_elementIcon.push(info_main_elementIcon2);
 
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
+
+	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
+
+	for(var i = 0; i < 5; i++){
+// 		console.log(heroArray[1].skills[i]);
+		let infoRect = new PIXI.Graphics();
+		let infoSelectFill = new PIXI.Graphics();
+		let infoSelectStroke = new PIXI.Graphics();
+		
+		const infoBtn = new PIXI.Container();
+		const infoBtnSelect = new PIXI.Container();
+		
+		// make the button interactive...
+		infoBtn.buttonMode = true;
+		infoBtn.interactive = true;
+		infoBtn
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onSkillDown);
+		
+		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+		infoBtnText.anchor.set(0, 0.5);
+		
+		infoRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		infoRect.x = 0;
+		infoRect.y = 0;
+		
+		infoBtn.addChild(infoRect);
+		infoBtn.rect = infoRect;
+		
+		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		infoSelectStroke.x = 0;
+		sinfoSelectStroke.y = 0;		
+		infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		infoSelectFill.x = 0;
+		infoSelectFill.y = 0;
+		
+		infoBtnSelect.addChild(infoSelectStroke);
+		infoBtnSelect.addChild(infoSelectFill);
+		infoBtnSelect.stroke = infoSelectStroke;
+		infoBtnSelect.fill = infoSelectFill;
+				
+		infoBtn.addChild(infoBtnSelect);
+		infoBtn.selected = infoBtnSelect;
+		
+		infoBtn.selected.visible = false;
+		
+		infoBtn.addChild(infoBtnText);
+		infoBtn.infoBtnText = infoBtnText;
+		
+		infoBtnArray.push(infoBtn);
+		creatureInfo.addChild(infoBtn);
+	}
 
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
@@ -2247,39 +2301,18 @@ function onHPDown(){
 		}
 	});
 
-	// switch(skillsList.data.skills[heroArray[1].skills[i]].element){
-	// 	case 1:
-	// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-	// 		break;
-	// 	case 2:
-	// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
-	// 		break;
-	// 	case 3:
-	// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
-	// 		break;
-	// 	case 4:
-	// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
-	// 		break;
-	// 	case 5:
-	// 		skillElement = new PIXI.Sprite(resources.element_lightning.texture);
-	// 		break;
-	// 	case 6:
-	// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
-	// 		break;
-	// 	case 7:
-	// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-	// 		break;
-	// 	case 8:
-	// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-	// 		break;
-	// 	case 9:
-	// 		skillElement = new PIXI.Sprite(resources.element_shadow.texture);
-	// 		break;
-	// 	default:
-	// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-	// 		break;
-	// }
-
+	infoBtnArray.forEach((btn, btnIndex)=>{
+		btn.rect.width = 300;
+		btn.rect.height = 80;
+		btn.selected.stroke.width = 300;
+		btn.selected.stroke.height = 80;
+		btn.x = btnIndex * 50;
+		btn.y = app.screen.height*4/5;
+		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
+		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
+		// btn.x = btnIndex * 100;
+		// btn.y = app.screen.height*4/5;
+	});
 	// console.log(this.object.elements);
 
 	// creatureInfo.info_main_element[0].forEach((text,textIndex) =>{
