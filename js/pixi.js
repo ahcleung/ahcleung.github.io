@@ -2201,6 +2201,7 @@ function onHPDown(){
 
 	creatureInfo.info_main_elementIcon[0].x = textOriginX + 25;
 	creatureInfo.info_main_elementIcon[0].y = textOriginY + 300;
+	creatureInfo.info_main_elementIcon[0].scale.set(0.5);
 	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
 	creatureInfo.info_main_elementIcon[1].y = textOriginY + 300;
 
