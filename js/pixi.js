@@ -886,7 +886,8 @@ function setup(){
 	turnText.filters = [blurFilterInfo];
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
-
+	
+	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
 
 	//Resize the screen
