@@ -703,34 +703,34 @@ function setup(){
 		var skillElement;
 		switch(skillsList.data.skills[heroArray[1].skills[i]].element){
 			case 1:
-				skillElement = new PIXI.Sprite(resources.element_earth.texture);
-				break;
-			case 2:
-				skillElement = new PIXI.Sprite(resources.element_fire.texture);
-				break;
-			case 3:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
+			case 2:
+				skillElement = new PIXI.Sprite(resources.element_water.texture);
+				break;
+			case 3:
+				skillElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
 			case 4:
-				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+				skillElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
 			case 5:
-				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
 				break;
 			case 6:
-				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+				skillElement = new PIXI.Sprite(resources.element_wind.texture);
 				break;
 			case 7:
 				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
 				break;
 			case 8:
-				skillElement = new PIXI.Sprite(resources.element_water.texture);
+				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
 				break;
 			case 9:
-				skillElement = new PIXI.Sprite(resources.element_wind.texture);
+				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
 				break;
 			default:
-				skillElement = new PIXI.Sprite(resources.element_fire.texture);
+				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
 		}
 		skillElement.anchor.set(0, 0.5);
@@ -921,20 +921,18 @@ function setup(){
 	info_main_element.push(info_main_element3);
 	creatureInfo.addChild(info_main_element3);
 
-	// let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
-	// let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// infoName.anchor.set(0.5);
-	// infoName.x = 0;
-	// infoName.y = 0;
-	// creatureInfo.addChild(infoName);
-	// creatureInfo.infoName = infoName;
-	// infoLevel.x = 0;
-	// infoLevel.y = 50;
-	// creatureInfo.addChild(infoLevel);
-	// creatureInfo.infoLevel = infoLevel;
-
 	creatureInfo.info_main_text = info_main_text;
 	creatureInfo.info_main_element = info_main_element;
+
+	var info_main_elementIcon = [];
+	var info_main_elementIcon1 = new PIXI.Sprite(resources.element_flora.texture);
+	creatureInfo.addChild(info_main_elementIcon1);
+	info_main_elementIcon.push(info_main_elementIcon1);
+	var info_main_elementIcon2 = new PIXI.Sprite(resources.element_flora.texture);
+	creatureInfo.addChild(info_main_elementIcon2);
+	info_main_elementIcon.push(info_main_elementIcon2);
+
+	creatureInfo.info_main_elementIcon = info_main_elementIcon;
 
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
@@ -2200,65 +2198,76 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].y = textOriginY + 300;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
+
+	creatureInfo.info_main_elementIcon[0].x = textOriginX + 25;
+	creatureInfo.info_main_elementIcon[0].y = textOriginY + 300;
+	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
+	creatureInfo.info_main_elementIcon[1].y = textOriginY + 300;
+
 	this.object.elements.forEach((element, elementIndex) =>{
 		var skillElement;
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
-
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
 		}else if(element == 2){
 			creatureInfo.info_main_element[elementIndex].text = "Water";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
 		}else if(element == 3){
 			creatureInfo.info_main_element[elementIndex].text = "Fire";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
 		}else if(element == 4){
 			creatureInfo.info_main_element[elementIndex].text = "Earth";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
 		}else if(element == 5){
 			creatureInfo.info_main_element[elementIndex].text = "Lightning";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_lightning.texture;
 		}else if(element == 6){
 			creatureInfo.info_main_element[elementIndex].text = "Wind";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
 		}else if(element == 7){
 			creatureInfo.info_main_element[elementIndex].text = "Toxic";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
 		}else if(element == 8){
 			creatureInfo.info_main_element[elementIndex].text = "Spirit";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
 		}else if(element == 9){
 			creatureInfo.info_main_element[elementIndex].text = "Shadow";
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_shadow.texture;
 		}
-
 	});
 
-	// var skillElement;
-	// 	switch(skillsList.data.skills[heroArray[1].skills[i]].element){
-	// 		case 1:
-	// 			skillElement = new PIXI.Sprite(resources.element_earth.texture);
-	// 			break;
-	// 		case 2:
-	// 			skillElement = new PIXI.Sprite(resources.element_fire.texture);
-	// 			break;
-	// 		case 3:
-	// 			skillElement = new PIXI.Sprite(resources.element_flora.texture);
-	// 			break;
-	// 		case 4:
-	// 			skillElement = new PIXI.Sprite(resources.element_lightning.texture);
-	// 			break;
-	// 		case 5:
-	// 			skillElement = new PIXI.Sprite(resources.element_shadow.texture);
-	// 			break;
-	// 		case 6:
-	// 			skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-	// 			break;
-	// 		case 7:
-	// 			skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-	// 			break;
-	// 		case 8:
-	// 			skillElement = new PIXI.Sprite(resources.element_water.texture);
-	// 			break;
-	// 		case 9:
-	// 			skillElement = new PIXI.Sprite(resources.element_wind.texture);
-	// 			break;
-	// 		default:
-	// 			skillElement = new PIXI.Sprite(resources.element_fire.texture);
-	// 			break;
-	// 	}
-	// 	skillElement.anchor.set(0, 0.5);
+	// switch(skillsList.data.skills[heroArray[1].skills[i]].element){
+	// 	case 1:
+	// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+	// 		break;
+	// 	case 2:
+	// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
+	// 		break;
+	// 	case 3:
+	// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
+	// 		break;
+	// 	case 4:
+	// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
+	// 		break;
+	// 	case 5:
+	// 		skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+	// 		break;
+	// 	case 6:
+	// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
+	// 		break;
+	// 	case 7:
+	// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
+	// 		break;
+	// 	case 8:
+	// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+	// 		break;
+	// 	case 9:
+	// 		skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+	// 		break;
+	// 	default:
+	// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+	// 		break;
+	// }
 
 	// console.log(this.object.elements);
 
