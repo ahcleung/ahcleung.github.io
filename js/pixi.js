@@ -2188,9 +2188,9 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = textOriginX + 100;
-	creatureInfo.info_main_element[0].y = textOriginY + 200;
+	creatureInfo.info_main_element[0].y = textOriginY + 240;
 	creatureInfo.info_main_element[1].x = textOriginX + 400;
-	creatureInfo.info_main_element[1].y = textOriginY + 200;
+	creatureInfo.info_main_element[1].y = textOriginY + 240;
 	this.object.elements.forEach((element, elementIndex) =>{
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
