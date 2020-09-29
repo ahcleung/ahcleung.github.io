@@ -2198,9 +2198,9 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_element[0].x = textOriginX + 125;
+	creatureInfo.info_main_element[0].x = textOriginX + 100;
 	creatureInfo.info_main_element[0].y = textOriginY + 350;
-	creatureInfo.info_main_element[1].x = textOriginX + 400;
+	creatureInfo.info_main_element[1].x = textOriginX + 375;
 	creatureInfo.info_main_element[1].y = textOriginY + 350;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
