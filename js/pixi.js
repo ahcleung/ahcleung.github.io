@@ -2136,7 +2136,11 @@ function onHPDown(){
 	creatureInfo.addChild(creatureInfoSprite);
 
 	creatureInfo.infoName.text = "Name: " + this.object.name;
+	creatureInfo.infoName.x = app.screen.width/2;
+	creatureInfo.infoName.y = app.screen.height/3;
 	creatureInfo.infoLevel.text = "Level: " + this.object.level;
+	creatureInfo.infoLevel.x = app.screen.width/2;
+	creatureInfo.infoLevel.y = app.screen.height/3 + 50;
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
