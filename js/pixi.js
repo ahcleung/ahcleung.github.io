@@ -1644,8 +1644,8 @@ function resize() {
 	
 	btnInfoClose.width = btnSettings.width;
 	btnInfoClose.height = btnSettings.width;
-	btnInfoClose.x = app.screen.width/2;
-	btnInfoClose.y = app.screen.height/2;
+	btnInfoClose.x = app.screen.width*4/5;
+	btnInfoClose.y = app.screen.height*4/5;
 
 	interfaceAdditional.position.set(margin, app.screen.height - margin);
 	
@@ -2199,16 +2199,16 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = textOriginX + 100;
-	creatureInfo.info_main_element[0].y = textOriginY + 300;
+	creatureInfo.info_main_element[0].y = textOriginY + 400;
 	creatureInfo.info_main_element[1].x = textOriginX + 400;
-	creatureInfo.info_main_element[1].y = textOriginY + 300;
+	creatureInfo.info_main_element[1].y = textOriginY + 400;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 
 	creatureInfo.info_main_elementIcon[0].x = textOriginX + 25;
-	creatureInfo.info_main_elementIcon[0].y = textOriginY + 300;
+	creatureInfo.info_main_elementIcon[0].y = textOriginY + 400;
 	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
-	creatureInfo.info_main_elementIcon[1].y = textOriginY + 300;
+	creatureInfo.info_main_elementIcon[1].y = textOriginY + 400;
 
 	this.object.elements.forEach((element, elementIndex) =>{
 		var skillElement;
