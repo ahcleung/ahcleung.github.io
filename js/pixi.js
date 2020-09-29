@@ -889,6 +889,13 @@ function setup(){
 	stageContainer.filters = [blurFilterInfo];
 	interfaceHolder.filters = [blurFilterInfo];
 
+	let infoName = new Text("Name: " + this.object.name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'center'});
+	infoName.anchor.set(0.5);
+	infoName.x = app.screen.width/2;
+	infoName.y = app.screen.width/3;
+	creatureInfo.addChild(infoName);
+	creatureInfo.infoName = infoName;
+
 	creatureInfo.visible = false;
 	app.stage.addChild(creatureInfo);
 
@@ -2123,11 +2130,7 @@ function onHPDown(){
 
 	creatureInfo.addChild(creatureInfoSprite);
 
-	let infoName = new Text(this.object.name, {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'center'});
-	infoName.anchor.set(0.5);
-	infoName.x = app.screen.width/2;
-	infoName.y = app.screen.width/3;
-	creatureInfo.addChild(infoName);
+	creatureInfo.infoName.text = "Name: " + this.object.name;
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
