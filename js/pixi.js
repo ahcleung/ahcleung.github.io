@@ -909,6 +909,9 @@ function setup(){
 	let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_species2);
 	creatureInfo.addChild(info_main_species2);
+	let info_main_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_type1);
+	creatureInfo.addChild(info_main_type1);
 
 	// let infoName = new Text("Name: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	// let infoLevel = new Text("Level: ", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
@@ -2158,7 +2161,7 @@ function onHPDown(){
 
 	creatureInfo.addChild(creatureInfoSprite);
 
-	var textOriginX = app.screen.width/2;
+	var textOriginX = app.screen.width/4;
 	var textOriginY = app.screen.height/3;
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
