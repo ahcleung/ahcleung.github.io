@@ -1906,13 +1906,10 @@ function resizeHP(roster, item){
 	item.healthBar.heal.pivot.x = item.healthBar.heal.width/2;
 	item.healthBar.heal.x = item.healthBar.heal.width/2;
 
-	selectSpriteTween = new TimelineMax({onComplete: function(){
-		// var selectTween = new TimelineMax({paused: true});
-		var selectWidth = item.healthBar.select.width;
-		item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
-		item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
-		item.healthBar.select.animate.play(0);
-	}});
+	var selectWidth = item.healthBar.select.width;
+	item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
+	item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
+	item.healthBar.select.animate.play(0);
 }
 
 function resizeSprite(direction, item, index){	
