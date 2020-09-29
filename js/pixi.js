@@ -972,7 +972,7 @@ function setup(){
 		
 		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
 		infoSelectStroke.x = 0;
-		sinfoSelectStroke.y = 0;		
+		infoSelectStroke.y = 0;		
 		infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		infoSelectFill.x = 0;
 		infoSelectFill.y = 0;
