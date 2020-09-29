@@ -1905,6 +1905,14 @@ function resizeHP(roster, item){
 	item.healthBar.select.x = item.healthBar.select.width/2;
 	item.healthBar.heal.pivot.x = item.healthBar.heal.width/2;
 	item.healthBar.heal.x = item.healthBar.heal.width/2;
+
+	selectSpriteTween = new TimelineMax({onComplete: function(){
+		// var selectTween = new TimelineMax({paused: true});
+		var selectWidth = item.healthBar.select.width;
+		item.healthBar.select.animate.to(item.healthBar.select, 1, {width:selectWidth+20, ease:Sine.easeInOut});
+		item.healthBar.select.animate.to(item.healthBar.select, 0.5, {width:selectWidth, ease:Sine.easeInOut});
+		item.healthBar.select.animate.play(0);
+	}});
 }
 
 function resizeSprite(direction, item, index){	
@@ -2191,6 +2199,8 @@ function onHPDown(){
 	creatureInfo.info_main_element[0].y = textOriginY + 240;
 	creatureInfo.info_main_element[1].x = textOriginX + 400;
 	creatureInfo.info_main_element[1].y = textOriginY + 240;
+	creatureInfo.info_main_element[0].text = "";
+	creatureInfo.info_main_element[1].text = "";
 	this.object.elements.forEach((element, elementIndex) =>{
 		if(element == 1){
 			creatureInfo.info_main_element[elementIndex].text = "Flora";
