@@ -2100,7 +2100,22 @@ function onHPDown(){
 	// factory.parseTextureAtlasData(resources[this.object.code + '_texture_json'].data, resources[this.object.code + '_texture_png'].texture);
 
 	const armatureHero = factory.buildArmatureDisplay(this.object.code, this.object.code);
-	creatureInfo.addChild(armatureHero);
+	// creatureInfo.addChild(armatureHero);
+	const creatureInfoSprite = new PIXI.Container();
+
+	if(app.screen.width < 860){
+		spriteScale = 0.23;
+	}else if(app.screen.width < 1366){
+		spriteScale = 0.3;
+	}else{
+		spriteScale = 0.5;
+	}
+	
+	creatureInfoSprite.addChild(armatureHero);
+	creatureInfoSprite.scale.set(spriteScale,spriteScale);
+	creatureInfoSprite.position.set(app.screen.width/2, app.screen.height/2);
+	
+	creatureInfo.addChild(creatureInfoSprite);
 
 	var creatureStatusInfo = [];
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
