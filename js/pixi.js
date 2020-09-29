@@ -2100,7 +2100,7 @@ function onHPDown(){
 	// factory.parseTextureAtlasData(resources[this.object.code + '_texture_json'].data, resources[this.object.code + '_texture_png'].texture);
 
 	const armatureHero = factory.buildArmatureDisplay(this.object.code, this.object.code);
-	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * item.frames) + 1);
+	armatureHero.animation.gotoAndPlayByFrame('idle', Math.floor(Math.random() * this.object.frames) + 1);
 	// creatureInfo.addChild(armatureHero);
 	const creatureInfoSprite = new PIXI.Container();
 
