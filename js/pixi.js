@@ -2302,7 +2302,7 @@ function onHPDown(){
 	});
 
 	var infoMargin = 20;
-	var infoInnerMargin = 50;
+	var infoInnerMargin = 100;
 	var infoSpacer = 25;
 
 	infoBtnArray.forEach((btn, btnIndex)=>{
@@ -2316,7 +2316,7 @@ function onHPDown(){
 		// skillContainer.x = margin + skillContainer.rect.height + healthSpacing + (skillContainer.rect.width + healthSpacing)*index;
 		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		// btn.x = (btnIndex * 300) + 100 + (btnIndex * 25);
-		btn.y = app.screen.height*4/5;
+		btn.y = app.screen.height*5/6;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
 		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
 		// btn.x = btnIndex * 100;
