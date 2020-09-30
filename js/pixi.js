@@ -2315,10 +2315,6 @@ function onHPDown(){
 		}
 	});
 
-	var infoMargin = 20;
-	var infoInnerMargin = 100;
-	var infoSpacer = 25;
-
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.rect.height = app.screen.height/14;
