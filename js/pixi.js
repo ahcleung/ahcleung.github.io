@@ -2180,7 +2180,7 @@ function onInfoDown(){
 	infoBtnArray.forEach(btn=>{
 		btn.selected.visible = false;
 	});
-	this.selected.visible = true;
+	
 
 	if(this.identifier[0] == 4){
 		console.log("Info close");
@@ -2205,6 +2205,8 @@ function onInfoDown(){
 
 		btnAdditional.interactive = true;
 		btnSettings.interactive = true;
+	}else{
+		this.selected.visible = true;
 	}
 }
 
