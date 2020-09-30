@@ -974,14 +974,14 @@ function setup(){
 		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
 		infoSelectStroke.x = 0;
 		infoSelectStroke.y = 0;		
-		infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		infoSelectFill.x = 0;
-		infoSelectFill.y = 0;
+		// infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		// infoSelectFill.x = 0;
+		// infoSelectFill.y = 0;
 		
 		infoBtnSelect.addChild(infoSelectStroke);
-		infoBtnSelect.addChild(infoSelectFill);
+		// infoBtnSelect.addChild(infoSelectFill);
 		infoBtnSelect.stroke = infoSelectStroke;
-		infoBtnSelect.fill = infoSelectFill;
+		// infoBtnSelect.fill = infoSelectFill;
 				
 		infoBtn.addChild(infoBtnSelect);
 		infoBtn.selected = infoBtnSelect;
@@ -2170,6 +2170,14 @@ function onAdditionalSkipDown(){
 	// consoleScreen.visible = false;
 }
 
+
+function onInfoDown(){
+	console.log(
+		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>>>>>> Info: " + 
+		this.identifier[0] + 
+		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
+}
+
 function onInfoCloseDown(){
 	console.log("Info close");
 	blurFilterInfo.blur = 0;
@@ -2323,8 +2331,8 @@ function onHPDown(){
 		btn.rect.height = app.screen.height/14;
 		btn.selected.stroke.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.selected.stroke.height = app.screen.height/14;
-		btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
-		btn.selected.fill.height = app.screen.height/14;
+		// btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		// btn.selected.fill.height = app.screen.height/14;
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
 		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
@@ -2445,13 +2453,6 @@ function onHPDown(){
 			}
 		});
 	});
-}
-
-function onInfoDown(){
-	console.log(
-		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>>>>>> Info: " + 
-		this.identifier[0] + 
-		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 }
 
 function onSkillDown(){
