@@ -219,7 +219,7 @@ var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
 
-var creatureInfoBG, btnInfoClose;
+var creatureInfoBG;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
 const creatureInfoSprite = new PIXI.Container();
 
@@ -875,16 +875,6 @@ function setup(){
 	creatureInfoBG.endFill();
 	creatureInfoBG.alpha = 0.9;
 	creatureInfo.addChild(creatureInfoBG);
-
-	btnInfoClose = new PIXI.Sprite(textureAdditionalCancel);	//Button additional cancel
-	// btnAdditionalCancel.anchor.set(0,1);
-	btnInfoClose.buttonMode = true;
-    	btnInfoClose.interactive = true;
-	btnInfoClose
-        // set the mousedown and touchstart callback...
-        .on('pointerdown', onInfoCloseDown);	
-	creatureInfo.addChild(btnInfoClose);
-	// additionalArray.push(btnAdditionalCancel);
 
 	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
@@ -1697,11 +1687,6 @@ function resize() {
 	creatureInfoBG.x = 20;
 	creatureInfoBG.y = 20;
 
-	btnInfoClose.width = btnSettings.width;
-	btnInfoClose.height = btnSettings.width;
-	btnInfoClose.x = app.screen.width*5/6;
-	btnInfoClose.y = app.screen.height/6;
-
 	interfaceAdditional.position.set(margin, app.screen.height - margin);
 	
 	skillContainerArray.forEach((skillContainer, index) => {
@@ -2208,31 +2193,6 @@ function onInfoDown(){
 	}else{
 		this.selected.visible = true;
 	}
-}
-
-function onInfoCloseDown(){
-	console.log("Info close");
-	blurFilterInfo.blur = 0;
-	creatureInfo.visible = false;
-
-	creatureInfoSprite.getChildAt(0).destroy();
-	// heroHazardSprite[arrayNum].destroy();
-
-	skillContainerArray.forEach(skillContainer=>{
-		skillContainer.interactive = true;
-	});
-
-	heroArray.forEach(creature=>{
-		creature.sprite.interactive = true;
-		creature.healthBar.outer.interactive = true;
-	});	
-	enemyArray.forEach(creature=>{
-		creature.sprite.interactive = true;
-		creature.healthBar.outer.interactive = true;
-	});	
-
-	btnAdditional.interactive = true;
-	btnSettings.interactive = true;
 }
 
 function onHPDown(){
