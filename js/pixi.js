@@ -2221,16 +2221,17 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
+	var infoScale = 0;
 	if(app.screen.width < 860){
-		spriteScale = 0.3;
+		infoScale = 0.3;
 	}else if(app.screen.width < 1366){
-		spriteScale = 0.5;
+		infoScale = 0.5;
 	}else{
-		spriteScale = 0.6;
+		infoScale = 0.6;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
-	creatureInfoSprite.scale.set(spriteScale,spriteScale);
+	creatureInfoSprite.scale.set(infoScale,infoScale);
 	creatureInfoSprite.position.set(app.screen.width/3, app.screen.height*3/4);
 
 	creatureInfo.addChild(creatureInfoSprite);
@@ -2307,20 +2308,15 @@ function onHPDown(){
 
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
-		// btn.rect.width = app.screen.width/6;
 		btn.rect.height = app.screen.height/14;
 		// btn.selected.stroke.width = 300;
 		// btn.selected.stroke.height = 80;
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
-		// skillContainer.x = margin + skillContainer.rect.height + healthSpacing + (skillContainer.rect.width + healthSpacing)*index;
 		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
-		// btn.x = (btnIndex * 300) + 100 + (btnIndex * 25);
 		btn.y = app.screen.height*5/6;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
 		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
-		// btn.x = btnIndex * 100;
-		// btn.y = app.screen.height*4/5;
 	});
 	// console.log(this.object.elements);
 
