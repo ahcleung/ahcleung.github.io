@@ -2301,14 +2301,21 @@ function onHPDown(){
 		}
 	});
 
+	var infoMargin = 20;
+	var infoInnerMargin = 50;
+	var infoSpacer = 25;
+
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = app.screen.width/6;
+		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		// btn.rect.width = app.screen.width/6;
 		btn.rect.height = app.screen.height/14;
 		// btn.selected.stroke.width = 300;
 		// btn.selected.stroke.height = 80;
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
-		btn.x = (btnIndex * 300) + 100 + (btnIndex * 25);
+		// skillContainer.x = margin + skillContainer.rect.height + healthSpacing + (skillContainer.rect.width + healthSpacing)*index;
+		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
+		// btn.x = (btnIndex * 300) + 100 + (btnIndex * 25);
 		btn.y = app.screen.height*4/5;
 		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
 		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
