@@ -979,9 +979,9 @@ function setup(){
 		infoSelectFill.y = 0;
 		
 		infoBtnSelect.addChild(infoSelectStroke);
-		// infoBtnSelect.addChild(infoSelectFill);
+		infoBtnSelect.addChild(infoSelectFill);
 		infoBtnSelect.stroke = infoSelectStroke;
-		// infoBtnSelect.fill = infoSelectFill;
+		infoBtnSelect.fill = infoSelectFill;
 				
 		infoBtn.addChild(infoBtnSelect);
 		infoBtn.selected = infoBtnSelect;
