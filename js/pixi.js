@@ -974,9 +974,9 @@ function setup(){
 		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
 		infoSelectStroke.x = 0;
 		infoSelectStroke.y = 0;		
-		// infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		// infoSelectFill.x = 0;
-		// infoSelectFill.y = 0;
+		infoSelectFill.beginFill(0x636363).drawRect(0, 0, 50, 50);
+		infoSelectFill.x = 0;
+		infoSelectFill.y = 0;
 		
 		infoBtnSelect.addChild(infoSelectStroke);
 		// infoBtnSelect.addChild(infoSelectFill);
@@ -2326,13 +2326,18 @@ function onHPDown(){
 		}
 	});
 
+	var infoSelectPadding = 5;
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.rect.height = app.screen.height/14;
 		btn.selected.stroke.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.selected.stroke.height = app.screen.height/14;
-		// btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
-		// btn.selected.fill.height = app.screen.height/14;
+		btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
+		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
+
+		btn.selected.fill.x = infoSelectPadding;
+		btn.selected.fill.y = infoSelectPadding;
+
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
 		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
