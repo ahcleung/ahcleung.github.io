@@ -2245,7 +2245,7 @@ function onHPDown(){
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(infoScale,infoScale);
-	creatureInfoSprite.position.set(app.screen.width/3, app.screen.height*3/4);
+	creatureInfoSprite.position.set(app.screen.width*2/5, app.screen.height*3/4);
 
 	creatureInfo.addChild(creatureInfoSprite);
 
