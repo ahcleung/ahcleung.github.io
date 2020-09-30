@@ -958,7 +958,7 @@ function setup(){
 		infoBtn.interactive = true;
 		infoBtn
 		// set the mousedown and touchstart callback...
-		.on('pointerdown', onSkillDown);
+		.on('pointerdown', onInfoDown);
 		
 		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
 		infoBtnText.anchor.set(0.5, 0.5);
@@ -970,20 +970,20 @@ function setup(){
 		infoBtn.addChild(infoRect);
 		infoBtn.rect = infoRect;
 		
-		// infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-		// infoSelectStroke.x = 0;
-		// infoSelectStroke.y = 0;		
-		// infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		// infoSelectFill.x = 0;
-		// infoSelectFill.y = 0;
+		infoSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		infoSelectStroke.x = 0;
+		infoSelectStroke.y = 0;		
+		infoSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		infoSelectFill.x = 0;
+		infoSelectFill.y = 0;
 		
-		// infoBtnSelect.addChild(infoSelectStroke);
-		// infoBtnSelect.addChild(infoSelectFill);
-		// infoBtnSelect.stroke = infoSelectStroke;
-		// infoBtnSelect.fill = infoSelectFill;
+		infoBtnSelect.addChild(infoSelectStroke);
+		infoBtnSelect.addChild(infoSelectFill);
+		infoBtnSelect.stroke = infoSelectStroke;
+		infoBtnSelect.fill = infoSelectFill;
 				
-		// infoBtn.addChild(infoBtnSelect);
-		// infoBtn.selected = infoBtnSelect;
+		infoBtn.addChild(infoBtnSelect);
+		infoBtn.selected = infoBtnSelect;
 		
 		// infoBtn.selected.visible = false;
 		
@@ -2245,7 +2245,7 @@ function onHPDown(){
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(infoScale,infoScale);
-	console.log("Width: " + creatureInfoSprite.width);
+	// console.log("Width: " + creatureInfoSprite.width);
 
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
 
@@ -2320,14 +2320,14 @@ function onHPDown(){
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.rect.height = app.screen.height/14;
-		// btn.selected.stroke.width = 300;
-		// btn.selected.stroke.height = 80;
+		btn.selected.stroke.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.selected.stroke.height = app.screen.height/14;
+		btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.selected.fill.height = app.screen.height/14;
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
 		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		btn.y = app.screen.height*5/6;
-		// btn.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
-		// btn.selected.fill.height = (btn.rect.width/4) - skillSelectPadding*2;
 	});
 	// console.log(this.object.elements);
 
