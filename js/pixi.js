@@ -2225,7 +2225,7 @@ function onHPDown(){
 	if(app.screen.width < 860){
 		infoScale = 0.3;
 	}else if(app.screen.width < 1366){
-		infoScale = 0.5;
+		infoScale = 0.4;
 	}else{
 		infoScale = 0.6;
 	}
