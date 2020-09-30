@@ -2176,6 +2176,12 @@ function onInfoDown(){
 		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>>>>>> Info: " + 
 		this.identifier[0] + 
 		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
+
+	infoBtnArray.forEach(btn=>{
+		btn.selected.visible = false;
+	});
+	// infoBtnArray[this.identifier[0]].selected.visible = true;
+	this.selected.visible = true;
 }
 
 function onInfoCloseDown(){
