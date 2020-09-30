@@ -986,7 +986,7 @@ function setup(){
 		infoBtn.addChild(infoBtnSelect);
 		infoBtn.selected = infoBtnSelect;
 		
-		// infoBtn.selected.visible = false;
+		infoBtn.selected.visible = false;
 		
 		infoBtn.addChild(infoBtnText);
 		infoBtn.infoBtnText = infoBtnText;
@@ -2180,8 +2180,32 @@ function onInfoDown(){
 	infoBtnArray.forEach(btn=>{
 		btn.selected.visible = false;
 	});
-	// infoBtnArray[this.identifier[0]].selected.visible = true;
 	this.selected.visible = true;
+
+	if(this.identifier[0] == 4){
+		console.log("Info close");
+		blurFilterInfo.blur = 0;
+		creatureInfo.visible = false;
+
+		creatureInfoSprite.getChildAt(0).destroy();
+		// heroHazardSprite[arrayNum].destroy();
+
+		skillContainerArray.forEach(skillContainer=>{
+			skillContainer.interactive = true;
+		});
+
+		heroArray.forEach(creature=>{
+			creature.sprite.interactive = true;
+			creature.healthBar.outer.interactive = true;
+		});	
+		enemyArray.forEach(creature=>{
+			creature.sprite.interactive = true;
+			creature.healthBar.outer.interactive = true;
+		});	
+
+		btnAdditional.interactive = true;
+		btnSettings.interactive = true;
+	}
 }
 
 function onInfoCloseDown(){
@@ -2227,6 +2251,8 @@ function onHPDown(){
 
 	btnAdditional.interactive = false;
 	btnSettings.interactive = false;
+
+	infoBtnArray[0].selected.visible = true;
 
 	// factory.parseDragonBonesData(resources[this.object.code + '_skeleton'].data);
 	// factory.parseTextureAtlasData(resources[this.object.code + '_texture_json'].data, resources[this.object.code + '_texture_png'].texture);
