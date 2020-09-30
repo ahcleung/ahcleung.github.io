@@ -960,6 +960,7 @@ function setup(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onInfoDown);
 		
+		infoBtn.identifier = [i];
 		let infoBtnText = new Text(info_text[i], {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
 		infoBtnText.anchor.set(0.5, 0.5);
 		
@@ -2444,6 +2445,13 @@ function onHPDown(){
 			}
 		});
 	});
+}
+
+function onInfoDown(){
+	console.log(
+		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>>>>>> Info: " + 
+		this.identifier[0] + 
+		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 }
 
 function onSkillDown(){
