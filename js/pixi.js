@@ -2303,7 +2303,7 @@ function onHPDown(){
 			creatureInfo.info_main_element[elementIndex].text = "Lightning";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_lightning.texture;
 		}else if(element == 6){
-			creatureInfo.info_main_element[elementIndex].text = "Lightning";
+			creatureInfo.info_main_element[elementIndex].text = "Wind";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
 		}else if(element == 7){
 			creatureInfo.info_main_element[elementIndex].text = "Toxic";
