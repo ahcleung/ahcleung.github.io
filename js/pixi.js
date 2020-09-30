@@ -2222,12 +2222,25 @@ function onHPDown(){
 	// const creatureInfoSprite = new PIXI.Container();
 
 	var infoScale = 0;
+	var infoMargin = 20;
+	var infoInnerMargin = 100;
+	var infoSpacer = 25;
+
 	if(app.screen.width < 860){
 		infoScale = 0.3;
+		infoMargin = 10;
+		infoInnerMargin = 50;
+		infoSpacer = 10;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
+		infoMargin = 10;
+		infoInnerMargin = 50;
+		infoSpacer = 10;
 	}else{
 		infoScale = 0.6;
+		infoMargin = 20;
+		infoInnerMargin = 100;
+		infoSpacer = 25;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
