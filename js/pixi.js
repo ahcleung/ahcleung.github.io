@@ -2437,8 +2437,7 @@ function onHPDown(){
 		}
 
 		creatureInfoStatus.addChild(statusEffectIcon);
-
-		statusEffectIcon.x = 50;
+		statusEffectIcon.scale.set(0.25);
 		statusEffectIcon.y = statusIndex * 50; 
 		// switch(statusNum){
 		// 	case 1:
