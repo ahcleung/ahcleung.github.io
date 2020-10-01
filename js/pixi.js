@@ -2170,8 +2170,11 @@ function onInfoDown(){
 		btn.selected.visible = false;
 	});
 	
-
-	if(this.identifier[0] == 4){
+	if(this.identifier[0] == 0){
+		creatureInfo.main.visible = true;
+		this.selected.visible = true;
+	}
+	else if(this.identifier[0] == 4){
 		console.log("Info close");
 		blurFilterInfo.blur = 0;
 		creatureInfo.visible = false;
@@ -2195,6 +2198,7 @@ function onInfoDown(){
 		btnAdditional.interactive = true;
 		btnSettings.interactive = true;
 	}else{
+		creatureInfo.main.visible = false;
 		this.selected.visible = true;
 	}
 }
