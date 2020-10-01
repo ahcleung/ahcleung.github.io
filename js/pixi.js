@@ -2389,7 +2389,7 @@ function onHPDown(){
 	// console.log("Status: " + creatureStatusInfo);
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
-		switch(identifier){
+		switch(statusNum){
 			case 1:
 				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
 				break;
