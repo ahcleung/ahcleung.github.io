@@ -876,6 +876,8 @@ function setup(){
 	creatureInfoBG.alpha = 0.9;
 	creatureInfo.addChild(creatureInfoBG);
 
+	const creatureInfoMain = new PIXI.Container();
+
 	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
 	stageContainer.filters = [blurFilterInfo];
@@ -885,49 +887,51 @@ function setup(){
 
 	let info_main_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_name1);
-	creatureInfo.addChild(info_main_name1);
+	creatureInfoMain.addChild(info_main_name1);
 	let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_name2);
-	creatureInfo.addChild(info_main_name2);
+	creatureInfoMain.addChild(info_main_name2);
 	let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_level1);
-	creatureInfo.addChild(info_main_level1);
+	creatureInfoMain.addChild(info_main_level1);
 	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_level2);
-	creatureInfo.addChild(info_main_level2);
+	creatureInfoMain.addChild(info_main_level2);
 	let info_main_species1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_species1);
-	creatureInfo.addChild(info_main_species1);
+	creatureInfoMain.addChild(info_main_species1);
 	let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_species2);
-	creatureInfo.addChild(info_main_species2);
+	creatureInfoMain.addChild(info_main_species2);
 	let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_element1);
-	creatureInfo.addChild(info_main_element1);
+	creatureInfoMain.addChild(info_main_element1);
 
 	var info_main_element = [];
 	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_element2.anchor.set(0,0.5);
 	info_main_element.push(info_main_element2);
-	creatureInfo.addChild(info_main_element2);
+	creatureInfoMain.addChild(info_main_element2);
 	let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_element3.anchor.set(0,0.5);
 	info_main_element.push(info_main_element3);
-	creatureInfo.addChild(info_main_element3);
+	creatureInfoMain.addChild(info_main_element3);
 
 	creatureInfo.info_main_text = info_main_text;
 	creatureInfo.info_main_element = info_main_element;
+	creatureInfo.addChild(creatureInfoMain);
+	creatureInfo.main = creatureInfoMain;
 
 	var info_main_elementIcon = [];
 	var info_main_elementIcon1 = new PIXI.Sprite(resources.element_flora.texture);
 	info_main_elementIcon1.scale.set(0.5);
 	info_main_elementIcon1.anchor.set(0,0.5);
-	creatureInfo.addChild(info_main_elementIcon1);
+	creatureInfoMain.addChild(info_main_elementIcon1);
 	info_main_elementIcon.push(info_main_elementIcon1);
 	var info_main_elementIcon2 = new PIXI.Sprite(resources.element_flora.texture);
 	info_main_elementIcon2.scale.set(0.5);
 	info_main_elementIcon2.anchor.set(0,0.5);
-	creatureInfo.addChild(info_main_elementIcon2);
+	creatureInfoMain.addChild(info_main_elementIcon2);
 	info_main_elementIcon.push(info_main_elementIcon2);
 
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
@@ -2257,13 +2261,19 @@ function onHPDown(){
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/5;
 
+	creatureInfo.main.x = textOriginX;
+	creatureInfo.main.y = textOriginY;
+
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
-			text.x = textOriginX;
-			text.y = textOriginY + (textIndex * 40);
+			// text.x = textOriginX;
+			// text.y = textOriginY + (textIndex * 40);
+			text.y = textIndex * 40;
 		}else{
-			text.x = textOriginX + 140;
-			text.y = textOriginY + ((textIndex-1) * 40);
+			// text.x = textOriginX + 140;
+			// text.y = textOriginY + ((textIndex-1) * 40);
+			text.x = 140;
+			text.y = (textIndex-1) * 40;
 		}
 	});
 
@@ -2271,19 +2281,28 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_element[0].x = textOriginX + 100;
-	creatureInfo.info_main_element[0].y = textOriginY + 350;
-	creatureInfo.info_main_element[1].x = textOriginX + 375;
-	creatureInfo.info_main_element[1].y = textOriginY + 350;
+
+	// creatureInfo.info_main_element[0].x = textOriginX + 100;
+	// creatureInfo.info_main_element[0].y = textOriginY + 350;
+	// creatureInfo.info_main_element[1].x = textOriginX + 375;
+	// creatureInfo.info_main_element[1].y = textOriginY + 350;
+	creatureInfo.info_main_element[0].x = 100;
+	creatureInfo.info_main_element[0].y = 350;
+	creatureInfo.info_main_element[1].x = 375;
+	creatureInfo.info_main_element[1].y = 350;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
-	creatureInfo.info_main_elementIcon[0].x = textOriginX + 50;
-	creatureInfo.info_main_elementIcon[0].y = textOriginY + 350;
-	creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
-	creatureInfo.info_main_elementIcon[1].y = textOriginY + 350;
+	// creatureInfo.info_main_elementIcon[0].x = textOriginX + 50;
+	// creatureInfo.info_main_elementIcon[0].y = textOriginY + 350;
+	// creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
+	// creatureInfo.info_main_elementIcon[1].y = textOriginY + 350;
+	creatureInfo.info_main_elementIcon[0].x = 50;
+	creatureInfo.info_main_elementIcon[0].y = 350;
+	creatureInfo.info_main_elementIcon[1].x = 325;
+	creatureInfo.info_main_elementIcon[1].y = 350;
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
