@@ -877,6 +877,9 @@ function setup(){
 	creatureInfo.addChild(creatureInfoBG);
 
 	const creatureInfoMain = new PIXI.Container();
+	const creatureInfoStatus = new PIXI.Container();
+	const creatureInfoSkills = new PIXI.Container();
+	const creatureInfoItems = new PIXI.Container();
 
 	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
@@ -2172,6 +2175,11 @@ function onInfoDown(){
 	
 	if(this.identifier[0] == 0){
 		creatureInfo.main.visible = true;
+		creatureInfo.status.visible = false;
+		this.selected.visible = true;
+	}else if(this.identifier[0] == 1){
+		creatureInfo.main.visible = false;		
+		creatureInfo.status.visible = true;
 		this.selected.visible = true;
 	}
 	else if(this.identifier[0] == 4){
@@ -2271,12 +2279,8 @@ function onHPDown(){
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		if(textIndex%2 == 0){
-			// text.x = textOriginX;
-			// text.y = textOriginY + (textIndex * 40);
 			text.y = textIndex * 40;
 		}else{
-			// text.x = textOriginX + 140;
-			// text.y = textOriginY + ((textIndex-1) * 40);
 			text.x = 140;
 			text.y = (textIndex-1) * 40;
 		}
@@ -2286,11 +2290,6 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-
-	// creatureInfo.info_main_element[0].x = textOriginX + 100;
-	// creatureInfo.info_main_element[0].y = textOriginY + 350;
-	// creatureInfo.info_main_element[1].x = textOriginX + 375;
-	// creatureInfo.info_main_element[1].y = textOriginY + 350;
 	creatureInfo.info_main_element[0].x = 100;
 	creatureInfo.info_main_element[0].y = 350;
 	creatureInfo.info_main_element[1].x = 375;
@@ -2300,10 +2299,6 @@ function onHPDown(){
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
-	// creatureInfo.info_main_elementIcon[0].x = textOriginX + 50;
-	// creatureInfo.info_main_elementIcon[0].y = textOriginY + 350;
-	// creatureInfo.info_main_elementIcon[1].x = textOriginX + 325;
-	// creatureInfo.info_main_elementIcon[1].y = textOriginY + 350;
 	creatureInfo.info_main_elementIcon[0].x = 50;
 	creatureInfo.info_main_elementIcon[0].y = 350;
 	creatureInfo.info_main_elementIcon[1].x = 325;
@@ -2374,6 +2369,12 @@ function onHPDown(){
 	// });
 
 	var creatureStatusInfo = [];
+	const creatureInfoStatus = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoStatus);
+	creatureInfo.status = creatureInfoStatus;
+	creatureInfo.status.x = textOriginX;
+	creatureInfo.status.y = textOriginY;
+
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		// console.log(status);
@@ -2386,53 +2387,105 @@ function onHPDown(){
 		}
 	});
 	// console.log("Status: " + creatureStatusInfo);
-	creatureStatusInfo.forEach(statusNum =>{
-		switch(statusNum){
+	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
+		let statusEffectIcon;
+		switch(identifier){
 			case 1:
-				console.log("Bleed:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
 				break;
 			case 2:
-				console.log("Buff:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				break;
 			case 3:
-				console.log("Burned:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
 				break;
 			case 4:
-				console.log("Debuff:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
 				break;
 			case 5:
-				console.log("Depressed:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
 				break;
 			case 6:
-				console.log("Guard:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
 				break;
 			case 7:
-				console.log("Immune:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
 				break;
 			case 8:
-				console.log("Paralyzed:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
 				break;
 			case 9:
-				console.log("Poisoned:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
 				break;
 			case 10:
-				console.log("Recover:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
 				break;
 			case 11:
-				console.log("Secured:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
 				break;
 			case 12:
-				console.log("Silenced:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
 				break;
 			case 13:
-				console.log("Stunned:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
 				break;
 			case 14:
-				console.log("Critical damage:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
 				break;
 			default:
-				console.log("Buff:");
+				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 		}
+
+		creatureInfoStatus.addChild(statusEffectIcon);
+
+		statusEffectIcon.x = 50;
+		statusEffectIcon.y = statusIndex * 50; 
+		// switch(statusNum){
+		// 	case 1:
+		// 		console.log("Bleed:");
+		// 		break;
+		// 	case 2:
+		// 		console.log("Buff:");
+		// 		break;
+		// 	case 3:
+		// 		console.log("Burned:");
+		// 		break;
+		// 	case 4:
+		// 		console.log("Debuff:");
+		// 		break;
+		// 	case 5:
+		// 		console.log("Depressed:");
+		// 		break;
+		// 	case 6:
+		// 		console.log("Guard:");
+		// 		break;
+		// 	case 7:
+		// 		console.log("Immune:");
+		// 		break;
+		// 	case 8:
+		// 		console.log("Paralyzed:");
+		// 		break;
+		// 	case 9:
+		// 		console.log("Poisoned:");
+		// 		break;
+		// 	case 10:
+		// 		console.log("Recover:");
+		// 		break;
+		// 	case 11:
+		// 		console.log("Secured:");
+		// 		break;
+		// 	case 12:
+		// 		console.log("Silenced:");
+		// 		break;
+		// 	case 13:
+		// 		console.log("Stunned:");
+		// 		break;
+		// 	case 14:
+		// 		console.log("Critical damage:");
+		// 		break;
+		// 	default:
+		// 		console.log("Buff:");
+		// }
 		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
 			if(status[0] == statusNum){
