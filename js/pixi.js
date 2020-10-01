@@ -2437,7 +2437,8 @@ function onHPDown(){
 		}
 
 		creatureInfoStatus.addChild(statusEffectIcon);
-		statusEffectIcon.scale.set(0.25);
+		statusEffectIcon.width = app.screen.width/38;
+		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.y = statusIndex * 50; 
 		// switch(statusNum){
 		// 	case 1:
