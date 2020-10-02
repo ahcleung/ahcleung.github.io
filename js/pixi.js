@@ -2389,57 +2389,77 @@ function onHPDown(){
 	// console.log("Status: " + creatureStatusInfo);
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
+		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
 			case 1:
 				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
+				textStatus.text = "Bleed";
 				break;
 			case 2:
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+				textStatus.text = "Buff";
 				break;
 			case 3:
 				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
+				textStatus.text = "Burned";
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
+				textStatus.text = "Debuff";
 				break;
 			case 5:
 				statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
+				textStatus.text = "Depressed";
 				break;
 			case 6:
 				statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
+				textStatus.text = "Guard";
 				break;
 			case 7:
 				statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
+				textStatus.text = "Immune";
 				break;
 			case 8:
 				statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
+				textStatus.text = "Paralyzed";
 				break;
 			case 9:
 				statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
+				textStatus.text = "Poisoned";
 				break;
 			case 10:
 				statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
+				textStatus.text = "Recover";
 				break;
 			case 11:
 				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
+				textStatus.text = "Secured";
 				break;
 			case 12:
 				statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
+				textStatus.text = "Silenced";
 				break;
 			case 13:
 				statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
+				textStatus.text = "Stunned";
 				break;
 			case 14:
 				statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
+				textStatus.text = "Critical";
 				break;
 			default:
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+				textStatus.text = "Buff";
 		}
 
 		creatureInfoStatus.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
 		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.y = statusIndex * 50; 
+		creatureInfoStatus.addChild(textStatus);
+		textStatus.x = 50;
+		textStatus.y = statusIndex * 50; 
+
 		// switch(statusNum){
 		// 	case 1:
 		// 		console.log("Bleed:");
