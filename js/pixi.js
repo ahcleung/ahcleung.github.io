@@ -2407,122 +2407,78 @@ function onHPDown(){
 			case 1:
 				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
 				textStatus.text = "Bleed";
+				console.log("Bleed:");
 				break;
 			case 2:
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
-				var buffStat;
-				switch(this.object.statusArray[statusIndex][2]+1){
-					case 1:
-						buffStat = "HP  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	HP " + status[3] + " [" + status[1] + "]");
-						break;
-					case 2:
-						buffStat = "Dodge  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Dodge " + status[3] + " [" + status[1] + "]");
-						break;
-					case 3:
-						buffStat = "Physical attack  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
-						break;
-					case 4:
-						buffStat = "Physical defense  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
-						break;
-					case 5:
-						buffStat = "Special attack  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Special attack " + status[3] + " [" + status[1] + "]");
-						break;
-					case 6:
-						buffStat = "Special defense  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Special defense " + status[3] + " [" + status[1] + "]");
-						break;
-					case 7:
-						buffStat = "Speed  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Speed " + status[3] + " [" + status[1] + "]");
-						break;
-					case 8:
-						buffStat = "Accuracy  +" + this.object.statusArray[statusIndex][3];
-						// console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
-						break;
-				}
-				let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-				creatureInfoStatus.addChild(textBuff);
-				statusText.push(textBuff);
-				textBuff.x = 100;
-				textBuff.y = statusIndex * 50;
-				textBuff.anchor.set(0,0.5);
-				let textBuffTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-				creatureInfoStatus.addChild(textBuffTurn);
-				statusText.push(textBuffTurn);
-				textBuffTurn.x = 110 + textBuff.width;
-				textBuffTurn.y = statusIndex * 50;
-				textBuffTurn.anchor.set(0,0.5);
+				console.log("Buff:");
 				break;
 			case 3:
 				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
 				textStatus.text = "Burned";
+				console.log("Burned:");
 				// console.log("	10 Dmg" + " [" + this.object.statusArray[statusIndex][1] + "]");
-				let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-				creatureInfoStatus.addChild(textBurned);
-				statusText.push(textBurned);
-				textBurned.x = 100;
-				textBurned.y = statusIndex * 50;
-				textBurned.anchor.set(0,0.5);
-				let textBurnedTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-				creatureInfoStatus.addChild(textBurnedTurn);
-				statusText.push(textBurnedTurn);
-				textBurnedTurn.x = 110 + textBurned.width;
-				textBurnedTurn.y = statusIndex * 50;
-				textBurnedTurn.anchor.set(0,0.5);
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
 				textStatus.text = "Debuff";
+				console.log("Debuff:");
 				break;
 			case 5:
 				statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
 				textStatus.text = "Depressed";
+				console.log("Depressed:");
 				break;
 			case 6:
 				statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
 				textStatus.text = "Guard";
+				console.log("Guard:");
 				break;
 			case 7:
 				statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
 				textStatus.text = "Immune";
+				console.log("Immune:");
 				break;
 			case 8:
 				statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
 				textStatus.text = "Paralyzed";
+				console.log("Paralyzed:");
 				break;
 			case 9:
 				statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
 				textStatus.text = "Poisoned";
+				console.log("Poisoned:");
 				break;
 			case 10:
 				statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
 				textStatus.text = "Recover";
+				console.log("Recover:");
 				break;
 			case 11:
 				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
 				textStatus.text = "Secured";
+				console.log("Secured:");
 				break;
 			case 12:
 				statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
 				textStatus.text = "Silenced";
+				console.log("Silenced:");
 				break;
 			case 13:
 				statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
 				textStatus.text = "Stunned";
+				console.log("Stunned:");
 				break;
 			case 14:
 				statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
 				textStatus.text = "Critical";
+				console.log("Critical:");
 				break;
 			default:
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
+				console.log("Buff:");
 		}
 		statusIcon.push(statusEffectIcon);
 
@@ -2536,87 +2492,96 @@ function onHPDown(){
 		textStatus.y = statusIndex * 50;
 		textStatus.anchor.set(0,0.5);
 
-		// switch(statusNum){
-		// 	case 1:
-		// 		console.log("Bleed:");
-		// 		break;
-		// 	case 2:
-		// 		console.log("Buff:");
-		// 		break;
-		// 	case 3:
-		// 		console.log("Burned:");
-		// 		break;
-		// 	case 4:
-		// 		console.log("Debuff:");
-		// 		break;
-		// 	case 5:
-		// 		console.log("Depressed:");
-		// 		break;
-		// 	case 6:
-		// 		console.log("Guard:");
-		// 		break;
-		// 	case 7:
-		// 		console.log("Immune:");
-		// 		break;
-		// 	case 8:
-		// 		console.log("Paralyzed:");
-		// 		break;
-		// 	case 9:
-		// 		console.log("Poisoned:");
-		// 		break;
-		// 	case 10:
-		// 		console.log("Recover:");
-		// 		break;
-		// 	case 11:
-		// 		console.log("Secured:");
-		// 		break;
-		// 	case 12:
-		// 		console.log("Silenced:");
-		// 		break;
-		// 	case 13:
-		// 		console.log("Stunned:");
-		// 		break;
-		// 	case 14:
-		// 		console.log("Critical damage:");
-		// 		break;
-		// 	default:
-		// 		console.log("Buff:");
-		// }
 		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
 			if(status[0] == statusNum){
-				if(statusNum == 4 || statusNum == 2){
-					switch(status[2]+1){
+				if(statusNum == 2){
+					var buffStat;
+					switch(this.object.statusArray[statusIndex][2]+1){
 						case 1:
-							console.log("	HP " + status[3] + " [" + status[1] + "]");
+							buffStat = "HP  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 2:
-							console.log("	Dodge " + status[3] + " [" + status[1] + "]");
+							buffStat = "Dodge  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 3:
-							console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
+							buffStat = "Physical attack  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 4:
-							console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
+							buffStat = "Physical defense  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 5:
-							console.log("	Special attack " + status[3] + " [" + status[1] + "]");
+							buffStat = "Special attack  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 6:
-							console.log("	Special defense " + status[3] + " [" + status[1] + "]");
+							buffStat = "Special defense  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 7:
-							console.log("	Speed " + status[3] + " [" + status[1] + "]");
+							buffStat = "Speed  +" + this.object.statusArray[statusIndex][3];
 							break;
 						case 8:
-							console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
+							buffStat = "Accuracy  +" + this.object.statusArray[statusIndex][3];
+							
 							break;
-					}					
+					}
+					console.log(buffStat + " [" + status[1] + "]");
+					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					creatureInfoStatus.addChild(textBuff);
+					statusText.push(textBuff);
+					textBuff.x = 100;
+					textBuff.y = statusIndex * 50;
+					textBuff.anchor.set(0,0.5);
+					let textBuffTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					creatureInfoStatus.addChild(textBuffTurn);
+					statusText.push(textBuffTurn);
+					textBuffTurn.x = 110 + textBuff.width;
+					textBuffTurn.y = statusIndex * 50;
+					textBuffTurn.anchor.set(0,0.5);
 				}
+				// if(statusNum == 4 || statusNum == 2){
+				// 	switch(status[2]+1){
+				// 		case 1:
+				// 			console.log("	HP " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 2:
+				// 			console.log("	Dodge " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 3:
+				// 			console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 4:
+				// 			console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 5:
+				// 			console.log("	Special attack " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 6:
+				// 			console.log("	Special defense " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 7:
+				// 			console.log("	Speed " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 		case 8:
+				// 			console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
+				// 			break;
+				// 	}					
+				// }
 				if(statusNum == 14){
 					console.log("	-" + this.object.critDmg);
 				}
 				if(statusNum == 3){
+					let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					creatureInfoStatus.addChild(textBurned);
+					statusText.push(textBurned);
+					textBurned.x = 100;
+					textBurned.y = statusIndex * 50;
+					textBurned.anchor.set(0,0.5);
+					let textBurnedTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					creatureInfoStatus.addChild(textBurnedTurn);
+					statusText.push(textBurnedTurn);
+					textBurnedTurn.x = 110 + textBurned.width;
+					textBurnedTurn.y = statusIndex * 50;
+					textBurnedTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 				}
 				if(statusNum == 8){
