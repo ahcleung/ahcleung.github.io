@@ -2402,6 +2402,8 @@ function onHPDown(){
 			case 3:
 				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
 				textStatus.text = "Burned";
+				// console.log("	10 Dmg" + " [" + this.object.statusArray[statusIndex][1] + "]");
+				let textBurned = new Text("10 damage [" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
