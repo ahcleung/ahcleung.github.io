@@ -2397,12 +2397,8 @@ function onHPDown(){
 	var statusIcon = [];
 	var statusText = [];
 
-	creatureInfo.statusIcon = statusIcon;
-	creatureInfo.statusText = statusText;
-
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
-		statusIcon.push(statusEffectIcon);
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 		statusText.push(textStatus);
 		switch(statusNum){
@@ -2526,6 +2522,9 @@ function onHPDown(){
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
 		}
+		statusIcon.push(statusEffectIcon);
+		creatureInfo.statusIcon = statusIcon;
+		creatureInfo.statusText = statusText;
 
 		creatureInfoStatus.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
