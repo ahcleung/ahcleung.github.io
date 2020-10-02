@@ -2189,11 +2189,11 @@ function onInfoDown(){
 
 		creatureInfo.statusIcon.forEach(icon=>{
 			console.log("destroy icon");
-			icon.destroy;
+			icon.destroy();
 		});
 		creatureInfo.statusText.forEach(text=>{
 			console.log("destroy text");
-			text.destroy;
+			text.destroy();
 		});
 
 		creatureInfoSprite.getChildAt(0).destroy();
