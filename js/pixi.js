@@ -2573,7 +2573,7 @@ function onHPDown(){
 					console.log("	-" + this.object.critDmg);
 				}
 				if(statusNum == 3){
-					let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					let textBurned = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textBurned.x = 100;
 					textBurned.y = textLevel*50;
 					textBurned.anchor.set(0,0.5);
