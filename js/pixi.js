@@ -2406,9 +2406,11 @@ function onHPDown(){
 				let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 				creatureInfoStatus.addChild(textBurned);
 				textBurned.x = 100;
+				textBurned.anchor.set(0,0.5);
 				let textBurnedTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 				creatureInfoStatus.addChild(textBurnedTurn);
-				textBurnedTurn.x = 100 + textBurned.width;
+				textBurnedTurn.x = 110 + textBurned.width;
+				textBurnedTurn.anchor.set(0,0.5);
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
