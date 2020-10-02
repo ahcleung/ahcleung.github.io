@@ -2489,7 +2489,7 @@ function onHPDown(){
 		statusEffectIcon.anchor.set(0,0.5);
 		statusEffectIcon.y = textLevel*50;
 		creatureInfoStatus.addChild(textStatus);
-		textStatus.x = 75;
+		textStatus.x = 60;
 		textStatus.y = textLevel*50;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
