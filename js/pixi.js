@@ -2404,6 +2404,8 @@ function onHPDown(){
 				textStatus.text = "Burned";
 				// console.log("	10 Dmg" + " [" + this.object.statusArray[statusIndex][1] + "]");
 				let textBurned = new Text("10 damage [" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+				creatureInfoStatus.addChild(textBurned);
+				textBurned.x = 100;
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
