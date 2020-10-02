@@ -2403,7 +2403,6 @@ function onHPDown(){
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
-		statusText.push(textStatus);
 		switch(statusNum){
 			case 1:
 				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
@@ -2490,8 +2489,9 @@ function onHPDown(){
 		statusEffectIcon.y = statusIndex * 50;
 		creatureInfoStatus.addChild(textStatus);
 		textStatus.x = 50;
-		textStatus.y = statusIndex * 50;
+		textStatus.y = (statusIndex * 50) + (statusText.length*25);
 		textStatus.anchor.set(0,0.5);
+		statusText.push(textStatus);
 
 		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
