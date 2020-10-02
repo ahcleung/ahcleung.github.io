@@ -2534,7 +2534,7 @@ function onHPDown(){
 					creatureInfoStatus.addChild(textBuffTurn);
 					statusText.push(textBuffTurn);
 					textBuffTurn.x = 110 + textBuff.width;
-					textBuffTurn.y = statusText.length * 50;
+					textBuffTurn.y = (statusText.length-1) * 50;
 					textBuffTurn.anchor.set(0,0.5);
 				}
 				// if(statusNum == 4 || statusNum == 2){
@@ -2579,7 +2579,7 @@ function onHPDown(){
 					creatureInfoStatus.addChild(textBurnedTurn);
 					statusText.push(textBurnedTurn);
 					textBurnedTurn.x = 110 + textBurned.width;
-					textBurnedTurn.y = statusText.length * 50;
+					textBurnedTurn.y = (statusText.length-1) * 50;
 					textBurnedTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 				}
