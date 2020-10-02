@@ -62,7 +62,7 @@ class Creature{
 		//[status, turn, statNum, value]
 			[3,1],
 			[2,3,2,1],
-			[4,3,3,1],
+			[4,3,3,-1],
 			// ,
 			// [Math.floor(Math.random() * 14) + 1, 2],
 			// [Math.floor(Math.random() * 14) + 1, 2],
