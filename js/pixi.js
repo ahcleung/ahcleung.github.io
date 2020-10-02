@@ -2486,10 +2486,10 @@ function onHPDown(){
 		statusEffectIcon.width = app.screen.width/38;
 		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.anchor.set(0,0.5);
-		statusEffectIcon.y = statusIndex * 50;
+		statusEffectIcon.y = statusText.length*50;
 		creatureInfoStatus.addChild(textStatus);
 		textStatus.x = 50;
-		textStatus.y = statusIndex * 100;
+		textStatus.y = statusText.length*50;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
 
@@ -2527,11 +2527,11 @@ function onHPDown(){
 					console.log(buffStat + " [" + status[1] + "]");
 					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textBuff.x = 100;
-					textBuff.y = (statusIndex*25) + (statusText.length*50);
+					textBuff.y = statusText.length*50;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					textBuffTurn.x = 110 + textBuff.width;
-					textBuffTurn.y = (statusIndex*25) + (statusText.length*50);
+					textBuffTurn.y = statusText.length*50;
 					textBuffTurn.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textBuff);
 					statusText.push(textBuff);
@@ -2572,11 +2572,11 @@ function onHPDown(){
 				if(statusNum == 3){
 					let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textBurned.x = 100;
-					textBurned.y = (statusIndex*25) + (statusText.length*50);
+					textBurned.y = statusText.length*50;
 					textBurned.anchor.set(0,0.5);
 					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					textBurnedTurn.x = 110 + textBurned.width;
-					textBurnedTurn.y = (statusIndex*25) + (statusText.length*50);
+					textBurnedTurn.y = statusText.length*50;
 					textBurnedTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 					creatureInfoStatus.addChild(textBurned);
