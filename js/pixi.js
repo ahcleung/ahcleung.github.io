@@ -2489,7 +2489,7 @@ function onHPDown(){
 		statusEffectIcon.y = statusIndex * 50;
 		creatureInfoStatus.addChild(textStatus);
 		textStatus.x = 50;
-		textStatus.y = statusIndex * 50;
+		textStatus.y = statusText.length * 50;
 		textStatus.anchor.set(0,0.5);
 
 		// console.log(statusNum + ":");
@@ -2521,7 +2521,6 @@ function onHPDown(){
 							break;
 						case 8:
 							buffStat = "Accuracy  +" + status[3];
-							
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
@@ -2529,13 +2528,13 @@ function onHPDown(){
 					creatureInfoStatus.addChild(textBuff);
 					statusText.push(textBuff);
 					textBuff.x = 100;
-					textBuff.y = statusIndex * 50;
+					textBuff.y = statusText.length * 50;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					creatureInfoStatus.addChild(textBuffTurn);
 					statusText.push(textBuffTurn);
 					textBuffTurn.x = 110 + textBuff.width;
-					textBuffTurn.y = statusIndex * 50;
+					textBuffTurn.y = statusText.length * 50;
 					textBuffTurn.anchor.set(0,0.5);
 				}
 				// if(statusNum == 4 || statusNum == 2){
@@ -2574,13 +2573,13 @@ function onHPDown(){
 					creatureInfoStatus.addChild(textBurned);
 					statusText.push(textBurned);
 					textBurned.x = 100;
-					textBurned.y = statusIndex * 50;
+					textBurned.y = statusText.length * 50;
 					textBurned.anchor.set(0,0.5);
 					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					creatureInfoStatus.addChild(textBurnedTurn);
 					statusText.push(textBurnedTurn);
 					textBurnedTurn.x = 110 + textBurned.width;
-					textBurnedTurn.y = statusIndex * 50;
+					textBurnedTurn.y = statusText.length * 50;
 					textBurnedTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 				}
