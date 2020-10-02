@@ -2401,45 +2401,47 @@ function onHPDown(){
 				var buffStat;
 				switch(this.object.statusArray[statusIndex][2]+1){
 					case 1:
-						buffStat = "HP " + status[3];
+						buffStat = "HP " + this.object.statusArray[statusIndex][3];
 						// console.log("	HP " + status[3] + " [" + status[1] + "]");
 						break;
 					case 2:
-						buffStat = "Dodge " + status[3];
+						buffStat = "Dodge " + this.object.statusArray[statusIndex][3];
 						// console.log("	Dodge " + status[3] + " [" + status[1] + "]");
 						break;
 					case 3:
-						buffStat = "Physical attack " + status[3];
+						buffStat = "Physical attack " + this.object.statusArray[statusIndex][3];
 						// console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
 						break;
 					case 4:
-						buffStat = "Physical defense " + status[3];
+						buffStat = "Physical defense " + this.object.statusArray[statusIndex][3];
 						// console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
 						break;
 					case 5:
-						buffStat = "Special attack " + status[3];
+						buffStat = "Special attack " + this.object.statusArray[statusIndex][3];
 						// console.log("	Special attack " + status[3] + " [" + status[1] + "]");
 						break;
 					case 6:
-						buffStat = "Special defense " + status[3];
+						buffStat = "Special defense " + this.object.statusArray[statusIndex][3];
 						// console.log("	Special defense " + status[3] + " [" + status[1] + "]");
 						break;
 					case 7:
-						buffStat = "Speed " + status[3];
+						buffStat = "Speed " + this.object.statusArray[statusIndex][3];
 						// console.log("	Speed " + status[3] + " [" + status[1] + "]");
 						break;
 					case 8:
-						buffStat = "Accuracy " + status[3];
+						buffStat = "Accuracy " + this.object.statusArray[statusIndex][3];
 						// console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
 						break;
 				}
 				let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 				creatureInfoStatus.addChild(textBuff);
 				textBuff.x = 100;
+				textBuff.y = statusIndex * 50;
 				textBuff.anchor.set(0,0.5);
 				let textBuffTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 				creatureInfoStatus.addChild(textBuffTurn);
 				textBuffTurn.x = 110 + textBuff.width;
+				textBuffTurn.y = statusIndex * 50;
 				textBuffTurn.anchor.set(0,0.5);
 				break;
 			case 3:
@@ -2449,10 +2451,12 @@ function onHPDown(){
 				let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 				creatureInfoStatus.addChild(textBurned);
 				textBurned.x = 100;
+				textBurned.y = statusIndex * 50;
 				textBurned.anchor.set(0,0.5);
 				let textBurnedTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 				creatureInfoStatus.addChild(textBurnedTurn);
 				textBurnedTurn.x = 110 + textBurned.width;
+				textBurnedTurn.y = statusIndex * 50;
 				textBurnedTurn.anchor.set(0,0.5);
 				break;
 			case 4:
