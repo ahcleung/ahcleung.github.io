@@ -2541,6 +2541,49 @@ function onHPDown(){
 					statusText.push(textBuffTurn);
 					textLevel++;
 				}
+				if(statusNum == 4){
+					var debuffStat;
+					switch(status[2]+1){
+						case 1:
+							debuffStat = "HP  -" + status[3];
+							break;
+						case 2:
+							debuffStat = "Dodge  -" + status[3];
+							break;
+						case 3:
+							debuffStat = "Physical attack  -" + status[3];
+							break;
+						case 4:
+							debuffStat = "Physical defense  -" + status[3];
+							break;
+						case 5:
+							debuffStat = "Special attack  -" + status[3];
+							break;
+						case 6:
+							debuffStat = "Special defense  -" + status[3];
+							break;
+						case 7:
+							debuffStat = "Speed  -" + status[3];
+							break;
+						case 8:
+							debuffStat = "Accuracy  -" + status[3];
+							break;
+					}
+					console.log(debuffStat + " [" + status[1] + "]");
+					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					textDebuff.x = 100;
+					textDebuff.y = textLevel*50;
+					textDebuff.anchor.set(0,0.5);
+					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textDebuffTurn.x = 110 + textDebuff.width;
+					textDebuffTurn.y = textLevel*50;
+					textDebuffTurn.anchor.set(0,0.5);
+					creatureInfoStatus.addChild(textDebuff);
+					statusText.push(textDebuff);
+					creatureInfoStatus.addChild(textDebuffTurn);
+					statusText.push(textDebuffTurn);
+					textLevel++;
+				}
 				// if(statusNum == 4 || statusNum == 2){
 				// 	switch(status[2]+1){
 				// 		case 1:
