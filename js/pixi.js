@@ -2541,6 +2541,22 @@ function onHPDown(){
 					statusText.push(textBuffTurn);
 					textLevel++;
 				}
+				if(statusNum == 3){
+					let textBurned = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					textBurned.x = 100;
+					textBurned.y = textLevel*50;
+					textBurned.anchor.set(0,0.5);
+					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textBurnedTurn.x = 110 + textBurned.width;
+					textBurnedTurn.y = textLevel*50;
+					textBurnedTurn.anchor.set(0,0.5);
+					console.log("	10 Dmg" + " [" + status[1] + "]");
+					creatureInfoStatus.addChild(textBurned);
+					statusText.push(textBurned);
+					creatureInfoStatus.addChild(textBurnedTurn);
+					statusText.push(textBurnedTurn);
+					textLevel++;
+				}
 				if(statusNum == 4){
 					var debuffStat;
 					switch(status[2]+1){
@@ -2584,52 +2600,25 @@ function onHPDown(){
 					statusText.push(textDebuffTurn);
 					textLevel++;
 				}
-				// if(statusNum == 4 || statusNum == 2){
-				// 	switch(status[2]+1){
-				// 		case 1:
-				// 			console.log("	HP " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 2:
-				// 			console.log("	Dodge " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 3:
-				// 			console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 4:
-				// 			console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 5:
-				// 			console.log("	Special attack " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 6:
-				// 			console.log("	Special defense " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 7:
-				// 			console.log("	Speed " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 		case 8:
-				// 			console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
-				// 			break;
-				// 	}					
-				// }
-				if(statusNum == 14){
-					console.log("	-" + this.object.critDmg);
-				}
-				if(statusNum == 3){
-					let textBurned = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textBurned.x = 100;
-					textBurned.y = textLevel*50;
-					textBurned.anchor.set(0,0.5);
-					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textBurnedTurn.x = 110 + textBurned.width;
-					textBurnedTurn.y = textLevel*50;
-					textBurnedTurn.anchor.set(0,0.5);
-					console.log("	10 Dmg" + " [" + status[1] + "]");
-					creatureInfoStatus.addChild(textBurned);
-					statusText.push(textBurned);
-					creatureInfoStatus.addChild(textBurnedTurn);
-					statusText.push(textBurnedTurn);
+				if(statusNum == 11){
+					let textSecured = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textSecured.x = 100;
+					textSecured.y = textLevel*50;
+					textSecured.anchor.set(0,0.5);
+					creatureInfoStatus.addChild(textSecured);
+					statusText.push(textSecured);
 					textLevel++;
+					console.log("	[" + status[1] + "]");
+				}
+				if(statusNum == 14){
+					let textCritical = new Text("-" + this.object.critDmg, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textCritical.x = 100;
+					textCritical.y = textLevel*50;
+					textCritical.anchor.set(0,0.5);
+					creatureInfoStatus.addChild(textCritical);
+					statusText.push(textCritical);
+					textLevel++;
+					console.log("	-" + this.object.critDmg);
 				}
 				if(statusNum == 8){
 					console.log("	[" + status[1] + "]");
