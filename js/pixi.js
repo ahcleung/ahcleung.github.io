@@ -2398,6 +2398,49 @@ function onHPDown(){
 			case 2:
 				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
+				var buffStat;
+				switch(this.object.statusArray[statusIndex][2]+1){
+					case 1:
+						buffStat = "HP " + status[3];
+						// console.log("	HP " + status[3] + " [" + status[1] + "]");
+						break;
+					case 2:
+						buffStat = "Dodge " + status[3];
+						// console.log("	Dodge " + status[3] + " [" + status[1] + "]");
+						break;
+					case 3:
+						buffStat = "Physical attack " + status[3];
+						// console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
+						break;
+					case 4:
+						buffStat = "Physical defense " + status[3];
+						// console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
+						break;
+					case 5:
+						buffStat = "Special attack " + status[3];
+						// console.log("	Special attack " + status[3] + " [" + status[1] + "]");
+						break;
+					case 6:
+						buffStat = "Special defense " + status[3];
+						// console.log("	Special defense " + status[3] + " [" + status[1] + "]");
+						break;
+					case 7:
+						buffStat = "Speed " + status[3];
+						// console.log("	Speed " + status[3] + " [" + status[1] + "]");
+						break;
+					case 8:
+						buffStat = "Accuracy " + status[3];
+						// console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
+						break;
+				}
+				let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+				creatureInfoStatus.addChild(textBuff);
+				textBuff.x = 100;
+				textBuff.anchor.set(0,0.5);
+				let textBuffTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+				creatureInfoStatus.addChild(textBuffTurn);
+				textBuffTurn.x = 110 + textBuff.width;
+				textBuffTurn.anchor.set(0,0.5);
 				break;
 			case 3:
 				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
