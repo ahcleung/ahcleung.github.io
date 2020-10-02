@@ -2401,35 +2401,35 @@ function onHPDown(){
 				var buffStat;
 				switch(this.object.statusArray[statusIndex][2]+1){
 					case 1:
-						buffStat = "HP " + this.object.statusArray[statusIndex][3];
+						buffStat = "HP  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	HP " + status[3] + " [" + status[1] + "]");
 						break;
 					case 2:
-						buffStat = "Dodge " + this.object.statusArray[statusIndex][3];
+						buffStat = "Dodge  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Dodge " + status[3] + " [" + status[1] + "]");
 						break;
 					case 3:
-						buffStat = "Physical attack " + this.object.statusArray[statusIndex][3];
+						buffStat = "Physical attack  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Physical attack " + status[3] + " [" + status[1] + "]");
 						break;
 					case 4:
-						buffStat = "Physical defense " + this.object.statusArray[statusIndex][3];
+						buffStat = "Physical defense  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Physical defense " + status[3] + " [" + status[1] + "]");
 						break;
 					case 5:
-						buffStat = "Special attack " + this.object.statusArray[statusIndex][3];
+						buffStat = "Special attack  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Special attack " + status[3] + " [" + status[1] + "]");
 						break;
 					case 6:
-						buffStat = "Special defense " + this.object.statusArray[statusIndex][3];
+						buffStat = "Special defense  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Special defense " + status[3] + " [" + status[1] + "]");
 						break;
 					case 7:
-						buffStat = "Speed " + this.object.statusArray[statusIndex][3];
+						buffStat = "Speed  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Speed " + status[3] + " [" + status[1] + "]");
 						break;
 					case 8:
-						buffStat = "Accuracy " + this.object.statusArray[statusIndex][3];
+						buffStat = "Accuracy  +" + this.object.statusArray[statusIndex][3];
 						// console.log("	Accuracy " + status[3] + " [" + status[1] + "]");
 						break;
 				}
