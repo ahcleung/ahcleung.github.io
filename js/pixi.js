@@ -2188,9 +2188,11 @@ function onInfoDown(){
 		creatureInfo.visible = false;
 
 		creatureInfo.statusIcon.forEach(icon=>{
+			console.log("destroy icon");
 			icon.destroy;
 		});
 		creatureInfo.statusText.forEach(text=>{
+			console.log("destroy text");
 			text.destroy;
 		});
 
@@ -2523,8 +2525,6 @@ function onHPDown(){
 				textStatus.text = "Buff";
 		}
 		statusIcon.push(statusEffectIcon);
-		creatureInfo.statusIcon = statusIcon;
-		creatureInfo.statusText = statusText;
 
 		creatureInfoStatus.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
@@ -2625,6 +2625,9 @@ function onHPDown(){
 			}
 		});
 	});
+
+	creatureInfo.statusIcon = statusIcon;
+	creatureInfo.statusText = statusText;
 }
 
 function onSkillDown(){
