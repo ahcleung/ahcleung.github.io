@@ -2399,6 +2399,7 @@ function onHPDown(){
 	// console.log("Status: " + creatureStatusInfo);
 	var statusIcon = [];
 	var statusText = [];
+	var textLevel = 0;
 
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
@@ -2486,12 +2487,13 @@ function onHPDown(){
 		statusEffectIcon.width = app.screen.width/38;
 		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.anchor.set(0,0.5);
-		statusEffectIcon.y = statusText.length*50;
+		statusEffectIcon.y = textLevel*50;
 		creatureInfoStatus.addChild(textStatus);
 		textStatus.x = 50;
-		textStatus.y = statusText.length*50;
+		textStatus.y = textLevel*50;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
+		textLevel++;
 
 		// console.log(statusNum + ":");
 		this.object.statusArray.forEach(status =>{
@@ -2527,16 +2529,17 @@ function onHPDown(){
 					console.log(buffStat + " [" + status[1] + "]");
 					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textBuff.x = 100;
-					textBuff.y = statusText.length*50;
+					textBuff.y = textLevel*50;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					textBuffTurn.x = 110 + textBuff.width;
-					textBuffTurn.y = statusText.length*50;
+					textBuffTurn.y = textLevel*50;
 					textBuffTurn.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textBuff);
 					statusText.push(textBuff);
 					creatureInfoStatus.addChild(textBuffTurn);
 					statusText.push(textBuffTurn);
+					textLevel++;
 				}
 				// if(statusNum == 4 || statusNum == 2){
 				// 	switch(status[2]+1){
@@ -2572,17 +2575,18 @@ function onHPDown(){
 				if(statusNum == 3){
 					let textBurned = new Text("10 damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textBurned.x = 100;
-					textBurned.y = statusText.length*50;
+					textBurned.y = textLevel*50;
 					textBurned.anchor.set(0,0.5);
 					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					textBurnedTurn.x = 110 + textBurned.width;
-					textBurnedTurn.y = statusText.length*50;
+					textBurnedTurn.y = textLevel*50;
 					textBurnedTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 					creatureInfoStatus.addChild(textBurned);
 					statusText.push(textBurned);
 					creatureInfoStatus.addChild(textBurnedTurn);
 					statusText.push(textBurnedTurn);
+					textLevel++;
 				}
 				if(statusNum == 8){
 					console.log("	[" + status[1] + "]");
