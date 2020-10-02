@@ -2497,30 +2497,30 @@ function onHPDown(){
 			if(status[0] == statusNum){
 				if(statusNum == 2){
 					var buffStat;
-					switch(this.object.statusArray[statusIndex][2]+1){
+					switch(status[2]+1){
 						case 1:
-							buffStat = "HP  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "HP  +" + status[3];
 							break;
 						case 2:
-							buffStat = "Dodge  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Dodge  +" + status[3];
 							break;
 						case 3:
-							buffStat = "Physical attack  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Physical attack  +" + status[3];
 							break;
 						case 4:
-							buffStat = "Physical defense  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Physical defense  +" + status[3];
 							break;
 						case 5:
-							buffStat = "Special attack  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Special attack  +" + status[3];
 							break;
 						case 6:
-							buffStat = "Special defense  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Special defense  +" + status[3];
 							break;
 						case 7:
-							buffStat = "Speed  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Speed  +" + status[3];
 							break;
 						case 8:
-							buffStat = "Accuracy  +" + this.object.statusArray[statusIndex][3];
+							buffStat = "Accuracy  +" + status[3];
 							
 							break;
 					}
@@ -2531,7 +2531,7 @@ function onHPDown(){
 					textBuff.x = 100;
 					textBuff.y = statusIndex * 50;
 					textBuff.anchor.set(0,0.5);
-					let textBuffTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					creatureInfoStatus.addChild(textBuffTurn);
 					statusText.push(textBuffTurn);
 					textBuffTurn.x = 110 + textBuff.width;
@@ -2576,7 +2576,7 @@ function onHPDown(){
 					textBurned.x = 100;
 					textBurned.y = statusIndex * 50;
 					textBurned.anchor.set(0,0.5);
-					let textBurnedTurn = new Text("[" + this.object.statusArray[statusIndex][1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					let textBurnedTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
 					creatureInfoStatus.addChild(textBurnedTurn);
 					statusText.push(textBurnedTurn);
 					textBurnedTurn.x = 110 + textBurned.width;
