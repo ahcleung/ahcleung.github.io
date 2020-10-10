@@ -2625,6 +2625,8 @@ function onHPDown(){
 				}
 			}
 		});
+
+		console.log("Text Level: " + textLevel);
 	});
 
 	creatureInfo.statusIcon = statusIcon;
