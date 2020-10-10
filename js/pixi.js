@@ -2678,12 +2678,12 @@ function onHPDown(){
 				}
 			}
 		});
-		if(textLevel > 10)	status2 = 1;
+		if(textLevel > 10)	status2 = textLevel-statusDetail;
 		console.log("Text Level: " + textLevel);
 		console.log("Status Level: " + statusDetail);
 		creatureInfoStatus.addChild(statusContainer);
 		statusContainer.x = status2*xAdjust;
-		statusContainer.y = 50*(textLevel-statusDetail-(status2*11));
+		statusContainer.y = 50*(textLevel-statusDetail-status2);
 	});
 
 	creatureInfo.statusIcon = statusIcon;
