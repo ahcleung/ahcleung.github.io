@@ -2401,6 +2401,7 @@ function onHPDown(){
 	var statusText = [];
 	var textLevel = 0;
 	var status2 = 0;
+	var xAdjust = 450;
 
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
@@ -2420,7 +2421,6 @@ function onHPDown(){
 				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
 				textStatus.text = "Burned";
 				console.log("Burned:");
-				// console.log("	10 Dmg" + " [" + this.object.statusArray[statusIndex][1] + "]");
 				break;
 			case 4:
 				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
@@ -2484,7 +2484,6 @@ function onHPDown(){
 		}
 		statusIcon.push(statusEffectIcon);
 
-		var xAdjust = 450;
 		creatureInfoStatus.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
 		statusEffectIcon.height = statusEffectIcon.width;
@@ -2561,19 +2560,19 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 10){
-					let textDamageStatus = new Text("+" + Math.floor(this.object.EHP/16) + " health" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textDamageStatus.x = 100 + status2*xAdjust;
-					textDamageStatus.y = (textLevel-(status2*11))*50;
-					textDamageStatus.anchor.set(0,0.5);
-					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textDamageStatusTurn.x = 110 + textDamageStatus.width + status2*xAdjust;
-					textDamageStatusTurn.y = (textLevel-(status2*11))*50;
-					textDamageStatusTurn.anchor.set(0,0.5);
+					let textHealStatus = new Text("+" + Math.floor(this.object.EHP/16) + " health" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+					textHealStatus.x = 100 + status2*xAdjust;
+					textHealStatus.y = (textLevel-(status2*11))*50;
+					textHealStatus.anchor.set(0,0.5);
+					let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textHealStatusTurn.x = 110 + textHealStatus.width + status2*xAdjust;
+					textHealStatusTurn.y = (textLevel-(status2*11))*50;
+					textHealStatusTurn.anchor.set(0,0.5);
 					// console.log("	10 Dmg" + " [" + status[1] + "]");
-					creatureInfoStatus.addChild(textDamageStatus);
-					statusText.push(textDamageStatus);
-					creatureInfoStatus.addChild(textDamageStatusTurn);
-					statusText.push(textDamageStatusTurn);
+					creatureInfoStatus.addChild(textHealStatus);
+					statusText.push(textHealStatus);
+					creatureInfoStatus.addChild(textHealStatusTurn);
+					statusText.push(textHealStatusTurn);
 					textLevel++;
 				}
 				if(statusNum == 4){
@@ -2619,14 +2618,13 @@ function onHPDown(){
 					textLevel++;
 					console.log(debuffStat + " [" + status[1] + "]");
 				}
-				if(statusNum == 11 || statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 12 || statusNum == 13){
-					let textSecured = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textSecured.x = 20 + textStatus.width + statusEffectIcon.width + status2*xAdjust;
-					textSecured.y = (textLevel-1-(status2*11))*50;
-					textSecured.anchor.set(0,0.5);
-					creatureInfoStatus.addChild(textSecured);
-					statusText.push(textSecured);
-					// textLevel++;
+				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
+					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
+					textTurn.x = 20 + textStatus.width + statusEffectIcon.width + status2*xAdjust;
+					textTurn.y = (textLevel-1-(status2*11))*50;
+					textTurn.anchor.set(0,0.5);
+					creatureInfoStatus.addChild(textTurn);
+					statusText.push(textTurn);
 					console.log("	[" + status[1] + "]");
 				}
 				if(statusNum == 14){
@@ -2639,9 +2637,6 @@ function onHPDown(){
 					textLevel++;
 					console.log("	-" + this.object.critDmg);
 				}
-				// if(statusNum == 8){
-				// 	console.log("	[" + status[1] + "]");
-				// }
 			}
 		});
 		if(textLevel > 10)	status2 = 1;
