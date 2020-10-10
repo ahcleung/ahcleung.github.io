@@ -2610,7 +2610,7 @@ function onHPDown(){
 					textSecured.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textSecured);
 					statusText.push(textSecured);
-					textLevel++;
+					// textLevel++;
 					console.log("	[" + status[1] + "]");
 				}
 				if(statusNum == 14){
