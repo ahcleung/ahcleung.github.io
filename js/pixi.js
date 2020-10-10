@@ -2681,6 +2681,7 @@ function onHPDown(){
 		if(textLevel > 10)	status2 = 1;
 		console.log("Text Level: " + textLevel);
 		creatureInfoStatus.addChild(statusContainer);
+		statusContainer.x = status2*xAdjust;
 		statusContainer.y = 50*(textLevel-statusDetail);
 	});
 
