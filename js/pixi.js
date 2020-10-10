@@ -2605,8 +2605,8 @@ function onHPDown(){
 				}
 				if(statusNum == 11){
 					let textSecured = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textSecured.x = 100 + status2*xAdjust;
-					textSecured.y = (textLevel-(status2*11))*50;
+					textSecured.x = 110 + textStatus.width + status2*xAdjust;
+					textSecured.y = (textLevel-1-(status2*11))*50;
 					textSecured.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textSecured);
 					statusText.push(textSecured);
