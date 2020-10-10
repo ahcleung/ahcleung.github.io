@@ -71,9 +71,7 @@ class Creature{
 			[9,1],
 			[10,1],
 			[11,1],
-			[12,1],
-			[13,1],
-			[14,1],
+			[12,1]
 			// ,
 			// [Math.floor(Math.random() * 14) + 1, 2],
 			// [Math.floor(Math.random() * 14) + 1, 2],
