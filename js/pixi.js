@@ -2682,7 +2682,7 @@ function onHPDown(){
 		console.log("Text Level: " + textLevel);
 		creatureInfoStatus.addChild(statusContainer);
 		statusContainer.x = status2*xAdjust;
-		statusContainer.y = 50*(textLevel-statusDetail-(status2*11));
+		statusContainer.y = 50*(textLevel-statusDetail-(status2*textLevel));
 	});
 
 	creatureInfo.statusIcon = statusIcon;
