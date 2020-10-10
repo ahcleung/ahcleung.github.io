@@ -2402,6 +2402,7 @@ function onHPDown(){
 	var textLevel = 0;
 	var status2 = 0;
 	var xAdjust = 450;
+	var statusTrigger = false;
 
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
@@ -2678,7 +2679,10 @@ function onHPDown(){
 				}
 			}
 		});
-		if(textLevel > 10)	status2 = textLevel-statusDetail;
+		if(textLevel > 10 && !statusTrigger){
+			status2 = textLevel-statusDetail;
+			statusTrigger = true;
+		}	
 		console.log("Text Level: " + textLevel);
 		console.log("Status Level: " + statusDetail);
 		creatureInfoStatus.addChild(statusContainer);
