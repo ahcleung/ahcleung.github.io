@@ -2400,6 +2400,7 @@ function onHPDown(){
 	var statusIcon = [];
 	var statusText = [];
 	var textLevel = 0;
+	var status2 = 0;
 
 	creatureStatusInfo.forEach((statusNum, statusIndex) =>{
 		let statusEffectIcon;
@@ -2489,7 +2490,7 @@ function onHPDown(){
 		statusEffectIcon.anchor.set(0,0.5);
 		statusEffectIcon.y = textLevel*50;
 		creatureInfoStatus.addChild(textStatus);
-		textStatus.x = 60;
+		textStatus.x = 60 + status2*100;
 		textStatus.y = textLevel*50;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
@@ -2528,11 +2529,11 @@ function onHPDown(){
 					}
 					console.log(buffStat + " [" + status[1] + "]");
 					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textBuff.x = 100;
+					textBuff.x = 100 + status2*100;
 					textBuff.y = textLevel*50;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textBuffTurn.x = 110 + textBuff.width;
+					textBuffTurn.x = 110 + textBuff.width + status2*100;
 					textBuffTurn.y = textLevel*50;
 					textBuffTurn.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textBuff);
@@ -2543,11 +2544,11 @@ function onHPDown(){
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
 					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textDamageStatus.x = 100;
+					textDamageStatus.x = 100 + status2*100;
 					textDamageStatus.y = textLevel*50;
 					textDamageStatus.anchor.set(0,0.5);
 					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textDamageStatusTurn.x = 110 + textDamageStatus.width;
+					textDamageStatusTurn.x = 110 + textDamageStatus.width + status2*100;
 					textDamageStatusTurn.y = textLevel*50;
 					textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
@@ -2586,11 +2587,11 @@ function onHPDown(){
 							break;
 					}
 					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textDebuff.x = 100;
+					textDebuff.x = 100 + status2*100;
 					textDebuff.y = textLevel*50;
 					textDebuff.anchor.set(0,0.5);
 					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textDebuffTurn.x = 110 + textDebuff.width;
+					textDebuffTurn.x = 110 + textDebuff.width + status2*100;
 					textDebuffTurn.y = textLevel*50;
 					textDebuffTurn.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textDebuff);
@@ -2602,7 +2603,7 @@ function onHPDown(){
 				}
 				if(statusNum == 11){
 					let textSecured = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					textSecured.x = 100;
+					textSecured.x = 100 + status2*100;
 					textSecured.y = textLevel*50;
 					textSecured.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textSecured);
@@ -2612,7 +2613,7 @@ function onHPDown(){
 				}
 				if(statusNum == 14){
 					let textCritical = new Text("-" + this.object.critDmg + " health points", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					textCritical.x = 100;
+					textCritical.x = 100 + status2*100;
 					textCritical.y = textLevel*50;
 					textCritical.anchor.set(0,0.5);
 					creatureInfoStatus.addChild(textCritical);
@@ -2625,7 +2626,7 @@ function onHPDown(){
 				}
 			}
 		});
-
+		if(textLevel > 10)	status2 = 1;
 		console.log("Text Level: " + textLevel);
 	});
 
