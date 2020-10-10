@@ -2401,6 +2401,7 @@ function onHPDown(){
 	var statusText = [];
 	var textLevel = 0;
 	var status2 = 0;
+	var status3 = 0;
 	var xAdjust = 450;
 	var statusTrigger = false;
 
@@ -2681,12 +2682,13 @@ function onHPDown(){
 		});
 		if(textLevel > 10 && !statusTrigger){
 			status2 = textLevel-statusDetail;
+			status3 = 1;
 			statusTrigger = true;
 		}	
 		console.log("Text Level: " + textLevel);
 		console.log("Status Level: " + statusDetail);
 		creatureInfoStatus.addChild(statusContainer);
-		statusContainer.x = status2*xAdjust;
+		statusContainer.x = status3*xAdjust;
 		statusContainer.y = 50*(textLevel-statusDetail-status2);
 	});
 
