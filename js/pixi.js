@@ -2487,22 +2487,15 @@ function onHPDown(){
 		}
 		statusIcon.push(statusEffectIcon);
 		statusContainer.addChild(statusEffectIcon);
-		// creatureInfoStatus.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
 		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.anchor.set(0,0.5);
-		// statusEffectIcon.x = status2*xAdjust;
-		// statusEffectIcon.y = (textLevel-(status2*11))*50;
 		statusContainer.addChild(textStatus);
-		// creatureInfoStatus.addChild(textStatus);
-		textStatus.x = statusEffectIcon.width + 10
-		// textStatus.x = statusEffectIcon.width + 10 + status2*xAdjust;
-		// textStatus.y = (textLevel-(status2*11))*50;
+		textStatus.x = statusEffectIcon.width + 10;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
 		textLevel++;
 
-		// console.log(statusNum + ":");
 		var statusDetail = 1;
 		this.object.statusArray.forEach((status,sIndex) =>{
 			if(status[0] == statusNum){
@@ -2536,68 +2529,50 @@ function onHPDown(){
 					}
 					console.log(buffStat + " [" + status[1] + "]");
 					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					// textBuff.x = 100 + status2*xAdjust;
-					// textBuff.y = (textLevel-(status2*11))*50;
 					textBuff.x = 100;
 					textBuff.y = statusDetail*50;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					// textBuffTurn.x = 110 + textBuff.width + status2*xAdjust;
-					// textBuffTurn.y = (textLevel-(status2*11))*50;
 					textBuffTurn.x = 110 + textBuff.width;
 					textBuffTurn.y = statusDetail*50;
 					textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
-					// creatureInfoStatus.addChild(textBuff);
 					statusText.push(textBuff);
 					statusContainer.addChild(textBuffTurn);
-					// creatureInfoStatus.addChild(textBuffTurn);
 					statusText.push(textBuffTurn);
 					statusDetail++;
 					textLevel++;
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
 					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					// textDamageStatus.x = 100 + status2*xAdjust;
-					// textDamageStatus.y = (textLevel-(status2*11))*50;
 					textDamageStatus.x = 100;
 					textDamageStatus.y = statusDetail*50;
 					textDamageStatus.anchor.set(0,0.5);
 					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					// textDamageStatusTurn.x = 110 + textDamageStatus.width + status2*xAdjust;
-					// textDamageStatusTurn.y = (textLevel-(status2*11))*50;
 					textDamageStatusTurn.x = 110 + textDamageStatus.width;
 					textDamageStatusTurn.y = statusDetail*50;
 					textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 					statusContainer.addChild(textDamageStatus);
-					// creatureInfoStatus.addChild(textDamageStatus);
 					statusText.push(textDamageStatus);
 					statusContainer.addChild(textDamageStatusTurn);
-					// creatureInfoStatus.addChild(textDamageStatusTurn);
 					statusText.push(textDamageStatusTurn);
 					statusDetail++;
 					textLevel++;
 				}
 				if(statusNum == 10){
-					let textHealStatus = new Text("+" + Math.floor(this.object.EHP/16) + " health" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					// textHealStatus.x = 100 + status2*xAdjust;
-					// textHealStatus.y = (textLevel-(status2*11))*50;
+					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16), {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 					textHealStatus.x = 100;
 					textHealStatus.y = statusDetail*50;
 					textHealStatus.anchor.set(0,0.5);
 					let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					// textHealStatusTurn.x = 110 + textHealStatus.width + status2*xAdjust;
-					// textHealStatusTurn.y = (textLevel-(status2*11))*50;
 					textHealStatusTurn.x = 110 + textHealStatus.width;
 					textHealStatusTurn.y = statusDetail*50;
 					textHealStatusTurn.anchor.set(0,0.5);
 					// console.log("	10 Dmg" + " [" + status[1] + "]");
 					statusContainer.addChild(textHealStatus);
-					// creatureInfoStatus.addChild(textHealStatus);
 					statusText.push(textHealStatus);
 					statusContainer.addChild(textHealStatusTurn);
-					// creatureInfoStatus.addChild(textHealStatusTurn);
 					statusText.push(textHealStatusTurn);
 					statusDetail++;
 					textLevel++;
@@ -2631,22 +2606,16 @@ function onHPDown(){
 							break;
 					}
 					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					// textDebuff.x = 100 + status2*xAdjust;
-					// textDebuff.y = (textLevel-(status2*11))*50;
 					textDebuff.x = 100;
 					textDebuff.y = statusDetail*50;
 					textDebuff.anchor.set(0,0.5);
 					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					// textDebuffTurn.x = 110 + textDebuff.width + status2*xAdjust;
-					// textDebuffTurn.y = (textLevel-(status2*11))*50;
 					textDebuffTurn.x = 110 + textDebuff.width;
 					textDebuffTurn.y = statusDetail*50;
 					textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
-					// creatureInfoStatus.addChild(textDebuff);
 					statusText.push(textDebuff);
 					statusContainer.addChild(textDebuffTurn);
-					// creatureInfoStatus.addChild(textDebuffTurn);
 					statusText.push(textDebuffTurn);
 					statusDetail++;
 					textLevel++;
@@ -2654,25 +2623,19 @@ function onHPDown(){
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'left'});
-					// textTurn.x = 20 + textStatus.width + statusEffectIcon.width + status2*xAdjust;
-					// textTurn.y = (textLevel-1-(status2*11))*50;
 					textTurn.x = 20 + textStatus.width + statusEffectIcon.width;
 					textTurn.y = (statusDetail-1)*50;
 					textTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textTurn);
-					// creatureInfoStatus.addChild(textTurn);
 					statusText.push(textTurn);
 					console.log("	[" + status[1] + "]");
 				}
 				if(statusNum == 14){
 					let textCritical = new Text("-" + this.object.critDmg + " health points", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-					// textCritical.x = 100 + status2*xAdjust;
-					// textCritical.y = (textLevel-(status2*11))*50;
 					textCritical.x = 100;
 					textCritical.y = statusDetail*50;
 					textCritical.anchor.set(0,0.5);
 					statusContainer.addChild(textCritical);
-					// creatureInfoStatus.addChild(textCritical);
 					statusText.push(textCritical);
 					statusDetail++;
 					textLevel++;
