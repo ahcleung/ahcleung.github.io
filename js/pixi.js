@@ -2328,8 +2328,8 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].y = 350;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
-	creatureInfo.info_main_element[0].text.style.fontSize = statusTextSize;
-	creatureInfo.info_main_element[1].text.style.fontSize = statusTextSize;
+	creatureInfo.info_main_element[0].style.fontSize = statusTextSize;
+	creatureInfo.info_main_element[1].style.fontSize = statusTextSize;
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
