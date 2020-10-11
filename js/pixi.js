@@ -1449,9 +1449,22 @@ function createSprite(direction, item, index){
 	healthBar.addChild(turnIndicator);
 	healthBar.turn = turnIndicator;
 	// healthBar.turn.visible = false;
+
+
+	var creatureStatusInfoArray = [];
+	item.statusArray.forEach(status =>{
+		// console.log(status);
+		var tracker = false;
+		creatureStatusInfoArray.forEach(statusTracked =>{
+			if(statusTracked == status[0])		tracker = true;
+		});
+		if(!tracker){
+			creatureStatusInfoArray.push(status[0]);
+		}
+	});
 	
-	item.statusArray.forEach(status => {
-		let statusEffect = statusEffectSprite(status[0]);
+	creatureStatusInfoArray.forEach(status => {
+		let statusEffect = statusEffectSprite(status);
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
