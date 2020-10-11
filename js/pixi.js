@@ -3711,7 +3711,10 @@ function calculateDamage(attacker, defender, hitArray){
 				targetStatus.forEach((statusElement, statusIndex)=>{
 					var statusStored = false;
 					targeted.statusArray.forEach(storedStatus =>{
-						if(storedStatus[0] == statusElement[0])		statusStored = true;
+						if(storedStatus[0] == statusElement[0]){
+							statusStored = true;
+							storedStatus[1] = statusElement[1];
+						}		
 					});
 
 					if(!statusStored){
@@ -3719,11 +3722,12 @@ function calculateDamage(attacker, defender, hitArray){
 						newStatusEffect.visible = false;
 						targeted.healthBar.addChild(newStatusEffect);
 						targeted.statusSpriteArray.push(newStatusEffect);
+						targeted.statusArray.push(statusElement);
 					}
 					targeted.dmgContainer.dmgStatus.statusImageArray[statusIndex].visible = true;
 					targeted.dmgContainer.dmgStatus.statusTextArray[statusIndex].visible = true;
 					updateDmgStatus(targeted.dmgContainer, statusElement[0], statusIndex);
-					targeted.statusArray.push(statusElement);
+					
 				});
 				resizeStatus(targeted);
 			}
