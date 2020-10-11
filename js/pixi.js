@@ -2279,8 +2279,8 @@ function onHPDown(){
 		infoMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
-		statusTextSize = 16;
-		infoBtnTextSize = 18;
+		statusTextSize = 14;
+		infoBtnTextSize = 16;
 		textYdisplace = 25;
 		detailXdisplace = 35;
 		statusLevel2X = 150;
@@ -2289,9 +2289,9 @@ function onHPDown(){
 		infoMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
-		statusTextSize = 20;
+		statusTextSize = 18;
 		infoBtnTextSize = 30;
-		textYdisplace = 40;
+		textYdisplace = 30;
 		detailXdisplace = 50;
 		statusLevel2X = 250;
 	}else{
