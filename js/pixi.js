@@ -3711,7 +3711,12 @@ function calculateDamage(attacker, defender, hitArray){
 				targetStatus.forEach((statusElement, statusIndex)=>{
 					var statusStored = false;
 					targeted.statusArray.forEach(storedStatus =>{
-						if(storedStatus[0] == statusElement[0])		statusStored = true;
+						if(storedStatus[0] == statusElement[0]){
+							statusStored = true;
+							if(statusElement[0] == 6 || statusElement[0] == 7 || statusElement[0] == 8 || statusElement[0] == 11 || statusElement[0] == 12 || statusElement[0] == 13){
+								storedStatus[1] = statusElement[1];
+							}
+						}		
 					});
 
 					if(!statusStored){
@@ -3721,9 +3726,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.statusSpriteArray.push(newStatusEffect);
 						targeted.statusArray.push(statusElement);
 					}else{
-						if(storedStatus[0] == 6 || storedStatus[0] == 7 || storedStatus[0] == 8 || storedStatus[0] == 11 || storedStatus[0] == 12 || storedStatus[0] == 13){
-							storedStatus[1] = statusElement[1];
-						}else{
+						if(statusElement[0] != 6 || statusElement[0] != 7 || statusElement[0] != 8 || statusElement[0] != 11 || statusElement[0] != 12 || statusElement[0] != 13){
 							targeted.statusArray.push(statusElement);
 						}
 					}
