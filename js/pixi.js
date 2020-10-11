@@ -2277,7 +2277,7 @@ function onHPDown(){
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 16;
-		infoBtnTextSize = 20;
+		infoBtnTextSize = 18;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoMargin = 10;
@@ -2309,6 +2309,7 @@ function onHPDown(){
 	creatureInfo.main.y = textOriginY;
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
+		text.style.fontSize = statusTextSize;
 		if(textIndex%2 == 0){
 			text.y = textIndex * 40;
 		}else{
