@@ -2280,8 +2280,8 @@ function onHPDown(){
 		infoSpacer = 10;
 		statusTextSize = 16;
 		infoBtnTextSize = 18;
-		textYdisplace = 20;
-		detailXdisplace = 30;
+		textYdisplace = 25;
+		detailXdisplace = 35;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoMargin = 10;
@@ -2290,7 +2290,7 @@ function onHPDown(){
 		statusTextSize = 20;
 		infoBtnTextSize = 30;
 		textYdisplace = 40;
-		detailXdisplace = 60;
+		detailXdisplace = 50;
 	}else{
 		infoScale = 0.6;
 		infoMargin = 20;
