@@ -2413,10 +2413,8 @@ function onHPDown(){
 	var statusIcon = [];
 	var statusText = [];
 	var textLevel = 0;
-	var status2 = 0;
-	var status3 = 0;
-	var xAdjust = 450;
-	var statusTrigger = false;
+	var statusYAdjust = 0;
+	var statusXAdjust = 0;
 
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
@@ -2656,16 +2654,13 @@ function onHPDown(){
 				}
 			}
 		});
-		if(textLevel > 10 && !statusTrigger){
-			status2 = textLevel-statusDetail;
-			status3 = 1;
-			statusTrigger = true;
-		}	
-		console.log("Text Level: " + textLevel);
-		console.log("Status Level: " + statusDetail);
+		if(textLevel > 10 && statusXAdjust == 0){
+			statusYAdjust = textLevel-statusDetail;
+			statusXAdjust = 1;
+		}
 		creatureInfoStatus.addChild(statusContainer);
-		statusContainer.x = status3*xAdjust;
-		statusContainer.y = 50*(textLevel-statusDetail-status2);
+		statusContainer.x = statusXAdjust*450;
+		statusContainer.y = 50*(textLevel-statusDetail-statusYAdjust);
 	});
 
 	creatureInfo.statusIcon = statusIcon;
