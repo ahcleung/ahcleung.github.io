@@ -2272,6 +2272,7 @@ function onHPDown(){
 	var infoBtnTextSize = 36;
 	var textYdisplace = 50;
 	var detailXdisplace = 100;
+	var statusLevel2X = 450;
 
 	if(app.screen.width < 860){
 		infoScale = 0.3;
@@ -2282,6 +2283,7 @@ function onHPDown(){
 		infoBtnTextSize = 18;
 		textYdisplace = 25;
 		detailXdisplace = 35;
+		statusLevel2X = 250;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoMargin = 10;
@@ -2291,6 +2293,7 @@ function onHPDown(){
 		infoBtnTextSize = 30;
 		textYdisplace = 40;
 		detailXdisplace = 50;
+		statusLevel2X = 350;
 	}else{
 		infoScale = 0.6;
 		infoMargin = 20;
@@ -2300,6 +2303,7 @@ function onHPDown(){
 		infoBtnTextSize = 36;
 		textYdisplace = 50;
 		detailXdisplace = 100;
+		statusLevel2X = 450;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2680,7 +2684,7 @@ function onHPDown(){
 			statusXAdjust = 1;
 		}
 		creatureInfoStatus.addChild(statusContainer);
-		statusContainer.x = statusXAdjust*450;
+		statusContainer.x = statusXAdjust*statusLevel2X;
 		statusContainer.y = textYdisplace*(textLevel-detailLevel-statusYAdjust);
 	});
 
