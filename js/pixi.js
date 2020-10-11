@@ -2269,6 +2269,7 @@ function onHPDown(){
 	var infoInnerMargin = 100;
 	var infoSpacer = 25;
 	var statusTextSize = 28;
+	var infoBtnTextSize = 36;
 
 	if(app.screen.width < 860){
 		infoScale = 0.3;
@@ -2276,18 +2277,21 @@ function onHPDown(){
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 16;
+		infoBtnTextSize = 25;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
-		statusTextSize = 18;
+		statusTextSize = 20;
+		infoBtnTextSize = 30;
 	}else{
 		infoScale = 0.6;
 		infoMargin = 20;
 		infoInnerMargin = 100;
 		infoSpacer = 25;
 		statusTextSize = 28;
+		infoBtnTextSize = 36;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2374,6 +2378,8 @@ function onHPDown(){
 		btn.selected.stroke.height = app.screen.height/14;
 		btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
 		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
+
+		btn.infoBtnText.style.fontSize = infoBtnTextSize;
 
 		btn.selected.fill.x = infoSelectPadding;
 		btn.selected.fill.y = infoSelectPadding;
