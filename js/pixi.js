@@ -942,6 +942,9 @@ function setup(){
 	var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_exp1);
 	creatureInfoMain.addChild(info_main_exp1);
+	var info_main_exp2 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_text.push(info_main_exp2);
+	creatureInfoMain.addChild(info_main_exp2);
 	var info_main_expBar = [];
 	let expBarGained = new PIXI.Graphics();
 	expBarGained.beginFill(0x66cc66).drawRect(0, 0, 100, 50);
@@ -2342,11 +2345,16 @@ function onHPDown(){
 	creatureInfo.main.x = textOriginX;
 	creatureInfo.main.y = textOriginY;
 
+	creatureInfo.info_main_text[8].text = this.object.experienceGained + "/" + this.object.experienceNext;
+
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = statusTextSize;
 		if(textIndex%2 == 0){
 			text.y = textIndex * 40;
 		}else if(textIndex == 7){
+			text.y = 10 * 40;
+		}else if(textIndex == 8){
+			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10 * 40;
 		}else{
 			text.x = 140;
@@ -2373,6 +2381,7 @@ function onHPDown(){
 	creatureInfo.info_main_expBar[0].y = 11.2*40;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * 500;
 	// creatureInfo.info_main_expBar[1].x = 100;
+
 	creatureInfo.info_main_expBar[1].y = 11.2*40;
 
 	creatureInfo.info_main_elementIcon[0].x = 50;
