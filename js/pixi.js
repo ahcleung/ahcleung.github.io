@@ -2445,7 +2445,7 @@ function onHPDown(){
 
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
-		btn.x = infoMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
+		btn.x = infoBtnMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		btn.y = app.screen.height*5/6;
 	});
 	// console.log(this.object.elements);
