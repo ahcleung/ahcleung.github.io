@@ -2293,7 +2293,7 @@ function onHPDown(){
 	var infoBtnTextSize = 36;
 	var textYdisplace = 50;
 	var detailXdisplace = 100;
-	var statusLevel2X = 450;
+	// var statusLevel2X = 450;
 	var turnMargin = 10;
 	var infoMainMargin = 40;
 	var infoMainElement = [50,325,50];
@@ -2306,9 +2306,9 @@ function onHPDown(){
 		infoSpacer = 10;
 		statusTextSize = 12;
 		infoBtnTextSize = 16;
-		textYdisplace = 25;
-		detailXdisplace = 20;
-		statusLevel2X = 200;
+		textYdisplace = 20;
+		detailXdisplace = 30;
+		// statusLevel2X = 200;
 		turnMargin = 6;
 		infoMainMargin = 15;
 		infoMainElement = [30,150,35];
@@ -2322,7 +2322,7 @@ function onHPDown(){
 		infoBtnTextSize = 28;
 		textYdisplace = 30;
 		detailXdisplace = 40;
-		statusLevel2X = 240;
+		// statusLevel2X = 240;
 		turnMargin = 6;
 		infoMainMargin = 30;
 		infoMainElement = [40,250,40];
@@ -2336,7 +2336,7 @@ function onHPDown(){
 		infoBtnTextSize = 36;
 		textYdisplace = 50;
 		detailXdisplace = 70;
-		statusLevel2X = 450;
+		// statusLevel2X = 450;
 		turnMargin = 10;
 		infoMainMargin = 40;
 		infoMainElement = [50,325,50];
