@@ -2596,25 +2596,25 @@ function onHPDown(){
 							buffStat = "HP  +" + status[3];
 							break;
 						case 2:
-							buffStat = "Dodge  +" + status[3];
+							buffStat = "DODGE  +" + status[3];
 							break;
 						case 3:
-							buffStat = "Physical attack  +" + status[3];
+							buffStat = "PATK  +" + status[3];
 							break;
 						case 4:
-							buffStat = "Physical defense  +" + status[3];
+							buffStat = "PDEF  +" + status[3];
 							break;
 						case 5:
-							buffStat = "Special attack  +" + status[3];
+							buffStat = "SATK  +" + status[3];
 							break;
 						case 6:
-							buffStat = "Special defense  +" + status[3];
+							buffStat = "SDEF  +" + status[3];
 							break;
 						case 7:
-							buffStat = "Speed  +" + status[3];
+							buffStat = "SPD  +" + status[3];
 							break;
 						case 8:
-							buffStat = "Accuracy  +" + status[3];
+							buffStat = "ACC  +" + status[3];
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
