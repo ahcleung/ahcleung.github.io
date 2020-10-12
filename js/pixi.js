@@ -2273,6 +2273,7 @@ function onHPDown(){
 	var textYdisplace = 50;
 	var detailXdisplace = 100;
 	var statusLevel2X = 450;
+	var turnMargin = 10;
 
 	if(app.screen.width < 860){
 		infoScale = 0.3;
@@ -2284,16 +2285,18 @@ function onHPDown(){
 		textYdisplace = 25;
 		detailXdisplace = 35;
 		statusLevel2X = 200;
+		turnMargin = 6;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 16;
-		infoBtnTextSize = 30;
+		infoBtnTextSize = 28;
 		textYdisplace = 30;
 		detailXdisplace = 40;
 		statusLevel2X = 240;
+		turnMargin = 6;
 	}else{
 		infoScale = 0.6;
 		infoMargin = 20;
@@ -2304,6 +2307,7 @@ function onHPDown(){
 		textYdisplace = 50;
 		detailXdisplace = 100;
 		statusLevel2X = 450;
+		turnMargin = 10;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
