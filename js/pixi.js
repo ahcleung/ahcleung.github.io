@@ -2739,10 +2739,12 @@ function onHPDown(){
 		}
 		creatureInfoStatus.addChild(statusContainer);
 		// statusContainer.x = statusXAdjust*statusLevel2X;
-		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))*3/4);
-		statusContainer.x = statusXAdjust*(app.screen.width/4);
+		statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
+		// statusContainer.x = statusXAdjust*(app.screen.width/4);
 		statusContainer.y = textYdisplace*(textLevel-detailLevel-statusYAdjust);
 	});
+
+	console.log(app.screen.width/4 + ", " + creatureInfo.status.width);
 
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
