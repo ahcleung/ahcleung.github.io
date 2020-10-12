@@ -2349,7 +2349,7 @@ function onHPDown(){
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = statusTextSize;
-		if(textIndex%2 == 0){
+		if(textIndex%2 == 0 && textIndex<6){
 			text.y = textIndex * 40;
 		}else if(textIndex == 7){
 			text.y = 10 * 40;
