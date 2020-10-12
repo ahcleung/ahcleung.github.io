@@ -2375,9 +2375,9 @@ function onHPDown(){
 	creatureInfo.info_main_expBar[1].y = 12*40;
 
 	creatureInfo.info_main_elementIcon[0].x = 50;
-	creatureInfo.info_main_elementIcon[0].y = 9*40;
+	creatureInfo.info_main_elementIcon[0].y = 8*40;
 	creatureInfo.info_main_elementIcon[1].x = 325;
-	creatureInfo.info_main_elementIcon[1].y = 9*40;
+	creatureInfo.info_main_elementIcon[1].y = 8*40;
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
