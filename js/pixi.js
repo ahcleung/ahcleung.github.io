@@ -2310,6 +2310,7 @@ function onHPDown(){
 		statusLevel2X = 200;
 		turnMargin = 6;
 		infoMainMargin = 20;
+		infoMainElement = [30,150,35];
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoBtnMargin = 10;
@@ -2322,6 +2323,7 @@ function onHPDown(){
 		statusLevel2X = 240;
 		turnMargin = 6;
 		infoMainMargin = 30;
+		infoMainElement = [40,250,40];
 	}else{
 		infoScale = 0.6;
 		infoBtnMargin = 20;
@@ -2334,6 +2336,7 @@ function onHPDown(){
 		statusLevel2X = 450;
 		turnMargin = 10;
 		infoMainMargin = 40;
+		infoMainElement = [50,325,50];
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
