@@ -939,6 +939,23 @@ function setup(){
 
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
 
+	var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_main_text.push(info_main_exp1);
+	creatureInfoMain.addChild(info_main_exp1);
+	var info_main_expBar = [];
+	let expBarGained = new PIXI.Graphics();
+	expBarGained.beginFill(0x66cc66).drawRect(0, 0, 100, 50);
+	expBarGained.x = 0;
+	expBarGained.y = 0;
+	info_main_expBar.push(expBarGained);
+	creatureInfoMain.addChild(expBarGained);
+	let expBarOverall = new PIXI.Graphics();
+	expBarOverall.beginFill(0x222222).drawRect(0, 0, 500, 50);
+	expBarOverall.x = 0;
+	expBarOverall.y = 0;
+	info_main_expBar.push(expBarOverall);
+	creatureInfoMain.addChild(expBarOverall);
+
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
 	for(var i = 0; i < 5; i++){
@@ -2327,10 +2344,10 @@ function onHPDown(){
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = statusTextSize;
 		if(textIndex%2 == 0){
-			text.y = textIndex * textYdisplace;
+			text.y = textIndex * 40;
 		}else{
 			text.x = 140;
-			text.y = (textIndex-1) * textYdisplace;
+			text.y = (textIndex-1) * 40;
 		}
 	});
 
