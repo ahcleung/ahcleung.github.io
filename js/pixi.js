@@ -2296,6 +2296,7 @@ function onHPDown(){
 	// var statusLevel2X = 450;
 	var turnMargin = 10;
 	var infoMainMargin = 40;
+	var infoMainXMargin = 140;
 	var infoMainElement = [50,325,50];
 	var expDimensions = [500,50];
 	var elementIconSize = 0.5;
@@ -2314,7 +2315,8 @@ function onHPDown(){
 		infoMainMargin = 15;
 		infoMainElement = [30,150,35];
 		expDimensions = [300,20];
-		elementIconSize = 0.3;
+		elementIconSize = 0.25;
+		infoMainXMargin = 75;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoBtnMargin = 10;
@@ -2330,6 +2332,7 @@ function onHPDown(){
 		infoMainElement = [40,250,40];
 		expDimensions = [400,30];
 		elementIconSize = 0.4;
+		infoMainXMargin = 100;
 	}else{
 		infoScale = 0.6;
 		infoBtnMargin = 20;
@@ -2345,6 +2348,7 @@ function onHPDown(){
 		infoMainElement = [50,325,50];
 		expDimensions = [500,50];
 		elementIconSize = 0.5;
+		infoMainXMargin = 140;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2373,7 +2377,7 @@ function onHPDown(){
 			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10.3 * infoMainMargin;
 		}else{
-			text.x = 3.5* infoMainMargin;
+			text.x = infoMainXMargin;
 			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
