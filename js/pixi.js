@@ -948,13 +948,13 @@ function setup(){
 	expBarGained.x = 0;
 	expBarGained.y = 0;
 	info_main_expBar.push(expBarGained);
-	creatureInfoMain.addChild(expBarGained);
 	let expBarOverall = new PIXI.Graphics();
 	expBarOverall.beginFill(0x222222).drawRect(0, 0, 500, 50);
 	expBarOverall.x = 0;
 	expBarOverall.y = 0;
 	info_main_expBar.push(expBarOverall);
 	creatureInfoMain.addChild(expBarOverall);
+	creatureInfoMain.addChild(expBarGained);
 
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
