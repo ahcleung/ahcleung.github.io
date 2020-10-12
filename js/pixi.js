@@ -2343,11 +2343,13 @@ function onHPDown(){
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = statusTextSize;
-		if(textIndex%2 != 0 && textIndex < 6){
+		if(textIndex%2 != 0){
+			text.y = textIndex * 40;
+		}else if(textIndex == 7){
+			text.y = 10 * 40;
+		}else{
 			text.x = 140;
 			text.y = (textIndex-1) * 40;
-		}else{
-			text.y = textIndex * 40;
 		}
 	});
 
