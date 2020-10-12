@@ -2663,7 +2663,7 @@ function onHPDown(){
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xFFD600, align : 'left'});
-					textTurn.x = turnMargin + textStatus.width + statusEffectIcon.width;
+					textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
 					textTurn.y = (detailLevel-1)*textYdisplace;
 					textTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textTurn);
