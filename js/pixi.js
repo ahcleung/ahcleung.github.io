@@ -2297,6 +2297,7 @@ function onHPDown(){
 	var turnMargin = 10;
 	var infoMainMargin = 40;
 	var infoMainElement = [50,325,50];
+	var expWidth = 500;
 
 	if(app.screen.width < 860){
 		infoScale = 0.3;
@@ -2311,6 +2312,7 @@ function onHPDown(){
 		turnMargin = 6;
 		infoMainMargin = 20;
 		infoMainElement = [30,150,35];
+		expWidth = 300;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoBtnMargin = 10;
@@ -2324,6 +2326,7 @@ function onHPDown(){
 		turnMargin = 6;
 		infoMainMargin = 30;
 		infoMainElement = [40,250,40];
+		expWidth = 400;
 	}else{
 		infoScale = 0.6;
 		infoBtnMargin = 20;
@@ -2337,6 +2340,7 @@ function onHPDown(){
 		turnMargin = 10;
 		infoMainMargin = 40;
 		infoMainElement = [50,325,50];
+		expWidth = 500;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2365,7 +2369,7 @@ function onHPDown(){
 			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10.3 * infoMainMargin;
 		}else{
-			text.x = 140;
+			text.x = 100 + infoMainMargin;
 			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
@@ -2387,7 +2391,8 @@ function onHPDown(){
 
 	// creatureInfo.info_main_expBar[0].x = 100;
 	creatureInfo.info_main_expBar[0].y = 11.7*infoMainMargin;
-	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * 500;
+	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expWidth;
+	creatureInfo.info_main_expBar[1].width = expWidth
 	// creatureInfo.info_main_expBar[1].x = 100;
 
 	creatureInfo.info_main_expBar[1].y = 11.7*infoMainMargin;
