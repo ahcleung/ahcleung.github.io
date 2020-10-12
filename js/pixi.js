@@ -2674,25 +2674,25 @@ function onHPDown(){
 							debuffStat = "HP  " + status[3];
 							break;
 						case 2:
-							debuffStat = "Dodge  " + status[3];
+							debuffStat = "DODGE  " + status[3];
 							break;
 						case 3:
-							debuffStat = "Physical attack  " + status[3];
+							debuffStat = "PATK  " + status[3];
 							break;
 						case 4:
-							debuffStat = "Physical defense  " + status[3];
+							debuffStat = "PDEF  " + status[3];
 							break;
 						case 5:
-							debuffStat = "Special attack  " + status[3];
+							debuffStat = "SATK  " + status[3];
 							break;
 						case 6:
-							debuffStat = "Special defense  " + status[3];
+							debuffStat = "SDEF  " + status[3];
 							break;
 						case 7:
-							debuffStat = "Speed  " + status[3];
+							debuffStat = "SPD  " + status[3];
 							break;
 						case 8:
-							debuffStat = "Accuracy  " + status[3];
+							debuffStat = "ACC  " + status[3];
 							break;
 					}
 					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xfefefe, align : 'left'});
