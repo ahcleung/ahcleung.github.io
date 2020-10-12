@@ -2310,7 +2310,7 @@ function onHPDown(){
 		detailXdisplace = 35;
 		statusLevel2X = 200;
 		turnMargin = 6;
-		infoMainMargin = 20;
+		infoMainMargin = 15;
 		infoMainElement = [30,150,35];
 		expDimensions = [300,20];
 	}else if(app.screen.width < 1366){
