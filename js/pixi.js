@@ -2315,7 +2315,7 @@ function onHPDown(){
 		// statusLevel2X = 200;
 		turnMargin = 6;
 		infoMainMargin = [75,15];
-		infoMainElement = [30,150,35];
+		infoMainElement = [30,100,20];
 		expDimensions = [300,20];
 		elementIconSize = 0.20;
 		// infoMainXMargin = 75;
@@ -2333,7 +2333,7 @@ function onHPDown(){
 		turnMargin = 6;
 		infoMainMargin = [100,30];
 		// infoMainMargin = 30;
-		infoMainElement = [40,250,40];
+		infoMainElement = [40,200,40];
 		expDimensions = [400,30];
 		elementIconSize = 0.4;
 		// infoMainXMargin = 100;
