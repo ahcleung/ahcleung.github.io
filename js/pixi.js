@@ -955,6 +955,7 @@ function setup(){
 	info_main_expBar.push(expBarOverall);
 	creatureInfoMain.addChild(expBarOverall);
 	creatureInfoMain.addChild(expBarGained);
+	creatureInfo.info_main_expBar = info_main_expBar;
 
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
