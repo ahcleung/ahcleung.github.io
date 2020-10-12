@@ -2289,7 +2289,7 @@ function onHPDown(){
 		infoMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
-		statusTextSize = 18;
+		statusTextSize = 16;
 		infoBtnTextSize = 30;
 		textYdisplace = 30;
 		detailXdisplace = 40;
