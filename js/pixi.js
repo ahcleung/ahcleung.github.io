@@ -2347,7 +2347,7 @@ function onHPDown(){
 		if(textIndex%2 == 0){
 			text.y = textIndex * 40;
 		}else if(textIndex == 7){
-			text.y = 12 * 40;
+			text.y = 10 * 40;
 		}else{
 			text.x = 140;
 			text.y = (textIndex-1) * 40;
@@ -2359,9 +2359,9 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = 100;
-	creatureInfo.info_main_element[0].y = 9*40;
+	creatureInfo.info_main_element[0].y = 8*40;
 	creatureInfo.info_main_element[1].x = 375;
-	creatureInfo.info_main_element[1].y = 9*40;
+	creatureInfo.info_main_element[1].y = 8*40;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = statusTextSize;
@@ -2370,9 +2370,9 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].visible = false;
 
 	creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[1].y = 14*40;
-	creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[1].y = 14*40;
+	creatureInfo.info_main_expBar[0].y = 12*40;
+	creatureInfo.info_main_expBar[1].x = 100;
+	creatureInfo.info_main_expBar[1].y = 12*40;
 
 	creatureInfo.info_main_elementIcon[0].x = 50;
 	creatureInfo.info_main_elementIcon[0].y = 9*40;
