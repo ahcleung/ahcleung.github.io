@@ -2744,7 +2744,7 @@ function onHPDown(){
 		statusContainer.y = textYdisplace*(textLevel-detailLevel-statusYAdjust);
 	});
 
-	console.log(app.screen.width/4 + ", " + creatureInfo.status.width);
+	console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
 
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
