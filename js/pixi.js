@@ -2310,7 +2310,7 @@ function onHPDown(){
 		detailXdisplace = 35;
 		statusLevel2X = 200;
 		turnMargin = 6;
-		infoMainMargin = 20;
+		infoMainMargin = 10;
 		infoMainElement = [30,150,35];
 		expDimensions = [300,20];
 	}else if(app.screen.width < 1366){
@@ -2369,7 +2369,7 @@ function onHPDown(){
 			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10.3 * infoMainMargin;
 		}else{
-			text.x = 100 + infoMainMargin;
+			text.x = 3.5* infoMainMargin;
 			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
