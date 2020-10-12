@@ -2286,7 +2286,7 @@ function onHPDown(){
 	// const creatureInfoSprite = new PIXI.Container();
 
 	var infoScale = 0;
-	var infoMargin = 20;
+	var infoBtnMargin = 20;
 	var infoInnerMargin = 100;
 	var infoSpacer = 25;
 	var statusTextSize = 28;
@@ -2295,10 +2295,12 @@ function onHPDown(){
 	var detailXdisplace = 100;
 	var statusLevel2X = 450;
 	var turnMargin = 10;
+	var infoMainMargin = 40;
+	var infoMainElement = [50,325,50];
 
 	if(app.screen.width < 860){
 		infoScale = 0.3;
-		infoMargin = 10;
+		infoBtnMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 14;
@@ -2307,9 +2309,10 @@ function onHPDown(){
 		detailXdisplace = 35;
 		statusLevel2X = 200;
 		turnMargin = 6;
+		infoMainMargin = 20;
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
-		infoMargin = 10;
+		infoBtnMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 16;
@@ -2318,9 +2321,10 @@ function onHPDown(){
 		detailXdisplace = 40;
 		statusLevel2X = 240;
 		turnMargin = 6;
+		infoMainMargin = 30;
 	}else{
 		infoScale = 0.6;
-		infoMargin = 20;
+		infoBtnMargin = 20;
 		infoInnerMargin = 100;
 		infoSpacer = 25;
 		statusTextSize = 28;
@@ -2329,6 +2333,7 @@ function onHPDown(){
 		detailXdisplace = 100;
 		statusLevel2X = 450;
 		turnMargin = 10;
+		infoMainMargin = 40;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2350,15 +2355,15 @@ function onHPDown(){
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = statusTextSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * 40;
+			text.y = textIndex * infoMainMargin;
 		}else if(textIndex == 7){
-			text.y = 10.3 * 40;
+			text.y = 10.3 * infoMainMargin;
 		}else if(textIndex == 8){
 			text.x = creatureInfo.info_main_text[7].width + 10;
-			text.y = 10.3 * 40;
+			text.y = 10.3 * infoMainMargin;
 		}else{
 			text.x = 140;
-			text.y = (textIndex-1) * 40;
+			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
 
@@ -2366,10 +2371,10 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_element[0].x = 100;
-	creatureInfo.info_main_element[0].y = 8.5*40;
-	creatureInfo.info_main_element[1].x = 375;
-	creatureInfo.info_main_element[1].y = 8.5*40;
+	creatureInfo.info_main_element[0].x = infoMainElement[0] + infoMainElement[2];
+	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_element[1].x = infoMainElement[1] + infoMainElement[2];
+	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = statusTextSize;
@@ -2378,16 +2383,16 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].visible = false;
 
 	// creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[0].y = 11.7*40;
+	creatureInfo.info_main_expBar[0].y = 11.7*infoMainMargin;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * 500;
 	// creatureInfo.info_main_expBar[1].x = 100;
 
-	creatureInfo.info_main_expBar[1].y = 11.7*40;
+	creatureInfo.info_main_expBar[1].y = 11.7*infoMainMargin;
 
-	creatureInfo.info_main_elementIcon[0].x = 50;
-	creatureInfo.info_main_elementIcon[0].y = 8.5*40;
-	creatureInfo.info_main_elementIcon[1].x = 325;
-	creatureInfo.info_main_elementIcon[1].y = 8.5*40;
+	creatureInfo.info_main_elementIcon[0].x = infoMainElement[0];
+	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_elementIcon[1].x = infoMainElement[1];
+	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
@@ -2426,11 +2431,11 @@ function onHPDown(){
 
 	var infoSelectPadding = 5;
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.rect.width = (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.rect.height = app.screen.height/14;
-		btn.selected.stroke.width = (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.selected.stroke.width = (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.selected.stroke.height = app.screen.height/14;
-		btn.selected.fill.width =  (app.screen.width - (2*infoMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
+		btn.selected.fill.width =  (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
 		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
 
 		btn.infoBtnText.style.fontSize = infoBtnTextSize;
