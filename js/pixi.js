@@ -2359,9 +2359,9 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = 100;
-	creatureInfo.info_main_element[0].y = 8*40;
+	creatureInfo.info_main_element[0].y = 8.5*40;
 	creatureInfo.info_main_element[1].x = 375;
-	creatureInfo.info_main_element[1].y = 8*40;
+	creatureInfo.info_main_element[1].y = 8.5*40;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = statusTextSize;
@@ -2369,15 +2369,15 @@ function onHPDown(){
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
-	creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[0].y = 12*40;
-	creatureInfo.info_main_expBar[1].x = 100;
-	creatureInfo.info_main_expBar[1].y = 12*40;
+	// creatureInfo.info_main_expBar[0].x = 100;
+	creatureInfo.info_main_expBar[0].y = 11*40;
+	// creatureInfo.info_main_expBar[1].x = 100;
+	creatureInfo.info_main_expBar[1].y = 11*40;
 
 	creatureInfo.info_main_elementIcon[0].x = 50;
-	creatureInfo.info_main_elementIcon[0].y = 8*40;
+	creatureInfo.info_main_elementIcon[0].y = 8.5*40;
 	creatureInfo.info_main_elementIcon[1].x = 325;
-	creatureInfo.info_main_elementIcon[1].y = 8*40;
+	creatureInfo.info_main_elementIcon[1].y = 8.5*40;
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
