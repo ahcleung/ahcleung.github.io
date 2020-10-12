@@ -2531,7 +2531,7 @@ function onHPDown(){
 		statusEffectIcon.height = statusEffectIcon.width;
 		statusEffectIcon.anchor.set(0,0.5);
 		statusContainer.addChild(textStatus);
-		textStatus.x = statusEffectIcon.width + 10;
+		textStatus.x = statusEffectIcon.width + turnMargin;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
 		textLevel++;
@@ -2573,7 +2573,7 @@ function onHPDown(){
 					textBuff.y = detailLevel*textYdisplace;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xFFD600, align : 'left'});
-					textBuffTurn.x = detailXdisplace + 10 + textBuff.width;
+					textBuffTurn.x = detailXdisplace + turnMargin + textBuff.width;
 					textBuffTurn.y = detailLevel*textYdisplace;
 					textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
@@ -2589,7 +2589,7 @@ function onHPDown(){
 					textDamageStatus.y = detailLevel*textYdisplace;
 					textDamageStatus.anchor.set(0,0.5);
 					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xFFD600, align : 'left'});
-					textDamageStatusTurn.x = detailXdisplace + 10 + textDamageStatus.width;
+					textDamageStatusTurn.x = detailXdisplace + turnMargin + textDamageStatus.width;
 					textDamageStatusTurn.y = detailLevel*textYdisplace;
 					textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
@@ -2606,7 +2606,7 @@ function onHPDown(){
 					textHealStatus.y = detailLevel*textYdisplace;
 					textHealStatus.anchor.set(0,0.5);
 					let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xFFD600, align : 'left'});
-					textHealStatusTurn.x = detailXdisplace + 10 + textHealStatus.width;
+					textHealStatusTurn.x = detailXdisplace + turnMargin + textHealStatus.width;
 					textHealStatusTurn.y = detailLevel*textYdisplace;
 					textHealStatusTurn.anchor.set(0,0.5);
 					// console.log("	10 Dmg" + " [" + status[1] + "]");
@@ -2650,7 +2650,7 @@ function onHPDown(){
 					textDebuff.y = detailLevel*textYdisplace;
 					textDebuff.anchor.set(0,0.5);
 					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: statusTextSize, fill : 0xFFD600, align : 'left'});
-					textDebuffTurn.x = detailXdisplace + 10 + textDebuff.width;
+					textDebuffTurn.x = detailXdisplace + turnMargin + textDebuff.width;
 					textDebuffTurn.y = detailLevel*textYdisplace;
 					textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
