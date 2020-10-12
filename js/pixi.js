@@ -2335,7 +2335,7 @@ function onHPDown(){
 		statusTextSize = 28;
 		infoBtnTextSize = 36;
 		textYdisplace = 50;
-		detailXdisplace = 100;
+		detailXdisplace = 70;
 		statusLevel2X = 450;
 		turnMargin = 10;
 		infoMainMargin = 40;
