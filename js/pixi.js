@@ -2312,7 +2312,7 @@ function onHPDown(){
 		turnMargin = 6;
 		infoMainMargin = 20;
 		infoMainElement = [30,150,35];
-		expDimensions = [300,30];
+		expDimensions = [300,20];
 	}else if(app.screen.width < 1366){
 		infoScale = 0.4;
 		infoBtnMargin = 10;
@@ -2326,7 +2326,7 @@ function onHPDown(){
 		turnMargin = 6;
 		infoMainMargin = 30;
 		infoMainElement = [40,250,40];
-		expDimensions = [400,40];
+		expDimensions = [400,30];
 	}else{
 		infoScale = 0.6;
 		infoBtnMargin = 20;
