@@ -226,9 +226,9 @@ const creatureInfoSprite = new PIXI.Container();
 const infoBtnArray = [];	
 
 //Interface spacing variables
-var healthSpacing = 20;
+var healthMargin = 20;
 var margin = 50;
-var skillSpacer = 10;
+var skillMargin = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
 var resizeWidth = 0;
@@ -1657,8 +1657,8 @@ function resize() {
 	
 	if(app.screen.width < 860){
 		margin = 10;
-		healthSpacing = 10;
-		skillSpacer = 5;
+		healthMargin = 10;
+		skillMargin = 5;
 		skillSelectPadding = 2;
 		interfaceHeroHealth.position.set(margin, 20);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 20);
@@ -1670,8 +1670,8 @@ function resize() {
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
 		margin = 15;
-		healthSpacing = 10;
-		skillSpacer = 8;
+		healthMargin = 10;
+		skillMargin = 8;
 		skillSelectPadding = 3;
 		interfaceHeroHealth.position.set(margin, 40);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
@@ -1683,8 +1683,8 @@ function resize() {
 		hazardMargin = 40;
 	}else{
 		margin = 50;
-		healthSpacing = 20;
-		skillSpacer = 10;
+		healthMargin = 20;
+		skillMargin = 10;
 		skillSelectPadding = 5;
 		interfaceHeroHealth.position.set(margin, 40);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
@@ -1696,18 +1696,18 @@ function resize() {
 		hazardMargin = 50;
 	}
 
-	resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
 	spriteResizeXPosition[0] = 0;
-	spriteResizeXPosition[1] = resizeWidth + healthSpacing;
-	spriteResizeXPosition[2] = (resizeWidth + healthSpacing) * 2;
-	spriteResizeXPosition[3] = (resizeWidth + healthSpacing) * 3;
+	spriteResizeXPosition[1] = resizeWidth + healthMargin;
+	spriteResizeXPosition[2] = (resizeWidth + healthMargin) * 2;
+	spriteResizeXPosition[3] = (resizeWidth + healthMargin) * 3;
 
-	heroHealthXPosition[0] = (resizeWidth + healthSpacing) * 3;
-	heroHealthXPosition[1] = (resizeWidth + healthSpacing) * 2;
-	heroHealthXPosition[2] = resizeWidth + healthSpacing;
+	heroHealthXPosition[0] = (resizeWidth + healthMargin) * 3;
+	heroHealthXPosition[1] = (resizeWidth + healthMargin) * 2;
+	heroHealthXPosition[2] = resizeWidth + healthMargin;
 	heroHealthXPosition[3] = 0;
 	
-	var calcWidth = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+	var calcWidth = (2*app.screen.width - 4*margin - 10*healthMargin)/9;
 	
 	btnSettings.width = calcWidth/4;
 	btnSettings.height = btnSettings.width;
@@ -1731,25 +1731,25 @@ function resize() {
 	interfaceAdditional.position.set(margin, app.screen.height - margin);
 	
 	skillContainerArray.forEach((skillContainer, index) => {
-		skillContainer.rect.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.rect.width = (2*app.screen.width - 4*margin - 10*healthMargin)/9;
 		skillContainer.rect.height = skillContainer.rect.width/4;
-		skillContainer.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.selected.stroke.width = (2*app.screen.width - 4*margin - 10*healthMargin)/9;
 		skillContainer.selected.stroke.height = skillContainer.rect.width/4;
-		skillContainer.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthSpacing)/9) - skillSelectPadding*2;
+		skillContainer.selected.fill.width =  ((2*app.screen.width - 4*margin - 10*healthMargin)/9) - skillSelectPadding*2;
 		skillContainer.selected.fill.height = (skillContainer.rect.width/4) - skillSelectPadding*2;
 		
-		skillContainer.disable.width = (2*app.screen.width - 4*margin - 10*healthSpacing)/9;
+		skillContainer.disable.width = (2*app.screen.width - 4*margin - 10*healthMargin)/9;
 		skillContainer.disable.height = skillContainer.rect.width/4;
 		
 		skillContainer.selected.fill.x = skillSelectPadding;
 		skillContainer.selected.fill.y = skillSelectPadding;
 		
-		skillContainer.x = margin + skillContainer.rect.height + healthSpacing + (skillContainer.rect.width + healthSpacing)*index;
+		skillContainer.x = margin + skillContainer.rect.height + healthMargin + (skillContainer.rect.width + healthMargin)*index;
 		skillContainer.y = app.screen.height - skillContainer.rect.height - margin;
 		
 		skillContainer.skillElement.width = skillContainer.rect.width/11;
 		skillContainer.skillElement.height = skillContainer.skillElement.width * 2.3;
-		skillContainer.skillElement.x = skillSpacer;
+		skillContainer.skillElement.x = skillMargin;
 		skillContainer.skillElement.y = skillContainer.rect.height/2;
 
 		skillContainer.markerContainer.width = (skillContainer.rect.width/3)*2;
@@ -1802,7 +1802,7 @@ function resize() {
 }
 
 function resizeDmg(roster, item){
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
 	// var resizeHeight = 40;
 	var statusSpacing = 5;
 	var statusFontSize = 24;
@@ -1844,8 +1844,8 @@ function resizeDmg(roster, item){
 
 	var switcher = 0;
 	if(item.size > 1){
-		item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthSpacing)/2;
-		item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthSpacing)/2;
+		item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthMargin)/2;
+		item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthMargin)/2;
 		switcher = 1;
 	}else{
 		item.dmgContainer.dmgPopup.x = resizeWidth/2;
@@ -1864,7 +1864,7 @@ function resizeDmg(roster, item){
 
 function resizeHP(roster, item){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
-	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthSpacing))/8;
+	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
 	var resizeHeight = 40;
 	var statusSpacing = 5;
 	var HPSpacing = 3;
@@ -1915,15 +1915,15 @@ function resizeHP(roster, item){
 
 	var switcher = 0;
 	if(item.size > 1){
-		item.healthBar.outer.width = resizeWidth * 2 + healthSpacing;
-		item.healthBar.inner.width = (resizeWidth * 2 + healthSpacing) * (item.hp/item.overallHP);
-		item.healthBar.critDmgBar.width = -((resizeWidth * 2 + healthSpacing) * (item.critDmg/item.overallHP));
-		item.healthBar.critDmgBar.x = resizeWidth * 2 + healthSpacing;
-		item.healthBar.turn.width = resizeWidth * 2 + healthSpacing;
+		item.healthBar.outer.width = resizeWidth * 2 + healthMargin;
+		item.healthBar.inner.width = (resizeWidth * 2 + healthMargin) * (item.hp/item.overallHP);
+		item.healthBar.critDmgBar.width = -((resizeWidth * 2 + healthMargin) * (item.critDmg/item.overallHP));
+		item.healthBar.critDmgBar.x = resizeWidth * 2 + healthMargin;
+		item.healthBar.turn.width = resizeWidth * 2 + healthMargin;
 		
 		item.healthBar.healthBarIndicators.forEach(indicator => {
-			indicator.indicatorBar1.width = resizeWidth * 2 + healthSpacing;
-			indicator.indicatorBar2.width = resizeWidth * 2 + healthSpacing;
+			indicator.indicatorBar1.width = resizeWidth * 2 + healthMargin;
+			indicator.indicatorBar2.width = resizeWidth * 2 + healthMargin;
 		});
 		
 		switcher = 1;
@@ -2285,80 +2285,61 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	var infoScale = 0;
-	var infoBtnMargin = 20;
+	var infoSpriteScale = 0;
+	// var healthMargin = 20;
 	var infoInnerMargin = 100;
 	var infoSpacer = 25;
 	var statusTextSize = 28;
 	var infoBtnTextSize = 36;
-	// var textYdisplace = 50;
-	// var detailXdisplace = 100;
 	var statusMargin = [100,50];
-	// var statusLevel2X = 450;
 	var turnMargin = 10;
 	var infoMainMargin = [140,40];
-	// var infoMainXMargin = 140;
 	var infoMainElement = [50,325,50];
 	var expDimensions = [500,50];
 	var elementIconSize = 0.5;
 
 	if(app.screen.width < 860){
-		infoScale = 0.3;
-		infoBtnMargin = 10;
+		infoSpriteScale = 0.3;
+		// healthMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
 		statusTextSize = 14;
 		infoBtnTextSize = 16;
 		statusMargin = [35,25];
-		// textYdisplace = 25;
-		// detailXdisplace = 35;
-		// statusLevel2X = 200;
-		turnMargin = 6;
 		infoMainMargin = [75,15];
 		infoMainElement = [30,150,20];
 		expDimensions = [300,20];
 		elementIconSize = 0.20;
-		// infoMainXMargin = 75;
 	}else if(app.screen.width < 1366){
-		infoScale = 0.4;
-		infoBtnMargin = 10;
+		infoSpriteScale = 0.4;
+		// healthMargin = 10;
 		infoInnerMargin = 50;
 		infoSpacer = 10;
-		statusTextSize = 16;
+		statusTextSize = 18;
 		infoBtnTextSize = 28;
 		statusMargin = [40,30];
-		// textYdisplace = 30;
-		// detailXdisplace = 40;
-		// statusLevel2X = 240;
 		turnMargin = 6;
 		infoMainMargin = [100,30];
-		// infoMainMargin = 30;
 		infoMainElement = [40,200,40];
 		expDimensions = [400,30];
 		elementIconSize = 0.4;
-		// infoMainXMargin = 100;
 	}else{
-		infoScale = 0.6;
-		infoBtnMargin = 20;
+		infoSpriteScale = 0.6;
+		// healthMargin = 20;
 		infoInnerMargin = 100;
 		infoSpacer = 25;
 		statusTextSize = 28;
 		infoBtnTextSize = 36;
 		statusMargin = [70,50];
-		// textYdisplace = 50;
-		// detailXdisplace = 70;
-		// statusLevel2X = 450;
 		turnMargin = 10;
 		infoMainMargin = [140,40];
-		// infoMainMargin = 40;
 		infoMainElement = [50,325,50];
 		expDimensions = [500,50];
 		elementIconSize = 0.5;
-		// infoMainXMargin = 140;
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
-	creatureInfoSprite.scale.set(infoScale,infoScale);
+	creatureInfoSprite.scale.set(infoSpriteScale,infoSpriteScale);
 	// console.log("Width: " + creatureInfoSprite.width);
 
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
@@ -2457,11 +2438,11 @@ function onHPDown(){
 
 	var infoSelectPadding = 5;
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.rect.height = app.screen.height/14;
-		btn.selected.stroke.width = (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
 		btn.selected.stroke.height = app.screen.height/14;
-		btn.selected.fill.width =  (app.screen.width - (2*infoBtnMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
+		btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
 		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
 
 		btn.infoBtnText.style.fontSize = infoBtnTextSize;
@@ -2471,7 +2452,7 @@ function onHPDown(){
 
 		btn.infoBtnText.x = btn.rect.width/2;
 		btn.infoBtnText.y = btn.rect.height/2;
-		btn.x = infoBtnMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
+		btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		btn.y = app.screen.height*5/6;
 	});
 	// console.log(this.object.elements);
