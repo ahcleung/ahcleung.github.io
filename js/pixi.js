@@ -2743,7 +2743,7 @@ function onHPDown(){
 
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let textSkill = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, fontWeight: 700, align : 'left'});
-		textSkill.anchor(0,0.5);
+		textSkill.anchor.set(0,0.5);
 		textSkill.y = 50*skillIndex;
 		creatureInfoSkill.addChild(textSkill);
 	});
