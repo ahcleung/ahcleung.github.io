@@ -2237,6 +2237,11 @@ function onInfoDown(){
 			text.destroy();
 		});
 
+		creatureInfo.skillText.forEach(text=>{
+			console.log("destroy text");
+			text.destroy();
+		});
+
 		creatureInfoSprite.getChildAt(0).destroy();
 		// heroHazardSprite[arrayNum].destroy();
 
@@ -2741,17 +2746,20 @@ function onHPDown(){
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
+	var skillText = [];
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let textSkill = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 		textSkill.anchor.set(0,0.5);
 		textSkill.y = 50*skillIndex;
 		creatureInfoSkill.addChild(textSkill);
+		skillText.push(textSkill);
 	});
 
 	console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
 
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
+	creatureInfo.skillText = skillText;
 }
 
 function onSkillDown(){
