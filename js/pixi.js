@@ -2210,10 +2210,17 @@ function onInfoDown(){
 	if(this.identifier[0] == 0){
 		creatureInfo.main.visible = true;
 		creatureInfo.status.visible = false;
+		creatureInfo.skill.visible = false;
 		this.selected.visible = true;
 	}else if(this.identifier[0] == 1){
-		creatureInfo.main.visible = false;		
+		creatureInfo.main.visible = false;
 		creatureInfo.status.visible = true;
+		creatureInfo.skill.visible = false;
+		this.selected.visible = true;
+	}else if(this.identifier[0] == 2){
+		creatureInfo.main.visible = false;
+		creatureInfo.status.visible = false;
+		creatureInfo.skill.visible = true;
 		this.selected.visible = true;
 	}
 	else if(this.identifier[0] == 4){
@@ -2736,6 +2743,18 @@ function onHPDown(){
 		statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.x = statusXAdjust*(app.screen.width/4);
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
+	});
+
+	var creatureInfoSkill = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoSkill);
+	creatureInfo.skill = creatureInfoSkill;
+	creatureInfo.skill.x = textOriginX;
+	creatureInfo.skill.y = textOriginY;
+
+	this.object.skills.forEach((skill,skillIndex) =>{
+		let textSkill = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+		textSkill.y = 50*skillIndex;
+		creatureInfoSkill.addChild(textSkill);
 	});
 
 	console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
