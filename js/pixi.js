@@ -2459,22 +2459,12 @@ function onHPDown(){
 		btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		btn.y = app.screen.height*5/6;
 	});
-	// console.log(this.object.elements);
-
-	// creatureInfo.info_main_element[0].forEach((text,textIndex) =>{
-	// 	if(textIndex%2 == 0){
-	// 		text.x = textOriginX;
-	// 		text.y = textOriginY + (textIndex * 40);
-	// 	}else{
-	// 		text.x = textOriginX + 140;
-	// 		text.y = textOriginY + ((textIndex-1) * 40);
-	// 	}
-	// });
 
 	var creatureStatusInfoArray = [];
 	const creatureInfoStatus = new PIXI.Container();
 	creatureInfo.addChild(creatureInfoStatus);
 	creatureInfo.status = creatureInfoStatus;
+	creatureInfo.status.visible = false;
 	creatureInfo.status.x = textOriginX;
 	creatureInfo.status.y = textOriginY;
 
@@ -2753,6 +2743,7 @@ function onHPDown(){
 
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let textSkill = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+		textSkill.anchor(0,0.5);
 		textSkill.y = 50*skillIndex;
 		creatureInfoSkill.addChild(textSkill);
 	});
