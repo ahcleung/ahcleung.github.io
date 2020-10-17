@@ -2771,9 +2771,9 @@ function onHPDown(){
 		// make the button interactive...
 		skillContainer.buttonMode = true;
 		skillContainer.interactive = true;
-		skillContainer
+		// skillContainer
 		// set the mousedown and touchstart callback...
-		.on('pointerdown', onInfoSkillDown);
+		// .on('pointerdown', onInfoSkillDown);
 
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
 		skillRect.x = 0;
