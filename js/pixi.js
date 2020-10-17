@@ -2747,10 +2747,13 @@ function onHPDown(){
 	creatureInfo.skill.y = textOriginY;
 
 	var skillText = [];
+	var infoSkillHeight = 100;
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		skillName.anchor.set(0,0.5);
-		
+		skillName.x = 200/6;
+		skillName.y = infoSkillHeight/3;
+
 		// creatureInfoSkill.addChild(skillName);
 		// skillText.push(skillName);
 
@@ -2768,17 +2771,17 @@ function onHPDown(){
 		// set the mousedown and touchstart callback...
 		// .on('pointerdown', onInfoSkillDown);
 
-		skillRect.beginFill(0x222222).drawRect(0, 0, 200, 100);
+		skillRect.beginFill(0x222222).drawRect(0, 0, 200, infoSkillHeight);
 		// skillRect.x = 0;
 		// skillRect.y = 0;
 
 		skillContainer.addChild(skillRect);
 		skillContainer.rect = skillRect;
 
-		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 200, 100);
+		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 200, infoSkillHeight);
 		// skillSelectStroke.x = 0;
 		// skillSelectStroke.y = 0;		
-		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200, 100);
+		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200, infoSkillHeight);
 		// skillSelectFill.x = 0;
 		// skillSelectFill.y = 0;
 
@@ -2830,6 +2833,8 @@ function onHPDown(){
 		}
 		skillElement.anchor.set(0, 0.5);
 		skillElement.scale.set(elementIconSize);
+		skillElement.x = skillMargin;
+		skillElement.y = infoSkillHeight/2;
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
 		creatureInfoSkill.addChild(skillContainer);
