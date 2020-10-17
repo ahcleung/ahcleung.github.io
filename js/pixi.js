@@ -2831,6 +2831,7 @@ function onHPDown(){
 		skillElement.anchor.set(0, 0.5);
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
+		creatureInfoSkill.addChild(skillContainer);
 
 		if(skillIndex%2 == 0){
 			skillContainer.x = 0;
