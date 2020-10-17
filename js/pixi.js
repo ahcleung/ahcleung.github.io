@@ -2780,10 +2780,10 @@ function onHPDown(){
 
 		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 200, infoSkillHeight);
 		// skillSelectStroke.x = 0;
-		// skillSelectStroke.y = 0;		
-		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200, infoSkillHeight);
-		// skillSelectFill.x = 0;
-		// skillSelectFill.y = 0;
+		// skillSelectStroke.y = 0;
+		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200-skillSelectPadding*2, infoSkillHeight-skillSelectPadding*2);
+		skillSelectFill.x = skillSelectPadding;
+		skillSelectFill.y = skillSelectPadding;
 
 		skillSelect.addChild(skillSelectStroke);
 		skillSelect.addChild(skillSelectFill);
@@ -2793,7 +2793,7 @@ function onHPDown(){
 		skillContainer.addChild(skillSelect);
 		skillContainer.selected = skillSelect;
 
-		skillContainer.selected.visible = false;
+		// skillContainer.selected.visible = false;
 		
 		skillContainer.addChild(skillName);
 		// skillContainer.skillName = skillName;
