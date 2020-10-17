@@ -2768,17 +2768,17 @@ function onHPDown(){
 		// set the mousedown and touchstart callback...
 		// .on('pointerdown', onInfoSkillDown);
 
-		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		skillRect.beginFill(0x222222).drawRect(0, 0, 200, 100);
 		// skillRect.x = 0;
 		// skillRect.y = 0;
 
 		skillContainer.addChild(skillRect);
 		skillContainer.rect = skillRect;
 
-		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
+		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 200, 100);
 		// skillSelectStroke.x = 0;
 		// skillSelectStroke.y = 0;		
-		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
+		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200, 100);
 		// skillSelectFill.x = 0;
 		// skillSelectFill.y = 0;
 
@@ -2836,10 +2836,10 @@ function onHPDown(){
 
 		if(skillIndex%2 == 0){
 			skillContainer.x = 0;
-			skillContainer.y = 100*skillIndex;
+			skillContainer.y = 50*skillIndex;
 		}else{
-			skillContainer.x = 100;
-			skillContainer.y = 100*(skillIndex-1);
+			skillContainer.x = 200;
+			skillContainer.y = 50*(skillIndex-1);
 		}
 	});
 
