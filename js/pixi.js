@@ -2752,10 +2752,10 @@ function onHPDown(){
 		textSkill.anchor.set(0,0.5);
 		if(skillIndex%2 == 0){
 			textSkill.x = 0;
-			textSkill.y = 25*skillIndex;
+			textSkill.y = 100*skillIndex;
 		}else{
-			textSkill.x = 50;
-			textSkill.y = 25*(skillIndex-1);
+			textSkill.x = 200;
+			textSkill.y = 100*(skillIndex-1);
 		}
 		
 		creatureInfoSkill.addChild(textSkill);
