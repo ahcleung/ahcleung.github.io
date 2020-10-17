@@ -2829,6 +2829,7 @@ function onHPDown(){
 				break;
 		}
 		skillElement.anchor.set(0, 0.5);
+		skillElement.scale.set(elementIconSize);
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
 		creatureInfoSkill.addChild(skillContainer);
