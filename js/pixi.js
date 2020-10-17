@@ -2838,7 +2838,7 @@ function onHPDown(){
 			skillContainer.x = 0;
 			skillContainer.y = 50*skillIndex;
 		}else{
-			skillContainer.x = 200;
+			skillContainer.x = app.screen.width/4;
 			skillContainer.y = 50*(skillIndex-1);
 		}
 	});
