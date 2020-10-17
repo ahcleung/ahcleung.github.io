@@ -2748,18 +2748,11 @@ function onHPDown(){
 
 	var skillText = [];
 	this.object.skills.forEach((skill,skillIndex) =>{
-		let textSkill = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-		textSkill.anchor.set(0,0.5);
-		if(skillIndex%2 == 0){
-			textSkill.x = 0;
-			textSkill.y = 100*skillIndex;
-		}else{
-			textSkill.x = 200;
-			textSkill.y = 100*(skillIndex-1);
-		}
+		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+		skillName.anchor.set(0,0.5);
 		
-		creatureInfoSkill.addChild(textSkill);
-		skillText.push(textSkill);
+		// creatureInfoSkill.addChild(skillName);
+		// skillText.push(skillName);
 
 		let skillRect = new PIXI.Graphics();
 		let skillSelectFill = new PIXI.Graphics();
@@ -2776,24 +2769,85 @@ function onHPDown(){
 		// .on('pointerdown', onInfoSkillDown);
 
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		skillRect.x = 0;
-		skillRect.y = 0;
+		// skillRect.x = 0;
+		// skillRect.y = 0;
 
 		skillContainer.addChild(skillRect);
 		skillContainer.rect = skillRect;
 
 		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-		skillSelectStroke.x = 0;
-		skillSelectStroke.y = 0;		
+		// skillSelectStroke.x = 0;
+		// skillSelectStroke.y = 0;		
 		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-		skillSelectFill.x = 0;
-		skillSelectFill.y = 0;
+		// skillSelectFill.x = 0;
+		// skillSelectFill.y = 0;
 
 		skillSelect.addChild(skillSelectStroke);
 		skillSelect.addChild(skillSelectFill);
 		skillSelect.stroke = skillSelectStroke;
 		skillSelect.fill = skillSelectFill;
+
+		skillContainer.addChild(skillSelect);
+		skillContainer.selected = skillSelect;
+
+		skillContainer.selected.visible = false;
+		
+		skillContainer.addChild(skillName);
+		// skillContainer.skillName = skillName;
+
+		var skillElement;
+		switch(skillsList.data.skills[skill].element){
+			case 1:
+				skillElement = new PIXI.Sprite(resources.element_flora.texture);
+				break;
+			case 2:
+				skillElement = new PIXI.Sprite(resources.element_water.texture);
+				break;
+			case 3:
+				skillElement = new PIXI.Sprite(resources.element_fire.texture);
+				break;
+			case 4:
+				skillElement = new PIXI.Sprite(resources.element_earth.texture);
+				break;
+			case 5:
+				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+				break;
+			case 6:
+				skillElement = new PIXI.Sprite(resources.element_wind.texture);
+				break;
+			case 7:
+				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
+				break;
+			case 8:
+				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+				break;
+			case 9:
+				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+				break;
+			default:
+				skillElement = new PIXI.Sprite(resources.element_flora.texture);
+				break;
+		}
+		skillElement.anchor.set(0, 0.5);
+		skillContainer.addChild(skillElement);
+		skillContainer.skillElement = skillElement;
+
+		if(skillIndex%2 == 0){
+			skillContainer.x = 0;
+			skillContainer.y = 100*skillIndex;
+		}else{
+			skillContainer.x = 100;
+			skillContainer.y = 100*(skillIndex-1);
+		}
 	});
+
+	// if(skillIndex%2 == 0){
+	// 	textSkill.x = 0;
+	// 	textSkill.y = 100*skillIndex;
+	// }else{
+	// 	textSkill.x = 200;
+	// 	textSkill.y = 100*(skillIndex-1);
+	// }
 
 // 	for(var i = 0; i < 4; i++){
 // // 		console.log(heroArray[1].skills[i]);
