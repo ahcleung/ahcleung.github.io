@@ -2243,6 +2243,10 @@ function onInfoDown(){
 			text.destroy();
 		});
 
+		creatureInfo.infoSkillArray.forEach(skillContainer=>{
+			skillContainer.destroy();
+		});
+
 		creatureInfoSprite.getChildAt(0).destroy();
 		// heroHazardSprite[arrayNum].destroy();
 
@@ -2748,8 +2752,9 @@ function onHPDown(){
 	creatureInfo.skill.y = textOriginY;
 
 	var skillText = [];
+	var infoSkillArray = [];
 	var infoSkillWidth = app.screen.width/5;
-	var infoSkillHeight = 100;
+	var infoSkillHeight = infoSkillWidth/4;
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		skillName.anchor.set(0,0.5);
@@ -2848,6 +2853,8 @@ function onHPDown(){
 			skillContainer.x = app.screen.width/4;
 			skillContainer.y = 50*(skillIndex-1);
 		}
+
+		infoSkillArray.push(skillContainer);
 	});
 
 	// if(skillIndex%2 == 0){
@@ -3065,9 +3072,13 @@ function onHPDown(){
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
 	creatureInfo.skillText = skillText;
+	creatureInfo.infoSkillArray = infoSkillArray;
 }
 
 function onInfoSkillDown(){
+	creatureInfo.infoSkillArray.forEach(skillContainer=>{
+		skillContainer.selected.visible = false;
+	});
 	this.selected.visible = true;
 }
 
