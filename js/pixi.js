@@ -2748,6 +2748,7 @@ function onHPDown(){
 	creatureInfo.skill.y = textOriginY;
 
 	var skillText = [];
+	var infoSkillWidth = app.screen.width/5;
 	var infoSkillHeight = 100;
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
@@ -2772,17 +2773,17 @@ function onHPDown(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onInfoSkillDown);
 
-		skillRect.beginFill(0x222222).drawRect(0, 0, 200, infoSkillHeight);
+		skillRect.beginFill(0x222222).drawRect(0, 0, infoSkillWidth, infoSkillHeight);
 		// skillRect.x = 0;
 		// skillRect.y = 0;
 
 		skillContainer.addChild(skillRect);
 		skillContainer.rect = skillRect;
 
-		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 200, infoSkillHeight);
+		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoSkillWidth, infoSkillHeight);
 		// skillSelectStroke.x = 0;
 		// skillSelectStroke.y = 0;
-		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 200-skillSelectPadding*2, infoSkillHeight-skillSelectPadding*2);
+		skillSelectFill.beginFill(0x222222).drawRect(0, 0, infoSkillWidth-skillSelectPadding*2, infoSkillHeight-skillSelectPadding*2);
 		skillSelectFill.x = skillSelectPadding;
 		skillSelectFill.y = skillSelectPadding;
 
