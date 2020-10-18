@@ -231,6 +231,7 @@ var margin = 50;
 var skillMargin = 10;
 var targetTextFontSize = 26;
 var skillNameFontSize = 28;
+var skillSelectPadding = 5;
 var resizeWidth = 0;
 var hazardSize = 0.5;
 var turnNumber = 0;
@@ -1652,7 +1653,7 @@ function resize() {
 	actionBlack.height = app.screen.height+100;
 	actionContainer.position.set(app.screen.width/2, app.screen.height*3/4);
 	
-	var skillSelectPadding = 5;
+	// var skillSelectPadding = 5;
 	var hazardMargin = 50;
 	
 	if(app.screen.width < 860){
