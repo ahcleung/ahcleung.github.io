@@ -2768,9 +2768,9 @@ function onHPDown(){
 		// make the button interactive...
 		skillContainer.buttonMode = true;
 		skillContainer.interactive = true;
-		// skillContainer
+		skillContainer
 		// set the mousedown and touchstart callback...
-		// .on('pointerdown', onInfoSkillDown);
+		.on('pointerdown', onInfoSkillDown);
 
 		skillRect.beginFill(0x222222).drawRect(0, 0, 200, infoSkillHeight);
 		// skillRect.x = 0;
@@ -2794,7 +2794,7 @@ function onHPDown(){
 		skillContainer.addChild(skillSelect);
 		skillContainer.selected = skillSelect;
 
-		// skillContainer.selected.visible = false;
+		skillContainer.selected.visible = false;
 		
 		skillContainer.addChild(skillName);
 		// skillContainer.skillName = skillName;
@@ -3064,6 +3064,10 @@ function onHPDown(){
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
 	creatureInfo.skillText = skillText;
+}
+
+function onInfoSkillDown(){
+	this.selected.visible = true;
 }
 
 function onSkillDown(){
