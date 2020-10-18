@@ -2848,10 +2848,10 @@ function onHPDown(){
 
 		if(skillIndex%2 == 0){
 			skillContainer.x = 0;
-			skillContainer.y = infoSkillHeight+10;
+			skillContainer.y = ((infoSkillHeight+10)/2)*skillIndex;
 		}else{
 			skillContainer.x = app.screen.width/4;
-			skillContainer.y = infoSkillHeight+10;
+			skillContainer.y = ((infoSkillHeight+10)/2)*(skillIndex-1);
 		}
 
 		infoSkillArray.push(skillContainer);
