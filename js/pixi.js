@@ -2758,7 +2758,7 @@ function onHPDown(){
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		skillName.anchor.set(0,0.5);
-		skillName.x = 200/6;
+		skillName.x = infoSkillWidth/6;
 		skillName.y = infoSkillHeight/3;
 
 		// creatureInfoSkill.addChild(skillName);
