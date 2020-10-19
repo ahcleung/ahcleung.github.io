@@ -2839,7 +2839,9 @@ function onHPDown(){
 				break;
 		}
 		skillElement.anchor.set(0, 0.5);
-		skillElement.scale.set(elementIconSize);
+		// skillElement.scale.set(elementIconSize);
+		skillElement.width = infoSkillWidth/11;
+		skillElement.height = skillElement.width * 2.3;
 		skillElement.x = skillMargin;
 		skillElement.y = infoSkillHeight/2;
 		skillContainer.addChild(skillElement);
