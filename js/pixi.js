@@ -2764,20 +2764,24 @@ function onHPDown(){
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
+	var infoSkillY = 300;
+
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoMainMargin[1] + 500;;
+			text.y = textIndex * infoMainMargin[1] + infoSkillY;
 		}else if(textIndex == 7){
-			text.y = 10.3 * infoMainMargin[1] + 500;;
+			text.y = 10.3 * infoMainMargin[1] + infoSkillY;
 		}else if(textIndex == 8){
 			text.x = creatureInfo.info_main_text[7].width + 10;
-			text.y = 10.3 * infoMainMargin[1] + 500;;
+			text.y = 10.3 * infoMainMargin[1] + infoSkillY;
 		}else{
 			text.x = infoMainMargin[0];
-			text.y = (textIndex-1) * infoMainMargin[1] + 500;;
+			text.y = (textIndex-1) * infoMainMargin[1] + infoSkillY;
 		}
 	});
+
+	creatureInfo.info_skill_text[1] = skillsList.data.skills[skill].power;
 
 	var skillText = [];
 	var infoSkillArray = [];
