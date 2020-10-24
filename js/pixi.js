@@ -2985,7 +2985,7 @@ function onHPDown(){
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
-		skillContainer.markerTargetSeveralContainer.visible = false;
+		// skillContainer.markerTargetSeveralContainer.visible = false;
 		
 		skillContainer.addChild(markerContainer);
 		skillContainer.markerContainer = markerContainer;		
