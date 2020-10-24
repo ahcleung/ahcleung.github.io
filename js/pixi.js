@@ -2764,7 +2764,7 @@ function onHPDown(){
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
-	var infoSkillY = 200;
+	var infoSkillY = 250;
 
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
@@ -2781,7 +2781,7 @@ function onHPDown(){
 		}
 	});
 
-	creatureInfo.info_skill_text[1] = skillsList.data.skills[this.object.skills[0]].power;
+	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
 
 	var skillText = [];
 	var infoSkillArray = [];
