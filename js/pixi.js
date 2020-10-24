@@ -2872,10 +2872,10 @@ function onHPDown(){
 			}
 			// let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 			targetText.anchor.set(0, 0.5);
-			skillContainer.addChild(targetText);
-			skillContainer.targetText = targetText;
 			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 0.569);
 			targetText.y = infoSkillHeight*3/4;
+			skillContainer.addChild(targetText);
+			skillContainer.targetText = targetText;
 		}else{
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
