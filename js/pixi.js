@@ -2781,7 +2781,7 @@ function onHPDown(){
 		}
 	});
 
-	creatureInfo.info_skill_text[1] = skillsList.data.skills[skill].power;
+	creatureInfo.info_skill_text[1] = skillsList.data.skills[this.object.skills[0]].power;
 
 	var skillText = [];
 	var infoSkillArray = [];
