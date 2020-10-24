@@ -2843,7 +2843,7 @@ function onHPDown(){
 						let posMarker = new PIXI.Graphics();				
 						posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 						posMarker.x = 25 * j;
-						posMarker.visible = false;
+						// posMarker.visible = false;
 						markerTargetSeveralArray.push(posMarker);
 						markerTargetSeveralContainer.addChild(posMarker);
 					}	
