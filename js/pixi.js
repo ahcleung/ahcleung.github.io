@@ -2814,6 +2814,8 @@ function onHPDown(){
 		const markerTargetContainer = new PIXI.Container();
 		const markerTargetTeamArray = [];
 		const markerTargetTeamContainer = new PIXI.Container();
+		const markerTargetSeveralArray = [];
+		const markerTargetSeveralContainer = new PIXI.Container();
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
@@ -2835,6 +2837,18 @@ function onHPDown(){
 			if(tagName == "self")		skillTargeting = 1
 			if(tagName == "team")		skillTargeting = 2
 			if(tagName == "column")		skillTargeting = 3
+			if(tagName == "several"){	
+				for (var j = 0; j < 3; j++){
+					if(skillsList.data.skills[skill].several[i] == 1){
+						let posMarker = new PIXI.Graphics();				
+						posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
+						posMarker.x = 25 * j;
+						posMarker.visible = false;
+						markerTargetSeveralArray.push(posMarker);
+						markerTargetSeveralContainer.addChild(posMarker);
+					}	
+				}
+			}
 		});
 
 		if(skillTargeting == 1){
@@ -2944,16 +2958,15 @@ function onHPDown(){
 		// }
 
 		//Target several markers
-		const markerTargetSeveralArray = [];
-		const markerTargetSeveralContainer = new PIXI.Container();		
-		for (var j = 0; j < 3; j++){
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
-			posMarker.x = 25 * j;
-			posMarker.visible = false;
-			markerTargetSeveralArray.push(posMarker);
-			markerTargetSeveralContainer.addChild(posMarker);
-		}
+				
+		// for (var j = 0; j < 3; j++){
+		// 	let posMarker = new PIXI.Graphics();				
+		// 	posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
+		// 	posMarker.x = 25 * j;
+		// 	posMarker.visible = false;
+		// 	markerTargetSeveralArray.push(posMarker);
+		// 	markerTargetSeveralContainer.addChild(posMarker);
+		// }
 
 		markerTargetContainer.x = 123;
 		markerTargetTeamContainer.x = 123;
