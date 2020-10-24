@@ -2874,6 +2874,8 @@ function onHPDown(){
 			targetText.anchor.set(0, 0.5);
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
+			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 0.569);
+			targetText.y = infoSkillHeight*3/4;
 		}else{
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
