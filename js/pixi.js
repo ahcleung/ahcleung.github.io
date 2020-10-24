@@ -972,6 +972,12 @@ function setup(){
 	var info_skill_power2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_skill_text.push(info_skill_power2);
 	creatureInfoSkill.addChild(info_skill_power2);
+	var info_skill_acc1 = new Text("Accuracy:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_skill_text.push(info_skill_acc1);
+	creatureInfoSkill.addChild(info_skill_acc1);
+	var info_skill_acc2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_skill_text.push(info_skill_acc2);
+	creatureInfoSkill.addChild(info_skill_acc2);
 
 
 	creatureInfo.info_skill_text = info_skill_text;
@@ -2782,6 +2788,7 @@ function onHPDown(){
 	});
 
 	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
+	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 
 	var skillText = [];
 	var infoSkillArray = [];
