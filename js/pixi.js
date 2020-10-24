@@ -2764,7 +2764,7 @@ function onHPDown(){
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
-	var infoSkillY = 300;
+	var infoSkillY = 200;
 
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
