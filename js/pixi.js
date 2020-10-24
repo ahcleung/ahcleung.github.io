@@ -2865,13 +2865,13 @@ function onHPDown(){
 			}else{
 				columnText = "◄ " + skillsList.data.skills[skill]["column"][0];
 			}
-			
+			let targetText;
 			if(skillsList.data.skills[skill]["column"][3] > 0){					
 				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
-				let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
+				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
 			}else{
 				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
-				let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
+				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 			}
 			// let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 			targetText.anchor.set(0, 0.5);
