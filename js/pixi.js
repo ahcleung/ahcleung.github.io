@@ -879,7 +879,7 @@ function setup(){
 
 	const creatureInfoMain = new PIXI.Container();
 	const creatureInfoStatus = new PIXI.Container();
-	const creatureInfoSkills = new PIXI.Container();
+	const creatureInfoSkill = new PIXI.Container();
 	const creatureInfoItems = new PIXI.Container();
 
 	blurFilterInfo.blur = 0;
@@ -888,6 +888,7 @@ function setup(){
 	interfaceHolder.filters = [blurFilterInfo];
 
 	var info_main_text = [];
+	var info_skill_text = [];
 
 	let info_main_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_main_text.push(info_main_name1);
@@ -960,6 +961,16 @@ function setup(){
 	creatureInfoMain.addChild(expBarOverall);
 	creatureInfoMain.addChild(expBarGained);
 	creatureInfo.info_main_expBar = info_main_expBar;
+
+	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_skill_text.push(info_skill_power1);
+	creatureInfoSkill.addChild(info_skill_power1);
+	var info_skill_ = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_skill_text.push(info_skill_power1);
+	creatureInfoSkill.addChild(info_skill_power1);
+
+
+	creatureInfo.info_skill_text = info_skill_text;
 
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
@@ -2471,7 +2482,7 @@ function onHPDown(){
 	});
 
 	var creatureStatusInfoArray = [];
-	const creatureInfoStatus = new PIXI.Container();
+	// const creatureInfoStatus = new PIXI.Container();
 	creatureInfo.addChild(creatureInfoStatus);
 	creatureInfo.status = creatureInfoStatus;
 	creatureInfo.status.visible = false;
@@ -2745,11 +2756,26 @@ function onHPDown(){
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 	});
 
-	var creatureInfoSkill = new PIXI.Container();
+	// var creatureInfoSkill = new PIXI.Container();
 	creatureInfo.addChild(creatureInfoSkill);
 	creatureInfo.skill = creatureInfoSkill;
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
+
+	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex%2 == 0 && textIndex<7){
+			text.y = textIndex * infoMainMargin[1];
+		}else if(textIndex == 7){
+			text.y = 10.3 * infoMainMargin[1];
+		}else if(textIndex == 8){
+			text.x = creatureInfo.info_main_text[7].width + 10;
+			text.y = 10.3 * infoMainMargin[1];
+		}else{
+			text.x = infoMainMargin[0];
+			text.y = (textIndex-1) * infoMainMargin[1];
+		}
+	});
 
 	var skillText = [];
 	var infoSkillArray = [];
