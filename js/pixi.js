@@ -2888,6 +2888,11 @@ function onHPDown(){
 		markerContainer.addChild(markerTargetTeamContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);		
 
+		// skillName.x = infoSkillWidth/6;
+		// skillName.y = infoSkillHeight/3;
+		markerContainer.x = infoSkillWidth/6;
+		markerContainer.y = infoSkillHeight*3/4;
+
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
 		skillContainer.markerTargetSeveralContainer.visible = false;
