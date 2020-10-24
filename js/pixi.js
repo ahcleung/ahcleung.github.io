@@ -969,9 +969,9 @@ function setup(){
 	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_skill_text.push(info_skill_power1);
 	creatureInfoSkill.addChild(info_skill_power1);
-	var info_skill_ = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_skill_text.push(info_skill_power1);
-	creatureInfoSkill.addChild(info_skill_power1);
+	var info_skill_power2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_skill_text.push(info_skill_power2);
+	creatureInfoSkill.addChild(info_skill_power2);
 
 
 	creatureInfo.info_skill_text = info_skill_text;
@@ -2767,15 +2767,15 @@ function onHPDown(){
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoMainMargin[1];
+			text.y = textIndex * infoMainMargin[1] + 500;;
 		}else if(textIndex == 7){
-			text.y = 10.3 * infoMainMargin[1];
+			text.y = 10.3 * infoMainMargin[1] + 500;;
 		}else if(textIndex == 8){
 			text.x = creatureInfo.info_main_text[7].width + 10;
-			text.y = 10.3 * infoMainMargin[1];
+			text.y = 10.3 * infoMainMargin[1] + 500;;
 		}else{
 			text.x = infoMainMargin[0];
-			text.y = (textIndex-1) * infoMainMargin[1];
+			text.y = (textIndex-1) * infoMainMargin[1] + 500;;
 		}
 	});
 
