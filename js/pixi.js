@@ -2843,7 +2843,6 @@ function onHPDown(){
 						let posMarker = new PIXI.Graphics();				
 						posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 						posMarker.x = 25 * j;
-						// posMarker.visible = false;
 						markerTargetSeveralArray.push(posMarker);
 						markerTargetSeveralContainer.addChild(posMarker);
 					}	
@@ -2852,7 +2851,7 @@ function onHPDown(){
 		});
 
 		if(skillTargeting == 1){
-			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
+			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
 			targetText.anchor.set(0, 0.5);
 			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 1.569);
 			targetText.y = infoSkillHeight*3/4;
@@ -2881,13 +2880,10 @@ function onHPDown(){
 			}
 			let targetText;
 			if(skillsList.data.skills[skill]["column"][3] > 0){					
-				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
-				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
+				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
 			}else{
-				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
-				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
+				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
 			}
-			// let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
 			targetText.anchor.set(0, 0.5);
 			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 1.569);
 			targetText.y = infoSkillHeight*3/4;
@@ -2908,43 +2904,6 @@ function onHPDown(){
 				markerTargetContainer.addChild(posMarker);
 			}
 		}
-		// for (var j = 0; j < 3; j++){
-		// 	for (var k = 0; k < 4; k++){
-		// 		let defaultMarker = new PIXI.Graphics();
-		// 		defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-		// 		defaultMarker.x = 25 * k;
-		// 		defaultMarker.pivot.set(0.5);
-		// 		defaultMarker.angle = 45;
-
-		// 		let posMarker = new PIXI.Graphics();
-		// 		let posMarker2 = new PIXI.Graphics();
-		// 		if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-		// 		else if(j == 1){
-		// 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-		// 			posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
-		// 		}	
-
-		// 		posMarker.x = 25 * k;
-		// 		posMarker.pivot.set(0.5);
-		// 		posMarker.angle = 45;
-		// 		posMarker2.x = 25 * k;
-		// 		posMarker2.pivot.set(0.5);
-		// 		posMarker2.angle = 45;
-
-		// 		if(j == 0){
-		// 			markerPositionArray.push(posMarker);
-		// 			markerPositionContainer.addChild(defaultMarker);
-		// 			markerPositionContainer.addChild(posMarker);
-		// 		}else if(j == 1){
-		// 			markerTargetArray.push(posMarker);
-		// 			markerTargetContainer.addChild(defaultMarker);
-		// 			markerTargetContainer.addChild(posMarker);
-
-		// 			markerTargetTeamArray.push(posMarker2);
-		// 			markerTargetTeamContainer.addChild(posMarker2);
-		// 		}
-		// 	}
-		// }
 		
 		//Filler targets for proper resize and spacing
 		// const markerSpacerContainer = new PIXI.Container();
@@ -2955,17 +2914,6 @@ function onHPDown(){
 		// 	posMarker.pivot.set(0.5);
 		// 	posMarker.angle = 45;
 		// 	markerSpacerContainer.addChild(posMarker);
-		// }
-
-		//Target several markers
-				
-		// for (var j = 0; j < 3; j++){
-		// 	let posMarker = new PIXI.Graphics();				
-		// 	posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
-		// 	posMarker.x = 25 * j;
-		// 	posMarker.visible = false;
-		// 	markerTargetSeveralArray.push(posMarker);
-		// 	markerTargetSeveralContainer.addChild(posMarker);
 		// }
 
 		markerTargetContainer.x = 123;
@@ -2985,8 +2933,7 @@ function onHPDown(){
 
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
-		// skillContainer.markerTargetSeveralContainer.visible = false;
-		
+
 		skillContainer.addChild(markerContainer);
 		skillContainer.markerContainer = markerContainer;		
 		skillContainer.markerPositionArray = markerPositionArray;
@@ -2996,12 +2943,6 @@ function onHPDown(){
 		skillContainer.markerTargetTeamArray = markerTargetTeamArray;
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
-		
-		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
-		targetText.anchor.set(0, 0.5);
-		skillContainer.addChild(targetText);
-		skillContainer.targetText = targetText;
-		skillContainer.targetText.visible = false;
 
 		var skillElement;
 		switch(skillsList.data.skills[skill].element){
@@ -3064,208 +3005,6 @@ function onHPDown(){
 	// 	textSkill.x = 200;
 	// 	textSkill.y = 100*(skillIndex-1);
 	// }
-
-// 	for(var i = 0; i < 4; i++){
-// // 		console.log(heroArray[1].skills[i]);
-// 		let skillRect = new PIXI.Graphics();
-// 		let skillSelectFill = new PIXI.Graphics();
-// 		let skillSelectStroke = new PIXI.Graphics();
-// 		let skillDisable = new PIXI.Graphics();
-		
-// 		const skillContainer = new PIXI.Container();
-// 		const skillSelect = new PIXI.Container();
-		
-// 		// make the button interactive...
-// 		skillContainer.buttonMode = true;
-// 		skillContainer.interactive = true;
-// 		skillContainer
-// 		// set the mousedown and touchstart callback...
-// 		.on('pointerdown', onSkillDown);
-		
-// 		//Identifier = [skill index, skill id, ]
-// 		skillContainer.identifier = [i , heroArray[1].skills[i], 1];
-		
-// 		let skillName = new Text(skillsList.data.skills[heroArray[1].skills[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
-// 		skillName.anchor.set(0, 0.5);
-		
-// 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
-// 		skillRect.x = 0;
-// 		skillRect.y = 0;
-		
-// 		skillContainer.addChild(skillRect);
-// 		skillContainer.rect = skillRect;
-		
-// 		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, 50, 50);
-// 		skillSelectStroke.x = 0;
-// 		skillSelectStroke.y = 0;		
-// 		skillSelectFill.beginFill(0x222222).drawRect(0, 0, 50, 50);
-// 		skillSelectFill.x = 0;
-// 		skillSelectFill.y = 0;
-		
-// 		skillDisable.beginFill(0x636363).drawRect(0, 0, 50, 50);
-// 		skillDisable.alpha = 0.5;
-// 		skillDisable.x = 0;
-// 		skillDisable.y = 0;
-		
-// 		skillSelect.addChild(skillSelectStroke);
-// 		skillSelect.addChild(skillSelectFill);
-// 		skillSelect.stroke = skillSelectStroke;
-// 		skillSelect.fill = skillSelectFill;
-				
-// 		skillContainer.addChild(skillSelect);
-// 		skillContainer.selected = skillSelect;
-		
-// 		skillContainer.selected.visible = false;
-		
-// 		skillContainer.addChild(skillName);
-// 		skillContainer.skillName = skillName;
-		
-// 		//Skill position and target markers
-// 		const markerContainer = new PIXI.Container();
-// 		var w = 12.728;	
-// 		const markerPositionArray = [];
-// 		const markerPositionContainer = new PIXI.Container();
-// 		const markerTargetArray = [];
-// 		const markerTargetContainer = new PIXI.Container();
-// 		const markerTargetTeamArray = [];
-// 		const markerTargetTeamContainer = new PIXI.Container();
-		
-// 		for (var j = 0; j < 3; j++){
-// 			for (var k = 0; k < 4; k++){
-// 				let defaultMarker = new PIXI.Graphics();
-// 				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-// 				defaultMarker.x = 25 * k;
-// 				defaultMarker.pivot.set(0.5);
-// 				defaultMarker.angle = 45;
-
-// 				let posMarker = new PIXI.Graphics();
-// 				let posMarker2 = new PIXI.Graphics();
-// 				if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// 				else if(j == 1){
-// 					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-// 					posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
-// 				}	
-
-// 				posMarker.x = 25 * k;
-// 				posMarker.pivot.set(0.5);
-// 				posMarker.angle = 45;
-// 				posMarker2.x = 25 * k;
-// 				posMarker2.pivot.set(0.5);
-// 				posMarker2.angle = 45;
-
-// 				if(j == 0){
-// 					markerPositionArray.push(posMarker);
-// 					markerPositionContainer.addChild(defaultMarker);
-// 					markerPositionContainer.addChild(posMarker);
-// 				}else if(j == 1){
-// 					markerTargetArray.push(posMarker);
-// 					markerTargetContainer.addChild(defaultMarker);
-// 					markerTargetContainer.addChild(posMarker);
-
-// 					markerTargetTeamArray.push(posMarker2);
-// 					markerTargetTeamContainer.addChild(posMarker2);
-// 				}
-// 			}
-// 		}
-		
-// 		//Filler targets for proper resize and spacing
-// 		const markerSpacerContainer = new PIXI.Container();
-// 		for (var j = 0; j < 4; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-// 			posMarker.x = 25 * j;
-// 			posMarker.pivot.set(0.5);
-// 			posMarker.angle = 45;
-// 			markerSpacerContainer.addChild(posMarker);
-// 		}
-
-// 		//Target several markers
-// 		const markerTargetSeveralArray = [];
-// 		const markerTargetSeveralContainer = new PIXI.Container();		
-// 		for (var j = 0; j < 3; j++){
-// 			let posMarker = new PIXI.Graphics();				
-// 			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
-// 			posMarker.x = 25 * j;
-// 			posMarker.visible = false;
-// 			markerTargetSeveralArray.push(posMarker);
-// 			markerTargetSeveralContainer.addChild(posMarker);
-// 		}
-
-// 		markerTargetContainer.x = 123;
-// 		markerTargetTeamContainer.x = 123;
-// 		markerSpacerContainer.x = 123;
-
-// 		markerTargetSeveralContainer.x = 135;		
-
-// 		markerContainer.addChild(markerSpacerContainer);
-// 		markerContainer.addChild(markerPositionContainer);
-// 		markerContainer.addChild(markerTargetContainer);
-// 		markerContainer.addChild(markerTargetTeamContainer);
-// 		markerContainer.addChild(markerTargetSeveralContainer);		
-
-// 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
-// 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
-// 		skillContainer.markerTargetSeveralContainer.visible = false;
-		
-// 		skillContainer.addChild(markerContainer);
-// 		skillContainer.markerContainer = markerContainer;		
-// 		skillContainer.markerPositionArray = markerPositionArray;
-// 		skillContainer.markerPositionContainer = markerPositionContainer;		
-// 		skillContainer.markerTargetArray = markerTargetArray;
-// 		skillContainer.markerTargetContainer = markerTargetContainer;
-// 		skillContainer.markerTargetTeamArray = markerTargetTeamArray;
-// 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
-// 		skillContainer.markerTargetTeamContainer.visible = false;
-		
-// 		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
-// 		targetText.anchor.set(0, 0.5);
-// 		skillContainer.addChild(targetText);
-// 		skillContainer.targetText = targetText;
-// 		skillContainer.targetText.visible = false;
-		
-// 		var skillElement;
-// 		switch(skillsList.data.skills[heroArray[1].skills[i]].element){
-// 			case 1:
-// 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-// 				break;
-// 			case 2:
-// 				skillElement = new PIXI.Sprite(resources.element_water.texture);
-// 				break;
-// 			case 3:
-// 				skillElement = new PIXI.Sprite(resources.element_fire.texture);
-// 				break;
-// 			case 4:
-// 				skillElement = new PIXI.Sprite(resources.element_earth.texture);
-// 				break;
-// 			case 5:
-// 				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
-// 				break;
-// 			case 6:
-// 				skillElement = new PIXI.Sprite(resources.element_wind.texture);
-// 				break;
-// 			case 7:
-// 				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-// 				break;
-// 			case 8:
-// 				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-// 				break;
-// 			case 9:
-// 				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
-// 				break;
-// 			default:
-// 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-// 				break;
-// 		}
-// 		skillElement.anchor.set(0, 0.5);
-// 		skillContainer.addChild(skillElement);
-// 		skillContainer.skillElement = skillElement;
-		
-// 		skillContainer.addChild(skillDisable);
-// 		skillContainer.disable = skillDisable;
-		
-// 		skillContainerArray.push(skillContainer);
-// 		interfaceHolder.addChild(skillContainer);
-// 	}
 
 	console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
 
