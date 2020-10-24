@@ -2805,6 +2805,109 @@ function onHPDown(){
 		skillContainer.addChild(skillName);
 		// skillContainer.skillName = skillName;
 
+		//Skill position and target markers
+		const markerContainer = new PIXI.Container();
+		var w = 12.728;	
+		const markerPositionArray = [];
+		const markerPositionContainer = new PIXI.Container();
+		const markerTargetArray = [];
+		const markerTargetContainer = new PIXI.Container();
+		const markerTargetTeamArray = [];
+		const markerTargetTeamContainer = new PIXI.Container();
+		
+		for (var j = 0; j < 3; j++){
+			for (var k = 0; k < 4; k++){
+				let defaultMarker = new PIXI.Graphics();
+				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				defaultMarker.x = 25 * k;
+				defaultMarker.pivot.set(0.5);
+				defaultMarker.angle = 45;
+
+				let posMarker = new PIXI.Graphics();
+				let posMarker2 = new PIXI.Graphics();
+				if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				else if(j == 1){
+					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+					posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				}	
+
+				posMarker.x = 25 * k;
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+				posMarker2.x = 25 * k;
+				posMarker2.pivot.set(0.5);
+				posMarker2.angle = 45;
+
+				if(j == 0){
+					markerPositionArray.push(posMarker);
+					markerPositionContainer.addChild(defaultMarker);
+					markerPositionContainer.addChild(posMarker);
+				}else if(j == 1){
+					markerTargetArray.push(posMarker);
+					markerTargetContainer.addChild(defaultMarker);
+					markerTargetContainer.addChild(posMarker);
+
+					markerTargetTeamArray.push(posMarker2);
+					markerTargetTeamContainer.addChild(posMarker2);
+				}
+			}
+		}
+		
+		//Filler targets for proper resize and spacing
+		const markerSpacerContainer = new PIXI.Container();
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			markerSpacerContainer.addChild(posMarker);
+		}
+
+		//Target several markers
+		const markerTargetSeveralArray = [];
+		const markerTargetSeveralContainer = new PIXI.Container();		
+		for (var j = 0; j < 3; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
+			posMarker.x = 25 * j;
+			posMarker.visible = false;
+			markerTargetSeveralArray.push(posMarker);
+			markerTargetSeveralContainer.addChild(posMarker);
+		}
+
+		markerTargetContainer.x = 123;
+		markerTargetTeamContainer.x = 123;
+		markerSpacerContainer.x = 123;
+
+		markerTargetSeveralContainer.x = 135;		
+
+		markerContainer.addChild(markerSpacerContainer);
+		markerContainer.addChild(markerPositionContainer);
+		markerContainer.addChild(markerTargetContainer);
+		markerContainer.addChild(markerTargetTeamContainer);
+		markerContainer.addChild(markerTargetSeveralContainer);		
+
+		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
+		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
+		skillContainer.markerTargetSeveralContainer.visible = false;
+		
+		skillContainer.addChild(markerContainer);
+		skillContainer.markerContainer = markerContainer;		
+		skillContainer.markerPositionArray = markerPositionArray;
+		skillContainer.markerPositionContainer = markerPositionContainer;		
+		skillContainer.markerTargetArray = markerTargetArray;
+		skillContainer.markerTargetContainer = markerTargetContainer;
+		skillContainer.markerTargetTeamArray = markerTargetTeamArray;
+		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
+		skillContainer.markerTargetTeamContainer.visible = false;
+		
+		let targetText = new Text("1►", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
+		targetText.anchor.set(0, 0.5);
+		skillContainer.addChild(targetText);
+		skillContainer.targetText = targetText;
+		skillContainer.targetText.visible = false;
+
 		var skillElement;
 		switch(skillsList.data.skills[skill].element){
 			case 1:
