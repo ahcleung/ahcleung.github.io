@@ -2861,9 +2861,9 @@ function onHPDown(){
 		}else if(skillTargeting == 3){
 			var columnText = "";
 			if(skillsList.data.skills[skill]["column"][2] > 0){
-				columnText = skillsList.data.skills[skill]["column"][0] + " ►";
+				columnText = "+ " + skillsList.data.skills[skill]["column"][0];
 			}else{
-				columnText = "◄ " + skillsList.data.skills[skill]["column"][0];
+				columnText = "- " + skillsList.data.skills[skill]["column"][0];
 			}
 			let targetText;
 			if(skillsList.data.skills[skill]["column"][3] > 0){					
