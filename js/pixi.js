@@ -2839,6 +2839,8 @@ function onHPDown(){
 		if(skillTargeting == 1){
 			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
 			targetText.anchor.set(0, 0.5);
+			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 0.569);
+			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
 		}else if(skillTargeting == 2){
