@@ -2839,7 +2839,7 @@ function onHPDown(){
 			if(tagName == "column")		skillTargeting = 3
 			if(tagName == "several"){	
 				for (var j = 0; j < 3; j++){
-					if(skillsList.data.skills[skill].several[i] == 1){
+					if(skillsList.data.skills[skill].several[j] == 1){
 						let posMarker = new PIXI.Graphics();				
 						posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 						posMarker.x = 25 * j;
