@@ -2828,6 +2828,47 @@ function onHPDown(){
 			markerPositionArray.push(posMarker);
 			markerPositionContainer.addChild(posMarker);
 		}
+
+		var skillTargeting = 0;
+		skillsList.data.skills[skill].tags.forEach(tagName =>{
+			if(tagName == "self")		skillTargeting = 1
+			if(tagName == "team")		skillTargeting = 2
+			if(tagName == "column")		skillTargeting = 3
+		});
+
+		if(skillTargeting == 1){
+
+		}else if(skillTargeting == 2){
+			for(var i = 0; i < 4; i++){
+				let posMarker = new PIXI.Graphics();
+				if(skillsList.data.skills[skill].target[i] == 1){
+					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				}else{
+					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				}
+				posMarker.x = 25 * i;
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+				markerTargetArray.push(posMarker);
+				markerTargetContainer.addChild(posMarker);
+			}
+		}else if(skillTargeting == 3){
+
+		}else{
+			for(var i = 0; i < 4; i++){
+				let posMarker = new PIXI.Graphics();
+				if(skillsList.data.skills[skill].target[i] == 1){
+					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+				}else{
+					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				}
+				posMarker.x = 25 * i;
+				posMarker.pivot.set(0.5);
+				posMarker.angle = 45;
+				markerTargetArray.push(posMarker);
+				markerTargetContainer.addChild(posMarker);
+			}
+		}
 		// for (var j = 0; j < 3; j++){
 		// 	for (var k = 0; k < 4; k++){
 		// 		let defaultMarker = new PIXI.Graphics();
