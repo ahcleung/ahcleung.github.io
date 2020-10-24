@@ -2837,7 +2837,10 @@ function onHPDown(){
 		});
 
 		if(skillTargeting == 1){
-
+			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
+			targetText.anchor.set(0, 0.5);
+			skillContainer.addChild(targetText);
+			skillContainer.targetText = targetText;
 		}else if(skillTargeting == 2){
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
@@ -2853,7 +2856,24 @@ function onHPDown(){
 				markerTargetContainer.addChild(posMarker);
 			}
 		}else if(skillTargeting == 3){
-
+			var columnText = "";
+			if(skillsList.data.skills[skill]["column"][2] > 0){
+				columnText = skillsList.data.skills[skill]["column"][0] + " ►";
+			}else{
+				columnText = "◄ " + skillsList.data.skills[skill]["column"][0];
+			}
+			
+			if(skillsList.data.skills[skill]["column"][3] > 0){					
+				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
+				let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
+			}else{
+				// skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
+				let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
+			}
+			// let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFF6961});
+			targetText.anchor.set(0, 0.5);
+			skillContainer.addChild(targetText);
+			skillContainer.targetText = targetText;
 		}else{
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
