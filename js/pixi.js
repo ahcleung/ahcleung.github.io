@@ -2815,43 +2815,56 @@ function onHPDown(){
 		const markerTargetTeamArray = [];
 		const markerTargetTeamContainer = new PIXI.Container();
 		
-		for (var j = 0; j < 3; j++){
-			for (var k = 0; k < 4; k++){
-				let defaultMarker = new PIXI.Graphics();
-				defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				defaultMarker.x = 25 * k;
-				defaultMarker.pivot.set(0.5);
-				defaultMarker.angle = 45;
-
-				let posMarker = new PIXI.Graphics();
-				let posMarker2 = new PIXI.Graphics();
-				if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-				else if(j == 1){
-					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-					posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
-				}	
-
-				posMarker.x = 25 * k;
-				posMarker.pivot.set(0.5);
-				posMarker.angle = 45;
-				posMarker2.x = 25 * k;
-				posMarker2.pivot.set(0.5);
-				posMarker2.angle = 45;
-
-				if(j == 0){
-					markerPositionArray.push(posMarker);
-					markerPositionContainer.addChild(defaultMarker);
-					markerPositionContainer.addChild(posMarker);
-				}else if(j == 1){
-					markerTargetArray.push(posMarker);
-					markerTargetContainer.addChild(defaultMarker);
-					markerTargetContainer.addChild(posMarker);
-
-					markerTargetTeamArray.push(posMarker2);
-					markerTargetTeamContainer.addChild(posMarker2);
-				}
+		for(var i = 0; i < 4; i++){
+			let posMarker = new PIXI.Graphics();
+			if(skillsList.data.skills[skill].position[i] == 1){
+				posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+			}else{
+				posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
 			}
+			posMarker.x = 25 * i;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			markerPositionArray.push(posMarker);
+			markerPositionContainer.addChild(posMarker);
 		}
+		// for (var j = 0; j < 3; j++){
+		// 	for (var k = 0; k < 4; k++){
+		// 		let defaultMarker = new PIXI.Graphics();
+		// 		defaultMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+		// 		defaultMarker.x = 25 * k;
+		// 		defaultMarker.pivot.set(0.5);
+		// 		defaultMarker.angle = 45;
+
+		// 		let posMarker = new PIXI.Graphics();
+		// 		let posMarker2 = new PIXI.Graphics();
+		// 		if(j == 0)			posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+		// 		else if(j == 1){
+		// 			posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+		// 			posMarker2.beginFill(0x66cc66).drawRect(0, -w, w, w);
+		// 		}	
+
+		// 		posMarker.x = 25 * k;
+		// 		posMarker.pivot.set(0.5);
+		// 		posMarker.angle = 45;
+		// 		posMarker2.x = 25 * k;
+		// 		posMarker2.pivot.set(0.5);
+		// 		posMarker2.angle = 45;
+
+		// 		if(j == 0){
+		// 			markerPositionArray.push(posMarker);
+		// 			markerPositionContainer.addChild(defaultMarker);
+		// 			markerPositionContainer.addChild(posMarker);
+		// 		}else if(j == 1){
+		// 			markerTargetArray.push(posMarker);
+		// 			markerTargetContainer.addChild(defaultMarker);
+		// 			markerTargetContainer.addChild(posMarker);
+
+		// 			markerTargetTeamArray.push(posMarker2);
+		// 			markerTargetTeamContainer.addChild(posMarker2);
+		// 		}
+		// 	}
+		// }
 		
 		//Filler targets for proper resize and spacing
 		const markerSpacerContainer = new PIXI.Container();
