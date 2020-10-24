@@ -2828,6 +2828,7 @@ function onHPDown(){
 			markerPositionArray.push(posMarker);
 			markerPositionContainer.addChild(posMarker);
 		}
+		markerContainer.addChild(markerPositionContainer)
 
 		var skillTargeting = 0;
 		skillsList.data.skills[skill].tags.forEach(tagName =>{
@@ -2839,7 +2840,7 @@ function onHPDown(){
 		if(skillTargeting == 1){
 			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: 28, fill : 0x66cc66});
 			targetText.anchor.set(0, 0.5);
-			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 0.569);
+			targetText.x =  (infoSkillWidth/6) + (markerContainer.width * 1.569);
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
@@ -2932,15 +2933,15 @@ function onHPDown(){
 		// }
 		
 		//Filler targets for proper resize and spacing
-		const markerSpacerContainer = new PIXI.Container();
-		for (var j = 0; j < 4; j++){
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-			posMarker.x = 25 * j;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			markerSpacerContainer.addChild(posMarker);
-		}
+		// const markerSpacerContainer = new PIXI.Container();
+		// for (var j = 0; j < 4; j++){
+		// 	let posMarker = new PIXI.Graphics();				
+		// 	posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+		// 	posMarker.x = 25 * j;
+		// 	posMarker.pivot.set(0.5);
+		// 	posMarker.angle = 45;
+		// 	markerSpacerContainer.addChild(posMarker);
+		// }
 
 		//Target several markers
 		const markerTargetSeveralArray = [];
@@ -2956,18 +2957,16 @@ function onHPDown(){
 
 		markerTargetContainer.x = 123;
 		markerTargetTeamContainer.x = 123;
-		markerSpacerContainer.x = 123;
+		// markerSpacerContainer.x = 123;
 
 		markerTargetSeveralContainer.x = 135;		
 
-		markerContainer.addChild(markerSpacerContainer);
-		markerContainer.addChild(markerPositionContainer);
+		// markerContainer.addChild(markerSpacerContainer);
+		// markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerTargetTeamContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);		
 
-		// skillName.x = infoSkillWidth/6;
-		// skillName.y = infoSkillHeight/3;
 		markerContainer.x = infoSkillWidth/6;
 		markerContainer.y = infoSkillHeight*3/4;
 
