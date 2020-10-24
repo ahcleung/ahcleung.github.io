@@ -6,6 +6,7 @@
 			"type": "phy",
 			"power": 20,
 			"accuracy": 100,
+			"description": "##### Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -32,6 +33,7 @@
 			"type": "phy",
 			"power": 20,
 			"accuracy": 100,
+			"description": "Spike trap Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -50,6 +52,7 @@
 			"type": "oth",
 			"power": 0,
 			"accuracy": 110,
+			"description": "Heal wave Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -68,6 +71,7 @@
 			"type": "spe",
 			"power": 60,
 			"accuracy": 90,
+			"description": "Lightning strike Skill description here",
 			"position": [
 				1,1,1,0
 			],
@@ -85,6 +89,7 @@
 			"type": "spe",
 			"power": 20,
 			"accuracy": 100,
+			"description": "Torch ground Skill description here",
 			"position": [
 				0,1,1,1
 			],
@@ -104,6 +109,7 @@
 			"type": "phy",
 			"power": 20,
 			"accuracy": 90,
+			"description": "Tectonic shift Skill description here",
 			"position": [
 				0,1,1,0
 			],
@@ -121,6 +127,7 @@
 			"type": "spe",
 			"power": 40,
 			"accuracy": 80,
+			"description": "Water geyser Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -138,6 +145,7 @@
 			"type": "spe",
 			"power": 30,
 			"accuracy": 80,
+			"description": "Aeropush Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -155,6 +163,7 @@
 			"type": "oth",
 			"power": 0,
 			"accuracy": 100,
+			"description": "Uproot Skill description here",
 			"position": [
 				1,1,0,0
 			],
@@ -172,6 +181,7 @@
 			"type": "spe",
 			"power": 60,
 			"accuracy": 100,
+			"description": "Airburst Skill description here",
 			"position": [
 				0,1,1,0
 			],
@@ -186,6 +196,7 @@
 			"type": "spe",
 			"power": 40,
 			"accuracy": 80,
+			"description": "Wind rush Skill description here",
 			"position": [
 				0,0,1,1
 			],
@@ -204,6 +215,7 @@
 			"type": "phy",
 			"power": 15,
 			"accuracy": 80,
+			"description": "Volt punch Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -224,6 +236,7 @@
 			"type": "phy",
 			"power": 60,
 			"accuracy": 80,
+			"description": "Soul wreck Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -241,6 +254,7 @@
 			"type": "phy",
 			"power": 60,
 			"accuracy": 70,
+			"description": "Void slash Skill description here",
 			"position": [
 				0,0,1,1
 			],
@@ -258,6 +272,7 @@
 			"type": "oth",
 			"power": 0,
 			"accuracy": 100,
+			"description": "Blight Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -276,6 +291,7 @@
 			"type": "phy",
 			"power": 50,
 			"accuracy": 80,
+			"description": "Flare kick Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -290,6 +306,7 @@
 			"type": "spe",
 			"power": 30,
 			"accuracy": 95,
+			"description": "Mind melt Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -308,6 +325,7 @@
 			"type": "spe",
 			"power": 20,
 			"accuracy": 80,
+			"description": "Spirit barrage Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -325,6 +343,7 @@
 			"type": "oth",
 			"power": 0,
 			"accuracy": 100,
+			"description": "Toxic spore Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -343,6 +362,7 @@
 			"type": "phy",
 			"power": 60,
 			"accuracy": 80,
+			"description": "Poison slash Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -357,6 +377,7 @@
 			"type": "spe",
 			"power": 20,
 			"accuracy": 80,
+			"description": "Horrify Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -375,6 +396,7 @@
 			"type": "spe",
 			"power": 75,
 			"accuracy": 80,
+			"description": "Acidic spit Skill description here",
 			"position": [
 				1,1,1,1
 			],
@@ -389,6 +411,7 @@
 			"type": "oth",
 			"power": 0,
 			"accuracy": 110,
+			"description": "Implant Skill description here",
 			"position": [
 				1,1,1,1
 			],
