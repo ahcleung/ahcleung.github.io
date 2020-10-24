@@ -879,7 +879,11 @@ function setup(){
 
 	const creatureInfoMain = new PIXI.Container();
 	const creatureInfoStatus = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoStatus);
+	creatureInfo.status = creatureInfoStatus;
 	const creatureInfoSkill = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoSkill);
+	creatureInfo.skill = creatureInfoSkill;
 	const creatureInfoItems = new PIXI.Container();
 
 	blurFilterInfo.blur = 0;
@@ -2483,8 +2487,7 @@ function onHPDown(){
 
 	var creatureStatusInfoArray = [];
 	// const creatureInfoStatus = new PIXI.Container();
-	creatureInfo.addChild(creatureInfoStatus);
-	creatureInfo.status = creatureInfoStatus;
+	
 	creatureInfo.status.visible = false;
 	creatureInfo.status.x = textOriginX;
 	creatureInfo.status.y = textOriginY;
@@ -2749,7 +2752,7 @@ function onHPDown(){
 			statusYAdjust = textLevel-detailLevel;
 			statusXAdjust = 1;
 		}
-		creatureInfoStatus.addChild(statusContainer);
+		creatureInfo.status.addChild(statusContainer);
 		// statusContainer.x = statusXAdjust*statusLevel2X;
 		statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.x = statusXAdjust*(app.screen.width/4);
@@ -2757,8 +2760,7 @@ function onHPDown(){
 	});
 
 	// var creatureInfoSkill = new PIXI.Container();
-	creatureInfo.addChild(creatureInfoSkill);
-	creatureInfo.skill = creatureInfoSkill;
+	
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
@@ -3011,7 +3013,7 @@ function onHPDown(){
 		skillElement.y = infoSkillHeight/2;
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
-		creatureInfoSkill.addChild(skillContainer);
+		creatureInfo.skill.addChild(skillContainer);
 
 		if(skillIndex%2 == 0){
 			skillContainer.x = 0;
