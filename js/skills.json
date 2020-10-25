@@ -322,7 +322,7 @@
 		{
 			"name": "Spirit barrage",
 			"element": 8,
-			"type": "spe",
+			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
 			"description": "Spirit barrage Skill description here",
