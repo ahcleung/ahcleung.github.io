@@ -4098,7 +4098,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
 			
-			if(skillsList.data.skills[selectedSkill].type == "oth" && !skillHeal){
+			if(skillsList.data.skills[selectedSkill].type == "Other" && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
