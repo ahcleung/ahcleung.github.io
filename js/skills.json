@@ -325,7 +325,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
-			"description": "Spirit barrage Skill description here",
+			"description": "Spirit barrage Skill\ndescription here",
 			"position": [
 				1,1,1,1
 			],
