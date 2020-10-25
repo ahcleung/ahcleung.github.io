@@ -978,6 +978,12 @@ function setup(){
 	var info_skill_acc2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_skill_text.push(info_skill_acc2);
 	creatureInfoSkill.addChild(info_skill_acc2);
+	var info_skill_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+	info_skill_text.push(info_skill_type1);
+	creatureInfoSkill.addChild(info_skill_type1);
+	var info_skill_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_skill_text.push(info_skill_type2);
+	creatureInfoSkill.addChild(info_skill_type2);
 
 
 	creatureInfo.info_skill_text = info_skill_text;
@@ -2790,6 +2796,7 @@ function onHPDown(){
 
 	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
 	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
+	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 
 	var skillText = [];
 	var infoSkillArray = [];
@@ -3805,9 +3812,9 @@ function calculateDamage(attacker, defender, hitArray){
 	var skillOther = false;
 	var skillStatus = false;
 
-	if(skillsList.data.skills[selectedSkill].type == "phy"){
+	if(skillsList.data.skills[selectedSkill].type == "Physical"){
 		attack = attacker.patk;
-	}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+	}else if(skillsList.data.skills[selectedSkill].type == "Special"){
 		attack = attacker.satk;
 	}else{
 		skillOther = true;
@@ -3959,9 +3966,9 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 			});
 
-			if(skillsList.data.skills[selectedSkill].type == "phy"){
+			if(skillsList.data.skills[selectedSkill].type == "Physical"){
 				defense = targeted.pdef;
-			}else if(skillsList.data.skills[selectedSkill].type == "spe"){
+			}else if(skillsList.data.skills[selectedSkill].type == "Special"){
 				defense = targeted.sdef;
 			}
 			targeted.elements.forEach(element =>{
