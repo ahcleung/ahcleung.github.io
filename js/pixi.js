@@ -2782,7 +2782,8 @@ function onHPDown(){
 			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10.3 * infoMainMargin[1] + infoSkillY;
 		}else{
-			text.x = infoMainMargin[0];
+			// text.x = infoMainMargin[0];
+			text.x = creatureInfo.info_skill_text[textIndex-1].width + 10;
 			text.y = (textIndex-1) * infoMainMargin[1] + infoSkillY;
 		}
 	});
