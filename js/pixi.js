@@ -2827,6 +2827,7 @@ function onHPDown(){
 		const skillSelect = new PIXI.Container();
 		
 		// make the button interactive...
+		skillContainer.skillID = skill;
 		skillContainer.buttonMode = true;
 		skillContainer.interactive = true;
 		skillContainer
@@ -3074,6 +3075,11 @@ function onInfoSkillDown(){
 		skillContainer.selected.visible = false;
 	});
 	this.selected.visible = true;
+
+	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
+	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
+	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.skillID].type;
+	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.skillID].description;
 }
 
 function onSkillDown(){
