@@ -30,7 +30,7 @@
 		{
 			"name": "Spike trap",
 			"element": 4,
-			"type": "phy",
+			"type": "Physical",
 			"power": 20,
 			"accuracy": 100,
 			"description": "Spike trap Skill description here",
@@ -49,7 +49,7 @@
 		{
 			"name": "Heal wave",
 			"element": 2,
-			"type": "oth",
+			"type": "Other",
 			"power": 0,
 			"accuracy": 110,
 			"description": "Heal wave Skill description here",
@@ -68,7 +68,7 @@
 		{
 			"name": "Lightning strike",
 			"element": 5,
-			"type": "spe",
+			"type": "Special",
 			"power": 60,
 			"accuracy": 90,
 			"description": "Lightning strike Skill description here",
@@ -86,7 +86,7 @@
 		{
 			"name": "Torch ground",
 			"element": 3,
-			"type": "spe",
+			"type": "Special",
 			"power": 20,
 			"accuracy": 100,
 			"description": "Torch ground Skill description here",
@@ -106,7 +106,7 @@
 		{
 			"name": "Tectonic shift",
 			"element": 4,
-			"type": "phy",
+			"type": "Physical",
 			"power": 20,
 			"accuracy": 90,
 			"description": "Tectonic shift Skill description here",
@@ -124,7 +124,7 @@
 		{
 			"name": "Water geyser",
 			"element": 5,
-			"type": "spe",
+			"type": "Special",
 			"power": 40,
 			"accuracy": 80,
 			"description": "Water geyser Skill description here",
@@ -142,7 +142,7 @@
 		{
 			"name": "Aeropush",
 			"element": 6,
-			"type": "spe",
+			"type": "Special",
 			"power": 30,
 			"accuracy": 80,
 			"description": "Aeropush Skill description here",
@@ -160,7 +160,7 @@
 		{
 			"name": "Uproot",
 			"element": 1,
-			"type": "oth",
+			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
 			"description": "Uproot Skill description here",
@@ -178,7 +178,7 @@
 		{
 			"name": "Airburst",
 			"element": 6,
-			"type": "spe",
+			"type": "Special",
 			"power": 60,
 			"accuracy": 100,
 			"description": "Airburst Skill description here",
@@ -193,7 +193,7 @@
 		{
 			"name": "Wind rush",
 			"element": 6,
-			"type": "spe",
+			"type": "Special",
 			"power": 40,
 			"accuracy": 80,
 			"description": "Wind rush Skill description here",
@@ -212,7 +212,7 @@
 		{
 			"name": "Volt punch",
 			"element": 5,
-			"type": "phy",
+			"type": "Physical",
 			"power": 15,
 			"accuracy": 80,
 			"description": "Volt punch Skill description here",
@@ -233,7 +233,7 @@
 		{
 			"name": "Soul wreck",
 			"element": 8,
-			"type": "phy",
+			"type": "Physical",
 			"power": 60,
 			"accuracy": 80,
 			"description": "Soul wreck Skill description here",
@@ -251,7 +251,7 @@
 		{
 			"name": "Void slash",
 			"element": 9,
-			"type": "phy",
+			"type": "Physical",
 			"power": 60,
 			"accuracy": 70,
 			"description": "Void slash Skill description here",
@@ -269,7 +269,7 @@
 		{
 			"name": "Blight",
 			"element": 7,
-			"type": "oth",
+			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
 			"description": "Blight Skill description here",
@@ -288,7 +288,7 @@
 		{
 			"name": "Flare kick",
 			"element": 3,
-			"type": "phy",
+			"type": "Physical",
 			"power": 50,
 			"accuracy": 80,
 			"description": "Flare kick Skill description here",
@@ -303,7 +303,7 @@
 		{
 			"name": "Mind melt",
 			"element": 8,
-			"type": "spe",
+			"type": "Special",
 			"power": 30,
 			"accuracy": 95,
 			"description": "Mind melt Skill description here",
@@ -340,7 +340,7 @@
 		{
 			"name": "Toxic spore",
 			"element": 7,
-			"type": "oth",
+			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
 			"description": "Toxic spore Skill description here",
@@ -359,7 +359,7 @@
 		{
 			"name": "Poison slash",
 			"element": 7,
-			"type": "phy",
+			"type": "Physical",
 			"power": 60,
 			"accuracy": 80,
 			"description": "Poison slash Skill description here",
@@ -374,7 +374,7 @@
 		{
 			"name": "Horrify",
 			"element": 9,
-			"type": "spe",
+			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
 			"description": "Horrify Skill description here",
@@ -393,7 +393,7 @@
 		{
 			"name": "Acidic spit",
 			"element": 7,
-			"type": "spe",
+			"type": "Special",
 			"power": 75,
 			"accuracy": 80,
 			"description": "Acidic spit Skill description here",
@@ -408,7 +408,7 @@
 		{
 			"name": "Implant",
 			"element": 1,
-			"type": "oth",
+			"type": "Other",
 			"power": 0,
 			"accuracy": 110,
 			"description": "Implant Skill description here",
