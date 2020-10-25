@@ -3053,7 +3053,8 @@ function onHPDown(){
 
 		infoSkillArray.push(skillContainer);
 	});
-
+	
+	creatureInfo.infoSkillArray[0].selected.visible = true;
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
