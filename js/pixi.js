@@ -2777,20 +2777,21 @@ function onHPDown(){
 	creatureInfo.skill.y = textOriginY;
 
 	var infoSkillY = 250;
+	var infoSkillMargin = [10,250];
 
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoMainMargin[1]-20 + infoSkillY;
+			text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
 		}else if(textIndex == 7){
-			text.y = 10.3 * infoMainMargin[1] + infoSkillY;
+			text.y = 10.3 * infoSkillMargin[0] + infoSkillMargin[1];
 		}else if(textIndex == 8){
 			text.x = creatureInfo.info_main_text[7].width + 10;
-			text.y = 10.3 * infoMainMargin[1] + infoSkillY;
+			text.y = 10.3 * infoSkillMargin[0] + infoSkillMargin[1];
 		}else{
 			// text.x = infoMainMargin[0];
 			text.x = creatureInfo.info_skill_text[textIndex-1].width + 10;
-			text.y = (textIndex-1) * infoMainMargin[1]-20 + infoSkillY;
+			text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 		}
 	});
 
