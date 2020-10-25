@@ -89,7 +89,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 100,
-			"description": "Ignite the floor damaging any creature standing\non it.",
+			"description": "Ignite the floor damaging any creature\nstanding on it.",
 			"position": [
 				0,1,1,1
 			],
@@ -109,7 +109,7 @@
 			"type": "Physical",
 			"power": 20,
 			"accuracy": 90,
-			"description": "Move the ground and shift the target forward 1\nposition.",
+			"description": "Move the ground and shift the target forward\n1 position.",
 			"position": [
 				0,1,1,0
 			],
@@ -196,7 +196,7 @@
 			"type": "Special",
 			"power": 40,
 			"accuracy": 80,
-			"description": "Move with the wind and buff the user's speed by\n1 for 5 turns.",
+			"description": "Move with the wind and buff the user's speed\nby 1 for 5 turns.",
 			"position": [
 				0,0,1,1
 			],
@@ -272,7 +272,7 @@
 			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
-			"description": "Unleash blight on a target, poisoning them for\n5 turns.",
+			"description": "Unleash blight on a target, poisoning them\nfor 5 turns.",
 			"position": [
 				1,1,1,1
 			],
