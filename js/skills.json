@@ -231,12 +231,12 @@
 			"status": 8
 		},
 		{
-			"name": "Soul wreck",
+			"name": "Soul wrench",
 			"element": 8,
 			"type": "Physical",
 			"power": 60,
 			"accuracy": 80,
-			"description": "Hit 2 targets with soul damaging attacks.",
+			"description": "Hit 2 targets with soul wrenching attacks.",
 			"position": [
 				1,1,1,1
 			],
@@ -254,7 +254,7 @@
 			"type": "Physical",
 			"power": 60,
 			"accuracy": 70,
-			"description": "Appear from the void and attack 2 targets.",
+			"description": "Appear from the void and slash at 2 targets.",
 			"position": [
 				0,0,1,1
 			],
