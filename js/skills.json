@@ -33,7 +33,7 @@
 			"type": "Physical",
 			"power": 20,
 			"accuracy": 100,
-			"description": "Lay spikes on the floor damaging any creature\nstanding on it.",
+			"description": "Lay spikes on the floor damaging any creature standing on it.",
 			"position": [
 				1,1,1,1
 			],
@@ -52,7 +52,7 @@
 			"type": "Other",
 			"power": 0,
 			"accuracy": 110,
-			"description": "Send out a wave of healing water behind the\nuser.",
+			"description": "Send out a wave of healing water behind the user.",
 			"position": [
 				1,1,1,1
 			],
@@ -71,7 +71,7 @@
 			"type": "Special",
 			"power": 60,
 			"accuracy": 90,
-			"description": "Call lightning to strike a single position,\nadjacent positions are damaged as well.",
+			"description": "Call lightning to strike a single position, adjacent positions are damaged as well.",
 			"position": [
 				1,1,1,0
 			],
@@ -89,7 +89,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 100,
-			"description": "Ignite the floor damaging any creature\nstanding on it.",
+			"description": "Ignite the floor damaging any creature standing on it.",
 			"position": [
 				0,1,1,1
 			],
@@ -109,7 +109,7 @@
 			"type": "Physical",
 			"power": 20,
 			"accuracy": 90,
-			"description": "Move the ground and shift the target forward\n1 position.",
+			"description": "Move the ground and shift the target forward 1 position.",
 			"position": [
 				0,1,1,0
 			],
@@ -196,7 +196,7 @@
 			"type": "Special",
 			"power": 40,
 			"accuracy": 80,
-			"description": "Move with the wind and buff the user's speed\nby 1 for 5 turns.",
+			"description": "Move with the wind and buff the user's speed by 1 for 5 turns.",
 			"position": [
 				0,0,1,1
 			],
@@ -215,7 +215,7 @@
 			"type": "Physical",
 			"power": 15,
 			"accuracy": 80,
-			"description": "Smash the target twice with electrified hits.\nDebuff the target's speed by 1 for 5 turns.",
+			"description": "Smash the target twice with electrified hits. Debuff the target's speed by 1 for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
@@ -272,7 +272,7 @@
 			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
-			"description": "Unleash blight on a target, poisoning them\nfor 5 turns.",
+			"description": "Unleash blight on a target, poisoning them for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
@@ -306,7 +306,7 @@
 			"type": "Special",
 			"power": 30,
 			"accuracy": 95,
-			"description": "Attack the target's mind, stunning them for\n5 turns.",
+			"description": "Attack the target's mind, stunning them for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
@@ -325,7 +325,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
-			"description": "Summon spirits to attack the\ntarget. Hits 2-5 times.",
+			"description": "Summon spirits to attack the target. Hits 2-5 times.",
 			"position": [
 				1,1,1,1
 			],
@@ -343,7 +343,7 @@
 			"type": "Other",
 			"power": 0,
 			"accuracy": 100,
-			"description": "Toxic spores are released on the target's\nposition, damaging any creature standing on it.",
+			"description": "Toxic spores are released on the target's position, damaging any creature standing on it.",
 			"position": [
 				1,1,1,1
 			],
@@ -377,7 +377,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
-			"description": "Scare the target, paralyzing them for 5\nturns.",
+			"description": "Scare the target, paralyzing them for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
@@ -396,7 +396,7 @@
 			"type": "Special",
 			"power": 75,
 			"accuracy": 80,
-			"description": "Acidify your spit and launch it at the\ntarget.",
+			"description": "Acidify your spit and launch it at the target.",
 			"position": [
 				1,1,1,1
 			],
@@ -411,7 +411,7 @@
 			"type": "Other",
 			"power": 0,
 			"accuracy": 110,
-			"description": "Lay roots into the ground, becoming secured\nfor 5 turns.",
+			"description": "Lay roots into the ground, becoming secured for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
