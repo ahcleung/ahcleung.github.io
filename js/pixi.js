@@ -2481,7 +2481,6 @@ function onHPDown(){
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_shadow.texture;
 		}
 	});
-
 	
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
@@ -2788,14 +2787,7 @@ function onHPDown(){
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
 			text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
-		}
-		// else if(textIndex == 7){
-		// 	text.y = 10.3 * infoSkillMargin[0] + infoSkillMargin[1];
-		// }else if(textIndex == 8){
-		// 	text.x = creatureInfo.info_main_text[7].width + 10;
-		// 	text.y = 10.3 * infoSkillMargin[0] + infoSkillMargin[1];
-		// }
-		else{
+		}else{
 			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
 			text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 		}
@@ -2862,6 +2854,7 @@ function onHPDown(){
 		// skillContainer.skillName = skillName;
 
 		//Skill position and target markers
+
 		const markerContainer = new PIXI.Container();
 		var w = 12.728;	
 		const markerPositionArray = [];
@@ -2983,6 +2976,9 @@ function onHPDown(){
 		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerTargetTeamContainer);
 		markerContainer.addChild(markerTargetSeveralContainer);		
+
+		markerContainer.width = (infoSkillWidth/3)*2;
+		smarkerContainer.height = markerContainer.width/12;
 
 		markerContainer.x = infoSkillWidth/6;
 		markerContainer.y = infoSkillHeight*3/4;
