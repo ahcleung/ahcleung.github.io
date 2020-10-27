@@ -2978,7 +2978,7 @@ function onHPDown(){
 		markerContainer.addChild(markerTargetSeveralContainer);		
 
 		markerContainer.width = (infoSkillWidth/3)*2;
-		smarkerContainer.height = markerContainer.width/12;
+		markerContainer.height = markerContainer.width/12;
 
 		markerContainer.x = infoSkillWidth/6;
 		markerContainer.y = infoSkillHeight*3/4;
