@@ -987,7 +987,7 @@ function setup(){
 	var info_skill_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_skill_text.push(info_skill_des1);
 	creatureInfoSkill.addChild(info_skill_des1);
-	var info_skill_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:50});
+	var info_skill_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:200});
 	info_skill_text.push(info_skill_des2);
 	creatureInfoSkill.addChild(info_skill_des2);
 
