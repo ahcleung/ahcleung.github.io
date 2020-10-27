@@ -2345,6 +2345,7 @@ function onHPDown(){
 	var expDimensions = [500,50];
 	var elementIconSize = 0.5;
 	var infoSelectPadding = 5;
+	var infoSkillMargin = [30,225,20];
 
 	if(app.screen.width < 860){
 		infoSpriteScale = 0.3;
@@ -2358,6 +2359,7 @@ function onHPDown(){
 		infoMainElement = [30,150,20];
 		expDimensions = [300,20];
 		elementIconSize = 0.2;
+		infoSkillMargin = [15,100,15];
 	}else if(app.screen.width < 1366){
 		infoSpriteScale = 0.4;
 		infoInnerMargin = 50;
@@ -2370,6 +2372,7 @@ function onHPDown(){
 		infoMainElement = [40,200,40];
 		expDimensions = [400,30];
 		elementIconSize = 0.4;
+		infoSkillMargin = [20,200,15];
 	}else{
 		infoSpriteScale = 0.6;
 		infoInnerMargin = 100;
@@ -2382,6 +2385,7 @@ function onHPDown(){
 		infoMainElement = [50,325,50];
 		expDimensions = [500,50];
 		elementIconSize = 0.5;
+		infoSkillMargin = [30,225,20];
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2781,17 +2785,15 @@ function onHPDown(){
 	creatureInfo.skill.y = textOriginY;
 
 	// var infoSkillY = 250;
-	var infoSkillMargin = [30,225,20];
+	
 
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoSpacer + app.screen.height/2 - textOriginY;
-			// text.y = textIndex * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
+			text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
 		}else{
 			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
-			// text.y = (textIndex-1) * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
-			text.y = (textIndex-1) * infoSpacer + app.screen.height/2 - textOriginY;
+			text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 		}
 	});
 
