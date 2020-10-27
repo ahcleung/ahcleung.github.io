@@ -2801,7 +2801,7 @@ function onHPDown(){
 	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
-	creatureInfo.info_skill_text[7].text.style.wordWrapWidth = infoSkillMargin[3];
+	creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
 
 	var skillText = [];
 	var infoSkillArray = [];
