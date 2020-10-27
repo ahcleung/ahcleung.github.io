@@ -2800,7 +2800,7 @@ function onHPDown(){
 
 	var skillText = [];
 	var infoSkillArray = [];
-	var infoSkillWidth = app.screen.width/5;
+	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
 	this.object.skills.forEach((skill,skillIndex) =>{
 		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
