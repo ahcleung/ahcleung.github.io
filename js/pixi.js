@@ -2359,7 +2359,7 @@ function onHPDown(){
 		infoMainElement = [30,150,20];
 		expDimensions = [300,20];
 		elementIconSize = 0.2;
-		infoSkillMargin = [15,100,15];
+		infoSkillMargin = [10,100,15];
 	}else if(app.screen.width < 1366){
 		infoSpriteScale = 0.4;
 		infoInnerMargin = 50;

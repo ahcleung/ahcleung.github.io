@@ -325,7 +325,7 @@
 			"type": "Special",
 			"power": 20,
 			"accuracy": 80,
-			"description": "Summon spirits to attack the target. Hits\n2-5 times.",
+			"description": "Summon spirits to attack the\ntarget. Hits 2-5 times.",
 			"position": [
 				1,1,1,1
 			],
