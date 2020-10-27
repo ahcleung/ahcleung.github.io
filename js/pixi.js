@@ -2786,10 +2786,12 @@ function onHPDown(){
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
+			text.y = textIndex * infoSpacer + app.screen.height/2 - textOriginY;
+			// text.y = textIndex * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
 		}else{
 			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
-			text.y = (textIndex-1) * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
+			// text.y = (textIndex-1) * infoSkillMargin[0] + app.screen.height/2 - textOriginY;
+			text.y = (textIndex-1) * infoSpacer + app.screen.height/2 - textOriginY;
 		}
 	});
 
