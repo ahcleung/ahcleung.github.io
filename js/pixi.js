@@ -2865,7 +2865,19 @@ function onHPDown(){
 			markerPositionArray.push(posMarker);
 			markerPositionContainer.addChild(posMarker);
 		}
-		markerContainer.addChild(markerPositionContainer)
+		markerContainer.addChild(markerPositionContainer);
+
+		//Filler targets for proper resize and spacing
+		const markerSpacerContainer = new PIXI.Container();
+		for (var j = 0; j < 4; j++){
+			let posMarker = new PIXI.Graphics();				
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
+			posMarker.x = 25 * j;
+			posMarker.pivot.set(0.5);
+			posMarker.angle = 45;
+			markerSpacerContainer.addChild(posMarker);
+		}
+		markerContainer.addChild(markerSpacerContainer);
 
 		var skillTargeting = 0;
 		skillsList.data.skills[skill].tags.forEach(tagName =>{
@@ -2939,17 +2951,6 @@ function onHPDown(){
 				markerTargetContainer.addChild(posMarker);
 			}
 		}
-		
-		//Filler targets for proper resize and spacing
-		const markerSpacerContainer = new PIXI.Container();
-		for (var j = 0; j < 4; j++){
-			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
-			posMarker.x = 25 * j;
-			posMarker.pivot.set(0.5);
-			posMarker.angle = 45;
-			markerSpacerContainer.addChild(posMarker);
-		}
 
 		markerTargetContainer.x = 123;
 		markerTargetTeamContainer.x = 123;
@@ -2957,7 +2958,6 @@ function onHPDown(){
 
 		markerTargetSeveralContainer.x = 135;		
 
-		markerContainer.addChild(markerSpacerContainer);
 		// markerContainer.addChild(markerPositionContainer);
 		markerContainer.addChild(markerTargetContainer);
 		markerContainer.addChild(markerTargetTeamContainer);
