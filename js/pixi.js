@@ -2784,25 +2784,6 @@ function onHPDown(){
 	creatureInfo.skill.x = textOriginX;
 	creatureInfo.skill.y = textOriginY;
 
-	// var infoSkillY = 250;
-	
-
-	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
-		text.style.fontSize = skillNameFontSize;
-		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
-		}else{
-			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
-			text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
-		}
-	});
-
-	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
-	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
-	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
-	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
-	creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
-
 	var skillText = [];
 	var infoSkillArray = [];
 	var infoSkillWidth = app.screen.width/4.5;
@@ -3056,6 +3037,24 @@ function onHPDown(){
 	});
 	
 	infoSkillArray[0].selected.visible = true;
+
+	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex%2 == 0 && textIndex<7){
+			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
+			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
+		}else{
+			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
+			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
+			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+		}
+	});
+
+	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
+	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
+	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
+	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
+	creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
