@@ -3055,7 +3055,7 @@ function onHPDown(){
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
 	// creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
-	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/2.5;
+	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3;
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
