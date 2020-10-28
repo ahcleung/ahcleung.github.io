@@ -2851,6 +2851,7 @@ function onHPDown(){
 		const markerTargetTeamContainer = new PIXI.Container();
 		const markerTargetSeveralArray = [];
 		const markerTargetSeveralContainer = new PIXI.Container();
+		skillContainer.addChild(markerContainer);
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
@@ -2972,7 +2973,7 @@ function onHPDown(){
 		skillContainer.markerTargetSeveralContainer = markerTargetSeveralContainer;
 		skillContainer.markerTargetSeveralArray = markerTargetSeveralArray;
 
-		skillContainer.addChild(markerContainer);
+		
 		skillContainer.markerContainer = markerContainer;		
 		skillContainer.markerPositionArray = markerPositionArray;
 		skillContainer.markerPositionContainer = markerPositionContainer;		
