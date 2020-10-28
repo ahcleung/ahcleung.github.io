@@ -3044,7 +3044,7 @@ function onHPDown(){
 			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
 			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
 		}else{
-			text.x = creatureInfo.info_skill_text[textIndex-1].width + infoSkillMargin[2];
+			text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
 			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 		}
@@ -3054,7 +3054,8 @@ function onHPDown(){
 	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
-	creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
+	// creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
+	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/2.5;
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
