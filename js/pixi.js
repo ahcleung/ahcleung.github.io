@@ -2416,7 +2416,7 @@ function onHPDown(){
 			text.x = creatureInfo.info_main_text[7].width + 10;
 			text.y = 10.3 * infoMainMargin;
 		}else{
-			text.x = app.screen.width/13;
+			text.x = app.screen.width/12;
 			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
