@@ -2399,6 +2399,7 @@ function onHPDown(){
 
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/5;
+	var infoMainMargin = app.screen.height/27;
 
 	creatureInfo.main.x = textOriginX;
 	creatureInfo.main.y = textOriginY;
@@ -2408,15 +2409,15 @@ function onHPDown(){
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.y = textIndex * infoMainMargin[1];
+			text.y = textIndex * infoMainMargin;
 		}else if(textIndex == 7){
-			text.y = 10.3 * infoMainMargin[1];
+			text.y = 10.3 * infoMainMargin;
 		}else if(textIndex == 8){
 			text.x = creatureInfo.info_main_text[7].width + 10;
-			text.y = 10.3 * infoMainMargin[1];
+			text.y = 10.3 * infoMainMargin;
 		}else{
-			text.x = infoMainMargin[0];
-			text.y = (textIndex-1) * infoMainMargin[1];
+			text.x = app.screen.width/13;
+			text.y = (textIndex-1) * infoMainMargin;
 		}
 	});
 
@@ -2425,9 +2426,9 @@ function onHPDown(){
 	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_element[0].x = infoMainElement[0] + infoMainElement[2];
-	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin[1];
+	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_element[1].x = infoMainElement[1] + infoMainElement[2];
-	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin[1];
+	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
@@ -2436,19 +2437,19 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].visible = false;
 
 	// creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[0].y = 11.7*infoMainMargin[1];
+	creatureInfo.info_main_expBar[0].y = 11.7*infoMainMargin;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expDimensions[0];
 	creatureInfo.info_main_expBar[1].width = expDimensions[0];
 	creatureInfo.info_main_expBar[0].height = expDimensions[1];
 	creatureInfo.info_main_expBar[1].height = expDimensions[1];
 	// creatureInfo.info_main_expBar[1].x = 100;
 
-	creatureInfo.info_main_expBar[1].y = 11.7*infoMainMargin[1];
+	creatureInfo.info_main_expBar[1].y = 11.7*infoMainMargin;
 
 	creatureInfo.info_main_elementIcon[0].x = infoMainElement[0];
-	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin[1];
+	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[1].x = infoMainElement[1];
-	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin[1];
+	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(elementIconSize);
 	creatureInfo.info_main_elementIcon[1].scale.set(elementIconSize);
 	creatureInfo.info_main_elementIcon[0].visible = false;
