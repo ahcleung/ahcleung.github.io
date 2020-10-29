@@ -2306,8 +2306,8 @@ function onInfoDown(){
 function onHPDown(){
 	blurFilterInfo.blur = 30;
 	creatureInfo.visible = true;
-	// creatureInfo.main.visible = true;
-	creatureInfo.main.visible = false;
+	creatureInfo.main.visible = true;
+	// creatureInfo.main.visible = false;
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = false;
 	});	
