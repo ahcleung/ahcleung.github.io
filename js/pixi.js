@@ -2308,6 +2308,7 @@ function onHPDown(){
 	creatureInfo.visible = true;
 	creatureInfo.main.visible = true;
 	// creatureInfo.main.visible = false;
+	creatureInfo.skill.visible = false;
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = false;
 	});	
