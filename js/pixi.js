@@ -2350,7 +2350,7 @@ function onHPDown(){
 
 	if(app.screen.width < 860){
 		infoSpriteScale = 0.3;
-		infoInnerMargin = 50;
+		// infoInnerMargin = 50;
 		infoSelectPadding = 2;
 		infoSpacer = 10;
 		infoBtnTextSize = 16;
@@ -2363,7 +2363,7 @@ function onHPDown(){
 		// infoSkillMargin = [12,100,15,200];
 	}else if(app.screen.width < 1366){
 		infoSpriteScale = 0.4;
-		infoInnerMargin = 50;
+		// infoInnerMargin = 50;
 		infoSelectPadding = 3;
 		infoSpacer = 10;
 		infoBtnTextSize = 26;
@@ -2376,7 +2376,7 @@ function onHPDown(){
 		// infoSkillMargin = [20,180,15,300];
 	}else{
 		infoSpriteScale = 0.6;
-		infoInnerMargin = 100;
+		// infoInnerMargin = 100;
 		infoSelectPadding = 5;
 		infoSpacer = 25;
 		infoBtnTextSize = 36;
@@ -2400,6 +2400,7 @@ function onHPDown(){
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/5;
 	var infoMainMargin = app.screen.height/27;
+	var infoInnerMargin = app.screen.width/19.2;
 
 	creatureInfo.main.x = textOriginX;
 	creatureInfo.main.y = textOriginY;
