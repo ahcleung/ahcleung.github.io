@@ -2340,7 +2340,7 @@ function onHPDown(){
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMarginX = app.screen.width/27;
-	var statusMarginY = app.screen.height/21.6;
+	var statusMarginY = app.screen.height/21;
 	var turnMargin = 10;
 	// var infoMainMargin = [140,40];
 	var infoMainElement = [50,325,50];
@@ -2355,7 +2355,7 @@ function onHPDown(){
 		// infoSelectPadding = 2;
 		// infoSpacer = 10;
 		infoBtnTextSize = 16;
-		statusMargin = [35,25];
+		// statusMargin = [35,25];
 		turnMargin = 6;
 		// infoMainMargin = [75,15];
 		infoMainElement = [30,150,20];
@@ -2368,7 +2368,7 @@ function onHPDown(){
 		// infoSelectPadding = 3;
 		// infoSpacer = 10;
 		infoBtnTextSize = 26;
-		statusMargin = [40,30];
+		// statusMargin = [40,30];
 		turnMargin = 6;
 		// infoMainMargin = [100,30];
 		infoMainElement = [40,200,40];
@@ -2382,7 +2382,7 @@ function onHPDown(){
 		// infoSpacer = 25;
 		infoBtnTextSize = 36;
 		turnMargin = 10;
-		statusMargin = [70,50];				
+		// statusMargin = [70,50];				
 		// infoMainMargin = [140,40];
 		infoMainElement = [50,325,50];
 		expDimensions = [500,50];
