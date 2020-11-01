@@ -2339,7 +2339,8 @@ function onHPDown(){
 	// var infoInnerMargin = 100;
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
-	var statusMargin = [100,50];
+	var statusMarginX = app.screen.width/27;
+	var statusMarginY = app.screen.height/21.6;
 	var turnMargin = 10;
 	// var infoMainMargin = [140,40];
 	var infoMainElement = [50,325,50];
@@ -2658,12 +2659,12 @@ function onHPDown(){
 					}
 					console.log(buffStat + " [" + status[1] + "]");
 					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-					textBuff.x = statusMargin[0];
-					textBuff.y = detailLevel*statusMargin[1];
+					textBuff.x = statusMarginX;
+					textBuff.y = detailLevel*statusMarginY;
 					textBuff.anchor.set(0,0.5);
 					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textBuffTurn.x = statusMargin[0] + turnMargin + textBuff.width;
-					textBuffTurn.y = detailLevel*statusMargin[1];
+					textBuffTurn.x = statusMarginX + turnMargin + textBuff.width;
+					textBuffTurn.y = detailLevel*statusMarginY;
 					textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
 					statusText.push(textBuff);
@@ -2674,12 +2675,12 @@ function onHPDown(){
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
 					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-					textDamageStatus.x = statusMargin[0];
-					textDamageStatus.y = detailLevel*statusMargin[1];
+					textDamageStatus.x = statusMarginX;
+					textDamageStatus.y = detailLevel*statusMarginY;
 					textDamageStatus.anchor.set(0,0.5);
 					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textDamageStatusTurn.x = statusMargin[0] + turnMargin + textDamageStatus.width;
-					textDamageStatusTurn.y = detailLevel*statusMargin[1];
+					textDamageStatusTurn.x = statusMarginX + turnMargin + textDamageStatus.width;
+					textDamageStatusTurn.y = detailLevel*statusMarginY;
 					textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	10 Dmg" + " [" + status[1] + "]");
 					statusContainer.addChild(textDamageStatus);
@@ -2691,12 +2692,12 @@ function onHPDown(){
 				}
 				if(statusNum == 10){
 					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-					textHealStatus.x = statusMargin[0];
-					textHealStatus.y = detailLevel*statusMargin[1];
+					textHealStatus.x = statusMarginX;
+					textHealStatus.y = detailLevel*statusMarginY;
 					textHealStatus.anchor.set(0,0.5);
 					let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textHealStatusTurn.x = statusMargin[0] + turnMargin + textHealStatus.width;
-					textHealStatusTurn.y = detailLevel*statusMargin[1];
+					textHealStatusTurn.x = statusMarginX + turnMargin + textHealStatus.width;
+					textHealStatusTurn.y = detailLevel*statusMarginY;
 					textHealStatusTurn.anchor.set(0,0.5);
 					// console.log("	10 Dmg" + " [" + status[1] + "]");
 					statusContainer.addChild(textHealStatus);
@@ -2735,12 +2736,12 @@ function onHPDown(){
 							break;
 					}
 					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-					textDebuff.x = statusMargin[0];
-					textDebuff.y = detailLevel*statusMargin[1];
+					textDebuff.x = statusMarginX;
+					textDebuff.y = detailLevel*statusMarginY;
 					textDebuff.anchor.set(0,0.5);
 					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textDebuffTurn.x = statusMargin[0] + turnMargin + textDebuff.width;
-					textDebuffTurn.y = detailLevel*statusMargin[1];
+					textDebuffTurn.x = statusMarginX + turnMargin + textDebuff.width;
+					textDebuffTurn.y = detailLevel*statusMarginY;
 					textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
 					statusText.push(textDebuff);
@@ -2753,7 +2754,7 @@ function onHPDown(){
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
 					textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
-					textTurn.y = (detailLevel-1)*statusMargin[1];
+					textTurn.y = (detailLevel-1)*statusMarginY;
 					textTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textTurn);
 					statusText.push(textTurn);
@@ -2761,8 +2762,8 @@ function onHPDown(){
 				}
 				if(statusNum == 14){
 					let textCritical = new Text("-" + this.object.critDmg + " health points", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-					textCritical.x = statusMargin[0];
-					textCritical.y = detailLevel*statusMargin[1];
+					textCritical.x = statusMarginX;
+					textCritical.y = detailLevel*statusMarginY;
 					textCritical.anchor.set(0,0.5);
 					statusContainer.addChild(textCritical);
 					statusText.push(textCritical);
@@ -2780,7 +2781,7 @@ function onHPDown(){
 		// statusContainer.x = statusXAdjust*statusLevel2X;
 		statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.x = statusXAdjust*(app.screen.width/4);
-		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
+		statusContainer.y = statusMarginY*(textLevel-detailLevel-statusYAdjust);
 	});
 
 	// var creatureInfoSkill = new PIXI.Container();
