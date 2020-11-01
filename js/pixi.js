@@ -2340,7 +2340,7 @@ function onHPDown(){
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMarginX = app.screen.width/27;
-	var statusMarginY = app.screen.height/20;
+	var statusMarginY = app.screen.height/15;
 	var turnMargin = 10;
 	// var infoMainMargin = [140,40];
 	var infoMainElement = [50,325,50];
