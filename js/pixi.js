@@ -2400,7 +2400,7 @@ function onHPDown(){
 
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/5;
-	var infoMainMargin = app.screen.height/27;
+	var infoMainMargin = app.screen.height/26;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
