@@ -2336,7 +2336,7 @@ function onHPDown(){
 	// const creatureInfoSprite = new PIXI.Container();
 
 	var infoSpriteScale = 0;
-	var infoInnerMargin = 100;
+	// var infoInnerMargin = 100;
 	var infoSpacer = 25;
 	var infoBtnTextSize = 36;
 	var statusMargin = [100,50];
@@ -2345,13 +2345,13 @@ function onHPDown(){
 	var infoMainElement = [50,325,50];
 	var expDimensions = [500,50];
 	var elementIconSize = 0.5;
-	var infoSelectPadding = 5;
+	// var infoSelectPadding = 5;
 	// var infoSkillMargin = [30,225,20,500];
 
 	if(app.screen.width < 860){
 		infoSpriteScale = 0.3;
 		// infoInnerMargin = 50;
-		infoSelectPadding = 2;
+		// infoSelectPadding = 2;
 		infoSpacer = 10;
 		infoBtnTextSize = 16;
 		statusMargin = [35,25];
@@ -2364,7 +2364,7 @@ function onHPDown(){
 	}else if(app.screen.width < 1366){
 		infoSpriteScale = 0.4;
 		// infoInnerMargin = 50;
-		infoSelectPadding = 3;
+		// infoSelectPadding = 3;
 		infoSpacer = 10;
 		infoBtnTextSize = 26;
 		statusMargin = [40,30];
@@ -2377,7 +2377,7 @@ function onHPDown(){
 	}else{
 		infoSpriteScale = 0.6;
 		// infoInnerMargin = 100;
-		infoSelectPadding = 5;
+		// infoSelectPadding = 5;
 		infoSpacer = 25;
 		infoBtnTextSize = 36;
 		turnMargin = 10;
@@ -2401,6 +2401,7 @@ function onHPDown(){
 	var textOriginY = app.screen.height/5;
 	var infoMainMargin = app.screen.height/27;
 	var infoInnerMargin = app.screen.width/19.2;
+	var infoSelectPadding = app.screen.width/384;
 
 	creatureInfo.main.x = textOriginX;
 	creatureInfo.main.y = textOriginY;
