@@ -2335,9 +2335,9 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	var infoSpriteScale = 0;
+	var infoSpriteScale = app.screen.width/3200;
 	// var infoInnerMargin = 100;
-	var infoSpacer = 25;
+	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMargin = [100,50];
 	var turnMargin = 10;
@@ -2349,10 +2349,10 @@ function onHPDown(){
 	// var infoSkillMargin = [30,225,20,500];
 
 	if(app.screen.width < 860){
-		infoSpriteScale = 0.3;
+		// infoSpriteScale = 0.3;
 		// infoInnerMargin = 50;
 		// infoSelectPadding = 2;
-		infoSpacer = 10;
+		// infoSpacer = 10;
 		infoBtnTextSize = 16;
 		statusMargin = [35,25];
 		turnMargin = 6;
@@ -2362,10 +2362,10 @@ function onHPDown(){
 		elementIconSize = 0.2;
 		// infoSkillMargin = [12,100,15,200];
 	}else if(app.screen.width < 1366){
-		infoSpriteScale = 0.4;
+		// infoSpriteScale = 0.4;
 		// infoInnerMargin = 50;
 		// infoSelectPadding = 3;
-		infoSpacer = 10;
+		// infoSpacer = 10;
 		infoBtnTextSize = 26;
 		statusMargin = [40,30];
 		turnMargin = 6;
@@ -2375,10 +2375,10 @@ function onHPDown(){
 		elementIconSize = 0.4;
 		// infoSkillMargin = [20,180,15,300];
 	}else{
-		infoSpriteScale = 0.6;
+		// infoSpriteScale = 0.6;
 		// infoInnerMargin = 100;
 		// infoSelectPadding = 5;
-		infoSpacer = 25;
+		// infoSpacer = 25;
 		infoBtnTextSize = 36;
 		turnMargin = 10;
 		statusMargin = [70,50];				
