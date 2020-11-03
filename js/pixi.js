@@ -2458,7 +2458,7 @@ function onHPDown(){
 	creatureInfo.info_main_expBar[1].height = expDimensions[1];
 	// creatureInfo.info_main_expBar[1].x = 100;
 
-	creatureInfo.info_main_expBar[1].y = 11.7*infoMainMargin;
+	creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
 
 	this.object.elements.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
