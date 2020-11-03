@@ -2434,8 +2434,8 @@ function onHPDown(){
 	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[1].x = infoMainElementX2;
 	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
-	creatureInfo.info_main_elementIcon[0].scale.set(elementIconSize);
-	creatureInfo.info_main_elementIcon[1].scale.set(elementIconSize);
+	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
+	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
