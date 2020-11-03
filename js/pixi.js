@@ -2336,62 +2336,27 @@ function onHPDown(){
 	// const creatureInfoSprite = new PIXI.Container();
 
 	var infoSpriteScale = app.screen.width/3200;
-	// var infoInnerMargin = 100;
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMarginX = app.screen.width/27;
 	var statusMarginY = app.screen.height/17;
 	var turnMargin = app.screen.width/192;
-	// var infoMainMargin = [140,40];
-	// var infoMainElement = [50,325,50];
 	var infoMainElementX1 = app.screen.width/38.4;
 	var infoMainElementX2 = app.screen.width/6;
-	// var expDimensions = [500,50];
 	var expWidth = app.screen.width/3.84;
 	var expHeight =  app.screen.height/21.6;
-	// var elementIconSize = 0.5;
-	// var infoSelectPadding = 5;
-	// var infoSkillMargin = [30,225,20,500];
+	var textOriginX = app.screen.width/2;
+	var textOriginY = app.screen.height/5;
+	var infoMainMargin = app.screen.height/26;
+	var infoInnerMargin = app.screen.width/19.2;
+	var infoSelectPadding = app.screen.width/384;
 
 	if(app.screen.width < 860){
-		// infoSpriteScale = 0.3;
-		// infoInnerMargin = 50;
-		// infoSelectPadding = 2;
-		// infoSpacer = 10;
 		infoBtnTextSize = 16;
-		// statusMargin = [35,25];
-		// turnMargin = 6;
-		// infoMainMargin = [75,15];
-		// infoMainElement = [30,150,20];
-		expDimensions = [300,20];
-		// elementIconSize = 0.2;
-		// infoSkillMargin = [12,100,15,200];
 	}else if(app.screen.width < 1366){
-		// infoSpriteScale = 0.4;
-		// infoInnerMargin = 50;
-		// infoSelectPadding = 3;
-		// infoSpacer = 10;
 		infoBtnTextSize = 26;
-		// statusMargin = [40,30];
-		// turnMargin = 6;
-		// infoMainMargin = [100,30];
-		// infoMainElement = [40,200,40];
-		expDimensions = [400,30];
-		// elementIconSize = 0.4;
-		// infoSkillMargin = [20,180,15,300];
 	}else{
-		// infoSpriteScale = 0.6;
-		// infoInnerMargin = 100;
-		// infoSelectPadding = 5;
-		// infoSpacer = 25;
 		infoBtnTextSize = 36;
-		// turnMargin = 10;
-		// statusMargin = [70,50];				
-		// infoMainMargin = [140,40];
-		// infoMainElement = [50,325,50];
-		expDimensions = [500,50];
-		// elementIconSize = 0.5;
-		// infoSkillMargin = [30,225,20,500];
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
@@ -2399,15 +2364,7 @@ function onHPDown(){
 	// console.log("Width: " + creatureInfoSprite.width);
 
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
-
 	creatureInfo.addChild(creatureInfoSprite);
-
-	var textOriginX = app.screen.width/2;
-	var textOriginY = app.screen.height/5;
-	var infoMainMargin = app.screen.height/26;
-	var infoInnerMargin = app.screen.width/19.2;
-	var infoSelectPadding = app.screen.width/384;
-
 	creatureInfo.main.x = textOriginX;
 	creatureInfo.main.y = textOriginY;
 
