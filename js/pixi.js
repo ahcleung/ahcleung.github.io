@@ -2346,7 +2346,9 @@ function onHPDown(){
 	// var infoMainElement = [50,325,50];
 	var infoMainElementX1 = app.screen.width/38.4;
 	var infoMainElementX2 = app.screen.width/6;
-	var expDimensions = [500,50];
+	// var expDimensions = [500,50];
+	var expWidth = app.screen.width/3.84;
+	var expHeight =  app.screen.height/21.6;
 	// var elementIconSize = 0.5;
 	// var infoSelectPadding = 5;
 	// var infoSkillMargin = [30,225,20,500];
@@ -2452,10 +2454,10 @@ function onHPDown(){
 
 	// creatureInfo.info_main_expBar[0].x = 100;
 	creatureInfo.info_main_expBar[0].y = 11.8*infoMainMargin;
-	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expDimensions[0];
-	creatureInfo.info_main_expBar[1].width = expDimensions[0];
-	creatureInfo.info_main_expBar[0].height = expDimensions[1];
-	creatureInfo.info_main_expBar[1].height = expDimensions[1];
+	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expWidth;
+	creatureInfo.info_main_expBar[1].width = expWidth;
+	creatureInfo.info_main_expBar[0].height = expHeight;
+	creatureInfo.info_main_expBar[1].height = expHeight;
 	// creatureInfo.info_main_expBar[1].x = 100;
 
 	creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
