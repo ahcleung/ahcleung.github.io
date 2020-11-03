@@ -2341,13 +2341,13 @@ function onHPDown(){
 	var infoBtnTextSize = 36;
 	var statusMarginX = app.screen.width/27;
 	var statusMarginY = app.screen.height/17;
-	var turnMargin = 10;
+	var turnMargin = app.screen.width/192;
 	// var infoMainMargin = [140,40];
 	// var infoMainElement = [50,325,50];
 	var infoMainElementX1 = app.screen.width/38.4;
 	var infoMainElementX2 = app.screen.width/6;
 	var expDimensions = [500,50];
-	var elementIconSize = 0.5;
+	// var elementIconSize = 0.5;
 	// var infoSelectPadding = 5;
 	// var infoSkillMargin = [30,225,20,500];
 
@@ -2358,11 +2358,11 @@ function onHPDown(){
 		// infoSpacer = 10;
 		infoBtnTextSize = 16;
 		// statusMargin = [35,25];
-		turnMargin = 6;
+		// turnMargin = 6;
 		// infoMainMargin = [75,15];
 		// infoMainElement = [30,150,20];
 		expDimensions = [300,20];
-		elementIconSize = 0.2;
+		// elementIconSize = 0.2;
 		// infoSkillMargin = [12,100,15,200];
 	}else if(app.screen.width < 1366){
 		// infoSpriteScale = 0.4;
@@ -2371,11 +2371,11 @@ function onHPDown(){
 		// infoSpacer = 10;
 		infoBtnTextSize = 26;
 		// statusMargin = [40,30];
-		turnMargin = 6;
+		// turnMargin = 6;
 		// infoMainMargin = [100,30];
 		// infoMainElement = [40,200,40];
 		expDimensions = [400,30];
-		elementIconSize = 0.4;
+		// elementIconSize = 0.4;
 		// infoSkillMargin = [20,180,15,300];
 	}else{
 		// infoSpriteScale = 0.6;
@@ -2383,12 +2383,12 @@ function onHPDown(){
 		// infoSelectPadding = 5;
 		// infoSpacer = 25;
 		infoBtnTextSize = 36;
-		turnMargin = 10;
+		// turnMargin = 10;
 		// statusMargin = [70,50];				
 		// infoMainMargin = [140,40];
 		// infoMainElement = [50,325,50];
 		expDimensions = [500,50];
-		elementIconSize = 0.5;
+		// elementIconSize = 0.5;
 		// infoSkillMargin = [30,225,20,500];
 	}
 	
@@ -2451,7 +2451,7 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].visible = false;
 
 	// creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[0].y = 11.7*infoMainMargin;
+	creatureInfo.info_main_expBar[0].y = 11.8*infoMainMargin;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expDimensions[0];
 	creatureInfo.info_main_expBar[1].width = expDimensions[0];
 	creatureInfo.info_main_expBar[0].height = expDimensions[1];
