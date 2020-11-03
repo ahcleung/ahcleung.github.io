@@ -2343,8 +2343,9 @@ function onHPDown(){
 	var turnMargin = app.screen.width/192;
 	var infoMainElementX1 = app.screen.width/38.4;
 	var infoMainElementX2 = app.screen.width/6;
-	var expWidth = app.screen.width/3.84;
-	var expHeight =  app.screen.height/21.6;
+	var expDimension = [app.screen.width/3.84,app.screen.height/21.6];
+	// var expWidth = app.screen.width/3.84;
+	// var expHeight =  app.screen.height/21.6;
 	var textOriginX = app.screen.width/2;
 	var textOriginY = app.screen.height/5;
 	var infoMainMargin = app.screen.height/26;
@@ -2411,10 +2412,10 @@ function onHPDown(){
 
 	// creatureInfo.info_main_expBar[0].x = 100;
 	creatureInfo.info_main_expBar[0].y = 11.8*infoMainMargin;
-	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expWidth;
-	creatureInfo.info_main_expBar[1].width = expWidth;
-	creatureInfo.info_main_expBar[0].height = expHeight;
-	creatureInfo.info_main_expBar[1].height = expHeight;
+	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * expDimension[0];
+	creatureInfo.info_main_expBar[1].width = expDimension[0];
+	creatureInfo.info_main_expBar[0].height = expDimension[1];
+	creatureInfo.info_main_expBar[1].height = expDimension[1];
 	// creatureInfo.info_main_expBar[1].x = 100;
 
 	creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
