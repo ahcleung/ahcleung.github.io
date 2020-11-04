@@ -1687,10 +1687,11 @@ function resize() {
 	
 	// var skillSelectPadding = 5;
 	var hazardMargin = 50;
+	healthMargin = app.screen.width/96;
 	
 	if(app.screen.width < 860){
 		margin = 10;
-		healthMargin = 10;
+		// healthMargin = 10;
 		skillMargin = 5;
 		skillSelectPadding = 2;
 		interfaceHeroHealth.position.set(margin, 20);
@@ -1703,7 +1704,7 @@ function resize() {
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
 		margin = 15;
-		healthMargin = 10;
+		// healthMargin = 10;
 		skillMargin = 8;
 		skillSelectPadding = 3;
 		interfaceHeroHealth.position.set(margin, 40);
@@ -1716,7 +1717,7 @@ function resize() {
 		hazardMargin = 40;
 	}else{
 		margin = 50;
-		healthMargin = 20;
+		// healthMargin = 20;
 		skillMargin = 10;
 		skillSelectPadding = 5;
 		interfaceHeroHealth.position.set(margin, 40);
@@ -2335,21 +2336,11 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	// var infoSpriteScale = app.screen.width/3200;
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMargin = [app.screen.width/27,app.screen.height/17];
-	// var statusMarginX = app.screen.width/27;
-	// var statusMarginY = app.screen.height/17;
 	var turnMargin = app.screen.width/192;
-	// var infoMainElementX1 = app.screen.width/38.4;
-	// var infoMainElementX2 = app.screen.width/6;
-	// var expDimension = [app.screen.width/3.84,app.screen.height/21.6];
-	// var expWidth = app.screen.width/3.84;
-	// var expHeight =  app.screen.height/21.6;
 	var textOrigin = [app.screen.width/2,app.screen.height/5];
-	// var textOriginX = app.screen.width/2;
-	// var textOriginY = app.screen.height/5;
 	var infoMainMargin = app.screen.height/26;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
@@ -2363,7 +2354,6 @@ function onHPDown(){
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
-	// creatureInfoSprite.scale.set(infoSpriteScale,infoSpriteScale);
 	creatureInfoSprite.scale.set(app.screen.width/3200);
 	// console.log("Width: " + creatureInfoSprite.width);
 
