@@ -1904,9 +1904,9 @@ function resizeDmg(roster, item){
 function resizeHP(roster, item){
 	console.log(app.screen.width + ", " + (app.screen.width-320)/8);
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
-	var resizeHeight = 40;
-	var statusSpacing = 5;
-	var HPSpacing = 3;
+	var resizeHeight = app.screen.width/48;
+	var statusSpacing = app.screen.width/384;
+	// var HPSpacing = 3;
 	var selectBarHeight = 7;
 	var indicatorBar1Y = -15;
 	var indicatorBar2Y = -20;
@@ -1914,10 +1914,10 @@ function resizeHP(roster, item){
 	var indicatorEndY = -23;
 	
 	if(app.screen.width < 860){
-		resizeHeight = 20;
+		// resizeHeight = 20;
 		item.healthBar.textHP.style.fontSize = 14;
-		statusSpacing = 2;
-		HPSpacing = 1;
+		// statusSpacing = 2;
+		// HPSpacing = 1;
 		selectBarHeight = 5;
 		indicatorBar1Y = -10;
 		indicatorBar2Y = -13;
@@ -1926,10 +1926,10 @@ function resizeHP(roster, item){
 		item.healthBar.turn.height = 3;
 		item.healthBar.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
-		resizeHeight = 30;
+		// resizeHeight = 30;
 		item.healthBar.textHP.style.fontSize = 18;
-		statusSpacing = 4;
-		HPSpacing = 2;
+		// statusSpacing = 4;
+		// HPSpacing = 2;
 		selectBarHeight = 7;
 		indicatorBar1Y = -15;
 		indicatorBar2Y = -20;
