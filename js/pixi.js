@@ -1687,13 +1687,16 @@ function resize() {
 	
 	// var skillSelectPadding = 5;
 	var hazardMargin = 50;
+	margin = app.screen.height/21.6;
 	healthMargin = app.screen.width/96;
+	skillMargin = app.screen.width/192;
+	skillSelectPadding = app.screen.height/216;
 	
 	if(app.screen.width < 860){
-		margin = 10;
+		// margin = 10;
 		// healthMargin = 10;
-		skillMargin = 5;
-		skillSelectPadding = 2;
+		// skillMargin = 5;
+		// skillSelectPadding = 2;
 		interfaceHeroHealth.position.set(margin, 20);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 20);
 		interfaceHeroFloatingInfo.position.set(margin, 20);
@@ -1703,10 +1706,10 @@ function resize() {
 		hazardSize = 0.35;
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
-		margin = 15;
+		// margin = 15;
 		// healthMargin = 10;
-		skillMargin = 8;
-		skillSelectPadding = 3;
+		// skillMargin = 8;
+		// skillSelectPadding = 3;
 		interfaceHeroHealth.position.set(margin, 40);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
 		interfaceHeroFloatingInfo.position.set(margin, 40);
@@ -1716,10 +1719,10 @@ function resize() {
 		hazardSize = 0.58;
 		hazardMargin = 40;
 	}else{
-		margin = 50;
+		// margin = 50;
 		// healthMargin = 20;
-		skillMargin = 10;
-		skillSelectPadding = 5;
+		// skillMargin = 10;
+		// skillSelectPadding = 5;
 		interfaceHeroHealth.position.set(margin, 40);
 		interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
 		interfaceHeroFloatingInfo.position.set(margin, 40);
