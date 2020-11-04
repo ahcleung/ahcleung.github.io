@@ -2335,7 +2335,7 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	var infoSpriteScale = app.screen.width/3200;
+	// var infoSpriteScale = app.screen.width/3200;
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
 	var statusMarginX = app.screen.width/27;
@@ -2361,7 +2361,8 @@ function onHPDown(){
 	}
 	
 	creatureInfoSprite.addChild(armatureHero);
-	creatureInfoSprite.scale.set(infoSpriteScale,infoSpriteScale);
+	// creatureInfoSprite.scale.set(infoSpriteScale,infoSpriteScale);
+	creatureInfoSprite.scale.set(app.screen.width/3200);
 	// console.log("Width: " + creatureInfoSprite.width);
 
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
@@ -2390,18 +2391,18 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_elementIcon[0].x = infoMainElementX1;
+	creatureInfo.info_main_elementIcon[0].x = app.screen.width/38.4;
 	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
-	creatureInfo.info_main_elementIcon[1].x = infoMainElementX2;
+	creatureInfo.info_main_elementIcon[1].x = app.screen.width/6;
 	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
-	creatureInfo.info_main_element[0].x = infoMainElementX1 + creatureInfo.info_main_elementIcon[0].width + 10;
+	creatureInfo.info_main_element[0].x = app.screen.width/38.4 + creatureInfo.info_main_elementIcon[0].width + 10;
 	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin;
-	creatureInfo.info_main_element[1].x = infoMainElementX2 +  creatureInfo.info_main_elementIcon[1].width + 10;
+	creatureInfo.info_main_element[1].x = app.screen.width/6 +  creatureInfo.info_main_elementIcon[1].width + 10;
 	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
