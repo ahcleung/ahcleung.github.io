@@ -2341,8 +2341,8 @@ function onHPDown(){
 	var statusMarginX = app.screen.width/27;
 	var statusMarginY = app.screen.height/17;
 	var turnMargin = app.screen.width/192;
-	var infoMainElementX1 = app.screen.width/38.4;
-	var infoMainElementX2 = app.screen.width/6;
+	// var infoMainElementX1 = app.screen.width/38.4;
+	// var infoMainElementX2 = app.screen.width/6;
 	// var expDimension = [app.screen.width/3.84,app.screen.height/21.6];
 	// var expWidth = app.screen.width/3.84;
 	// var expHeight =  app.screen.height/21.6;
