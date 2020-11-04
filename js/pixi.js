@@ -1693,6 +1693,7 @@ function resize() {
 	skillSelectPadding = app.screen.height/216;
 	
 	if(app.screen.width < 860){
+		margin = app.screen.height/72;
 		// margin = 10;
 		// healthMargin = 10;
 		// skillMargin = 5;
