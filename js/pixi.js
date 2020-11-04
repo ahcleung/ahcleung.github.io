@@ -2057,19 +2057,19 @@ function resizeSprite(direction, item, index){
 }
 
 function resizeStatus(item){
-	var resizeHeight = 40;
-	var statusSpacing = 5;
+	var resizeHeight = app.screen.width/48;
+	var statusSpacing = app.screen.width/384;
 	
-	if(app.screen.width < 860){
-		resizeHeight = 20;
-		statusSpacing = 2;
-	}else if(app.screen.width < 1366){
-		resizeHeight = 30;
-		statusSpacing = 4;
-	}else{
-		resizeHeight = 40;
-		statusSpacing = 5;
-	}
+	// if(app.screen.width < 860){
+	// 	resizeHeight = 20;
+	// 	statusSpacing = 2;
+	// }else if(app.screen.width < 1366){
+	// 	resizeHeight = 30;
+	// 	statusSpacing = 4;
+	// }else{
+	// 	resizeHeight = 40;
+	// 	statusSpacing = 5;
+	// }
 	
 	if(item.size > 1){
 		item.statusSpriteArray.forEach((statusSprite, index) => {
