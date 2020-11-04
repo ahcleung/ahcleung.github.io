@@ -2038,14 +2038,15 @@ function resizeHP(roster, item){
 	item.healthBar.select.animate.play(0);
 }
 
-function resizeSprite(direction, item, index){	
-	if(app.screen.width < 860){
-		spriteScale = 0.23;
-	}else if(app.screen.width < 1366){
-		spriteScale = 0.3;
-	}else{
-		spriteScale = 0.5;
-	}
+function resizeSprite(direction, item, index){
+	spriteScale = app.screen.width/3840;	
+	// if(app.screen.width < 860){
+	// 	spriteScale = 0.23;
+	// }else if(app.screen.width < 1366){
+	// 	spriteScale = 0.3;
+	// }else{
+	// 	spriteScale = 0.5;
+	// }
 	item.scale.set(direction * spriteScale, spriteScale);
 
 	if(direction > 0){
