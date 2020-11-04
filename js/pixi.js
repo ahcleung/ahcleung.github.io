@@ -1706,6 +1706,7 @@ function resize() {
 		hazardSize = 0.35;
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
+		margin = app.screen.height/72;
 		// margin = 15;
 		// healthMargin = 10;
 		// skillMargin = 8;
