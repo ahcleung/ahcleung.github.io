@@ -1907,12 +1907,15 @@ function resizeHP(roster, item){
 	var resizeHeight = app.screen.width/48;
 	var statusSpacing = app.screen.width/384;
 	// var HPSpacing = 3;
-	var selectBarHeight = app.screen.width/274;
+	// var selectBarHeight = app.screen.height/154;
 	var indicatorBar1Y = -15;
 	var indicatorBar2Y = -20;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
 	
+	item.healthBar.turn.height = statusSpacing;
+	item.healthBar.turn.y = resizeHeight;
+
 	if(app.screen.width < 860){
 		// resizeHeight = 20;
 		item.healthBar.textHP.style.fontSize = 14;
@@ -1923,8 +1926,8 @@ function resizeHP(roster, item){
 		indicatorBar2Y = -13;
 		indicatorEndHeight = 12;
 		indicatorEndY = -15;
-		item.healthBar.turn.height = 3;
-		item.healthBar.turn.y = resizeHeight;
+		// item.healthBar.turn.height = 3;
+		// item.healthBar.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
 		// resizeHeight = 30;
 		item.healthBar.textHP.style.fontSize = 18;
@@ -1935,12 +1938,12 @@ function resizeHP(roster, item){
 		indicatorBar2Y = -20;
 		indicatorEndHeight = 18;
 		indicatorEndY = -23;
-		item.healthBar.turn.height = 4;
-		item.healthBar.turn.y = resizeHeight + 2;
+		// item.healthBar.turn.height = 4;
+		// item.healthBar.turn.y = resizeHeight + 2;
 	}else{
 		item.healthBar.textHP.style.fontSize = 24;
-		item.healthBar.turn.height = 5;
-		item.healthBar.turn.y = resizeHeight + 2;
+		// item.healthBar.turn.height = 5;
+		// item.healthBar.turn.y = resizeHeight + 2;
 	}
 	
 	turnText.position.set(app.screen.width/2, resizeHeight);
@@ -2015,7 +2018,7 @@ function resizeHP(roster, item){
 	item.healthBar.textHP.y = item.healthBar.outer.height/2;
 
 	item.healthBar.healthBarIndicators.forEach(indicator => {
-		indicator.indicatorBar1.height = selectBarHeight;
+		indicator.indicatorBar1.height = app.screen.height/154;
 		indicator.indicatorBar1.y = indicatorBar1Y;	
 		indicator.indicatorBar2.y = indicatorBar2Y;	
 		indicator.indicatorStart.height = indicatorEndHeight;
