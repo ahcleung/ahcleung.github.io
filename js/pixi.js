@@ -1907,7 +1907,7 @@ function resizeHP(roster, item){
 	var resizeHeight = app.screen.width/48;
 	var statusSpacing = app.screen.width/384;
 	// var HPSpacing = 3;
-	var selectBarHeight = 7;
+	var selectBarHeight = app.screen.height/154;
 	var indicatorBar1Y = -15;
 	var indicatorBar2Y = -20;
 	var indicatorEndHeight = 18;
@@ -1918,7 +1918,7 @@ function resizeHP(roster, item){
 		item.healthBar.textHP.style.fontSize = 14;
 		// statusSpacing = 2;
 		// HPSpacing = 1;
-		selectBarHeight = 5;
+		// selectBarHeight = 5;
 		indicatorBar1Y = -10;
 		indicatorBar2Y = -13;
 		indicatorEndHeight = 12;
@@ -1930,7 +1930,7 @@ function resizeHP(roster, item){
 		item.healthBar.textHP.style.fontSize = 18;
 		// statusSpacing = 4;
 		// HPSpacing = 2;
-		selectBarHeight = 7;
+		// selectBarHeight = 7;
 		indicatorBar1Y = -15;
 		indicatorBar2Y = -20;
 		indicatorEndHeight = 18;
