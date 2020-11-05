@@ -2015,9 +2015,9 @@ function resizeHP(roster, item){
 	item.healthBar.textHP.x = item.healthBar.outer.width/2;
 	item.healthBar.textHP.y = item.healthBar.outer.height/2;
 
-	var indicatorEndHeight = app.screen.height/60;
-	var indicatorEndY = -app.screen.height/47;
-	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
+	// var indicatorEndHeight = app.screen.height/60;
+	// var indicatorEndY = -app.screen.height/47;
+	// var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
 	// var indicatorBar2Y = indicatorEndY+2;
 
 	item.healthBar.healthBarIndicators.forEach(indicator => {		
