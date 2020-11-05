@@ -2021,9 +2021,9 @@ function resizeHP(roster, item){
 	// var indicatorBar2Y = indicatorEndY+2;
 
 	item.healthBar.healthBarIndicators.forEach(indicator => {		
-		indicator.indicatorStart.height = app.screen.height/60;
+		indicator.indicatorStart.height = app.screen.height/55;
 		indicator.indicatorStart.y = -app.screen.height/47;	
-		indicator.indicatorEnd.height = app.screen.height/60;	
+		indicator.indicatorEnd.height = app.screen.height/55;	
 		indicator.indicatorEnd.y = -app.screen.height/47;	
 		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
 		indicator.indicatorBar1.height = app.screen.height/154;
