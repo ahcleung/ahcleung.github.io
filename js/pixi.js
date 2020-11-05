@@ -1908,8 +1908,8 @@ function resizeHP(roster, item){
 	var statusSpacing = app.screen.width/384;
 	// var HPSpacing = 3;
 	// var selectBarHeight = app.screen.height/154;
-	var indicatorBar1Y = -app.screen.height/77;
-	var indicatorBar2Y = -app.screen.height/54;
+	var indicatorBar1Y = -app.screen.height/72;
+	var indicatorBar2Y = -app.screen.height/51;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
 	
