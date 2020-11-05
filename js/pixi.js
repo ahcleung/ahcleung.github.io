@@ -1911,11 +1911,6 @@ function resizeHP(roster, item){
 	// var indicatorBar1Y = -app.screen.height/72;
 	// var indicatorBar2Y = -app.screen.height/45;
 	
-	var indicatorEndHeight = app.screen.height/60;
-	var indicatorEndY = -app.screen.height/47;
-	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
-	var indicatorBar2Y = indicatorEndY+2;
-	
 	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
@@ -2020,15 +2015,20 @@ function resizeHP(roster, item){
 	item.healthBar.textHP.x = item.healthBar.outer.width/2;
 	item.healthBar.textHP.y = item.healthBar.outer.height/2;
 
-	item.healthBar.healthBarIndicators.forEach(indicator => {
-		indicator.indicatorBar1.height = app.screen.height/154;
-		indicator.indicatorBar1.y = indicatorBar1Y;	
-		indicator.indicatorBar2.y = indicatorBar2Y;	
+	var indicatorEndHeight = app.screen.height/60;
+	var indicatorEndY = -app.screen.height/47;
+	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
+	var indicatorBar2Y = indicatorEndY+2;
+
+	item.healthBar.healthBarIndicators.forEach(indicator => {		
 		indicator.indicatorStart.height = app.screen.height/60;
 		indicator.indicatorStart.y = -app.screen.height/47;	
 		indicator.indicatorEnd.height = app.screen.height/60;	
 		indicator.indicatorEnd.y = -app.screen.height/47;	
 		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
+		indicator.indicatorBar1.height = app.screen.height/154;
+		indicator.indicatorBar1.y = indicatorBar1Y;	
+		indicator.indicatorBar2.y = indicatorBar2Y;	
 	});
 	
 	item.healthBar.select.pivot.x = item.healthBar.select.width/2;
