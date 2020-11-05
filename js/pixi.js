@@ -1906,42 +1906,16 @@ function resizeHP(roster, item){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
 	var resizeHeight = app.screen.width/48;
 	var statusSpacing = app.screen.width/384;
-	// var HPSpacing = 3;
-	// var selectBarHeight = app.screen.height/154;
-	// var indicatorBar1Y = -app.screen.height/72;
-	// var indicatorBar2Y = -app.screen.height/45;
 	
 	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
 	if(app.screen.width < 860){
-		// resizeHeight = 20;
 		item.healthBar.textHP.style.fontSize = 14;
-		// statusSpacing = 2;
-		// HPSpacing = 1;
-		// selectBarHeight = 5;
-		// indicatorBar1Y = -10;
-		// indicatorBar2Y = -13;
-		// indicatorEndHeight = 12;
-		// indicatorEndY = -15;
-		// item.healthBar.turn.height = 3;
-		// item.healthBar.turn.y = resizeHeight;
 	}else if(app.screen.width < 1366){
-		// resizeHeight = 30;
 		item.healthBar.textHP.style.fontSize = 18;
-		// statusSpacing = 4;
-		// HPSpacing = 2;
-		// selectBarHeight = 7;
-		// indicatorBar1Y = -15;
-		// indicatorBar2Y = -20;
-		// indicatorEndHeight = 18;
-		// indicatorEndY = -23;
-		// item.healthBar.turn.height = 4;
-		// item.healthBar.turn.y = resizeHeight + 2;
 	}else{
 		item.healthBar.textHP.style.fontSize = 24;
-		// item.healthBar.turn.height = 5;
-		// item.healthBar.turn.y = resizeHeight + 2;
 	}
 	
 	turnText.position.set(app.screen.width/2, resizeHeight);
@@ -2014,11 +1988,6 @@ function resizeHP(roster, item){
 	item.healthBar.dmgBarContainer.x = item.healthBar.inner.width;	
 	item.healthBar.textHP.x = item.healthBar.outer.width/2;
 	item.healthBar.textHP.y = item.healthBar.outer.height/2;
-
-	// var indicatorEndHeight = app.screen.height/60;
-	// var indicatorEndY = -app.screen.height/47;
-	// var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
-	// var indicatorBar2Y = indicatorEndY+2;
 
 	item.healthBar.healthBarIndicators.forEach(indicator => {		
 		indicator.indicatorStart.height = app.screen.height/55;
