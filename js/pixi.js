@@ -2018,7 +2018,7 @@ function resizeHP(roster, item){
 	var indicatorEndHeight = app.screen.height/60;
 	var indicatorEndY = -app.screen.height/47;
 	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
-	var indicatorBar2Y = indicatorEndY+2;
+	// var indicatorBar2Y = indicatorEndY+2;
 
 	item.healthBar.healthBarIndicators.forEach(indicator => {		
 		indicator.indicatorStart.height = app.screen.height/60;
@@ -2028,7 +2028,7 @@ function resizeHP(roster, item){
 		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
 		indicator.indicatorBar1.height = app.screen.height/154;
 		indicator.indicatorBar1.y = indicatorBar1Y;	
-		indicator.indicatorBar2.y = indicatorBar2Y;	
+		indicator.indicatorBar2.y = indicator.indicatorStart.y+2
 	});
 	
 	item.healthBar.select.pivot.x = item.healthBar.select.width/2;
