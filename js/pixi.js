@@ -1912,7 +1912,7 @@ function resizeHP(roster, item){
 	// var indicatorBar2Y = -app.screen.height/45;
 	var indicatorEndHeight = app.screen.height/60;
 	var indicatorEndY = -app.screen.height/47;
-	var indicatorBar1Y = iindicatorEndY+indicatorEndHeight-2;
+	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
 	var indicatorBar2Y = indicatorEndY+2;
 	
 	item.healthBar.turn.height = app.screen.width/320;
