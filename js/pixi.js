@@ -2027,7 +2027,7 @@ function resizeHP(roster, item){
 		indicator.indicatorEnd.y = -app.screen.height/47;	
 		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
 		indicator.indicatorBar1.height = app.screen.height/154;
-		indicator.indicatorBar1.y = indicatorBar1Y;	
+		indicator.indicatorBar1.y = indicator.indicatorStart.y+indicator.indicatorEnd.height-2;	
 		indicator.indicatorBar2.y = indicator.indicatorStart.y+2
 	});
 	
