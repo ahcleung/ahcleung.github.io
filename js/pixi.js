@@ -1845,27 +1845,27 @@ function resizeDmg(roster, item){
 	// var resizeHeight = 40;
 	// var statusSpacing = app.screen.width/384;
 	var statusFontSize = 24;
-	// var statusSpacer1 = app.screen.height/27;
-	// var statusSpacer2 = app.screen.height/10.8;
-	// var statusStrokeSize = app.screen.height/270;
+	var statusSpacer1 = app.screen.height/27;
+	var statusSpacer2 = app.screen.height/10.8;
+	var statusStrokeSize = app.screen.height/270;
 
-	var statusSpacer1 = 40;
-	var statusSpacer2 = 100;
-	var statusStrokeSize = 4;
+	// var statusSpacer1 = 40;
+	// var statusSpacer2 = 100;
+	// var statusStrokeSize = 4;
 	if(app.screen.width < 860){
 		item.dmgContainer.dmgPopup.scale.set(0.4,0.4);
 		// statusSpacing = 2;
 		statusFontSize = 12;
-		statusSpacer1 = 20;
-		statusSpacer2 = 40;
-		statusStrokeSize = 2;
+		// statusSpacer1 = 20;
+		// statusSpacer2 = 40;
+		// statusStrokeSize = 2;
 	}else if(app.screen.width < 1366){
 		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
 		// statusSpacing = 4;
 		statusFontSize = 20;
-		statusSpacer1 = 30;
-		statusSpacer2 = 80;
-		statusStrokeSize = 3;
+		// statusSpacer1 = 30;
+		// statusSpacer2 = 80;
+		// statusStrokeSize = 3;
 	}else if(app.screen.width < 1500){
 		item.dmgContainer.dmgPopup.scale.set(0.75,0.75);
 	}
