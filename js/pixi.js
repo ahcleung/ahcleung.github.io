@@ -1909,7 +1909,7 @@ function resizeHP(roster, item){
 	// var HPSpacing = 3;
 	// var selectBarHeight = app.screen.height/154;
 	var indicatorBar1Y = -app.screen.height/72;
-	var indicatorBar2Y = -app.screen.height/51;
+	var indicatorBar2Y = -app.screen.height/45;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
 	
