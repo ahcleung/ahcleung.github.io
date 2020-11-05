@@ -1843,21 +1843,21 @@ function resize() {
 function resizeDmg(roster, item){
 	// var resizeWidth = (app.screen.width- (4*margin) - 6*(healthMargin))/8;
 	// var resizeHeight = 40;
-	var statusSpacing = 5;
+	// var statusSpacing = app.screen.width/384;
 	var statusFontSize = 24;
 	var statusSpacer1 = 40;
 	var statusSpacer2 = 100;
 	var statusStrokeSize = 4;
 	if(app.screen.width < 860){
 		item.dmgContainer.dmgPopup.scale.set(0.4,0.4);
-		statusSpacing = 2;
+		// statusSpacing = 2;
 		statusFontSize = 12;
 		statusSpacer1 = 20;
 		statusSpacer2 = 40;
 		statusStrokeSize = 2;
 	}else if(app.screen.width < 1366){
 		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
-		statusSpacing = 4;
+		// statusSpacing = 4;
 		statusFontSize = 20;
 		statusSpacer1 = 30;
 		statusSpacer2 = 80;
@@ -1870,7 +1870,7 @@ function resizeDmg(roster, item){
 	}
 
 	item.dmgContainer.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
-		statusImage.width = (resizeWidth - (statusSpacing * 5))/4;
+		statusImage.width = (resizeWidth - (app.screen.width/384 * 5))/4;
 		statusImage.height = statusImage.width;
 		statusImage.y = -(statusSpacer1 + (arrayIndex*statusSpacer2));
 	});
