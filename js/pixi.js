@@ -1908,8 +1908,8 @@ function resizeHP(roster, item){
 	var statusSpacing = app.screen.width/384;
 	// var HPSpacing = 3;
 	// var selectBarHeight = app.screen.height/154;
-	var indicatorBar1Y = -15;
-	var indicatorBar2Y = -20;
+	var indicatorBar1Y = -app.screen.height/72;
+	var indicatorBar2Y = -app.screen.height/54;
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
 	
@@ -1922,8 +1922,8 @@ function resizeHP(roster, item){
 		// statusSpacing = 2;
 		// HPSpacing = 1;
 		// selectBarHeight = 5;
-		indicatorBar1Y = -10;
-		indicatorBar2Y = -13;
+		// indicatorBar1Y = -10;
+		// indicatorBar2Y = -13;
 		indicatorEndHeight = 12;
 		indicatorEndY = -15;
 		// item.healthBar.turn.height = 3;
@@ -1934,8 +1934,8 @@ function resizeHP(roster, item){
 		// statusSpacing = 4;
 		// HPSpacing = 2;
 		// selectBarHeight = 7;
-		indicatorBar1Y = -15;
-		indicatorBar2Y = -20;
+		// indicatorBar1Y = -15;
+		// indicatorBar2Y = -20;
 		indicatorEndHeight = 18;
 		indicatorEndY = -23;
 		// item.healthBar.turn.height = 4;
