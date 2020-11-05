@@ -1913,7 +1913,7 @@ function resizeHP(roster, item){
 	var indicatorEndHeight = 18;
 	var indicatorEndY = -23;
 	
-	item.healthBar.turn.height = statusSpacing;
+	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
 	if(app.screen.width < 860){
