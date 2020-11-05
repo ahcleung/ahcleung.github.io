@@ -1910,7 +1910,8 @@ function resizeHP(roster, item){
 	// var selectBarHeight = app.screen.height/154;
 	// var indicatorBar1Y = -app.screen.height/72;
 	// var indicatorBar2Y = -app.screen.height/45;
-	var indicatorEndHeight = app.screen.height/60;
+	
+	// var indicatorEndHeight = app.screen.height/60;
 	var indicatorEndY = -app.screen.height/47;
 	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
 	var indicatorBar2Y = indicatorEndY+2;
@@ -2023,10 +2024,10 @@ function resizeHP(roster, item){
 		indicator.indicatorBar1.height = app.screen.height/154;
 		indicator.indicatorBar1.y = indicatorBar1Y;	
 		indicator.indicatorBar2.y = indicatorBar2Y;	
-		indicator.indicatorStart.height = indicatorEndHeight;
-		indicator.indicatorStart.y = indicatorEndY;	
-		indicator.indicatorEnd.height = indicatorEndHeight;	
-		indicator.indicatorEnd.y = indicatorEndY;	
+		indicator.indicatorStart.height = app.screen.height/60;
+		indicator.indicatorStart.y = -app.screen.height/47;	
+		indicator.indicatorEnd.height = app.screen.height/60;	
+		indicator.indicatorEnd.y = -app.screen.height/47;	
 		indicator.indicatorEnd.x = item.healthBar.outer.width - 4;
 	});
 	
