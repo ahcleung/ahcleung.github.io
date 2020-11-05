@@ -1911,7 +1911,7 @@ function resizeHP(roster, item){
 	// var indicatorBar1Y = -app.screen.height/72;
 	// var indicatorBar2Y = -app.screen.height/45;
 	
-	// var indicatorEndHeight = app.screen.height/60;
+	var indicatorEndHeight = app.screen.height/60;
 	var indicatorEndY = -app.screen.height/47;
 	var indicatorBar1Y = indicatorEndY+indicatorEndHeight-2;
 	var indicatorBar2Y = indicatorEndY+2;
