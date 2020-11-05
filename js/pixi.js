@@ -1907,7 +1907,7 @@ function resizeHP(roster, item){
 	var resizeHeight = app.screen.width/48;
 	var statusSpacing = app.screen.width/384;
 	// var HPSpacing = 3;
-	var selectBarHeight = app.screen.height/154;
+	var selectBarHeight = app.screen.width/274;
 	var indicatorBar1Y = -15;
 	var indicatorBar2Y = -20;
 	var indicatorEndHeight = 18;
