@@ -1692,13 +1692,6 @@ function resize() {
 	skillMargin = app.screen.width/192;
 	skillSelectPadding = app.screen.height/216;
 
-	
-
-	// interfaceHeroHealth.position.set(margin, interfaceY);
-	// interfaceEnemyHealth.position.set(app.screen.width/2+margin, interfaceY);
-	// interfaceHeroFloatingInfo.position.set(margin, interfaceY);
-	// interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, interfaceY);
-
 	if(app.screen.width < 860){
 		margin = app.screen.height/72;
 		// margin = 10;
@@ -1709,7 +1702,6 @@ function resize() {
 		// interfaceEnemyHealth.position.set(app.screen.width/2+margin, 20);
 		// interfaceHeroFloatingInfo.position.set(margin, 20);
 		// interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 20);
-		// interfaceY = 20;
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
 		hazardSize = 0.35;
@@ -1724,7 +1716,6 @@ function resize() {
 		// interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
 		// interfaceHeroFloatingInfo.position.set(margin, 40);
 		// interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
-		// interfaceY = 40;
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
 		hazardSize = 0.58;
@@ -1738,7 +1729,6 @@ function resize() {
 		// interfaceEnemyHealth.position.set(app.screen.width/2+margin, 40);
 		// interfaceHeroFloatingInfo.position.set(margin, 40);
 		// interfaceEnemyFloatingInfo.position.set(app.screen.width/2+margin, 40);
-		// interfaceY = 40;
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
 		hazardSize = 0.75;
