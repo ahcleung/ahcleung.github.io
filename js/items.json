@@ -1,0 +1,48 @@
+{
+	"items" : [
+		{
+			"name": "######",
+			"type": "phy",
+			"category": "",
+			"description": "##### Skill description here",
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"multiple": [0,0],
+			"status": 0,
+			"hazard": [0,0],
+			"turns": 0,
+			"splash": 0,
+			"displace": [0],
+			"column": [0,0,0,0],
+			"statchange": [false,0,0],
+			"several":[0,0,0],
+			"heal": 0
+		},
+		{
+			"name": "Spike trap",
+			"element": 4,
+			"type": "Physical",
+			"power": 20,
+			"accuracy": 100,
+			"description": "Lay spikes on the floor damaging any creature standing on it.",
+			"position": [
+				1,1,1,1
+			],
+			"target": [
+				1,1,1,1
+			],
+			"tags":[
+				"hazard", "turns"
+			],
+			"hazard": [2,10],
+			"turns": 2
+		}
+	]
+}
