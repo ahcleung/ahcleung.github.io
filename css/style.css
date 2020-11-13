@@ -17,15 +17,15 @@ body {
   /* Necessary to make sure frame width/height
   isn't set according to the canvas element */
   position: absolute;
-  /*overflow: hidden;*/
+  overflow: hidden;
   
   /* Optional stuff for positioning */
   top:50%;
   left:50%;
-  /*width: calc(100% - 25px);*/
-  /*height: calc(100% - 25px);*/
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 25px);
+  height: calc(100% - 25px);
+  /*width: 100%;*/
+  /*height: 100%;*/
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
