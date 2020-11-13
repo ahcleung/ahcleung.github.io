@@ -17,7 +17,7 @@ body {
   /* Necessary to make sure frame width/height
   isn't set according to the canvas element */
   position: absolute;
-  overflow: hidden;
+  /*overflow: hidden;*/
   
   /* Optional stuff for positioning */
   top:50%;
