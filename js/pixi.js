@@ -1663,7 +1663,7 @@ function resize() {
 		"\nInner Height: " + window.innerHeight
 		);
 	const parent = app.view.parentNode;
-	app.renderer.resize(parent.clientWidth, parent.clientHeight);
+	app.renderer.resize(parent.clientWidth, parent.clientHeight*2);
 
 	var widthMath = app.screen.width/16;
 	var heightMath = app.screen.height/9;
