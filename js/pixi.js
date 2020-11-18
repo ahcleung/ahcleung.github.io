@@ -2384,7 +2384,7 @@ function onHPDown(){
 			creatureInfo.info_main_element[elementIndex].text = "Earth";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
 		}else if(element == 5){
-			creatureInfo.info_main_element[elementIndex].text = "Lightning";
+			creatureInfo.info_main_element[elementIndex].text = "Storm";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_lightning.texture;
 		}else if(element == 6){
 			creatureInfo.info_main_element[elementIndex].text = "Wind";
@@ -2396,7 +2396,7 @@ function onHPDown(){
 			creatureInfo.info_main_element[elementIndex].text = "Spirit";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
 		}else if(element == 9){
-			creatureInfo.info_main_element[elementIndex].text = "Shadow";
+			creatureInfo.info_main_element[elementIndex].text = "Void";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_shadow.texture;
 		}
 	});
