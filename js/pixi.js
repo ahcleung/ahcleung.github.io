@@ -142,11 +142,11 @@ loader
 		{name:'element_water', url:'img/element_water.png'},
 		{name:'element_fire', url:'img/element_fire.png'},
 		{name:'element_earth', url:'img/element_earth.png'},
-		{name:'element_lightning', url:'img/element_lightning.png'},
+		{name:'element_storm', url:'img/element_storm.png'},
 		{name:'element_wind', url:'img/element_wind.png'},
 		{name:'element_toxic', url:'img/element_toxic.png'},
 		{name:'element_spirit', url:'img/element_spirit.png'},
-		{name:'element_shadow', url:'img/element_shadow.png'},
+		{name:'element_void', url:'img/element_void.png'},
 
 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
@@ -718,7 +718,7 @@ function setup(){
 				skillElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
 			case 5:
-				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+				skillElement = new PIXI.Sprite(resources.element_storm.texture);
 				break;
 			case 6:
 				skillElement = new PIXI.Sprite(resources.element_wind.texture);
@@ -730,7 +730,7 @@ function setup(){
 				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
 				break;
 			case 9:
-				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+				skillElement = new PIXI.Sprite(resources.element_void.texture);
 				break;
 			default:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -2385,7 +2385,7 @@ function onHPDown(){
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
 		}else if(element == 5){
 			creatureInfo.info_main_element[elementIndex].text = "Storm";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_lightning.texture;
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
 		}else if(element == 6){
 			creatureInfo.info_main_element[elementIndex].text = "Wind";
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
@@ -2397,7 +2397,7 @@ function onHPDown(){
 			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
 		}else if(element == 9){
 			creatureInfo.info_main_element[elementIndex].text = "Void";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_shadow.texture;
+			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
 		}
 	});
 	
@@ -2913,7 +2913,7 @@ function onHPDown(){
 				skillElement = new PIXI.Sprite(resources.element_earth.texture);
 				break;
 			case 5:
-				skillElement = new PIXI.Sprite(resources.element_lightning.texture);
+				skillElement = new PIXI.Sprite(resources.element_storm.texture);
 				break;
 			case 6:
 				skillElement = new PIXI.Sprite(resources.element_wind.texture);
@@ -2925,7 +2925,7 @@ function onHPDown(){
 				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
 				break;
 			case 9:
-				skillElement = new PIXI.Sprite(resources.element_shadow.texture);
+				skillElement = new PIXI.Sprite(resources.element_void.texture);
 				break;
 			default:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -5067,7 +5067,7 @@ function selectCreature(object2){
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
 				break;
 			case 5:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_lightning.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_storm.texture;
 				break;
 			case 6:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
@@ -5079,7 +5079,7 @@ function selectCreature(object2){
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
 				break;
 			case 9:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_shadow.texture;
+				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_void.texture;
 				break;
 			default:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
