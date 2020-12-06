@@ -984,10 +984,10 @@ function setup(){
 	info_main_text.push(info_main_desc2);
 	creatureInfoMain.addChild(info_main_desc2);
 
-	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
+	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_d.texture);				//Button additional
 	btnStatusUp.anchor.set(0,0.5);
 	btnStatusUp.buttonMode = true;
-    	btnStatusUp.interactive = true;
+    	btnStatusUp.interactive = false;
 	btnStatusUp
         // set the mousedown and touchstart callback...
         .on('pointerdown', onBtnStatusUp);
@@ -3060,12 +3060,24 @@ function onHPDown(){
 }
 
 function onBtnStatusUp(){
-	this.texture = resources.arrow_up_d.texture;
 	console.log("status up");
+	var currIndex = 0;
+	creatureInfo.status.pages.forEach((statusPage,pageIndex)=>{
+		if(statusPage.visible == true){
+			currIndex = pageIndex;
+		}
+	});
+	creatureInfo.status.arrowDown.interactive = true;
+	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
+	creatureInfo.status.pages[currIndex].visible = false;
+	creatureInfo.status.pages[currIndex-1].visible = true;
+	if(currIndex == 0){
+		this.texture = resources.arrow_up_d.texture;
+		this.interactive = false;
+	}
 }
 
-function onBtnStatusDown(){
-	this.texture = resources.arrow_down_d.texture;
+function onBtnStatusDown(){	
 	console.log("status down");
 	var currIndex = 0;
 	creatureInfo.status.pages.forEach((statusPage,pageIndex)=>{
@@ -3073,8 +3085,14 @@ function onBtnStatusDown(){
 			currIndex = pageIndex;
 		}
 	});
+	creatureInfo.status.arrowUp.interactive = true;
+	creatureInfo.status.arrowUp.texture = resources.arrow_up_n.texture;
 	creatureInfo.status.pages[currIndex].visible = false;
 	creatureInfo.status.pages[currIndex+1].visible = true;
+	if(currIndex == creatureInfo.status.pages.length-1){
+		this.texture = resources.arrow_down_d.texture;
+		this.interactive = false;
+	}
 }
 
 function onInfoSkillDown(){
