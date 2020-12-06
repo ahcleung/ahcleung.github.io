@@ -2494,6 +2494,12 @@ function onHPDown(){
 	var statusYAdjust = 0;
 	var statusXAdjust = 0;
 
+	creatureInfo.status.arrowUp.interactive = false;
+	creatureInfo.status.arrowUp.texture = resources.arrow_up_d.texture;
+
+	creatureInfo.status.arrowDown.interactive = true;
+	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
+
 	const statusPage = new PIXI.Container();
 	var statusPages = [];
 	creatureInfo.status.addChild(statusPage);
