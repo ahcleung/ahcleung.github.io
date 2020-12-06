@@ -2344,19 +2344,19 @@ function onHPDown(){
 	creatureInfo.info_main_text[3].text = this.object.level;
 	// creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_elementIcon[0].x = app.screen.width/38.4;
-	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
+	creatureInfo.info_main_elementIcon[0].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[1].x = app.screen.width/6;
-	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_elementIcon[1].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
-	creatureInfo.info_main_element[0].x = app.screen.width/38.4 + creatureInfo.info_main_elementIcon[0].width + 10;
-	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
+	creatureInfo.info_main_element[0].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_element[1].x = app.screen.width/6 +  creatureInfo.info_main_elementIcon[1].width + 10;
-	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_element[1].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
