@@ -3070,7 +3070,7 @@ function onBtnStatusUp(){
 	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
 	creatureInfo.status.pages[currIndex].visible = false;
 	creatureInfo.status.pages[currIndex-1].visible = true;
-	if(currIndex == 0){
+	if(currIndex-1 == 0){
 		this.texture = resources.arrow_up_d.texture;
 		this.interactive = false;
 	}
