@@ -2625,7 +2625,7 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 10){
-					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16) + " per turn", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textHealStatus.x = statusMargin[0];
 					textHealStatus.y = detailLevel*statusMargin[1];
 					textHealStatus.anchor.set(0,0.5);
