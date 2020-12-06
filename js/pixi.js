@@ -2331,12 +2331,13 @@ function onHPDown(){
 			text.y = textIndex * infoMainMargin;
 		}else if(textIndex == 5){
 			text.x = app.screen.width/15;
-			text.y = textIndex * infoMainMargin;
+			text.y = (textIndex-1) * infoMainMargin;
 		}else if(textIndex == 6){
 			// text.x = creatureInfo.info_main_text[5].width + 10;
 			// text.y = 10.3 * infoMainMargin;
+			
 			text.x = app.screen.width/12;
-			text.y = (textIndex-1) * infoMainMargin;
+			text.y = textIndex * infoMainMargin;
 		}else{
 			text.x = app.screen.width/12;
 			text.y = (textIndex-1) * infoMainMargin;
