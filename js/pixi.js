@@ -2309,7 +2309,7 @@ function onHPDown(){
 	var statusMargin = [app.screen.width/27,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/5];
-	var infoMainMargin = app.screen.height/22;
+	var infoMainMargin = app.screen.height/20;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
@@ -2391,11 +2391,12 @@ function onHPDown(){
 	creatureInfo.info_main_element[1].visible = false;
 
 	// creatureInfo.info_main_expBar[0].x = 100;
+	creatureInfo.info_main_expBar[0].x = app.screen.width/12;
 	creatureInfo.info_main_expBar[0].y = 11.8*infoMainMargin;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
 	creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
-	creatureInfo.info_main_expBar[0].height = app.screen.height/21.6;
-	creatureInfo.info_main_expBar[1].height = app.screen.height/21.6;
+	creatureInfo.info_main_expBar[0].height = app.screen.height/31.6;
+	creatureInfo.info_main_expBar[1].height = app.screen.height/31.6;
 	// creatureInfo.info_main_expBar[1].x = 100;
 
 	creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
