@@ -2744,7 +2744,7 @@ function onHPDown(){
 	});
 
 	creatureInfo.status.arrowUp.x = app.screen.width/3;
-	creatureInfo.status.arrowUp.y = (app.screen.height/2)-creatureInfo.status.y;
+	creatureInfo.status.arrowUp.y = (app.screen.height/2)-textOrigin[1];
 	creatureInfo.status.arrowDown.x = app.screen.width/3;
 	creatureInfo.status.arrowDown.y = app.screen.height*4/5;
 
