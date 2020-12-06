@@ -2309,7 +2309,7 @@ function onHPDown(){
 	var statusMargin = [app.screen.width/27,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/5];
-	var infoMainMargin = app.screen.height/24;
+	var infoMainMargin = app.screen.height/22;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
@@ -2372,7 +2372,7 @@ function onHPDown(){
 
 	creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
 	creatureInfo.info_main_elementIcon[0].y = 4.5*infoMainMargin;
-	creatureInfo.info_main_elementIcon[1].x = app.screen.width/6;
+	creatureInfo.info_main_elementIcon[1].x = app.screen.width/5;
 	creatureInfo.info_main_elementIcon[1].y = 4.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
@@ -2381,7 +2381,7 @@ function onHPDown(){
 
 	creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
 	creatureInfo.info_main_element[0].y = 4.5*infoMainMargin;
-	creatureInfo.info_main_element[1].x = app.screen.width/6 +  creatureInfo.info_main_elementIcon[1].width + 10;
+	creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
 	creatureInfo.info_main_element[1].y = 4.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
