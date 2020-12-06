@@ -984,6 +984,26 @@ function setup(){
 	info_main_text.push(info_main_desc2);
 	creatureInfoMain.addChild(info_main_desc2);
 
+	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
+	btnStatusUp.anchor.set(0,0.5);
+	btnStatusUp.buttonMode = true;
+    	btnStatusUp.interactive = true;
+	btnStatusUp
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onBtnStatusUp);
+	creatureInfo.status.addChild(btnStatusUp);
+	creatureInfo.status.arrowUp = btnStatusUp;
+
+	var btnStatusDown = new PIXI.Sprite(resources.arrow_down_n.texture);				//Button additional
+	btnStatusDown.anchor.set(0,0.5);
+	btnStatusDown.buttonMode = true;
+    	btnStatusDown.interactive = true;
+	btnStatusDown
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onBtnStatusDown);
+	creatureInfo.status.addChild(btnStatusDown);
+	creatureInfo.status.arrowDown = btnStatusDown;
+
 	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_skill_text.push(info_skill_power1);
 	creatureInfoSkill.addChild(info_skill_power1);
@@ -2723,27 +2743,10 @@ function onHPDown(){
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 	});
 
-	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
-	btnStatusUp.anchor.set(0,0.5);
-	btnStatusUp.x = app.screen.width/5;
-	btnStatusUp.y = app.screen.height*2/5;
-	btnStatusUp.buttonMode = true;
-    	btnStatusUp.interactive = true;
-	btnStatusUp
-        // set the mousedown and touchstart callback...
-        .on('pointerdown', onBtnStatusUp);
-   creatureInfo.status.addChild(btnStatusUp);
-
-   var btnStatusDown = new PIXI.Sprite(resources.arrow_down_n.texture);				//Button additional
-	btnStatusDown.anchor.set(0,0.5);
-	btnStatusDown.x = app.screen.width/3;
-	btnStatusDown.y = app.screen.height*4/5;
-	btnStatusDown.buttonMode = true;
-    	btnStatusDown.interactive = true;
-	btnStatusDown
-        // set the mousedown and touchstart callback...
-        .on('pointerdown', onBtnStatusDown);
-   creatureInfo.status.addChild(btnStatusDown);
+	creatureInfo.status.arrowUp.x = app.screen.width/3;
+	creatureInfo.status.arrowUp.y = app.screen.height/2-creatureInfo.status.x;
+	creatureInfo.status.arrowDown.x = app.screen.width/3;
+	creatureInfo.status.arrowDown.y = app.screen.height*4/5;
 
 	// var creatureInfoSkill = new PIXI.Container();
 	
