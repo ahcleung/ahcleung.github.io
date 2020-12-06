@@ -971,6 +971,14 @@ function setup(){
 	creatureInfoMain.addChild(expBarGained);
 	creatureInfo.info_main_expBar = info_main_expBar;
 
+	// let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_desc1.anchor.set(1,0);
+	// info_main_text.push(info_main_desc1);
+	// creatureInfoMain.addChild(info_main_desc1);
+	// let info_main_desc2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	// info_main_text.push(info_main_desc2);
+	// creatureInfoMain.addChild(info_main_desc2);
+
 	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_skill_text.push(info_skill_power1);
 	creatureInfoSkill.addChild(info_skill_power1);
@@ -2341,21 +2349,21 @@ function onHPDown(){
 
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
-	creatureInfo.info_main_text[5].text = this.object.name;
+	// creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_elementIcon[0].x = app.screen.width/38.4;
-	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_elementIcon[0].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[1].x = app.screen.width/6;
-	creatureInfo.info_main_elementIcon[1].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_elementIcon[1].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
 	creatureInfo.info_main_element[0].x = app.screen.width/38.4 + creatureInfo.info_main_elementIcon[0].width + 10;
-	creatureInfo.info_main_element[0].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_element[0].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_element[1].x = app.screen.width/6 +  creatureInfo.info_main_elementIcon[1].width + 10;
-	creatureInfo.info_main_element[1].y = 8.5*infoMainMargin;
+	creatureInfo.info_main_element[1].y = 6.5*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
