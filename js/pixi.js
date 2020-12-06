@@ -3088,7 +3088,7 @@ function onBtnStatusDown(){
 	creatureInfo.status.arrowUp.texture = resources.arrow_up_n.texture;
 	creatureInfo.status.pages[currIndex].visible = false;
 	creatureInfo.status.pages[currIndex+1].visible = true;
-	if(currIndex == creatureInfo.status.pages.length-1){
+	if(currIndex == creatureInfo.status.pages.length){
 		this.texture = resources.arrow_down_d.texture;
 		this.interactive = false;
 	}
