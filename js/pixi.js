@@ -896,6 +896,7 @@ function setup(){
 
 	let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_text.push(info_main_name1);
+	info_main_name1.anchor.set(1,0);
 	creatureInfoMain.addChild(info_main_name1);
 	let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_name2);
