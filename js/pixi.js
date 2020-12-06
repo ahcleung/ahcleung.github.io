@@ -908,7 +908,7 @@ function setup(){
 	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_level2);
 	creatureInfoMain.addChild(info_main_level2);
-	let info_main_species1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	let info_main_species1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_species1.anchor.set(1,0);
 	info_main_text.push(info_main_species1);
 	creatureInfoMain.addChild(info_main_species1);
@@ -2341,7 +2341,7 @@ function onHPDown(){
 
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
-	// creatureInfo.info_main_text[5].text = this.object.name;
+	creatureInfo.info_main_text[5].text = this.object.name;
 
 	creatureInfo.info_main_elementIcon[0].x = app.screen.width/38.4;
 	creatureInfo.info_main_elementIcon[0].y = 8.5*infoMainMargin;
