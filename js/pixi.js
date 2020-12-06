@@ -2322,7 +2322,7 @@ function onHPDown(){
 	creatureInfo.main.x = textOrigin[0];
 	creatureInfo.main.y = textOrigin[1];
 
-	creatureInfo.info_main_text[8].text = this.object.experienceGained + " / " + this.object.experienceNext;
+	creatureInfo.info_main_text[6].text = this.object.experienceGained + " / " + this.object.experienceNext;
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
