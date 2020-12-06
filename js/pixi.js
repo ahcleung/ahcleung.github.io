@@ -963,7 +963,7 @@ function setup(){
 	expBarGained.y = 0;
 	info_main_expBar.push(expBarGained);
 	let expBarOverall = new PIXI.Graphics();
-	expBarOverall.beginFill(0x222222).drawRect(0, 0, 500, 50);
+	expBarOverall.beginFill(0x636363).drawRect(0, 0, 500, 50);
 	expBarOverall.x = 0;
 	expBarOverall.y = 0;
 	info_main_expBar.push(expBarOverall);
@@ -2401,7 +2401,7 @@ function onHPDown(){
 	creatureInfo.info_main_expBar[1].height = app.screen.height/51.6;
 	// creatureInfo.info_main_expBar[1].x = 100;
 
-	creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
+	// creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
 
 	this.object.elements.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
