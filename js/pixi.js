@@ -2745,7 +2745,6 @@ function onHPDown(){
 			statusPage.visible = false;
 			creatureInfo.status.addChild(statusPage);
 			creatureInfo.status.pages.push(statusPage);
-
 			statusYAdjust = textLevel-detailLevel;
 			// statusXAdjust = 1;
 		}
@@ -3078,7 +3077,7 @@ function onBtnStatusUp(){
 }
 
 function onBtnStatusDown(){	
-	console.log("status down");
+	console.log("status down " + creatureInfo.status.pages.length);
 	var currIndex = 0;
 	creatureInfo.status.pages.forEach((statusPage,pageIndex)=>{
 		if(statusPage.visible == true){
