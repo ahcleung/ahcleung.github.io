@@ -895,25 +895,28 @@ function setup(){
 	var info_skill_text = [];
 
 	let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_text.push(info_main_name1);
 	info_main_name1.anchor.set(1,0);
+	info_main_text.push(info_main_name1);
 	creatureInfoMain.addChild(info_main_name1);
 	let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_name2);
 	creatureInfoMain.addChild(info_main_name2);
 	let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_main_level1.anchor.set(1,0);
 	info_main_text.push(info_main_level1);
 	creatureInfoMain.addChild(info_main_level1);
 	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_level2);
 	creatureInfoMain.addChild(info_main_level2);
 	let info_main_species1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_main_species1.anchor.set(1,0);
 	info_main_text.push(info_main_species1);
 	creatureInfoMain.addChild(info_main_species1);
 	let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_species2);
 	creatureInfoMain.addChild(info_main_species2);
 	let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_main_element1.anchor.set(1,0);
 	info_main_text.push(info_main_element1);
 	creatureInfoMain.addChild(info_main_element1);
 
@@ -947,6 +950,7 @@ function setup(){
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
 
 	var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_main_exp1.anchor.set(1,0);
 	info_main_text.push(info_main_exp1);
 	creatureInfoMain.addChild(info_main_exp1);
 	var info_main_exp2 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
