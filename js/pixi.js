@@ -2385,8 +2385,8 @@ function onHPDown(){
 	creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
 	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
 	creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
-	creatureInfo.info_main_expBar[0].height = app.screen.height/51.6;
-	creatureInfo.info_main_expBar[1].height = app.screen.height/51.6;
+	creatureInfo.info_main_expBar[0].height = app.screen.height/55;
+	creatureInfo.info_main_expBar[1].height = app.screen.height/55;
 	// creatureInfo.info_main_expBar[1].x = 100;
 
 	// creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
