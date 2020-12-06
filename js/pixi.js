@@ -2570,25 +2570,25 @@ function onHPDown(){
 							buffStat = "HP  +" + status[3];
 							break;
 						case 2:
-							buffStat = "DODGE  +" + status[3];
+							buffStat = "Dodge  +" + status[3];
 							break;
 						case 3:
-							buffStat = "PATK  +" + status[3];
+							buffStat = "Physical attack  +" + status[3];
 							break;
 						case 4:
-							buffStat = "PDEF  +" + status[3];
+							buffStat = "Physical defense  +" + status[3];
 							break;
 						case 5:
-							buffStat = "SATK  +" + status[3];
+							buffStat = "Special attack  +" + status[3];
 							break;
 						case 6:
-							buffStat = "SDEF  +" + status[3];
+							buffStat = "Special defense  +" + status[3];
 							break;
 						case 7:
-							buffStat = "SPD  +" + status[3];
+							buffStat = "Speed  +" + status[3];
 							break;
 						case 8:
-							buffStat = "ACC  +" + status[3];
+							buffStat = "Accuracy  +" + status[3];
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
@@ -2608,7 +2608,7 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
-					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage per turn" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDamageStatus.x = statusMargin[0];
 					textDamageStatus.y = detailLevel*statusMargin[1];
 					textDamageStatus.anchor.set(0,0.5);
@@ -2648,25 +2648,25 @@ function onHPDown(){
 							debuffStat = "HP  " + status[3];
 							break;
 						case 2:
-							debuffStat = "DODGE  " + status[3];
+							debuffStat = "Dodge  " + status[3];
 							break;
 						case 3:
-							debuffStat = "PATK  " + status[3];
+							debuffStat = "Physical attack  " + status[3];
 							break;
 						case 4:
-							debuffStat = "PDEF  " + status[3];
+							debuffStat = "Physical defense  " + status[3];
 							break;
 						case 5:
-							debuffStat = "SATK  " + status[3];
+							debuffStat = "Special attack  " + status[3];
 							break;
 						case 6:
-							debuffStat = "SDEF  " + status[3];
+							debuffStat = "Special defense  " + status[3];
 							break;
 						case 7:
-							debuffStat = "SPD  " + status[3];
+							debuffStat = "Speed  " + status[3];
 							break;
 						case 8:
-							debuffStat = "ACC  " + status[3];
+							debuffStat = "Accuracy  " + status[3];
 							break;
 					}
 					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
