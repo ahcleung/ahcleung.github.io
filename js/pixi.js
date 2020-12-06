@@ -2724,13 +2724,26 @@ function onHPDown(){
 	});
 
 	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
-	btnStatusUp.anchor.set(0,1);
+	btnStatusUp.anchor.set(0,0.5);
+	btnStatusUp.x = app.screen.width*4/5;
+	btnStatusUp.y = app.screen.height*2/5;
 	btnStatusUp.buttonMode = true;
     	btnStatusUp.interactive = true;
 	btnStatusUp
         // set the mousedown and touchstart callback...
         .on('pointerdown', onBtnStatusUp);
    creatureInfo.status.addChild(btnStatusUp);
+
+   var btnStatusDown = new PIXI.Sprite(resources.arrow_down_n.texture);				//Button additional
+	btnStatusDown.anchor.set(0,0.5);
+	btnStatusDown.x = app.screen.width*5/6;
+	btnStatusDown.y = app.screen.height*4/5;
+	btnStatusDown.buttonMode = true;
+    	btnStatusDown.interactive = true;
+	btnStatusDown
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onBtnStatusDown);
+   creatureInfo.status.addChild(btnStatusDown);
 
 	// var creatureInfoSkill = new PIXI.Container();
 	
@@ -3030,6 +3043,11 @@ function onHPDown(){
 function onBtnStatusUp(){
 	this.texture = resources.arrow_up_d.texture;
 	console.log("status up");
+}
+
+function onBtnStatusDown(){
+	this.texture = resources.arrow_down_d.texture;
+	console.log("status down");
 }
 
 function onInfoSkillDown(){
