@@ -2738,7 +2738,7 @@ function onHPDown(){
 				}
 			}
 		});
-		if(textLevel > 10 && statusXAdjust == 0){
+		if(textLevel > 10){
 			textLevel = 0;
 			const statusPage = new PIXI.Container();
 			statusPage.visible = false;
@@ -2747,6 +2747,7 @@ function onHPDown(){
 			statusYAdjust = textLevel-detailLevel;
 			// statusXAdjust = 1;
 		}
+		console.log("textLevel " + textLevel);
 		// creatureInfo.status.addChild(statusContainer);
 		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
