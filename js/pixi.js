@@ -2740,6 +2740,11 @@ function onHPDown(){
 			}
 		});
 		if(textLevel > 10 && statusXAdjust == 0){
+			const statusPage = new PIXI.Container();
+			statusPage.visible = false;
+			creatureInfo.status.addChild(statusPage);
+			creatureInfo.status.pages.push(statusPage);
+
 			statusYAdjust = textLevel-detailLevel;
 			// statusXAdjust = 1;
 		}
@@ -3061,6 +3066,14 @@ function onBtnStatusUp(){
 function onBtnStatusDown(){
 	this.texture = resources.arrow_down_d.texture;
 	console.log("status down");
+	var currIndex = 0;
+	creatureInfo.status.pages.forEach((statusPage,pageIndex)=>{
+		if(statusPage.visible == true){
+			currIndex = pageIndex;
+		}
+	});
+	creatureInfo.status.pages[currIndex].visible = false;
+	creatureInfo.status.pages[currIndex+1].visible = true;
 }
 
 function onInfoSkillDown(){
