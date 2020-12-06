@@ -922,11 +922,11 @@ function setup(){
 
 	var info_main_element = [];
 	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_main_element2.anchor.set(0,0.5);
+	// info_main_element2.anchor.set(0,0.5);
 	info_main_element.push(info_main_element2);
 	creatureInfoMain.addChild(info_main_element2);
 	let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_main_element3.anchor.set(0,0.5);
+	// info_main_element3.anchor.set(0,0.5);
 	info_main_element.push(info_main_element3);
 	creatureInfoMain.addChild(info_main_element3);
 
@@ -2368,9 +2368,9 @@ function onHPDown(){
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
 	creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
-	creatureInfo.info_main_element[0].y = 4.4*infoMainMargin;
+	creatureInfo.info_main_element[0].y = 4*infoMainMargin;
 	creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
-	creatureInfo.info_main_element[1].y = 4.4*infoMainMargin;
+	creatureInfo.info_main_element[1].y = 4*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
 	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
