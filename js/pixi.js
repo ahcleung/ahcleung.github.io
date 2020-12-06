@@ -2725,7 +2725,7 @@ function onHPDown(){
 
 	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
 	btnStatusUp.anchor.set(0,0.5);
-	btnStatusUp.x = app.screen.width*4/5;
+	btnStatusUp.x = app.screen.width/5;
 	btnStatusUp.y = app.screen.height*2/5;
 	btnStatusUp.buttonMode = true;
     	btnStatusUp.interactive = true;
@@ -2736,7 +2736,7 @@ function onHPDown(){
 
    var btnStatusDown = new PIXI.Sprite(resources.arrow_down_n.texture);				//Button additional
 	btnStatusDown.anchor.set(0,0.5);
-	btnStatusDown.x = app.screen.width*5/6;
+	btnStatusDown.x = app.screen.width/3;
 	btnStatusDown.y = app.screen.height*4/5;
 	btnStatusDown.buttonMode = true;
     	btnStatusDown.interactive = true;
