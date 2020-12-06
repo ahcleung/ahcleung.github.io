@@ -2723,14 +2723,14 @@ function onHPDown(){
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 	});
 
-	var btnStatusUp = new PIXI.Sprite(arrow_up_n);				//Button additional
+	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_n.texture);				//Button additional
 	btnStatusUp.anchor.set(0,1);
 	btnStatusUp.buttonMode = true;
     	btnStatusUp.interactive = true;
 	btnStatusUp
         // set the mousedown and touchstart callback...
         .on('pointerdown', onBtnStatusUp);
-   creatureInfo.status.addChild(btnAdditional);
+   creatureInfo.status.addChild(btnStatusUp);
 
 	// var creatureInfoSkill = new PIXI.Container();
 	
