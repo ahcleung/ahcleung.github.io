@@ -2306,7 +2306,7 @@ function onHPDown(){
 
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
-	var statusMargin = [app.screen.width/27,app.screen.height/17];
+	var statusMargin = [app.screen.width/20,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/6];
 	var infoMainMargin = app.screen.height/20;
@@ -2472,7 +2472,7 @@ function onHPDown(){
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
 		let statusEffectIcon;
-		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, fontWeight: 700, align : 'left'});
+		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
 			case 1:
 				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
