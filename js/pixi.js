@@ -2740,6 +2740,7 @@ function onHPDown(){
 			}
 		});
 		if(textLevel > 10 && statusXAdjust == 0){
+			textLevel = 0;
 			const statusPage = new PIXI.Container();
 			statusPage.visible = false;
 			creatureInfo.status.addChild(statusPage);
