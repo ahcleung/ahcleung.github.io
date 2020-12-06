@@ -3028,6 +3028,7 @@ function onHPDown(){
 }
 
 function onBtnStatusUp(){
+	this.texture = resources.arrow_up_d.texture;
 	console.log("status up");
 }
 
