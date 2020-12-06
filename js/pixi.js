@@ -2494,6 +2494,13 @@ function onHPDown(){
 	var statusYAdjust = 0;
 	var statusXAdjust = 0;
 
+	const statusPage = new PIXI.Container();
+	var statusPages = [];
+	creatureInfo.status.addChild(statusPage);
+	statusPages.push(statusPage);
+	creatureInfo.status.pages = statusPages;
+
+
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
 		let statusEffectIcon;
@@ -2732,15 +2739,15 @@ function onHPDown(){
 				}
 			}
 		});
-		if(textLevel > 10 && statusXAdjust == 0){
-			statusYAdjust = textLevel-detailLevel;
-			statusXAdjust = 1;
-		}
-		creatureInfo.status.addChild(statusContainer);
-		// statusContainer.x = statusXAdjust*statusLevel2X;
-		statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
-		// statusContainer.x = statusXAdjust*(app.screen.width/4);
-		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
+		// if(textLevel > 10 && statusXAdjust == 0){
+		// 	statusYAdjust = textLevel-detailLevel;
+		// 	statusXAdjust = 1;
+		// }
+		// creatureInfo.status.addChild(statusContainer);
+		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
+		// statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
+
+		creatureInfo.status.pages[creatureInfo.status.pages.length-1].addChild(statusContainer);
 	});
 	
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
