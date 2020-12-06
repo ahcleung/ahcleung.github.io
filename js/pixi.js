@@ -2494,18 +2494,11 @@ function onHPDown(){
 	var statusYAdjust = 0;
 	var statusXAdjust = 0;
 
-	creatureInfo.status.arrowUp.interactive = false;
-	creatureInfo.status.arrowUp.texture = resources.arrow_up_d.texture;
-
-	creatureInfo.status.arrowDown.interactive = true;
-	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
-
 	const statusPage = new PIXI.Container();
 	var statusPages = [];
 	creatureInfo.status.addChild(statusPage);
 	statusPages.push(statusPage);
 	creatureInfo.status.pages = statusPages;
-
 
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
@@ -2761,6 +2754,18 @@ function onHPDown(){
 
 		creatureInfo.status.pages[creatureInfo.status.pages.length-1].addChild(statusContainer);
 	});
+
+	creatureInfo.status.arrowUp.interactive = false;
+	creatureInfo.status.arrowUp.texture = resources.arrow_up_d.texture;
+
+	if(creatureInfo.status.pages.length>1){
+		creatureInfo.status.arrowDown.interactive = true;
+		creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
+	}else{
+		creatureInfo.status.arrowDown.interactive = false;
+		creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
+	}
+	
 	
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
