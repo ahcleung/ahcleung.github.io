@@ -35,6 +35,11 @@ loader
 		"js/skills.json",
 		"js/elements.json",
 
+		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
+		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
+		{name:'arrow_down_d', url:'img/arrow_down_d.png'},
+		{name:'arrow_down_n', url:'img/arrow_down_n.png'},
+
 		{name:'hazard_lit', url:'img/hazard_lit.png'},
 		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
 		{name:'hazard_spores', url:'img/hazard_spores.png'},
@@ -2718,6 +2723,15 @@ function onHPDown(){
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 	});
 
+	var btnStatusUp = new PIXI.Sprite(arrow_up_n);				//Button additional
+	btnStatusUp.anchor.set(0,1);
+	btnStatusUp.buttonMode = true;
+    	btnStatusUp.interactive = true;
+	btnStatusUp
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onBtnStatusUp);
+   creatureInfo.status.addChild(btnAdditional);
+
 	// var creatureInfoSkill = new PIXI.Container();
 	
 	creatureInfo.skill.x = textOrigin[0];
@@ -3011,6 +3025,10 @@ function onHPDown(){
 	creatureInfo.statusText = statusText;
 	creatureInfo.skillText = skillText;
 	creatureInfo.infoSkillArray = infoSkillArray;
+}
+
+function onBtnStatusUp(){
+	console.log("status up");
 }
 
 function onInfoSkillDown(){
