@@ -971,6 +971,14 @@ function setup(){
 	creatureInfoMain.addChild(expBarGained);
 	creatureInfo.info_main_expBar = info_main_expBar;
 
+	let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_main_desc1.anchor.set(1,0);
+	info_main_text.push(info_main_desc1);
+	creatureInfoMain.addChild(info_main_species1);
+	let info_main_desc2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_main_text.push(info_main_desc2);
+	creatureInfoMain.addChild(info_main_desc2);
+
 	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, fontWeight: 700, align : 'left'});
 	info_skill_text.push(info_skill_power1);
 	creatureInfoSkill.addChild(info_skill_power1);
@@ -2301,7 +2309,7 @@ function onHPDown(){
 	var statusMargin = [app.screen.width/27,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/5];
-	var infoMainMargin = app.screen.height/25;
+	var infoMainMargin = app.screen.height/24;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
@@ -2326,22 +2334,36 @@ function onHPDown(){
 
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
-		if(textIndex%2 == 0 && textIndex<5){
-			text.x = app.screen.width/15;
-			text.y = textIndex * infoMainMargin;
-		}else if(textIndex == 5){
-			text.x = app.screen.width/15;
-			text.y = (textIndex+1) * infoMainMargin;
-		}else if(textIndex == 6){
-			// text.x = creatureInfo.info_main_text[5].width + 10;
-			// text.y = 10.3 * infoMainMargin;
-
-			text.x = app.screen.width/12;
-			text.y = textIndex * infoMainMargin;
+		if(textIndex < 5){
+			if(textIndex%2 == 0){
+				text.x = app.screen.width/15;
+				text.y = textIndex * infoMainMargin;
+			}else{
+				text.x = app.screen.width/12;
+				text.y = (textIndex-1) * infoMainMargin;
+			}
 		}else{
-			text.x = app.screen.width/12;
-			text.y = (textIndex-1) * infoMainMargin;
+			if(textIndex%2 == 0){
+				text.x = app.screen.width/12;
+				text.y = textIndex * infoMainMargin;
+			}else{
+				text.x = app.screen.width/15;
+				text.y = (textIndex+1) * infoMainMargin;
+			}
 		}
+		// if(textIndex%2 == 0 && textIndex<5){
+		// 	text.x = app.screen.width/15;
+		// 	text.y = textIndex * infoMainMargin;
+		// }else if(textIndex == 5){
+		// 	text.x = app.screen.width/15;
+		// 	text.y = (textIndex+1) * infoMainMargin;
+		// }else if(textIndex == 6){
+		// 	text.x = app.screen.width/12;
+		// 	text.y = textIndex * infoMainMargin;
+		// }else{
+		// 	text.x = app.screen.width/12;
+		// 	text.y = (textIndex-1) * infoMainMargin;
+		// }
 	});
 
 	creatureInfo.info_main_text[1].text = this.object.name;
