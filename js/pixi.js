@@ -2301,7 +2301,7 @@ function onHPDown(){
 	var statusMargin = [app.screen.width/27,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/5];
-	var infoMainMargin = app.screen.height/26;
+	var infoMainMargin = app.screen.height/25;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
