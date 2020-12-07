@@ -264,7 +264,7 @@
       {
          "name": "Veehel",
          "code": "hel1",
-         "desc": "",
+         "desc": "It gracefully balances on the tips of it's feet. The toxins in its claws can paralyze any foe.",
          "frames": 48,
          "move": ["-",2],
          "elements": [9,7],
@@ -322,7 +322,7 @@
       {
          "name": "Tannjoltr",
          "code": "goat2_1",
-         "desc": "",
+         "desc": "Believed to have the power to create jet streams, it can control storms with it's antlers.",
          "frames": 90,
          "move": ["=",1],
          "elements": [6,5],
@@ -351,7 +351,7 @@
       {
          "name": "Tannrisear",
          "code": "goat2_2",
-         "desc": "",
+         "desc": "Believed to have the power to create jet streams, it can control fire with its antlers.",
          "frames": 90,
          "move": ["+",1],
          "elements": [6,3],
