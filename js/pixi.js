@@ -2382,7 +2382,7 @@ function onHPDown(){
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
 	// creatureInfo.info_main_text[8].text = "It's dominant hand is encrusted with a rock-like formation that it uses as a shield and a weapon. The rock is bejeweled with spiritual gems.";
-	creatureInfo.info_main_text[8].text = creatureList.data.creatures.[this.object.id].desc;
+	creatureInfo.info_main_text[8].text = creatureList.data.creatures[this.object.id].desc;
 	creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
 	// creatureInfo.info_main_text[5].text = this.object.name;
 
