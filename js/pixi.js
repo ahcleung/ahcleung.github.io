@@ -2738,6 +2738,7 @@ function onHPDown(){
 				}
 			}
 		});
+		console.log("textLevel " + textLevel);
 		if(textLevel > 10){
 			textLevel = 0;
 			const statusPage = new PIXI.Container();
@@ -2747,7 +2748,7 @@ function onHPDown(){
 			statusYAdjust = textLevel-detailLevel;
 			// statusXAdjust = 1;
 		}
-		console.log("textLevel " + textLevel);
+
 		// creatureInfo.status.addChild(statusContainer);
 		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
