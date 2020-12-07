@@ -2739,14 +2739,17 @@ function onHPDown(){
 			}
 		});
 		console.log("textLevel " + textLevel);
+		var textLevelTracker = 0;
 		if(textLevel > 10){
-			textLevel -= 10;
+			textLevel -= textLevelTracker;
 			const statusPage = new PIXI.Container();
 			statusPage.visible = false;
 			creatureInfo.status.addChild(statusPage);
 			creatureInfo.status.pages.push(statusPage);
 			statusYAdjust = textLevel-detailLevel;
 			// statusXAdjust = 1;
+		}else{
+			textLevelTracker = textLevel;
 		}
 
 		// creatureInfo.status.addChild(statusContainer);
