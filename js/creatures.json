@@ -177,7 +177,7 @@
       {
          "name": "Zeppole",
          "code": "toad1",
-         "desc": "",
+         "desc": "It naturally floats along using it's tail to ride the air currents.",
          "frames": 60,
          "move": ["=",1],
          "elements": [6],
@@ -235,7 +235,7 @@
       {
          "name": "Fload",
          "code": "toad3",
-         "desc": "",
+         "desc": "As it sucks in air to fill it's belly, toxic fumes expel from it's orifices.",
          "frames": 62,
          "move": ["=",1],
          "elements": [6,7],
