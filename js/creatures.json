@@ -3,6 +3,7 @@
       {
          "name": "Apock",
          "code": "gorilla1",
+         "desc": "",
          "frames": 60,
          "move": ["=",1],
          "elements": [4],
@@ -31,6 +32,7 @@
       {
          "name": "Goroka",
          "code": "gorilla2",
+         "desc": "",
          "frames": 60,
          "move": ["=",1],
          "elements": [4],
@@ -59,6 +61,7 @@
       {
          "name": "Gorillder",
          "code": "gorilla3",
+         "desc": "It's dominant hand is encrusted with a rock-like formation that it uses as a shield and a weapon. The rock is bejeweled with spiritual gems.",
          "frames": 46,
          "move": ["=",1],
          "elements": [4,8],
@@ -87,6 +90,7 @@
       {
          "name": "Litoon",
          "code": "racoon1",
+         "desc": "",
          "frames": 60,
          "move": ["=",2],
          "elements": [5],
@@ -115,6 +119,7 @@
       {
          "name": "Lynite",
          "code": "racoon2",
+         "desc": "",
          "frames": 60,
          "move": ["=",2],
          "elements": [5,9],
@@ -143,6 +148,7 @@
       {
          "name": "Lyncoon",
          "code": "racoon3",
+         "desc": "",
          "frames": 60,
          "move": ["=",2],
          "elements": [5,9],
@@ -171,6 +177,7 @@
       {
          "name": "Zeppole",
          "code": "toad1",
+         "desc": "",
          "frames": 60,
          "move": ["=",1],
          "elements": [6],
@@ -199,6 +206,7 @@
       {
          "name": "Zepplet",
          "code": "toad2",
+         "desc": "",
          "frames": 60,
          "move": ["=",1],
          "elements": [6],
@@ -227,6 +235,7 @@
       {
          "name": "Fload",
          "code": "toad3",
+         "desc": "",
          "frames": 62,
          "move": ["=",1],
          "elements": [6,7],
@@ -255,6 +264,7 @@
       {
          "name": "Veehel",
          "code": "hel1",
+         "desc": "",
          "frames": 48,
          "move": ["-",2],
          "elements": [9,7],
@@ -283,6 +293,7 @@
       {
          "name": "Umbrahel",
          "code": "hel2",
+         "desc": "",
          "frames": 55,
          "move": ["-",2],
          "elements": [9,7],
@@ -311,6 +322,7 @@
       {
          "name": "Tannjoltr",
          "code": "goat2_1",
+         "desc": "",
          "frames": 90,
          "move": ["=",1],
          "elements": [6,5],
@@ -339,6 +351,7 @@
       {
          "name": "Tannrisear",
          "code": "goat2_2",
+         "desc": "",
          "frames": 90,
          "move": ["+",1],
          "elements": [6,3],
