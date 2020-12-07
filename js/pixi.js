@@ -2589,7 +2589,7 @@ function onHPDown(){
 		textStatus.x = statusEffectIcon.width + turnMargin;
 		textStatus.anchor.set(0,0.5);
 		statusText.push(textStatus);
-		// textLevel++;
+		textLevel++;
 
 		var detailLevel = 1;
 		this.object.statusArray.forEach((status,sIndex) =>{
@@ -2723,7 +2723,6 @@ function onHPDown(){
 					textTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textTurn);
 					statusText.push(textTurn);
-					textLevel++;
 					console.log("	[" + status[1] + "]");
 				}
 				if(statusNum == 14){
