@@ -2491,6 +2491,7 @@ function onHPDown(){
 	var statusIcon = [];
 	var statusText = [];
 	var textLevel = 0;
+	var textLevelTracker = 0;
 	var statusYAdjust = 0;
 	var statusXAdjust = 0;
 
@@ -2739,7 +2740,7 @@ function onHPDown(){
 			}
 		});
 		console.log("textLevel " + textLevel);
-		var textLevelTracker = 0;
+		
 		if(textLevel > 10){
 			textLevel -= textLevelTracker;
 			const statusPage = new PIXI.Container();
