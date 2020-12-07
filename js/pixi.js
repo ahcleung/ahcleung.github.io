@@ -1006,24 +1006,28 @@ function setup(){
 	creatureInfo.status.arrowDown = btnStatusDown;
 
 	var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_skill_power1.anchor.set(1,0);
 	info_skill_text.push(info_skill_power1);
 	creatureInfoSkill.addChild(info_skill_power1);
 	var info_skill_power2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_skill_text.push(info_skill_power2);
 	creatureInfoSkill.addChild(info_skill_power2);
 	var info_skill_acc1 = new Text("Accuracy:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_skill_acc1.anchor.set(1,0);
 	info_skill_text.push(info_skill_acc1);
 	creatureInfoSkill.addChild(info_skill_acc1);
 	var info_skill_acc2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_skill_text.push(info_skill_acc2);
 	creatureInfoSkill.addChild(info_skill_acc2);
 	var info_skill_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_skill_type1.anchor.set(1,0);
 	info_skill_text.push(info_skill_type1);
 	creatureInfoSkill.addChild(info_skill_type1);
 	var info_skill_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_skill_text.push(info_skill_type2);
 	creatureInfoSkill.addChild(info_skill_type2);
 	var info_skill_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_skill_des1.anchor.set(1,0);
 	info_skill_text.push(info_skill_des1);
 	creatureInfoSkill.addChild(info_skill_des1);
 	var info_skill_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
