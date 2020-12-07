@@ -3049,12 +3049,12 @@ function onHPDown(){
 	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
-			text.x = app.screen.width/25;
+			text.x = app.screen.width/5;
 			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
 			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
 		}else{
 			// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
-			text.x = app.screen.width/25 + 25;
+			text.x = app.screen.width/5 + 25;
 			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 		}
