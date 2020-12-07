@@ -2739,8 +2739,8 @@ function onHPDown(){
 			}
 		});
 		console.log("textLevel " + textLevel);
-		if(textLevel > 10){
-			textLevel -= 10;
+		if(textLevel > 9){
+			textLevel -= 9;
 			const statusPage = new PIXI.Container();
 			statusPage.visible = false;
 			creatureInfo.status.addChild(statusPage);
