@@ -177,7 +177,7 @@
       {
          "name": "Zeppole",
          "code": "toad1",
-         "desc": "It naturally floats along using it's tail to ride the air currents.",
+         "desc": "It naturally floats around using the fins along its body to ride the air currents.",
          "frames": 60,
          "move": ["=",1],
          "elements": [6],
@@ -235,7 +235,7 @@
       {
          "name": "Fload",
          "code": "toad3",
-         "desc": "As it sucks in air to fill it's belly, toxic fumes expel from it's orifices.",
+         "desc": "Its belly will double in size when it sucks in air in order to unleash devastating attacks. Toxic fumes constantly release from it's orifices.",
          "frames": 62,
          "move": ["=",1],
          "elements": [6,7],
@@ -322,7 +322,7 @@
       {
          "name": "Tannjoltr",
          "code": "goat2_1",
-         "desc": "Believed to have the power to create jet streams, it can control storms with it's antlers.",
+         "desc": "It rides the jet streams that it conjures and controls. Storms are amplified with its antlers.",
          "frames": 90,
          "move": ["=",1],
          "elements": [6,5],
@@ -351,7 +351,7 @@
       {
          "name": "Tannrisear",
          "code": "goat2_2",
-         "desc": "Believed to have the power to create jet streams, it can control fire with its antlers.",
+         "desc": "It rides the jet streams that it conjures and controls. Fires are amplified with its antlers.",
          "frames": 90,
          "move": ["+",1],
          "elements": [6,3],
