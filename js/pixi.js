@@ -2943,7 +2943,8 @@ function onHPDown(){
 			}
 			targetText.anchor.set(0, 0.5);
 			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
-			targetText.x = markerContainer.width/2;
+			targetText.x = (infoSkillWidth/6) + ((infoSkillWidth*2/3) * 0.569);
+			// targetText.x = markerContainer.width/2;
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
