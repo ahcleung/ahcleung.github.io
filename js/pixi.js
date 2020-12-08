@@ -2942,7 +2942,8 @@ function onHPDown(){
 				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
 			}
 			targetText.anchor.set(0, 0.5);
-			targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+			targetText.x =  skillContainer.markerContainer.width/2;
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
