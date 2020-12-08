@@ -2859,6 +2859,7 @@ function onHPDown(){
 		const markerTargetSeveralArray = [];
 		const markerTargetSeveralContainer = new PIXI.Container();
 		skillContainer.addChild(markerContainer);
+		skillContainer.markerContainer = markerContainer;
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
