@@ -2910,7 +2910,7 @@ function onHPDown(){
 			let targetText = new Text("Self", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
 			targetText.anchor.set(0, 0.5);
 			// skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
-			targetText.x =  (infoSkillWidth/6) + (skillContainer.markerContainer.width * 0.569);
+			targetText.x = (infoSkillWidth/6) + ((infoSkillWidth*2/3) * 0.569);
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
@@ -2944,7 +2944,6 @@ function onHPDown(){
 			targetText.anchor.set(0, 0.5);
 			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
 			targetText.x = (infoSkillWidth/6) + ((infoSkillWidth*2/3) * 0.569);
-			// targetText.x = markerContainer.width/2;
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
