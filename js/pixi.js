@@ -2859,7 +2859,7 @@ function onHPDown(){
 		const markerTargetSeveralArray = [];
 		const markerTargetSeveralContainer = new PIXI.Container();
 		skillContainer.addChild(markerContainer);
-		skillContainer.markerContainer = markerContainer;
+		// skillContainer.markerContainer = markerContainer;
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
@@ -2943,7 +2943,7 @@ function onHPDown(){
 			}
 			targetText.anchor.set(0, 0.5);
 			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
-			targetText.x =  skillContainer.markerContainer.width/2;
+			targetText.x = markerContainer.width/2;
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
 			skillContainer.targetText = targetText;
