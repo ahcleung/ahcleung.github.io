@@ -3070,6 +3070,8 @@ function onHPDown(){
 	}else{
 		creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	}
+	// creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
+	// creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
 	// creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
@@ -3133,8 +3135,18 @@ function onInfoSkillDown(){
 	});
 	this.selected.visible = true;
 
-	creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
-	creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
+	if(skillsList.data.skills[this.skillID].power == 0){
+		creatureInfo.info_skill_text[1].text = "--";
+	}else{
+		creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
+	}
+	if(skillsList.data.skills[this.skillID].accuracy == 110){
+		creatureInfo.info_skill_text[3].text = "--";
+	}else{
+		creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
+	}
+	// creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
+	// creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.skillID].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.skillID].description;
 }
