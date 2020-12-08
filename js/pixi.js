@@ -2880,7 +2880,7 @@ function onHPDown(){
 		const markerSpacerContainer = new PIXI.Container();
 		for (var j = 0; j < 4; j++){
 			let posMarker = new PIXI.Graphics();				
-			posMarker.beginFill(0x333333).drawRect(0, -w, w, w);
+			posMarker.beginFill(0x222222).drawRect(0, -w, w, w);
 			posMarker.x = 25 * j;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
