@@ -3134,10 +3134,10 @@ function onHPDown(){
 		}
 	});
 
-	creatureInfo.info_item_text[1].text = itemsList.data.skills[this.object.skills[0]].type;
-	creatureInfo.info_item_text[3].text = itemsList.data.skills[this.object.skills[0]].type;
-	creatureInfo.info_item_text[5].text = itemsList.data.skills[this.object.skills[0]].type;
-	creatureInfo.info_item_text[7].text = itemsList.data.skills[this.object.skills[0]].description;
+	creatureInfo.info_item_text[1].text = itemsList.data.skills[this.object.item[0]].name;
+	creatureInfo.info_item_text[3].text = itemsList.data.skills[this.object.item[0]].type;
+	creatureInfo.info_item_text[5].text = itemsList.data.skills[this.object.item[0]].category;
+	creatureInfo.info_item_text[7].text = itemsList.data.skills[this.object.item[0]].description;
 	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
