@@ -890,7 +890,9 @@ function setup(){
 	const creatureInfoSkill = new PIXI.Container();
 	creatureInfo.addChild(creatureInfoSkill);
 	creatureInfo.skill = creatureInfoSkill;
-	const creatureInfoItems = new PIXI.Container();
+	const creatureInfoItem = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoItem);
+	creatureInfo.item = creatureInfoItem;
 
 	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
@@ -899,6 +901,7 @@ function setup(){
 
 	var info_main_text = [];
 	var info_skill_text = [];
+	var info_item_text = [];
 
 	let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_name1.anchor.set(1,0);
@@ -1035,6 +1038,37 @@ function setup(){
 	creatureInfoSkill.addChild(info_skill_des2);
 
 	creatureInfo.info_skill_text = info_skill_text;
+
+	var info_item_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_item_name1.anchor.set(1,0);
+	info_info_text.push(info_item_name1);
+	creatureInfoItem.addChild(info_skill_power1);
+	var info_item_name2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_info_text.push(info_item_name2);
+	creatureInfoItem.addChild(info_item_name2);
+	var info_info_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_info_type1.anchor.set(1,0);
+	info_info_text.push(info_info_type1);
+	creatureInfoItem.addChild(info_info_type1);
+	var info_info_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_info_text.push(info_info_type2);
+	creatureInfoItem.addChild(info_info_type2);
+	var info_info_cat1 = new Text("Category:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_info_cat1.anchor.set(1,0);
+	info_info_text.push(info_info_cat1);
+	creatureInfoItem.addChild(info_info_cat1);
+	var info_info_cat2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_info_text.push(info_info_cat2);
+	creatureInfoItem.addChild(info_info_cat2);
+	var info_info_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_info_des1.anchor.set(1,0);
+	info_info_text.push(info_info_des1);
+	creatureInfoItem.addChild(info_info_des1);
+	var info_info_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
+	info_info_text.push(info_info_des2);
+	creatureInfoItem.addChild(info_info_des2);
+
+	creatureInfo.info_info_text = info_info_text;
 
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
@@ -2305,8 +2339,8 @@ function onInfoDown(){
 function onHPDown(){
 	blurFilterInfo.blur = 30;
 	creatureInfo.visible = true;
-	creatureInfo.main.visible = true;
-	// creatureInfo.main.visible = false;
+	// creatureInfo.main.visible = true;
+	creatureInfo.main.visible = false;
 	creatureInfo.skill.visible = false;
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = false;
@@ -2778,7 +2812,6 @@ function onHPDown(){
 		creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
 	}
 	
-	
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowUp.x = app.screen.width/3;
@@ -3072,12 +3105,23 @@ function onHPDown(){
 	}else{
 		creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	}
-	// creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
-	// creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
 	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
-	// creatureInfo.info_skill_text[7].style.wordWrapWidth = infoSkillMargin[3];
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
+
+	creatureInfo.info_item_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex%2 == 0 && textIndex<7){
+			text.x = app.screen.width/10;
+			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
+			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
+		}else{
+			// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
+			text.x = app.screen.width/10 + 25;
+			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
+			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+		}
+	});
 	
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
