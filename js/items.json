@@ -26,23 +26,26 @@
 			"heal": 0
 		},
 		{
-			"name": "Spike trap",
-			"element": 4,
-			"type": "Physical",
-			"power": 20,
-			"accuracy": 100,
-			"description": "Lay spikes on the floor damaging any creature standing on it.",
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				1,1,1,1
-			],
+			"name": "Jade war paint",
+			"type": "Equipment",
+			"category": "War paint",
+			"description": "War paint made from jade gathered from the Bamboo Groves. Speed is increased by 1 level.",
+			"trigger": "enter, afflicition, health, always",
 			"tags":[
-				"hazard", "turns"
+				"statchange"
 			],
-			"hazard": [2,10],
-			"turns": 2
+			"statchange": [true, 4, 1],
+		},
+		{
+			"name": "Crimson vine",
+			"type": "Equipment",
+			"category": "Sash",
+			"description": "A sash made from vines found in the Tryss Marsh. Fire skills receive a power boost.",
+			"trigger": "always",
+			"tags":[
+				"element"
+			],
+			"element": [true, 4, 1],
 		}
 	]
 }
