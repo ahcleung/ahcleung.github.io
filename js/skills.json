@@ -210,12 +210,12 @@
 			"statchange": [true, 4, 1]
 		},
 		{
-			"name": "Volt punch",
+			"name": "Volt smash",
 			"element": 5,
 			"type": "Physical",
 			"power": 15,
 			"accuracy": 80,
-			"description": "Smash the target twice with electrified hits. Debuff the target's speed by 1 for 5 turns.",
+			"description": "Smash the target twice with electrified hits. Debuff the target's dodge by 1 for 5 turns.",
 			"position": [
 				1,1,1,1
 			],
