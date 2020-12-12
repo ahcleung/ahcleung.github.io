@@ -3109,6 +3109,9 @@ function onHPDown(){
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
+	creatureInfo.item.x = textOrigin[0];
+	creatureInfo.item.y = textOrigin[1];
+
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
