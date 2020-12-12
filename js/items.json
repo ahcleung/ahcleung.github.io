@@ -1,29 +1,18 @@
 {
 	"items" : [
 		{
-			"name": "######",
-			"type": "phy",
-			"category": "",
-			"description": "##### Skill description here",
-			"position": [
-				1,1,1,1
-			],
-			"target": [
-				1,1,1,1
-			],
+			"name": "####",
+			"type": "Equipment/Consumable",
+			"category": "War paint",
+			"description": "War paint made from jade gathered from the Bamboo Groves. Speed is increased by 1 level.",
+			"trigger": "enter/afflicition/health/always",
 			"tags":[
-				"hazard", "turns"
+				"statchange"
 			],
-			"multiple": [0,0],
-			"status": 0,
-			"hazard": [0,0],
-			"turns": 0,
-			"splash": 0,
-			"displace": [0],
-			"column": [0,0,0,0],
-			"statchange": [false,0,0],
-			"several":[0,0,0],
-			"heal": 0
+			"statchange": [4, 1],
+			"element": [3, 0.5],
+			"status": 8,
+			"heal": 20
 		},
 		{
 			"name": "Jade war paint",
@@ -34,7 +23,7 @@
 			"tags":[
 				"statchange"
 			],
-			"statchange": [true, 4, 1],
+			"statchange": [4, 1],
 		},
 		{
 			"name": "Crimson vine",
@@ -45,7 +34,29 @@
 			"tags":[
 				"element"
 			],
-			"element": [true, 4, 1],
+			"element": [3, 0.5],
+		},
+		{
+			"name": "Simple salve",
+			"type": "Consumable",
+			"category": "Salve",
+			"description": "A simple salve that heals 20HP.",
+			"trigger": "health",
+			"tags":[
+				"heal"
+			],
+			"heal": 20
+		},
+		{
+			"name": "Jade basil",
+			"type": "Consumable",
+			"category": "Herb",
+			"description": "An herb that helps the creature recover from Paralysis.",
+			"trigger": "afflicition",
+			"tags":[
+				"status"
+			],
+			"status": 8
 		}
 	]
 }
