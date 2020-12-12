@@ -23,7 +23,7 @@
 			"tags":[
 				"statchange"
 			],
-			"statchange": [4, 1],
+			"statchange": [4, 1]
 		},
 		{
 			"name": "Crimson vine",
@@ -34,7 +34,7 @@
 			"tags":[
 				"element"
 			],
-			"element": [3, 0.5],
+			"element": [3, 0.5]
 		},
 		{
 			"name": "Simple salve",
