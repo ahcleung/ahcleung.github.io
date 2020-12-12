@@ -34,6 +34,7 @@ loader
 		"js/creatures.json",
 		"js/skills.json",
 		"js/elements.json",
+		"js/items.json",
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -200,6 +201,7 @@ function loadProgressHandler(loader, resource) {
 const skillsList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 const creatureList = resources["js/creatures.json"];
+const itemList = resources["js/items.json"];
 
 let state, onScreenStats, consoleScreen, turnText;
 
@@ -2820,7 +2822,10 @@ function onHPDown(){
 	creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
 
 	// var creatureInfoSkill = new PIXI.Container();
-	
+
+	////////////////////
+	//INFO SKILL
+	////////////////////
 	creatureInfo.skill.x = textOrigin[0];
 	creatureInfo.skill.y = textOrigin[1];
 
@@ -3109,6 +3114,9 @@ function onHPDown(){
 	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
+	////////////////////
+	//INFO ITEM
+	////////////////////
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
 
@@ -3125,7 +3133,12 @@ function onHPDown(){
 			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 		}
 	});
-	
+
+	creatureInfo.info_item_text[1].text = itemsList.data.skills[this.object.skills[0]].type;
+	creatureInfo.info_item_text[3].text = itemsList.data.skills[this.object.skills[0]].type;
+	creatureInfo.info_item_text[5].text = itemsList.data.skills[this.object.skills[0]].type;
+	creatureInfo.info_item_text[7].text = itemsList.data.skills[this.object.skills[0]].description;
+	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
