@@ -1042,7 +1042,7 @@ function setup(){
 	var info_item_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_item_name1.anchor.set(1,0);
 	info_item_text.push(info_item_name1);
-	creatureInfoItem.addChild(info_skill_power1);
+	creatureInfoItem.addChild(info_item_name1);
 	var info_item_name2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_item_text.push(info_item_name2);
 	creatureInfoItem.addChild(info_item_name2);
