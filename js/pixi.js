@@ -1041,34 +1041,34 @@ function setup(){
 
 	var info_item_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_item_name1.anchor.set(1,0);
-	info_info_text.push(info_item_name1);
+	info_item_text.push(info_item_name1);
 	creatureInfoItem.addChild(info_skill_power1);
 	var info_item_name2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_info_text.push(info_item_name2);
+	info_item_text.push(info_item_name2);
 	creatureInfoItem.addChild(info_item_name2);
-	var info_info_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_info_type1.anchor.set(1,0);
-	info_info_text.push(info_info_type1);
-	creatureInfoItem.addChild(info_info_type1);
-	var info_info_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_info_text.push(info_info_type2);
-	creatureInfoItem.addChild(info_info_type2);
-	var info_info_cat1 = new Text("Category:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_info_cat1.anchor.set(1,0);
-	info_info_text.push(info_info_cat1);
-	creatureInfoItem.addChild(info_info_cat1);
-	var info_info_cat2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_info_text.push(info_info_cat2);
-	creatureInfoItem.addChild(info_info_cat2);
-	var info_info_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_info_des1.anchor.set(1,0);
-	info_info_text.push(info_info_des1);
-	creatureInfoItem.addChild(info_info_des1);
-	var info_info_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
-	info_info_text.push(info_info_des2);
-	creatureInfoItem.addChild(info_info_des2);
+	var info_item_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_item_type1.anchor.set(1,0);
+	info_item_text.push(info_item_type1);
+	creatureInfoItem.addChild(info_item_type1);
+	var info_item_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_item_text.push(info_item_type2);
+	creatureInfoItem.addChild(info_item_type2);
+	var info_item_cat1 = new Text("Category:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_item_cat1.anchor.set(1,0);
+	info_item_text.push(info_item_cat1);
+	creatureInfoItem.addChild(info_item_cat1);
+	var info_item_cat2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	info_item_text.push(info_item_cat2);
+	creatureInfoItem.addChild(info_item_cat2);
+	var info_item_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_item_des1.anchor.set(1,0);
+	info_item_text.push(info_item_des1);
+	creatureInfoItem.addChild(info_item_des1);
+	var info_item_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
+	info_item_text.push(info_item_des2);
+	creatureInfoItem.addChild(info_item_des2);
 
-	creatureInfo.info_info_text = info_info_text;
+	creatureInfo.info_item_text = info_item_text;
 
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
