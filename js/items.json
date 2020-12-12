@@ -29,7 +29,7 @@
 			"name": "Crimson vine",
 			"type": "Equipment",
 			"category": "Sash",
-			"description": "A sash made from vines found in the Tryss Marsh. Fire skills receive a power boost.",
+			"description": "A sash made from vines found in the Tryss Marsh. Fire skills receive a 50% power boost.",
 			"trigger": "always",
 			"tags":[
 				"element"
