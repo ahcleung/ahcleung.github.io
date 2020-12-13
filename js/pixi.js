@@ -3144,7 +3144,21 @@ function onHPDown(){
 	var infoItemArray = [];
 	var infoItemSprite = [];
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
-	var infoItemWidth = infoItemHeight/2;	
+	var infoItemWidth = infoItemHeight/2;
+
+	for(var i = 0; i < 2; i++){
+		let itemRect = new PIXI.Graphics();
+		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		creatureInfo.item.addChild(itemRect);
+		if(itemIndex%2 == 0){
+			itemRect.x = 0;
+			itemRect.y = ((infoItemHeight+10)/2)*i;
+		}else{
+			itemRect.x = infoItemWidth + 10;
+			itemRect.y = ((infoItemHeight+10)/2)*(i-1);
+		}
+	}
+	
 	this.object.item.forEach((item,itemIndex) =>{
 		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
