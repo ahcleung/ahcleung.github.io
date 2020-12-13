@@ -3128,18 +3128,63 @@ function onHPDown(){
 	////////////////////
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
+	var infoItemWidth = 72;
+	var infoItemHeight = 144;
+	this.object.item.forEach((item,itemIndex) =>{
+		let itemRect = new PIXI.Graphics();
+		let itemSelectFill = new PIXI.Graphics();
+		let itemSelectStroke = new PIXI.Graphics();
+
+		const itemContainer = new PIXI.Container();
+		const itemSelect = new PIXI.Container();
+		
+		// make the button interactive...
+		itemContainer.itemID = item;
+		itemContainer.buttonMode = true;
+		itemContainer.interactive = true;
+		itemContainer
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onInfoSkillDown);
+
+		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+
+		itemContainer.addChild(itemRect);
+		itemContainer.rect = itemRect;
+
+		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-itemSelectPadding*2, infoItemHeight-itemSelectPadding*2);
+		itemSelectFill.x = itemSelectPadding;
+		itemSelectFill.y = itemSelectPadding;
+
+		itemSelect.addChild(itemSelectStroke);
+		itemSelect.addChild(itemSelectFill);
+		itemSelect.stroke = itemSelectStroke;
+		itemSelect.fill = itemSelectFill;
+
+		itemContainer.addChild(itemSelect);
+		itemContainer.selected = itemSelect;
+
+		itemContainer.selected.visible = false;
+
+		if(itemIndex%2 == 0){
+			itemContainer.x = 0;
+			itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
+		}else{
+			itemContainer.x = infoItemWidth + 10;
+			itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
+		}
+
+		infoSkillArray.push(itemContainer);
+	});
 
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
 			text.x = app.screen.width/10;
-			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
+			text.y = textIndex * app.screen.height/36 + infoItemHeight*2+30;
 		}else{
-			// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
 			text.x = app.screen.width/10 + 25;
-			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
-			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+			text.y = (textIndex-1) * app.screen.height/36 + infoItemHeight*2+30;
 		}
 	});
 
