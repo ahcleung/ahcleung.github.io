@@ -7,6 +7,7 @@
 			"description": "War paint made from jade gathered from the Bamboo Groves. Speed is increased by 1 level.",
 			"code": "",
 			"trigger": "enter/afflicition/health/always",
+			"size": 1,
 			"tags":[
 				"statchange"
 			],
@@ -22,6 +23,7 @@
 			"description": "War paint made from jade gathered from the Bamboo Groves. Speed is increased by 1 level.",
 			"code": "item_jade_war_paint",
 			"trigger": "enter, afflicition, health, always",
+			"size": 1,
 			"tags":[
 				"statchange"
 			],
@@ -34,6 +36,7 @@
 			"description": "A sash made from vines found in the Tryss Marsh. Fire skills receive a 50% power boost.",
 			"code": "item_crimson_vine",
 			"trigger": "always",
+			"size": 1,
 			"tags":[
 				"element"
 			],
@@ -46,6 +49,7 @@
 			"description": "A simple salve that heals 20HP.",
 			"code": "item_simple_salve",
 			"trigger": "health",
+			"size": 1,
 			"tags":[
 				"heal"
 			],
@@ -58,6 +62,7 @@
 			"description": "An herb that helps the creature recover from Paralysis.",
 			"code": "item_jade_basil",
 			"trigger": "afflicition",
+			"size": 1,
 			"tags":[
 				"status"
 			],

@@ -3160,7 +3160,10 @@ function onHPDown(){
 	}
 
 	this.object.item.forEach((item,itemIndex) =>{
-		// let itemRect = new PIXI.Graphics();
+		if(itemList.data.item[item].code == 2){
+			infoItemWidth = infoItemHeight+10;
+		}
+		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
 		let itemSelectStroke = new PIXI.Graphics();
 
@@ -3175,10 +3178,10 @@ function onHPDown(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onInfoItemDown);
 
-		// itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 
-		// itemContainer.addChild(itemRect);
-		// itemContainer.rect = itemRect;
+		itemContainer.addChild(itemRect);
+		itemContainer.rect = itemRect;
 
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
@@ -4228,7 +4231,7 @@ function calculateDamage(attacker, defender, hitArray){
 			});
 			if(effectiveness == 0.25 && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
+				targeted.dmgContainer.dmgPopup.dmgEffective3.style.fill = '#9D9D9D';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#9D9D9D';
 				});
