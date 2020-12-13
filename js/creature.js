@@ -29,19 +29,19 @@ class Creature{
 		this.newMove = 0;
 		this.item = [1];
 		
-		const creatureList = resources["js/creatures.json"];				//Load creature JSON list
+		const creatureList = resources["js/creature.json"];				//Load creature JSON list
 		
-		this.frames = creatureList.data.creatures[this.id].frames;			//Number of frames for creature animation
-		this.code = creatureList.data.creatures[this.id].code;				//Creature code
-		this.size = creatureList.data.creatures[this.id].size;				//Creature size
-		this.move = creatureList.data.creatures[this.id].move;				//Creature movement
+		this.frames = creatureList.data.creature[this.id].frames;			//Number of frames for creature animation
+		this.code = creatureList.data.creature[this.id].code;				//Creature code
+		this.size = creatureList.data.creature[this.id].size;				//Creature size
+		this.move = creatureList.data.creature[this.id].move;				//Creature movement
 
-		this.action = creatureList.data.creatures[this.id].action;
+		this.action = creatureList.data.creature[this.id].action;
 		
-		this.name = creatureList.data.creatures[this.id].name;				//Creature name
-		this.element = creatureList.data.creatures[this.id].elements;		//Creature element
+		this.name = creatureList.data.creature[this.id].name;				//Creature name
+		this.element = creatureList.data.creature[this.id].elements;		//Creature element
 		
-		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
+		this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
 			
 		this.EHP = this.overallHP - this.critDmg;
@@ -50,12 +50,12 @@ class Creature{
 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
 			// this.EHP, 
 // 			this.EHP - 25,
-			creatureList.data.creatures[this.id].dodge + this.statDis[1]/2,
-			creatureList.data.creatures[this.id].patk + this.statDis[2],
-			creatureList.data.creatures[this.id].pdef + this.statDis[3],
-			creatureList.data.creatures[this.id].satk + this.statDis[4],
-			creatureList.data.creatures[this.id].sdef + this.statDis[5],
-			creatureList.data.creatures[this.id].spd + this.statDis[6]
+			creatureList.data.creature[this.id].dodge + this.statDis[1]/2,
+			creatureList.data.creature[this.id].patk + this.statDis[2],
+			creatureList.data.creature[this.id].pdef + this.statDis[3],
+			creatureList.data.creature[this.id].satk + this.statDis[4],
+			creatureList.data.creature[this.id].sdef + this.statDis[5],
+			creatureList.data.creature[this.id].spd + this.statDis[6]
 		];
 
 		// 0, 	  1,    2,    3,    4,    5,   6,   7
