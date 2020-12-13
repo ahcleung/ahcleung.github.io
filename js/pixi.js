@@ -2830,6 +2830,8 @@ function onHPDown(){
 	creatureInfo.status.arrowDown.x = app.screen.width/3;
 	creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
 
+	creatureInfo.statusIcon = statusIcon;
+	creatureInfo.statusText = statusText;
 	// var creatureInfoSkill = new PIXI.Container();
 
 	////////////////////
@@ -3123,11 +3125,15 @@ function onHPDown(){
 	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.object.skill[0]].description;
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
+	creatureInfo.skillText = skillText;
+	creatureInfo.infoSkillArray = infoSkillArray;
+
 	////////////////////
 	//INFO ITEM
 	////////////////////
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
+	infoItemArray = [];
 	var infoItemWidth = 72;
 	var infoItemHeight = 144;
 	this.object.item.forEach((item,itemIndex) =>{
@@ -3193,6 +3199,9 @@ function onHPDown(){
 	creatureInfo.info_item_text[5].text = itemList.data.items[this.object.item[0]].category;
 	creatureInfo.info_item_text[7].text = itemList.data.items[this.object.item[0]].description;
 	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
+
+	creatureInfo.infoItemArray = infoItemArray;
+
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
@@ -3201,12 +3210,7 @@ function onHPDown(){
 	// 	textSkill.y = 100*(skillIndex-1);
 	// }
 
-	console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
-
-	creatureInfo.statusIcon = statusIcon;
-	creatureInfo.statusText = statusText;
-	creatureInfo.skillText = skillText;
-	creatureInfo.infoSkillArray = infoSkillArray;
+	// console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
 }
 
 function onBtnStatusUp(){
