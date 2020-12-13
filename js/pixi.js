@@ -3162,22 +3162,24 @@ function onHPDown(){
 		itemContainer.rect = itemRect;
 
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
-		// itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
-		// itemSelectFill.x = skillSelectPadding;
-		// itemSelectFill.y = skillSelectPadding;
+		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
+		itemSelectFill.x = skillSelectPadding;
+		itemSelectFill.y = skillSelectPadding;
 
 		itemSelect.addChild(itemSelectStroke);
-		// itemSelect.addChild(itemSelectFill);
+		itemSelect.addChild(itemSelectFill);
 		itemSelect.stroke = itemSelectStroke;
-		// itemSelect.fill = itemSelectFill;
-
-		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-		spriteItem.width = infoItemWidth;
-		spriteItem.height = infoItemHeight;
-		itemContainer.addChild(spriteItem);
+		itemSelect.fill = itemSelectFill;
 
 		itemContainer.addChild(itemSelect);
 		itemContainer.selected = itemSelect;
+
+		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+		spriteItem.width = infoItemWidth-skillSelectPadding*2;
+		spriteItem.height = infoItemHeight-skillSelectPadding*2;
+		spriteItem.x = skillSelectPadding;
+		spriteItem.y = skillSelectPadding;
+		itemContainer.addChild(spriteItem);
 
 		itemContainer.selected.visible = false;
 
