@@ -39,7 +39,7 @@ class Creature{
 		this.action = creatureList.data.creatures[this.id].action;
 		
 		this.name = creatureList.data.creatures[this.id].name;				//Creature name
-		this.elements = creatureList.data.creatures[this.id].elements;		//Creature element
+		this.element = creatureList.data.creatures[this.id].elements;		//Creature element
 		
 		this.overallHP = Math.round(((((2*creatureList.data.creatures[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;

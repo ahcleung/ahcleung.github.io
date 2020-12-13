@@ -31,10 +31,10 @@ loader
 		"img/leper.ability.five.png",
 		"img/actionLines.png",
 		"img/bg3.png",
-		"js/creatures.json",
-		"js/skills.json",
-		"js/elements.json",
-		"js/items.json",
+		"js/creature.json",
+		"js/skill.json",
+		"js/element.json",
+		"js/item.json",
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -201,10 +201,10 @@ function loadProgressHandler(loader, resource) {
 /*
 *	Declare  variables
 */
-const skillList = resources["js/skills.json"];
-const elementList = resources["js/elements.json"];
-const creatureList = resources["js/creatures.json"];
-const itemList = resources["js/items.json"];
+const skillList = resources["js/skill.json"];
+const elementList = resources["js/element.json"];
+const creatureList = resources["js/creature.json"];
+const itemList = resources["js/item.json"];
 
 let state, onScreenStats, consoleScreen, turnText;
 
@@ -2439,7 +2439,7 @@ function onHPDown(){
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
 	// creatureInfo.info_main_text[8].text = "It's dominant hand is encrusted with a rock-like formation that it uses as a shield and a weapon. The rock is bejeweled with spiritual gems.";
-	creatureInfo.info_main_text[8].text = creatureList.data.creatures[this.object.id].desc;
+	creatureInfo.info_main_text[8].text = creatureList.data.creature[this.object.id].desc;
 	creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
 	// creatureInfo.info_main_text[5].text = this.object.name;
 
@@ -2476,7 +2476,7 @@ function onHPDown(){
 
 	// creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
 
-	this.object.elements.forEach((element, elementIndex) =>{
+	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
 		if(element == 1){
@@ -4070,7 +4070,7 @@ function calculateDamage(attacker, defender, hitArray){
 		skillOther = true;
 	}
 	
-	attacker.elements.forEach(creatureElement =>{
+	attacker.element.forEach(creatureElement =>{
 		if(creatureElement == skillList.data.skill[selectedSkill].element)		SEAB = 1.5;
 	});
 
@@ -4221,10 +4221,10 @@ function calculateDamage(attacker, defender, hitArray){
 			}else if(skillList.data.skill[selectedSkill].type == "Special"){
 				defense = targeted.sdef;
 			}
-			targeted.elements.forEach(element =>{
+			targeted.element.forEach(element =>{
 				var element1 = skillList.data.skill[selectedSkill].element-1;
 				var element2 = element-1;
-				effectiveness *= elementList.data.elements[element1]["effect"][element2];
+				effectiveness *= elementList.data.element[element1]["effect"][element2];
 			});
 			if(effectiveness == 0.25 && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
@@ -5187,9 +5187,9 @@ function selectCreature(object2){
 				default:
 					hazardElement = 1;
 			}
-			selectedVita.elements.forEach(creatureElement =>{
+			selectedVita.element.forEach(creatureElement =>{
 				var element2 = creatureElement-1;
-				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+				effectiveCalc *= elementList.data.element[hazardElement]["effect"][element2];
 			});
 			if(selectedVita.size > 1){
 				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
@@ -5225,9 +5225,9 @@ function selectCreature(object2){
 				default:
 					hazardElement = 1;
 			}
-			selectedVita.elements.forEach(creatureElement =>{
+			selectedVita.element.forEach(creatureElement =>{
 				var element2 = creatureElement-1;
-				effectiveCalc *= elementList.data.elements[hazardElement]["effect"][element2];
+				effectiveCalc *= elementList.data.element[hazardElement]["effect"][element2];
 			});
 			if(selectedVita.size > 1){
 				if(hazardItem[0]+1 == selectedVita.pos+1 || hazardItem[0]+1 == selectedVita.pos){
