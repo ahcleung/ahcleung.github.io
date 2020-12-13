@@ -465,7 +465,7 @@ function setup(){
 				item.statSATK,
 				item.statSDEF,
 				item.statSPD
-			], skill:[
+			], skill:[ 
 				item.skill1,
 				item.skill2,
 				item.skill3,
@@ -3152,9 +3152,9 @@ function onHPDown(){
 		itemContainer.rect = itemRect;
 
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
-		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-itemSelectPadding*2, infoItemHeight-itemSelectPadding*2);
-		itemSelectFill.x = itemSelectPadding;
-		itemSelectFill.y = itemSelectPadding;
+		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
+		itemSelectFill.x = skillSelectPadding;
+		itemSelectFill.y = skillSelectPadding;
 
 		itemSelect.addChild(itemSelectStroke);
 		itemSelect.addChild(itemSelectFill);
