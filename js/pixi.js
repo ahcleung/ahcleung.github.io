@@ -3161,6 +3161,11 @@ function onHPDown(){
 		itemContainer.addChild(itemRect);
 		itemContainer.rect = itemRect;
 
+		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+		spriteItem.width = infoItemWidth;
+		spriteItem.height = infoItemHeight;
+		itemContainer.addChild(spriteItem);
+
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
 		itemSelectFill.x = skillSelectPadding;
@@ -3176,8 +3181,7 @@ function onHPDown(){
 
 		itemContainer.selected.visible = false;
 
-		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-		itemContainer.addChild(spriteItem);
+
 		creatureInfo.item.addChild(itemContainer);
 
 		if(itemIndex%2 == 0){
