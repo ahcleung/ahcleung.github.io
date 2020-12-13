@@ -3183,6 +3183,7 @@ function onHPDown(){
 
 		infoItemArray.push(itemContainer);
 	});
+	infoItemArray[0].selected.visible = true;
 
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
