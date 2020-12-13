@@ -3150,7 +3150,7 @@ function onHPDown(){
 		let itemRect = new PIXI.Graphics();
 		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		creatureInfo.item.addChild(itemRect);
-		if(itemIndex%2 == 0){
+		if(i%2 == 0){
 			itemRect.x = 0;
 			itemRect.y = ((infoItemHeight+10)/2)*i;
 		}else{
@@ -3158,7 +3158,7 @@ function onHPDown(){
 			itemRect.y = ((infoItemHeight+10)/2)*(i-1);
 		}
 	}
-	
+
 	this.object.item.forEach((item,itemIndex) =>{
 		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
