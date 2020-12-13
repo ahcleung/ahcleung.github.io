@@ -3188,10 +3188,10 @@ function onHPDown(){
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
 			text.x = app.screen.width/10;
-			text.y = textIndex * app.screen.height/36 + infoItemHeight*2+30;
+			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
 		}else{
 			text.x = app.screen.width/10 + 25;
-			text.y = (textIndex-1) * app.screen.height/36 + infoItemHeight*2+30;
+			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 		}
 	});
 
