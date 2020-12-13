@@ -3160,7 +3160,7 @@ function onHPDown(){
 	}
 
 	this.object.item.forEach((item,itemIndex) =>{
-		if(itemList.data.item[item].code == 2){
+		if(itemList.data.item[item].size == 2){
 			infoItemWidth = infoItemHeight+10;
 		}
 		let itemRect = new PIXI.Graphics();
