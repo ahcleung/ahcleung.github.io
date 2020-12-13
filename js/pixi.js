@@ -3273,19 +3273,9 @@ function onInfoItemDown(){
 	});
 	this.selected.visible = true;
 
-	if(itemsList.data.item[this.itemID].power == 0){
-		creatureInfo.info_item_text[1].text = "--";
-	}else{
-		creatureInfo.info_item_text[1].text = itemList.data.item[this.itemID].power;
-	}
-	if(itemList.data.item[this.itemID].accuracy == 110){
-		creatureInfo.info_item_text[3].text = "--";
-	}else{
-		creatureInfo.info_item_text[3].text = itemList.data.item[this.itemID].accuracy;
-	}
-	// creatureInfo.info_item_text[1].text = itemList.data.item[this.itemID].power;
-	// creatureInfo.info_item_text[3].text = itemList.data.item[this.itemID].accuracy;
-	creatureInfo.info_item_text[5].text = itemList.data.item[this.itemID].type;
+	creatureInfo.info_item_text[1].text = itemList.data.item[this.itemID].name;
+	creatureInfo.info_item_text[3].text = itemList.data.item[this.itemID].type;
+	creatureInfo.info_item_text[5].text = itemList.data.item[this.itemID].category;
 	creatureInfo.info_item_text[7].text = itemList.data.item[this.itemID].description;
 }
 
