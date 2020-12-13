@@ -32,7 +32,7 @@ loader
 		"img/actionLines.png",
 		"img/bg3.png",
 		"js/creatures.json",
-		"js/skill.json",
+		"js/skills.json",
 		"js/elements.json",
 		"js/items.json",
 
@@ -198,7 +198,7 @@ function loadProgressHandler(loader, resource) {
 /*
 *	Declare  variables
 */
-const skillList = resources["js/skill.json"];
+const skillList = resources["js/skills.json"];
 const elementList = resources["js/elements.json"];
 const creatureList = resources["js/creatures.json"];
 const itemList = resources["js/items.json"];
