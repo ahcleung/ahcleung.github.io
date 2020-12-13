@@ -157,6 +157,9 @@ loader
 		{name:'fume2_skeleton', url:'img/fume2_ske.json'},
 		{name:'fume2_texture_json', url:'img/fume2_tex.json'},
 		{name:'fume2_texture_png', url:'img/fume2_tex.png'},
+
+		{name:'item_jade_war_paint', url:'img/item_jade_war_paint.png'},
+		{name:'item_crimson_vine', url:'img/item_crimson_vine.png'},
 		
 		{name:'gorilla3_skeleton', url:'img/gorilla3_ske.json'},
 		{name:'gorilla3_texture_json', url:'img/gorilla3_tex.json'},
@@ -3133,7 +3136,8 @@ function onHPDown(){
 	////////////////////
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
-	infoItemArray = [];
+	var infoItemArray = [];
+	var infoItemSprite = [];
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;	
 	this.object.item.forEach((item,itemIndex) =>{
@@ -3171,6 +3175,9 @@ function onHPDown(){
 		itemContainer.selected = itemSelect;
 
 		itemContainer.selected.visible = false;
+
+		let spriteItem = new PIXI.Sprite(resources[this.object.item[item]].texture);
+
 		creatureInfo.item.addChild(itemContainer);
 
 		if(itemIndex%2 == 0){
