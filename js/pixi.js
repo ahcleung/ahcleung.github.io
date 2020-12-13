@@ -2326,6 +2326,11 @@ function onInfoDown(){
 			skillContainer.destroy();
 		});
 
+		creatureInfo.infoItemSprite.forEach(icon=>{
+			console.log("destroy item sprite");
+			icon.destroy();
+		});
+
 		creatureInfoSprite.getChildAt(0).destroy();
 		// heroHazardSprite[arrayNum].destroy();
 
@@ -3180,9 +3185,9 @@ function onHPDown(){
 		spriteItem.x = skillSelectPadding;
 		spriteItem.y = skillSelectPadding;
 		itemContainer.addChild(spriteItem);
+		infoItemSprite.push(spriteItem);
 
 		itemContainer.selected.visible = false;
-
 
 		creatureInfo.item.addChild(itemContainer);
 
@@ -3216,6 +3221,7 @@ function onHPDown(){
 	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	creatureInfo.infoItemArray = infoItemArray;
+	creatureInfo.infoItemSprite = infoItemSprite;
 
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
