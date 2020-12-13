@@ -3176,7 +3176,7 @@ function onHPDown(){
 
 		itemContainer.selected.visible = false;
 
-		let spriteItem = new PIXI.Sprite(resources[this.object.item[item]].texture);
+		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[this.object.item[item]].code].texture);
 
 		creatureInfo.item.addChild(itemContainer);
 
