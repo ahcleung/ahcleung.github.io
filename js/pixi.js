@@ -3171,6 +3171,7 @@ function onHPDown(){
 		itemContainer.selected = itemSelect;
 
 		itemContainer.selected.visible = false;
+		creatureInfo.item.addChild(itemContainer);
 
 		if(itemIndex%2 == 0){
 			itemContainer.x = 0;
