@@ -23,7 +23,7 @@
 			"description": "War paint made from jade gathered from the Bamboo Groves. Speed is increased by 1 level.",
 			"code": "item_jade_war_paint",
 			"trigger": "enter, afflicition, health, always",
-			"size": 1,
+			"size": 2,
 			"tags":[
 				"statchange"
 			],
