@@ -32,7 +32,7 @@ loader
 		"img/actionLines.png",
 		"img/bg3.png",
 		"js/creatures.json",
-		"js/skills.json",
+		"js/skill.json",
 		"js/elements.json",
 		"js/items.json",
 
@@ -198,7 +198,7 @@ function loadProgressHandler(loader, resource) {
 /*
 *	Declare  variables
 */
-const skillsList = resources["js/skills.json"];
+const skillList = resources["js/skill.json"];
 const elementList = resources["js/elements.json"];
 const creatureList = resources["js/creatures.json"];
 const itemList = resources["js/items.json"];
@@ -409,7 +409,7 @@ function setup(){
 // 					doc.data().statSATK, 
 // 					doc.data().statSDEF, 
 // 					doc.data().statSPD
-// 				], skills:[
+// 				], skill:[
 // 					doc.data().skill1, 
 // 					doc.data().skill2, 
 // 					doc.data().skill3, 
@@ -438,7 +438,7 @@ function setup(){
 				item.statSATK,
 				item.statSDEF,
 				item.statSPD
-			], skills:[
+			], skill:[
 				item.skill1,
 				item.skill2,
 				item.skill3,
@@ -465,7 +465,7 @@ function setup(){
 				item.statSATK,
 				item.statSDEF,
 				item.statSPD
-			], skills:[
+			], skill:[
 				item.skill1,
 				item.skill2,
 				item.skill3,
@@ -554,7 +554,7 @@ function setup(){
 
 	//Create initial skill buttons
 	for(var i = 0; i < 4; i++){
-// 		console.log(heroArray[1].skills[i]);
+// 		console.log(heroArray[1].skill[i]);
 		let skillRect = new PIXI.Graphics();
 		let skillSelectFill = new PIXI.Graphics();
 		let skillSelectStroke = new PIXI.Graphics();
@@ -571,9 +571,9 @@ function setup(){
 		.on('pointerdown', onSkillDown);
 		
 		//Identifier = [skill index, skill id, ]
-		skillContainer.identifier = [i , heroArray[1].skills[i], 1];
+		skillContainer.identifier = [i , heroArray[1].skill[i], 1];
 		
-		let skillName = new Text(skillsList.data.skills[heroArray[1].skills[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+		let skillName = new Text(skillList.data.skill[heroArray[1].skill[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
 		skillName.anchor.set(0, 0.5);
 		
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
@@ -712,7 +712,7 @@ function setup(){
 		skillContainer.targetText.visible = false;
 		
 		var skillElement;
-		switch(skillsList.data.skills[heroArray[1].skills[i]].element){
+		switch(skillList.data.skill[heroArray[1].skill[i]].element){
 			case 1:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
@@ -769,7 +769,7 @@ function setup(){
 // 					doc.data().statSATK, 
 // 					doc.data().statSDEF, 
 // 					doc.data().statSPD
-// 				], skills:[
+// 				], skill:[
 // 					doc.data().skill1, 
 // 					doc.data().skill2, 
 // 					doc.data().skill3, 
@@ -1075,7 +1075,7 @@ function setup(){
 	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
 
 	for(var i = 0; i < 5; i++){
-// 		console.log(heroArray[1].skills[i]);
+// 		console.log(heroArray[1].skill[i]);
 		let infoRect = new PIXI.Graphics();
 		let infoSelectFill = new PIXI.Graphics();
 		let infoSelectStroke = new PIXI.Graphics();
@@ -2842,8 +2842,8 @@ function onHPDown(){
 	var infoSkillArray = [];
 	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
-	this.object.skills.forEach((skill,skillIndex) =>{
-		let skillName = new Text(skillsList.data.skills[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+	this.object.skill.forEach((skill,skillIndex) =>{
+		let skillName = new Text(skillList.data.skill[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		skillName.anchor.set(0,0.5);
 		skillName.x = infoSkillWidth/6;
 		skillName.y = infoSkillHeight/3;
@@ -2910,7 +2910,7 @@ function onHPDown(){
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
-			if(skillsList.data.skills[skill].position[i] == 1){
+			if(skillList.data.skill[skill].position[i] == 1){
 				posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 			}else{
 				posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -2936,13 +2936,13 @@ function onHPDown(){
 		markerContainer.addChild(markerSpacerContainer);
 
 		var skillTargeting = 0;
-		skillsList.data.skills[skill].tags.forEach(tagName =>{
+		skillList.data.skill[skill].tags.forEach(tagName =>{
 			if(tagName == "self")		skillTargeting = 1
 			if(tagName == "team")		skillTargeting = 2
 			if(tagName == "column")		skillTargeting = 3
 			if(tagName == "several"){	
 				for (var j = 0; j < 3; j++){
-					if(skillsList.data.skills[skill].several[j] == 1){
+					if(skillList.data.skill[skill].several[j] == 1){
 						let posMarker = new PIXI.Graphics();				
 						posMarker.beginFill(0xFF6961).drawRect(0, -4, 20, 6);
 						posMarker.x = 25 * j;
@@ -2964,7 +2964,7 @@ function onHPDown(){
 		}else if(skillTargeting == 2){
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
-				if(skillsList.data.skills[skill].target[i] == 1){
+				if(skillList.data.skill[skill].target[i] == 1){
 					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
 				}else{
 					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -2977,13 +2977,13 @@ function onHPDown(){
 			}
 		}else if(skillTargeting == 3){
 			var columnText = "";
-			if(skillsList.data.skills[skill]["column"][2] > 0){
-				columnText = "+ " + skillsList.data.skills[skill]["column"][0];
+			if(skillList.data.skill[skill]["column"][2] > 0){
+				columnText = "+ " + skillList.data.skill[skill]["column"][0];
 			}else{
-				columnText = "- " + skillsList.data.skills[skill]["column"][0];
+				columnText = "- " + skillList.data.skill[skill]["column"][0];
 			}
 			let targetText;
-			if(skillsList.data.skills[skill]["column"][3] > 0){					
+			if(skillList.data.skill[skill]["column"][3] > 0){					
 				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
 			}else{
 				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
@@ -2997,7 +2997,7 @@ function onHPDown(){
 		}else{
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
-				if(skillsList.data.skills[skill].target[i] == 1){
+				if(skillList.data.skill[skill].target[i] == 1){
 					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
 				}else{
 					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
@@ -3040,7 +3040,7 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer.visible = false;
 
 		var skillElement;
-		switch(skillsList.data.skills[skill].element){
+		switch(skillList.data.skill[skill].element){
 			case 1:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
@@ -3109,18 +3109,18 @@ function onHPDown(){
 		}
 	});
 
-	if(skillsList.data.skills[this.object.skills[0]].power == 0){
+	if(skillList.data.skill[this.object.skill[0]].power == 0){
 		creatureInfo.info_skill_text[1].text = "--";
 	}else{
-		creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.object.skills[0]].power;
+		creatureInfo.info_skill_text[1].text = skillList.data.skill[this.object.skill[0]].power;
 	}
-	if(skillsList.data.skills[this.object.skills[0]].accuracy == 110){
+	if(skillList.data.skill[this.object.skill[0]].accuracy == 110){
 		creatureInfo.info_skill_text[3].text = "--";
 	}else{
-		creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.object.skills[0]].accuracy;
+		creatureInfo.info_skill_text[3].text = skillList.data.skill[this.object.skill[0]].accuracy;
 	}
-	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.object.skills[0]].type;
-	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.object.skills[0]].description;
+	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.object.skill[0]].type;
+	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.object.skill[0]].description;
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	////////////////////
@@ -3144,7 +3144,7 @@ function onHPDown(){
 		itemContainer.interactive = true;
 		itemContainer
 		// set the mousedown and touchstart callback...
-		.on('pointerdown', onInfoSkillDown);
+		.on('pointerdown', onInfoItemDown);
 
 		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 
@@ -3174,7 +3174,7 @@ function onHPDown(){
 			itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
 		}
 
-		infoSkillArray.push(itemContainer);
+		infoItemArray.push(itemContainer);
 	});
 
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
@@ -3251,20 +3251,42 @@ function onInfoSkillDown(){
 	});
 	this.selected.visible = true;
 
-	if(skillsList.data.skills[this.skillID].power == 0){
+	if(skillList.data.skill[this.skillID].power == 0){
 		creatureInfo.info_skill_text[1].text = "--";
 	}else{
-		creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
+		creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
 	}
-	if(skillsList.data.skills[this.skillID].accuracy == 110){
+	if(skillList.data.skill[this.skillID].accuracy == 110){
 		creatureInfo.info_skill_text[3].text = "--";
 	}else{
-		creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
+		creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
 	}
-	// creatureInfo.info_skill_text[1].text = skillsList.data.skills[this.skillID].power;
-	// creatureInfo.info_skill_text[3].text = skillsList.data.skills[this.skillID].accuracy;
-	creatureInfo.info_skill_text[5].text = skillsList.data.skills[this.skillID].type;
-	creatureInfo.info_skill_text[7].text = skillsList.data.skills[this.skillID].description;
+	// creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
+	// creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
+	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.skillID].type;
+	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.skillID].description;
+}
+
+function onInfoItemDown(){
+	creatureInfo.infoItemArray.forEach(itemContainer=>{
+		itemContainer.selected.visible = false;
+	});
+	this.selected.visible = true;
+
+	if(itemsList.data.item[this.itemID].power == 0){
+		creatureInfo.info_item_text[1].text = "--";
+	}else{
+		creatureInfo.info_item_text[1].text = itemList.data.item[this.itemID].power;
+	}
+	if(itemList.data.item[this.itemID].accuracy == 110){
+		creatureInfo.info_item_text[3].text = "--";
+	}else{
+		creatureInfo.info_item_text[3].text = itemList.data.item[this.itemID].accuracy;
+	}
+	// creatureInfo.info_item_text[1].text = itemList.data.item[this.itemID].power;
+	// creatureInfo.info_item_text[3].text = itemList.data.item[this.itemID].accuracy;
+	creatureInfo.info_item_text[5].text = itemList.data.item[this.itemID].type;
+	creatureInfo.info_item_text[7].text = itemList.data.item[this.itemID].description;
 }
 
 function onSkillDown(){
@@ -3285,10 +3307,10 @@ function onSkillDown(){
 	selectedSkill = this.identifier[1];						//Skill ID
 	console.log(
 		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n>>>>>>>>>>>>>> Skill: " + 
-		skillsList.data.skills[this.identifier[1]].name + 
+		skillList.data.skill[this.identifier[1]].name + 
 		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 
-	// console.log("Skill: " + skillsList.data.skills[this.identifier[1]].name);
+	// console.log("Skill: " + skillList.data.skill[this.identifier[1]].name);
 	var column = false;
 	var several = false;
 	var displace = false;
@@ -3296,7 +3318,7 @@ function onSkillDown(){
 	var splash = false;
 	var self = false;
 	var team = false;
-	skillsList.data.skills[this.identifier[1]].tags.forEach(tagName =>{
+	skillList.data.skill[this.identifier[1]].tags.forEach(tagName =>{
 		if(tagName == "column")			column = true;
 			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
 		if(tagName == "heal")			heal = true;
@@ -3311,11 +3333,11 @@ function onSkillDown(){
 	if(column){
 		var columnObjectArray = [];
 		//Ahead
-		if(skillsList.data.skills[this.identifier[1]].column[2] > 0){
+		if(skillList.data.skill[this.identifier[1]].column[2] > 0){
 			var switchSide = false;
 			//Get position to increment from
 			var temp = selectedVita.pos;			
-			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
+			for(var i = 0; i < skillList.data.skill[this.identifier[1]].column[0]; i++){
 				if(temp > 1 && !switchSide){
 					temp--;
 				}else if(temp == 1 && !switchSide){
@@ -3351,7 +3373,7 @@ function onSkillDown(){
 			//Get position to increment from
 			var temp = selectedVita.pos + selectedVita.size - 1;
 
-			for(var i = 0; i < skillsList.data.skills[this.identifier[1]].column[0]; i++){
+			for(var i = 0; i < skillList.data.skill[this.identifier[1]].column[0]; i++){
 				temp++;
 				console.log("=================================" + temp);
 				if(selectedVita.hero){
@@ -3372,7 +3394,7 @@ function onSkillDown(){
 		if(team){
 			heroArray.forEach(arrayCreature =>{
 				var targeted = false;
-				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				skillList.data.skill[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 					if(skillTarget == 1 && !targeted){
 						var posTracker = skillTargetIndex+1;
 						if(arrayCreature.size == 2){
@@ -3395,7 +3417,7 @@ function onSkillDown(){
 		else{
 			enemyArray.forEach(arrayCreature =>{
 				var targeted = false;
-				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				skillList.data.skill[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 					if(skillTarget == 1 && !targeted){
 						var posTracker = skillTargetIndex+1;
 						if(arrayCreature.size == 2){
@@ -3418,7 +3440,7 @@ function onSkillDown(){
 	}else{
 		heroArray.forEach(arrayCreature =>{
 			var targeted = false;
-			skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+			skillList.data.skill[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 				if(skillTarget == 1 && !targeted){
 					var posTracker = skillTargetIndex+1;
 					if(arrayCreature.size == 2){
@@ -3447,7 +3469,7 @@ function onSkillDown(){
 		if(selectedVita.hero){
 			enemyArray.forEach(arrayCreature =>{
 				var targeted = false;
-				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				skillList.data.skill[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 					if(skillTarget == 1 && !targeted){
 						var posTracker = skillTargetIndex+1;
 						if(arrayCreature.size == 2){
@@ -3503,7 +3525,7 @@ function onSkillDown(){
 		}else{
 			heroArray.forEach(arrayCreature =>{
 				var targeted = false;
-				skillsList.data.skills[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
+				skillList.data.skill[this.identifier[1]].target.forEach((skillTarget, skillTargetIndex)=> {
 					if(skillTarget == 1 && !targeted){
 						var posTracker = skillTargetIndex+1;
 						if(arrayCreature.size == 2){
@@ -3537,7 +3559,7 @@ function onSkillDown(){
 	//[111]
 	if(several){
 		var array11 = [];
-		var joinedSeveral = skillsList.data.skills[this.identifier[1]].several.join();
+		var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
 		if(joinedSeveral == "0,0,1"){
 			if(selectedVita.hero){
 				enemyArray.forEach(arrayCreature => {
@@ -3842,7 +3864,7 @@ function onCreatureDown(){
 		var tagHazard = false;
 		var tagTurns = false;
 		var tagDisplace = false;
-		skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+		skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 			if(tagName == "splash")			tagSplash = true;
 			if(tagName == "displace")		tagDisplace = true;
 			if(tagName == "status")			tagStatus = true;
@@ -3882,7 +3904,7 @@ function onCreatureDown(){
 			animateBattle = true;
 			animatePopup = true;
 
-			console.log(selectedVita.name + " uses " + skillsList.data.skills[selectedSkill].name + " on:");
+			console.log(selectedVita.name + " uses " + skillList.data.skill[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
 				console.log(arrayElement.name + "\n");
 			});
@@ -3977,10 +3999,10 @@ function calculateHit(attacker, defender){
 			hitMod = 3/(Math.abs(accDifference) + 3);
 		}
 
-		if(skillsList.data.skills[selectedSkill].accuracy == 110){
+		if(skillList.data.skill[selectedSkill].accuracy == 110){
 			var hitChance = 1;
 		}else{
-			var hitChance = ((skillsList.data.skills[selectedSkill].accuracy/100) - (defenderDodge/200)) * hitMod;
+			var hitChance = ((skillList.data.skill[selectedSkill].accuracy/100) - (defenderDodge/200)) * hitMod;
 		}
 		var hitRoll = Math.random();
 
@@ -4004,23 +4026,23 @@ function calculateDamage(attacker, defender, hitArray){
 	var defense = 1;
 	// var defenderElements = [];
 	var effectiveness = 1;
-	var skillPower = skillsList.data.skills[selectedSkill].power;
+	var skillPower = skillList.data.skill[selectedSkill].power;
 	// var totalDamage = 0;
 	// var critDamage = 0;
 	var skillHeal = false;
 	var skillOther = false;
 	var skillStatus = false;
 
-	if(skillsList.data.skills[selectedSkill].type == "Physical"){
+	if(skillList.data.skill[selectedSkill].type == "Physical"){
 		attack = attacker.patk;
-	}else if(skillsList.data.skills[selectedSkill].type == "Special"){
+	}else if(skillList.data.skill[selectedSkill].type == "Special"){
 		attack = attacker.satk;
 	}else{
 		skillOther = true;
 	}
 	
 	attacker.elements.forEach(creatureElement =>{
-		if(creatureElement == skillsList.data.skills[selectedSkill].element)		SEAB = 1.5;
+		if(creatureElement == skillList.data.skill[selectedSkill].element)		SEAB = 1.5;
 	});
 
 	defender.forEach((targeted, targetedIndex) => {
@@ -4038,7 +4060,7 @@ function calculateDamage(attacker, defender, hitArray){
 
 		if(hitArray[targetedIndex]){
 			var multiHitNum = 1;
-			skillsList.data.skills[selectedSkill].tags.forEach(tagName =>{
+			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
 					skillHeal = true;
 					targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
@@ -4047,22 +4069,22 @@ function calculateDamage(attacker, defender, hitArray){
 					});
 				}
 				if(tagName == "multiple"){
-					multiHitNum = Math.floor(Math.random() * (skillsList.data.skills[selectedSkill].multiple[1] - skillsList.data.skills[selectedSkill].multiple[0] + 1) + skillsList.data.skills[selectedSkill].multiple[0]);
+					multiHitNum = Math.floor(Math.random() * (skillList.data.skill[selectedSkill].multiple[1] - skillList.data.skill[selectedSkill].multiple[0] + 1) + skillList.data.skill[selectedSkill].multiple[0]);
 				}
 
 				if(tagName == "status"){
 					skillStatus = true;
-					targetStatus.push([skillsList.data.skills[selectedSkill].status, skillsList.data.skills[selectedSkill].turns]);
+					targetStatus.push([skillList.data.skill[selectedSkill].status, skillList.data.skill[selectedSkill].turns]);
 				}
 
 				if(tagName == "displace"){
-					targeted.newMove = skillsList.data.skills[selectedSkill].displace[0];
+					targeted.newMove = skillList.data.skill[selectedSkill].displace[0];
 				}
 
 				if(tagName == "hazard"){
 					console.log("HAZARD");
 					let hazardSprite, hazardSprite2;
-					switch(skillsList.data.skills[selectedSkill].hazard[0]){
+					switch(skillList.data.skill[selectedSkill].hazard[0]){
 						case 1:
 							hazardSprite = new PIXI.Sprite(resources.hazard_lit.texture);
 							hazardSprite2 = new PIXI.Sprite(resources.hazard_lit.texture);
@@ -4088,12 +4110,12 @@ function calculateDamage(attacker, defender, hitArray){
 						hazardSprite2.scale.set(hazardSize,hazardSize);
 						if(targeted.size > 1){
 							//[position, hazardType, damage, turn]
-							fieldHeroHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							fieldHeroHazard.push([targeted.pos,skillList.data.skill[selectedSkill].hazard[0],skillList.data.skill[selectedSkill].hazard[1],skillList.data.skill[selectedSkill].turns]);
 							hazardSprite2.x = -(spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2);
 							heroHazardSprite.push(hazardSprite2);
 							heroHazardContainer.addChild(hazardSprite2);
 						}
-						fieldHeroHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+						fieldHeroHazard.push([targeted.pos-1,skillList.data.skill[selectedSkill].hazard[0],skillList.data.skill[selectedSkill].hazard[1],skillList.data.skill[selectedSkill].turns]);
 						hazardSprite.x = -(spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2);
 						heroHazardSprite.push(hazardSprite);
 						heroHazardContainer.addChild(hazardSprite);
@@ -4101,12 +4123,12 @@ function calculateDamage(attacker, defender, hitArray){
 						hazardSprite.scale.set(-hazardSize,hazardSize);
 						hazardSprite2.scale.set(-hazardSize,hazardSize);
 						if(targeted.size > 1){
-							fieldEnemyHazard.push([targeted.pos,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+							fieldEnemyHazard.push([targeted.pos,skillList.data.skill[selectedSkill].hazard[0],skillList.data.skill[selectedSkill].hazard[1],skillList.data.skill[selectedSkill].turns]);
 							hazardSprite2.x = spriteResizeXPosition[targeted.pos] + spriteResizeXPosition[1]/2;
 							enemyHazardSprite.push(hazardSprite2);
 							enemyHazardContainer.addChild(hazardSprite2);
 						}
-						fieldEnemyHazard.push([targeted.pos-1,skillsList.data.skills[selectedSkill].hazard[0],skillsList.data.skills[selectedSkill].hazard[1],skillsList.data.skills[selectedSkill].turns]);
+						fieldEnemyHazard.push([targeted.pos-1,skillList.data.skill[selectedSkill].hazard[0],skillList.data.skill[selectedSkill].hazard[1],skillList.data.skill[selectedSkill].turns]);
 						hazardSprite.x = spriteResizeXPosition[targeted.pos-1] + spriteResizeXPosition[1]/2;
 						enemyHazardSprite.push(hazardSprite);
 						enemyHazardContainer.addChild(hazardSprite);
@@ -4114,10 +4136,10 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 				
 				if(tagName == "statchange"){
-					if(skillsList.data.skills[selectedSkill].statchange[2] > 0){
-						var newStatus = [2, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]];
+					if(skillList.data.skill[selectedSkill].statchange[2] > 0){
+						var newStatus = [2, skillList.data.skill[selectedSkill].turns, skillList.data.skill[selectedSkill].statchange[1], skillList.data.skill[selectedSkill].statchange[2]];
 					}else{
-						var newStatus = [4, skillsList.data.skills[selectedSkill].turns, skillsList.data.skills[selectedSkill].statchange[1], skillsList.data.skills[selectedSkill].statchange[2]];
+						var newStatus = [4, skillList.data.skill[selectedSkill].turns, skillList.data.skill[selectedSkill].statchange[1], skillList.data.skill[selectedSkill].statchange[2]];
 					}
 					for(var i = 0; i < 3; i++){
 						selectedVita.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
@@ -4125,7 +4147,7 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.dmgContainer.dmgStatus.statusImageArray[i].visible = false;
 						targeted.dmgContainer.dmgStatus.statusTextArray[i].visible = false;	
 					}
-					if(skillsList.data.skills[selectedSkill].statchange[0]){	
+					if(skillList.data.skill[selectedSkill].statchange[0]){	
 						var statusStored = false;
 						selectedVita.statusArray.forEach(storedStatus =>{
 							if(storedStatus[0] == newStatus[0])		statusStored = true;
@@ -4165,13 +4187,13 @@ function calculateDamage(attacker, defender, hitArray){
 				}
 			});
 
-			if(skillsList.data.skills[selectedSkill].type == "Physical"){
+			if(skillList.data.skill[selectedSkill].type == "Physical"){
 				defense = targeted.pdef;
-			}else if(skillsList.data.skills[selectedSkill].type == "Special"){
+			}else if(skillList.data.skill[selectedSkill].type == "Special"){
 				defense = targeted.sdef;
 			}
 			targeted.elements.forEach(element =>{
-				var element1 = skillsList.data.skills[selectedSkill].element-1;
+				var element1 = skillList.data.skill[selectedSkill].element-1;
 				var element2 = element-1;
 				effectiveness *= elementList.data.elements[element1]["effect"][element2];
 			});
@@ -4242,7 +4264,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			if(skillHeal){
-				totalDamage = skillsList.data.skills[selectedSkill].heal;
+				totalDamage = skillList.data.skill[selectedSkill].heal;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].text = totalDamage;
 				targeted.heal(totalDamage);
@@ -4297,7 +4319,7 @@ function calculateDamage(attacker, defender, hitArray){
 				targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 			}
 			
-			if(skillsList.data.skills[selectedSkill].type == "Other" && !skillHeal){
+			if(skillList.data.skill[selectedSkill].type == "Other" && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgNumArray[0].visible = false;
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
@@ -5307,7 +5329,7 @@ function selectCreature(object2){
 	object2.healthBar.select.visible = true;
 	// object2.healthBar.select.animate = true;
 
-	object2.skills.forEach(skillID=>{
+	object2.skill.forEach(skillID=>{
 		newSkills.push(skillID);
 	});
 
@@ -5319,7 +5341,7 @@ function selectCreature(object2){
 	}	
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
-		switch(skillsList.data.skills[skillID].element){
+		switch(skillList.data.skill[skillID].element){
 			case 1:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
 				break;
@@ -5355,8 +5377,8 @@ function selectCreature(object2){
 		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
 		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID];
 		// skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID, identifier[0], identifier[1]];
-		skillContainerArray[skillContainerIndex].skillName.text = skillsList.data.skills[skillID].name;		
-		skillsList.data.skills[skillID].position.forEach((skillPos, skillPosIndex) => {
+		skillContainerArray[skillContainerIndex].skillName.text = skillList.data.skill[skillID].name;		
+		skillList.data.skill[skillID].position.forEach((skillPos, skillPosIndex) => {
 			if(skillPos == 1){				
 				currPos.forEach(posNum => {
 					var posTracker = Math.abs(skillPosIndex - 4);			
@@ -5372,19 +5394,19 @@ function selectCreature(object2){
 			}
 		});
 		
-		// console.log(skillContainerIndex + ": " + skillsList.data.skills[skillID].tags);
+		// console.log(skillContainerIndex + ": " + skillList.data.skill[skillID].tags);
 		var column = false;
 		var skillSelf = false;
-		skillsList.data.skills[skillID].tags.forEach(tagName =>{
+		skillList.data.skill[skillID].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				if(skillsList.data.skills[skillID][tagName][2] > 0){
-					skillContainerArray[skillContainerIndex].targetText.text = skillsList.data.skills[skillID][tagName][0] + " ►";
+				if(skillList.data.skill[skillID][tagName][2] > 0){
+					skillContainerArray[skillContainerIndex].targetText.text = skillList.data.skill[skillID][tagName][0] + " ►";
 				}else{
-					skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillsList.data.skills[skillID][tagName][0];
+					skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillList.data.skill[skillID][tagName][0];
 				}
 				
-				if(skillsList.data.skills[skillID][tagName][3] > 0){					
+				if(skillList.data.skill[skillID][tagName][3] > 0){					
 					skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
 				}else{
 					skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
@@ -5392,7 +5414,7 @@ function selectCreature(object2){
 			}else if(tagName == "several"){
 				skillContainerArray[skillContainerIndex].markerTargetSeveralContainer.visible = true;
 				//Show target dashes if 1
-				skillsList.data.skills[skillID][tagName].forEach((dash, dashIndex) => {
+				skillList.data.skill[skillID][tagName].forEach((dash, dashIndex) => {
 					if(dash == 1){
 						skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = true;
 					}else{
@@ -5408,7 +5430,7 @@ function selectCreature(object2){
 			else if(tagName == "team"){
 				skillContainerArray[skillContainerIndex].markerTargetTeamContainer.visible = true;
 				skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
-				skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
+				skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
 					if(skillTarget == 1){
 						skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = true;
 					}else{
@@ -5416,7 +5438,7 @@ function selectCreature(object2){
 					}
 				});
 			}
-			// console.log(skillsList.data.skills[skillID][tagName]);
+			// console.log(skillList.data.skill[skillID][tagName]);
 		});
 		
 		if(column || skillSelf){
@@ -5425,7 +5447,7 @@ function selectCreature(object2){
 		}else{
 			skillContainerArray[skillContainerIndex].markerTargetContainer.visible = true;
 			skillContainerArray[skillContainerIndex].targetText.visible = false;
-			skillsList.data.skills[skillID].target.forEach((skillTarget, targetIndex) => {
+			skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
 				if(skillTarget == 1){
 					skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = true;
 				}else{
