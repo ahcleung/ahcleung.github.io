@@ -3194,10 +3194,10 @@ function onHPDown(){
 		}
 	});
 
-	creatureInfo.info_item_text[1].text = itemList.data.items[this.object.item[0]].name;
-	creatureInfo.info_item_text[3].text = itemList.data.items[this.object.item[0]].type;
-	creatureInfo.info_item_text[5].text = itemList.data.items[this.object.item[0]].category;
-	creatureInfo.info_item_text[7].text = itemList.data.items[this.object.item[0]].description;
+	creatureInfo.info_item_text[1].text = itemList.data.item[this.object.item[0]].name;
+	creatureInfo.info_item_text[3].text = itemList.data.item[this.object.item[0]].type;
+	creatureInfo.info_item_text[5].text = itemList.data.item[this.object.item[0]].category;
+	creatureInfo.info_item_text[7].text = itemList.data.item[this.object.item[0]].description;
 	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	creatureInfo.infoItemArray = infoItemArray;
