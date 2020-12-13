@@ -3160,7 +3160,7 @@ function onHPDown(){
 	}
 
 	this.object.item.forEach((item,itemIndex) =>{
-		let itemRect = new PIXI.Graphics();
+		// let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
 		let itemSelectStroke = new PIXI.Graphics();
 
@@ -3175,10 +3175,10 @@ function onHPDown(){
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onInfoItemDown);
 
-		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		// itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 
-		itemContainer.addChild(itemRect);
-		itemContainer.rect = itemRect;
+		// itemContainer.addChild(itemRect);
+		// itemContainer.rect = itemRect;
 
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
