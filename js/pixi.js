@@ -3134,8 +3134,8 @@ function onHPDown(){
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
 	infoItemArray = [];
-	var infoItemWidth = 72;
-	var infoItemHeight = 144;
+	var infoItemWidth = 144;
+	var infoItemHeight = 288;
 	this.object.item.forEach((item,itemIndex) =>{
 		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
