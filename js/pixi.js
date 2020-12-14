@@ -3160,9 +3160,10 @@ function onHPDown(){
 	}
 
 	this.object.item.forEach((item,itemIndex) =>{
-		if(itemList.data.item[item].size == 2){
-			infoItemWidth = infoItemHeight+10;
-		}
+		// if(itemList.data.item[item].size == 2){
+		// 	infoItemWidth = infoItemHeight+10;
+		// }
+		
 		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
 		let itemSelectStroke = new PIXI.Graphics();
@@ -3204,16 +3205,27 @@ function onHPDown(){
 		itemContainer.addChild(spriteItem);
 		infoItemSprite.push(spriteItem);
 
+		if(itemList.data.item[item].size == 2){
+			let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+			spriteItem.width = infoItemWidth-skillSelectPadding*2;
+			spriteItem.height = infoItemHeight-skillSelectPadding*2;
+			spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
+			spriteItem.y = skillSelectPadding;
+			// itemContainer.addChild(spriteItem);
+			creatureInfo.item.addChild(spriteItem);
+			infoItemSprite.push(spriteItem);
+		}
+
 		itemContainer.selected.visible = false;
 
 		creatureInfo.item.addChild(itemContainer);
 
 		if(itemIndex%2 == 0){
 			itemContainer.x = 0;
-			itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
+			// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
 		}else{
 			itemContainer.x = infoItemWidth + 10;
-			itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
+			// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
 		}
 
 		infoItemArray.push(itemContainer);
