@@ -3207,6 +3207,11 @@ function onHPDown(){
 
 		if(itemList.data.item[item].size == 2){
 			let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+
+			const filter1 = new PIXI.filters.ColorMatrixFilter();
+			filter1.greyscale(0.5);
+			spriteItem.filters = [filter1];
+
 			spriteItem.width = infoItemWidth-skillSelectPadding*2;
 			spriteItem.height = infoItemHeight-skillSelectPadding*2;
 			spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
