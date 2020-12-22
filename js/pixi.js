@@ -2510,11 +2510,11 @@ function onHPDown(){
 	});
 	
 	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.rect.height = app.screen.height/14;
-		btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5;
+		btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.selected.stroke.height = app.screen.height/14;
-		btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/5 - (infoSelectPadding*2);
+		btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6 - (infoSelectPadding*2);
 		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
 
 		btn.infoBtnText.style.fontSize = infoBtnTextSize;
