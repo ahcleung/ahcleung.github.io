@@ -1075,9 +1075,9 @@ function setup(){
 
 	creatureInfo.info_item_text = info_item_text;
 
-	var info_text = ["Info", "Status", "Skills", "Items", "Close"];
+	var info_text = ["Info", "Stats", "Status", "Skills", "Items", "Close"];
 
-	for(var i = 0; i < 5; i++){
+	for(var i = 0; i < 6; i++){
 // 		console.log(heroArray[1].skill[i]);
 		let infoRect = new PIXI.Graphics();
 		let infoSelectFill = new PIXI.Graphics();
