@@ -1075,7 +1075,7 @@ function setup(){
 
 	creatureInfo.info_item_text = info_item_text;
 
-	var info_text = ["Info", "Stats", "Status", "Skills", "Items", "Close"];
+	var info_text = ["General", "Stats", "Status", "Skills", "Items", "Close"];
 
 	for(var i = 0; i < 6; i++){
 // 		console.log(heroArray[1].skill[i]);
@@ -2284,26 +2284,26 @@ function onInfoDown(){
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
-	}else if(this.identifier[0] == 1){
+	}else if(this.identifier[0] == 2){
 		creatureInfo.main.visible = false;
 		creatureInfo.status.visible = true;
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
-	}else if(this.identifier[0] == 2){
+	}else if(this.identifier[0] == 3){
 		creatureInfo.main.visible = false;
 		creatureInfo.status.visible = false;
 		creatureInfo.skill.visible = true;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
-	}else if(this.identifier[0] == 3){
+	}else if(this.identifier[0] == 4){
 		creatureInfo.main.visible = false;
 		creatureInfo.status.visible = false;
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = true;
 		this.selected.visible = true;
 	}
-	else if(this.identifier[0] == 4){
+	else if(this.identifier[0] == 5){
 		console.log("Info close");
 		blurFilterInfo.blur = 0;
 		creatureInfo.visible = false;
