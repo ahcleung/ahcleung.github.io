@@ -3293,6 +3293,24 @@ function onHPDown(){
 	creatureInfo.info_stat_text[3].text = "Health points:";
 	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
 	creatureInfo.info_stat_text[5].text = this.object.statMod[0];
+	creatureInfo.info_stat_text[3].text = "Dodge:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].dodge;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[1];
+	creatureInfo.info_stat_text[3].text = "Physical attack:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].patk;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[2];
+	creatureInfo.info_stat_text[3].text = "Physical defense:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].pdef;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[3];
+	creatureInfo.info_stat_text[3].text = "Special attack:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].satk;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[4];
+	creatureInfo.info_stat_text[3].text = "Special defense:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].sdef;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[5];
+	creatureInfo.info_stat_text[3].text = "Speed:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].spd;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[6];
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
