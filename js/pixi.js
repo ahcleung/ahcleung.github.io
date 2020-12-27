@@ -898,6 +898,9 @@ function setup(){
 	const creatureInfoItem = new PIXI.Container();
 	creatureInfo.addChild(creatureInfoItem);
 	creatureInfo.item = creatureInfoItem;
+	const creatureInfoStat = new PIXI.Container();
+	creatureInfo.addChild(creatureInfoStat);
+	creatureInfo.stat = creatureInfoStat;
 
 	blurFilterInfo.blur = 0;
 	turnText.filters = [blurFilterInfo];
@@ -907,6 +910,7 @@ function setup(){
 	var info_main_text = [];
 	var info_skill_text = [];
 	var info_item_text = [];
+	var info_stat_text = [];
 
 	let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_name1.anchor.set(1,0);
@@ -1072,6 +1076,15 @@ function setup(){
 	var info_item_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
 	info_item_text.push(info_item_des2);
 	creatureInfoItem.addChild(info_item_des2);
+
+	creatureInfo.info_item_text = info_item_text;
+
+	for(var i = 0; i < 24; i++){
+		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+		info_stat.anchor.set(1,0);
+		info_stat_text.push(info_stat);
+		creatureInfoStat.addChild(info_stat);
+	}
 
 	creatureInfo.info_item_text = info_item_text;
 
@@ -2361,6 +2374,7 @@ function onHPDown(){
 	// creatureInfo.main.visible = true;
 	creatureInfo.main.visible = false;
 	creatureInfo.skill.visible = false;
+	creatureInfo.item.visible = false;
 	skillContainerArray.forEach(skillContainer=>{
 		skillContainer.interactive = false;
 	});	
@@ -3257,6 +3271,43 @@ function onHPDown(){
 
 	creatureInfo.infoItemArray = infoItemArray;
 	creatureInfo.infoItemSprite = infoItemSprite;
+
+	////////////////////
+	//INFO STAT
+	////////////////////
+
+	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		// if(textIndex == 0 || textIndex%3 == 0){
+		// 	text.x = 100
+			
+		// }else if(textIndex%3 == 1){
+		// 	text.x = 200
+		// 	text.y = 
+		// }else if(textIndex%3 == 2){
+		// 	text.x = 300
+		// 	text.y = 
+		// }
+		text.x = (textIndex%3) * 100
+		text.y = Math.floor(textIndex/3) * 100;
+		// if(textIndex < 2){
+		// 	if(textIndex%2 == 0){
+		// 		text.x = app.screen.width/15;
+		// 		text.y = textIndex * infoMainMargin;
+		// 	}else{
+		// 		text.x = app.screen.width/12;
+		// 		text.y = (textIndex-1) * infoMainMargin;
+		// 	}
+		// }else{
+		// 	if(textIndex%2 == 0){
+		// 		text.x = app.screen.width/12;
+		// 		text.y = textIndex * infoMainMargin;
+		// 	}else{
+		// 		text.x = app.screen.width/15;
+		// 		text.y = (textIndex+1) * infoMainMargin;
+		// 	}
+		// }
+	});
 
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
