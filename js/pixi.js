@@ -3276,6 +3276,9 @@ function onHPDown(){
 	//INFO STAT
 	////////////////////
 
+	creatureInfo.stat.x = textOrigin[0];
+	creatureInfo.stat.y = textOrigin[1];
+
 	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		// if(textIndex == 0 || textIndex%3 == 0){
