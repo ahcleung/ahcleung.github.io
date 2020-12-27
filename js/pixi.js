@@ -3287,6 +3287,9 @@ function onHPDown(){
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex < 3){
 			text.x = ((textIndex%3)+1) * app.screen.width/12 + app.screen.width/15;
+		}else if(textIndex%3 != 0){
+			text.x = (textIndex%3) * app.screen.width/12 + app.screen.width/25;
+			text.y = Math.floor(textIndex/3) * app.screen.height/12;
 		}else{
 			text.x = (textIndex%3) * app.screen.width/12 + app.screen.width/15;
 			text.y = Math.floor(textIndex/3) * app.screen.height/12;
