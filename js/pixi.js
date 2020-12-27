@@ -3287,6 +3287,12 @@ function onHPDown(){
 		text.y = Math.floor(textIndex/3) * app.screen.height/12;
 	});
 
+	creatureInfo.info_stat_text[0].text = "Base";
+	creatureInfo.info_stat_text[1].text = "Allocated";
+	creatureInfo.info_stat_text[2].text = "To allocate";
+	creatureInfo.info_stat_text[3].text = "Health points:";
+	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
+	creatureInfo.info_stat_text[5].text = this.object.statMod[0];
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
