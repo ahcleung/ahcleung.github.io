@@ -3279,39 +3279,12 @@ function onHPDown(){
 	// var textOrigin = [app.screen.width/2,app.screen.height/6];
 
 	creatureInfo.stat.x = textOrigin[0];
-	creatureInfo.stat.y = app.screen.height/7;
+	creatureInfo.stat.y = app.screen.height/8;
 
 	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
-		// if(textIndex == 0 || textIndex%3 == 0){
-		// 	text.x = 100
-			
-		// }else if(textIndex%3 == 1){
-		// 	text.x = 200
-		// 	text.y = 
-		// }else if(textIndex%3 == 2){
-		// 	text.x = 300
-		// 	text.y = 
-		// }
 		text.x = (textIndex%3) * 100
-		text.y = Math.floor(textIndex/3) * 100;
-		// if(textIndex < 2){
-		// 	if(textIndex%2 == 0){
-		// 		text.x = app.screen.width/15;
-		// 		text.y = textIndex * infoMainMargin;
-		// 	}else{
-		// 		text.x = app.screen.width/12;
-		// 		text.y = (textIndex-1) * infoMainMargin;
-		// 	}
-		// }else{
-		// 	if(textIndex%2 == 0){
-		// 		text.x = app.screen.width/12;
-		// 		text.y = textIndex * infoMainMargin;
-		// 	}else{
-		// 		text.x = app.screen.width/15;
-		// 		text.y = (textIndex+1) * infoMainMargin;
-		// 	}
-		// }
+		text.y = Math.floor(textIndex/3) * 50;
 	});
 
 	// if(skillIndex%2 == 0){
