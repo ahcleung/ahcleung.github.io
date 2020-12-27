@@ -1086,7 +1086,7 @@ function setup(){
 		creatureInfoStat.addChild(info_stat);
 	}
 
-	creatureInfo.info_item_text = info_item_text;
+	creatureInfo.info_stat_text = info_stat_text;
 
 	var info_text = ["General", "Stats", "Status", "Skills", "Items", "Close"];
 
