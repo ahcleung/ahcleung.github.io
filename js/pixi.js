@@ -1084,7 +1084,7 @@ function setup(){
 	for(var i = 0; i < 24; i++){
 		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		if(i%3 == 0 && i != 0){
-			info_stat.anchor.set(1,0);
+			info_stat.anchor.set(1,0.5);
 		}
 		info_stat_text.push(info_stat);
 		creatureInfoStat.addChild(info_stat);
@@ -1100,10 +1100,10 @@ function setup(){
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/100;
-		// info_stat_increaseText.anchor.set(0,0);
+		info_stat_increaseText.anchor.set(0,0.5);
 		// info_item_text.push(info_stat_increaseIcon);
 		creatureStatIncrease.addChild(info_stat_increaseText);
-		info_stat_increaseIcon.y = info_stat_increaseText.height/2;
+		// info_stat_increaseIcon.y = info_stat_increaseText.height/2;
 		creatureStatIncrease.buttonMode = true;
 	    	creatureStatIncrease.interactive = true;
 		creatureStatIncrease
