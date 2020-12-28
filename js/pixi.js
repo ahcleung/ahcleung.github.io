@@ -3328,7 +3328,7 @@ function onHPDown(){
 	});
 
 	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
-		increase.increaseText.text.style.fontSize = skillNameFontSize;
+		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
 	});
