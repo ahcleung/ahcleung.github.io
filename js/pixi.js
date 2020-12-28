@@ -1111,7 +1111,7 @@ function setup(){
 		creatureStatIncrease
 	        // set the mousedown and touchstart callback...
 	        .on('pointerdown', onBtnStatusDown);
-	    info_stat_increase.increaseText = info_stat_increaseText;
+	    creatureStatIncrease.increaseText = info_stat_increaseText;
 	    info_stat_increase.push(creatureStatIncrease);
 		creatureInfoStat.addChild(creatureStatIncrease);
 	}
@@ -3328,7 +3328,7 @@ function onHPDown(){
 	});
 
 	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
-		increase.increaseText.style.fontSize = skillNameFontSize;
+		increase.increaseText.text.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
 	});
