@@ -36,6 +36,8 @@ loader
 		"js/element.json",
 		"js/item.json",
 
+		{name:'icon_plus', url:'img/icon_plus.png'},
+
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
 		{name:'arrow_down_d', url:'img/arrow_down_d.png'},
@@ -1091,7 +1093,7 @@ function setup(){
 	var info_stat_increase = [];
 	for(var i = 0; i < 7; i++){
 		const creatureStatIncrease = new PIXI.Container();
-		var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
+		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
 		info_stat_increaseIcon.width = app.screen.height/18;
 		info_stat_increaseIcon.height = app.screen.height/18;
 		info_stat_increaseIcon.anchor.set(0,0.5);
