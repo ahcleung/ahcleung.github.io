@@ -61,17 +61,17 @@ class Creature{
 
 		// 0, 	  1,    2,    3,    4,    5,   6,   7
 		//hp, dodge, patk, pdef, satk, sdef, spd, acc
-		// this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
-		this.statMod = [
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		Math.floor(Math.random() * 30) + 1,
-		0
-		];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
+		// this.statMod = [
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// Math.floor(Math.random() * 30) + 1,
+		// 0
+		// ];
 		this.statusArray = [
 		//[status, turn, statNum, value]
 			[3,1],
