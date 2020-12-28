@@ -1088,6 +1088,7 @@ function setup(){
 		creatureInfoStat.addChild(info_stat);
 	}
 
+	var info_stat_increase = [];
 	const creatureStatIncrease = new PIXI.Container();
 	var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
 	info_stat_increaseIcon.width = app.screen.height/18;
@@ -1105,8 +1106,10 @@ function setup(){
 	creatureStatIncrease
         // set the mousedown and touchstart callback...
         .on('pointerdown', onBtnStatusDown);
-
+    info_stat_increase.push(creatureStatIncrease)
 	creatureInfoStat.addChild(creatureStatIncrease);
+
+	creatureInfo.info_stat_increase = info_stat_increase;
 	// info_main_elementIcon.push(info_stat_increaseIcon);
 
 	creatureInfo.info_stat_text = info_stat_text;
@@ -3315,6 +3318,11 @@ function onHPDown(){
 			text.x = app.screen.width/15;
 			text.y = Math.floor(textIndex/3) * app.screen.height/12;
 		}
+	});
+
+	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
+		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
+		increase.y = increaseIndex * app.screen.height/12;
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
