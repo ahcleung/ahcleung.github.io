@@ -61,7 +61,8 @@ class Creature{
 
 		// 0, 	  1,    2,    3,    4,    5,   6,   7
 		//hp, dodge, patk, pdef, satk, sdef, spd, acc
-		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
+		// this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
+		this.statMod = [100, 50, 26, 34, 30, 0, 0, 0];
 		this.statusArray = [
 		//[status, turn, statNum, value]
 			[3,1],
