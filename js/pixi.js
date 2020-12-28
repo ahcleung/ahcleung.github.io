@@ -1085,6 +1085,8 @@ function setup(){
 		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		if(i%3 == 0 && i != 0){
 			info_stat.anchor.set(1,0.5);
+		}else{
+			info_stat.anchor.set(0,0.5);
 		}
 		info_stat_text.push(info_stat);
 		creatureInfoStat.addChild(info_stat);
