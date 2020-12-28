@@ -1094,8 +1094,8 @@ function setup(){
 	for(var i = 0; i < 7; i++){
 		const creatureStatIncrease = new PIXI.Container();
 		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
-		info_stat_increaseIcon.width = app.screen.height/20;
-		info_stat_increaseIcon.height = app.screen.height/20;
+		info_stat_increaseIcon.width = app.screen.height/25;
+		info_stat_increaseIcon.height = app.screen.height/25;
 		info_stat_increaseIcon.anchor.set(0,0.5);
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
