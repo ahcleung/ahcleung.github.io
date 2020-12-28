@@ -1088,6 +1088,14 @@ function setup(){
 		creatureInfoStat.addChild(info_stat);
 	}
 
+	// const creatureStatIncrease = new PIXI.Container();
+	var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
+	info_stat_increaseIcon.width.set(50);
+	info_stat_increaseIcon.height.set(50);
+	info_stat_increaseIcon.anchor.set(0,0.5);
+	creatureInfoStat.addChild(info_stat_increaseIcon);
+	// info_main_elementIcon.push(info_stat_increaseIcon);
+
 	creatureInfo.info_stat_text = info_stat_text;
 
 	var info_text = ["General", "Stats", "Status", "Skills", "Items", "Close"];
