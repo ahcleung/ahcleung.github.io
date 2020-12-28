@@ -1096,7 +1096,7 @@ function setup(){
 	info_stat_increaseIcon.anchor.set(0,0.5);
 	creatureStatIncrease.addChild(info_stat_increaseIcon);
 	var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/250;
+	info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/192;
 	// info_stat_increaseText.anchor.set(0,0);
 	// info_item_text.push(info_stat_increaseIcon);
 	creatureStatIncrease.addChild(info_stat_increaseText);
@@ -3328,8 +3328,8 @@ function onHPDown(){
 	creatureInfo.info_stat_text[0].text = "Base";
 	creatureInfo.info_stat_text[1].text = "Allocated";
 	var toAllocate = this.object.level * 3;
-	this.object.statMod.forEach(statMod =>{
-		toAllocate -= statMod;
+	this.object.statDis.forEach(statDis =>{
+		toAllocate -= statDis;
 	});
 	creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
 	creatureInfo.info_stat_text[3].text = "Health points:";
