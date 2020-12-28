@@ -1088,18 +1088,25 @@ function setup(){
 		creatureInfoStat.addChild(info_stat);
 	}
 
-	// const creatureStatIncrease = new PIXI.Container();
+	const creatureStatIncrease = new PIXI.Container();
 	var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
 	info_stat_increaseIcon.width = app.screen.height/18;
 	info_stat_increaseIcon.height = app.screen.height/18;
 	info_stat_increaseIcon.anchor.set(0,0.5);
-	creatureInfoStat.addChild(info_stat_increaseIcon);
+	creatureStatIncrease.addChild(info_stat_increaseIcon);
 	var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/384;
 	// info_stat_increaseText.anchor.set(0,0);
 	// info_item_text.push(info_stat_increaseIcon);
-	creatureInfoStat.addChild(info_stat_increaseText);
+	creatureStatIncrease.addChild(info_stat_increaseText);
 	info_stat_increaseIcon.y = info_stat_increaseText.height/2;
+	creatureStatIncrease.buttonMode = true;
+    	creatureStatIncrease.interactive = true;
+	creatureStatIncrease
+        // set the mousedown and touchstart callback...
+        .on('pointerdown', onBtnStatusDown);
+
+	creatureInfoStat.addChild(creatureStatIncrease);
 	// info_main_elementIcon.push(info_stat_increaseIcon);
 
 	creatureInfo.info_stat_text = info_stat_text;
