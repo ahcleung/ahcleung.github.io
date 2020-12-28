@@ -3324,7 +3324,7 @@ function onHPDown(){
 
 	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
-		increase.y = increaseIndex+1 * app.screen.height/12;
+		increase.y = (increaseIndex+1) * app.screen.height/12;
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
