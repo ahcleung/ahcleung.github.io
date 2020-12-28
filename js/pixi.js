@@ -3298,7 +3298,11 @@ function onHPDown(){
 
 	creatureInfo.info_stat_text[0].text = "Base";
 	creatureInfo.info_stat_text[1].text = "Allocated";
-	creatureInfo.info_stat_text[2].text = "To allocate: " + this.object.level * 3;
+	var toAllocate = this.object.level * 3;
+	this.object.statMod.forEach(statMod =>{
+		toAllocate -= statMod;
+	});
+	creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
 	creatureInfo.info_stat_text[3].text = "Health points:";
 	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
 	creatureInfo.info_stat_text[5].text = this.object.statMod[0];
