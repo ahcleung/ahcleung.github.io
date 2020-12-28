@@ -1090,8 +1090,8 @@ function setup(){
 
 	// const creatureStatIncrease = new PIXI.Container();
 	var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
-	info_stat_increaseIcon.width.set(50);
-	info_stat_increaseIcon.height.set(50);
+	info_stat_increaseIcon.width = 50;
+	info_stat_increaseIcon.height = 50;
 	info_stat_increaseIcon.anchor.set(0,0.5);
 	creatureInfoStat.addChild(info_stat_increaseIcon);
 	// info_main_elementIcon.push(info_stat_increaseIcon);
