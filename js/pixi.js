@@ -1090,10 +1090,15 @@ function setup(){
 
 	// const creatureStatIncrease = new PIXI.Container();
 	var info_stat_increaseIcon = new PIXI.Sprite(textureAdditional);
-	info_stat_increaseIcon.width = 50;
-	info_stat_increaseIcon.height = 50;
-	info_stat_increaseIcon.anchor.set(0,0.5);
+	info_stat_increaseIcon.width = 25;
+	info_stat_increaseIcon.height = 25;
+	// info_stat_increaseIcon.anchor.set(0,0.5);
 	creatureInfoStat.addChild(info_stat_increaseIcon);
+	var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	info_stat_increaseText.x = info_stat_increaseIcon.width + 5;
+	// info_stat_increaseText.anchor.set(0,0);
+	// info_item_text.push(info_stat_increaseIcon);
+	creatureInfoStat.addChild(info_stat_increaseText);
 	// info_main_elementIcon.push(info_stat_increaseIcon);
 
 	creatureInfo.info_stat_text = info_stat_text;
