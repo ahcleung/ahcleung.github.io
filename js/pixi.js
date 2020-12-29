@@ -2326,24 +2326,35 @@ function onInfoDown(){
 	
 	if(this.identifier[0] == 0){
 		creatureInfo.main.visible = true;
+		creatureInfo.stat.visible = false;
+		creatureInfo.status.visible = false;
+		creatureInfo.skill.visible = false;
+		creatureInfo.item.visible = false;
+		this.selected.visible = true;
+	}else if(this.identifier[0] == 1){
+		creatureInfo.main.visible = false;
+		creatureInfo.stat.visible = true;
 		creatureInfo.status.visible = false;
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
 	}else if(this.identifier[0] == 2){
 		creatureInfo.main.visible = false;
+		creatureInfo.stat.visible = false;
 		creatureInfo.status.visible = true;
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
 	}else if(this.identifier[0] == 3){
 		creatureInfo.main.visible = false;
+		creatureInfo.stat.visible = false;
 		creatureInfo.status.visible = false;
 		creatureInfo.skill.visible = true;
 		creatureInfo.item.visible = false;
 		this.selected.visible = true;
 	}else if(this.identifier[0] == 4){
 		creatureInfo.main.visible = false;
+		creatureInfo.stat.visible = false;
 		creatureInfo.status.visible = false;
 		creatureInfo.skill.visible = false;
 		creatureInfo.item.visible = true;
