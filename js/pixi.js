@@ -1095,6 +1095,7 @@ function setup(){
 	var info_stat_increase = [];
 	for(var i = 0; i < 7; i++){
 		const creatureStatIncrease = new PIXI.Container();
+		creatureStatIncrease.identifier = i;
 		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
 		info_stat_increaseIcon.width = app.screen.height/25;
 		info_stat_increaseIcon.height = app.screen.height/25;
@@ -1110,7 +1111,7 @@ function setup(){
 	    	creatureStatIncrease.interactive = true;
 		creatureStatIncrease
 	        // set the mousedown and touchstart callback...
-	        .on('pointerdown', onBtnStatusDown);
+	        .on('pointerdown', onBtnStatUp);
 	    creatureStatIncrease.increaseText = info_stat_increaseText;
 	    info_stat_increase.push(creatureStatIncrease);
 		creatureInfoStat.addChild(creatureStatIncrease);
@@ -3382,6 +3383,36 @@ function onHPDown(){
 	// }
 
 	// console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
+}
+
+function onBtnStatUp(){
+	// console.log("stat increase");
+	switch(this.identifier){
+		case 0:
+			console.log("stat increase HP");
+			break;
+		case 1:
+			console.log("stat increase Dodge");
+			break;
+		case 2:
+			console.log("stat increase Physical Attack");
+			break;
+		case 3:
+			console.log("stat increase Physical Defense");
+			break;
+		case 4:
+			console.log("stat increase Special Attack");
+			break;
+		case 5:
+			console.log("stat increase Special Defense");
+			break;
+		case 6:
+			console.log("stat increase Speed");
+			break;
+		default:
+			console.log("stat increase ??");
+			break;
+	}
 }
 
 function onBtnStatusUp(){
