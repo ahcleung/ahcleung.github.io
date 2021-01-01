@@ -303,7 +303,7 @@ hero[1] = {
 hero[2] = {
 	id: 2, level: 45, 
 	skill1: 17, skill2: 14, skill3: 5, skill4: 12,
-	statDODG: 20, statHP: 35, statPATK: 40, statPDEF: 10, statSATK: 0, statSDEF: 3, statSPD: 120,
+	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 120,
 	hero: true
 };
 // hero[3] = {
