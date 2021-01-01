@@ -3386,7 +3386,7 @@ function onHPDown(){
 }
 
 function onBtnStatUp(){
-	// console.log("stat increase");
+	console.log(selectedVita);
 	switch(this.identifier){
 		case 0:
 			console.log("stat increase HP");
