@@ -3438,7 +3438,6 @@ function onBtnStatUp(){
 				break;
 			case 1:
 				console.log("stat increase Dodge");
-				console.log("stat increase HP");
 				selectedHP.statDis[1] += 1;
 				if(selectedHP.statDis[1] == 150){
 					creatureInfo.info_stat_maxed[1].visible = true;
