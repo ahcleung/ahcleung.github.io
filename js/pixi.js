@@ -302,9 +302,9 @@ hero[1] = {
 	hero: true
 };
 hero[2] = {
-	id: 2, level: 45, 
+	id: 2, level: 51, 
 	skill1: 17, skill2: 14, skill3: 5, skill4: 12,
-	statDODG: 10, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 120,
+	statDODG: 5, statHP: 145, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: true
 };
 // hero[3] = {
@@ -3428,6 +3428,10 @@ function onBtnStatUp(){
 			case 0:
 				console.log("stat increase HP");
 				selectedHP.statDis[0] += 1;
+				if(selectedHP.statDis[0] == 150){
+					creatureInfo.info_stat_maxed[0].visible = true;
+					creatureInfo.info_stat_increase[0].visible = false;
+				}
 				toAllocate--;
 				creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
 				break;
@@ -3457,7 +3461,7 @@ function onBtnStatUp(){
 		if(toAllocate==0){
 			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 				increase.visible = false;
-				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+				// creatureInfo.info_stat_maxed[increaseIndex].visible = false;
 			});
 		}
 	}else{
