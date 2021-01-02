@@ -1104,7 +1104,7 @@ function setup(){
 		info_stat_increaseIcon.anchor.set(0,0.5);
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-		var info_stat_Maxed = new Text("Maxed", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'right'});
+		var info_stat_maxedText = new Text("Maxed", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'right'});
 
 		info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/100;
 		info_stat_maxedText.x = info_stat_increaseIcon.width + app.screen.width/100;
@@ -3354,7 +3354,7 @@ function onHPDown(){
 		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
-		
+
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
 		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
