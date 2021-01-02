@@ -3346,7 +3346,7 @@ function onHPDown(){
 		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
-		if(this.objecy.statDis[increaseIndex] == 150){
+		if(this.object.statDis[increaseIndex] == 150){
 			increase.visible = false;
 		}else{
 			increase.visible = true;
