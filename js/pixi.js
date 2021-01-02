@@ -298,7 +298,7 @@ hero[0] = {
 hero[1] = {
 	id: 11, level: 47, 
 	skill1: 1, skill2: 10, skill3: 11, skill4: 3,
-	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 20, statSPD: 0,
+	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 0,
 	hero: true
 };
 hero[2] = {
@@ -3352,6 +3352,11 @@ function onHPDown(){
 		}
 	});
 
+	var toAllocate = this.object.level * 3;
+	this.object.statDis.forEach(statDis =>{
+		toAllocate -= statDis;
+	});
+
 	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
@@ -3360,23 +3365,24 @@ function onHPDown(){
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
 		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50 + increase.increaseText.x;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
-		if(this.object.statDis[increaseIndex] == 150){
+		if(statDis == 0){
 			increase.visible = false;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = true;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
 		}else{
-			increase.visible = true;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+			if(this.object.statDis[increaseIndex] == 150){
+				increase.visible = false;
+				creatureInfo.info_stat_maxed[increaseIndex].visible = true;
+				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
+			}else{
+				increase.visible = true;
+				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+			}
 		}
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
 	creatureInfo.info_stat_text[1].text = "Allocated";
-	var toAllocate = this.object.level * 3;
-	this.object.statDis.forEach(statDis =>{
-		toAllocate -= statDis;
-	});
+	
 	creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
 	creatureInfo.info_stat_text[3].text = "Health points:";
 	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
