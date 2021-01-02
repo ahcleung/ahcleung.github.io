@@ -3354,6 +3354,10 @@ function onHPDown(){
 		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
+		
+		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
+		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50;
+		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
 		if(this.object.statDis[increaseIndex] == 150){
 			increase.visible = false;
 			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
