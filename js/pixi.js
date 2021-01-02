@@ -1122,7 +1122,7 @@ function setup(){
 	    info_stat_increase.push(creatureStatIncrease);
 	    info_stat_maxed.push(info_stat_maxedText);
 		creatureInfoStat.addChild(creatureStatIncrease);
-		creatureInfoStat.addChild(nfo_stat_maxedText);
+		creatureInfoStat.addChild(info_stat_maxedText);
 	}
 
 	creatureInfo.info_stat_increase = info_stat_increase;
