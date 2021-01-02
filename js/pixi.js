@@ -3365,21 +3365,21 @@ function onHPDown(){
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
 		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50 + increase.increaseText.x;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
-		if(toAllocate == 0){
-			increase.visible = false;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
-		}else{
+		// else{
 			if(this.object.statDis[increaseIndex] == 150){
 				increase.visible = false;
 				creatureInfo.info_stat_maxed[increaseIndex].visible = true;
 				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
+			}else if(toAllocate == 0){
+				increase.visible = false;
+				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
 			}else{
 				increase.visible = true;
 				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
 				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
 			}
-		}
+		// }
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
