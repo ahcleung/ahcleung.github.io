@@ -3454,6 +3454,12 @@ function onBtnStatUp(){
 				break;
 		}
 		creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
+		if(toAllocate==0){
+			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
+				increase.visible = false;
+				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+			}
+		}
 	}else{
 		console.log("No stat to allocate");
 	}
