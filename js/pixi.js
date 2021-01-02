@@ -3368,6 +3368,7 @@ function onHPDown(){
 		if(toAllocate == 0){
 			increase.visible = false;
 			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+			reatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
 		}else{
 			if(this.object.statDis[increaseIndex] == 150){
 				increase.visible = false;
