@@ -3431,7 +3431,7 @@ function onBtnStatUp(){
 			creatureInfo.info_stat_text[this.identifier*3+5].style.fill = '#FFd600';
 		}
 		toAllocate--;
-		creatureInfo.info_stat_text[this.identifier*3+5].text = selectedHP.statDis[0];
+		creatureInfo.info_stat_text[this.identifier*3+5].text = selectedHP.statDis[this.identifier];
 
 		// switch(this.identifier){
 		// 	case 0:
