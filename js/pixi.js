@@ -290,9 +290,9 @@ const skillContainerArray = [];			//Array of skill containers
 
 const hero = [];
 hero[0] = {
-	id: 6, level: 50, 
+	id: 6, level: 51, 
 	skill1: 4, skill2: 1, skill3: 3, skill4: 2,
-	statDODG: 20, statHP: 0, statPATK: 10, statPDEF: 0, statSATK: 115, statSDEF: 0, statSPD: 0,
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 150, statSDEF: 0, statSPD: 0,
 	hero: true
 };
 hero[1] = {
@@ -3346,6 +3346,11 @@ function onHPDown(){
 		increase.increaseText.style.fontSize = skillNameFontSize;
 		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
+		if(this.objecy.statDis[increaseIndex] == 150){
+			increase.visible = false;
+		}else{
+			increase.visible = true;
+		}
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
