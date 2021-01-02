@@ -1120,6 +1120,7 @@ function setup(){
 	        // set the mousedown and touchstart callback...
 	        .on('pointerdown', onBtnStatUp);
 	    creatureStatIncrease.increaseText = info_stat_increaseText;
+	    creatureStatIncrease.increaseIcon = info_stat_increaseIcon;
 	    info_stat_increase.push(creatureStatIncrease);
 	    info_stat_maxed.push(info_stat_maxedText);
 		creatureInfoStat.addChild(creatureStatIncrease);
