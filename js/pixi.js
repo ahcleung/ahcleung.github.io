@@ -3392,6 +3392,8 @@ function onBtnStatUp(){
 	switch(this.identifier){
 		case 0:
 			console.log("stat increase HP");
+			selectedHP.statDis[0] += 1;
+			creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
 			break;
 		case 1:
 			console.log("stat increase Dodge");
