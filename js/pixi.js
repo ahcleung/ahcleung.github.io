@@ -3365,7 +3365,7 @@ function onHPDown(){
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
 		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50 + increase.increaseText.x;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
-		if(statDis == 0){
+		if(toAllocate == 0){
 			increase.visible = false;
 		}else{
 			if(this.object.statDis[increaseIndex] == 150){
