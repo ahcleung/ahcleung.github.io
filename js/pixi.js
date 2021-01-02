@@ -3389,33 +3389,43 @@ function onHPDown(){
 
 function onBtnStatUp(){
 	console.log(selectedHP.name);
-	switch(this.identifier){
-		case 0:
-			console.log("stat increase HP");
-			selectedHP.statDis[0] += 1;
-			creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
-			break;
-		case 1:
-			console.log("stat increase Dodge");
-			break;
-		case 2:
-			console.log("stat increase Physical Attack");
-			break;
-		case 3:
-			console.log("stat increase Physical Defense");
-			break;
-		case 4:
-			console.log("stat increase Special Attack");
-			break;
-		case 5:
-			console.log("stat increase Special Defense");
-			break;
-		case 6:
-			console.log("stat increase Speed");
-			break;
-		default:
-			console.log("stat increase ??");
-			break;
+	var toAllocate = selectedHP.level * 3;
+	selectedHP.statDis.forEach(statDis =>{
+		toAllocate -= statDis;
+	});
+	if(toAllocate > 0){
+		switch(this.identifier){
+			case 0:
+				console.log("stat increase HP");
+				selectedHP.statDis[0] += 1;
+				toAllocate--;
+				creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
+				break;
+			case 1:
+				console.log("stat increase Dodge");
+				break;
+			case 2:
+				console.log("stat increase Physical Attack");
+				break;
+			case 3:
+				console.log("stat increase Physical Defense");
+				break;
+			case 4:
+				console.log("stat increase Special Attack");
+				break;
+			case 5:
+				console.log("stat increase Special Defense");
+				break;
+			case 6:
+				console.log("stat increase Speed");
+				break;
+			default:
+				console.log("stat increase ??");
+				break;
+		}
+		creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
+	}else{
+		console.log("No stat to allocate");
 	}
 }
 
