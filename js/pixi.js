@@ -1101,7 +1101,7 @@ function setup(){
 		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
 		info_stat_increaseIcon.width = app.screen.height/25;
 		info_stat_increaseIcon.height = app.screen.height/25;
-		info_stat_increaseIcon.x = -info_stat_increaseIcon.width;
+		// info_stat_increaseIcon.x = -info_stat_increaseIcon.width;
 		info_stat_increaseIcon.anchor.set(0,0.5);
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
@@ -3357,7 +3357,7 @@ function onHPDown(){
 		increase.y = (increaseIndex+1) * app.screen.height/12;
 
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
-		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50;
+		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50 + increase.increaseIcon.width + app.screen.width/100;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
 		if(this.object.statDis[increaseIndex] == 150){
 			increase.visible = false;
