@@ -1094,6 +1094,7 @@ function setup(){
 	}
 
 	var info_stat_increase = [];
+	var info_stat_maxed = [];
 	for(var i = 0; i < 7; i++){
 		const creatureStatIncrease = new PIXI.Container();
 		creatureStatIncrease.identifier = i;
@@ -1103,8 +1104,12 @@ function setup(){
 		info_stat_increaseIcon.anchor.set(0,0.5);
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+		var info_stat_Maxed = new Text("Maxed", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'right'});
+
 		info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/100;
+		info_stat_maxedText.x = info_stat_increaseIcon.width + app.screen.width/100;
 		info_stat_increaseText.anchor.set(0,0.5);
+		info_stat_maxedText.anchor.set(0,0.5);
 		// info_item_text.push(info_stat_increaseIcon);
 		creatureStatIncrease.addChild(info_stat_increaseText);
 		// info_stat_increaseIcon.y = info_stat_increaseText.height/2;
@@ -1115,10 +1120,13 @@ function setup(){
 	        .on('pointerdown', onBtnStatUp);
 	    creatureStatIncrease.increaseText = info_stat_increaseText;
 	    info_stat_increase.push(creatureStatIncrease);
+	    info_stat_maxed.push(info_stat_maxedText);
 		creatureInfoStat.addChild(creatureStatIncrease);
+		creatureInfoStat.addChild(nfo_stat_maxedText);
 	}
 
 	creatureInfo.info_stat_increase = info_stat_increase;
+	creatureInfo.info_stat_maxed = info_stat_maxed;
 	// info_main_elementIcon.push(info_stat_increaseIcon);
 
 	creatureInfo.info_stat_text = info_stat_text;
