@@ -3458,7 +3458,7 @@ function onBtnStatUp(){
 			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 				increase.visible = false;
 				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-			}
+			});
 		}
 	}else{
 		console.log("No stat to allocate");
