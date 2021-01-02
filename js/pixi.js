@@ -1101,6 +1101,7 @@ function setup(){
 		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
 		info_stat_increaseIcon.width = app.screen.height/25;
 		info_stat_increaseIcon.height = app.screen.height/25;
+		info_stat_increaseIcon.x = -info_stat_increaseIcon.width;
 		info_stat_increaseIcon.anchor.set(0,0.5);
 		creatureStatIncrease.addChild(info_stat_increaseIcon);
 		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
