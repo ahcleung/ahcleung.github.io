@@ -3367,6 +3367,7 @@ function onHPDown(){
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
 		if(toAllocate == 0){
 			increase.visible = false;
+			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
 		}else{
 			if(this.object.statDis[increaseIndex] == 150){
 				increase.visible = false;
