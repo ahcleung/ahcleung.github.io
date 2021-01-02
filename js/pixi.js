@@ -254,6 +254,7 @@ var userInput = false;
 //Selected element tracker
 var selectedVita;
 var selectedSkill = -1;
+var selectedHP;
 
 //Animation speed
 var anim1 = 0.5;
@@ -2414,6 +2415,7 @@ function onInfoDown(){
 }
 
 function onHPDown(){
+	selectedHP = this.object;
 	blurFilterInfo.blur = 30;
 	creatureInfo.visible = true;
 	creatureInfo.main.visible = true;
@@ -3386,7 +3388,7 @@ function onHPDown(){
 }
 
 function onBtnStatUp(){
-	console.log(selectedVita);
+	console.log(selectedHP.name);
 	switch(this.identifier){
 		case 0:
 			console.log("stat increase HP");
