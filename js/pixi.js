@@ -3348,8 +3348,10 @@ function onHPDown(){
 		increase.y = (increaseIndex+1) * app.screen.height/12;
 		if(this.object.statDis[increaseIndex] == 150){
 			increase.visible = false;
+			creatureInfo.info_stat_text[increaseIndex+5].text.style.fill = '#FFd600';
 		}else{
 			increase.visible = true;
+			creatureInfo.info_stat_text[increaseIndex+5].text.style.fill = '#fefefe';
 		}
 	});
 
