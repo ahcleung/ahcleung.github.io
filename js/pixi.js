@@ -3431,12 +3431,22 @@ function onBtnStatUp(){
 				if(selectedHP.statDis[0] == 150){
 					creatureInfo.info_stat_maxed[0].visible = true;
 					creatureInfo.info_stat_increase[0].visible = false;
+					creatureInfo.info_stat_text[5].style.fill = '#FFd600';
 				}
 				toAllocate--;
 				creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
 				break;
 			case 1:
 				console.log("stat increase Dodge");
+				console.log("stat increase HP");
+				selectedHP.statDis[1] += 1;
+				if(selectedHP.statDis[1] == 150){
+					creatureInfo.info_stat_maxed[1].visible = true;
+					creatureInfo.info_stat_increase[1].visible = false;
+					creatureInfo.info_stat_text[8].style.fill = '#FFd600';
+				}
+				toAllocate--;
+				creatureInfo.info_stat_text[8].text = selectedHP.statDis[0];
 				break;
 			case 2:
 				console.log("stat increase Physical Attack");
