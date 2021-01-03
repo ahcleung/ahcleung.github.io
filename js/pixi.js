@@ -3365,21 +3365,19 @@ function onHPDown(){
 		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
 		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/10 + app.screen.width/50 + increase.increaseText.x;
 		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
-		// else{
-			if(this.object.statDis[increaseIndex] == 150){
-				increase.visible = false;
-				creatureInfo.info_stat_maxed[increaseIndex].visible = true;
-				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
-			}else if(toAllocate == 0){
-				increase.visible = false;
-				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
-			}else{
-				increase.visible = true;
-				creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-				creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
-			}
-		// }
+		if(this.object.statDis[increaseIndex] == 150){
+			increase.visible = false;
+			creatureInfo.info_stat_maxed[increaseIndex].visible = true;
+			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
+		}else if(toAllocate == 0){
+			increase.visible = false;
+			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+		}else{
+			increase.visible = true;
+			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+		}
 	});
 
 	creatureInfo.info_stat_text[0].text = "Base";
@@ -3433,54 +3431,10 @@ function onBtnStatUp(){
 		}
 		toAllocate--;
 		creatureInfo.info_stat_text[this.identifier*3+5].text = selectedHP.statDis[this.identifier];
-
-		// switch(this.identifier){
-		// 	case 0:
-		// 		console.log("stat increase HP");
-		// 		selectedHP.statDis[0] += 1;
-		// 		if(selectedHP.statDis[0] == 150){
-		// 			creatureInfo.info_stat_maxed[0].visible = true;
-		// 			creatureInfo.info_stat_increase[0].visible = false;
-		// 			creatureInfo.info_stat_text[5].style.fill = '#FFd600';
-		// 		}
-		// 		toAllocate--;
-		// 		creatureInfo.info_stat_text[5].text = selectedHP.statDis[0];
-		// 		break;
-		// 	case 1:
-		// 		console.log("stat increase Dodge");
-		// 		selectedHP.statDis[1] += 1;
-		// 		if(selectedHP.statDis[1] == 150){
-		// 			creatureInfo.info_stat_maxed[1].visible = true;
-		// 			creatureInfo.info_stat_increase[1].visible = false;
-		// 			creatureInfo.info_stat_text[8].style.fill = '#FFd600';
-		// 		}
-		// 		toAllocate--;
-		// 		creatureInfo.info_stat_text[8].text = selectedHP.statDis[0];
-		// 		break;
-		// 	case 2:
-		// 		console.log("stat increase Physical Attack");
-		// 		break;
-		// 	case 3:
-		// 		console.log("stat increase Physical Defense");
-		// 		break;
-		// 	case 4:
-		// 		console.log("stat increase Special Attack");
-		// 		break;
-		// 	case 5:
-		// 		console.log("stat increase Special Defense");
-		// 		break;
-		// 	case 6:
-		// 		console.log("stat increase Speed");
-		// 		break;
-		// 	default:
-		// 		console.log("stat increase ??");
-		// 		break;
-		// }
 		creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
 		if(toAllocate==0){
 			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 				increase.visible = false;
-				// creatureInfo.info_stat_maxed[increaseIndex].visible = false;
 			});
 		}
 	}else{
