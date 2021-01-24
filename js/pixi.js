@@ -83,6 +83,18 @@ loader
 		{name:'toad3_d_miss', url:'img/toad3_d_miss.png'},
 		{name:'toad3_d_dmg', url:'img/toad3_d_dmg.png'},
 
+		{name:'raccoon3_p_ready', url:'img/raccoon3_p_ready.png'},
+		{name:'raccoon3_p_main', url:'img/raccoon3_p_main.png'},
+		{name:'raccoon3_p_back', url:'img/raccoon3_p_back.png'},
+		{name:'raccoon3_p_top', url:'img/raccoon3_p_top.png'},
+		{name:'raccoon3_s_ready', url:'img/raccoon3_s_ready.png'},
+		{name:'raccoon3_s_main', url:'img/raccoon3_s_main.png'},
+		{name:'raccoon3_s_back', url:'img/raccoon3_s_back.png'},
+		{name:'raccoon3_s_top', url:'img/raccoon3_s_top.png'},
+		{name:'raccoon3_d_ready', url:'img/raccoon3_d_ready.png'},
+		{name:'raccoon3_d_miss', url:'img/raccoon3_d_miss.png'},
+		{name:'raccoon3_d_dmg', url:'img/raccoon3_d_dmg.png'},
+
 		{name:'goat2_1_p_ready', url:'img/goat2_1_p_ready.png'},
 		{name:'goat2_1_p_main', url:'img/goat2_1_p_main.png'},
 		{name:'goat2_1_p_back', url:'img/goat2_1_p_back.png'},
@@ -184,6 +196,9 @@ loader
 		{name:'toad3_skeleton', url:'img/toad3_ske.json'},
 		{name:'toad3_texture_json', url:'img/toad3_tex.json'},
 		{name:'toad3_texture_png', url:'img/toad3_tex.png'},
+		{name:'raccoon3_skeleton', url:'img/raccoon3_ske.json'},
+		{name:'raccoon3_texture_json', url:'img/raccoon3_tex.json'},
+		{name:'raccoon3_texture_png', url:'img/raccoon3_tex.png'},
 		{name:'goat2_1_skeleton', url:'img/goat2_1_ske.json'},
 		{name:'goat2_1_texture_json', url:'img/goat2_1_tex.json'},
 		{name:'goat2_1_texture_png', url:'img/goat2_1_tex.png'},
@@ -330,7 +345,7 @@ hero[2] = {
 
 const enemy = [];
 enemy[0] = {
-	id: 9, level: 49, 
+	id: 5, level: 49, 
 	skill1: 4, skill2: 6, skill3: 1, skill4: 2,
 	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 60,
 	hero: false

@@ -149,7 +149,7 @@
          "name": "Lyncoon",
          "code": "racoon3",
          "desc": "",
-         "frames": 60,
+         "frames": 105,
          "move": ["=",2],
          "element": [5,9],
          "hp": 75,
