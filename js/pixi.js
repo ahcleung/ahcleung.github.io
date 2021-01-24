@@ -180,7 +180,7 @@ loader
 		{name:'goat2_2_texture_png', url:'img/goat2_2_tex.png'},
 		{name:'wolf2_skeleton', url:'img/wolf2_ske.json'},
 		{name:'wolf2_texture_json', url:'img/wolf2_tex.json'},
-		{name:'wolf2_texture_png', url:'img/wolf2_tex.png'}
+		{name:'wolf2_texture_png', url:'img/wolf2_tex.png'},
 		{name:'hel1_skeleton', url:'img/hel1_ske.json'},
 		{name:'hel1_texture_json', url:'img/hel1_tex.json'},
 		{name:'hel1_texture_png', url:'img/hel1_tex.png'},
