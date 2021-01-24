@@ -325,7 +325,7 @@
          "desc": "It rides the jet streams that it conjures and controls. Storms are amplified with its antlers.",
          "frames": 70,
          "move": ["=",1],
-         "element": [6,5],
+         "element": [3,8],
          "hp": 86,
          "dodge": 81,
          "patk": 74,
