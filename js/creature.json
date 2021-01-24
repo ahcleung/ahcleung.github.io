@@ -147,7 +147,7 @@
       },
       {
          "name": "Lyncoon",
-         "code": "racoon3",
+         "code": "raccoon3",
          "desc": "",
          "frames": 105,
          "move": ["=",2],
