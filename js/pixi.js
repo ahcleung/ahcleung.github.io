@@ -131,6 +131,18 @@ loader
 		{name:'hel2_d_miss', url:'img/hel2_d_miss.png'},
 		{name:'hel2_d_dmg', url:'img/hel2_d_dmg.png'},
 
+		{name:'wolf2_p_ready', url:'img/wolf2_p_ready.png'},
+		{name:'wolf2_p_main', url:'img/wolf2_p_main.png'},
+		{name:'wolf2_p_back', url:'img/wolf2_p_back.png'},
+		{name:'wolf2_p_top', url:'img/wolf2_p_top.png'},
+		{name:'wolf2_s_ready', url:'img/wolf2_s_ready.png'},
+		{name:'wolf2_s_main', url:'img/wolf2_s_main.png'},
+		{name:'wolf2_s_back', url:'img/wolf2_s_back.png'},
+		{name:'wolf2_s_top', url:'img/wolf2_s_top.png'},
+		{name:'wolf2_d_ready', url:'img/wolf2_d_ready.png'},
+		{name:'wolf2_d_miss', url:'img/wolf2_d_miss.png'},
+		{name:'wolf2_d_dmg', url:'img/wolf2_d_dmg.png'},
+
 		{name:'status_bleed', url:'img/status_bleed.png'},
 		{name:'status_buff', url:'img/status_buff.png'},
 		{name:'status_burned', url:'img/status_burned.png'},
