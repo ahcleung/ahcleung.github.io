@@ -296,13 +296,13 @@ hero[0] = {
 	hero: true
 };
 hero[1] = {
-	id: 11, level: 47, 
+	id: 12, level: 47, 
 	skill1: 1, skill2: 10, skill3: 11, skill4: 3,
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 0,
 	hero: true
 };
 hero[2] = {
-	id: 2, level: 51, 
+	id: 11, level: 51, 
 	skill1: 17, skill2: 14, skill3: 5, skill4: 12,
 	statDODG: 2, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 148,
 	hero: true
@@ -327,7 +327,7 @@ enemy[1] = {
 	hero: false
 };
 enemy[2] = {
-	id: 12, level: 45, 
+	id: 13, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 2,
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 85, statSATK: 40, statSDEF: 0, statSPD: 0,
 	hero: false
