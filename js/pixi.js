@@ -21,7 +21,7 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
-var loadText = new Text("Loading..." + loader.progress + "%", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
+let loadText = new Text("Loading...%", {fontFamily : 'Arvo', fontSize: 36, fill : 0xfefefe});
 app.stage.addChild(loadText);
 
 loader
