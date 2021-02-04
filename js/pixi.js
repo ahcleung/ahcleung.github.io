@@ -1257,7 +1257,7 @@ function play(delta){
 }
 
 function explore(){
-	gameScene.visible = false;
+	stageContainer.visible = false;
 }
 
 function consolePrint(fromText){
@@ -2243,7 +2243,8 @@ function onMenuDown(){
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
-	interfaceAdditional.visible = true;
+	stageContainer.visible = true;
+	// interfaceAdditional.visible = true;
 
 	//Remove hazard
 	// console.log("1: " + enemyHazardSprite);
