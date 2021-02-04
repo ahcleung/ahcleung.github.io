@@ -230,7 +230,7 @@ function loadProgressHandler(loader, resource) {
   console.log("progress: " + loader.progress + "%"); 
 
 
-  loadText.text = "Loading..." + loader.progress + "%";
+  loadText.text = "Loading..." + Math.floor(loader.progress) + "%";
   
   //If you gave your files names as the first argument 
   //of the `add` method, you can access them like this
