@@ -21,6 +21,9 @@ const app = new Application({
 });
 document.querySelector('#frame').appendChild(app.view);
 
+var loadText = new Text("Loading..." + loader.progress + "%", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
+app.stage.addChild(loadText);
+
 loader
 	.add([
 		"img/ability_move.png",
@@ -226,8 +229,9 @@ function loadProgressHandler(loader, resource) {
   //Display the percentage of files currently loaded
   console.log("progress: " + loader.progress + "%"); 
 
-  var loadText = new Text("Loading..." + loader.progress + "%", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
-  app.stage.addChild(loadText);
+
+  loadText.text = "Loading..." + loader.progress + "%";
+  
   //If you gave your files names as the first argument 
   //of the `add` method, you can access them like this
   //console.log("loading: " + resource.name);
@@ -422,14 +426,14 @@ function setup(){
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
 
-	const turnStyle = new PIXI.TextStyle({
-        fontFamily: 'Arvo',
-        fontSize: 50,
-        fontWeight: 700,
-		fill: '#D80000',	
-		stroke: '#222222',
-   		strokeThickness: 10,
-    });
+	// const turnStyle = new PIXI.TextStyle({
+ //        fontFamily: 'Arvo',
+ //        fontSize: 50,
+ //        fontWeight: 700,
+	// 	fill: '#D80000',	
+	// 	stroke: '#222222',
+ //   		strokeThickness: 10,
+ //    });
 
     turnText = new Text(turnNumber, {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe});
     turnText.anchor.set(0.5, 0);
