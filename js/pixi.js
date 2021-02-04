@@ -242,6 +242,8 @@ let state, onScreenStats, consoleScreen, turnText;
 
 var styleFontFamily = 'Arvo';
 
+const gameScene = new PIXI.Container();
+
 const spriteHolder = new PIXI.Container();		
 	const heroSprites = new PIXI.Container();			//Hero stage
 	const enemySprites = new PIXI.Container();			//Enemy stage
@@ -904,15 +906,16 @@ function setup(){
 	interfaceHolder.addChild(interfaceAdditional);
 	
 	//Add containers to stage
-	app.stage.addChild(stageContainer);
-	app.stage.addChild(turnText);
-	app.stage.addChild(interfaceHeroFloatingInfo);				//Hero damage UI
-	app.stage.addChild(interfaceEnemyFloatingInfo);				//Enemy damage UI
+	app.stage.addChild(gameScene);
+	gameScene.addChild(stageContainer);
+	gameScene.addChild(turnText);
+	gameScene.addChild(interfaceHeroFloatingInfo);				//Hero damage UI
+	gameScene.addChild(interfaceEnemyFloatingInfo);				//Enemy damage UI
 
-	app.stage.addChild(interfaceHolder);
+	gameScene.addChild(interfaceHolder);
 	
-	app.stage.addChild(onScreenStats);
-	app.stage.addChild(consoleScreen);
+	gameScene.addChild(onScreenStats);
+	gameScene.addChild(consoleScreen);
 
 	creatureInfoBG = new PIXI.Graphics();
 	creatureInfoBG.beginFill(0x222222);
@@ -1217,7 +1220,7 @@ function setup(){
 	}
 
 	creatureInfo.visible = false;
-	app.stage.addChild(creatureInfo);
+	gameScene.addChild(creatureInfo);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1248,7 +1251,7 @@ function play(delta){
 }
 
 function explore(){
-	stageContainer.visible = false;
+	gameScene.visible = false;
 }
 
 function consolePrint(fromText){
