@@ -9,7 +9,6 @@ var filesToCache = [
 	'./img/icon-256.png',
 	'./img/icon-512.png',
 	'./img/bg2.jpg',
-	'./img/background.png',
 	'./img/leper.ability.five.png',
   	'./img/ability_move.png',
 	'./js/pixi.js',

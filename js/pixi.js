@@ -229,7 +229,6 @@ function loadProgressHandler(loader, resource) {
   //Display the percentage of files currently loaded
   console.log("progress: " + loader.progress + "%"); 
 
-
   loadText.text = "Loading..." + Math.floor(loader.progress) + "%";
   
   //If you gave your files names as the first argument 
