@@ -412,6 +412,7 @@ enemy[2] = {
 // const framesIdleFlygon = [];				//Flygon spritesheet
 
 function setup(){
+	loadText.destroy();
 	consolePrint("SETUP");
 	// app.stage.addChild(spriteHolder);
 	backgroundImage = new PIXI.Sprite.from('img/bg3.png');
