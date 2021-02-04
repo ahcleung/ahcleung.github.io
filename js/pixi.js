@@ -1244,15 +1244,14 @@ function gameLoop(delta){
 	state(delta);
 }
 
-let phase = 0.0;
+// let phase = 0.0;
 function play(delta){
-	phase += delta / 25.0;
+	// phase += delta / 25.0;
 	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
 		"\nInner Width: " + window.innerWidth + 
 		"\nInner Height: " + window.innerHeight +
 		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: ► ◄" + app.screen.height +
-		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
+		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
 }
 
@@ -2004,7 +2003,7 @@ function resize() {
 
 	//Console log RESIZE
 	consolePrint("RESIZE");
-	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
+	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
 function resizeDmg(roster, item){
