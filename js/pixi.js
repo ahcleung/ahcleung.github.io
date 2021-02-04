@@ -1257,8 +1257,8 @@ function play(delta){
 }
 
 function explore(){
-	stageContainer.visible = false;
-	stageContainer.destroy({
+	gameScene.visible = false;
+	gameScene.destroy({
       children: true});
 }
 
