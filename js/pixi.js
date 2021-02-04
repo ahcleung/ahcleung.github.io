@@ -2,7 +2,7 @@
 *
 *FileName:        pixi.js
 *Project:         Project Elements
-*Version:         1.10
+*Version:         2.0
 *
 *Author:          Alvin Leung <hello@ahcleung.com>
 *Created on:      2019/12/06
@@ -1247,6 +1247,10 @@ function play(delta){
 	turnText.text = turnNumber;
 }
 
+function explore(){
+	stageContainer.visible = false;
+}
+
 function consolePrint(fromText){
 	console.log(
 		fromText + 
@@ -2221,9 +2225,10 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
-	if (screenfull.isEnabled) {
-		screenfull.toggle();
-	}
+	state = explore;
+	// if (screenfull.isEnabled) {
+	// 	screenfull.toggle();
+	// }
 }
 
 function onAdditionalDown(){
