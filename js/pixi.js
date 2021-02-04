@@ -1258,7 +1258,7 @@ function play(delta){
 
 function explore(){
 	stageContainer.visible = false;
-	stageContainer.destroy();
+	stageContainer.destroy(true);
 }
 
 function consolePrint(fromText){
