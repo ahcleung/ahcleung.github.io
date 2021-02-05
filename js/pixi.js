@@ -2230,8 +2230,7 @@ function resizeStatus(item){
 
 function onMenuDown(){
 	gameScene.visible = false;
-	gameScene.destroy({
-      children: true});
+	gameScene.destroy(true);
 	console.log("explore");
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
