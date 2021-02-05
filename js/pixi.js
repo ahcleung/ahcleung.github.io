@@ -4876,7 +4876,7 @@ function animateBattle(attacker, defender){
 	TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
-		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
+		TweenMax.to(stageContainer,0.5, {x:0,ease:Expo.easeIn})
 	}});
 
 	var animateArray = [];
