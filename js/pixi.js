@@ -1247,17 +1247,17 @@ function gameLoop(delta){
 let phase = 0.0;
 function play(delta){
 	phase += delta / 25.0;
-	onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
-		"\nInner Width: " + window.innerWidth + 
-		"\nInner Height: " + window.innerHeight +
-		"\nAppScreen Width: " + app.screen.width + 
-		"\nAppScreen Height: ► ◄" + app.screen.height +
-		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
-	turnText.text = turnNumber;
+	// onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
+	// 	"\nInner Width: " + window.innerWidth + 
+	// 	"\nInner Height: " + window.innerHeight +
+	// 	"\nAppScreen Width: " + app.screen.width + 
+	// 	"\nAppScreen Height: ► ◄" + app.screen.height +
+	// 	"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
+	// turnText.text = turnNumber;
 }
 
 function explore(){
-	stageContainer.visible = false;
+	gameScene.visible = false;
 	// gameScene.destroy({
  //      children: true});
 }
