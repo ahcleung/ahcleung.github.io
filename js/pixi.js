@@ -4689,7 +4689,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
-					attacker.action.x = 300;
+					if(attacker.hero){
+						attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
+					}else{
+						attacker.action.x = spriteResizeXPosition[attacker.pos-1];
+					}
+					// attacker.action.x = 300;
 					item.visible = true;
 				});
 				if(animateStatus){
