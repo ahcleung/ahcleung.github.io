@@ -2236,7 +2236,7 @@ function onMenuDown(){
 
 	stageContainer.destroy(true);
 	turnText.destroy(true);
-	// interfaceHolder.destroy(true);
+	interfaceHolder.destroy(true);
 
 	console.log("explore");
 	// if (screenfull.isEnabled) {
