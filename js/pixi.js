@@ -920,8 +920,8 @@ function setup(){
 
 	gameScene.addChild(interfaceHolder);
 	
-	gameScene.addChild(onScreenStats);
-	gameScene.addChild(consoleScreen);
+	app.stage.addChild(onScreenStats);
+	app.stage.addChild(consoleScreen);
 
 	creatureInfoBG = new PIXI.Graphics();
 	creatureInfoBG.beginFill(0x222222);
@@ -1244,20 +1244,15 @@ function gameLoop(delta){
 	state(delta);
 }
 
-let phase = 0.0;
+// let phase = 0.0;
 function play(delta){
-	phase += delta / 25.0;
-	// onScreenStats.text = "ResolutionTest5: " + app.renderer.resolution +
-	// 	"\nInner Width: " + window.innerWidth + 
-	// 	"\nInner Height: " + window.innerHeight +
-	// 	"\nAppScreen Width: " + app.screen.width + 
-	// 	"\nAppScreen Height: ► ◄" + app.screen.height +
-	// 	"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
+	// phase += delta / 25.0;
+	onScreenStats.text = "ResolutionTest: " + app.renderer.resolution +
+		"\nInner Width: " + window.innerWidth + 
+		"\nInner Height: " + window.innerHeight +
+		"\nAppScreen Width: " + app.screen.width + 
+		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
-}
-
-function explore(){
-
 }
 
 function consolePrint(fromText){
@@ -2002,7 +1997,7 @@ function resize() {
 
 	//Console log RESIZE
 	consolePrint("RESIZE");
-	consoleScreen.text = "RESIZE\n" + consoleScreen.text;
+	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
 function resizeDmg(roster, item){
@@ -2238,7 +2233,6 @@ function onMenuDown(){
 	stageContainer.destroy({
       children: true});
 	console.log("explore");
-	state = explore;
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
 	// }
@@ -2248,7 +2242,6 @@ function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
 	stageContainer.visible = true;
-	state = play;
 	// interfaceAdditional.visible = true;
 
 	//Remove hazard
@@ -5249,6 +5242,7 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 
 function calculateTurnOrder(){
 	turnNumber++;
+	turnText.text = turnNumber;
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
 		"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   " + "ROUND " + turnNumber + "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
 		"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n");
