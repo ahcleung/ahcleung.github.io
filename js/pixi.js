@@ -2229,8 +2229,8 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
-	stageContainer.visible = false;
-	stageContainer.destroy({
+	gameScene.visible = false;
+	gameScene.destroy({
       children: true});
 	console.log("explore");
 	// if (screenfull.isEnabled) {
@@ -2241,7 +2241,7 @@ function onMenuDown(){
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
-	stageContainer.visible = true;
+	gameScene.visible = true;
 	// interfaceAdditional.visible = true;
 
 	//Remove hazard
