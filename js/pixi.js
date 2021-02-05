@@ -2231,12 +2231,13 @@ function resizeStatus(item){
 function onMenuDown(){
 	stageContainer.visible = false;
 	turnText.visible = false;
-	interfaceHolder.visible = false;
+	selectedVita.healthBar.select.animate.kill();
+	// interfaceHolder.visible = false;
 
 	stageContainer.destroy(true);
 	turnText.destroy(true);
-	interfaceHolder.destroy(true);
-	
+	// interfaceHolder.destroy(true);
+
 	console.log("explore");
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
