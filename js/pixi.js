@@ -1256,8 +1256,9 @@ function play(delta){
 }
 
 function explore(){
-	// gameScene.visible = false;
-	gameScene.destroy(true);
+	gameScene.visible = false;
+	gameScene.destroy({
+      children: true});
 }
 
 function consolePrint(fromText){
