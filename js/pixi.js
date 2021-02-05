@@ -1247,11 +1247,11 @@ function gameLoop(delta){
 // let phase = 0.0;
 function play(delta){
 	// phase += delta / 25.0;
-	// onScreenStats.text = "ResolutionTest: " + app.renderer.resolution +
-	// 	"\nInner Width: " + window.innerWidth + 
-	// 	"\nInner Height: " + window.innerHeight +
-	// 	"\nAppScreen Width: " + app.screen.width + 
-	// 	"\nAppScreen Height: " + app.screen.height;
+	onScreenStats.text = "ResolutionTest: " + app.renderer.resolution +
+		"\nInner Width: " + window.innerWidth + 
+		"\nInner Height: " + window.innerHeight +
+		"\nAppScreen Width: " + app.screen.width + 
+		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
 }
 
@@ -2229,8 +2229,8 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
-	gameScene.visible = false;
-	gameScene.destroy(true);
+	stageContainer.visible = false;
+	stageContainer.destroy(true);
 	console.log("explore");
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
@@ -2240,7 +2240,7 @@ function onMenuDown(){
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
-	gameScene.visible = true;
+	stageContainer.visible = true;
 	// interfaceAdditional.visible = true;
 
 	//Remove hazard
