@@ -4689,7 +4689,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
-					item.action.x = 300;
+					attacker.action.x = 300;
 					item.visible = true;
 				});
 				if(animateStatus){
