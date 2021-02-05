@@ -4665,7 +4665,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		attacker.sprite.visible = false;
 		attacker.action.pReadyTween.play(0);
 		
-		TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeIn});
+		TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
 			//Camera shake
