@@ -1256,9 +1256,7 @@ function play(delta){
 }
 
 function explore(){
-	gameScene.visible = false;
-	gameScene.destroy({
-      children: true});
+	
 }
 
 function consolePrint(fromText){
@@ -2235,6 +2233,9 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
+	gameScene.visible = false;
+	gameScene.destroy({
+      children: true});
 	state = explore;
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
