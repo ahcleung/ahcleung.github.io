@@ -1257,10 +1257,7 @@ function play(delta){
 }
 
 function explore(){
-	stageContainer.visible = false;
-	stageContainer.destroy({
-      children: true});
-	console.log("explore");
+
 }
 
 function consolePrint(fromText){
@@ -2237,6 +2234,10 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
+	stageContainer.visible = false;
+	stageContainer.destroy({
+      children: true});
+	console.log("explore");
 	state = explore;
 	// if (screenfull.isEnabled) {
 	// 	screenfull.toggle();
