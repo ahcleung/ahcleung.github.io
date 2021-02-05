@@ -1253,7 +1253,7 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: ► ◄" + app.screen.height +
 		"\nScale: " + (Math.cos(phase) + 1) * 10 + 1;
-	// turnText.text = turnNumber;
+	turnText.text = turnNumber;
 }
 
 function explore(){
@@ -5247,7 +5247,6 @@ function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skill
 
 function calculateTurnOrder(){
 	turnNumber++;
-	turnText.text = turnNumber;
 	console.log("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
 		"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   " + "ROUND " + turnNumber + "   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
 		"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n");
