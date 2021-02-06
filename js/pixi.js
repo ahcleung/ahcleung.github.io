@@ -4655,10 +4655,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 		//Blur
 		const blurFilter1 = new PIXI.filters.BlurFilter();
-		// const blurFilter2 = new PIXI.filters.BlurFilter();
 		blurFilter1.blur = 0;
-		// blurFilter2.blur = 0;
-
 		spriteHolder.filters = [blurFilter1];
 		TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
