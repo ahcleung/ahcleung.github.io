@@ -4705,7 +4705,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					}else{
 						attacker.action.x = spriteResizeXPosition[attacker.pos-1];
 					}
-
+					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 					// if(item.hero){
 					// 	item.action.x = -spriteResizeXPosition[item.pos-1];
 					// }else{
