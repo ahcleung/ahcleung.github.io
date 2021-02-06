@@ -4652,6 +4652,16 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 	if(animateBattle){
 		var animateArray = [];
 		stageContainer.actionBlackTween.play(0);
+
+		//Blur
+		const blurFilter1 = new PIXI.filters.BlurFilter();
+		// const blurFilter2 = new PIXI.filters.BlurFilter();
+		blurFilter1.blur = 0;
+		// blurFilter2.blur = 0;
+
+		spriteHolder.filters = [blurFilter1];
+		TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
+
 		defender.forEach(arrayCreature=>{
 			actionContainer.addChild(arrayCreature.action);
 			arrayCreature.action.visible = true;
@@ -4673,7 +4683,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 			}});
 
-			defender.forEach(arrayCreature=>{				
+			defender.forEach(arrayCreature=>{
 				arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
 			});
@@ -4689,12 +4699,19 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
+
 					if(attacker.hero){
 						attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
 					}else{
 						attacker.action.x = spriteResizeXPosition[attacker.pos-1];
 					}
-					// attacker.action.x = 300;
+
+					// if(item.hero){
+					// 	item.action.x = -spriteResizeXPosition[item.pos-1];
+					// }else{
+					// 	item.action.x = spriteResizeXPosition[item.pos-1];
+					// }
+
 					item.visible = true;
 				});
 				if(animateStatus){
