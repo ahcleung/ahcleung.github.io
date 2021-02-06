@@ -4663,13 +4663,13 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			actionContainer.addChild(arrayCreature.action);
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
-			animateArray.push(arrayCreature.sprite);
+			animateArray.push(arrayCreature);
 			arrayCreature.action.dReadyTween.play(0);
 			// TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
 			// TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
 		});
 		actionContainer.addChild(attacker.action);
-		animateArray.push(attacker.sprite);
+		animateArray.push(attacker);
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
 		attacker.action.pReadyTween.play(0);
@@ -4724,7 +4724,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					// 	item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
 					// }
 
-					item.visible = true;
+					item.sprite.visible = true;
 				});
 				if(animateStatus){
 					attacker.dmgContainer.dmgStatus.tween.play(0);
