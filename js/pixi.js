@@ -4665,8 +4665,8 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature.sprite);
 			arrayCreature.action.dReadyTween.play(0);
-			TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
-			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
+			// TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
+			// TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
 		});
 		actionContainer.addChild(attacker.action);
 		animateArray.push(attacker.sprite);
@@ -4674,8 +4674,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		attacker.sprite.visible = false;
 		attacker.action.pReadyTween.play(0);
 		
-		TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
+		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
+		animateArray.forEach(arrayCreature=>{
+			TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
+			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
+		});
 
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
 			//Camera shake
@@ -4700,17 +4704,17 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
 
-					if(attacker.hero){
-						attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
-					}else{
-						attacker.action.x = spriteResizeXPosition[attacker.pos-1];
-					}
-					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-					// if(item.hero){
-					// 	item.action.x = -spriteResizeXPosition[item.pos-1];
+					// if(attacker.hero){
+					// 	attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
 					// }else{
-					// 	item.action.x = spriteResizeXPosition[item.pos-1];
+					// 	attacker.action.x = spriteResizeXPosition[attacker.pos-1];
 					// }
+					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+					if(item.hero){
+						item.action.x = -spriteResizeXPosition[item.pos-1];
+					}else{
+						item.action.x = spriteResizeXPosition[item.pos-1];
+					}
 
 					item.visible = true;
 				});
