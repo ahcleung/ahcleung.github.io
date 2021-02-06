@@ -4665,6 +4665,8 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature.sprite);
 			arrayCreature.action.dReadyTween.play(0);
+			TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
+			TweenMax.to(arrayCreature.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
 		});
 		actionContainer.addChild(attacker.action);
 		animateArray.push(attacker.sprite);
@@ -4673,7 +4675,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		attacker.action.pReadyTween.play(0);
 		
 		TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
-		TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
+		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
 
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
 			//Camera shake
