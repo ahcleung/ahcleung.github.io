@@ -4676,13 +4676,17 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
+		var heroTracker = 0;
+		var enemyTracker = 0;
 		animateArray.forEach(arrayCreature=>{
 			if(arrayCreature.hero){
-				TweenMax.to(arrayCreature.action, 0.5, {x:-spriteResizeXPosition[0],ease:Expo.easeOut});
-				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:heroHealthXPosition[arrayCreature.size-1],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.action, 0.5, {x:-spriteResizeXPosition[heroTracker],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:heroHealthXPosition[heroTracker+arrayCreature.size-1],ease:Expo.easeOut});
+				heroTracker++;
 			}else{
-				TweenMax.to(arrayCreature.action, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
-				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.action, 0.5, {x:spriteResizeXPosition[enemyTracker],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:spriteResizeXPosition[enemyTracker],ease:Expo.easeOut});
+				enemyTracker++;
 			}
 			
 		});
