@@ -4471,7 +4471,7 @@ function calculateDamage(attacker, defender, hitArray){
 			});
 			if(effectiveness == 0.25 && !skillHeal){
 				targeted.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-				targeted.dmgContainer.dmgPopup.dmgEffective3.style.fill = '#9D9D9D';
+				targeted.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
 				targeted.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 					dmgNumArrayItem.style.fill = '#9D9D9D';
 				});
