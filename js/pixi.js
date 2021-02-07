@@ -4677,8 +4677,14 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
 		animateArray.forEach(arrayCreature=>{
-			TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
-			TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
+			if(arrayCreature.hero){
+				TweenMax.to(arrayCreature.action, 0.5, {x:-spriteResizeXPosition[0],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:heroHealthXPosition[0],ease:Expo.easeOut});
+			}else{
+				TweenMax.to(arrayCreature.action, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
+			}
+			
 		});
 
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
