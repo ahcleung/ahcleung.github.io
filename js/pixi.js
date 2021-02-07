@@ -2247,8 +2247,8 @@ function onMenuDown(){
 function onAdditionalDown(){
 // 	skillContainerArray[0].targetText.style.fill = '0x66cc66';
 	console.log("Additional");
-	stageContainer.visible = true;
-	// interfaceAdditional.visible = true;
+	// stageContainer.visible = true;
+	interfaceAdditional.visible = true;
 
 	//Remove hazard
 	// console.log("1: " + enemyHazardSprite);
