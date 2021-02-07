@@ -4557,7 +4557,10 @@ function calculateDamage(attacker, defender, hitArray){
 						targeted.healthBar.inner.width = targeted.healthBar.outer.width * (targeted.hp/targeted.overallHP);
 					}});
 				dmgBarTween.to(targeted.healthBar.dmgBarContainer.dmgBar
-					, 0.5, {ease:Expo.easeIn, alpha:0});
+					, 0.5, {ease:Expo.easeIn, alpha:0, onComplete: function(){
+						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
+						targeted.newHP = false;
+					}});
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
 			}else{
 				targeted.damage(totalDamage);
