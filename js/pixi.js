@@ -4679,7 +4679,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		animateArray.forEach(arrayCreature=>{
 			if(arrayCreature.hero){
 				TweenMax.to(arrayCreature.action, 0.5, {x:-spriteResizeXPosition[0],ease:Expo.easeOut});
-				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:heroHealthXPosition[0],ease:Expo.easeOut});
+				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:heroHealthXPosition[arrayCreature.size-1],ease:Expo.easeOut});
 			}else{
 				TweenMax.to(arrayCreature.action, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
 				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:spriteResizeXPosition[0],ease:Expo.easeOut});
