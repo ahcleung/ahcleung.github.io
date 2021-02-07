@@ -4559,6 +4559,7 @@ function calculateDamage(attacker, defender, hitArray){
 				dmgBarTween.to(targeted.healthBar.dmgBarContainer.dmgBar
 					, 0.5, {ease:Expo.easeIn, alpha:0, onComplete: function(){
 						targeted.healthBar.dmgBarContainer.dmgBar.visible = false;
+						targeted.healthBar.dmgBarContainer.dmgBar.alpha = 1;
 						targeted.newHP = false;
 					}});
 				targeted.healthBar.dmgBarContainer.dmgBar.animate = dmgBarTween;
