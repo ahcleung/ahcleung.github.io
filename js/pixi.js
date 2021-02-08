@@ -5540,6 +5540,7 @@ function selectCreature(object2){
 		});
 	}
 
+	//Change so that status damage is only one damage number, remove split
 	if(dmgStatusArray.length > 0){
 		selectedVita.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
 			dmgNumArrayItem.style.fill = '#D80000';
@@ -5550,62 +5551,69 @@ function selectCreature(object2){
 		console.log(dmgStatusArray);
 		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
-			if(dmgStatus[0] == 1){		//bleed
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
-				var statusDamage = Math.floor(selectedVita.EHP/16);
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-				dmgTotal += statusDamage;
-			}else if (dmgStatus[0] == 3){		//burn
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
-				var statusDamage = Math.floor(selectedVita.EHP/16);
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-				dmgTotal += statusDamage;
-				// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-				// dmgTotal += 10;
-			}else if (dmgStatus[0] == 5){		//depressed
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
-				var statusDamage = Math.floor(selectedVita.EHP/16);
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-				dmgTotal += statusDamage;
-			}else if (dmgStatus[0] == 9){		//poisoned
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
-				var statusDamage = Math.floor(selectedVita.EHP/16);
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-				dmgTotal += statusDamage;
-			}else if (dmgStatus[0] == 10){		//recover
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
-				var statusDamage = Math.floor(selectedVita.EHP/16);
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-				dmgTotal += statusDamage;
-			}else{			//hazard
-				selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
-				if(dmgStatus[2] == 0.25){
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#9D9D9D';
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-				}else if(dmgStatus[2] == 0.5){
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFFFFF';
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-				}else if(dmgStatus[2] == 2){
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFE81C';
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-				}else if(dmgStatus[2] == 4){
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DB00FF';
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-				}else if(dmgStatus[2] == 0){
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
-					selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-				}
+			if(dmgStatus[0] == 11){
 				dmgTotal += dmgStatus[1];
+			}else{
+				var statusDamage = Math.floor(selectedVita.EHP/16);
+				dmgTotal += statusDamage;
 			}
-			selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
+			// if(dmgStatus[0] == 1){		//bleed
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
+			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+			// 	dmgTotal += statusDamage;
+			// }else if (dmgStatus[0] == 3){		//burn
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
+			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+			// 	dmgTotal += statusDamage;
+			// 	// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
+			// 	// dmgTotal += 10;
+			// }else if (dmgStatus[0] == 5){		//depressed
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
+			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+			// 	dmgTotal += statusDamage;
+			// }else if (dmgStatus[0] == 9){		//poisoned
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
+			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+			// 	dmgTotal += statusDamage;
+			// }else if (dmgStatus[0] == 10){		//recover
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
+			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
+			// 	dmgTotal += statusDamage;
+			// }else{			//hazard
+			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
+			// 	if(dmgStatus[2] == 0.25){
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#9D9D9D';
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+			// 	}else if(dmgStatus[2] == 0.5){
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFFFFF';
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+			// 	}else if(dmgStatus[2] == 2){
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFE81C';
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+			// 	}else if(dmgStatus[2] == 4){
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DB00FF';
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+			// 	}else if(dmgStatus[2] == 0){
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
+			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
+			// 	}
+			// 	dmgTotal += dmgStatus[1];
+			// }
+			// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
 			// console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
-
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
+		selectedVita.dmgContainer.dmgPopup.dmgNumArray[0].text = dmgTotal;
 		// console.log("dmgTotal1: " + selectedVita.hp);
 		selectedVita.damage(dmgTotal);
 		// console.log("dmgTotal2: " + selectedVita.hp);
