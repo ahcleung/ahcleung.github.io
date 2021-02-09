@@ -4687,9 +4687,12 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayInsert = arrayCreatureIndex;
 				}
 			});
+			animateArray.splice(arrayInsert, 0, attacker);
+		}else{
+			animateArray.push(attacker);
 		}
 		console.log("++++++++++++++++++++++++++++++++++++INSERT AT: " + arrayInsert)
-		animateArray.push(attacker);
+		
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
 		attacker.action.pReadyTween.play(0);
