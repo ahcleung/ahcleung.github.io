@@ -4664,12 +4664,10 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		spriteHolder.filters = [blurFilter1];
 		TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
-		animateArray.push(attacker);
-		attacker.action.visible = true;
-		attacker.sprite.visible = false;
-		attacker.action.pReadyTween.play(0);
-
+		// var attackHero = attacker.hero;
+		var sameParty = false;
 		defender.forEach(arrayCreature=>{
+			if(arrayCreature.hero == attacker.hero)	sameParty = true;
 			actionContainer.addChild(arrayCreature.action);
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
@@ -4680,6 +4678,19 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		});
 
 		actionContainer.addChild(attacker.action);
+		var arrayInsert = 0;
+		// if(sameParty){
+		// 	animateArray.forEach((arrayCreature,arrayCreatureIndex)=>{
+		// 		if(arrayCreature.hero == attacker.hero && attacker.pos < arrayCreature.pos && attacker.pos > arrayInsert){
+		// 			arrayInsert = arrayCreatureIndex
+		// 		}
+		// 	});
+		// }
+		console.log("++++++++++++++++++++++++++++++++++++POSITION: " + attacker.pos)
+		animateArray.push(attacker);
+		attacker.action.visible = true;
+		attacker.sprite.visible = false;
+		attacker.action.pReadyTween.play(0);
 		
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
