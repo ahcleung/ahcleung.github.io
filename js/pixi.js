@@ -4687,7 +4687,11 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 					arrayInsert = arrayCreatureIndex;
 				}
 			});
-			animateArray.splice(arrayInsert, 0, attacker);
+			if(posTracker > 0){
+				animateArray.splice(arrayInsert, 0, attacker);
+			}else{
+				animateArray.push(attacker);
+			}			
 		}else{
 			animateArray.push(attacker);
 		}
