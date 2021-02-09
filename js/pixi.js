@@ -4679,14 +4679,14 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 		actionContainer.addChild(attacker.action);
 		var arrayInsert = 0;
-		// if(sameParty){
-		// 	animateArray.forEach((arrayCreature,arrayCreatureIndex)=>{
-		// 		if(arrayCreature.hero == attacker.hero && attacker.pos < arrayCreature.pos && attacker.pos > arrayInsert){
-		// 			arrayInsert = arrayCreatureIndex
-		// 		}
-		// 	});
-		// }
-		console.log("++++++++++++++++++++++++++++++++++++POSITION: " + attacker.pos)
+		if(sameParty){
+			animateArray.forEach((arrayCreature,arrayCreatureIndex)=>{
+				if(arrayCreature.hero == attacker.hero && attacker.pos < arrayCreature.pos && attacker.pos > arrayInsert){
+					arrayInsert = arrayCreatureIndex;
+				}
+			});
+		}
+		console.log("++++++++++++++++++++++++++++++++++++INSERT AT: " + arrayInsert)
 		animateArray.push(attacker);
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
