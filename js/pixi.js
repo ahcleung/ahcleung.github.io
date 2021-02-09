@@ -4664,6 +4664,11 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		spriteHolder.filters = [blurFilter1];
 		TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
 
+		animateArray.push(attacker);
+		attacker.action.visible = true;
+		attacker.sprite.visible = false;
+		attacker.action.pReadyTween.play(0);
+
 		defender.forEach(arrayCreature=>{
 			actionContainer.addChild(arrayCreature.action);
 			arrayCreature.action.visible = true;
@@ -4675,10 +4680,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		});
 
 		actionContainer.addChild(attacker.action);
-		animateArray.push(attacker);
-		attacker.action.visible = true;
-		attacker.sprite.visible = false;
-		attacker.action.pReadyTween.play(0);
 		
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
