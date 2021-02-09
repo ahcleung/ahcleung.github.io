@@ -416,10 +416,10 @@
 				1,1,1,1
 			],
 			"target": [
-				0,1,1,0
+				1,1,1,1
 			],
 			"tags":[
-				"self", "status", "turns"
+				"team", "status", "turns"
 			],
 			"status": 11,
 			"turns": 5
