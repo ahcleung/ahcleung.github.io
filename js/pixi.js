@@ -4679,9 +4679,11 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 		actionContainer.addChild(attacker.action);
 		var arrayInsert = 0;
+		var posTracker = 0;
 		if(sameParty){
 			animateArray.forEach((arrayCreature,arrayCreatureIndex)=>{
-				if(arrayCreature.hero == attacker.hero && attacker.pos < arrayCreature.pos && attacker.pos > arrayInsert){
+				if(arrayCreature.hero == attacker.hero && attacker.pos < arrayCreature.pos && attacker.pos > posTracker){
+					posTracker = arrayCreature.pos;
 					arrayInsert = arrayCreatureIndex;
 				}
 			});
