@@ -4814,7 +4814,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				});
 			}
 
-			attacker.action.pAtkTween.eventCallback("onComplete", function(){
+			attacker.action.sAtkTween.eventCallback("onComplete", function(){
 				animateArray.forEach(item =>{
 
 					// if(attacker.hero){
