@@ -4686,8 +4686,11 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature);
 
-			if(arrayCreature.newHP)		arrayCreature.action.sprite_d_dmg.visible = true;
-			else  arrayCreature.action.sprite_d_miss.visible = true;
+			if(arrayCreature.newHP){
+				arrayCreature.action.sprite_d_dmg.visible = true;
+			}else{
+				arrayCreature.action.sprite_d_miss.visible = true;
+			}
 
 			// arrayCreature.action.sprite_d_miss.visible = true;
 			// arrayCreature.action.sprite_d_dmg.visible = true;
@@ -4742,8 +4745,11 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}});
 
 			defender.forEach(arrayCreature=>{
-				if(arrayCreature.newHP)		arrayCreature.action.dDmgTween.play(0);
-				else  arrayCreature.action.dMissTween.play(0);
+				if(arrayCreature.newHP){
+					arrayCreature.action.dDmgTween.play(0);
+				}else{
+					arrayCreature.action.dMissTween.play(0);
+				}
 				// arrayCreature.action.dDmgTween.play(0);
 				// arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
