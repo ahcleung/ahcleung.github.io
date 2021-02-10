@@ -1474,7 +1474,7 @@ function createSprite(direction, item, index){
 	dReadyTween.fromTo(sprite_d_ready, anim1, {x:item.action[8][0], y:item.action[8][1]}, {ease:"custom", x:item.action[8][2], y:item.action[8][3], onComplete: function(){
 		sprite_d_ready.alpha = 0;
 		// sprite_d_miss.visible = true;
-		sprite_d_dmg.visible = true;
+		// sprite_d_dmg.visible = true;
 	}});
 	dMissTween = new TimelineMax({paused: true});
 	dMissTween.fromTo(sprite_d_miss, anim2, {x:item.action[9][0], y:item.action[9][1]}, {ease:"custom", x:item.action[9][2], y:item.action[9][3], onComplete: function(){
@@ -4685,6 +4685,8 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature);
+			// arrayCreature.action.sprite_d_miss.visible = true;
+			arrayCreature.action.sprite_d_dmg.visible = true;
 			arrayCreature.action.dReadyTween.play(0);
 			// TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
 			// TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
