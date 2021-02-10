@@ -4786,7 +4786,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}
 		});
 
-		attacker.action.pReadyTween.eventCallback("onComplete", function(){
+		attacker.action.sReadyTween.eventCallback("onComplete", function(){
 			//Camera shake
 			TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 				TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
