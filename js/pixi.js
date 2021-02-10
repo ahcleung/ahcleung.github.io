@@ -4739,8 +4739,14 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}});
 
 			defender.forEach(arrayCreature=>{
-				arrayCreature.action.dDmg.visible = true;
-				arrayCreature.action.dDmgTween.play(0);
+				if(arrayCreature.newHP){
+					arrayCreature.action.dDmg.visible = true;
+					arrayCreature.action.dDmgTween.play(0);
+				}else{
+					arrayCreature.action.dMiss.visible = true;
+					arrayCreature.action.dMissTween.play(0);
+				}
+				
 				// arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
 			});
