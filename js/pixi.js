@@ -1380,6 +1380,30 @@ function createSprite(direction, item, index){
 	creatureAction.addChild(sprite_p_top);
 	creatureAction.fxTop = sprite_p_top;
 
+	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
+	sprite_s_ready.anchor.set(1);
+	sprite_s_ready.alpha = 0;
+	creatureAction.addChild(sprite_s_ready);
+
+	var sprite_s_back = new PIXI.Sprite(resources[item.code + '_s_back'].texture);
+	sprite_s_back.anchor.set(1);
+	sprite_s_back.alpha = 0;
+	sprite_s_back.visible = false;
+	creatureAction.addChild(sprite_s_back);
+	creatureAction.fxBack = sprite_s_back;
+
+	var sprite_s_main = new PIXI.Sprite(resources[item.code + '_s_main'].texture);
+	sprite_s_main.anchor.set(1);
+	sprite_s_main.visible = false;
+	creatureAction.addChild(sprite_s_main);
+
+	var sprite_s_top = new PIXI.Sprite(resources[item.code + '_s_top'].texture);
+	sprite_s_top.anchor.set(1);
+	sprite_s_top.alpha = 0;
+	sprite_s_top.visible = false;
+	creatureAction.addChild(sprite_s_top);
+	creatureAction.fxTop = sprite_s_top;
+
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
 	sprite_d_ready.alpha = 0;
@@ -1436,6 +1460,34 @@ function createSprite(direction, item, index){
 		sprite_p_top.alpha = 0;
 		sprite_p_back.alpha = 0;
 		sprite_p_top.visible = false;
+		creatureAction.visible = false;
+		actionLines.visible = false;
+		actionContainer.removeChild(creatureAction);
+	}},0);
+
+	sReadyTween = new TimelineMax({paused: true});
+	sReadyTween.to(sprite_s_ready, 0, {alpha:1});
+	sReadyTween.fromTo(sprite_s_ready, anim1, {x:item.action[4][0], y:item.action[4][1]}, {ease:"custom", x:item.action[4][2], y:item.action[4][3], onComplete: function(){
+		sprite_s_ready.alpha = 0;
+		sprite_s_main.visible = true;
+		sprite_s_back.visible = true;
+		sprite_s_top.visible = true;
+		actionLines.visible = true;
+	}});
+
+	sAtkTween = new TimelineMax({paused: true});
+	sAtkTween.fromTo(sprite_s_back, anim2, {x:item.action[5][0], y:item.action[5][1]}, {ease:"custom", x:item.action[5][2], y:item.action[5][3]});
+	sAtkTween.fromTo(sprite_s_back, 0.3, {alpha:0}, {alpha:1},0);
+	sAtkTween.fromTo(sprite_s_back, 0.25, {alpha:1}, {alpha:0},0.73);
+	sAtkTween.fromTo(sprite_s_main, anim2, {x:item.action[6][0], y:item.action[6][1]}, {ease:"custom", x:item.action[6][2], y:item.action[6][3]},0);
+	sAtkTween.fromTo(sprite_s_top, 0.33, {alpha:0}, {alpha:1},0);
+	sAtkTween.fromTo(sprite_s_top, 0.25, {alpha:1}, {alpha:0},1);
+	sAtkTween.fromTo(sprite_s_top, anim2, {x:item.action[7][0], y:item.action[7][1]}, {ease:"custom", x:item.action[7][2], y:item.action[7][3], onComplete: function(){
+		sprite_s_back.visible = false;
+		sprite_s_main.visible = false;
+		sprite_s_top.alpha = 0;
+		sprite_s_back.alpha = 0;
+		sprite_s_top.visible = false;
 		creatureAction.visible = false;
 		actionLines.visible = false;
 		actionContainer.removeChild(creatureAction);
