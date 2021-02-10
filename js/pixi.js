@@ -1390,6 +1390,11 @@ function createSprite(direction, item, index){
 	sprite_d_miss.visible = false;
 	creatureAction.addChild(sprite_d_miss);
 
+	var sprite_d_dmg = new PIXI.Sprite(resources[item.code + '_d_dmg'].texture);
+	sprite_d_dmg.anchor.set(1);
+	sprite_d_dmg.visible = false;
+	creatureAction.addChild(sprite_d_dmg);
+
 	CustomEase.create("custom", "M0,0 C0,0 0.01158,0.37382 0.02895,0.59744 0.03199,0.63651 0.03945,0.66471 0.05428,0.69882 0.06786,0.73005 0.08443,0.75214 0.10756,0.77829 0.12925,0.80281 0.14837,0.81604 0.17595,0.83638 0.2018,0.85545 0.21847,0.86832 0.24711,0.88122 0.30415,0.90691 0.34361,0.92278 0.40429,0.93921 0.45566,0.95312 0.48924,0.95608 0.54432,0.9617 0.72192,0.97982 1,1 1,1 ");
 
 	anim1 = 0.5;
@@ -1476,6 +1481,12 @@ function createSprite(direction, item, index){
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
 	}});
+	dDmgTween = new TimelineMax({paused: true});
+	dDmgTween.fromTo(sprite_d_dmg, anim2, {x:item.action[10][0], y:item.action[10][1]}, {ease:"custom", x:item.action[10][2], y:item.action[10][3], onComplete: function(){
+		sprite_d_dmg.visible = false;
+		creatureAction.visible = false;
+		actionContainer.removeChild(creatureAction);
+	}});
 
 
 	// dMissTween = new TimelineMax({paused: true});
@@ -1491,6 +1502,7 @@ function createSprite(direction, item, index){
 	// }});
 	creatureAction.dReadyTween = dReadyTween;
 	creatureAction.dMissTween = dMissTween;
+	creatureAction.dDmgTween = dDmgTween;
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
@@ -4695,7 +4707,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		}else{
 			animateArray.push(attacker);
 		}
-		console.log("++++++++++++++++++++++++++++++++++++INSERT AT: " + arrayInsert)
 		
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
@@ -4724,7 +4735,8 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}});
 
 			defender.forEach(arrayCreature=>{
-				arrayCreature.action.dMissTween.play(0);
+				arrayCreature.action.dDmgTween.play(0);
+				// arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
 			});
 			
