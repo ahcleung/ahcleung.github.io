@@ -4768,7 +4768,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
-		attacker.action.pReadyTween.play(0);
+		attacker.action.sReadyTween.play(0);
 		
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
@@ -4805,7 +4805,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
 			});
 			
-			attacker.action.pAtkTween.play(0);
+			attacker.action.sAtkTween.play(0);
 
 			if(animateMove){
 				var movedCreatureArray = moveCreature(defender[0], defender[0].newMove);
