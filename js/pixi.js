@@ -4685,7 +4685,6 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature);
-			
 			// arrayCreature.action.sprite_d_miss.visible = true;
 			arrayCreature.action.sprite_d_dmg.visible = true;
 			arrayCreature.action.dReadyTween.play(0);
