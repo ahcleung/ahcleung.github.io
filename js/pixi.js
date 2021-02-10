@@ -1521,6 +1521,8 @@ function createSprite(direction, item, index){
 
 	creatureAction.pReadyTween = pReadyTween;
 	creatureAction.pAtkTween = pAtkTween;
+	creatureAction.sReadyTween = sReadyTween;
+	creatureAction.sAtkTween = sAtkTween;
 
 	dReadyTween = new TimelineMax({paused: true});
 	dReadyTween.to(sprite_d_ready, 0, {alpha:1});
