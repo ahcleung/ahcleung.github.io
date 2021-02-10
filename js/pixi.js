@@ -4687,7 +4687,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			arrayCreature.action.visible = true;
 			arrayCreature.sprite.visible = false;
 			animateArray.push(arrayCreature);
-			arrayCreature.action.dDmg.visible = true;
+			
 			arrayCreature.action.dReadyTween.play(0);
 			// TweenMax.to(arrayCreature.action, 0.5, {x:0,ease:Expo.easeOut});
 			// TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:0,ease:Expo.easeOut});
@@ -4739,6 +4739,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			}});
 
 			defender.forEach(arrayCreature=>{
+				arrayCreature.action.dDmg.visible = true;
 				arrayCreature.action.dDmgTween.play(0);
 				// arrayCreature.action.dMissTween.play(0);
 				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
