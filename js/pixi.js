@@ -4768,7 +4768,15 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 		
 		attacker.action.visible = true;
 		attacker.sprite.visible = false;
-		attacker.action.sReadyTween.play(0);
+		//If physical or special
+		if(skillList.data.skill[selectedSkill].type == "Physical"){
+			attacker.action.pReadyTween.play(0);
+		}else if(skillList.data.skill[selectedSkill].type == "Special"){
+			attacker.action.sReadyTween.play(0);
+		}else{
+			attacker.action.sReadyTween.play(0);
+		}
+		
 		
 		// TweenMax.to(attacker.action, 0.5, {x:0,ease:Expo.easeOut});
 		// TweenMax.to(attacker.dmgContainer.dmgPopup, 0.5, {x:0,ease:Expo.easeOut});
@@ -4784,6 +4792,100 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 				TweenMax.to(arrayCreature.dmgContainer, 0.5, {x:spriteResizeXPosition[enemyTracker],ease:Expo.easeOut});
 				enemyTracker+=arrayCreature.size;
 			}
+		});
+
+		attacker.action.pReadyTween.eventCallback("onComplete", function(){
+			//Camera shake
+			TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
+				TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
+			}});
+
+			defender.forEach(arrayCreature=>{
+				if(arrayCreature.newHP){
+					arrayCreature.action.dDmg.visible = true;
+					arrayCreature.action.dDmgTween.play(0);
+				}else{
+					arrayCreature.action.dMiss.visible = true;
+					arrayCreature.action.dMissTween.play(0);
+				}
+				arrayCreature.dmgContainer.dmgPopup.tween.play(0);
+			});			
+			attacker.action.pAtkTween.play(0);
+			if(animateMove){
+				var movedCreatureArray = moveCreature(defender[0], defender[0].newMove);
+				movedCreatureArray.forEach(creatureObject=>{
+					creatureObject.moveTween.play(0);
+				});
+			}
+
+			attacker.action.pAtkTween.eventCallback("onComplete", function(){
+				animateArray.forEach(item =>{
+					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+					if(item.hero){
+						item.action.x = -spriteResizeXPosition[item.pos-1];
+						item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
+					}else{
+						item.action.x = spriteResizeXPosition[item.pos-1];
+						item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+					}
+					item.sprite.visible = true;
+				});
+				if(animateStatus){
+					attacker.dmgContainer.dmgStatus.tween.play(0);
+					if(animateHealth){
+						defender.forEach(arrayCreature=>{
+							if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+							if(arrayCreature.newHP){
+								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+									if(userInput){
+										console.log("endTurn1");
+										endTurn();
+									}	
+								});
+							}			
+						});
+						console.log("animateHealth");
+					}
+					defender.forEach(arrayCreature=>{
+						arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+						arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+							attacker.statusSpriteArray.forEach(statusSprite=>{
+								statusSprite.visible = true;
+							});
+							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+								statusSprite.visible = true;
+							});
+							if(userInput && !animateHealth){
+								console.log("endTurn2");
+								endTurn();
+							}	
+						});
+					});
+				}
+				else if(animateHealth){
+					defender.forEach(arrayCreature=>{
+						if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+						if(arrayCreature.newHP){
+							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+								arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+								if(userInput){
+									console.log("endTurn3");
+									endTurn();
+								}	
+							});
+						}
+					});
+					console.log("animateHealth");
+				}else{
+					if(userInput){
+						console.log("endTurn4");
+						endTurn();
+					}	
+				}
+			});
 		});
 
 		attacker.action.sReadyTween.eventCallback("onComplete", function(){
