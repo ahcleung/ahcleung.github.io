@@ -4189,7 +4189,7 @@ function onCreatureDown(){
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
 	var targetedVitaIndex = 0;
 	var animateBattle = false;
-	var animatePopup = false;
+	// var animatePopup = false;
 	var animateMove = false;
 	var animateStatus = false;
 	var animateHealth = false;
@@ -4244,7 +4244,7 @@ function onCreatureDown(){
 
 		if(correctTarget){
 			animateBattle = true;
-			animatePopup = true;
+			// animatePopup = true;
 
 			console.log(selectedVita.name + " uses " + skillList.data.skill[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach(arrayElement =>{
@@ -4268,7 +4268,7 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid skill target");
 		}
-		animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
+		animationSequence(selectedVita, validSkillObjectArray[targetedVitaIndex], animateBattle, animateStatus, animateHealth, animateMove);
 	}else if(validMoveObjectArray.length > 0){
 		var targetedVita = 0;
 		validMoveObjectArray.forEach((targeted, targetedIndex) => {
@@ -4316,12 +4316,12 @@ function onCreatureDown(){
 		}else{
 			console.log("Invalid move target");	
 		}
-		animationSequence(selectedVita, [selectedVita], animateBattle, animatePopup, animateStatus, animateHealth, animateMove);
+		animationSequence(selectedVita, [selectedVita], animateBattle, animateStatus, animateHealth, animateMove);
 	}else{
 		console.log("Action not selected");	
 	}
 	
-	console.log("animateBattle: " + animateBattle + "\nanimatePopup: " + animatePopup + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
+	console.log("animateBattle: " + animateBattle + "\nanimateMove: " + animateMove + "\nanimateStatus: " + animateStatus + "\nanimateHealth: " + animateHealth);
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("========================================================================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
@@ -4722,7 +4722,7 @@ function calculateDamage(attacker, defender, hitArray){
 	return dmgArray;
 }
 
-function animationSequence(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove){
+function animationSequence(attacker, defender, animateBattle, animateStatus, animateHealth, animateMove){
 	if(animateBattle){
 		var animateArray = [];
 		stageContainer.actionBlackTween.play(0);
@@ -4798,7 +4798,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			attackerReadyOnComplete(attacker,defender,animateMove);		
 			attacker.action.pAtkTween.play(0);
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
-				attackerAttackOnComplete(attacker, defender, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				attackerAttackOnComplete(attacker, defender, animateStatus, animateHealth, animateArray);
 				TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 			});
 		});
@@ -4806,7 +4806,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			attackerReadyOnComplete(attacker,defender,animateMove);
 			attacker.action.sAtkTween.play(0);
 			attacker.action.sAtkTween.eventCallback("onComplete", function(){
-				attackerAttackOnComplete(attacker, defender, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				attackerAttackOnComplete(attacker, defender, animateStatus, animateHealth, animateArray);
 				TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 			});
 		});
@@ -4848,7 +4848,7 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 	}
 }
 
-function attackerAttackOnComplete(attacker, defender, animatePopup, animateStatus, animateHealth, animateMove, animateArray){
+function attackerAttackOnComplete(attacker, defender, animateStatus, animateHealth, animateArray){
 	animateArray.forEach(item =>{
 		if(item.hero){
 			item.action.x = -spriteResizeXPosition[item.pos-1];
