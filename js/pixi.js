@@ -4796,7 +4796,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 		attacker.action.pReadyTween.eventCallback("onComplete", function(){
 			//Camera shake
-			attackReadyOnComplete(attacker,defender,animateMove);
+			attackerReadyOnComplete(attacker,defender,animateMove);
 			// TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 			// 	TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 			// }});
@@ -4820,78 +4820,79 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			// }
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
-				animateArray.forEach(item =>{
-					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-					if(item.hero){
-						item.action.x = -spriteResizeXPosition[item.pos-1];
-						item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
-					}else{
-						item.action.x = spriteResizeXPosition[item.pos-1];
-						item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
-					}
-					item.sprite.visible = true;
-				});
-				if(animateStatus){
-					attacker.dmgContainer.dmgStatus.tween.play(0);
-					if(animateHealth){
-						defender.forEach(arrayCreature=>{
-							if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-							if(arrayCreature.newHP){
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									if(userInput){
-										console.log("endTurn1");
-										endTurn();
-									}	
-								});
-							}			
-						});
-						console.log("animateHealth");
-					}
-					defender.forEach(arrayCreature=>{
-						arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-						arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-							attacker.statusSpriteArray.forEach(statusSprite=>{
-								statusSprite.visible = true;
-							});
-							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
-								statusSprite.visible = true;
-							});
-							if(userInput && !animateHealth){
-								console.log("endTurn2");
-								endTurn();
-							}	
-						});
-					});
-				}
-				else if(animateHealth){
-					defender.forEach(arrayCreature=>{
-						if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-						if(arrayCreature.newHP){
-							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-								arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-								if(userInput){
-									console.log("endTurn3");
-									endTurn();
-								}	
-							});
-						}
-					});
-					console.log("animateHealth");
-				}else{
-					if(userInput){
-						console.log("endTurn4");
-						endTurn();
-					}	
-				}
+				attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				// animateArray.forEach(item =>{
+				// 	TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+				// 	if(item.hero){
+				// 		item.action.x = -spriteResizeXPosition[item.pos-1];
+				// 		item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
+				// 	}else{
+				// 		item.action.x = spriteResizeXPosition[item.pos-1];
+				// 		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+				// 	}
+				// 	item.sprite.visible = true;
+				// });
+				// if(animateStatus){
+				// 	attacker.dmgContainer.dmgStatus.tween.play(0);
+				// 	if(animateHealth){
+				// 		defender.forEach(arrayCreature=>{
+				// 			if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				// 			if(arrayCreature.newHP){
+				// 				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 					arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+				// 					if(userInput){
+				// 						console.log("endTurn1");
+				// 						endTurn();
+				// 					}	
+				// 				});
+				// 			}			
+				// 		});
+				// 		console.log("animateHealth");
+				// 	}
+				// 	defender.forEach(arrayCreature=>{
+				// 		arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+				// 		arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+				// 			attacker.statusSpriteArray.forEach(statusSprite=>{
+				// 				statusSprite.visible = true;
+				// 			});
+				// 			arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+				// 				statusSprite.visible = true;
+				// 			});
+				// 			if(userInput && !animateHealth){
+				// 				console.log("endTurn2");
+				// 				endTurn();
+				// 			}	
+				// 		});
+				// 	});
+				// }
+				// else if(animateHealth){
+				// 	defender.forEach(arrayCreature=>{
+				// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				// 		if(arrayCreature.newHP){
+				// 			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 				arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+				// 				if(userInput){
+				// 					console.log("endTurn3");
+				// 					endTurn();
+				// 				}	
+				// 			});
+				// 		}
+				// 	});
+				// 	console.log("animateHealth");
+				// }else{
+				// 	if(userInput){
+				// 		console.log("endTurn4");
+				// 		endTurn();
+				// 	}	
+				// }
 			});
 		});
 
 		attacker.action.sReadyTween.eventCallback("onComplete", function(){
 
-			attackReadyOnComplete(attacker,defender,animateMove);
+			attackerReadyOnComplete(attacker,defender,animateMove);
 
 			//Camera shake
 			// TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
@@ -4921,99 +4922,100 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 			// }
 
 			attacker.action.sAtkTween.eventCallback("onComplete", function(){
-				animateArray.forEach(item =>{
+				attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				// animateArray.forEach(item =>{
 
-					// if(attacker.hero){
-					// 	attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
-					// }else{
-					// 	attacker.action.x = spriteResizeXPosition[attacker.pos-1];
-					// }
-					TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-					if(item.hero){
-						item.action.x = -spriteResizeXPosition[item.pos-1];
-						item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
-					}else{
-						item.action.x = spriteResizeXPosition[item.pos-1];
-						item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
-					}
+				// 	// if(attacker.hero){
+				// 	// 	attacker.action.x = -spriteResizeXPosition[attacker.pos-1];
+				// 	// }else{
+				// 	// 	attacker.action.x = spriteResizeXPosition[attacker.pos-1];
+				// 	// }
+				// 	TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+				// 	if(item.hero){
+				// 		item.action.x = -spriteResizeXPosition[item.pos-1];
+				// 		item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
+				// 	}else{
+				// 		item.action.x = spriteResizeXPosition[item.pos-1];
+				// 		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+				// 	}
 
-					// if(roster == 0){
-					// 	item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
-					// }else{
-					// 	item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
-					// }
+				// 	// if(roster == 0){
+				// 	// 	item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
+				// 	// }else{
+				// 	// 	item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+				// 	// }
 
-					item.sprite.visible = true;
-				});
-				if(animateStatus){
-					attacker.dmgContainer.dmgStatus.tween.play(0);
-					if(animateHealth){
-						defender.forEach(arrayCreature=>{
-							if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-							if(arrayCreature.newHP){
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-								arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-									arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-									if(userInput){
-										console.log("endTurn1");
-										endTurn();
-									}	
-								});
-							}			
-						});
-						console.log("animateHealth");
-					}
-					defender.forEach(arrayCreature=>{
-						arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-						arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-							attacker.statusSpriteArray.forEach(statusSprite=>{
-								statusSprite.visible = true;
-							});
-							arrayCreature.statusSpriteArray.forEach(statusSprite=>{
-								statusSprite.visible = true;
-							});
-							if(userInput && !animateHealth){
-								console.log("endTurn2");
-								endTurn();
-							}	
-							// if(animateHealth){
-							// 	defender.forEach(arrayCreature=>{
-							// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-							// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-							// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-							// 			arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-							// 			if(userInput)	endTurn();
-							// 		});
-							// 	});
-							// 	console.log("animateHealth");
-							// }else{
-							// 	if(userInput)	endTurn();
-							// }
-						});
-					});
-				}
+				// 	item.sprite.visible = true;
+				// });
+				// if(animateStatus){
+				// 	attacker.dmgContainer.dmgStatus.tween.play(0);
+				// 	if(animateHealth){
+				// 		defender.forEach(arrayCreature=>{
+				// 			if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				// 			if(arrayCreature.newHP){
+				// 				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 					arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+				// 					if(userInput){
+				// 						console.log("endTurn1");
+				// 						endTurn();
+				// 					}	
+				// 				});
+				// 			}			
+				// 		});
+				// 		console.log("animateHealth");
+				// 	}
+				// 	defender.forEach(arrayCreature=>{
+				// 		arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+				// 		arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+				// 			attacker.statusSpriteArray.forEach(statusSprite=>{
+				// 				statusSprite.visible = true;
+				// 			});
+				// 			arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+				// 				statusSprite.visible = true;
+				// 			});
+				// 			if(userInput && !animateHealth){
+				// 				console.log("endTurn2");
+				// 				endTurn();
+				// 			}	
+				// 			// if(animateHealth){
+				// 			// 	defender.forEach(arrayCreature=>{
+				// 			// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				// 			// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 			// 		arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 			// 			arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+				// 			// 			if(userInput)	endTurn();
+				// 			// 		});
+				// 			// 	});
+				// 			// 	console.log("animateHealth");
+				// 			// }else{
+				// 			// 	if(userInput)	endTurn();
+				// 			// }
+				// 		});
+				// 	});
+				// }
 
-				else if(animateHealth){
-					defender.forEach(arrayCreature=>{
-						if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
-						if(arrayCreature.newHP){
-							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
-							arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
-								arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
-								if(userInput){
-									console.log("endTurn3");
-									endTurn();
-								}	
-							});
-						}
-					});
-					console.log("animateHealth");
-				}else{
-					if(userInput){
-						console.log("endTurn4");
-						endTurn();
-					}	
-				}
+				// else if(animateHealth){
+				// 	defender.forEach(arrayCreature=>{
+				// 		if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				// 		if(arrayCreature.newHP){
+				// 			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				// 			arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+				// 				arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+				// 				if(userInput){
+				// 					console.log("endTurn3");
+				// 					endTurn();
+				// 				}	
+				// 			});
+				// 		}
+				// 	});
+				// 	console.log("animateHealth");
+				// }else{
+				// 	if(userInput){
+				// 		console.log("endTurn4");
+				// 		endTurn();
+				// 	}	
+				// }
 			});
 		});
 	}
@@ -5032,7 +5034,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 }
 
 
-function attackReadyOnComplete(attacker,defender,animateMove){
+function attackerReadyOnComplete(attacker,defender,animateMove){
 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
 	}});
@@ -5057,6 +5059,75 @@ function attackReadyOnComplete(attacker,defender,animateMove){
 		movedCreatureArray.forEach(creatureObject=>{
 			creatureObject.moveTween.play(0);
 		});
+	}
+}
+
+function attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray){
+	animateArray.forEach(item =>{
+		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+		if(item.hero){
+			item.action.x = -spriteResizeXPosition[item.pos-1];
+			item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
+		}else{
+			item.action.x = spriteResizeXPosition[item.pos-1];
+			item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+		}
+		item.sprite.visible = true;
+	});
+	if(animateStatus){
+		attacker.dmgContainer.dmgStatus.tween.play(0);
+		if(animateHealth){
+			defender.forEach(arrayCreature=>{
+				if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+				if(arrayCreature.newHP){
+					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+					arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+						arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+						if(userInput){
+							console.log("endTurn1");
+							endTurn();
+						}	
+					});
+				}			
+			});
+			console.log("animateHealth");
+		}
+		defender.forEach(arrayCreature=>{
+			arrayCreature.dmgContainer.dmgStatus.tween.play(0);
+			arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
+				attacker.statusSpriteArray.forEach(statusSprite=>{
+					statusSprite.visible = true;
+				});
+				arrayCreature.statusSpriteArray.forEach(statusSprite=>{
+					statusSprite.visible = true;
+				});
+				if(userInput && !animateHealth){
+					console.log("endTurn2");
+					endTurn();
+				}	
+			});
+		});
+	}
+	else if(animateHealth){
+		defender.forEach(arrayCreature=>{
+			if(arrayCreature.newCrit)		arrayCreature.healthBar.critDmgBar.animate.play(0);
+			if(arrayCreature.newHP){
+				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.play(0);
+				arrayCreature.healthBar.dmgBarContainer.dmgBar.animate.eventCallback("onComplete", function(){
+					arrayCreature.healthBar.textHP.text = arrayCreature.hp + " / " + arrayCreature.EHP;
+					if(userInput){
+						console.log("endTurn3");
+						endTurn();
+					}	
+				});
+			}
+		});
+		console.log("animateHealth");
+	}else{
+		if(userInput){
+			console.log("endTurn4");
+			endTurn();
+		}	
 	}
 }
 
