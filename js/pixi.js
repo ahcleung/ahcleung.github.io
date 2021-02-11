@@ -4821,6 +4821,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			attacker.action.pAtkTween.eventCallback("onComplete", function(){
 				attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 				// animateArray.forEach(item =>{
 				// 	TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 				// 	if(item.hero){
@@ -4923,6 +4924,7 @@ function animationSequence(attacker, defender, animateBattle, animatePopup, anim
 
 			attacker.action.sAtkTween.eventCallback("onComplete", function(){
 				attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray);
+				TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 				// animateArray.forEach(item =>{
 
 				// 	// if(attacker.hero){
@@ -5064,7 +5066,7 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 
 function attackerAttackOnComplete(attacker, defender, animateBattle, animatePopup, animateStatus, animateHealth, animateMove, animateArray){
 	animateArray.forEach(item =>{
-		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
+		// TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
 		if(item.hero){
 			item.action.x = -spriteResizeXPosition[item.pos-1];
 			item.dmgContainer.x = heroHealthXPosition[item.pos-1+(item.size-1)];
