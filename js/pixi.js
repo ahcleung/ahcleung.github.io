@@ -1236,11 +1236,11 @@ function setup(){
 
 	enemyArray[0].action.sprite_s_ready.x = -90;
 	enemyArray[0].action.sprite_s_ready.y = 35;
-	enemyArray[0].action.sprite_s_back.x = 100;
-	enemyArray[0].action.sprite_s_back.y = -100;
+	enemyArray[0].action.sprite_s_back.x = 200;
+	enemyArray[0].action.sprite_s_back.y = -75;
 	enemyArray[0].action.sprite_s_main.x = -90;
 	enemyArray[0].action.sprite_s_main.y = 35;
-	enemyArray[0].action.sprite_s_top.x = 750;
+	enemyArray[0].action.sprite_s_top.x = 800;
 	enemyArray[0].action.sprite_s_top.y = 35;
 
 	state = play;
