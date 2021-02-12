@@ -1395,7 +1395,7 @@ function createSprite(direction, item, index){
 
 	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
 	sprite_s_ready.anchor.set(1);
-	// sprite_s_ready.alpha = 0;
+	sprite_s_ready.alpha = 0;
 	creatureAction.sprite_s_ready = sprite_s_ready;
 	creatureAction.addChild(sprite_s_ready);
 
