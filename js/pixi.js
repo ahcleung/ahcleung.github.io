@@ -355,7 +355,7 @@ const enemy = [];
 enemy[0] = {
 	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 130,
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: false
 };
 enemy[1] = {
@@ -367,7 +367,7 @@ enemy[1] = {
 enemy[2] = {
 	id: 13, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 2,
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 85, statSATK: 40, statSDEF: 0, statSPD: 0,
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 85, statSATK: 40, statSDEF: 0, statSPD: 130,
 	hero: false
 };
 // enemy[3] = {
