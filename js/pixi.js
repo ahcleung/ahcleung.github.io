@@ -1236,12 +1236,12 @@ function setup(){
 
 	enemyArray[2].action.sprite_s_ready.x = -100;
 	enemyArray[2].action.sprite_s_ready.y = 0;
-	// enemyArray[1].action.sprite_s_back.x = 200;
-	// enemyArray[1].action.sprite_s_back.y = -75;
-	// enemyArray[1].action.sprite_s_main.x = -90;
-	// enemyArray[1].action.sprite_s_main.y = 35;
-	// enemyArray[1].action.sprite_s_top.x = 800;
-	// enemyArray[1].action.sprite_s_top.y = 35;
+	// enemyArray[2].action.sprite_s_back.x = 200;
+	// enemyArray[2].action.sprite_s_back.y = -75;
+	enemyArray[2].action.sprite_s_main.x = -90;
+	enemyArray[2].action.sprite_s_main.y = 35;
+	// enemyArray[2].action.sprite_s_top.x = 800;
+	// enemyArray[2].action.sprite_s_top.y = 35;
 
 	state = play;
 	
@@ -1409,7 +1409,7 @@ function createSprite(direction, item, index){
 
 	var sprite_s_main = new PIXI.Sprite(resources[item.code + '_s_main'].texture);
 	sprite_s_main.anchor.set(1);
-	sprite_s_main.visible = false;
+	// sprite_s_main.visible = false;
 	creatureAction.sprite_s_main = sprite_s_main;
 	creatureAction.addChild(sprite_s_main);
 
