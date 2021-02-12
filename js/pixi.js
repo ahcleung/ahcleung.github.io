@@ -1385,7 +1385,8 @@ function createSprite(direction, item, index){
 
 	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
 	sprite_s_ready.anchor.set(1);
-	sprite_s_ready.alpha = 0;
+	// sprite_s_ready.alpha = 0;
+	creatureAction.sprite_d_ready = sprite_s_ready;
 	creatureAction.addChild(sprite_s_ready);
 
 	var sprite_s_back = new PIXI.Sprite(resources[item.code + '_s_back'].texture);
@@ -1409,8 +1410,8 @@ function createSprite(direction, item, index){
 
 	var sprite_d_ready = new PIXI.Sprite(resources[item.code + '_d_ready'].texture);
 	sprite_d_ready.anchor.set(1);
-	// sprite_d_ready.alpha = 0;
-	creatureAction.sprite_d_ready = sprite_d_ready;
+	sprite_d_ready.alpha = 0;
+	
 	creatureAction.addChild(sprite_d_ready);
 
 	// sprite_d_ready.x = 500;
