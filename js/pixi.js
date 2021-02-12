@@ -1234,8 +1234,8 @@ function setup(){
 
 	resize();
 
-	enemyArray[1].action.sprite_s_ready.x = 0;
-	enemyArray[1].action.sprite_s_ready.y = 0;
+	enemyArray[2].action.sprite_s_ready.x = 0;
+	enemyArray[2].action.sprite_s_ready.y = 0;
 	// enemyArray[1].action.sprite_s_back.x = 200;
 	// enemyArray[1].action.sprite_s_back.y = -75;
 	// enemyArray[1].action.sprite_s_main.x = -90;
