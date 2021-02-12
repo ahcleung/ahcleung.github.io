@@ -1234,8 +1234,8 @@ function setup(){
 
 	resize();
 
-	enemyArray[0].action.sprite_d_ready.x = -100;
-	enemyArray[0].action.sprite_d_ready.y = 45;
+	enemyArray[0].action.sprite_d_ready.x = -90;
+	enemyArray[0].action.sprite_d_ready.y = 35;
 
 	state = play;
 	
