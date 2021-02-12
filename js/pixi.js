@@ -1234,14 +1234,14 @@ function setup(){
 
 	resize();
 
-	enemyArray[0].action.sprite_p_ready.x = -90;
-	enemyArray[0].action.sprite_p_ready.y = 35;
-	enemyArray[0].action.sprite_p_back.x = 1250;
-	enemyArray[0].action.sprite_p_back.y = -180;
-	enemyArray[0].action.sprite_p_main.x = 1180;
-	enemyArray[0].action.sprite_p_main.y = 40;
-	enemyArray[0].action.sprite_p_top.x = 1250;
-	enemyArray[0].action.sprite_p_top.y = 35;
+	enemyArray[0].action.sprite_s_ready.x = -90;
+	enemyArray[0].action.sprite_s_ready.y = 35;
+	enemyArray[0].action.sprite_s_back.x = 1250;
+	enemyArray[0].action.sprite_s_back.y = -180;
+	enemyArray[0].action.sprite_s_main.x = 1180;
+	enemyArray[0].action.sprite_s_main.y = 40;
+	enemyArray[0].action.sprite_s_top.x = 1250;
+	enemyArray[0].action.sprite_s_top.y = 35;
 
 	state = play;
 	
@@ -1367,53 +1367,57 @@ function createSprite(direction, item, index){
 	// const actionArray = [];
 	var sprite_p_ready = new PIXI.Sprite(resources[item.code + '_p_ready'].texture);
 	sprite_p_ready.anchor.set(1);
-	// sprite_p_ready.alpha = 0;
+	sprite_p_ready.alpha = 0;
 	creatureAction.sprite_p_ready = sprite_p_ready;
 	creatureAction.addChild(sprite_p_ready);
 
 	var sprite_p_back = new PIXI.Sprite(resources[item.code + '_p_back'].texture);
 	sprite_p_back.anchor.set(1);
-	// sprite_p_back.alpha = 0;
-	// sprite_p_back.visible = false;
+	sprite_p_back.alpha = 0;
+	sprite_p_back.visible = false;
 	creatureAction.sprite_p_back = sprite_p_back;
 	creatureAction.addChild(sprite_p_back);
 	creatureAction.fxBack = sprite_p_back;
 
 	var sprite_p_main = new PIXI.Sprite(resources[item.code + '_p_main'].texture);
 	sprite_p_main.anchor.set(1);
-	// sprite_p_main.visible = false;
+	sprite_p_main.visible = false;
 	creatureAction.sprite_p_main = sprite_p_main;
 	creatureAction.addChild(sprite_p_main);
 
 	var sprite_p_top = new PIXI.Sprite(resources[item.code + '_p_top'].texture);
 	sprite_p_top.anchor.set(1);
-	// sprite_p_top.alpha = 0;
-	// sprite_p_top.visible = false;
+	sprite_p_top.alpha = 0;
+	sprite_p_top.visible = false;
 	creatureAction.sprite_p_top = sprite_p_top;
 	creatureAction.addChild(sprite_p_top);
 	creatureAction.fxTop = sprite_p_top;
 
 	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
 	sprite_s_ready.anchor.set(1);
-	sprite_s_ready.alpha = 0;	
+	// sprite_s_ready.alpha = 0;
+	creatureAction.sprite_s_ready = sprite_s_ready;
 	creatureAction.addChild(sprite_s_ready);
 
 	var sprite_s_back = new PIXI.Sprite(resources[item.code + '_s_back'].texture);
 	sprite_s_back.anchor.set(1);
-	sprite_s_back.alpha = 0;
-	sprite_s_back.visible = false;
+	// sprite_s_back.alpha = 0;
+	// sprite_s_back.visible = false;
+	creatureAction.sprite_s_back = sprite_s_back;
 	creatureAction.addChild(sprite_s_back);
 	creatureAction.fxBack = sprite_s_back;
 
 	var sprite_s_main = new PIXI.Sprite(resources[item.code + '_s_main'].texture);
 	sprite_s_main.anchor.set(1);
-	sprite_s_main.visible = false;
+	// sprite_s_main.visible = false;
+	creatureAction.sprite_s_main = sprite_s_main;
 	creatureAction.addChild(sprite_s_main);
 
 	var sprite_s_top = new PIXI.Sprite(resources[item.code + '_s_top'].texture);
 	sprite_s_top.anchor.set(1);
-	sprite_s_top.alpha = 0;
-	sprite_s_top.visible = false;
+	// sprite_s_top.alpha = 0;
+	// sprite_s_top.visible = false;
+	creatureAction.sprite_s_top = sprite_s_top;
 	creatureAction.addChild(sprite_s_top);
 	creatureAction.fxTop = sprite_s_top;
 
