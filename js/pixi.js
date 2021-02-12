@@ -1238,8 +1238,8 @@ function setup(){
 	enemyArray[2].action.sprite_s_ready.y = 0;
 	// enemyArray[2].action.sprite_s_back.x = 200;
 	// enemyArray[2].action.sprite_s_back.y = -75;
-	enemyArray[2].action.sprite_s_main.x = -90;
-	enemyArray[2].action.sprite_s_main.y = 35;
+	enemyArray[2].action.sprite_s_main.x = 100;
+	enemyArray[2].action.sprite_s_main.y = 0;
 	// enemyArray[2].action.sprite_s_top.x = 800;
 	// enemyArray[2].action.sprite_s_top.y = 35;
 
