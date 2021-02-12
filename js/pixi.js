@@ -1241,7 +1241,7 @@ function setup(){
 	enemyArray[0].action.sprite_p_main.x = 1180;
 	enemyArray[0].action.sprite_p_main.y = 40;
 	enemyArray[0].action.sprite_p_top.x = 1250;
-	enemyArray[0].action.sprite_p_top.y = 35;
+	enemyArray[0].action.sprite_p_top.y = 45;
 
 	state = play;
 	
