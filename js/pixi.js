@@ -1234,7 +1234,8 @@ function setup(){
 
 	resize();
 
-	heroArray[2].action.sprite_d_ready.position.set(500,0);
+	heroArray[2].action.sprite_d_ready.x = 500;
+	heroArray[2].action.sprite_d_ready.y = 0;
 
 	state = play;
 	
