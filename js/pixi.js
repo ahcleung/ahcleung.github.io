@@ -1234,14 +1234,14 @@ function setup(){
 
 	resize();
 
-	enemyArray[0].action.sprite_s_ready.x = -90;
-	enemyArray[0].action.sprite_s_ready.y = 35;
-	enemyArray[0].action.sprite_s_back.x = 200;
-	enemyArray[0].action.sprite_s_back.y = -75;
-	enemyArray[0].action.sprite_s_main.x = -90;
-	enemyArray[0].action.sprite_s_main.y = 35;
-	enemyArray[0].action.sprite_s_top.x = 800;
-	enemyArray[0].action.sprite_s_top.y = 35;
+	// enemyArray[0].action.sprite_s_ready.x = -90;
+	// enemyArray[0].action.sprite_s_ready.y = 35;
+	// enemyArray[0].action.sprite_s_back.x = 200;
+	// enemyArray[0].action.sprite_s_back.y = -75;
+	// enemyArray[0].action.sprite_s_main.x = -90;
+	// enemyArray[0].action.sprite_s_main.y = 35;
+	// enemyArray[0].action.sprite_s_top.x = 800;
+	// enemyArray[0].action.sprite_s_top.y = 35;
 
 	state = play;
 	
@@ -1395,28 +1395,28 @@ function createSprite(direction, item, index){
 
 	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
 	sprite_s_ready.anchor.set(1);
-	// sprite_s_ready.alpha = 0;
+	sprite_s_ready.alpha = 0;
 	creatureAction.sprite_s_ready = sprite_s_ready;
 	creatureAction.addChild(sprite_s_ready);
 
 	var sprite_s_back = new PIXI.Sprite(resources[item.code + '_s_back'].texture);
 	sprite_s_back.anchor.set(1);
-	// sprite_s_back.alpha = 0;
-	// sprite_s_back.visible = false;
+	sprite_s_back.alpha = 0;
+	sprite_s_back.visible = false;
 	creatureAction.sprite_s_back = sprite_s_back;
 	creatureAction.addChild(sprite_s_back);
 	creatureAction.fxBack = sprite_s_back;
 
 	var sprite_s_main = new PIXI.Sprite(resources[item.code + '_s_main'].texture);
 	sprite_s_main.anchor.set(1);
-	// sprite_s_main.visible = false;
+	sprite_s_main.visible = false;
 	creatureAction.sprite_s_main = sprite_s_main;
 	creatureAction.addChild(sprite_s_main);
 
 	var sprite_s_top = new PIXI.Sprite(resources[item.code + '_s_top'].texture);
 	sprite_s_top.anchor.set(1);
-	// sprite_s_top.alpha = 0;
-	// sprite_s_top.visible = false;
+	sprite_s_top.alpha = 0;
+	sprite_s_top.visible = false;
 	creatureAction.sprite_s_top = sprite_s_top;
 	creatureAction.addChild(sprite_s_top);
 	creatureAction.fxTop = sprite_s_top;
