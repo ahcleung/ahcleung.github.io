@@ -1409,7 +1409,7 @@ function createSprite(direction, item, index){
 	// sprite_d_ready.alpha = 0;
 	
 	creatureAction.addChild(sprite_d_ready);
-	sprite_d_ready.position.set(500,0);
+	creatureAction.position.set(500,0);
 	// sprite_d_ready.x = 500;
 	// sprite_d_ready.y = 0;
 
