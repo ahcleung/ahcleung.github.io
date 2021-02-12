@@ -1240,7 +1240,7 @@ function setup(){
 	enemyArray[2].action.sprite_s_back.y = -75;
 	enemyArray[2].action.sprite_s_main.x = 100;
 	enemyArray[2].action.sprite_s_main.y = 0;
-	enemyArray[2].action.sprite_s_top.x = 1350;
+	enemyArray[2].action.sprite_s_top.x = 1400;
 	enemyArray[2].action.sprite_s_top.y = 0;
 
 	state = play;
