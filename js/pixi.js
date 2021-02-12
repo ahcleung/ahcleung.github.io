@@ -1234,12 +1234,12 @@ function setup(){
 
 	resize();
 
-	heroArray[1].action.sprite_s_back.alpha = 1;
-	heroArray[1].action.sprite_s_back.visible = true;
-	heroArray[1].action.sprite_s_main.alpha = 1;
-	heroArray[1].action.sprite_s_main.visible = true;
-	heroArray[1].action.sprite_s_top.alpha = 1;
-	heroArray[1].action.sprite_s_top.visible = true;
+	// heroArray[1].action.sprite_s_back.alpha = 1;
+	// heroArray[1].action.sprite_s_back.visible = true;
+	// heroArray[1].action.sprite_s_main.alpha = 1;
+	// heroArray[1].action.sprite_s_main.visible = true;
+	// heroArray[1].action.sprite_s_top.alpha = 1;
+	// heroArray[1].action.sprite_s_top.visible = true;
 
 	// heroArray[1].action.sprite_s_ready.x = -100;
 	// heroArray[1].action.sprite_s_ready.y = 0;
