@@ -1240,7 +1240,7 @@ function setup(){
 	enemyArray[2].action.sprite_s_back.y = -75;
 	enemyArray[2].action.sprite_s_main.x = 100;
 	enemyArray[2].action.sprite_s_main.y = 0;
-	enemyArray[2].action.sprite_s_top.x = 1250;
+	enemyArray[2].action.sprite_s_top.x = 1350;
 	enemyArray[2].action.sprite_s_top.y = 0;
 
 	state = play;
@@ -1395,7 +1395,7 @@ function createSprite(direction, item, index){
 
 	var sprite_s_ready = new PIXI.Sprite(resources[item.code + '_s_ready'].texture);
 	sprite_s_ready.anchor.set(1);
-	// sprite_s_ready.alpha = 0;
+	sprite_s_ready.alpha = 0;
 	creatureAction.sprite_s_ready = sprite_s_ready;
 	creatureAction.addChild(sprite_s_ready);
 
