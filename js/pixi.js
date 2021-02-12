@@ -1247,7 +1247,7 @@ function setup(){
 	heroArray[1].action.sprite_s_back.y = -75;
 	heroArray[1].action.sprite_s_main.x = 100;
 	heroArray[1].action.sprite_s_main.y = 0;
-	heroArray[1].action.sprite_s_top.x = 1400;
+	heroArray[1].action.sprite_s_top.x = 1425;
 	heroArray[1].action.sprite_s_top.y = 0;
 
 	state = play;
