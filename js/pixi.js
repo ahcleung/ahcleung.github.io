@@ -1259,7 +1259,7 @@ function setup(){
 					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);
 					
 			}
-			mapTile.x = j * 50;
+			mapTile.x = j * mapTile*3/4;
 			mapTile.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(mapTile);
 			// mapList.data.maps[0].tiles[i][j];
