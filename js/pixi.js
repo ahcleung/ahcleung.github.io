@@ -38,6 +38,7 @@ loader
 		"js/skill.json",
 		"js/element.json",
 		"js/item.json",
+		"js/map.json",
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
@@ -242,6 +243,7 @@ const skillList = resources["js/skill.json"];
 const elementList = resources["js/element.json"];
 const creatureList = resources["js/creature.json"];
 const itemList = resources["js/item.json"];
+const mapList = resources["js/map.json"];
 
 let state, onScreenStats, consoleScreen, turnText;
 
@@ -1233,6 +1235,9 @@ function setup(){
 	window.addEventListener('resize', resize);
 
 	resize();
+
+	stageContainer.visible = false;
+	turnText.visible = false;
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
 	// heroArray[1].action.sprite_s_back.visible = true;
