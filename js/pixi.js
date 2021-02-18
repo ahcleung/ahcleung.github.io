@@ -42,6 +42,9 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
+		{name:'grass_1', url:'img/hex_grass_1.png'},
+		{name:'water_m_1', url:'img/hex_water_m_1.png'},
+
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
 		{name:'arrow_down_d', url:'img/arrow_down_d.png'},
@@ -260,6 +263,8 @@ const interfaceHeroFloatingInfo = new PIXI.Container();				//Hero damage UI
 const interfaceEnemyFloatingInfo = new PIXI.Container();				//Enemy damage UI
 const interfaceAdditional = new PIXI.Container();	//Additional actions
 const interfaceHolder = new PIXI.Container();
+
+const mapHolder = new PIXI.Container();
 
 const actionContainer = new PIXI.Container();
 const stageContainer = new PIXI.Container();
@@ -1237,9 +1242,16 @@ function setup(){
 	resize();
 
 	stageContainer.visible = false;
-	// turnText.visible = false;
+	turnText.visible = false;
 	interfaceHolder.visible = false;
-	
+
+	for(var i = 0; i < 4; i++){
+		for(var j = 0; j < 4; j++){
+			// mapList.data.maps[0].tiles[i][j];
+		}
+	}
+	// mapHolder
+
 	// heroArray[1].action.sprite_s_back.alpha = 1;
 	// heroArray[1].action.sprite_s_back.visible = true;
 	// heroArray[1].action.sprite_s_main.alpha = 1;
