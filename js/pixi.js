@@ -1260,7 +1260,7 @@ function setup(){
 					
 			}
 			mapTile.x = i * 50;
-			mapTile.y = j * 50;
+			mapTile.y = j * mapTile.height;
 			mapHolder.addChild(mapTile);
 			// mapList.data.maps[0].tiles[i][j];
 		}
