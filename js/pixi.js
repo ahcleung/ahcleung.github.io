@@ -1247,9 +1247,26 @@ function setup(){
 
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
+			let mapTile;
+			switch(mapList.data.maps[0].tiles[i][j]){
+				case 0:
+					mapTile = new PIXI.Sprite(resources.water_m_1.texture);
+					break;
+				case 1:
+					mapTile = new PIXI.Sprite(resources.grass_1.texture);
+					break;
+				default:
+					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);
+					
+			}
+			mapTile.x = i * 50;
+			mapTile.y = j * 50;
+			mapHolder.addChild(mapTile);
 			// mapList.data.maps[0].tiles[i][j];
 		}
 	}
+
+	app.stage.addChild(mapHolder);
 	// mapHolder
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
