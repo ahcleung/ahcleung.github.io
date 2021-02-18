@@ -1337,8 +1337,8 @@ function onDragMove()
     if (this.dragging)
     {
         var newPosition = this.data.getLocalPosition(this.parent);
-        this.position.x = newPosition.x+this.mouseData.x;
-        this.position.y = newPosition.y+this.mouseData.y;
+        this.position.x = newPosition.x-this.mouseData.x;
+        this.position.y = newPosition.y-this.mouseData.y;
     }
 }
 
