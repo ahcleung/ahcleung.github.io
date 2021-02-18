@@ -1317,6 +1317,8 @@ function onDragStart(event)
     this.data = event.data;
     this.alpha = 0.5;
     this.dragging = true;
+    var mouseData = e.data.getLocalPosition(this);
+    console.log(mouseData);
 }
 
 function onDragEnd()
