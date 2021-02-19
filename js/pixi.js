@@ -1265,7 +1265,7 @@ function setup(){
         		.on('touchstart', onTileDown);
 
 			let mapTile, moveTile2;
-			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
+			var randTile = Math.floor(Math.random() * Math.floor(3)+1).toString();
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
 					mapTile = new PIXI.Sprite(resources['hex_black'].texture);
