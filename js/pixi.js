@@ -1248,6 +1248,14 @@ function setup(){
 
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
+			const tileContainer = new PIXI.Container();	
+			tileContainer.interactive = true;
+			tileContainer.buttonMode = true;
+			tileContainer
+				// events for drag start
+        		.on('mousedown', onTileDown)
+        		.on('touchstart', onTileDown);
+
 			let mapTile, moveTile2;
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
@@ -1262,12 +1270,15 @@ function setup(){
 			moveTile2 = new PIXI.Sprite(resources.move2.texture);
 			mapTile.scale.set(0.5);
 			moveTile2.scale.set(0.5);
-			mapTile.x = j * mapTile.width * 3/4;
-			mapTile.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
-			moveTile2.x = j * mapTile.width * 3/4;
-			moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
-			mapHolder.addChild(mapTile);
-			mapHolder.addChild(moveTile2);
+			tileContainer.addChild(mapTile);
+			tileContainer.addChild(moveTile2);
+			tileContainer.move2 = moveTile2;
+			tileContainer.x = j * mapTile.width * 3/4;
+			tileContainer.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
+			// moveTile2.x = j * mapTile.width * 3/4;
+			// moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
+			mapHolder.addChild(tileContainer);
+			// mapHolder.addChild(moveTile2);
 			// mapList.data.maps[0].tiles[i][j];
 		}
 	}
@@ -1313,6 +1324,10 @@ function setup(){
 	app.ticker.add(delta => gameLoop(delta));
 
 	calculateTurnOrder();
+}
+
+function onTileDown(){
+	this.move2.visible = false;
 }
 
 function onDragStart(event)
