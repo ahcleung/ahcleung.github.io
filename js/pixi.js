@@ -1261,7 +1261,8 @@ function setup(){
 			let mapTile, moveTile2;
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
-					mapTile = new PIXI.Sprite(resources.hex_black.texture);
+					mapTile = new PIXI.Sprite(resources['hex_black'].texture);
+					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
 					break;
 				case 1:
 					mapTile = new PIXI.Sprite(resources.hex_water_d_1.texture);
