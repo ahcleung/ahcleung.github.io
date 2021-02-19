@@ -42,9 +42,11 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
-		{name:'move2', url:'img/hex_move2.png'},
-		{name:'grass_1', url:'img/hex_grass_1.png'},
-		{name:'water_m_1', url:'img/hex_water_m_1.png'},
+		{name:'hex_move2', url:'img/hex_move2.png'},
+		{name:'hex_black', url:'img/hex_black.png'},
+		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
+		{name:'hex_water_m_1', url:'img/hex_water_m_1.png'},
+		{name:'hex_water_d_1', url:'img/hex_water_d_1.png'},
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -1259,13 +1261,19 @@ function setup(){
 			let mapTile, moveTile2;
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
-					mapTile = new PIXI.Sprite(resources.water_m_1.texture);
+					mapTile = new PIXI.Sprite(resources.hex_black.texture);
 					break;
 				case 1:
-					mapTile = new PIXI.Sprite(resources.grass_1.texture);
+					mapTile = new PIXI.Sprite(resources.hex_water_d_1.texture);
+					break;
+				case 2:
+					mapTile = new PIXI.Sprite(resources.hex_water_m_1.texture);
+					break;
+				case 3:
+					mapTile = new PIXI.Sprite(resources.hex_grass_1.texture);
 					break;
 				default:
-					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);	
+					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
 			}
 			moveTile2 = new PIXI.Sprite(resources.move2.texture);
 			mapTile.scale.set(0.5);
