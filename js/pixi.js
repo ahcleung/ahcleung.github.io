@@ -1354,7 +1354,7 @@ function onDragStart(event)
     // the reason for this is because of multitouch
     // we want to track the movement of this particular touch
     this.data = event.data;
-    this.alpha = 0.5;
+    // this.alpha = 0.5;
     this.dragging = true;
     this.mouseData = event.data.getLocalPosition(this);
     // var mouseData = event.data.getLocalPosition(this);
@@ -1363,7 +1363,7 @@ function onDragStart(event)
 
 function onDragEnd()
 {
-    this.alpha = 1;
+    // this.alpha = 1;
 
     this.dragging = false;
 
