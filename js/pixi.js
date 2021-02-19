@@ -1264,7 +1264,7 @@ function setup(){
 			moveTile2.scale.set(0.5);
 			mapTile.x = j * mapTile.width * 3/4;
 			mapTile.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
-			moveTile2 = j * mapTile.width * 3/4;
+			moveTile2.x = j * mapTile.width * 3/4;
 			moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(mapTile);
 			mapHolder.addChild(moveTile2);
