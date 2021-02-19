@@ -1276,7 +1276,7 @@ function setup(){
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
 			}
-			moveTile2 = new PIXI.Sprite(resources.move2.texture);
+			moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
 			mapTile.scale.set(0.5);
 			moveTile2.scale.set(0.5);
 			tileContainer.addChild(mapTile);
