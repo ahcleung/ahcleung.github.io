@@ -1246,7 +1246,7 @@ function setup(){
 	gameScene.addChild(creatureInfo);
 
 	mapBG = new PIXI.Graphics();
-	mapBG.beginFill(0x333333);
+	mapBG.beginFill(0x222222);
 	mapBG.drawRect(0, 0, 1920, 1080);
 	mapBG.endFill();
 	app.stage.addChild(mapBG);
