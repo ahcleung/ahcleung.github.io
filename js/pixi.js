@@ -42,6 +42,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
+		{name:'move2', url:'img/hex_move2.png'},
 		{name:'grass_1', url:'img/hex_grass_1.png'},
 		{name:'water_m_1', url:'img/hex_water_m_1.png'},
 
@@ -1247,7 +1248,7 @@ function setup(){
 
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
-			let mapTile;
+			let mapTile, moveTile2;
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
 					mapTile = new PIXI.Sprite(resources.water_m_1.texture);
@@ -1258,10 +1259,15 @@ function setup(){
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);	
 			}
+			moveTile2 = new PIXI.Sprite(resources.move2.texture);
 			mapTile.scale.set(0.5);
+			moveTile2.scale.set(0.5);
 			mapTile.x = j * mapTile.width * 3/4;
 			mapTile.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
+			moveTile2 = j * mapTile.width * 3/4;
+			moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(mapTile);
+			mapHolder.addChild(moveTile2);
 			// mapList.data.maps[0].tiles[i][j];
 		}
 	}
