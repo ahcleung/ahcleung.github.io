@@ -45,8 +45,14 @@ loader
 		{name:'hex_move2', url:'img/hex_move2.png'},
 		{name:'hex_black', url:'img/hex_black.png'},
 		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
+		{name:'hex_grass_2', url:'img/hex_grass_2.png'},
+		{name:'hex_grass_3', url:'img/hex_grass_3.png'},
 		{name:'hex_water_m_1', url:'img/hex_water_m_1.png'},
+		{name:'hex_water_m_2', url:'img/hex_water_m_2.png'},
+		{name:'hex_water_m_3', url:'img/hex_water_m_3.png'},
 		{name:'hex_water_d_1', url:'img/hex_water_d_1.png'},
+		{name:'hex_water_d_2', url:'img/hex_water_d_2.png'},
+		{name:'hex_water_d_3', url:'img/hex_water_d_3.png'},
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -1259,29 +1265,32 @@ function setup(){
         		.on('touchstart', onTileDown);
 
 			let mapTile, moveTile2;
+			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
 					mapTile = new PIXI.Sprite(resources['hex_black'].texture);
 					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
 					break;
 				case 1:
-					mapTile = new PIXI.Sprite(resources.hex_water_d_1.texture);
+					mapTile = new PIXI.Sprite(resources.['hex_water_d_' + randTile].texture);
 					break;
 				case 2:
-					mapTile = new PIXI.Sprite(resources.hex_water_m_1.texture);
+					mapTile = new PIXI.Sprite(resources.['hex_water_m_' + randTile].texture);
 					break;
 				case 3:
-					mapTile = new PIXI.Sprite(resources.hex_grass_1.texture);
+					mapTile = new PIXI.Sprite(resources.['hex_grass_' + randTile].texture);
 					break;
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
 			}
-			moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
-			mapTile.scale.set(0.5);
-			moveTile2.scale.set(0.5);
-			tileContainer.addChild(mapTile);
-			tileContainer.addChild(moveTile2);
-			tileContainer.move2 = moveTile2;
+			// moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
+			// moveTile2.scale.set(0.5);
+			// tileContainer.addChild(moveTile2);
+			// tileContainer.move2 = moveTile2;
+
+			mapTile.scale.set(0.5);			
+			tileContainer.addChild(mapTile);			
+			
 			tileContainer.x = j * mapTile.width * 3/4;
 			tileContainer.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			// moveTile2.x = j * mapTile.width * 3/4;
