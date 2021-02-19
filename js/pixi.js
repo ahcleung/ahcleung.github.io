@@ -1254,8 +1254,8 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	for(var i = 0; i < 4; i++){
-		for(var j = 0; j < 4; j++){
+	for(var i = 0; i < 44; i++){
+		for(var j = 0; j < 50; j++){
 			const tileContainer = new PIXI.Container();	
 			tileContainer.interactive = true;
 			tileContainer.buttonMode = true;
@@ -1345,7 +1345,7 @@ function setup(){
 }
 
 function onTileDown(){
-	this.move2.visible = false;
+	// this.move2.visible = false;
 }
 
 function onDragStart(event)
