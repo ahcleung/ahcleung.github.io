@@ -1265,20 +1265,20 @@ function setup(){
         		.on('touchstart', onTileDown);
 
 			let mapTile, moveTile2;
-			var randTile = Math.floor(Math.random() * Math.floor(3)+1).toString();
+			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
 					mapTile = new PIXI.Sprite(resources['hex_black'].texture);
 					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
 					break;
 				case 1:
-					mapTile = new PIXI.Sprite(resources.['hex_water_d_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['hex_water_d_' + randTile].texture);
 					break;
 				case 2:
-					mapTile = new PIXI.Sprite(resources.['hex_water_m_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['hex_water_m_' + randTile].texture);
 					break;
 				case 3:
-					mapTile = new PIXI.Sprite(resources.['hex_grass_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['hex_grass_' + randTile].texture);
 					break;
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
