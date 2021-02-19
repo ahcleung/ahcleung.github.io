@@ -257,7 +257,7 @@ const creatureList = resources["js/creature.json"];
 const itemList = resources["js/item.json"];
 const mapList = resources["js/map.json"];
 
-let state, onScreenStats, consoleScreen, turnText;
+let state, onScreenStats, consoleScreen, turnText, mapBG;
 
 var styleFontFamily = 'Arvo';
 
@@ -1245,6 +1245,12 @@ function setup(){
 	creatureInfo.visible = false;
 	gameScene.addChild(creatureInfo);
 
+	mapBG = new PIXI.Graphics();
+	mapBG.beginFill(0x333333);
+	mapBG.drawRect(0, 0, 1920, 1080);
+	mapBG.endFill();
+	app.stage.addChild(mapBG);
+
 	//Resize the screen
 	window.addEventListener('resize', resize);
 
@@ -1291,7 +1297,7 @@ function setup(){
 			mapTile.scale.set(0.5);			
 			tileContainer.addChild(mapTile);			
 			
-			tileContainer.x = j * mapTile.width * 3/4 - 2;
+			tileContainer.x = j * mapTile.width * 3/4;
 			tileContainer.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			// moveTile2.x = j * mapTile.width * 3/4;
 			// moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
@@ -2066,6 +2072,9 @@ function resize() {
 		);
 	const parent = app.view.parentNode;
 	app.renderer.resize(parent.clientWidth, parent.clientHeight);
+
+	mapBG.width = app.screen.width;
+	mapBG.height = app.screen.height;
 
 	var widthMath = app.screen.width/16;
 	var heightMath = app.screen.height/9;
