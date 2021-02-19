@@ -1256,9 +1256,9 @@ function setup(){
 					mapTile = new PIXI.Sprite(resources.grass_1.texture);
 					break;
 				default:
-					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);
-					
+					statusEffectIcon = new PIXI.Sprite(resources.water_m_1.texture);	
 			}
+			mapTile.scale.set(0.5);
 			mapTile.x = j * mapTile.width * 3/4;
 			mapTile.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(mapTile);
