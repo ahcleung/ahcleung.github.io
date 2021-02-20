@@ -1274,7 +1274,7 @@ function setup(){
 
 			let mapTile, moveTile2;
 			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
-			switch(mapList.data.maps[1].tiles[i][j]){
+			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
 					mapTile = new PIXI.Sprite(resources['hex_cliff' + randTile].texture);
 					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
