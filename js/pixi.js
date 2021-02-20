@@ -43,7 +43,9 @@ loader
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
 		{name:'hex_move2', url:'img/hex_move2.png'},
-		{name:'hex_black', url:'img/hex_black.png'},
+		{name:'hex_cliff1', url:'img/hex_cliff1.png'},
+		{name:'hex_cliff2', url:'img/hex_cliff2.png'},
+		{name:'hex_cliff3', url:'img/hex_cliff3.png'},
 		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
 		{name:'hex_grass_2', url:'img/hex_grass_2.png'},
 		{name:'hex_grass_3', url:'img/hex_grass_3.png'},
@@ -1274,7 +1276,7 @@ function setup(){
 			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
-					mapTile = new PIXI.Sprite(resources['hex_black'].texture);
+					mapTile = new PIXI.Sprite(resources['hex_cliff' + randTile].texture);
 					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
 					break;
 				case 1:
