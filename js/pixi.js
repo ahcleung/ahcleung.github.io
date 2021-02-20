@@ -43,12 +43,24 @@ loader
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
 		{name:'hex_move2', url:'img/hex_move2.png'},
-		{name:'hex_cliff1', url:'img/hex_cliff1.png'},
-		{name:'hex_cliff2', url:'img/hex_cliff2.png'},
-		{name:'hex_cliff3', url:'img/hex_cliff3.png'},
+		{name:'hex_bamboo_1', url:'img/hex_bamboo_1.png'},
+		{name:'hex_bamboo_2', url:'img/hex_bamboo_2.png'},
+		{name:'hex_bamboo_3', url:'img/hex_bamboo_3.png'},
+		{name:'hex_forest_1', url:'img/hex_forest_1.png'},
+		{name:'hex_forest_2', url:'img/hex_forest_2.png'},
+		{name:'hex_forest_3', url:'img/hex_forest_3.png'},
 		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
 		{name:'hex_grass_2', url:'img/hex_grass_2.png'},
 		{name:'hex_grass_3', url:'img/hex_grass_3.png'},
+		{name:'hex_hill_1', url:'img/hex_hill_1.png'},
+		{name:'hex_hill_2', url:'img/hex_hill_2.png'},
+		{name:'hex_hill_3', url:'img/hex_hill_3.png'},
+		{name:'hex_mountain_1', url:'img/hex_mountain_1.png'},
+		{name:'hex_mountain_2', url:'img/hex_mountain_2.png'},
+		{name:'hex_mountain_3', url:'img/hex_mountain_3.png'},
+		{name:'hex_plains_1', url:'img/hex_plains_1.png'},
+		{name:'hex_plains_2', url:'img/hex_plains_2.png'},
+		{name:'hex_plains_3', url:'img/hex_plains_3.png'},
 		{name:'hex_water_m_1', url:'img/hex_water_m_1.png'},
 		{name:'hex_water_m_2', url:'img/hex_water_m_2.png'},
 		{name:'hex_water_m_3', url:'img/hex_water_m_3.png'},
@@ -1287,6 +1299,21 @@ function setup(){
 					break;
 				case 3:
 					mapTile = new PIXI.Sprite(resources['hex_grass_' + randTile].texture);
+					break;
+				case 4:
+					mapTile = new PIXI.Sprite(resources['hex_bamboo_' + randTile].texture);
+					break;
+				case 5:
+					mapTile = new PIXI.Sprite(resources['hex_forest_' + randTile].texture);
+					break;
+				case 6:
+					mapTile = new PIXI.Sprite(resources['hex_hill_' + randTile].texture);
+					break;
+				case 7:
+					mapTile = new PIXI.Sprite(resources['hex_mountain_' + randTile].texture);
+					break;
+				case 8:
+					mapTile = new PIXI.Sprite(resources['hex_plains_' + randTile].texture);
 					break;
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
