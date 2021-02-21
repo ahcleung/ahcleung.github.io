@@ -49,6 +49,7 @@ loader
 		{name:'hex_forest_1', url:'img/hex_forest_1.png'},
 		{name:'hex_forest_2', url:'img/hex_forest_2.png'},
 		{name:'hex_forest_3', url:'img/hex_forest_3.png'},
+		{name:'hex_forest_4', url:'img/hex_forest_4.png'},
 		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
 		{name:'hex_grass_2', url:'img/hex_grass_2.png'},
 		{name:'hex_grass_3', url:'img/hex_grass_3.png'},
@@ -1304,7 +1305,8 @@ function setup(){
 					mapTile = new PIXI.Sprite(resources['hex_bamboo_' + randTile].texture);
 					break;
 				case 5:
-					mapTile = new PIXI.Sprite(resources['hex_forest_' + randTile].texture);
+					// mapTile = new PIXI.Sprite(resources['hex_forest_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['hex_forest_4'].texture);
 					break;
 				case 6:
 					mapTile = new PIXI.Sprite(resources['hex_hill_' + randTile].texture);
