@@ -1330,7 +1330,7 @@ function setup(){
 			tileContainer.addChild(mapTile);			
 			
 			tileContainer.x = j * mapTile.width * 3/4;
-			tileContainer.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
+			tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
 			// moveTile2.x = j * mapTile.width * 3/4;
 			// moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(tileContainer);
