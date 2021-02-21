@@ -1323,7 +1323,8 @@ function setup(){
 			// tileContainer.addChild(moveTile2);
 			// tileContainer.move2 = moveTile2;
 
-			mapTile.scale.set(0.3);			
+			mapTile.scale.set(0.3);
+			mapTile.anchor.set(0,1);
 			tileContainer.addChild(mapTile);			
 			
 			tileContainer.x = j * mapTile.width * 3/4;
