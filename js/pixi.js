@@ -1325,7 +1325,7 @@ function setup(){
 			// tileContainer.addChild(moveTile2);
 			// tileContainer.move2 = moveTile2;
 
-			mapTile.scale.set(0.75);
+			mapTile.scale.set(0.6);
 			mapTile.anchor.set(0,1);
 			tileContainer.addChild(mapTile);			
 			
