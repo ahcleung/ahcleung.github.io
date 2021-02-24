@@ -1339,7 +1339,19 @@ function setup(){
 				tileContainer.addChild(veelaTile);
 			}
 
-			if(j == playerPos[0]+1 && i == playerPos[1]+1){
+			if(j == playerPos[0]+1 && i == playerPos[1]){
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
+				moveTile.scale.set(0.6);
+				moveTile.anchor.set(0,1);
+				tileContainer.addChild(moveTile);
+			}
+			if(j == playerPos[0]-1 && i == playerPos[1]){
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
+				moveTile.scale.set(0.6);
+				moveTile.anchor.set(0,1);
+				tileContainer.addChild(moveTile);
+			}
+			if(j == playerPos[0] && i == playerPos[1]+1){
 				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 				moveTile.scale.set(0.6);
 				moveTile.anchor.set(0,1);
