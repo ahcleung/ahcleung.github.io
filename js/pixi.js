@@ -1332,11 +1332,18 @@ function setup(){
 			mapTile.anchor.set(0,1);
 			tileContainer.addChild(mapTile);
 
-			if(playerPos[0] == j && playerPos[1] == i){
+			if(j == playerPos[0] && i == playerPos[1]){
 				let veelaTile = new PIXI.Sprite(resources.hex_veela.texture);
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0,1);
 				tileContainer.addChild(veelaTile);
+			}
+
+			if(j == playerPos[0]+1 && i == playerPos[1]+1){
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
+				moveTile.scale.set(0.6);
+				moveTile.anchor.set(0,1);
+				tileContainer.addChild(moveTile);
 			}
 
 			tileContainer.x = j * mapTile.width * 3/4;
