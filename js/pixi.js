@@ -42,6 +42,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
+		{name:'hex_move1', url:'img/hex_move1.png'},
 		{name:'hex_move2', url:'img/hex_move2.png'},
 		{name:'hex_veela', url:'img/hex_veela.png'},
 		{name:'hex_bamboo_1', url:'img/hex_bamboo_1.png'},
