@@ -43,6 +43,7 @@ loader
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
 		{name:'hex_move2', url:'img/hex_move2.png'},
+		{name:'hex_veela', url:'img/hex_veela.png'},
 		{name:'hex_bamboo_1', url:'img/hex_bamboo_1.png'},
 		{name:'hex_bamboo_2', url:'img/hex_bamboo_2.png'},
 		{name:'hex_bamboo_3', url:'img/hex_bamboo_3.png'},
@@ -1275,6 +1276,8 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
+	var playerPos = [25,25];
+
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
 			const tileContainer = new PIXI.Container();	
@@ -1327,8 +1330,15 @@ function setup(){
 
 			mapTile.scale.set(0.6);
 			mapTile.anchor.set(0,1);
-			tileContainer.addChild(mapTile);			
-			
+			tileContainer.addChild(mapTile);
+
+			if(playerPos[0] == i && playerPos[1] == j){
+				let veelaTile = new PIXI.Sprite(resources.hex_veela.texture);
+				veelaTile.scale.set(0.6);
+				veelaTile.anchor.set(0,1);
+				tileContainer.addChild(veelaTile);
+			}
+
 			tileContainer.x = j * mapTile.width * 3/4;
 			tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
 			// moveTile2.x = j * mapTile.width * 3/4;
