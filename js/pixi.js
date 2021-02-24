@@ -1332,7 +1332,7 @@ function setup(){
 			mapTile.anchor.set(0,1);
 			tileContainer.addChild(mapTile);
 
-			if(playerPos[0] == i && playerPos[1] == j){
+			if(playerPos[0] == j && playerPos[1] == i){
 				let veelaTile = new PIXI.Sprite(resources.hex_veela.texture);
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0,1);
