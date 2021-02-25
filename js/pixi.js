@@ -1393,7 +1393,7 @@ function setup(){
 	mapHolder.x = -(tileSize[0] * playerPos[0]) + app.screen.width/2 - (tileSize[0]/2);
 	mapHolder.y = -(tileSize[1] * playerPos[1]) + app.screen.height/2 + (tileSize[1]/2);
 
-	centerGraphic = new PIXI.Graphics();
+	var centerGraphic = new PIXI.Graphics();
 	centerGraphic.beginFill(0xff0000);
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
