@@ -1344,51 +1344,51 @@ function setup(){
 			}
 
 			if(j == playerPos[0]+1 && i == playerPos[1] && !ifMountain){
-				let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 				moveTile.scale.set(0.6);
 				moveTile.anchor.set(0,1);
 				tileContainer.addChild(moveTile);
 			}
 			if(j == playerPos[0]-1 && i == playerPos[1] && !ifMountain){
-				let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 				moveTile.scale.set(0.6);
 				moveTile.anchor.set(0,1);
 				tileContainer.addChild(moveTile);
 			}
 			if(j == playerPos[0] && i == playerPos[1]+1 && !ifMountain){
-				let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 				moveTile.scale.set(0.6);
 				moveTile.anchor.set(0,1);
 				tileContainer.addChild(moveTile);
 			}
 			if(j == playerPos[0] && i == playerPos[1]-1 && !ifMountain){
-				let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+				let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 				moveTile.scale.set(0.6);
 				moveTile.anchor.set(0,1);
 				tileContainer.addChild(moveTile);
 			}
 			if(playerPos[0]% 2 == 0){
 				if(j == playerPos[0]-1 && i == playerPos[1]+1 && !ifMountain){
-					let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+					let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 					moveTile.scale.set(0.6);
 					moveTile.anchor.set(0,1);
 					tileContainer.addChild(moveTile);
 				}
 				if(j == playerPos[0]+1 && i == playerPos[1]+1 && !ifMountain){
-					let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+					let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 					moveTile.scale.set(0.6);
 					moveTile.anchor.set(0,1);
 					tileContainer.addChild(moveTile);
 				}
 			}else{
 				if(j == playerPos[0]-1 && i == playerPos[1]-1 && !ifMountain){
-					let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+					let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 					moveTile.scale.set(0.6);
 					moveTile.anchor.set(0,1);
 					tileContainer.addChild(moveTile);
 				}
 				if(j == playerPos[0]+1 && i == playerPos[1]-1 && !ifMountain){
-					let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+					let moveTile = new PIXI.Sprite(resources.hex_move2.texture);
 					moveTile.scale.set(0.6);
 					moveTile.anchor.set(0,1);
 					tileContainer.addChild(moveTile);
