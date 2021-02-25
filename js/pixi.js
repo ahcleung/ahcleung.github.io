@@ -1389,11 +1389,11 @@ function setup(){
 		}
 	}
 
-	let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
-	moveTile.scale.set(0.6);
+	let sizeTile = new PIXI.Sprite(resources.hex_move1.texture);
+	sizeTile.scale.set(0.6);
 	// var tileSize = [mapHolder.width/50,mapHolder.width/50*0.8625];
-	mapHolder.x = -(moveTile.width * playerPos[0]) + app.screen.width/2 - (moveTile.width/2);
-	mapHolder.y = -(moveTile.height * playerPos[1]) + app.screen.height/2 + (moveTile.height/2);
+	mapHolder.x = -(sizeTile.width * playerPos[0]) + (app.screen.width/2) - (sizeTile.width/2);
+	mapHolder.y = -(sizeTile.height * playerPos[1]) + (app.screen.height/2) + (sizeTile.height/2);
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
