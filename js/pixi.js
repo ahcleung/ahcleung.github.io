@@ -1389,9 +1389,11 @@ function setup(){
 		}
 	}
 
-	var tileSize = [mapHolder.width/50,mapHolder.width/50*0.8625];
-	mapHolder.x = -(tileSize[0] * playerPos[0]) + app.screen.width/2 - (tileSize[0]/2);
-	mapHolder.y = -(tileSize[1] * playerPos[1]) + app.screen.height/2 + (tileSize[1]/2);
+	let moveTile = new PIXI.Sprite(resources.hex_move1.texture);
+	moveTile.scale.set(0.6);
+	// var tileSize = [mapHolder.width/50,mapHolder.width/50*0.8625];
+	mapHolder.x = -(moveTile.width * playerPos[0]) + app.screen.width/2 - (moveTile.width/2);
+	mapHolder.y = -(moveTile.height * playerPos[1]) + app.screen.height/2 + (moveTile.height/2);
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
