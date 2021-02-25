@@ -1391,7 +1391,7 @@ function setup(){
 
 	let sizeTile = new PIXI.Sprite(resources.hex_move1.texture);
 	sizeTile.scale.set(0.6);
-	var tileSize = [mapHolder.width/50,mapHolder.width/50*0.8625];
+	var tileSize = [mapHolder.width/50,mapHolder.width/44];
 	// console.log()
 	// mapHolder.x = -(sizeTile.width * playerPos[0]);
 	// mapHolder.y = -(sizeTile.height * playerPos[1]);
