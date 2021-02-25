@@ -1390,6 +1390,7 @@ function setup(){
 	}
 
 	mapHolder.x = -(mapHolder.width/50 * playerPos[0]) + app.screen.width/2;
+	mapHolder.y = -(mapHolder.height/44 * playerPos[1]) + app.screen.height/2;
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
