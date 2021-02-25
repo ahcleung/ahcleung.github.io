@@ -1389,7 +1389,7 @@ function setup(){
 		}
 	}
 
-	mapHolder.x = -(mapHolder.width/44 * playerPos[1]);
+	mapHolder.x = -(mapHolder.width/50 * playerPos[0]);
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
