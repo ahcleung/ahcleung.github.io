@@ -1393,12 +1393,6 @@ function setup(){
 	mapHolder.x = -(tileSize[0] * playerPos[0]) + app.screen.width/2 - (tileSize[0]/2);
 	mapHolder.y = -(tileSize[1] * playerPos[1]) + app.screen.height/2 + (tileSize[1]/2);
 
-	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0xff0000);
-	centerGraphic.drawRect(0, 0, 100, 100);
-	centerGraphic.endFill();
-	app.stage.addChild(centerGraphic);
-
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
 
@@ -1417,6 +1411,14 @@ function setup(){
         .on('touchmove', onDragMove);
 
 	app.stage.addChild(mapHolder);
+
+	var centerGraphic = new PIXI.Graphics();
+	centerGraphic.beginFill(0xff0000);
+	centerGraphic.drawRect(0, 0, 100, 100);
+	centerGraphic.endFill();
+	app.stage.addChild(centerGraphic);
+	centerGraphic.x = app.screen.width;
+	centerGraphic.y = app.screen.height;
 	// mapHolder
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
