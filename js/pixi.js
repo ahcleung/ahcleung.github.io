@@ -1393,7 +1393,7 @@ function setup(){
 	sizeTile.scale.set(0.6);
 	// var tileSize = [mapHolder.width/50,mapHolder.width/44];
 	// console.log()
-	mapHolder.x = -(sizeTile.width * 2);
+	mapHolder.x = -(sizeTile.width*3/4 * 2);
 	mapHolder.y = -(sizeTile.height * 2);
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
 	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
