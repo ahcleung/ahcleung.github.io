@@ -1391,7 +1391,7 @@ function setup(){
 
 	var tileSize = [mapHolder.width/50,mapHolder.height/44];
 	mapHolder.x = -(tileSize[0] * playerPos[0]) + app.screen.width/2 - (tileSize[0]/2);
-	mapHolder.y = -(tileSize[1] * playerPos[1]) + app.screen.height/2 - (tileSize[1]/2);
+	mapHolder.y = -(tileSize[1] * playerPos[1]) + app.screen.height/2 + (tileSize[1]/2);
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
