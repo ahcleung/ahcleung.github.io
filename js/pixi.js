@@ -1417,8 +1417,8 @@ function setup(){
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
-	centerGraphic.x = app.screen.width;
-	centerGraphic.y = app.screen.height;
+	centerGraphic.x = app.screen.width/2;
+	centerGraphic.y = app.screen.height/2;
 	// mapHolder
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
