@@ -1392,7 +1392,6 @@ function setup(){
 	let sizeTile = new PIXI.Sprite(resources.hex_move1.texture);
 	sizeTile.scale.set(0.6);
 	// var tileSize = [mapHolder.width/50,mapHolder.width/44];
-	// console.log()
 	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 	mapHolder.y = -(sizeTile.height*0.8625 * playerPos[1]) - (sizeTile.height/2) + (app.screen.height/2);
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
@@ -1418,13 +1417,13 @@ function setup(){
 
 	app.stage.addChild(mapHolder);
 
-	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0xff0000);
-	centerGraphic.drawRect(0, 0, 100, 100);
-	centerGraphic.endFill();
-	app.stage.addChild(centerGraphic);
-	centerGraphic.x = app.screen.width/2;
-	centerGraphic.y = app.screen.height/2;
+	// var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.drawRect(0, 0, 100, 100);
+	// centerGraphic.endFill();
+	// app.stage.addChild(centerGraphic);
+	// centerGraphic.x = app.screen.width/2;
+	// centerGraphic.y = app.screen.height/2;
 	// mapHolder
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
