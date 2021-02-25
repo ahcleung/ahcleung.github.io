@@ -1278,7 +1278,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	var playerPos = [39,12];
-	// var playerPos = [1,1];
+	var playerPos = [0,1];
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
