@@ -1350,10 +1350,10 @@ function setup(){
 				veelaTile2.y = -(veelaTile2.height/2);
 
 				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease: Linear.easeNone, repeat: 1, yoyo: true, delay:0.2});
+				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Expo.easeInOut, repeat: 1, yoyo: true, delay:0.2});
 
 				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
-				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease:Expo.easeInOut, x: 0.8, y: 0.8});
+				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease: Linear.easeNone, x: 0.8, y: 0.8});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 				tileContainer.addChild(veelaTile2);
 				tileContainer.addChild(veelaTile1);
