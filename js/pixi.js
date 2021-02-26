@@ -1333,16 +1333,16 @@ function setup(){
 			// tileContainer.move2 = moveTile2;
 
 			mapTile.scale.set(0.6);
-			mapTile.anchor.set(0,1);
+			mapTile.anchor.set(0.5,0.5);
 			tileContainer.addChild(mapTile);
 
 			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
 				let veelaTile = new PIXI.Sprite(resources.tile_veela.texture);
 				veelaTile.scale.set(0.6);
-				veelaTile.anchor.set(0,1);
+				veelaTile.anchor.set(0.5,0.5);
 
 				veelaTileTween = new TimelineMax({repeat:-1});
-				veelaTileTween.fromTo(veelaTile.scale, 0.2, {x: 1, y: 1}, {ease:Back.easeOut.config(1.7), x: 1.2, y: 1.2});
+				veelaTileTween.fromTo(veelaTile.scale, 1, {x: 1, y: 1}, {ease:Back.easeOut.config(1.7), x: 1.2, y: 1.2});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 
 				tileContainer.addChild(veelaTile);
@@ -1453,7 +1453,7 @@ function addMoveTile(tileContainer){
 	// tileContainer.addChild(moveTile2);
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
-	moveTile1.anchor.set(0,1);
+	moveTile1.anchor.set(0.5,0.5);
 	tileContainer.addChild(moveTile1);
 }
 
