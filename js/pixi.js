@@ -1346,12 +1346,13 @@ function setup(){
 				let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
 				veelaTile2.scale.set(0.6);
 				veelaTile2.anchor.set(0.5,0.5);
+				veelaTile2.alpha = 0;
 				veelaTile2.x = veelaTile2.width/2;
 				veelaTile2.y = -(veelaTile2.height/2);
 
 				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-				veelaTileTween.to(veelaTile2, 1, {scaleX: 0.7, scaleY: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true, delay:0.2});
-
+				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+				veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
 				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease: Linear.easeNone, x: 0.8, y: 0.8});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
