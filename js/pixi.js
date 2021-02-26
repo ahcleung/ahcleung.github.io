@@ -42,34 +42,34 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
-		{name:'hex_move1', url:'img/hex_move1.png'},
-		{name:'hex_move2', url:'img/hex_move2.png'},
-		{name:'hex_veela', url:'img/hex_veela.png'},
-		{name:'hex_bamboo_1', url:'img/hex_bamboo_1.png'},
-		{name:'hex_bamboo_2', url:'img/hex_bamboo_2.png'},
-		{name:'hex_bamboo_3', url:'img/hex_bamboo_3.png'},
-		{name:'hex_forest_1', url:'img/hex_forest_1.png'},
-		{name:'hex_forest_2', url:'img/hex_forest_2.png'},
-		{name:'hex_forest_3', url:'img/hex_forest_3.png'},
-		// {name:'hex_forest_4', url:'img/hex_forest_4.png'},
-		{name:'hex_grass_1', url:'img/hex_grass_1.png'},
-		{name:'hex_grass_2', url:'img/hex_grass_2.png'},
-		{name:'hex_grass_3', url:'img/hex_grass_3.png'},
-		{name:'hex_hill_1', url:'img/hex_hill_1.png'},
-		{name:'hex_hill_2', url:'img/hex_hill_2.png'},
-		{name:'hex_hill_3', url:'img/hex_hill_3.png'},
-		{name:'hex_mountain_1', url:'img/hex_mountain_1.png'},
-		{name:'hex_mountain_2', url:'img/hex_mountain_2.png'},
-		{name:'hex_mountain_3', url:'img/hex_mountain_3.png'},
-		{name:'hex_plains_1', url:'img/hex_plains_1.png'},
-		{name:'hex_plains_2', url:'img/hex_plains_2.png'},
-		{name:'hex_plains_3', url:'img/hex_plains_3.png'},
-		{name:'hex_water_m_1', url:'img/hex_water_m_1.png'},
-		{name:'hex_water_m_2', url:'img/hex_water_m_2.png'},
-		{name:'hex_water_m_3', url:'img/hex_water_m_3.png'},
-		{name:'hex_water_d_1', url:'img/hex_water_d_1.png'},
-		{name:'hex_water_d_2', url:'img/hex_water_d_2.png'},
-		{name:'hex_water_d_3', url:'img/hex_water_d_3.png'},
+		{name:'tile_move1', url:'img/tile_move1.png'},
+		{name:'tile_move2', url:'img/tile_move2.png'},
+		{name:'tile_veela', url:'img/tile_veela.png'},
+		{name:'tile_bamboo_1', url:'img/tile_bamboo_1.png'},
+		{name:'tile_bamboo_2', url:'img/tile_bamboo_2.png'},
+		{name:'tile_bamboo_3', url:'img/tile_bamboo_3.png'},
+		{name:'tile_forest_1', url:'img/tile_forest_1.png'},
+		{name:'tile_forest_2', url:'img/tile_forest_2.png'},
+		{name:'tile_forest_3', url:'img/tile_forest_3.png'},
+		// {name:'tile_forest_4', url:'img/tile_forest_4.png'},
+		{name:'tile_grass_1', url:'img/tile_grass_1.png'},
+		{name:'tile_grass_2', url:'img/tile_grass_2.png'},
+		{name:'tile_grass_3', url:'img/tile_grass_3.png'},
+		{name:'tile_hill_1', url:'img/tile_hill_1.png'},
+		{name:'tile_hill_2', url:'img/tile_hill_2.png'},
+		{name:'tile_hill_3', url:'img/tile_hill_3.png'},
+		{name:'tile_mountain_1', url:'img/tile_mountain_1.png'},
+		{name:'tile_mountain_2', url:'img/tile_mountain_2.png'},
+		{name:'tile_mountain_3', url:'img/tile_mountain_3.png'},
+		{name:'tile_plains_1', url:'img/tile_plains_1.png'},
+		{name:'tile_plains_2', url:'img/tile_plains_2.png'},
+		{name:'tile_plains_3', url:'img/tile_plains_3.png'},
+		{name:'tile_water_m_1', url:'img/tile_water_m_1.png'},
+		{name:'tile_water_m_2', url:'img/tile_water_m_2.png'},
+		{name:'tile_water_m_3', url:'img/tile_water_m_3.png'},
+		{name:'tile_water_d_1', url:'img/tile_water_d_1.png'},
+		{name:'tile_water_d_2', url:'img/tile_water_d_2.png'},
+		{name:'tile_water_d_3', url:'img/tile_water_d_3.png'},
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -1295,39 +1295,39 @@ function setup(){
 			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 			switch(mapList.data.maps[0].tiles[i][j]){
 				case 0:
-					mapTile = new PIXI.Sprite(resources['hex_cliff' + randTile].texture);
-					// mapTile = new PIXI.Sprite(resources.hex_black.texture);
+					mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
+					// mapTile = new PIXI.Sprite(resources.tile_black.texture);
 					break;
 				case 1:
-					mapTile = new PIXI.Sprite(resources['hex_water_d_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_water_d_' + randTile].texture);
 					break;
 				case 2:
-					mapTile = new PIXI.Sprite(resources['hex_water_m_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_water_m_' + randTile].texture);
 					break;
 				case 3:
-					mapTile = new PIXI.Sprite(resources['hex_grass_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
 					break;
 				case 4:
-					mapTile = new PIXI.Sprite(resources['hex_bamboo_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
 					break;
 				case 5:
-					mapTile = new PIXI.Sprite(resources['hex_forest_' + randTile].texture);
-					// mapTile = new PIXI.Sprite(resources['hex_forest_4'].texture);
+					mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+					// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
 					break;
 				case 6:
-					mapTile = new PIXI.Sprite(resources['hex_hill_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
 					break;
 				case 7:
-					mapTile = new PIXI.Sprite(resources['hex_mountain_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
 					ifMountain = true;
 					break;
 				case 8:
-					mapTile = new PIXI.Sprite(resources['hex_plains_' + randTile].texture);
+					mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
 					break;
 				default:
-					statusEffectIcon = new PIXI.Sprite(resources.hex_black.texture);	
+					statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 			}
-			// moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
+			// moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 			// moveTile2.scale.set(0.5);
 			// tileContainer.addChild(moveTile2);
 			// tileContainer.move2 = moveTile2;
@@ -1337,7 +1337,7 @@ function setup(){
 			tileContainer.addChild(mapTile);
 
 			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
-				let veelaTile = new PIXI.Sprite(resources.hex_veela.texture);
+				let veelaTile = new PIXI.Sprite(resources.tile_veela.texture);
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0,1);
 				tileContainer.addChild(veelaTile);
@@ -1381,7 +1381,7 @@ function setup(){
 		}
 	}
 
-	let sizeTile = new PIXI.Sprite(resources.hex_move1.texture);
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
 	sizeTile.scale.set(0.6);
 	// var tileSize = [mapHolder.width/50,mapHolder.width/44];
 	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
@@ -1442,11 +1442,11 @@ function setup(){
 }
 
 function addMoveTile(tileContainer){
-	// let moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
+	// let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	// moveTile2.scale.set(0.6);
 	// moveTile2.anchor.set(0,1);
 	// tileContainer.addChild(moveTile2);
-	let moveTile1 = new PIXI.Sprite(resources.hex_move1.texture);
+	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
 	tileContainer.addChild(moveTile1);
