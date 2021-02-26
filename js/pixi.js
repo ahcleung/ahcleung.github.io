@@ -44,7 +44,8 @@ loader
 
 		{name:'tile_move1', url:'img/tile_move1.png'},
 		{name:'tile_move2', url:'img/tile_move2.png'},
-		{name:'tile_veela', url:'img/tile_veela.png'},
+		{name:'tile_veela1', url:'img/tile_veela1.png'},
+		{name:'tile_veela2', url:'img/tile_veela2.png'},
 		{name:'tile_bamboo_1', url:'img/tile_bamboo_1.png'},
 		{name:'tile_bamboo_2', url:'img/tile_bamboo_2.png'},
 		{name:'tile_bamboo_3', url:'img/tile_bamboo_3.png'},
@@ -1337,20 +1338,25 @@ function setup(){
 			tileContainer.addChild(mapTile);
 
 			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
-				let veelaTile = new PIXI.Sprite(resources.tile_veela.texture);
-				veelaTile.scale.set(0.6);
-				veelaTile.anchor.set(0.5,0.5);
-				veelaTile.x = veelaTile.width/2;
-				veelaTile.y = -(veelaTile.height/2);
+				let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
+				veelaTile1.scale.set(0.6);
+				veelaTile1.anchor.set(0.5,0.5);
+				veelaTile1.x = veelaTile1.width/2;
+				veelaTile1.y = -(veelaTile1.height/2);
+				let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
+				veelaTile2.scale.set(0.6);
+				veelaTile2.anchor.set(0.5,0.5);
+				veelaTile2.x = veelaTile2.width/2;
+				veelaTile2.y = -(veelaTile2.height/2);
 
 				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.5});
-				veelaTileTween.to(veelaTile.scale, 1, {x: 0.8, y: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
+				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.8, y: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
 
 				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
 				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease:Expo.easeInOut, x: 0.8, y: 0.8});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
-
-				tileContainer.addChild(veelaTile);
+				tileContainer.addChild(veelaTile2);
+				tileContainer.addChild(veelaTile1);
 			}
 
 			if(j == playerPos[0]+1 && i == playerPos[1] && !ifMountain){
