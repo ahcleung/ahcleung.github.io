@@ -1340,8 +1340,10 @@ function setup(){
 				let veelaTile = new PIXI.Sprite(resources.tile_veela.texture);
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0.5,0.5);
+				veelaTile.x = veelaTile.width/2;
+				veelaTile.y = -(veelaTile.height/2);
 
-				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
+				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.5});
 				veelaTileTween.to(veelaTile.scale, 1, {x: 0.8, y: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
 
 				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
