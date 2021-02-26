@@ -1333,7 +1333,7 @@ function setup(){
 			// tileContainer.move2 = moveTile2;
 
 			mapTile.scale.set(0.6);
-			mapTile.anchor.set(0.5,0.5);
+			mapTile.anchor.set(0,1;
 			tileContainer.addChild(mapTile);
 
 			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
@@ -1341,8 +1341,11 @@ function setup(){
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0.5,0.5);
 
-				veelaTileTween = new TimelineMax({repeat:-1});
-				veelaTileTween.fromTo(veelaTile.scale, 1, {x: 1, y: 1}, {ease:Expo.easeInOut, x: 1.2, y: 1.2});
+				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
+				veelaTileTween.to(veelaTile, 1, {scale: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
+
+				// veelaTileTween = new TimelineMax({repeat:-1});
+				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease:Expo.easeInOut, x: 0.8, y: 0.8});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 
 				tileContainer.addChild(veelaTile);
@@ -1453,7 +1456,7 @@ function addMoveTile(tileContainer){
 	// tileContainer.addChild(moveTile2);
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
-	moveTile1.anchor.set(0.5,0.5);
+	moveTile1.anchor.set(0,1);
 	tileContainer.addChild(moveTile1);
 }
 
