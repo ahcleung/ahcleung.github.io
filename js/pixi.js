@@ -1342,7 +1342,7 @@ function setup(){
 				veelaTile.anchor.set(0.5,0.5);
 
 				veelaTileTween = new TimelineMax({repeat:-1});
-				veelaTileTween.fromTo(veelaTile.scale, 1, {x: 1, y: 1}, {ease:Back.easeOut.config(1.7), x: 1.2, y: 1.2});
+				veelaTileTween.fromTo(veelaTile.scale, 1, {x: 1, y: 1}, {ease:Expo.easeInOut, x: 1.2, y: 1.2});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 
 				tileContainer.addChild(veelaTile);
