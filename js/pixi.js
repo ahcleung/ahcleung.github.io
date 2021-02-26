@@ -1442,10 +1442,10 @@ function setup(){
 }
 
 function addMoveTile(tileContainer){
-	let moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
-	moveTile2.scale.set(0.6);
-	moveTile2.anchor.set(0,1);
-	tileContainer.addChild(moveTile2);
+	// let moveTile2 = new PIXI.Sprite(resources.hex_move2.texture);
+	// moveTile2.scale.set(0.6);
+	// moveTile2.anchor.set(0,1);
+	// tileContainer.addChild(moveTile2);
 	let moveTile1 = new PIXI.Sprite(resources.hex_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
