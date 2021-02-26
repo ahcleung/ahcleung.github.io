@@ -1333,7 +1333,7 @@ function setup(){
 			// tileContainer.move2 = moveTile2;
 
 			mapTile.scale.set(0.6);
-			mapTile.anchor.set(0,1;
+			mapTile.anchor.set(0,1);
 			tileContainer.addChild(mapTile);
 
 			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
