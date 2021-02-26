@@ -1402,9 +1402,9 @@ function setup(){
 	// var tileSize = [mapHolder.width/50,mapHolder.width/44];
 	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
-		mapHolder.y = -(sizeTile.height*0.8625 * playerPos[1]) - (sizeTile.height/2) + (app.screen.height/2);
+		mapHolder.y = -(sizeTile.height * playerPos[1]) - (sizeTile.height/2) + (app.screen.height/2);
 	}else{
-		mapHolder.y = -(sizeTile.height*0.8625 * playerPos[1]) + (sizeTile.height/2) + (app.screen.height/2);
+		mapHolder.y = -(sizeTile.height * playerPos[1]) - (sizeTile.height/2) + (app.screen.height/2);
 	}
 	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
 	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
