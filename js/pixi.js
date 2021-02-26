@@ -1341,11 +1341,11 @@ function setup(){
 				veelaTile.scale.set(0.6);
 				veelaTile.anchor.set(0.5,0.5);
 
-				// var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
-				// veelaTileTween.to(veelaTile, 1, {scale: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
+				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
+				veelaTileTween.to(veelaTile.scale, 1, {x: 0.8, y: 0.8, ease: Linear.easeNone, repeat: 1, yoyo: true});
 
-				veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
-				veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease:Expo.easeInOut, x: 0.8, y: 0.8});
+				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
+				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease:Expo.easeInOut, x: 0.8, y: 0.8});
 				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 
 				tileContainer.addChild(veelaTile);
