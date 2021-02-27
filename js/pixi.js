@@ -1508,7 +1508,7 @@ function createTile(item){
 		.on('touchstart', onTileDown);
 
 	let mapTile;
-	// var ifMountain = false;
+	var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 	switch(item.id){
 		case 0:
@@ -1535,7 +1535,7 @@ function createTile(item){
 			break;
 		case 7:
 			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
-			// ifMountain = true;
+			ifMountain = true;
 			break;
 		case 8:
 			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
