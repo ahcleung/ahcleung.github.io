@@ -1409,21 +1409,21 @@ function setup(){
 	// 	}
 	// }
 
-	// let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
-	// sizeTile.scale.set(0.6);
-	// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
-	// if(playerPos[0]% 2 == 0){		
-	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
-	// }else{
-	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
-	// }
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	sizeTile.scale.set(0.6);
+	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
+	if(playerPos[0]% 2 == 0){		
+		mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
+	}else{
+		mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
+	}
 	// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
 
 	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
 	// mapHolder.y = -(tileSize[1] * playerPos[1]) + (app.screen.height/2) - (tileSize[0]/2);
 
-	mapHolder.x = app.screen.width/2;
-	mapHolder.y = app.screen.height/2;
+	// mapHolder.x = app.screen.width/2;
+	// mapHolder.y = app.screen.height/2;
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
@@ -1548,18 +1548,68 @@ function createTile(item){
 	mapTile.anchor.set(0,1);
 	tileContainer.addChild(mapTile);
 
-	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	moveTile2.scale.set(0.6);
-	moveTile2.anchor.set(0,1);
-	tileContainer.addChild(moveTile2);
-	tileContainer.moveTile2 = moveTile2;
-	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(0.6);
-	moveTile1.anchor.set(0,1);
-	tileContainer.addChild(moveTile1);
-	tileContainer.moveTile1 = moveTile1;
+	// item.pos[0]==j item.pos[1]==i	
 
-	// item.pos[0]==j item.pos[1]==i		
+	if(item.pos[0] == playerPos[0] && item.pos[0] == playerPos[1] && !ifMountain){
+		let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
+		veelaTile1.scale.set(0.6);
+		veelaTile1.anchor.set(0.5,0.5);
+		veelaTile1.x = veelaTile1.width/2;
+		veelaTile1.y = -(veelaTile1.height/2);
+		let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
+		veelaTile2.scale.set(0.6);
+		veelaTile2.anchor.set(0.5,0.5);
+		veelaTile2.alpha = 0;
+		veelaTile2.x = veelaTile2.width/2;
+		veelaTile2.y = -(veelaTile2.height/2);
+
+		var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
+		veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+		veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
+		tileContainer.addChild(veelaTile2);
+		tileContainer.addChild(veelaTile1);
+	}
+
+	if(item.pos[0] == playerPos[0]+1 && item.pos[0] == playerPos[1] && !ifMountain){
+		addMoveTile(tileContainer);
+	}
+	if(item.pos[0] == playerPos[0]-1 && item.pos[0] == playerPos[1] && !ifMountain){
+		addMoveTile(tileContainer);
+	}
+	if(item.pos[0] == playerPos[0] && item.pos[0] == playerPos[1]+1 && !ifMountain){
+		addMoveTile(tileContainer);
+	}
+	if(item.pos[0] == playerPos[0] && item.pos[0] == playerPos[1]-1 && !ifMountain){
+		addMoveTile(tileContainer);
+	}
+	if(playerPos[0]% 2 == 0){
+		if(item.pos[0] == playerPos[0]-1 && item.pos[0] == playerPos[1]+1 && !ifMountain){
+			addMoveTile(tileContainer);
+		}
+		if(item.pos[0] == playerPos[0]+1 && item.pos[0] == playerPos[1]+1 && !ifMountain){
+			addMoveTile(tileContainer);
+		}
+	}else{
+		if(item.pos[0] == playerPos[0]-1 && item.pos[0] == playerPos[1]-1 && !ifMountain){
+			addMoveTile(tileContainer);
+		}
+		if(item.pos[0] == playerPos[0]+1 && item.pos[0] == playerPos[1]-1 && !ifMountain){
+			addMoveTile(tileContainer);
+		}
+	}
+
+	// let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
+	// moveTile2.scale.set(0.6);
+	// moveTile2.anchor.set(0,1);
+	// tileContainer.addChild(moveTile2);
+	// tileContainer.moveTile2 = moveTile2;
+	// let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
+	// moveTile1.scale.set(0.6);
+	// moveTile1.anchor.set(0,1);
+	// tileContainer.addChild(moveTile1);
+	// tileContainer.moveTile1 = moveTile1;
+
+		
 	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
 	tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
 
@@ -1573,14 +1623,17 @@ function createTile(item){
 }
 
 function addMoveTile(tileContainer){
-	// let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	// moveTile2.scale.set(0.6);
-	// moveTile2.anchor.set(0,1);
-	// tileContainer.addChild(moveTile2);
+	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
+	moveTile2.scale.set(0.6);
+	moveTile2.anchor.set(0,1);
+	tileContainer.addChild(moveTile2);
+	tileContainer.moveTile2 = moveTile2;
+	moveTile2.visible = false;
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
 	tileContainer.addChild(moveTile1);
+	tileContainer.moveTile1 = moveTile1;
 }
 
 function onTileDown(){
