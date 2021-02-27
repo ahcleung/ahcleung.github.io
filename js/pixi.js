@@ -1284,110 +1284,127 @@ function setup(){
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
-			const tileContainer = new PIXI.Container();	
-			tileContainer.interactive = true;
-			tileContainer.buttonMode = true;
-			tileContainer
-				// events for drag start
-        		.on('mousedown', onTileDown)
-        		.on('touchstart', onTileDown);
+			const newTile = new Tile({
+				id: mapList.data.maps[0].tiles[i][j],
+				pos: [j,i],
+				discovered: false,
+				travelled: false
+			});
+			
+			tileArray.push(newTile);
 
-			let mapTile;
-			var ifMountain = false;
-			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
-			switch(mapList.data.maps[0].tiles[i][j]){
-				case 0:
-					mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
-					// mapTile = new PIXI.Sprite(resources.tile_black.texture);
-					break;
-				case 1:
-					mapTile = new PIXI.Sprite(resources['tile_water_d_' + randTile].texture);
-					break;
-				case 2:
-					mapTile = new PIXI.Sprite(resources['tile_water_m_' + randTile].texture);
-					break;
-				case 3:
-					mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
-					break;
-				case 4:
-					mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
-					break;
-				case 5:
-					mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
-					// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
-					break;
-				case 6:
-					mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
-					break;
-				case 7:
-					mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
-					ifMountain = true;
-					break;
-				case 8:
-					mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
-					break;
-				default:
-					statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
-			}
-
-			mapTile.scale.set(0.6);
-			mapTile.anchor.set(0,1);
-			tileContainer.addChild(mapTile);
-
-			if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
-				let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
-				veelaTile1.scale.set(0.6);
-				veelaTile1.anchor.set(0.5,0.5);
-				veelaTile1.x = veelaTile1.width/2;
-				veelaTile1.y = -(veelaTile1.height/2);
-				let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
-				veelaTile2.scale.set(0.6);
-				veelaTile2.anchor.set(0.5,0.5);
-				veelaTile2.alpha = 0;
-				veelaTile2.x = veelaTile2.width/2;
-				veelaTile2.y = -(veelaTile2.height/2);
-
-				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
-				veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
-				tileContainer.addChild(veelaTile2);
-				tileContainer.addChild(veelaTile1);
-			}
-
-			if(j == playerPos[0]+1 && i == playerPos[1] && !ifMountain){
-				addMoveTile(tileContainer);
-			}
-			if(j == playerPos[0]-1 && i == playerPos[1] && !ifMountain){
-				addMoveTile(tileContainer);
-			}
-			if(j == playerPos[0] && i == playerPos[1]+1 && !ifMountain){
-				addMoveTile(tileContainer);
-			}
-			if(j == playerPos[0] && i == playerPos[1]-1 && !ifMountain){
-				addMoveTile(tileContainer);
-			}
-			if(playerPos[0]% 2 == 0){
-				if(j == playerPos[0]-1 && i == playerPos[1]+1 && !ifMountain){
-					addMoveTile(tileContainer);
-				}
-				if(j == playerPos[0]+1 && i == playerPos[1]+1 && !ifMountain){
-					addMoveTile(tileContainer);
-				}
-			}else{
-				if(j == playerPos[0]-1 && i == playerPos[1]-1 && !ifMountain){
-					addMoveTile(tileContainer);
-				}
-				if(j == playerPos[0]+1 && i == playerPos[1]-1 && !ifMountain){
-					addMoveTile(tileContainer);
-				}
-			}			
-
-			tileContainer.x = j * mapTile.width * 3/4;
-			tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
-			// mapHolder.addChild(tileContainer);
-			// mapList.data.maps[0].tiles[i][j];
+			tileArray.forEach(item =>{
+				createTile(item)
+			});
 		}
 	}
+
+	// for(var i = 0; i < 44; i++){
+	// 	for(var j = 0; j < 50; j++){
+	// 		const tileContainer = new PIXI.Container();	
+	// 		tileContainer.interactive = true;
+	// 		tileContainer.buttonMode = true;
+	// 		tileContainer
+	// 			// events for drag start
+ //        		.on('mousedown', onTileDown)
+ //        		.on('touchstart', onTileDown);
+
+	// 		let mapTile;
+	// 		var ifMountain = false;
+	// 		var randTile = Math.floor(Math.random() * Math.floor(3)+1);
+	// 		switch(mapList.data.maps[0].tiles[i][j]){
+	// 			case 0:
+	// 				mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
+	// 				// mapTile = new PIXI.Sprite(resources.tile_black.texture);
+	// 				break;
+	// 			case 1:
+	// 				mapTile = new PIXI.Sprite(resources['tile_water_d_' + randTile].texture);
+	// 				break;
+	// 			case 2:
+	// 				mapTile = new PIXI.Sprite(resources['tile_water_m_' + randTile].texture);
+	// 				break;
+	// 			case 3:
+	// 				mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
+	// 				break;
+	// 			case 4:
+	// 				mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+	// 				break;
+	// 			case 5:
+	// 				mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+	// 				// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
+	// 				break;
+	// 			case 6:
+	// 				mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+	// 				break;
+	// 			case 7:
+	// 				mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+	// 				ifMountain = true;
+	// 				break;
+	// 			case 8:
+	// 				mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+	// 				break;
+	// 			default:
+	// 				statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+	// 		}
+
+	// 		mapTile.scale.set(0.6);
+	// 		mapTile.anchor.set(0,1);
+	// 		tileContainer.addChild(mapTile);
+
+	// 		if(j == playerPos[0] && i == playerPos[1] && !ifMountain){
+	// 			let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
+	// 			veelaTile1.scale.set(0.6);
+	// 			veelaTile1.anchor.set(0.5,0.5);
+	// 			veelaTile1.x = veelaTile1.width/2;
+	// 			veelaTile1.y = -(veelaTile1.height/2);
+	// 			let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
+	// 			veelaTile2.scale.set(0.6);
+	// 			veelaTile2.anchor.set(0.5,0.5);
+	// 			veelaTile2.alpha = 0;
+	// 			veelaTile2.x = veelaTile2.width/2;
+	// 			veelaTile2.y = -(veelaTile2.height/2);
+
+	// 			var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
+	// 			veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+	// 			veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
+	// 			tileContainer.addChild(veelaTile2);
+	// 			tileContainer.addChild(veelaTile1);
+	// 		}
+
+	// 		if(j == playerPos[0]+1 && i == playerPos[1] && !ifMountain){
+	// 			addMoveTile(tileContainer);
+	// 		}
+	// 		if(j == playerPos[0]-1 && i == playerPos[1] && !ifMountain){
+	// 			addMoveTile(tileContainer);
+	// 		}
+	// 		if(j == playerPos[0] && i == playerPos[1]+1 && !ifMountain){
+	// 			addMoveTile(tileContainer);
+	// 		}
+	// 		if(j == playerPos[0] && i == playerPos[1]-1 && !ifMountain){
+	// 			addMoveTile(tileContainer);
+	// 		}
+	// 		if(playerPos[0]% 2 == 0){
+	// 			if(j == playerPos[0]-1 && i == playerPos[1]+1 && !ifMountain){
+	// 				addMoveTile(tileContainer);
+	// 			}
+	// 			if(j == playerPos[0]+1 && i == playerPos[1]+1 && !ifMountain){
+	// 				addMoveTile(tileContainer);
+	// 			}
+	// 		}else{
+	// 			if(j == playerPos[0]-1 && i == playerPos[1]-1 && !ifMountain){
+	// 				addMoveTile(tileContainer);
+	// 			}
+	// 			if(j == playerPos[0]+1 && i == playerPos[1]-1 && !ifMountain){
+	// 				addMoveTile(tileContainer);
+	// 			}
+	// 		}			
+
+	// 		tileContainer.x = j * mapTile.width * 3/4;
+	// 		tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
+	// 		// mapHolder.addChild(tileContainer);
+	// 		// mapList.data.maps[0].tiles[i][j];
+	// 	}
+	// }
 
 	// let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
 	// sizeTile.scale.set(0.6);
@@ -1425,22 +1442,18 @@ function setup(){
 	app.stage.addChild(mapHolder);
 
 	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
-	const newTile = new Tile({
-		id: 1,
-		pos: [0,0],
-		discovered: false,
-		travelled: false
-	});
-	
-	tileArray.push(newTile);
-
-	// enemyArray.forEach(function (item, index){
-	// 	createSprite(-1, item, index)	
+	// const newTile = new Tile({
+	// 	id: 1,
+	// 	pos: [0,0],
+	// 	discovered: false,
+	// 	travelled: false
 	// });
+	
+	// tileArray.push(newTile);
 
-	tileArray.forEach(item =>{
-		createTile(item)
-	});
+	// tileArray.forEach(item =>{
+	// 	createTile(item)
+	// });
 
 	// app.stage.addChild(tileArray[0].sprite);
 
@@ -1543,7 +1556,9 @@ function createTile(item){
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
 
-	
+	// item.pos[0]==j item.pos[1]==i		
+	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
+	tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
