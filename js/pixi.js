@@ -1566,6 +1566,10 @@ function addMoveTile(tileContainer){
 }
 
 function onTileDown(){
+	this.object.hideMove2();
+	// if(this.object.traversable){
+	// 	this.object.
+	// }
 	console.log(this.object.id);
 	// this.move2.visible = false;
 }
