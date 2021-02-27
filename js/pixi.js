@@ -1549,6 +1549,7 @@ function createTile(item){
 	// tileContainer.x = app.screen.height/2;
 
 	item.sprite = tileContainer;
+	tileContainer.object = item;
 
 	mapHolder.addChild(tileContainer)
 }
@@ -1565,7 +1566,7 @@ function addMoveTile(tileContainer){
 }
 
 function onTileDown(){
-	console.log(this.parent.id);
+	console.log(this.object.id);
 	// this.move2.visible = false;
 }
 
