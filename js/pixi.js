@@ -1389,16 +1389,16 @@ function setup(){
 		}
 	}
 
-	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
-	sizeTile.scale.set(0.6);
-	// var tileSize = [mapHolder.width/50,mapHolder.width/44];
-	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
-	if(playerPos[0]% 2 == 0){		
-		mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
-	}else{
-		mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
-	}
-	console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
+	// let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	// sizeTile.scale.set(0.6);
+	// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
+	// if(playerPos[0]% 2 == 0){		
+	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
+	// }else{
+	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
+	// }
+	// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
+	
 	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
 	// mapHolder.y = -(tileSize[1] * playerPos[1]) + (app.screen.height/2) - (tileSize[0]/2);
 
@@ -1542,11 +1542,11 @@ function createTile(item){
 
 	
 
-	tileContainer.x = app.screen.width/2;
-	tileContainer.x = app.screen.height/2;
+	// tileContainer.x = app.screen.width/2;
+	// tileContainer.x = app.screen.height/2;
 
 	item.sprite = tileContainer;
-	
+
 	mapHolder.addChild(tileContainer)
 }
 
