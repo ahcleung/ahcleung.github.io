@@ -17,7 +17,7 @@ class Tile{
 		this.pos = pos;
 		this.discovered = discovered;
 		this.travelled = travelled;
-		this.traversable = true;		
+		this.traversable = false;		
 	}
 
 	showMove1(){

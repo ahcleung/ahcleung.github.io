@@ -1572,29 +1572,37 @@ function createTile(item){
 
 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1] && !ifMountain){
 		addMoveTile(tileContainer);
+		item.traversable = true;
 	}
 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1] && !ifMountain){
 		addMoveTile(tileContainer);
+		item.traversable = true;
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1 && !ifMountain){
 		addMoveTile(tileContainer);
+		item.traversable = true;
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1 && !ifMountain){
 		addMoveTile(tileContainer);
+		item.traversable = true;
 	}
 	if(playerPos[0]% 2 == 0){
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
 			addMoveTile(tileContainer);
+			item.traversable = true;
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
 			addMoveTile(tileContainer);
+			item.traversable = true;
 		}
 	}else{
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
 			addMoveTile(tileContainer);
+			item.traversable = true;
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
 			addMoveTile(tileContainer);
+			item.traversable = true;
 		}
 	}
 		
@@ -1626,9 +1634,9 @@ function addMoveTile(tileContainer){
 
 function onTileDown(){
 	// this.object.hideMove2();
-	// if(this.object.traversable){
-	// 	this.object.
-	// }
+	if(this.object.traversable){
+		this.object.showMove2();
+	}
 	console.log(this.object.id);
 	// this.move2.visible = false;
 }
