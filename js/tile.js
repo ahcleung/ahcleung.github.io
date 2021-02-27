@@ -42,8 +42,8 @@ class Tile{
 		this.sprite.moveTile2.visible = false;
 	}
 
-	// get dodge(){
-	// 	return this.statCalc[1];
-	// }
+	get id(){
+		return this.id;
+	}
 
 }
