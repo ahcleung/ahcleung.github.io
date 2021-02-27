@@ -1422,7 +1422,7 @@ function setup(){
         .on('mousemove', onDragMove)
         .on('touchmove', onDragMove);
 
-	// app.stage.addChild(mapHolder);
+	app.stage.addChild(mapHolder);
 
 	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
 	const newTile = new Tile({
