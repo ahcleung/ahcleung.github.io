@@ -1384,7 +1384,7 @@ function setup(){
 
 			tileContainer.x = j * mapTile.width * 3/4;
 			tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
-			mapHolder.addChild(tileContainer);
+			// mapHolder.addChild(tileContainer);
 			// mapList.data.maps[0].tiles[i][j];
 		}
 	}
@@ -1419,7 +1419,7 @@ function setup(){
         .on('mousemove', onDragMove)
         .on('touchmove', onDragMove);
 
-	app.stage.addChild(mapHolder);
+	// app.stage.addChild(mapHolder);
 
 	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
 	const newTile = new Tile({
@@ -1439,10 +1439,10 @@ function setup(){
 		createTile(item)
 	});
 
-	app.stage.addChild(tileArray[0].sprite);
+	// app.stage.addChild(tileArray[0].sprite);
 
-	tileArray[0].sprite.x = app.screen.width/2;
-	tileArray[0].sprite.x = app.screen.height/2;
+	// tileArray[0].sprite.x = app.screen.width/2;
+	// tileArray[0].sprite.x = app.screen.height/2;
 	
 	// app.stage.addChild(tileArray[0].sprite);
 
@@ -1540,12 +1540,14 @@ function createTile(item){
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
 
-	// app.stage.addChild(tileContainer);
+	
 
-	// tileContainer.x = app.screen.width/2;
-	// tileContainer.x = app.screen.height/2;
+	tileContainer.x = app.screen.width/2;
+	tileContainer.x = app.screen.height/2;
 
 	item.sprite = tileContainer;
+	
+	mapHolder.addChild(tileContainer)
 }
 
 function addMoveTile(tileContainer){
