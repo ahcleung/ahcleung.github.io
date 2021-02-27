@@ -339,6 +339,7 @@ const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 const tileArray = [];
+const tileTraverable = [];
 var playerPos = [];
 
 const heroHazardSprite = [];
@@ -1573,36 +1574,44 @@ function createTile(item){
 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1] && !ifMountain){
 		addMoveTile(tileContainer);
 		item.traversable = true;
+		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1] && !ifMountain){
 		addMoveTile(tileContainer);
 		item.traversable = true;
+		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1 && !ifMountain){
 		addMoveTile(tileContainer);
 		item.traversable = true;
+		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1 && !ifMountain){
 		addMoveTile(tileContainer);
 		item.traversable = true;
+		tileTraverable.push(item);
 	}
 	if(playerPos[0]% 2 == 0){
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
 			addMoveTile(tileContainer);
 			item.traversable = true;
+			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
 			addMoveTile(tileContainer);
 			item.traversable = true;
+			tileTraverable.push(item);
 		}
 	}else{
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
 			addMoveTile(tileContainer);
 			item.traversable = true;
+			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
 			addMoveTile(tileContainer);
 			item.traversable = true;
+			tileTraverable.push(item);
 		}
 	}
 		
@@ -1633,7 +1642,11 @@ function addMoveTile(tileContainer){
 }
 
 function onTileDown(){
-	// this.object.hideMove2();
+
+	tileTraverable.forEach(item =>{
+		item.hideMove2();
+	});
+	
 	if(this.object.traversable){
 		this.object.showMove2();
 	}
