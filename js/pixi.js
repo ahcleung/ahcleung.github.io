@@ -1441,6 +1441,7 @@ function setup(){
 
 	tileArray[0].x = app.screen.width/2;
 	tileArray[0].x = app.screen.height/2;
+	app.stage.addChild(tileArray[0]);
 
 	// var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
