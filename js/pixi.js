@@ -1431,9 +1431,9 @@ function setup(){
 	
 	tileArray.push(newTile);
 
-	enemyArray.forEach(function (item, index){
-		createSprite(-1, item, index)	
-	});
+	// enemyArray.forEach(function (item, index){
+	// 	createSprite(-1, item, index)	
+	// });
 
 	tileArray.forEach(item =>{
 		createTile(item)
