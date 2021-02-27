@@ -1565,6 +1565,7 @@ function addMoveTile(tileContainer){
 }
 
 function onTileDown(){
+	console.log(this.parent.id);
 	// this.move2.visible = false;
 }
 
