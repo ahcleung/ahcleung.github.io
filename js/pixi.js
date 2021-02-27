@@ -339,6 +339,7 @@ const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 const tileArray = [];
+var playerPos = [];
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1279,11 +1280,11 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	var playerPos = [41,14];
+	playerPos = [41,14];
 	// var playerPos = [0,1];
 
-	for(var i = 0; i < 10; i++){
-		for(var j = 0; j < 10; j++){
+	for(var i = 0; i < 44; i++){
+		for(var j = 0; j < 50; j++){
 			const newTile = new Tile({
 				id: mapList.data.maps[0].tiles[i][j],
 				pos: [j,i],
