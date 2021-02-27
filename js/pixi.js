@@ -1536,7 +1536,7 @@ function createTile(item){
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
 
-	app.screen.addChild(tileContainer);
+	app.stage.addChild(tileContainer);
 
 	tileContainer.x = app.screen.width/2;
 	tileContainer.x = app.screen.height/2;
