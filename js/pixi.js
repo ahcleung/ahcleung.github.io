@@ -1439,9 +1439,8 @@ function setup(){
 		createTile(item)
 	});
 
-	tileArray[0].x = app.screen.width/2;
-	tileArray[0].x = app.screen.height/2;
-	app.stage.addChild(tileArray[0]);
+	
+	// app.stage.addChild(tileArray[0].sprite);
 
 	// var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
@@ -1536,6 +1535,11 @@ function createTile(item){
 	moveTile1.anchor.set(0,1);
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
+
+	app.screen.addChild(tileContainer);
+
+	tileContainer.x = app.screen.width/2;
+	tileContainer.x = app.screen.height/2;
 
 	item.sprite = tileContainer;
 }
