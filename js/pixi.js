@@ -338,6 +338,7 @@ const factory = dragonBones.PixiFactory.factory;
 const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
+const tileArray = [];
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1291,7 +1292,7 @@ function setup(){
         		.on('mousedown', onTileDown)
         		.on('touchstart', onTileDown);
 
-			let mapTile, moveTile2;
+			let mapTile;
 			var ifMountain = false;
 			var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 			switch(mapList.data.maps[0].tiles[i][j]){
@@ -1328,10 +1329,6 @@ function setup(){
 				default:
 					statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 			}
-			// moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-			// moveTile2.scale.set(0.5);
-			// tileContainer.addChild(moveTile2);
-			// tileContainer.move2 = moveTile2;
 
 			mapTile.scale.set(0.6);
 			mapTile.anchor.set(0,1);
@@ -1353,9 +1350,6 @@ function setup(){
 				var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 				veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
 				veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
-				// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:2});
-				// veelaTileTween.fromTo(veelaTile.scale, 1, {x: 0.6, y: 0.6}, {ease: Linear.easeNone, x: 0.8, y: 0.8});
-				// veelaTileTween.fromTo(veelaTile.scale, anim2, {x:item.action[1][0], y:item.action[1][1]}, {ease:"custom", x:item.action[1][2], y:item.action[1][3]});
 				tileContainer.addChild(veelaTile2);
 				tileContainer.addChild(veelaTile1);
 			}
@@ -1390,10 +1384,7 @@ function setup(){
 
 			tileContainer.x = j * mapTile.width * 3/4;
 			tileContainer.y = i * mapTile.width*0.8625 - ((j%2)*mapTile.width*0.8625)/2;
-			// moveTile2.x = j * mapTile.width * 3/4;
-			// moveTile2.y = i * mapTile.height - ((j%2)*mapTile.height)/2;
 			mapHolder.addChild(tileContainer);
-			// mapHolder.addChild(moveTile2);
 			// mapList.data.maps[0].tiles[i][j];
 		}
 	}
@@ -1430,6 +1421,27 @@ function setup(){
 
 	app.stage.addChild(mapHolder);
 
+	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
+	const newTile = new Tile({
+		id: 1,
+		pos: [0,0],
+		discovered: false,
+		travelled: false
+	});
+	
+	tileArray.push(newTile);
+
+	enemyArray.forEach(function (item, index){
+		createSprite(-1, item, index)	
+	});
+
+	tileArray.forEach(item =>{
+		createTile(item)
+	});
+
+	tileArray[0].x = app.screen.width/2;
+	tileArray[0].x = app.screen.height/2;
+
 	// var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
 	// centerGraphic.drawRect(0, 0, 100, 100);
@@ -1461,6 +1473,70 @@ function setup(){
 	app.ticker.add(delta => gameLoop(delta));
 
 	calculateTurnOrder();
+}
+
+function createTile(item){
+	const tileContainer = new PIXI.Container();	
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+
+	let mapTile;
+	// var ifMountain = false;
+	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
+	switch(item.id){
+		case 0:
+			mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
+			break;
+		case 1:
+			mapTile = new PIXI.Sprite(resources['tile_water_d_' + randTile].texture);
+			break;
+		case 2:
+			mapTile = new PIXI.Sprite(resources['tile_water_m_' + randTile].texture);
+			break;
+		case 3:
+			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
+			break;
+		case 4:
+			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+			break;
+		case 5:
+			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+			// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
+			break;
+		case 6:
+			mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+			break;
+		case 7:
+			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+			// ifMountain = true;
+			break;
+		case 8:
+			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+			break;
+		default:
+			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+	}
+
+	mapTile.scale.set(0.6);
+	mapTile.anchor.set(0,1);
+	tileContainer.addChild(mapTile);
+
+	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
+	moveTile2.scale.set(0.6);
+	moveTile2.anchor.set(0,1);
+	tileContainer.addChild(moveTile2);
+	tileContainer.moveTile2 = moveTile2;
+	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
+	moveTile1.scale.set(0.6);
+	moveTile1.anchor.set(0,1);
+	tileContainer.addChild(moveTile1);
+	tileContainer.moveTile1 = moveTile1;
+
+	item.sprite = tileContainer;
 }
 
 function addMoveTile(tileContainer){
