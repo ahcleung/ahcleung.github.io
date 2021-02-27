@@ -1439,6 +1439,10 @@ function setup(){
 		createTile(item)
 	});
 
+	app.stage.addChild(tileArray[0].sprite);
+
+	tileArray[0].sprite.x = app.screen.width/2;
+	tileArray[0].sprite.x = app.screen.height/2;
 	
 	// app.stage.addChild(tileArray[0].sprite);
 
@@ -1536,10 +1540,10 @@ function createTile(item){
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
 
-	app.stage.addChild(tileContainer);
+	// app.stage.addChild(tileContainer);
 
-	tileContainer.x = app.screen.width/2;
-	tileContainer.x = app.screen.height/2;
+	// tileContainer.x = app.screen.width/2;
+	// tileContainer.x = app.screen.height/2;
 
 	item.sprite = tileContainer;
 }
