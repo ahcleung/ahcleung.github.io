@@ -42,8 +42,8 @@ class Tile{
 		this.sprite.moveTile2.visible = false;
 	}
 
-	get id(){
-		return this.id;
-	}
+	// get id(){
+	// 	return this.id;
+	// }
 
 }
