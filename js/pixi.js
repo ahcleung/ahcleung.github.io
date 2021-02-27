@@ -1398,9 +1398,12 @@ function setup(){
 	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
 	// }
 	// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
-	
+
 	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
 	// mapHolder.y = -(tileSize[1] * playerPos[1]) + (app.screen.height/2) - (tileSize[0]/2);
+
+	mapHolder.x = app.screen.width/2;
+	mapHolder.y = app.screen.height/2;
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
