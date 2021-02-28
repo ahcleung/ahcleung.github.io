@@ -1334,6 +1334,7 @@ function setup(){
 
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
+	mapHolder.tileWidth = sizeTile.width;
 	
 	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
@@ -1557,8 +1558,8 @@ function onTileDown(){
 			item.hideMove1();
 			item.hideMove2();
 			playerPos = this.object.pos;
-			mapHolder.veela.x = playerPos[0] * mapHolder.veela.width * 3/4;
-			mapHolder.veela.y = playerPos[1] * mapHolder.veela.width*0.8625 - ((playerPos[0]%2)*mapHolder.veela.width*0.8625)/2;
+			mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
+			mapHolder.veela.y = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
 		});
 	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
