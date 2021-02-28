@@ -17,7 +17,8 @@ class Tile{
 		this.pos = pos;
 		this.discovered = discovered;
 		this.travelled = travelled;
-		this.traversable = false;		
+		this.traversable = false;
+		this.travelConfirm = false;
 	}
 
 	showMove1(){
@@ -35,11 +36,13 @@ class Tile{
 	showMove2(){
 		if(this.traversable){
 			this.sprite.moveTile2.visible = true;
+			this.travelConfirm = true;
 		}
 	}
 
 	hideMove2(){
 		this.sprite.moveTile2.visible = false;
+		this.travelConfirm = false;
 	}
 
 	// get id(){

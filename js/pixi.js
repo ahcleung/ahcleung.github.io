@@ -1647,14 +1647,16 @@ function addMoveTile(tileContainer){
 	tileContainer.moveTile1 = moveTile1;
 }
 
-function onTileDown(){	
-	if(this.object.traversable){
+function onTileDown(){
+	if(this.object.travelConfirm){
+		console.log("MOVE TO: " + this.object.pos);
+	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
 			item.hideMove2();
 		});
 		this.object.showMove2();
-		
 	}
+
 	console.log(this.object.pos);
 	// this.move2.visible = false;
 }
