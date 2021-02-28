@@ -1501,12 +1501,12 @@ function setup(){
 
 function createTile(item){
 	const tileContainer = new PIXI.Container();	
-	tileContainer.interactive = true;
-	tileContainer.buttonMode = true;
-	tileContainer
-		// events for drag start
-		.on('mousedown', onTileDown)
-		.on('touchstart', onTileDown);
+	// tileContainer.interactive = true;
+	// tileContainer.buttonMode = true;
+	// tileContainer
+	// 	// events for drag start
+	// 	.on('mousedown', onTileDown)
+	// 	.on('touchstart', onTileDown);
 
 	let mapTile;
 	var ifMountain = false;
@@ -1628,6 +1628,12 @@ function createTile(item){
 }
 
 function addMoveTile(tileContainer){
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(0.6);
 	moveTile2.anchor.set(0,1);
@@ -1647,8 +1653,9 @@ function onTileDown(){
 			item.hideMove2();
 		});
 		this.object.showMove2();
-		console.log(this.object.id);
+		
 	}
+	console.log(this.object.pos);
 	// this.move2.visible = false;
 }
 
