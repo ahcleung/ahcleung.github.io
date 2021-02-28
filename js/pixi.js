@@ -1558,7 +1558,7 @@ function onTileDown(){
 			var newY = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
 
 			var veelaMoveTween = new TimelineMax();
-			veelaMoveTween.to(veelaTile2, 1, {x: newX, y: newY, ease:Sine.easeInOut});
+			veelaMoveTween.to(mapHolder.veela, 1, {x: newX, y: newY, ease:Sine.easeInOut});
 			// veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 
 			// mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
