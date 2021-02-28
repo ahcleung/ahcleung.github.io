@@ -1324,10 +1324,10 @@ function setup(){
 
 	mapHolder.addChild(veelaHolder);
 
-	// veelaHolder.x = playerPos[0] * sizeTile.width * 3/4;
-	// veelaHolder.y = playerPos[1] * sizeTile.width*0.8625 - ((playerPos[0]%2)*sizeTile.width*0.8625)/2;
-	veelaHolder.x = playerPos[0];
-	veelaHolder.y = playerPos[1];
+	veelaHolder.x = playerPos[0] * sizeTile.width * 3/4;
+	veelaHolder.y = playerPos[1] * sizeTile.width*0.8625 - ((playerPos[0]%2)*sizeTile.width*0.8625)/2;
+	// veelaHolder.x = playerPos[0];
+	// veelaHolder.y = playerPos[1];
 
 	// tileContainer.x = item.pos[0] * mapTile.width * 3/4;
 	// tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
