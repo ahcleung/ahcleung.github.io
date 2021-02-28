@@ -1433,7 +1433,7 @@ function createTile(item){
 	// 	.on('touchstart', onTileDown);
 
 	let mapTile;
-	var ifMountain = false;
+	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 	switch(item.id){
 		case 0:
@@ -1460,7 +1460,7 @@ function createTile(item){
 			break;
 		case 7:
 			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
-			ifMountain = true;
+			// ifMountain = true;
 			break;
 		case 8:
 			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
@@ -1474,47 +1474,48 @@ function createTile(item){
 	tileContainer.addChild(mapTile);
 
 	// item.pos[0]==j item.pos[1]==i
+	addMoveTile(tileContainer);
 
-	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1] && !ifMountain){
-		addMoveTile(tileContainer);
-		item.traversable = true;
+	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
+		item.showMove1();
+		// item.traversable = true;
 		tileTraverable.push(item);
 	}
-	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1] && !ifMountain){
-		addMoveTile(tileContainer);
-		item.traversable = true;
+	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
+		item.showMove1();
+		// item.traversable = true;
 		tileTraverable.push(item);
 	}
-	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1 && !ifMountain){
-		addMoveTile(tileContainer);
-		item.traversable = true;
+	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
+		item.showMove1();
+		// item.traversable = true;
 		tileTraverable.push(item);
 	}
-	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1 && !ifMountain){
-		addMoveTile(tileContainer);
-		item.traversable = true;
+	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
+		item.showMove1();
+		// item.traversable = true;
 		tileTraverable.push(item);
 	}
 	if(playerPos[0]% 2 == 0){
-		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
-			addMoveTile(tileContainer);
-			item.traversable = true;
+		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
+			item.showMove1();
+			// item.traversable = true;
 			tileTraverable.push(item);
 		}
-		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1 && !ifMountain){
-			addMoveTile(tileContainer);
-			item.traversable = true;
+		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
+			item.showMove1();
+			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 	}else{
-		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
-			addMoveTile(tileContainer);
-			item.traversable = true;
+		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
+			item.showMove1();
+			// item.traversable = true;
 			tileTraverable.push(item);
 		}
-		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1 && !ifMountain){
-			addMoveTile(tileContainer);
-			item.traversable = true;
+		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
+			item.showMove1();
+			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 	}
@@ -1543,7 +1544,7 @@ function addMoveTile(tileContainer){
 	moveTile2.anchor.set(0,1);
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;
-	moveTile2.visible = false;
+	// moveTile2.visible = false;
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
