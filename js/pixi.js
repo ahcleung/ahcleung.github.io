@@ -1475,6 +1475,8 @@ function createTile(item){
 
 	// item.pos[0]==j item.pos[1]==i
 	addMoveTile(tileContainer);
+	item.sprite = tileContainer;
+	tileContainer.object = item;
 
 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
 		item.showMove1();
@@ -1526,8 +1528,8 @@ function createTile(item){
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
 
-	item.sprite = tileContainer;
-	tileContainer.object = item;
+	
+	
 
 	mapHolder.addChild(tileContainer)
 }
