@@ -1544,14 +1544,17 @@ function addMoveTile(tileContainer){
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(0.6);
 	moveTile2.anchor.set(0,1);
+	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;
-	// moveTile2.visible = false;
+	
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
+	moveTile1.visible = false;
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
+
 }
 
 function onTileDown(){
