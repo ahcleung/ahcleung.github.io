@@ -1554,19 +1554,22 @@ function onTileDown(){
 			// mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 			// mapHolder.veela.y = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
 
-			var newX = playerPos[0] * mapHolder.tileWidth * 3/4;
-			var newY = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
+			var newVeelaX = playerPos[0] * mapHolder.tileWidth * 3/4;
+			var newVeelaY = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
 
 			var veelaMoveTween = new TimelineMax();
-			veelaMoveTween.to(mapHolder.veela, 1, {x: newX, y: newY, ease:Sine.easeInOut});
+			veelaMoveTween.to(mapHolder.veela, 1, {x: newVeelaX, y: newVeelaY, ease:Sine.easeInOut});
 			// veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 
-			// mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
-			// if(playerPos[0]% 2 == 0){		
-			// 	mapHolder.y = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) - (mapHolder.tileHeight/2) + (app.screen.height/2);
-			// }else{
-			// 	mapHolder.y = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
-			// }
+			var newMapX = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
+			if(playerPos[0]% 2 == 0){		
+				var newMapY = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+			}else{
+				var newMapY = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
+			}
+			var mapTween = new TimelineMax();
+			mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut});
+
 		});
 	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
