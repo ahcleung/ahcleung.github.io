@@ -1650,6 +1650,10 @@ function addMoveTile(tileContainer){
 function onTileDown(){
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
+		tileTraverable.forEach(item =>{
+			item.hideMove1();
+			item.hideMove2();
+		});
 	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
 			item.hideMove2();
