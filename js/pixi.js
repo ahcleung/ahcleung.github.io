@@ -1335,6 +1335,7 @@ function setup(){
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
 	mapHolder.tileWidth = sizeTile.width;
+	mapHolder.tileHeight = sizeTile.height;
 	
 	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
@@ -1480,44 +1481,36 @@ function createTile(item){
 
 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
 		item.showMove1();
-		// item.traversable = true;
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
 		item.showMove1();
-		// item.traversable = true;
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
 		item.showMove1();
-		// item.traversable = true;
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
 		item.showMove1();
-		// item.traversable = true;
 		tileTraverable.push(item);
 	}
 	if(playerPos[0]% 2 == 0){
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
 			item.showMove1();
-			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
 			item.showMove1();
-			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 	}else{
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
 			item.showMove1();
-			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
 			item.showMove1();
-			// item.traversable = true;
 			tileTraverable.push(item);
 		}
 	}
@@ -1527,10 +1520,6 @@ function createTile(item){
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
-
-	
-	
-
 	mapHolder.addChild(tileContainer)
 }
 
@@ -1546,15 +1535,13 @@ function addMoveTile(tileContainer){
 	moveTile2.anchor.set(0,1);
 	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
-	tileContainer.moveTile2 = moveTile2;
-	
+	tileContainer.moveTile2 = moveTile2;	
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
 	moveTile1.scale.set(0.6);
 	moveTile1.anchor.set(0,1);
 	moveTile1.visible = false;
 	tileContainer.addChild(moveTile1);
 	tileContainer.moveTile1 = moveTile1;
-
 }
 
 function onTileDown(){
@@ -1566,6 +1553,13 @@ function onTileDown(){
 			playerPos = this.object.pos;
 			mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 			mapHolder.veela.y = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
+			
+			mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
+			if(playerPos[0]% 2 == 0){		
+				mapHolder.y = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+			}else{
+				mapHolder.y = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
+			}
 		});
 	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
@@ -1573,7 +1567,6 @@ function onTileDown(){
 		});
 		this.object.showMove2();
 	}
-
 	console.log(this.object.pos);
 	// this.move2.visible = false;
 }
