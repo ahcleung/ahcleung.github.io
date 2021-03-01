@@ -1484,7 +1484,7 @@ function createTile(item, itemIndex){
 	tileContainer.object = item;
 		
 	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
-	tileContainer.y = item.pos[1] * mapTile.width*0.8625 + ((item.pos[0]%2)*mapTile.width*0.8625)/2;
+	tileContainer.y = (item.pos[1]+1) * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
