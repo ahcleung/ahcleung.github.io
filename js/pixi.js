@@ -1327,7 +1327,7 @@ function setup(){
 	mapHolder.addChild(veelaHolder);
 
 	veelaHolder.x = playerPos[0] * sizeTile.width * 3/4;
-	veelaHolder.y = playerPos[1] * sizeTile.width*0.8625 - ((playerPos[0]%2)*sizeTile.width*0.8625)/2;
+	veelaHolder.y = (playerPos[1]+1) * sizeTile.width*0.8625 - ((playerPos[0]%2)*sizeTile.width*0.8625)/2;
 	// veelaHolder.x = playerPos[0];
 	// veelaHolder.y = playerPos[1];
 
