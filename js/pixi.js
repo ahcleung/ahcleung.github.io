@@ -1549,6 +1549,7 @@ function showTraversable(){
 	}
 
 	traversableIndex.forEach(arrayIndex=>{
+		console.log(arrayIndex);
 		tileArray[arrayIndex].showMove1();
 		tileTraverable.push(tileArray[arrayIndex]);
 	});
