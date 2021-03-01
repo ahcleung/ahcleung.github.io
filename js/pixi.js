@@ -1401,9 +1401,9 @@ function setup(){
 	// app.stage.addChild(tileArray[0].sprite);
 
 	var centerGraphic = new PIXI.Graphics();
-	// centerGraphic.beginFill(0xff0000);
+	centerGraphic.beginFill(0xff0000);
 	// centerGraphic.beginFill(0x00ff00);
-	centerGraphic.beginFill(0x0000ff);
+	// centerGraphic.beginFill(0x0000ff);
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
