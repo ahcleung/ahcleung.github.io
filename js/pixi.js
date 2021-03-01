@@ -1534,6 +1534,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
+	tileTraverable = [];
 	var traversableIndex = [
 		((playerPos[1]+1) * 50) + playerPos[0],
 		((playerPos[1]-1) * 50) + playerPos[0],
@@ -1597,6 +1598,8 @@ function onTileDown(){
 		}
 		var mapTween = new TimelineMax();
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut});
+
+		showTraversable();
 	}else if(this.object.traversable){
 		tileTraverable.forEach(item =>{
 			item.hideMove2();
