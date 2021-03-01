@@ -1340,12 +1340,12 @@ function setup(){
 	mapHolder.tileHeight = sizeTile.height;
 
 	
-	// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
-	// if(playerPos[0]% 2 == 0){		
-	// 	mapHolder.y = -(sizeTile.height * (playerPos[1])) - (sizeTile.height/2) + (app.screen.height/2);
-	// }else{
-	// 	mapHolder.y = -(sizeTile.height * (playerPos[1])) + (app.screen.height/2);
-	// }
+	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
+	if(playerPos[0]% 2 == 0){		
+		mapHolder.y = -(sizeTile.height * (playerPos[1])) - (sizeTile.height/2) + (app.screen.height/2);
+	}else{
+		mapHolder.y = -(sizeTile.height * (playerPos[1])) + (app.screen.height/2);
+	}
 
 	// if(playerPos[0]% 2 == 0){		
 	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
@@ -1401,8 +1401,8 @@ function setup(){
 	// app.stage.addChild(tileArray[0].sprite);
 
 	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0xff0000);
-	// centerGraphic.beginFill(0x00ff00);
+	// centerGraphic.beginFill(0xff0000);
+	centerGraphic.beginFill(0x00ff00);
 	// centerGraphic.beginFill(0x0000ff);
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
