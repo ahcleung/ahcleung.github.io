@@ -1585,15 +1585,22 @@ function onTileDown(){
 		});
 		playerPos = this.object.pos;
 		var newVeelaX = playerPos[0] * mapHolder.tileWidth * 3/4;
-		var newVeelaY = playerPos[1] * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
+		var newVeelaY = (playerPos[1]+1) * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
 		var veelaMoveTween = new TimelineMax();
 		veelaMoveTween.to(mapHolder.veela, 1, {x: newVeelaX, y: newVeelaY, ease:Sine.easeInOut});
 
 		var newMapX = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
+
+		// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
+		// 	if(playerPos[0]% 2 == 0){		
+		// 		mapHolder.y = -(sizeTile.height * (playerPos[1])) - (sizeTile.height/2) + (app.screen.height/2);
+		// 	}else{
+		// 		mapHolder.y = -(sizeTile.height * (playerPos[1])) + (app.screen.height/2);
+		// 	}
 		if(playerPos[0]% 2 == 0){		
-			var newMapY = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+			var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
 		}else{
-			var newMapY = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
+			var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
 		}
 		var mapTween = new TimelineMax();
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
