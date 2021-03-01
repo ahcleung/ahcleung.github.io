@@ -1282,7 +1282,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [40,0];
+	playerPos = [41,0];
 	// var playerPos = [0,1];
 
 	for(var i = 0; i < 44; i++){
