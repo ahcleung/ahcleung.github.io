@@ -1282,7 +1282,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [40,14];
+	playerPos = [40,0];
 	// var playerPos = [0,1];
 
 	for(var i = 0; i < 44; i++){
@@ -1393,13 +1393,13 @@ function setup(){
 	
 	// app.stage.addChild(tileArray[0].sprite);
 
-	// var centerGraphic = new PIXI.Graphics();
-	// centerGraphic.beginFill(0xff0000);
-	// centerGraphic.drawRect(0, 0, 100, 100);
-	// centerGraphic.endFill();
-	// app.stage.addChild(centerGraphic);
-	// centerGraphic.x = app.screen.width/2;
-	// centerGraphic.y = app.screen.height/2;
+	var centerGraphic = new PIXI.Graphics();
+	centerGraphic.beginFill(0xff0000);
+	centerGraphic.drawRect(0, 0, 100, 100);
+	centerGraphic.endFill();
+	app.stage.addChild(centerGraphic);
+	centerGraphic.x = app.screen.width/2;
+	centerGraphic.y = app.screen.height/2;
 
 	// mapHolder
 
