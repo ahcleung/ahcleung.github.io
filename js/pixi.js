@@ -1297,8 +1297,8 @@ function setup(){
 		}
 	}
 
-	tileArray.forEach(item =>{
-		createTile(item)
+	tileArray.forEach((item, itemIndex) =>{
+		createTile(item, itemIndex)
 	});
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1424,7 +1424,7 @@ function setup(){
 	calculateTurnOrder();
 }
 
-function createTile(item){
+function createTile(item, itemIndex){
 	const tileContainer = new PIXI.Container();	
 	// tileContainer.interactive = true;
 	// tileContainer.buttonMode = true;
@@ -1480,36 +1480,44 @@ function createTile(item){
 	tileContainer.object = item;
 
 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
+		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 		item.showMove1();
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
+		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 		item.showMove1();
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
+		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 		item.showMove1();
 		tileTraverable.push(item);
 	}
 	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
+		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 		item.showMove1();
 		tileTraverable.push(item);
 	}
 	if(playerPos[0]% 2 == 0){
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
+			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 			item.showMove1();
 			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
+			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 			item.showMove1();
 			tileTraverable.push(item);
 		}
 	}else{
 		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
+			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 			item.showMove1();
 			tileTraverable.push(item);
 		}
 		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
+			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 			item.showMove1();
 			tileTraverable.push(item);
 		}
