@@ -340,7 +340,7 @@ const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 const tileArray = [];
-const tileTraverable = [];
+var tileTraversable = [];
 var playerPos = [];
 
 const heroHazardSprite = [];
@@ -1484,44 +1484,44 @@ function createTile(item, itemIndex){
 	// if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
 	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 	item.showMove1();
-	// 	tileTraverable.push(item);
+	// 	tileTraversable.push(item);
 	// }
 	// if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
 	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 	item.showMove1();
-	// 	tileTraverable.push(item);
+	// 	tileTraversable.push(item);
 	// }
 	// if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
 	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 	item.showMove1();
-	// 	tileTraverable.push(item);
+	// 	tileTraversable.push(item);
 	// }
 	// if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
 	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 	item.showMove1();
-	// 	tileTraverable.push(item);
+	// 	tileTraversable.push(item);
 	// }
 	// if(playerPos[0]% 2 == 0){
 	// 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
 	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 		item.showMove1();
-	// 		tileTraverable.push(item);
+	// 		tileTraversable.push(item);
 	// 	}
 	// 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
 	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 		item.showMove1();
-	// 		tileTraverable.push(item);
+	// 		tileTraversable.push(item);
 	// 	}
 	// }else{
 	// 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
 	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 		item.showMove1();
-	// 		tileTraverable.push(item);
+	// 		tileTraversable.push(item);
 	// 	}
 	// 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
 	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
 	// 		item.showMove1();
-	// 		tileTraverable.push(item);
+	// 		tileTraversable.push(item);
 	// 	}
 	// }
 		
@@ -1534,7 +1534,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	tileTraverable = [];
+	tileTraversable = [];
 	var traversableIndex = [
 		((playerPos[1]+1) * 50) + playerPos[0],
 		((playerPos[1]-1) * 50) + playerPos[0],
@@ -1552,7 +1552,7 @@ function showTraversable(){
 	traversableIndex.forEach(arrayIndex=>{
 		console.log(arrayIndex);
 		tileArray[arrayIndex].showMove1();
-		tileTraverable.push(tileArray[arrayIndex]);
+		tileTraversable.push(tileArray[arrayIndex]);
 	});
 }
 
@@ -1580,7 +1580,7 @@ function addMoveTile(tileContainer){
 function onTileDown(){
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
-		tileTraverable.forEach(item =>{
+		tileTraversable.forEach(item =>{
 			item.hideMove1();
 			item.hideMove2();
 		});
@@ -1601,7 +1601,7 @@ function onTileDown(){
 
 		showTraversable();
 	}else if(this.object.traversable){
-		tileTraverable.forEach(item =>{
+		tileTraversable.forEach(item =>{
 			item.hideMove2();
 		});
 		this.object.showMove2();
