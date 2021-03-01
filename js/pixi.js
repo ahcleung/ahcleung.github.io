@@ -1301,6 +1301,8 @@ function setup(){
 		createTile(item, itemIndex)
 	});
 
+	showTraversable();
+
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
 	sizeTile.scale.set(0.6);
 
@@ -1479,49 +1481,49 @@ function createTile(item, itemIndex){
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 
-	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
-		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-		item.showMove1();
-		tileTraverable.push(item);
-	}
-	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
-		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-		item.showMove1();
-		tileTraverable.push(item);
-	}
-	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
-		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-		item.showMove1();
-		tileTraverable.push(item);
-	}
-	if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
-		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-		item.showMove1();
-		tileTraverable.push(item);
-	}
-	if(playerPos[0]% 2 == 0){
-		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
-			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-			item.showMove1();
-			tileTraverable.push(item);
-		}
-		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
-			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-			item.showMove1();
-			tileTraverable.push(item);
-		}
-	}else{
-		if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
-			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-			item.showMove1();
-			tileTraverable.push(item);
-		}
-		if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
-			console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
-			item.showMove1();
-			tileTraverable.push(item);
-		}
-	}
+	// if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]){
+	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 	item.showMove1();
+	// 	tileTraverable.push(item);
+	// }
+	// if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]){
+	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 	item.showMove1();
+	// 	tileTraverable.push(item);
+	// }
+	// if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]+1){
+	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 	item.showMove1();
+	// 	tileTraverable.push(item);
+	// }
+	// if(item.pos[0] == playerPos[0] && item.pos[1] == playerPos[1]-1){
+	// 	console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 	item.showMove1();
+	// 	tileTraverable.push(item);
+	// }
+	// if(playerPos[0]% 2 == 0){
+	// 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]+1){
+	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 		item.showMove1();
+	// 		tileTraverable.push(item);
+	// 	}
+	// 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]+1){
+	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 		item.showMove1();
+	// 		tileTraverable.push(item);
+	// 	}
+	// }else{
+	// 	if(item.pos[0] == playerPos[0]-1 && item.pos[1] == playerPos[1]-1){
+	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 		item.showMove1();
+	// 		tileTraverable.push(item);
+	// 	}
+	// 	if(item.pos[0] == playerPos[0]+1 && item.pos[1] == playerPos[1]-1){
+	// 		console.log("Moveable: " + itemIndex + "Pos: " + item.pos);
+	// 		item.showMove1();
+	// 		tileTraverable.push(item);
+	// 	}
+	// }
 		
 	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
 	tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
@@ -1529,6 +1531,27 @@ function createTile(item, itemIndex){
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
 	mapHolder.addChild(tileContainer)
+}
+
+function showTraversable(){
+	var traversableIndex = [
+		((playerPos[0]+1) * 50) + playerPos[1],
+		((playerPos[0]-1) * 50) + playerPos[1],
+		(playerPos[0] * 50) + (playerPos[1]+1),
+		(playerPos[0] * 50) + (playerPos[1]-1)
+	];
+	if(playerPos[0]% 2 == 0){
+		traversableIndex.push(((playerPos[0]-1) * 50) + (playerPos[1]+1));
+		traversableIndex.push(((playerPos[0]+1) * 50) + (playerPos[1]+1));
+	}else{
+		traversableIndex.push(((playerPos[0]-1) * 50) + (playerPos[1]-1));
+		traversableIndex.push(((playerPos[0]+1) * 50) + (playerPos[1]-1));
+	}
+
+	traversableIndex.forEach(arrayIndex=>{
+		tileArray[arrayIndex].showMove1();
+		tileTraverable.push(tileArray[arrayIndex]);
+	});
 }
 
 function addMoveTile(tileContainer){
