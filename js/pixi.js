@@ -1490,7 +1490,7 @@ function showTraversable(){
 		if(playerPos[0] == 0){			
 			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
 			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
-		}else if(playerPos[0] == 50){
+		}else if(playerPos[0] == 49){
 			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
 		}else{
 			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
@@ -1500,11 +1500,11 @@ function showTraversable(){
 				traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 			}
 		}
-	}else if(playerPos[1] == 44){
+	}else if(playerPos[1] == 43){
 		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
 		if(playerPos[0] == 0){
 			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
-		}else if(playerPos[0] == 50){
+		}else if(playerPos[0] == 49){
 			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
 			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
 		}else{
@@ -1520,7 +1520,7 @@ function showTraversable(){
 		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
 		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
 		traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
-	}else if(playerPos[0] == 50){
+	}else if(playerPos[0] == 49){
 		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
 		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
 		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
