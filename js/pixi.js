@@ -1557,8 +1557,10 @@ function showTraversable(){
 			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
 			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
 			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
+			traversableIndex.push(((playerPos[1]-2) * 50) + playerPos[0]+1);
+			traversableIndex.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
 			if(playerPos[0]% 2 == 0){
-				
+
 			}else{
 
 			}
