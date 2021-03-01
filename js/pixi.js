@@ -1493,6 +1493,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
+	var range = 2;
 	tileTraversable = [];
 	var traversableIndex = [];
 	if(playerPos[1] == 0){
@@ -1547,7 +1548,13 @@ function showTraversable(){
 			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
 			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
 		}
-	}	
+		if(range == 2){
+			traversableIndex.push(((playerPos[1]-2) * 50) + playerPos[0]);
+			traversableIndex.push(((playerPos[1]+2) * 50) + playerPos[0]);
+			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+2));
+			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-2));
+		}
+	}
 
 	traversableIndex.forEach(arrayIndex=>{
 		console.log(arrayIndex);
