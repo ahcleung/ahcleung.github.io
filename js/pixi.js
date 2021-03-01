@@ -1597,9 +1597,11 @@ function onTileDown(){
 			var newMapY = -(mapHolder.tileHeight*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
 		}
 		var mapTween = new TimelineMax();
-		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut});
+		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
+			showTraversable();
+		}});
 
-		showTraversable();
+		
 	}else if(this.object.traversable){
 		tileTraversable.forEach(item =>{
 			item.hideMove2();
