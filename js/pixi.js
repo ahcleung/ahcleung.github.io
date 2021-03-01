@@ -1338,7 +1338,7 @@ function setup(){
 	mapHolder.veela = veelaHolder;
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
-	
+
 	
 	// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 	// if(playerPos[0]% 2 == 0){		
@@ -1402,8 +1402,8 @@ function setup(){
 
 	var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
-	centerGraphic.beginFill(0x00ff00);
-	// centerGraphic.beginFill(0x0000ff);
+	// centerGraphic.beginFill(0x00ff00);
+	centerGraphic.beginFill(0x0000ff);
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
@@ -1484,7 +1484,7 @@ function createTile(item, itemIndex){
 	tileContainer.object = item;
 		
 	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
-	tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
+	tileContainer.y = item.pos[1] * mapTile.width*0.8625 + ((item.pos[0]%2)*mapTile.width*0.8625)/2;
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
