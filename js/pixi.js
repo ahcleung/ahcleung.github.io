@@ -1285,6 +1285,11 @@ function setup(){
 	playerPos = [41,43];
 	// var playerPos = [0,1];
 
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	sizeTile.scale.set(0.6);
+	mapHolder.tileWidth = sizeTile.width;
+	mapHolder.tileHeight = sizeTile.height;
+
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
 			const newTile = new Tile({
@@ -1302,9 +1307,6 @@ function setup(){
 	});
 
 	showTraversable();
-
-	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
-	sizeTile.scale.set(0.6);
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
 	veelaTile1.scale.set(0.6);
@@ -1326,8 +1328,8 @@ function setup(){
 
 	mapHolder.addChild(veelaHolder);
 
-	veelaHolder.x = playerPos[0] * sizeTile.width * 3/4;
-	veelaHolder.y = (playerPos[1]+1) * sizeTile.width*0.8625 - ((playerPos[0]%2)*sizeTile.width*0.8625)/2;
+	veelaHolder.x = playerPos[0] * mapHolder.tileWidth * 3/4;
+	veelaHolder.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 	// veelaHolder.x = playerPos[0];
 	// veelaHolder.y = playerPos[1];
 
@@ -1336,15 +1338,14 @@ function setup(){
 
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
-	mapHolder.tileWidth = sizeTile.width;
-	mapHolder.tileHeight = sizeTile.height;
+	
 
 	
-	mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
+	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
-		mapHolder.y = -(sizeTile.height * (playerPos[1])) - (sizeTile.height/2) + (app.screen.height/2);
+		mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
 	}else{
-		mapHolder.y = -(sizeTile.height * (playerPos[1])) + (app.screen.height/2);
+		mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
 	}
 
 	// if(playerPos[0]% 2 == 0){		
@@ -1402,8 +1403,8 @@ function setup(){
 
 	var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
-	centerGraphic.beginFill(0x00ff00);
-	// centerGraphic.beginFill(0x0000ff);
+	// centerGraphic.beginFill(0x00ff00);
+	centerGraphic.beginFill(0x0000ff);
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
@@ -1483,8 +1484,8 @@ function createTile(item, itemIndex){
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 		
-	tileContainer.x = item.pos[0] * mapTile.width * 3/4;
-	tileContainer.y = (item.pos[1]+1) * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
+	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
+	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
@@ -1585,7 +1586,7 @@ function onTileDown(){
 		});
 		playerPos = this.object.pos;
 		var newVeelaX = playerPos[0] * mapHolder.tileWidth * 3/4;
-		var newVeelaY = (playerPos[1]+1) * mapHolder.tileWidth*0.8625 - ((playerPos[0]%2)*mapHolder.tileWidth*0.8625)/2;
+		var newVeelaY = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 		var veelaMoveTween = new TimelineMax();
 		veelaMoveTween.to(mapHolder.veela, 1, {x: newVeelaX, y: newVeelaY, ease:Sine.easeInOut});
 
