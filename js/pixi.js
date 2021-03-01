@@ -1540,14 +1540,14 @@ function showTraversable(){
 		(playerPos[1] * 50) + (playerPos[0]+1),
 		(playerPos[1] * 50) + (playerPos[0]-1)
 	];
-	if(playerPos[0]% 2 == 0){
+	// if(playerPos[0]% 2 == 0){
 		
-		traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
-		traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
-	}else{
-		traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
-		traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
-	}
+	// 	traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+	// 	traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
+	// }else{
+	// 	traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
+	// 	traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+	// }
 
 	traversableIndex.forEach(arrayIndex=>{
 		console.log(arrayIndex);
