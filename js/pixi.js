@@ -1282,7 +1282,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [41,0];
+	playerPos = [41,14];
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
