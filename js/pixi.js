@@ -1598,7 +1598,7 @@ function onTileDown(){
 		});
 		this.object.showMove2();
 	}
-	console.log(this.object.pos);
+	// console.log(this.object.pos);
 	// this.move2.visible = false;
 }
 
