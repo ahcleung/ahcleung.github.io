@@ -1618,7 +1618,19 @@ function showTraversable(){
 		}
 	});
 
-	console.log("Mountains at: " + removeArray);
+	console.log("Pos at: " + removeArray);
+
+	removeFromArray = [];
+	traversableRing2.forEach((tileIndex, index)=>{
+		removeArray.forEach(pos=>{
+			if(tileArray[tileIndex].pos == pos){
+				removeFromArray.push(index);
+			}
+		});		
+	});
+
+
+	console.log("Index at: " + removeFromArray);
 
 	traversableIndex = traversableRing1.concat(traversableRing2);
 
