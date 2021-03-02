@@ -1578,7 +1578,7 @@ function showTraversable(){
 	var mountainArray = [];
 	traversableRing1.forEach(arrayIndex=>{
 		if(tileArray[arrayIndex].id == 7){
-			mountainArray.push(arrayIndex);
+			mountainArray.push(tileArray[arrayIndex].pos);
 		}
 	});
 	console.log("Mountains at: " + mountainArray);
@@ -1586,7 +1586,7 @@ function showTraversable(){
 	traversableIndex = traversableRing1.concat(traversableRing2);
 
 	traversableIndex.forEach(arrayIndex=>{
-		console.log(arrayIndex);
+		// console.log(arrayIndex);
 		tileArray[arrayIndex].showMove1();
 		tileTraversable.push(tileArray[arrayIndex]);
 	});
