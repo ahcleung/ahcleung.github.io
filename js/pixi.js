@@ -1583,6 +1583,23 @@ function showTraversable(){
 	});
 	console.log("Mountains at: " + mountainArray);
 
+	var removeArray = [];
+	mountainArray.forEach(pos=>{
+		var x = pos[0] - playerPos[0];
+		var y = pos[1] - playerPos[1];
+		if(playerPos[0]% 2 == 0){
+
+		}else{
+			if(x == -1 && y == -1){
+				removeArray.push([pos[0],pos[1]-2]);
+				removeArray.push([pos[0]-1,pos[1]-1]);
+				removeArray.push([pos[0]-1,pos[1]]);
+			}
+		}
+	});
+
+	console.log("Mountains at: " + removeArray);
+
 	traversableIndex = traversableRing1.concat(traversableRing2);
 
 	traversableIndex.forEach(arrayIndex=>{
