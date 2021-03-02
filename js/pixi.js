@@ -1588,7 +1588,31 @@ function showTraversable(){
 		var x = pos[0] - playerPos[0];
 		var y = pos[1] - playerPos[1];
 		if(playerPos[0]% 2 == 0){
-
+			if(x == -1 && y == 0){
+				removeArray.push([pos[0],pos[1]-1]);
+				removeArray.push([pos[0]-1,pos[1]-1]);
+				removeArray.push([pos[0]-1,pos[1]]);
+			}else if(x == 0 && y == -1){
+				removeArray.push([pos[0]-1,pos[1]]);
+				removeArray.push([pos[0],pos[1]-1]);
+				removeArray.push([pos[0]+1,pos[1]]);
+			}else if(x == 1 && y == 0){
+				removeArray.push([pos[0],pos[1]-1]);
+				removeArray.push([pos[0]+1,pos[1]-1]);
+				removeArray.push([pos[0]+1,pos[1]]);
+			}else if(x == 1 && y == 1){
+				removeArray.push([pos[0]+1,pos[1]-1]);
+				removeArray.push([pos[0]+1,pos[1]]);
+				removeArray.push([pos[0],pos[1]+1]);
+			}else if(x == 0 && y == 1){
+				removeArray.push([pos[0]+1,pos[1]+1]);
+				removeArray.push([pos[0],pos[1]+1]);
+				removeArray.push([pos[0]-1,pos[1]+1]);
+			}else if(x == -1 && y == 1){
+				removeArray.push([pos[0],pos[1]+1]);
+				removeArray.push([pos[0]-1,pos[1]]);
+				removeArray.push([pos[0]-1,pos[1]-1]);
+			}
 		}else{
 			if(x == -1 && y == -1){
 				removeArray.push([pos[0],pos[1]-1]);
