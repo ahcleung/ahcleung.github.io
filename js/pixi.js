@@ -1314,7 +1314,7 @@ function setup(){
 	veelaTile1.x = veelaTile1.width/2;
 	veelaTile1.y = -(veelaTile1.height/2);
 	let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
-	veelaTile2.scale.set(0.6);
+	veelaTile2.scale.set(spriteScale);
 	veelaTile2.anchor.set(0.5,0.5);
 	veelaTile2.alpha = 0;
 	veelaTile2.x = veelaTile2.width/2;
@@ -1475,7 +1475,7 @@ function createTile(item, itemIndex){
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
 
-	mapTile.scale.set(0.6);
+	mapTile.scale.set(spriteScale);
 	mapTile.anchor.set(0,1);
 	tileContainer.addChild(mapTile);
 
@@ -1643,7 +1643,6 @@ function showTraversable(){
 	});
 
 	console.log("Pos at: " + removeArray);
-
 	removeFromArray = [];
 	traversableRing2.forEach((tileIndex, index)=>{
 		removeArray.forEach(pos=>{
@@ -1681,13 +1680,13 @@ function addMoveTile(tileContainer){
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	moveTile2.scale.set(0.6);
+	moveTile2.scale.set(spriteScale);
 	moveTile2.anchor.set(0,1);
 	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;	
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(0.6);
+	moveTile1.scale.set(spriteScale);
 	moveTile1.anchor.set(0,1);
 	moveTile1.visible = false;
 	tileContainer.addChild(moveTile1);
