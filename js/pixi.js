@@ -1646,6 +1646,7 @@ function onTileDown(){
 
 		
 	}else if(this.object.traversable){
+		console.log(this.object.pos);
 		tileTraversable.forEach(item =>{
 			item.hideMove2();
 		});
