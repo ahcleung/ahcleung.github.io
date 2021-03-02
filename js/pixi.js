@@ -1496,82 +1496,94 @@ function showTraversable(){
 	var range = 2;
 	tileTraversable = [];
 	var traversableIndex = [];
+	var traversableRing1 = [];
+	var traversableRing2 = [];
 	if(playerPos[1] == 0){
-		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
+		traversableRing1.push(((playerPos[1]+1) * 50) + playerPos[0]);
 		if(playerPos[0] == 0){			
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
-			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
+			traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 		}else if(playerPos[0] == 49){
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
 		}else{
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
 			if(playerPos[0]% 2 == 0){
-				traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
-				traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+				traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
+				traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 			}
 		}
 	}else if(playerPos[1] == 43){
-		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
+		traversableRing1.push(((playerPos[1]-1) * 50) + playerPos[0]);
 		if(playerPos[0] == 0){
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
 		}else if(playerPos[0] == 49){
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
-			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
+			traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
 		}else{
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
+			traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
 			if(playerPos[0]% 2 != 0){
-				traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
-				traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
+				traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+				traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
 			}
 		}
 	}else if(playerPos[0] == 0){
-		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
-		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
-		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
-		traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+		traversableRing1.push(((playerPos[1]-1) * 50) + playerPos[0]);
+		traversableRing1.push(((playerPos[1]+1) * 50) + playerPos[0]);
+		traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
+		traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 	}else if(playerPos[0] == 49){
-		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
-		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
-		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
-		traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+		traversableRing1.push(((playerPos[1]-1) * 50) + playerPos[0]);
+		traversableRing1.push(((playerPos[1]+1) * 50) + playerPos[0]);
+		traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
+		traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
 	}else{
-		traversableIndex.push(((playerPos[1]+1) * 50) + playerPos[0]);
-		traversableIndex.push(((playerPos[1]-1) * 50) + playerPos[0]);
-		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+1));
-		traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-1));
+		traversableRing1.push(((playerPos[1]+1) * 50) + playerPos[0]);
+		traversableRing1.push(((playerPos[1]-1) * 50) + playerPos[0]);
+		traversableRing1.push((playerPos[1] * 50) + (playerPos[0]+1));
+		traversableRing1.push((playerPos[1] * 50) + (playerPos[0]-1));
 		if(playerPos[0]% 2 == 0){
-			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
-			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+			traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
+			traversableRing1.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 		}else{
-			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
-			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
+			traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+			traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
 		}
 		if(range == 2){
-			traversableIndex.push(((playerPos[1]+2) * 50) + playerPos[0]);
-			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
-			traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
+			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]);
+			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
+			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
 
-			// traversableIndex.push(((playerPos[1]-2) * 50) + playerPos[0]);
-			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
-			traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
+			traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]);
+			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
+			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
 
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]+2));
-			traversableIndex.push((playerPos[1] * 50) + (playerPos[0]-2));
+			traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
+			traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
 			if(playerPos[0]% 2 == 0){
-				traversableIndex.push(((playerPos[1]+2) * 50) + playerPos[0]+1);
-				traversableIndex.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
-				// traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
-				// traversableIndex.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
+				traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]+1);
+				traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
+				traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+				traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
 			}else{
-				// traversableIndex.push(((playerPos[1]-2) * 50) + playerPos[0]+1);
-				// traversableIndex.push(((playerPos[1]-2) * 50) + playerPos[0]-1);
-				traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
-				traversableIndex.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
+				traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]+1);
+				traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]-1);
+				traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
+				traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 			}
 		}
 	}
+
+	var mountainArray = [];
+	traversableRing1.forEach(arrayIndex=>{
+		if(tileArray[arrayIndex].id == 7){
+			mountainArray.push(arrayIndex);
+		}
+	});
+	console.log("Mountains at: " + mountainArray);
+
+	traversableIndex = traversableRing1.concat(traversableRing2);
 
 	traversableIndex.forEach(arrayIndex=>{
 		console.log(arrayIndex);
