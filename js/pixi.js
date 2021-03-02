@@ -1550,28 +1550,29 @@ function showTraversable(){
 			traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
 			traversableRing1.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
 		}
-		if(range == 2){
-			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]);
-			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
-			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
+	}
 
-			traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]);
-			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
-			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
+	if(range == 2){
+		traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]);
+		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
+		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
 
-			traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
-			traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
-			if(playerPos[0]% 2 == 0){
-				traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]+1);
-				traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
-				traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
-				traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
-			}else{
-				traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]+1);
-				traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]-1);
-				traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
-				traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
-			}
+		traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]);
+		traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
+		traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
+
+		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
+		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
+		if(playerPos[0]% 2 == 0){
+			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]+1);
+			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
+			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-1));
+			traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+1));
+		}else{
+			traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]+1);
+			traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]-1);
+			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-1));
+			traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+1));
 		}
 	}
 
