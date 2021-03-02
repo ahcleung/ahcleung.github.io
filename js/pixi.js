@@ -1629,7 +1629,7 @@ function showTraversable(){
 		});		
 	});
 
-
+	removeFromArray = removeDuplicates(removeFromArray);
 	console.log("Index at: " + removeFromArray);
 
 	traversableIndex = traversableRing1.concat(traversableRing2);
@@ -1640,6 +1640,10 @@ function showTraversable(){
 		tileTraversable.push(tileArray[arrayIndex]);
 	});
 }
+
+function removeDuplicates(array) {
+	return array.filter((a, b) => array.indexOf(a) === b)
+};
 
 function arraysEqual(a, b) {
 	if (a === b) return true;
