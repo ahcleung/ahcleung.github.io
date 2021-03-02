@@ -1577,7 +1577,7 @@ function showTraversable(){
 
 	var mountainArray = [];
 	traversableRing1.forEach(arrayIndex=>{
-		if(tileArray[arrayIndex].id == 7){
+		if(tileArray[arrayIndex].id == 7 || tileArray[arrayIndex].id == 6){
 			mountainArray.push(tileArray[arrayIndex].pos);
 		}
 	});
