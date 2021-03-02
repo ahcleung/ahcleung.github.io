@@ -1632,6 +1632,10 @@ function showTraversable(){
 	removeFromArray = removeDuplicates(removeFromArray);
 	console.log("Index at: " + removeFromArray);
 
+	for (var i = removeFromArray.length -1; i >= 0; i--){
+		traversableRing2.splice(removeFromArray[i],1);
+	}
+
 	traversableIndex = traversableRing1.concat(traversableRing2);
 
 	traversableIndex.forEach(arrayIndex=>{
@@ -1644,22 +1648,6 @@ function showTraversable(){
 function removeDuplicates(array) {
 	return array.filter((a, b) => array.indexOf(a) === b)
 };
-
-function arraysEqual(a, b) {
-	if (a === b) return true;
-	if (a == null || b == null) return false;
-	if (a.length !== b.length) return false;
-
-  // If you don't care about the order of the elements inside
-  // the array, you should sort both arrays here.
-  // Please note that calling sort on an array will modify that array.
-  // you might want to clone your array first.
-
-	for (var i = 0; i < a.length; ++i) {
-		if (a[i] !== b[i]) return false;
-	}
-	return true;
-}
 
 function addMoveTile(tileContainer){
 	tileContainer.interactive = true;
