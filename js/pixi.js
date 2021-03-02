@@ -1286,7 +1286,7 @@ function setup(){
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
-	sizeTile.scale.set(0.6);
+	sizeTile.scale.set(spriteScale);
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
@@ -1309,7 +1309,7 @@ function setup(){
 	showTraversable();
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
-	veelaTile1.scale.set(0.6);
+	veelaTile1.scale.set(spriteScale);
 	veelaTile1.anchor.set(0.5,0.5);
 	veelaTile1.x = veelaTile1.width/2;
 	veelaTile1.y = -(veelaTile1.height/2);
