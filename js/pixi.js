@@ -1290,10 +1290,11 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [0,0];
+	var sizeScale = 0.6;
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
-	sizeTile.scale.set(0.6);
+	sizeTile.scale.set(sizeScale);
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
@@ -1316,12 +1317,12 @@ function setup(){
 	// showTraversable();
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
-	veelaTile1.scale.set(0.6);
+	veelaTile1.scale.set(sizeScale);
 	veelaTile1.anchor.set(0.5,0.5);
 	veelaTile1.x = veelaTile1.width/2;
 	veelaTile1.y = -(veelaTile1.height/2);
 	let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
-	veelaTile2.scale.set(0.6);
+	veelaTile2.scale.set(sizeScale);
 	veelaTile2.anchor.set(0.5,0.5);
 	veelaTile2.alpha = 0;
 	veelaTile2.x = veelaTile2.width/2;
@@ -1407,9 +1408,21 @@ function setup(){
 	// tileArray[0].sprite.x = app.screen.height/2;
 	
 	// app.stage.addChild(tileArray[0].sprite);
+
+	// mapHolder.tileWidth
+	// mapHolder.tileHeight
+
 	var centerGraphic = new PIXI.Graphics();
 	centerGraphic.beginFill(0xff0000);
-	var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
+	var points = [
+		mapHolder.tileWidth/4,0,
+		mapHolder.tileWidth*3/4,0,
+		mapHolder.tileWidth,mapHolder.tileHeight/2,
+		mapHolder.tileWidth*3/4,mapHolder.tileHeight,
+		mapHolder.tileWidth/4,mapHolder.tileHeight,
+		0,mapHolder.tileHeight/2
+	];
+	// var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
 	centerGraphic.drawPolygon(points);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
@@ -1490,7 +1503,7 @@ function createTile(item, itemIndex){
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
 
-	mapTile.scale.set(0.6);
+	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileContainer.addChild(mapTile);
 
@@ -1700,13 +1713,13 @@ function addMoveTile(tileContainer){
 	// tileContainer.hitArea = new PIXI.Polygon(points);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	moveTile2.scale.set(0.6);
+	moveTile2.scale.set(sizeScale);
 	moveTile2.anchor.set(0,1);
 	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;	
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(0.6);
+	moveTile1.scale.set(sizeScale);
 	moveTile1.anchor.set(0,1);
 	moveTile1.visible = false;
 	tileContainer.addChild(moveTile1);
