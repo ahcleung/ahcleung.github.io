@@ -1697,7 +1697,7 @@ function addMoveTile(tileContainer){
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
 	// var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
-	tileContainer.hitArea = new PIXI.Polygon(points);
+	// tileContainer.hitArea = new PIXI.Polygon(points);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(0.6);
