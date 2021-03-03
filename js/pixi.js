@@ -1508,7 +1508,34 @@ function createTile(item, itemIndex){
 	tileContainer.addChild(mapTile);
 
 	// item.pos[0]==j item.pos[1]==i
-	addMoveTile(tileContainer);
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+	var points = [
+		mapHolder.tileWidth/4,0,
+		mapHolder.tileWidth*3/4,0,
+		mapHolder.tileWidth,mapHolder.tileHeight/2,
+		mapHolder.tileWidth*3/4,mapHolder.tileHeight,
+		mapHolder.tileWidth/4,mapHolder.tileHeight,
+		0,mapHolder.tileHeight/2
+	];
+	tileContainer.hitArea = new PIXI.Polygon(points);
+
+	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
+	moveTile2.scale.set(sizeScale);
+	moveTile2.anchor.set(0,1);
+	moveTile2.visible = false;
+	tileContainer.addChild(moveTile2);
+	tileContainer.moveTile2 = moveTile2;	
+	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
+	moveTile1.scale.set(sizeScale);
+	moveTile1.anchor.set(0,1);
+	moveTile1.visible = false;
+	tileContainer.addChild(moveTile1);
+	tileContainer.moveTile1 = moveTile1;
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 		
@@ -1701,37 +1728,6 @@ function showTraversable(){
 function removeDuplicates(array) {
 	return array.filter((a, b) => array.indexOf(a) === b)
 };
-
-function addMoveTile(tileContainer){
-	tileContainer.interactive = true;
-	tileContainer.buttonMode = true;
-	tileContainer
-		// events for drag start
-		.on('mousedown', onTileDown)
-		.on('touchstart', onTileDown);
-	var points = [
-		mapHolder.tileWidth/4,0,
-		mapHolder.tileWidth*3/4,0,
-		mapHolder.tileWidth,mapHolder.tileHeight/2,
-		mapHolder.tileWidth*3/4,mapHolder.tileHeight,
-		mapHolder.tileWidth/4,mapHolder.tileHeight,
-		0,mapHolder.tileHeight/2
-	];
-	tileContainer.hitArea = new PIXI.Polygon(points);
-
-	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	moveTile2.scale.set(sizeScale);
-	moveTile2.anchor.set(0,1);
-	moveTile2.visible = false;
-	tileContainer.addChild(moveTile2);
-	tileContainer.moveTile2 = moveTile2;	
-	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(sizeScale);
-	moveTile1.anchor.set(0,1);
-	moveTile1.visible = false;
-	tileContainer.addChild(moveTile1);
-	tileContainer.moveTile1 = moveTile1;
-}
 
 function onMapDown(){
 	if(playerPos[0] == 0 || playerPos[0] == 49 ||  playerPos[1] == 0 || playerPos[1] == 43){
