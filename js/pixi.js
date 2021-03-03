@@ -1407,6 +1407,14 @@ function setup(){
 	// tileArray[0].sprite.x = app.screen.height/2;
 	
 	// app.stage.addChild(tileArray[0].sprite);
+	var centerGraphic = new PIXI.Graphics();
+	centerGraphic.beginFill(0xff0000);
+	var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
+	centerGraphic.drawPolygon(points);
+	centerGraphic.endFill();
+	app.stage.addChild(centerGraphic);
+	centerGraphic.x = app.screen.width/2;
+	centerGraphic.y = app.screen.height/2;
 
 	// var centerGraphic = new PIXI.Graphics();
 	// // centerGraphic.beginFill(0xff0000);
@@ -1688,7 +1696,7 @@ function addMoveTile(tileContainer){
 		// events for drag start
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
-	var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
+	// var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
 	tileContainer.hitArea = new PIXI.Polygon(points);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
