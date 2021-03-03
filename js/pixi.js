@@ -1313,7 +1313,7 @@ function setup(){
 		createTile(item, itemIndex)
 	});
 
-	showTraversable();
+	// showTraversable();
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
 	veelaTile1.scale.set(0.6);
