@@ -1273,12 +1273,12 @@ function setup(){
 	mapBG.endFill();
 	app.stage.addChild(mapBG);
 
-	mapBG.interactive = true;
-	mapBG.buttonMode = true;
-	mapBG
-		// events for drag start
-		.on('mousedown', onMapDown)
-		.on('touchstart', onMapDown);
+	// mapBG.interactive = true;
+	// mapBG.buttonMode = true;
+	// mapBG
+	// 	// events for drag start
+	// 	.on('mousedown', onMapDown)
+	// 	.on('touchstart', onMapDown);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1289,7 +1289,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [41,14];
+	playerPos = [0,0];
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
