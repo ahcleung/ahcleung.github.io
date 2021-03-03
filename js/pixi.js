@@ -1297,25 +1297,17 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	const newTile = new Tile({
-		id: 1,
-		pos: [0,0],
-		discovered: false,
-		travelled: false
-	});
-	tileArray.push(newTile);
-
-	// for(var i = 0; i < 44; i++){
-	// 	for(var j = 0; j < 50; j++){
-	// 		const newTile = new Tile({
-	// 			id: mapList.data.maps[0].tiles[i][j],
-	// 			pos: [j,i],
-	// 			discovered: false,
-	// 			travelled: false
-	// 		});
-	// 		tileArray.push(newTile);
-	// 	}
-	// }
+	for(var i = 0; i < 1; i++){
+		for(var j = 0; j < 1; j++){
+			const newTile = new Tile({
+				id: mapList.data.maps[0].tiles[i][j],
+				pos: [j,i],
+				discovered: false,
+				travelled: false
+			});
+			tileArray.push(newTile);
+		}
+	}
 
 	tileArray.forEach((item, itemIndex) =>{
 		createTile(item, itemIndex)
@@ -1696,6 +1688,8 @@ function addMoveTile(tileContainer){
 		// events for drag start
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
+
+
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(0.6);
 	moveTile2.anchor.set(0,1);
