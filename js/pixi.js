@@ -1709,8 +1709,15 @@ function addMoveTile(tileContainer){
 		// events for drag start
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
-	// var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
-	// tileContainer.hitArea = new PIXI.Polygon(points);
+	var points = [
+		mapHolder.tileWidth/4,0,
+		mapHolder.tileWidth*3/4,0,
+		mapHolder.tileWidth,mapHolder.tileHeight/2,
+		mapHolder.tileWidth*3/4,mapHolder.tileHeight,
+		mapHolder.tileWidth/4,mapHolder.tileHeight,
+		0,mapHolder.tileHeight/2
+	];
+	tileContainer.hitArea = new PIXI.Polygon(points);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(sizeScale);
