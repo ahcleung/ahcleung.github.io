@@ -1729,7 +1729,7 @@ function onMapDown(){
 }
 
 function onTileDown(){
-	console.log("TILE! " + item.pos);
+	console.log("TILE: " + this.object.pos);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
 		tileTraversable.forEach(item =>{
@@ -1762,7 +1762,7 @@ function onTileDown(){
 
 		
 	}else if(this.object.traversable){
-		console.log(this.object.pos);
+		console.log("SELECT: " + this.object.pos);
 		tileTraversable.forEach(item =>{
 			item.hideMove2();
 		});
