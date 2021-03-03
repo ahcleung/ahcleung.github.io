@@ -1298,7 +1298,7 @@ function setup(){
 	mapHolder.tileHeight = sizeTile.height;
 
 	const newTile = new Tile({
-		id: mapList.data.maps[0].tiles[0][0],
+		id: 1,
 		pos: [0,0],
 		discovered: false,
 		travelled: false
