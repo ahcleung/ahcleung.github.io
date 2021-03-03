@@ -1290,7 +1290,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [41,14];
-	sizeScale = 0.6;
+	
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -2523,18 +2523,21 @@ function resize() {
 	skillSelectPadding = app.screen.height/216;
 
 	if(app.screen.width < 860){
+		sizeScale = 0.4;
 		margin = app.screen.height/72;
 		targetTextFontSize = 12;
 		skillNameFontSize = 14;
 		hazardSize = 0.35;
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
+		sizeScale = 0.5;
 		margin = app.screen.height/72;
 		targetTextFontSize = 16;
 		skillNameFontSize = 18;
 		hazardSize = 0.58;
 		hazardMargin = 40;
 	}else{
+		sizeScale = 0.6;
 		targetTextFontSize = 26;
 		skillNameFontSize = 28;
 		hazardSize = 0.75;
