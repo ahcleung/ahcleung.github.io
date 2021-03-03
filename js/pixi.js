@@ -1298,8 +1298,8 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	for(var i = 0; i < 1; i++){
-		for(var j = 0; j < 1; j++){
+	for(var i = 0; i < 44; i++){
+		for(var j = 0; j < 50; j++){
 			const newTile = new Tile({
 				id: mapList.data.maps[0].tiles[i][j],
 				pos: [j,i],
@@ -1523,20 +1523,11 @@ function createTile(item, itemIndex){
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 
-	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0xff0000);
-	// var points = [
-	// 	mapHolder.tileWidth/4,0,
-	// 	mapHolder.tileWidth*3/4,0,
-	// 	mapHolder.tileWidth,mapHolder.tileHeight/2,
-	// 	mapHolder.tileWidth*3/4,mapHolder.tileHeight,
-	// 	mapHolder.tileWidth/4,mapHolder.tileHeight,
-	// 	0,mapHolder.tileHeight/2
-	// ];
-	// var points = [50,0, 150,0, 200,100, 150,200, 50,200, 0,100];
-	centerGraphic.drawPolygon(points);
-	centerGraphic.endFill();
-	tileContainer.addChild(centerGraphic);
+	// var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.drawPolygon(points);
+	// centerGraphic.endFill();
+	// tileContainer.addChild(centerGraphic);
 	// centerGraphic.x = app.screen.width/2;
 	// centerGraphic.y = app.screen.height/2;
 		
