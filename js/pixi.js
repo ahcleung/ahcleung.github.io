@@ -1289,7 +1289,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [0,0];
+	playerPos = [41,14];
 	sizeScale = 0.6;
 	// var playerPos = [0,1];
 
@@ -1314,7 +1314,7 @@ function setup(){
 		createTile(item, itemIndex)
 	});
 
-	// showTraversable();
+	showTraversable();
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
 	veelaTile1.scale.set(sizeScale);
