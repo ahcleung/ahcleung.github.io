@@ -1738,7 +1738,7 @@ function onMapDown(){
 }
 
 function onTileDown(){
-	console.log("TILE!");
+	console.log("TILE! " + item.pos);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
 		tileTraversable.forEach(item =>{
