@@ -1273,12 +1273,12 @@ function setup(){
 	mapBG.endFill();
 	app.stage.addChild(mapBG);
 
-	mapBG.interactive = true;
-	mapBG.buttonMode = true;
-	mapBG
-		// events for drag start
-		.on('mousedown', onMapDown)
-		.on('touchstart', onMapDown);
+	// mapBG.interactive = true;
+	// mapBG.buttonMode = true;
+	// mapBG
+	// 	// events for drag start
+	// 	.on('mousedown', onMapDown)
+	// 	.on('touchstart', onMapDown);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
