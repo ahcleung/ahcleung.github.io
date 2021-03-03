@@ -1493,10 +1493,7 @@ function createTile(item, itemIndex){
 	// item.pos[0]==j item.pos[1]==i
 	tileContainer.interactive = true;
 	tileContainer.buttonMode = true;
-	tileContainer
-		// events for drag start
-		.on('mousedown', onTileDown)
-		.on('touchstart', onTileDown);
+	
 	var points = [
 		mapHolder.tileWidth/4,0,
 		mapHolder.tileWidth*3/4,0,
@@ -1506,6 +1503,10 @@ function createTile(item, itemIndex){
 		0,mapHolder.tileHeight/2
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(sizeScale);
@@ -1737,6 +1738,7 @@ function onMapDown(){
 }
 
 function onTileDown(){
+	console.log("TILE!");
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
 		tileTraversable.forEach(item =>{
@@ -1781,6 +1783,7 @@ function onTileDown(){
 
 function onDragStart(event)
 {
+	console.log("MAP!");
     // store a reference to the data
     // the reason for this is because of multitouch
     // we want to track the movement of this particular touch
