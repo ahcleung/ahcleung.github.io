@@ -1297,17 +1297,25 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	for(var i = 0; i < 44; i++){
-		for(var j = 0; j < 50; j++){
-			const newTile = new Tile({
-				id: mapList.data.maps[0].tiles[i][j],
-				pos: [j,i],
-				discovered: false,
-				travelled: false
-			});
-			tileArray.push(newTile);
-		}
-	}
+	const newTile = new Tile({
+		id: mapList.data.maps[0].tiles[0][0],
+		pos: [0,0],
+		discovered: false,
+		travelled: false
+	});
+	tileArray.push(newTile);
+
+	// for(var i = 0; i < 44; i++){
+	// 	for(var j = 0; j < 50; j++){
+	// 		const newTile = new Tile({
+	// 			id: mapList.data.maps[0].tiles[i][j],
+	// 			pos: [j,i],
+	// 			discovered: false,
+	// 			travelled: false
+	// 		});
+	// 		tileArray.push(newTile);
+	// 	}
+	// }
 
 	tileArray.forEach((item, itemIndex) =>{
 		createTile(item, itemIndex)
