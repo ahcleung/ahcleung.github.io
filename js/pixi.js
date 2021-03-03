@@ -1273,12 +1273,12 @@ function setup(){
 	mapBG.endFill();
 	app.stage.addChild(mapBG);
 
-	// mapBG.interactive = true;
-	// mapBG.buttonMode = true;
-	// mapBG
-	// 	// events for drag start
-	// 	.on('mousedown', onMapDown)
-	// 	.on('touchstart', onMapDown);
+	mapBG.interactive = true;
+	mapBG.buttonMode = true;
+	mapBG
+		// events for drag start
+		.on('mousedown', onMapDown)
+		.on('touchstart', onMapDown);
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -1682,7 +1682,12 @@ function removeDuplicates(array) {
 };
 
 function addMoveTile(tileContainer){
-	
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
 	moveTile2.scale.set(0.6);
 	moveTile2.anchor.set(0,1);
