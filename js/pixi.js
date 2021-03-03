@@ -1329,7 +1329,7 @@ function setup(){
 	veelaTile2.y = -(veelaTile2.height/2);
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	veelaTileTween.to(veelaTile2.scale, 1, {x: 0.7, y: 0.7, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+	veelaTileTween.to(veelaTile2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
 	veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 	veelaHolder.addChild(veelaTile2);
 	veelaHolder.addChild(veelaTile1);
