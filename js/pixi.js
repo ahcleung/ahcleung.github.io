@@ -275,7 +275,7 @@ const creatureList = resources["js/creature.json"];
 const itemList = resources["js/item.json"];
 const mapList = resources["js/map.json"];
 
-let state, onScreenStats, consoleScreen, turnText, mapBG;
+let state, onScreenStats, consoleScreen, turnText, mapBG, sizeScale;
 
 var styleFontFamily = 'Arvo';
 
@@ -1290,7 +1290,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [0,0];
-	var sizeScale = 0.6;
+	sizeScale = 0.6;
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
