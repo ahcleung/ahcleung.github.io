@@ -1701,6 +1701,7 @@ function onMapDown(){
 	if(playerPos[0] == 0 || playerPos[0] == 49 ||  playerPos[1] == 0 || playerPos[1] == 43){
 		console.log("Player moves to next map [" + playerPos + "]");
 	}
+	console.log("onMapDown");
 }
 
 function onTileDown(){
