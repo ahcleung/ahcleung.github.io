@@ -1318,83 +1318,12 @@ function setup(){
 	// 	}
 	// }
 
-	for(var i = 0; i < 44; i++){
-		for(var j = 0; j < 50; j++){
-			var newTile;
-			if(i == 0 && j == 0){
-				newTile = new Tile({
-					id: 16,
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}else{
-				newTile = new Tile({
-					id: mapList.data.maps[0].tiles[i][j],
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}
-			tileArray.push(newTile);
-		}
-	}
-
-	// for(var i = 0; i < 46; i++){
-	// 	for(var j = 0; j < 52; j++){
+	// for(var i = 0; i < 44; i++){
+	// 	for(var j = 0; j < 50; j++){
 	// 		var newTile;
 	// 		if(i == 0 && j == 0){
 	// 			newTile = new Tile({
 	// 				id: 16,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 0 && j== 51){
-	// 			newTile = new Tile({
-	// 				id: 10,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 45 && j == 0){
-	// 			newTile = new Tile({
-	// 				id: 14,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 45 && j == 51){
-	// 			newTile = new Tile({
-	// 				id: 12,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 0){
-	// 			newTile = new Tile({
-	// 				id: 9,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 45){
-	// 			newTile = new Tile({
-	// 				id: 13,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(j == 0){
-	// 			newTile = new Tile({
-	// 				id: 15,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(j == 51){
-	// 			newTile = new Tile({
-	// 				id: 11,
 	// 				pos: [j,i],
 	// 				discovered: false,
 	// 				travelled: false
@@ -1410,6 +1339,77 @@ function setup(){
 	// 		tileArray.push(newTile);
 	// 	}
 	// }
+
+	for(var i = 0; i < 46; i++){
+		for(var j = 0; j < 52; j++){
+			var newTile;
+			if(i == 0 && j == 0){
+				newTile = new Tile({
+					id: 16,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 0 && j== 51){
+				newTile = new Tile({
+					id: 10,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 45 && j == 0){
+				newTile = new Tile({
+					id: 14,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 45 && j == 51){
+				newTile = new Tile({
+					id: 12,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 0){
+				newTile = new Tile({
+					id: 9,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 45){
+				newTile = new Tile({
+					id: 13,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(j == 0){
+				newTile = new Tile({
+					id: 15,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(j == 51){
+				newTile = new Tile({
+					id: 11,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else{
+				newTile = new Tile({
+					id: mapList.data.maps[0].tiles[i][j],
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}
+			tileArray.push(newTile);
+		}
+	}
 
 	tileArray.forEach((item, itemIndex) =>{
 		createTile(item, itemIndex)
