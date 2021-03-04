@@ -1362,7 +1362,7 @@ function setup(){
 		mapHolder.tileWidth*3/4,-mapHolder.tileHeight/2,
 		mapHolder.tileWidth,0,
 		mapHolder.tileWidth*3/4,mapHolder.tileHeight/2,
-		mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
+		mapHolder.tileWidth/4,mapHolder.tileHeight/2,
 		0,0
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
