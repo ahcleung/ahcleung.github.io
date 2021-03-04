@@ -1904,7 +1904,7 @@ function onTileDown(){
 
 		
 	}else if(this.object.traversable){
-		console.log("SELECT: " + this.object.pos);
+		// console.log("SELECT: " + this.object.pos);
 		tileTraversable.forEach(item =>{
 			item.hideMove2();
 		});
