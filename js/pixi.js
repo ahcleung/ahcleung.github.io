@@ -1347,7 +1347,7 @@ function setup(){
 	veelaHolder.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 	veelaHolder.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
-	createEdgeTiles(veelaHolder);
+	// createEdgeTiles(veelaHolder);
 
 	// const tileContainer = new PIXI.Container();
 	// let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
