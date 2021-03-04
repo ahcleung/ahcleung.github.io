@@ -1402,7 +1402,7 @@ function setup(){
 			}else{
 				newTile = new Tile({
 					id: mapList.data.maps[0].tiles[i-1][j-1],
-					pos: [j,i],
+					pos: [j-1,i-1],
 					discovered: false,
 					travelled: false
 				});
