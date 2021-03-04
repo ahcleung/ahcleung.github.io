@@ -1358,11 +1358,11 @@ function setup(){
 	tileContainer.buttonMode = true;
 	
 	var points = [
-		-mapHolder.tileWidth*3/4,-mapHolder.tileHeight/2,
+		-mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
 		mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
 		mapHolder.tileWidth/2,0,
 		mapHolder.tileWidth/4,mapHolder.tileHeight/2,
-		-mapHolder.tileWidth*3/4,mapHolder.tileHeight/2,
+		-mapHolder.tileWidth/4,mapHolder.tileHeight/2,
 		-mapHolder.tileWidth/2,0
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
