@@ -1366,14 +1366,14 @@ function setup(){
 		-mapHolder.tileWidth/2,0
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
-	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0xff0000);
-	centerGraphic.drawPolygon(points);
-	centerGraphic.endFill();
-	centerGraphic.pivot.set(0.5,0.5);
-	tileContainer.addChild(centerGraphic);
-	// centerGraphic.x = app.screen.width/2;
-	// centerGraphic.y = app.screen.height/2;
+	
+	// var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.drawPolygon(points);
+	// centerGraphic.endFill();
+	// centerGraphic.pivot.set(0.5,0.5);
+	// tileContainer.addChild(centerGraphic);
+
 	tileContainer
 		// events for drag start
 		.on('mousedown', onTileDown)
