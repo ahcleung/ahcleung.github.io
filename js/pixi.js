@@ -1320,7 +1320,7 @@ function setup(){
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
-			const newTile;
+			var newTile;
 			if(i == 0 && j == 0){
 				newTile = new Tile({
 					id: 16,
