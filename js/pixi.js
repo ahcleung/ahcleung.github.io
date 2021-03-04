@@ -1350,14 +1350,14 @@ function setup(){
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 0 && j== 51){
+			}else if(i == 1 && j== 51){
 				newTile = new Tile({
 					id: 10,
 					pos: [j,i],
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 45 && j == 0){
+			}else if(i == 44 && j == 0){
 				newTile = new Tile({
 					id: 14,
 					pos: [j,i],
