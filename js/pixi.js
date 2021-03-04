@@ -1419,8 +1419,8 @@ function setup(){
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
 
-	tileContainer3.x = mapHolder.tileWidth;
-	tileContainer3.y = mapHolder.tileHeight/4;
+	tileContainer3.x = mapHolder.tileWidth+mapHolder.tileWidth/4;
+	tileContainer3.y = -mapHolder.tileHeight;
 	veelaHolder.addChild(tileContainer3);
 
 	// veelaHolder.x = playerPos[0];
