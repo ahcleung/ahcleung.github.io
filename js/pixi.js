@@ -1327,21 +1327,21 @@ function setup(){
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 0 && j== 52){
+			}else if(i == 0 && j== 51){
 				const newTile = new Tile({
 					id: 10,
 					pos: [j,i],
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 46 && j == 0){
+			}else if(i == 45 && j == 0){
 				const newTile = new Tile({
 					id: 14,
 					pos: [j,i],
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 46 && j == 52){
+			}else if(i == 45 && j == 51){
 				const newTile = new Tile({
 					id: 12,
 					pos: [j,i],
@@ -1355,7 +1355,7 @@ function setup(){
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 46){
+			}else if(i == 45){
 				const newTile = new Tile({
 					id: 13,
 					pos: [j,i],
@@ -1369,7 +1369,7 @@ function setup(){
 					discovered: false,
 					travelled: false
 				});
-			}else if(j == 52){
+			}else if(j == 51){
 				const newTile = new Tile({
 					id: 11,
 					pos: [j,i],
