@@ -1683,6 +1683,23 @@ function createTile(item, itemIndex){
 
 function showTraversable(){
 	var range = 2;
+
+	var numberTiles = 0;
+	for(var i = 0; i < range; i++){
+		numberTiles += i*6;
+	}
+	console.log(numberTiles);
+}
+
+function showTraversable2(){
+	var range = 2;
+
+	var numberTiles = 0;
+	for(var i = 0; i < range; i++){
+		numberTiles += i*6;
+	}
+	console.log(numberTiles);
+
 	tileTraversable = [];
 	var traversableIndex = [];
 	var traversableRing1 = [];
