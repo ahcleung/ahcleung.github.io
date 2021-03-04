@@ -1370,7 +1370,7 @@ function setup(){
 	centerGraphic.beginFill(0xff0000);
 	centerGraphic.drawPolygon(points);
 	centerGraphic.endFill();
-	centerGraphic.anchor.set(0.5,0.5);
+	centerGraphic.pivot.set(0.5,0.5);
 	tileContainer.addChild(centerGraphic);
 	// centerGraphic.x = app.screen.width/2;
 	// centerGraphic.y = app.screen.height/2;
