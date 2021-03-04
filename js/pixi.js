@@ -1366,6 +1366,13 @@ function setup(){
 		0,-mapHolder.tileHeight/2
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
+	var centerGraphic = new PIXI.Graphics();
+	centerGraphic.beginFill(0xff0000);
+	centerGraphic.drawPolygon(points);
+	centerGraphic.endFill();
+	tileContainer.addChild(centerGraphic);
+	centerGraphic.x = app.screen.width/2;
+	centerGraphic.y = app.screen.height/2;
 	tileContainer
 		// events for drag start
 		.on('mousedown', onTileDown)
