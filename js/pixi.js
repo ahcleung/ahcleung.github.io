@@ -1306,14 +1306,84 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	for(var i = 0; i < 44; i++){
-		for(var j = 0; j < 50; j++){
-			const newTile = new Tile({
-				id: mapList.data.maps[0].tiles[i][j],
-				pos: [j,i],
-				discovered: false,
-				travelled: false
-			});
+	// for(var i = 0; i < 44; i++){
+	// 	for(var j = 0; j < 50; j++){
+	// 		const newTile = new Tile({
+	// 			id: mapList.data.maps[0].tiles[i][j],
+	// 			pos: [j,i],
+	// 			discovered: false,
+	// 			travelled: false
+	// 		});
+	// 		tileArray.push(newTile);
+	// 	}
+	// }
+
+	for(var i = 0; i < 46; i++){
+		for(var j = 0; j < 52; j++){
+			if(i == 0 && j == 0){
+				const newTile = new Tile({
+					id: 16,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 0 && j== 52){
+				const newTile = new Tile({
+					id: 10,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 46 && j == 0){
+				const newTile = new Tile({
+					id: 14,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 46 && j == 52){
+				const newTile = new Tile({
+					id: 12,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 0){
+				const newTile = new Tile({
+					id: 9,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(i == 46){
+				const newTile = new Tile({
+					id: 13,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(j == 0){
+				const newTile = new Tile({
+					id: 15,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else if(j == 52){
+				const newTile = new Tile({
+					id: 11,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else{
+				const newTile = new Tile({
+					id: mapList.data.maps[0].tiles[i][j],
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}
 			tileArray.push(newTile);
 		}
 	}
@@ -1489,6 +1559,30 @@ function createTile(item, itemIndex){
 			break;
 		case 8:
 			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+			break;
+		case 9:
+			mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+			break;
+		case 10:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
+			break;
+		case 11:
+			mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
+			break;
+		case 12:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
+			break;
+		case 13:
+			mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
+			break;
+		case 14:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
+			break;
+		case 15:
+			mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
+			break;
+		case 16:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
 			break;
 		default:
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
