@@ -1373,12 +1373,13 @@ function setup(){
 
 	tileContainer.x = mapHolder.tileWidth/2;
 	tileContainer.y = - mapHolder.tileHeight - (mapHolder.tileHeight/2);
+	veelaHolder.addChild(tileContainer);
 
 	const tileContainer2 = new PIXI.Container();
 	let mapTile2 = new PIXI.Sprite(resources['tile_edge_S'].texture);
 	mapTile2.scale.set(sizeScale);
 	mapTile2.anchor.set(0.5,0.5);
-	tileContainer2.addChild(mapTile);
+	tileContainer2.addChild(mapTile2);
 
 	// item.pos[0]==j item.pos[1]==i
 	tileContainer2.interactive = true;
@@ -1391,7 +1392,7 @@ function setup(){
 		.on('touchstart', onTileDown);
 
 	tileContainer2.x = mapHolder.tileWidth/2;
-	tileContainer2.y = mapHolder.tileHeight + (mapHolder.tileHeight/2);
+	tileContainer2.y = mapHolder.tileHeight/2;
 	veelaHolder.addChild(tileContainer2);
 
 	// veelaHolder.x = playerPos[0];
