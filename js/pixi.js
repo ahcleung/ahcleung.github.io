@@ -1371,6 +1371,7 @@ function setup(){
 		.on('mousedown', onTileDown)
 		.on('touchstart', onTileDown);
 
+	tileContainer.x = mapHolder.tileWidth/2;
 	tileContainer.y = - mapHolder.tileHeight - (mapHolder.tileHeight/2);
 	veelaHolder.addChild(tileContainer);
 
