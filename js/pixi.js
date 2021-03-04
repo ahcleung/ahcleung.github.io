@@ -1371,35 +1371,37 @@ function setup(){
 					discovered: false,
 					travelled: false
 				});
-			}else if(i == 0){
-				newTile = new Tile({
-					id: 9,
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}else if(i == 45){
-				newTile = new Tile({
-					id: 13,
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}else if(j == 0){
-				newTile = new Tile({
-					id: 15,
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}else if(j == 51){
-				newTile = new Tile({
-					id: 11,
-					pos: [j,i],
-					discovered: false,
-					travelled: false
-				});
-			}else{
+			}
+			// else if(i == 0){
+			// 	newTile = new Tile({
+			// 		id: 9,
+			// 		pos: [j,i],
+			// 		discovered: false,
+			// 		travelled: false
+			// 	});
+			// }else if(i == 45){
+			// 	newTile = new Tile({
+			// 		id: 13,
+			// 		pos: [j,i],
+			// 		discovered: false,
+			// 		travelled: false
+			// 	});
+			// }else if(j == 0){
+			// 	newTile = new Tile({
+			// 		id: 15,
+			// 		pos: [j,i],
+			// 		discovered: false,
+			// 		travelled: false
+			// 	});
+			// }else if(j == 51){
+			// 	newTile = new Tile({
+			// 		id: 11,
+			// 		pos: [j,i],
+			// 		discovered: false,
+			// 		travelled: false
+			// 	});
+			// }
+			else{
 				newTile = new Tile({
 					id: mapList.data.maps[0].tiles[i][j],
 					pos: [j,i],
