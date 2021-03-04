@@ -1359,7 +1359,7 @@ function setup(){
 	
 	var points = [
 		-mapHolder.tileWidth*3/4,-mapHolder.tileHeight/2,
-		mapHolder.tileWidth4,-mapHolder.tileHeight/2,
+		mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
 		mapHolder.tileWidth/2,0,
 		mapHolder.tileWidth/4,mapHolder.tileHeight/2,
 		-mapHolder.tileWidth*3/4,mapHolder.tileHeight/2,
