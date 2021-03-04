@@ -1403,6 +1403,26 @@ function setup(){
 	tileContainer2.y = mapHolder.tileHeight/2;
 	veelaHolder.addChild(tileContainer2);
 
+	const tileContainer3 = new PIXI.Container();
+	let mapTile3 = new PIXI.Sprite(resources['tile_edge_NE'].texture);
+	mapTile3.scale.set(sizeScale);
+	mapTile3.anchor.set(0.5,0.5);
+	tileContainer3.addChild(mapTile3);
+
+	// item.pos[0]==j item.pos[1]==i
+	tileContainer3.interactive = true;
+	tileContainer3.buttonMode = true;
+	
+	tileContainer3.hitArea = new PIXI.Polygon(points);
+	tileContainer3
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+
+	tileContainer3.x = mapHolder.tileWidth;
+	tileContainer3.y = mapHolder.tileHeight/4;
+	veelaHolder.addChild(tileContainer3);
+
 	// veelaHolder.x = playerPos[0];
 	// veelaHolder.y = playerPos[1];
 
