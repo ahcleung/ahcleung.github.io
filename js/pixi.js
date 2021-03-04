@@ -1320,12 +1320,22 @@ function setup(){
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
-			const newTile = new Tile({
-				id: 9,
-				pos: [j,i],
-				discovered: false,
-				travelled: false
-			});
+			if(i == 0 && j == 0){
+				const newTile = new Tile({
+					id: 16,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}else{
+				const newTile = new Tile({
+					id: 9,
+					pos: [j,i],
+					discovered: false,
+					travelled: false
+				});
+			}
+			
 			tileArray.push(newTile);
 		}
 	}
