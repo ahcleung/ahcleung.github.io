@@ -1318,99 +1318,6 @@ function setup(){
 		}
 	}
 
-	// for(var i = 0; i < 44; i++){
-	// 	for(var j = 0; j < 50; j++){
-	// 		var newTile;
-	// 		if(i == 0 && j == 0){
-	// 			newTile = new Tile({
-	// 				id: 16,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else{
-	// 			newTile = new Tile({
-	// 				id: mapList.data.maps[0].tiles[i][j],
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}
-	// 		tileArray.push(newTile);
-	// 	}
-	// }
-
-	// for(var i = 0; i < 46; i++){
-	// 	for(var j = 0; j < 52; j++){
-	// 		var newTile;
-	// 		if(i == 0 && j == 0){
-	// 			newTile = new Tile({
-	// 				id: 16,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 1 && j== 51){
-	// 			newTile = new Tile({
-	// 				id: 10,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 44 && j == 0){
-	// 			newTile = new Tile({
-	// 				id: 14,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 45 && j == 51){
-	// 			newTile = new Tile({
-	// 				id: 12,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 0){
-	// 			newTile = new Tile({
-	// 				id: 9,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(i == 45){
-	// 			newTile = new Tile({
-	// 				id: 13,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(j == 0){
-	// 			newTile = new Tile({
-	// 				id: 15,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else if(j == 51){
-	// 			newTile = new Tile({
-	// 				id: 11,
-	// 				pos: [j,i],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}else{
-	// 			newTile = new Tile({
-	// 				id: mapList.data.maps[0].tiles[i-1][j-1],
-	// 				pos: [j-1,i-1],
-	// 				discovered: false,
-	// 				travelled: false
-	// 			});
-	// 		}
-	// 		tileArray.push(newTile);
-	// 	}
-	// }
-
 	tileArray.forEach((item, itemIndex) =>{
 		createTile(item, itemIndex)
 	});
@@ -1439,6 +1346,34 @@ function setup(){
 
 	veelaHolder.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 	veelaHolder.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
+
+	const tileContainer = new PIXI.Container();
+	let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+	mapTile.scale.set(sizeScale);
+	mapTile.anchor.set(0.5,0.5);
+	tileContainer.addChild(mapTile);
+
+	// item.pos[0]==j item.pos[1]==i
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	
+	var points = [
+		mapHolder.tileWidth/4,-mapHolder.tileHeight,
+		mapHolder.tileWidth*3/4,-mapHolder.tileHeight,
+		mapHolder.tileWidth,-mapHolder.tileHeight/2,
+		mapHolder.tileWidth*3/4,0,
+		mapHolder.tileWidth/4,0,
+		0,-mapHolder.tileHeight/2
+	];
+	tileContainer.hitArea = new PIXI.Polygon(points);
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+
+	tileContainer.y = - mapHolder.tileHeight - (mapHolder.tileHeight/2);
+	veelaHolder.addChild(tileContainer);
+
 	// veelaHolder.x = playerPos[0];
 	// veelaHolder.y = playerPos[1];
 
