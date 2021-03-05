@@ -1690,7 +1690,7 @@ function showTraversable(){
 		traversablePos.push([playerPos[0],playerPos[1]-i]);
 		traversablePos.push([playerPos[0]+i,playerPos[1]]);
 		traversablePos.push([playerPos[0]-i,playerPos[1]]);
-		// if(playerPos[0]% 2 == 0){
+		// if(playerPos[0]%2 == 0){
 		// 	traversablePos.push([playerPos[0]-1,playerPos[1]+i]);
 		// 	traversablePos.push([playerPos[0]+1,playerPos[1]+i]);
 		// }else{
@@ -1698,13 +1698,13 @@ function showTraversable(){
 		// 	traversablePos.push([playerPos[0]+1,playerPos[1]-i]);
 		// }
 		for(var j = 1; j < range+1; j++){
-			if(playerPos[0]% 2 == 0){
-			traversablePos.push([playerPos[0]-i,playerPos[1]+j]);
-			traversablePos.push([playerPos[0]+i,playerPos[1]+j]);
-		}else{
-			traversablePos.push([playerPos[0]-i,playerPos[1]-j]);
-			traversablePos.push([playerPos[0]+i,playerPos[1]-j]);
-		}
+			// if(playerPos[0]%2 == 0){
+				traversablePos.push([playerPos[0]-i,playerPos[1]+j]);
+				traversablePos.push([playerPos[0]+i,playerPos[1]+j]);
+			// }else{
+				traversablePos.push([playerPos[0]-i,playerPos[1]-j]);
+				traversablePos.push([playerPos[0]+i,playerPos[1]-j]);
+			// }
 			// numberTiles++;
 		}
 		// numberTiles += i*6;
@@ -1790,15 +1790,16 @@ function showTraversable2(){
 
 	if(range == 2){
 		traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]);
-		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
-		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));
-
 		traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]);
+		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
+		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
+		
+		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
+		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));		
 		traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
 		traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]+2));
 
-		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
-		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
+		
 		if(playerPos[0]% 2 == 0){
 			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]+1);
 			traversableRing2.push(((playerPos[1]+2) * 50) + playerPos[0]-1);
