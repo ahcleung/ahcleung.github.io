@@ -1695,6 +1695,11 @@ function showTraversable(){
 	for (var i = 1; i < range+1; i++){
 		traversablePos.push([playerPos[0]+i,playerPos[1]]);
 	}
+
+	for (var i = 1; i < range+1; i++){
+		traversablePos.push([playerPos[0],playerPos[1]+i]);
+		traversablePos.push([playerPos[0],playerPos[1]-i]);
+	}
 	// for(var i = 1; i < range+1; i++){
 		// traversablePos.push([playerPos[0],playerPos[1]+i]);
 		// traversablePos.push([playerPos[0],playerPos[1]-i]);
