@@ -1697,7 +1697,9 @@ function showTraversable(){
 			traversablePos.push([playerPos[0]-1,playerPos[1]-i]);
 			traversablePos.push([playerPos[0]+1,playerPos[1]-i]);
 		}
-		for(var j = 1; j < range+1; j++){
+		numberTiles += i*6;
+		for(var j = 1; j < i; j++){
+			numberTiles += j*6;
 			// if(playerPos[0]%2 == 0){
 			// 	traversablePos.push([playerPos[0]-i,playerPos[1]+j]);
 			// 	traversablePos.push([playerPos[0]+i,playerPos[1]+j]);
