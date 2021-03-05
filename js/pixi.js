@@ -1688,6 +1688,8 @@ function showTraversable(){
 	for(var i = 1; i < range+1; i++){
 		traversablePos.push([playerPos[0],playerPos[1]+i]);
 		traversablePos.push([playerPos[0],playerPos[1]-i]);
+		traversablePos.push([playerPos[0]+i,playerPos[1]]);
+		traversablePos.push([playerPos[0]-i,playerPos[1]]);
 		// console.log("[" + playerPos[0] + "," + playerPos[1]+i + "]");
 		// console.log("[" + playerPos[0] + "," + playerPos[1]-i + "]");
 		if(playerPos[0]% 2 != 0){
@@ -1708,6 +1710,14 @@ function showTraversable(){
 	}
 	console.log(traversablePos);
 	console.log(numberTiles);
+
+	traversablePos.forEach(arrayIndex=>{
+		// console.log(arrayIndex);
+		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+		tileArray[indexNum].showMove1();
+		tileTraversable.push(tileArray[indexNum]);
+	});
+	
 }
 
 function showTraversable2(){
