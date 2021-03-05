@@ -1688,7 +1688,7 @@ function showTraversable(){
 
 	//left side
 	for (var i = 1; i < range+1; i++){
-		for(var j = 0; j < i*2; j++){
+		for(var j = 0; j < range*2-i+1; j++){
 		// for(var j = 0; j < i*2; j++){
 			traversablePos.push([playerPos[0]-range-1+i,playerPos[1]-range+j+1]);
 		}
