@@ -1686,7 +1686,7 @@ function showTraversable(){
 
 	var numberTiles = 0;
 	for(var i = 1; i < range+1; i++){
-		for(var j = 0; j < range*6; j++){
+		for(var j = 0; j < i*6; j++){
 			numberTiles++;
 		}
 		// numberTiles += i*6;
