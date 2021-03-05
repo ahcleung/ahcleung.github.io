@@ -1692,14 +1692,14 @@ function showTraversable(){
 		traversablePos.push([playerPos[0]-i,playerPos[1]]);
 		// console.log("[" + playerPos[0] + "," + playerPos[1]+i + "]");
 		// console.log("[" + playerPos[0] + "," + playerPos[1]-i + "]");
-		if(playerPos[0]% 2 != 0){
-			traversablePos.push([playerPos[0]-i,playerPos[1]-i]);
-			traversablePos.push([playerPos[0]+i,playerPos[1]-i]);
+		if(playerPos[0]% 2 == 0){
+			traversablePos.push([playerPos[0]-i,playerPos[1]+i]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]+i]);
 			// console.log("[" + playerPos[0]-i + "," + playerPos[1]+i + "]");
 			// console.log("[" + playerPos[0]+i + "," + playerPos[1]+i + "]");
 		}else{
-			traversablePos.push([playerPos[0]-i,playerPos[1]+i]);
-			traversablePos.push([playerPos[0]+i,playerPos[1]+i]);
+			traversablePos.push([playerPos[0]-i,playerPos[1]-i]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]-i]);
 			// console.log("[" + playerPos[0]-i + "," + playerPos[1]-i + "]");
 			// console.log("[" + playerPos[0]+i + "," + playerPos[1]-i + "]");
 		}
