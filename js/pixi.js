@@ -1690,21 +1690,22 @@ function showTraversable(){
 		traversablePos.push([playerPos[0],playerPos[1]-i]);
 		traversablePos.push([playerPos[0]+i,playerPos[1]]);
 		traversablePos.push([playerPos[0]-i,playerPos[1]]);
-		// console.log("[" + playerPos[0] + "," + playerPos[1]+i + "]");
-		// console.log("[" + playerPos[0] + "," + playerPos[1]-i + "]");
-		if(playerPos[0]% 2 == 0){
-			traversablePos.push([playerPos[0]-1,playerPos[1]+i]);
-			traversablePos.push([playerPos[0]+1,playerPos[1]+i]);
-			// console.log("[" + playerPos[0]-i + "," + playerPos[1]+i + "]");
-			// console.log("[" + playerPos[0]+i + "," + playerPos[1]+i + "]");
+		// if(playerPos[0]% 2 == 0){
+		// 	traversablePos.push([playerPos[0]-1,playerPos[1]+i]);
+		// 	traversablePos.push([playerPos[0]+1,playerPos[1]+i]);
+		// }else{
+		// 	traversablePos.push([playerPos[0]-1,playerPos[1]-i]);
+		// 	traversablePos.push([playerPos[0]+1,playerPos[1]-i]);
+		// }
+		for(var j = 1; j < range+1; j++){
+			if(playerPos[0]% 2 == 0){
+			traversablePos.push([playerPos[0]-i,playerPos[1]+j]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]+j]);
 		}else{
-			traversablePos.push([playerPos[0]-1,playerPos[1]-i]);
-			traversablePos.push([playerPos[0]+1,playerPos[1]-i]);
-			// console.log("[" + playerPos[0]-i + "," + playerPos[1]-i + "]");
-			// console.log("[" + playerPos[0]+i + "," + playerPos[1]-i + "]");
+			traversablePos.push([playerPos[0]-i,playerPos[1]-j]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]-j]);
 		}
-		for(var j = 0; j < i*6; j++){
-			numberTiles++;
+			// numberTiles++;
 		}
 		// numberTiles += i*6;
 	}
