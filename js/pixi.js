@@ -1682,7 +1682,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 3;
+	var range = 2;
 	var traversablePos = [];
 	var numberTiles = 0;
 	for(var i = 1; i < range+1; i++){
@@ -1793,7 +1793,7 @@ function showTraversable2(){
 		traversableRing2.push(((playerPos[1]-2) * 50) + playerPos[0]);
 		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]+2));
 		traversableRing2.push((playerPos[1] * 50) + (playerPos[0]-2));
-		
+
 		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]-2));
 		traversableRing2.push(((playerPos[1]+1) * 50) + (playerPos[0]+2));		
 		traversableRing2.push(((playerPos[1]-1) * 50) + (playerPos[0]-2));
