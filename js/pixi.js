@@ -1683,23 +1683,30 @@ function createTile(item, itemIndex){
 
 function showTraversable(){
 	var range = 3;
-
+	var traversablePos = [];
 	var numberTiles = 0;
 	for(var i = 1; i < range+1; i++){
-		console.log("[" + playerPos[0] + "," + playerPos[1]+i + "]");
-		console.log("[" + playerPos[0] + "," + playerPos[1]-i + "]");
+		traversablePos.push([playerPos[0],playerPos[1]+i]);
+		traversablePos.push([playerPos[0],playerPos[1]-i]);
+		// console.log("[" + playerPos[0] + "," + playerPos[1]+i + "]");
+		// console.log("[" + playerPos[0] + "," + playerPos[1]-i + "]");
 		if(playerPos[0]% 2 != 0){
-			console.log("[" + playerPos[0]-i + "," + playerPos[1]+i + "]");
-			console.log("[" + playerPos[0]+i + "," + playerPos[1]+i + "]");
+			traversablePos.push([playerPos[0]-i,playerPos[1]+i]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]+i]);
+			// console.log("[" + playerPos[0]-i + "," + playerPos[1]+i + "]");
+			// console.log("[" + playerPos[0]+i + "," + playerPos[1]+i + "]");
 		}else{
-			console.log("[" + playerPos[0]-i + "," + playerPos[1]-i + "]");
-			console.log("[" + playerPos[0]+i + "," + playerPos[1]-i + "]");
+			traversablePos.push([playerPos[0]-i,playerPos[1]-i]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]-i]);
+			// console.log("[" + playerPos[0]-i + "," + playerPos[1]-i + "]");
+			// console.log("[" + playerPos[0]+i + "," + playerPos[1]-i + "]");
 		}
 		for(var j = 0; j < i*6; j++){
 			numberTiles++;
 		}
 		// numberTiles += i*6;
 	}
+	console.log(traversablePos);
 	console.log(numberTiles);
 }
 
