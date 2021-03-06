@@ -1686,39 +1686,7 @@ function showTraversable(){
 	var traversablePos = [];
 	var numberTiles = 0;
 
-	for (var i = 1; i < range+1; i++){
-		var Aa, Bb, Cc, xOdd, yAdjust;
-		//4,18
-		if(i != 2){
-			if(playerPos[0]%2 == 0){
-				xOdd = 1;//
-			}else{
-				xOdd = 0;
-			}
-			if(i > 2){
-				Aa = 1;
-			}else{
-				Aa = 0;//
-			}
-			if(i > 3){
-				Bb = -1 + xOdd;
-			}else{
-				Bb = 0;//
-			}
-			if(i > 4){
-				Cc = 1 - (playerPos[0]%2);
-			}else{
-				Cc = 0;//
-			}
-			yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
-			// yadjust = 1*-1+0+0+0
-		}else{
-			yAdjust = 0;
-		}
-		console.log("yAdjust: " + yAdjust);
-	}
-
-	//left side
+	//sides
 	for (var i = 1; i < range+1; i++){
 		var Aa = 0;
 		var Bb = 0;
@@ -1731,69 +1699,30 @@ function showTraversable(){
 			if(i > 3)					Bb = -1 + xOdd;
 			if(i > 4)					Cc = 1 - (playerPos[0]%2);
 			yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
-			// yadjust = 1*-1+0+0+0
 		}
 		for(var j = 0; j < range*2-i+1; j++){
-		// for(var j = 0; j < i*2; j++){
-			// traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1]);
-			
 			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1-yAdjust]);
 			traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1-yAdjust]);
 		}
-		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
 	}
 
-	//right side
-	// for (var i = 1; i < range+1; i++){
-	// 	for(var j = 0; j < range*2-i+1; j++){
-	// 	// for(var j = 0; j < i*2; j++){
-	// 		traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1]);
-	// 	}
-	// 	// traversablePos.push([playerPos[0]-i,playerPos[1]]);
-	// }
-	// for (var i = 1; i < range+1; i++){
-	// 	traversablePos.push([playerPos[0]+i,playerPos[1]]);
-	// }
-
+	//main column
 	for (var i = 1; i < range+1; i++){
 		traversablePos.push([playerPos[0],playerPos[1]+i]);
 		traversablePos.push([playerPos[0],playerPos[1]-i]);
 	}
-	// for(var i = 1; i < range+1; i++){
-		// traversablePos.push([playerPos[0],playerPos[1]+i]);
-		// traversablePos.push([playerPos[0],playerPos[1]-i]);
-		// traversablePos.push([playerPos[0]+i,playerPos[1]]);
-		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
-		// if(playerPos[0]%2 == 0){
-		// 	traversablePos.push([playerPos[0]-1,playerPos[1]+i]);
-		// 	traversablePos.push([playerPos[0]+1,playerPos[1]+i]);
-		// }else{
-		// 	traversablePos.push([playerPos[0]-1,playerPos[1]-i]);
-		// 	traversablePos.push([playerPos[0]+1,playerPos[1]-i]);
-		// }
-		// numberTiles += i*6;
-		// for(var j = 0; j < i; j++){
-		// 	numberTiles += 6;
-		// 	traversablePos.push([playerPos[0]+j,playerPos[1]+i]);
-		// 	traversablePos.push([playerPos[0]+j,playerPos[1]-i]);
-		// 	traversablePos.push([playerPos[0]+i,playerPos[1]+j]);
-		// 	traversablePos.push([playerPos[0]-i,playerPos[1]+j]);
-		// 	if(playerPos[0]%2 == 0){
-		// 		traversablePos.push([playerPos[0]-1-j,playerPos[1]+i]);
-		// 		traversablePos.push([playerPos[0]+1+j,playerPos[1]+i]);
-		// 	}else{
-		// 		traversablePos.push([playerPos[0]-1-j,playerPos[1]-i]);
-		// 		traversablePos.push([playerPos[0]+1+j,playerPos[1]-i]);
-		// 	}
-		// }
-		// numberTiles += i*6;
-	// }
+	
 	console.log(traversablePos);
 	console.log(numberTiles);
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+		if(tileArray[indexNum].id == 7){
+			console.log("Mountain at: " + tileArray[indexNum].pos);
+		}else if(tileArray[indexNum].id == 6){
+			console.log("Hill at: " + tileArray[indexNum].pos);
+		}
 		tileArray[indexNum].showMove1();
 		tileTraversable.push(tileArray[indexNum]);
 	});
