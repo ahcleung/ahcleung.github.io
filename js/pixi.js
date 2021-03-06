@@ -1709,7 +1709,7 @@ function showTraversable(){
 					Bb = 0;
 				}
 				if(i > 4){
-					Cc = 1 - playerPos[0]%2;
+					Cc = 1 - (playerPos[0]%2);
 				}else{
 					Cc = 0;
 				}
