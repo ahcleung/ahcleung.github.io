@@ -1297,8 +1297,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [17,13];
-	
+	playerPos = [17,13];	
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1348,93 +1347,8 @@ function setup(){
 	veelaHolder.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
 	// createEdgeTiles(veelaHolder);
-
-	// const tileContainer = new PIXI.Container();
-	// let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
-	// mapTile.scale.set(sizeScale);
-	// mapTile.anchor.set(0.5,0.5);
-	// tileContainer.addChild(mapTile);
-
-	// // item.pos[0]==j item.pos[1]==i
-	// tileContainer.interactive = true;
-	// tileContainer.buttonMode = true;
-	
-	// var points = [
-	// 	-mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
-	// 	mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
-	// 	mapHolder.tileWidth/2,0,
-	// 	mapHolder.tileWidth/4,mapHolder.tileHeight/2,
-	// 	-mapHolder.tileWidth/4,mapHolder.tileHeight/2,
-	// 	-mapHolder.tileWidth/2,0
-	// ];
-	// tileContainer.hitArea = new PIXI.Polygon(points);
-	
-	// // var centerGraphic = new PIXI.Graphics();
-	// // centerGraphic.beginFill(0xff0000);
-	// // centerGraphic.drawPolygon(points);
-	// // centerGraphic.endFill();
-	// // centerGraphic.pivot.set(0.5,0.5);
-	// // tileContainer.addChild(centerGraphic);
-
-	// tileContainer
-	// 	// events for drag start
-	// 	.on('mousedown', onTileDown)
-	// 	.on('touchstart', onTileDown);
-
-	// tileContainer.x = mapHolder.tileWidth/2;
-	// tileContainer.y = - mapHolder.tileHeight - (mapHolder.tileHeight/2);
-	// veelaHolder.addChild(tileContainer);
-
-	// const tileContainer2 = new PIXI.Container();
-	// let mapTile2 = new PIXI.Sprite(resources['tile_edge_S'].texture);
-	// mapTile2.scale.set(sizeScale);
-	// mapTile2.anchor.set(0.5,0.5);
-	// tileContainer2.addChild(mapTile2);
-
-	// // item.pos[0]==j item.pos[1]==i
-	// tileContainer2.interactive = true;
-	// tileContainer2.buttonMode = true;
-	
-	// tileContainer2.hitArea = new PIXI.Polygon(points);
-	// tileContainer2
-	// 	// events for drag start
-	// 	.on('mousedown', onTileDown)
-	// 	.on('touchstart', onTileDown);
-
-	// tileContainer2.x = mapHolder.tileWidth/2;
-	// tileContainer2.y = mapHolder.tileHeight/2;
-	// veelaHolder.addChild(tileContainer2);
-
-	// const tileContainer3 = new PIXI.Container();
-	// let mapTile3 = new PIXI.Sprite(resources['tile_edge_E'].texture);
-	// mapTile3.scale.set(sizeScale);
-	// mapTile3.anchor.set(0.5,0.5);
-	// tileContainer3.addChild(mapTile3);
-
-	// // item.pos[0]==j item.pos[1]==i
-	// tileContainer3.interactive = true;
-	// tileContainer3.buttonMode = true;
-	
-	// tileContainer3.hitArea = new PIXI.Polygon(points);
-	// tileContainer3
-	// 	// events for drag start
-	// 	.on('mousedown', onTileDown)
-	// 	.on('touchstart', onTileDown);
-
-	// tileContainer3.x = mapHolder.tileWidth+mapHolder.tileWidth/4;
-	// tileContainer3.y = -mapHolder.tileHeight;
-	// veelaHolder.addChild(tileContainer3);
-
-	// veelaHolder.x = playerPos[0];
-	// veelaHolder.y = playerPos[1];
-
-	// tileContainer.x = item.pos[0] * mapTile.width * 3/4;
-	// tileContainer.y = item.pos[1] * mapTile.width*0.8625 - ((item.pos[0]%2)*mapTile.width*0.8625)/2;
-
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
-	
-
 	
 	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
@@ -1682,7 +1596,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 4;
+	var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
 
