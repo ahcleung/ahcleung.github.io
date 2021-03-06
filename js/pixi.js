@@ -1682,7 +1682,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 4;
+	var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
 
