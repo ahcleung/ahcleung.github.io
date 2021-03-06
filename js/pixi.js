@@ -1686,35 +1686,42 @@ function showTraversable(){
 	var traversablePos = [];
 	var numberTiles = 0;
 
+	for (var i = 1; i < range+1; i++){
+		var Aa, Bb, Cc, xOdd, yAdjust;
+		//4,18
+		if(i != 2){
+			if(playerPos[0]%2 == 0){
+				xOdd = 1;//
+			}else{
+				xOdd = 0;
+			}
+			if(i > 2){
+				Aa = 1;
+			}else{
+				Aa = 0;//
+			}
+			if(i > 3){
+				Bb = -1 + xOdd;
+			}else{
+				Bb = 0;//
+			}
+			if(i > 4){
+				Cc = 1 - (playerPos[0]%2);
+			}else{
+				Cc = 0;//
+			}
+			yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
+			// yadjust = 1*-1+0+0+0
+		}
+		console.log("yAdjust: " + yAdjust);
+	}
+
 	//left side
 	for (var i = 1; i < range+1; i++){
 		for(var j = 0; j < range*2-i+1; j++){
 		// for(var j = 0; j < i*2; j++){
 			// traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1]);
-			var Aa, Bb, Cc, xOdd, yAdjust;
-			if(i != 2){
-				if(playerPos[0]%2 == 0){
-					xOdd = 1;
-				}else{
-					xOdd = 0;
-				}
-				if(i > 2){
-					Aa = 1;
-				}else{
-					Aa = 0;
-				}
-				if(i > 3){
-					Bb = -1 + xOdd;
-				}else{
-					Bb = 0;
-				}
-				if(i > 4){
-					Cc = 1 - (playerPos[0]%2);
-				}else{
-					Cc = 0;
-				}
-				yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
-			}
+			
 			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1]);
 		}
 		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
