@@ -1682,7 +1682,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 3;
+	var range = 4;
 	var traversablePos = [];
 	var numberTiles = 0;
 
@@ -1738,18 +1738,19 @@ function showTraversable(){
 			// traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1]);
 			
 			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1-yAdjust]);
+			traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1-yAdjust]);
 		}
 		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
 	}
 
 	//right side
-	for (var i = 1; i < range+1; i++){
-		for(var j = 0; j < range*2-i+1; j++){
-		// for(var j = 0; j < i*2; j++){
-			traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1]);
-		}
-		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
-	}
+	// for (var i = 1; i < range+1; i++){
+	// 	for(var j = 0; j < range*2-i+1; j++){
+	// 	// for(var j = 0; j < i*2; j++){
+	// 		traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1]);
+	// 	}
+	// 	// traversablePos.push([playerPos[0]-i,playerPos[1]]);
+	// }
 	// for (var i = 1; i < range+1; i++){
 	// 	traversablePos.push([playerPos[0]+i,playerPos[1]]);
 	// }
