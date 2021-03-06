@@ -1751,7 +1751,7 @@ function showTraversable(){
 			}else{
 				yAdjust = 0;
 			}
-			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1+yAdjust]);
+			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1-yAdjust]);
 		}
 		// traversablePos.push([playerPos[0]-i,playerPos[1]]);
 	}
