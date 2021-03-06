@@ -1712,6 +1712,8 @@ function showTraversable(){
 			}
 			yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
 			// yadjust = 1*-1+0+0+0
+		}else{
+			yAdjust = 0;
 		}
 		console.log("yAdjust: " + yAdjust);
 	}
