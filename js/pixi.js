@@ -1633,6 +1633,11 @@ function showTraversable(){
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 		if(tileArray[indexNum].id == 7){
 			console.log("Mountain at: " + tileArray[indexNum].pos);
+			var mountainDifference = [
+				tileArray[indexNum].pos[0] - playerPos[0],
+				tileArray[indexNum].pos[1] - playerPos[1]
+			];
+			console.log("Difference: " + mountainDifference);
 			for(var i = 1; i < range+1; i++){
 				var smallestY = 44;
 				traversablePos.forEach(arrayIndex=>{
@@ -1653,11 +1658,11 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(tileArray[indexNum].id == 7){
-			console.log("Mountain at: " + tileArray[indexNum].pos);
-		}else if(tileArray[indexNum].id == 6){
-			console.log("Hill at: " + tileArray[indexNum].pos);
-		}
+		// if(tileArray[indexNum].id == 7){
+		// 	console.log("Mountain at: " + tileArray[indexNum].pos);
+		// }else if(tileArray[indexNum].id == 6){
+		// 	console.log("Hill at: " + tileArray[indexNum].pos);
+		// }
 		tileArray[indexNum].showMove1();
 		tileTraversable.push(tileArray[indexNum]);
 	});
