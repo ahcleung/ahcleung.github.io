@@ -1638,6 +1638,7 @@ function showTraversable(){
 				tileArray[indexNum].pos[1] - playerPos[1]
 			];
 			console.log("Difference: " + mountainDifference);
+			console.log(Math.sign(mountainDifference[0])*2);
 			for(var i = 1; i < range+1; i++){
 				var smallestY = 44;
 				traversablePos.forEach(arrayIndex=>{
