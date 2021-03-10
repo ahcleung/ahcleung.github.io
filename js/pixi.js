@@ -1633,12 +1633,12 @@ function showTraversable(){
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 		if(tileArray[indexNum].id == 7){
 			console.log("Mountain at: " + tileArray[indexNum].pos);
-			var smallestY = 44;
-			for(var i = 0; i < range; i++){
+			for(var i = 1; i < range+1; i++){
+				var smallestY = 44;
 				traversablePos.forEach(arrayIndex=>{
 					if(arrayIndex[0] == playerPos[0]+i){
-						if(smallestY > playerPos[1]){
-							smallestY == playerPos[1];
+						if(smallestY > arrayIndex[1]){
+							smallestY == arrayIndex[1];
 						}
 					}
 				});
