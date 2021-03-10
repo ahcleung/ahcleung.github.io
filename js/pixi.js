@@ -1599,6 +1599,11 @@ function showTraversable(){
 	var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
+	var isEven = false;
+
+	if(playerPos[0]%2 == 0){
+		isEven = true;
+	}
 
 	//sides
 	for (var i = 1; i < range+1; i++){
@@ -1641,11 +1646,27 @@ function showTraversable(){
 			// console.log(Math.sign(mountainDifference[0])*2);
 			for(var i = 1; i < range+1; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+playerPos[0];
-				var yPos = 44;
+				var yPos, bottom;
+				if(isEven && mountainDifference[1] == 1){
+					yPos = 0;
+					bottom = true;
+				}else if(!isEven && mountainDifference[1] == 0){
+					yPos = 0;
+					bottom = true;
+				}else{
+					yPos = 44;
+					bottom = false;
+				}				
 				traversablePos.forEach(arrayIndex=>{
 					if(arrayIndex[0] == xPos){
-						if(yPos > arrayIndex[1]){
-							yPos = arrayIndex[1];
+						if(bottom){
+							if(yPos < arrayIndex[1]){
+								yPos = arrayIndex[1];
+							}
+						}else{
+							if(yPos > arrayIndex[1]){
+								yPos = arrayIndex[1];
+							}
 						}
 					}
 				});
