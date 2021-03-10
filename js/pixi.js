@@ -1640,7 +1640,7 @@ function showTraversable(){
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
 			for(var i = 1; i < range+1; i++){
-				console.log(Math.sign(mountainDifference[0])*i);
+				console.log(Math.sign(mountainDifference[0])*i+playerPos[0]);
 				var smallestY = 44;
 				traversablePos.forEach(arrayIndex=>{
 					if(arrayIndex[0] == playerPos[0]+(i*Math.sign(mountainDifference[0]))){
