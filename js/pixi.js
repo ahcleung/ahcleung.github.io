@@ -1638,7 +1638,7 @@ function showTraversable(){
 				traversablePos.forEach(arrayIndex=>{
 					if(arrayIndex[0] == playerPos[0]+i){
 						if(smallestY > arrayIndex[1]){
-							smallestY == arrayIndex[1];
+							smallestY = arrayIndex[1];
 						}
 					}
 				});
