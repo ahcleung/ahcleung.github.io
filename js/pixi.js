@@ -1641,7 +1641,7 @@ function showTraversable(){
 			for(var i = 1; i < range+1; i++){
 				var smallestY = 44;
 				traversablePos.forEach(arrayIndex=>{
-					if(arrayIndex[0] == playerPos[0]+i){
+					if(arrayIndex[0] == playerPos[0]+(i*Math.sign(mountainDifference[0]))){
 						if(smallestY > arrayIndex[1]){
 							smallestY = arrayIndex[1];
 						}
