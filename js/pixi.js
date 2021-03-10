@@ -1596,7 +1596,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 4;
+	var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
 
@@ -1627,7 +1627,28 @@ function showTraversable(){
 	}
 	
 	console.log(traversablePos);
-	console.log(numberTiles);
+
+	traversablePos.forEach(arrayIndex=>{
+		// console.log(arrayIndex);
+		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+		if(tileArray[indexNum].id == 7){
+			console.log("Mountain at: " + tileArray[indexNum].pos);
+			var smallestY = 44;
+			for(var i = 0; i < range; i++){
+				traversablePos.forEach(arrayIndex=>{
+					if(arrayIndex[0] == playerPos[0]+i){
+						if(smallestY > playerPos[1]){
+							smallestY == playerPos[1];
+						}
+					}
+				});
+				xPos = playerPos[0]+i
+				console.log("Block: [" + xPos + ", " + smallestY + "]");
+			}
+		}else if(tileArray[indexNum].id == 6){
+			console.log("Hill at: " + tileArray[indexNum].pos);
+		}
+	});
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
