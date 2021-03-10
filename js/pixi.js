@@ -1640,17 +1640,17 @@ function showTraversable(){
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
 			for(var i = 1; i < range+1; i++){
-				console.log(Math.sign(mountainDifference[0])*i+playerPos[0]);
-				var smallestY = 44;
+				var xPos = Math.sign(mountainDifference[0])*i+playerPos[0];
+				var yPos = 44;
 				traversablePos.forEach(arrayIndex=>{
-					if(arrayIndex[0] == playerPos[0]+(i*Math.sign(mountainDifference[0]))){
-						if(smallestY > arrayIndex[1]){
-							smallestY = arrayIndex[1];
+					if(arrayIndex[0] == xPos){
+						if(yPos > arrayIndex[1]){
+							yPos = arrayIndex[1];
 						}
 					}
 				});
-				xPos = playerPos[0]+i
-				console.log("Block: [" + xPos + ", " + smallestY + "]");
+				// xPos = playerPos[0]+i
+				console.log("Block: [" + xPos + ", " + yPos + "]");
 			}
 		}else if(tileArray[indexNum].id == 6){
 			console.log("Hill at: " + tileArray[indexNum].pos);
