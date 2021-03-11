@@ -1648,7 +1648,7 @@ function showTraversable(){
 			if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2+1;
 			}else{
-				count = range+1;
+				count = range;
 			}
 			for(var i = count; i > 1; i--){
 				var xPos = Math.sign(mountainDifference[0])*i+playerPos[0];
