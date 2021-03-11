@@ -1644,7 +1644,13 @@ function showTraversable(){
 			];
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
-			for(var i = 1; i < range+1; i++){
+			var count;
+			if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
+				count = 2+1;
+			}else{
+				count = range+1;
+			}
+			for(var i = 1; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+playerPos[0];
 				var yPos, bottom;
 				if(isEven && mountainDifference[1] == 1){
