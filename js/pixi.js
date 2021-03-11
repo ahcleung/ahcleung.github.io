@@ -1650,7 +1650,7 @@ function showTraversable(){
 			}else{
 				count = range+1;
 			}
-			for(var i = 1; i < count; i++){
+			for(var i = count; i > 1; i--){
 				var xPos = Math.sign(mountainDifference[0])*i+playerPos[0];
 				var yPos, bottom;
 				if(isEven && mountainDifference[1] == 1){
