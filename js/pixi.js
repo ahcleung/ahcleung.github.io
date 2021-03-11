@@ -1647,6 +1647,8 @@ function showTraversable(){
 			var count;
 			if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2;
+			}else if(!isEven && mountainDifference[1] == 1){
+				count = 2;
 			}else{
 				count = range;
 			}
@@ -1657,6 +1659,9 @@ function showTraversable(){
 					yPos = 0;
 					bottom = true;
 				}else if(!isEven && mountainDifference[1] == 0){
+					yPos = 0;
+					bottom = true;
+				}else if(!isEven && mountainDifference[1] == 1){
 					yPos = 0;
 					bottom = true;
 				}else{
