@@ -1639,8 +1639,8 @@ function showTraversable(){
 		if(tileArray[indexNum].id == 7){
 			console.log("Mountain at: " + tileArray[indexNum].pos);
 			var mountainDifference = [
-				tileArray[indexNum].pos[0] - playerPos[0],
-				tileArray[indexNum].pos[1] - playerPos[1]
+				arrayIndex[0] - playerPos[0],
+				arrayIndex[1] - playerPos[1]
 			];
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
@@ -1651,7 +1651,7 @@ function showTraversable(){
 				count = range;
 			}
 			for(var i = 0; i < count; i++){
-				var xPos = Math.sign(mountainDifference[0])*i+tileArray[indexNum].pos[0];
+				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom;
 				if(isEven && mountainDifference[1] == 1){
 					yPos = 0;
