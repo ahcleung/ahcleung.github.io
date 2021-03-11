@@ -1657,16 +1657,13 @@ function showTraversable(){
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom;
-				if(isEven && mountainDifference[1] == 1){
+				if(isEven && mountainDifference[1] == 1 && count == range){
 					yPos = 0;
 					bottom = true;
 				}else if(!isEven && mountainDifference[1] == 0){
 					yPos = 0;
 					bottom = true;
 				}else if(!isEven && mountainDifference[1] == 1){
-					yPos = 0;
-					bottom = true;
-				}else if(isEven && mountainDifference[1] == -1){
 					yPos = 0;
 					bottom = true;
 				}else{
