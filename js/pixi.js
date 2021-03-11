@@ -1646,7 +1646,7 @@ function showTraversable(){
 			// console.log(Math.sign(mountainDifference[0])*2);
 			var count;
 			if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
-				count = 2+1;
+				count = 2;
 			}else{
 				count = range;
 			}
