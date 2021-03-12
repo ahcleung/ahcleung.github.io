@@ -1670,11 +1670,7 @@ function showTraversable(){
 				else	count = 3;
 			}else if(range == 2 && mountainDifference[1] == 1){
 				count = 0;
-			}else if(range == 2 && mountainDifference[1] == -1){
-				count = 0;
 			}else if(range == 3 && mountainDifference[1] == 2){
-				count = 0;
-			}else if(range == 3 && mountainDifference[1] == -2){
 				count = 0;
 			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2;
