@@ -1653,6 +1653,7 @@ function showTraversable(){
 					mountainDifference[1]--;
 				}
 			}
+			console.log("Difference adjusted: " + mountainDifference);
 			if(range == 1){
 				count = 0;
 			}else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
