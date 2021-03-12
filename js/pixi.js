@@ -1988,6 +1988,11 @@ function onMapDown(){
 
 function onTileDown(){
 	console.log("TILE: " + this.object.pos);
+	var mountainDifference = [
+		this.object.pos[0] - playerPos[0],
+		this.object.pos[1] - playerPos[1]
+	];
+	console.log("Difference: " + mountainDifference);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
 		tileTraversable.forEach(item =>{
