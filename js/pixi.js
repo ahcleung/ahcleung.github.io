@@ -1661,7 +1661,7 @@ function showTraversable(){
 			}
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
-				var yPos, bottom;
+				var yPos, bottom, removeIndex;
 				if(mountainDifference[1] > 0){
 					yPos = 0;
 					bottom = true;
@@ -1672,7 +1672,7 @@ function showTraversable(){
 					yPos = 44;
 					bottom = false;
 				}
-				traversablePos.forEach(arrayIndex=>{
+				traversablePos.forEach((arrayIndex,index)=>{
 					if(arrayIndex[0] == xPos){
 						if(bottom){
 							if(yPos < arrayIndex[1]){
@@ -1696,9 +1696,9 @@ function showTraversable(){
 	});
 
 	var removeFromArray = [];
-	traversablePos.forEach((tileIndex, index)=>{
+	traversablePos.forEach((tilePos, index)=>{
 		removeArray.forEach(pos=>{
-			if(tileArray[tileIndex].pos[0] == pos[0] && tileArray[tileIndex].pos[1] == pos[1]){
+			if(tilePos[0] == pos[0] && tilePos[1] == pos[1]){
 				removeFromArray.push(index);
 			}
 		});		
@@ -1713,9 +1713,9 @@ function showTraversable(){
 
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
-	traversablePos.forEach(arrayIndex=>{
+	traversablePos.forEach(pos=>{
 		// console.log(arrayIndex);
-		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+		var indexNum = pos[1] * 50 + pos[0];
 		// if(tileArray[indexNum].id == 7){
 		// 	console.log("Mountain at: " + tileArray[indexNum].pos);
 		// }else if(tileArray[indexNum].id == 6){
