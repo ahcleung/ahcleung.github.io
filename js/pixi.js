@@ -1646,38 +1646,68 @@ function showTraversable(){
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
 			var count;
-			if(range == 1){
-				count = 0;
-			}else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
-				count = 0;
-			}else if(range == 2 && Math.abs(mountainDifference[0]) == 2){
-				count = 0;
-			}else if(range == 3 && Math.abs(mountainDifference[1]) == 3){
-				count = 0;
-			}else if(range == 3 && Math.abs(mountainDifference[0]) == 3){
-				count = 0;
-			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
-				count = 3;	//adapt to range
-			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
-				if(range == 3)	count = 5;	//adapt to range
-				else	count = 3;
-			}else if(!isEven && range == 2 && mountainDifference[1] == 1){
-				count = 0;
-			}else if(isEven && range == 2 && mountainDifference[1] == -1){
-				count = 0;
-			}else if(!isEven && range == 3 && mountainDifference[1] == 2){
-				count = 0;
-			}else if(isEven && range == 3 && mountainDifference[1] == -2){
-				count = 0;
-			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
-				count = 2;
-			}else if(!isEven && mountainDifference[1] == 1){
-				count = 2;
-			}else if(isEven && mountainDifference[1] == -1){
-				count = 2;
+			if(isEven){
+
 			}else{
-				count = range;
+				if(range == 1){
+					count = 0;
+				}else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
+					count = 0;
+				}else if(range == 2 && Math.abs(mountainDifference[0]) == 2){
+					count = 0;
+				}else if(range == 3 && Math.abs(mountainDifference[1]) == 3){
+					count = 0;
+				}else if(range == 3 && Math.abs(mountainDifference[0]) == 3){
+					count = 0;
+				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
+					count = 3;
+				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
+					if(range == 3)	count = 5;
+					else	count = 3;
+				}else if(range == 2 && mountainDifference[1] == -1){
+					count = 0;
+				}else if(range == 3 && mountainDifference[1] == -2){
+					count = 0;
+				}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
+					count = 2;
+				}else if(mountainDifference[1] == -1){
+					count = 2;
+				}else{
+					count = range;
+				}
 			}
+			// if(range == 1){
+			// 	count = 0;
+			// }else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
+			// 	count = 0;
+			// }else if(range == 2 && Math.abs(mountainDifference[0]) == 2){
+			// 	count = 0;
+			// }else if(range == 3 && Math.abs(mountainDifference[1]) == 3){
+			// 	count = 0;
+			// }else if(range == 3 && Math.abs(mountainDifference[0]) == 3){
+			// 	count = 0;
+			// }else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
+			// 	count = 3;	//adapt to range
+			// }else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
+			// 	if(range == 3)	count = 5;	//adapt to range
+			// 	else	count = 3;
+			// }else if(!isEven && range == 2 && mountainDifference[1] == 1){
+			// 	count = 0;
+			// }else if(isEven && range == 2 && mountainDifference[1] == -1){
+			// 	count = 0;
+			// }else if(!isEven && range == 3 && mountainDifference[1] == 2){
+			// 	count = 0;
+			// }else if(isEven && range == 3 && mountainDifference[1] == -2){
+			// 	count = 0;
+			// }else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
+			// 	count = 2;
+			// }else if(!isEven && mountainDifference[1] == 1){
+			// 	count = 2;
+			// }else if(isEven && mountainDifference[1] == -1){
+			// 	count = 2;
+			// }else{
+			// 	count = range;
+			// }
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom, removeIndex, yCount;
