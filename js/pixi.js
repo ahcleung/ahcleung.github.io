@@ -1664,9 +1664,9 @@ function showTraversable(){
 				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
 					if(range == 3)	count = 5;
 					else	count = 3;
-				}else if(range == 2 && mountainDifference[1] == -1){
+				}else if(range == 2 && mountainDifference[1] == 1){
 					count = 0;
-				}else if(range == 3 && mountainDifference[1] == -2){
+				}else if(range == 3 && mountainDifference[1] == 2){
 					count = 0;
 				}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 					count = 2;
