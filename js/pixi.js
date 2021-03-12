@@ -1646,7 +1646,13 @@ function showTraversable(){
 			console.log("Difference: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
 			var count;
-			if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
+			if(range == 1){
+				count = 0;
+			}else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
+				count = 0;
+			}else if(range == 2 && Math.abs(mountainDifference[0]) == 2){
+				count = 0;
+			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
 				count = 3;
 			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
 				count = 5;
