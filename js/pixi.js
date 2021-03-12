@@ -1643,7 +1643,7 @@ function showTraversable(){
 				arrayIndex[0] - playerPos[0],
 				arrayIndex[1] - playerPos[1]
 			];
-			console.log("Difference: " + mountainDifference);
+			console.log("Difference 1: " + mountainDifference);
 			// console.log(Math.sign(mountainDifference[0])*2);
 			var count;
 			if(isEven){
@@ -1653,7 +1653,7 @@ function showTraversable(){
 					mountainDifference[1]--;
 				}
 			}
-			console.log("Difference adjusted: " + mountainDifference);
+			console.log("Difference 2: " + mountainDifference);
 			if(range == 1){
 				count = 0;
 			}else if(range == 2 && Math.abs(mountainDifference[1]) == 2){
