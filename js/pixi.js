@@ -1661,25 +1661,32 @@ function showTraversable(){
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom;
-				if(isEven && mountainDifference[1] == 1 && count == range){
+				// if(isEven && mountainDifference[1] == 1 && count == range){
+				// 	yPos = 0;
+				// 	bottom = true;
+				// }else if(!isEven && mountainDifference[1] == 0){
+				// 	yPos = 0;
+				// 	bottom = true;
+				// }else if(mountainDifference[1] > 0){
+				// 	yPos = 0;
+				// 	bottom = true;
+				// }else if(isEven && mountainDifference[1] == 2){
+				// 	yPos = 0;
+				// 	bottom = true;
+				// }else{
+				// 	yPos = 44;
+				// 	bottom = false;
+				// }
+				if(mountainDifference[1] > 0){
 					yPos = 0;
 					bottom = true;
 				}else if(!isEven && mountainDifference[1] == 0){
 					yPos = 0;
 					bottom = true;
-				}else if(!isEven && mountainDifference[1] == 1){
-					yPos = 0;
-					bottom = true;
-				}else if(mountainDifference[1] == 1){
-					yPos = 0;
-					bottom = true;
-				}else if(isEven && mountainDifference[1] == 2){
-					yPos = 0;
-					bottom = true;
 				}else{
 					yPos = 44;
 					bottom = false;
-				}				
+				}
 				traversablePos.forEach(arrayIndex=>{
 					if(arrayIndex[0] == xPos){
 						if(bottom){
