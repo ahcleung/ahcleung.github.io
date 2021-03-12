@@ -1632,7 +1632,7 @@ function showTraversable(){
 	}
 	
 	console.log(traversablePos);
-	var removeFromArray = [];
+	var removeArray = [];
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
@@ -1695,6 +1695,7 @@ function showTraversable(){
 		}
 	});
 
+	var removeFromArray = [];
 	traversablePos.forEach((tileIndex, index)=>{
 		removeArray.forEach(pos=>{
 			if(tileArray[tileIndex].pos[0] == pos[0] && tileArray[tileIndex].pos[1] == pos[1]){
@@ -1702,7 +1703,7 @@ function showTraversable(){
 			}
 		});		
 	});
-	
+
 	removeFromArray = removeDuplicates(removeFromArray);
 	// console.log("Index at: " + removeFromArray);
 
