@@ -1697,18 +1697,20 @@ function showTraversable(){
 					}
 				});
 				// xPos = playerPos[0]+i
-				// console.log("Block: [" + xPos + ", " + yPos + "]");
-				if(i == 0){
-					yCount = count-1;
-				}else{
-					yCount = count;
-				}
-				for(j = 0; j < yCount; j++){
-					var newY;
-					if(bottom)		newY = yPos-j;
-					else  			newY = yPos+j;
-					console.log("Block: [" + xPos + ", " + newY + "]");
-				}
+				console.log("Block: [" + xPos + ", " + yPos + "]");
+
+				// if(i == 0){
+				// 	yCount = count-1;
+				// }else{
+				// 	yCount = count;
+				// }
+				// for(j = 0; j < yCount; j++){
+				// 	var newY;
+				// 	if(bottom)		newY = yPos-j;
+				// 	else  			newY = yPos+j;
+				// 	console.log("Block: [" + xPos + ", " + newY + "]");
+				// }
+				
 				removeArray.push([xPos,yPos]);
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
