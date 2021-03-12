@@ -1670,7 +1670,7 @@ function showTraversable(){
 				}else if(!isEven && mountainDifference[1] == 1){
 					yPos = 0;
 					bottom = true;
-				}else if(isEven && count == 5){
+				}else if(mountainDifference[1] == -1){
 					yPos = 0;
 					bottom = true;
 				}else if(isEven && mountainDifference[1] == 2){
