@@ -1632,6 +1632,7 @@ function showTraversable(){
 	}
 	
 	console.log(traversablePos);
+	var removeFromArray = [];
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
@@ -1661,22 +1662,6 @@ function showTraversable(){
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom;
-				// if(isEven && mountainDifference[1] == 1 && count == range){
-				// 	yPos = 0;
-				// 	bottom = true;
-				// }else if(!isEven && mountainDifference[1] == 0){
-				// 	yPos = 0;
-				// 	bottom = true;
-				// }else if(mountainDifference[1] > 0){
-				// 	yPos = 0;
-				// 	bottom = true;
-				// }else if(isEven && mountainDifference[1] == 2){
-				// 	yPos = 0;
-				// 	bottom = true;
-				// }else{
-				// 	yPos = 44;
-				// 	bottom = false;
-				// }
 				if(mountainDifference[1] > 0){
 					yPos = 0;
 					bottom = true;
@@ -1702,11 +1687,30 @@ function showTraversable(){
 				});
 				// xPos = playerPos[0]+i
 				console.log("Block: [" + xPos + ", " + yPos + "]");
+				removeArray.push([xPos,yPos]);
+				// removeFromArray.push(yPos * 50 + xPos);
 			}
 		}else if(tileArray[indexNum].id == 6){
 			console.log("Hill at: " + tileArray[indexNum].pos);
 		}
 	});
+
+	traversablePos.forEach((tileIndex, index)=>{
+		removeArray.forEach(pos=>{
+			if(tileArray[tileIndex].pos[0] == pos[0] && tileArray[tileIndex].pos[1] == pos[1]){
+				removeFromArray.push(index);
+			}
+		});		
+	});
+	
+	removeFromArray = removeDuplicates(removeFromArray);
+	// console.log("Index at: " + removeFromArray);
+
+	for (var i = removeFromArray.length -1; i >= 0; i--){
+		traversablePos.splice(removeFromArray[i],1);
+	}
+
+	// traversableIndex = traversableRing1.concat(traversableRing2);
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
@@ -1965,7 +1969,7 @@ function onTileDown(){
 
 function onDragStart(event)
 {
-	console.log("MAP!");
+	// console.log("MAP!");
     // store a reference to the data
     // the reason for this is because of multitouch
     // we want to track the movement of this particular touch
