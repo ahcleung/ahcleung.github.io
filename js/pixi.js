@@ -1698,16 +1698,14 @@ function showTraversable(){
 				});
 				// xPos = playerPos[0]+i
 				// console.log("Block: [" + xPos + ", " + yPos + "]");
-				for(var j = 0; j < count; j++){
-					if(j == 0){
-						yCount = count-1;
-					}else{
-						yCount = count;
-					}
-					for(k = 0; k < yCount; k++){
-						if(bottom)		console.log("Block: [" + xPos + ", " + yPos-k + "]");
-						else  			console.log("Block: [" + xPos + ", " + yPos+k + "]");
-					}
+				if(i == 0){
+					yCount = count-1;
+				}else{
+					yCount = count;
+				}
+				for(j = 0; j < yCount; j++){
+					if(bottom)		console.log("Block: [" + xPos + ", " + yPos-j + "]");
+					else  			console.log("Block: [" + xPos + ", " + yPos+j + "]");
 				}
 				removeArray.push([xPos,yPos]);
 				// removeFromArray.push(yPos * 50 + xPos);
