@@ -1652,6 +1652,10 @@ function showTraversable(){
 				count = 0;
 			}else if(range == 2 && Math.abs(mountainDifference[0]) == 2){
 				count = 0;
+			}else if(range == 3 && Math.abs(mountainDifference[1]) == 3){
+				count = 0;
+			}else if(range == 3 && Math.abs(mountainDifference[0]) == 3){
+				count = 0;
 			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
 				count = 3;	//adapt to range
 			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
@@ -1660,6 +1664,10 @@ function showTraversable(){
 			}else if(!isEven && range == 2 && mountainDifference[1] == 1){
 				count = 0;
 			}else if(isEven && range == 2 && mountainDifference[1] == -1){
+				count = 0;
+			}else if(isEven && range == 3 && mountainDifference[1] == 1){
+				count = 0;
+			}else if(!isEven && range == 3 && mountainDifference[1] == -1){
 				count = 0;
 			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2;
@@ -1710,7 +1718,7 @@ function showTraversable(){
 				// 	else  			newY = yPos+j;
 				// 	console.log("Block: [" + xPos + ", " + newY + "]");
 				// }
-				
+
 				removeArray.push([xPos,yPos]);
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
