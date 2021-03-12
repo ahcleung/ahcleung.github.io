@@ -1704,8 +1704,10 @@ function showTraversable(){
 					yCount = count;
 				}
 				for(j = 0; j < yCount; j++){
-					if(bottom)		console.log("Block: [" + xPos + ", " + yPos-j + "]");
-					else  			console.log("Block: [" + xPos + ", " + yPos+j + "]");
+					var newY;
+					if(bottom)		newY = yPos-j;
+					else  			newY = yPos+j;
+					console.log("Block: [" + xPos + ", " + newY + "]");
 				}
 				removeArray.push([xPos,yPos]);
 				// removeFromArray.push(yPos * 50 + xPos);
