@@ -1596,14 +1596,11 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 3;
+	var range = 2;
 	var traversablePos = [];
 	var numberTiles = 0;
 	var isEven = false;
-
-	if(playerPos[0]%2 == 0){
-		isEven = true;
-	}
+	if(playerPos[0]%2 == 0)		isEven = true;
 
 	//sides
 	for (var i = 1; i < range+1; i++){
