@@ -1621,7 +1621,6 @@ function showTraversable(){
 			traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1-yAdjust]);
 		}
 	}
-
 	//main column
 	for (var i = 1; i < range+1; i++){
 		traversablePos.push([playerPos[0],playerPos[1]+i]);
@@ -1641,7 +1640,6 @@ function showTraversable(){
 				arrayIndex[1] - playerPos[1]
 			];
 			console.log("Difference 1: " + mountainDifference);
-			// console.log(Math.sign(mountainDifference[0])*2);
 			var count;
 			if(isEven){
 				if(Math.abs(mountainDifference[0]) == 1){
@@ -1657,11 +1655,9 @@ function showTraversable(){
 				count = 0;
 			}else if(range == Math.abs(mountainDifference[0])){
 				count = 0;
-			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 1){
-				count = 3;	//adapt to range
 			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
 				if(range == 3)	count = 5;	//adapt to range
-				else	count = 3;
+				else			count = 3;
 			}else if(range == 2 && mountainDifference[1] == 1){
 				count = 0;
 			}else if(range == 3 && mountainDifference[1] == 2){
