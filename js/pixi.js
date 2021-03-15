@@ -1596,7 +1596,7 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 2;
+	var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
 	var isEven = false;
@@ -1671,9 +1671,7 @@ function showTraversable(){
 				count = 0;
 			}else if(range == 3 && Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == -2){
 				count = 0;
-			}else if(Math.abs(mountainDifference[1]) > 1){
-				count = 2;
-			}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == 1){
+			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2;
 			}else{
 				count = range;
