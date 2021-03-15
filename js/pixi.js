@@ -1679,7 +1679,7 @@ function showTraversable(){
 			for(var i = 0; i < count; i++){
 				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
 				var yPos, bottom, removeIndex, yCount;
-				if(mountainDifference[1] > 0){
+				if(mountainDifference[1] >= 0){
 					yPos = 0;
 					bottom = true;
 				}else if(!isEven && mountainDifference[1] == 0){
