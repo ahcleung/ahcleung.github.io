@@ -1642,11 +1642,8 @@ function showTraversable(){
 			console.log("Difference 1: " + mountainDifference);
 			var count;
 			if(isEven){
-				if(Math.abs(mountainDifference[0]) == 1){
-					mountainDifference[1]--;
-				}else if(Math.abs(mountainDifference[0]) == 3){
-					mountainDifference[1]--;
-				}
+				if(Math.abs(mountainDifference[0]) == 1)			mountainDifference[1]--
+				else if(Math.abs(mountainDifference[0]) == 3)		mountainDifference[1]--
 			}
 			console.log("Difference 2: " + mountainDifference);
 			if(range == 1){
@@ -1684,13 +1681,9 @@ function showTraversable(){
 				traversablePos.forEach((arrayIndex,index)=>{
 					if(arrayIndex[0] == xPos){
 						if(bottom){
-							if(yPos < arrayIndex[1]){
-								yPos = arrayIndex[1];
-							}
+							if(yPos < arrayIndex[1])	yPos = arrayIndex[1];
 						}else{
-							if(yPos > arrayIndex[1]){
-								yPos = arrayIndex[1];
-							}
+							if(yPos > arrayIndex[1])	yPos = arrayIndex[1];
 						}
 					}
 				});
