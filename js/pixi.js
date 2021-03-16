@@ -1677,9 +1677,6 @@ function showTraversable(){
 				if(mountainDifference[1] >= 0){
 					yPos = 0;
 					bottom = true;
-				}else if(!isEven && mountainDifference[1] == 0){
-					yPos = 0;
-					bottom = true;
 				}else{
 					yPos = 44;
 					bottom = false;
