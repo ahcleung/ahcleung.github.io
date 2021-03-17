@@ -1724,7 +1724,13 @@ function showTraversable(){
 						}
 					}	
 				}else if(mountainDifference[1] == 0){
-					
+					if(mountainDifference[0] > 0){
+						removeArray.push([xPos+1,yPos-1]);
+						removeArray.push([xPos+1,yPos-2]);
+					}else{
+						removeArray.push([xPos-1,yPos-1]);
+						removeArray.push([xPos-1,yPos-2]);
+					}
 				}else{
 					if(i == 0){
 						yCount = count-1;
