@@ -64,6 +64,7 @@ loader
 		{name:'tile_grass_1', url:'img/tile_grass_1.png'},
 		{name:'tile_grass_2', url:'img/tile_grass_2.png'},
 		{name:'tile_grass_3', url:'img/tile_grass_3.png'},
+		{name:'tile_hill_base', url:'img/tile_hill_base.png'},
 		{name:'tile_hill_1', url:'img/tile_hill_1.png'},
 		{name:'tile_hill_2', url:'img/tile_hill_2.png'},
 		{name:'tile_hill_3', url:'img/tile_hill_3.png'},
@@ -1481,7 +1482,7 @@ function createEdgeTiles(holder){
 
 function createTile(item, itemIndex){
 	const tileContainer = new PIXI.Container();
-	let mapTile;
+	let mapTile, mapBase;
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 	switch(item.id){
@@ -1506,6 +1507,7 @@ function createTile(item, itemIndex){
 			break;
 		case 6:
 			mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
 			break;
 		case 7:
 			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
@@ -1542,6 +1544,11 @@ function createTile(item, itemIndex){
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
 
+	if(item.id == 6){
+		mapBase.scale.set(sizeScale);
+		mapBase.anchor.set(0,1);
+		tileContainer.addChild(mapBase);
+	}
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileContainer.addChild(mapTile);
