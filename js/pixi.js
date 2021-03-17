@@ -1692,7 +1692,7 @@ function showTraversable(){
 
 				if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == 1){
 				}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == -2){
-				}else{}
+				}else{
 					if(i == 0){
 						yCount = count-1;
 					}else{
