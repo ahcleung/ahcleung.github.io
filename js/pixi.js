@@ -1697,28 +1697,28 @@ function showTraversable(){
 					if(range == 3 && Math.abs(mountainDifference[1]) == 1){
 						if(bottom){
 							removeArray.push([xPos,yPos-1]);
-							removeArray.push([xPos+1,yPos]);
-							removeArray.push([xPos+1,yPos-1]);
-							removeArray.push([xPos-1,yPos]);
-							removeArray.push([xPos-1,yPos-1]);
+							removeArray.push([xPos+1,yPos-playerPos[0]%2]);
+							removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
+							removeArray.push([xPos-1,yPos-playerPos[0]%2]);
+							removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
 							removeArray.push([xPos-2,yPos-1]);
 							removeArray.push([xPos+2,yPos-1]);
 						}else{
 							removeArray.push([xPos,yPos+1]);
-							removeArray.push([xPos+1,yPos+1]);
-							removeArray.push([xPos+1,yPos+2]);
-							removeArray.push([xPos-1,yPos+1]);
-							removeArray.push([xPos-1,yPos+2]);
+							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
+							removeArray.push([xPos+1,yPos+2-playerPos[0]%2]);
+							removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
+							removeArray.push([xPos-1,yPos+2-playerPos[0]%2]);
 							removeArray.push([xPos-2,yPos+1]);
 							removeArray.push([xPos+2,yPos+1]);
 						}
 					}else{
 						if(bottom){
-							removeArray.push([xPos-1,yPos]);
-							removeArray.push([xPos+1,yPos]);
+							removeArray.push([xPos-1,yPos-playerPos[0]%2]);
+							removeArray.push([xPos+1,yPos-playerPos[0]%2]);
 						}else{
-							removeArray.push([xPos-1,yPos+1]);
-							removeArray.push([xPos+1,yPos+1]);
+							removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
+							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
 						}
 					}	
 				}else{
