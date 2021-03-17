@@ -1694,7 +1694,9 @@ function showTraversable(){
 				console.log("Block: [" + xPos + ", " + yPos + "]");
 
 				if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == 1){
+					removeArray.push([xPos,yPos]);
 				}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == -2){
+					removeArray.push([xPos,yPos]);
 				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
 					if(range == 3 && Math.abs(mountainDifference[1]) == 1){
 						if(bottom){
@@ -1746,7 +1748,7 @@ function showTraversable(){
 					}
 				}
 
-				removeArray.push([xPos,yPos]);
+				
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
 		}else if(tileArray[indexNum].id == 6){
