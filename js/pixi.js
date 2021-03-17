@@ -1656,7 +1656,7 @@ function showTraversable(){
 				count = 1;
 				// if(range == 3 && Math.abs(mountainDifference[1]) == 1)	count = 5;	//adapt to range
 				// else			count = 3;
-			}else if(mountainDifference[1] == 0){
+			}else if(Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == 0){
 				count = 1;
 			}else if(range == 2 && mountainDifference[1] == 1){
 				count = 0;
@@ -1726,13 +1726,13 @@ function showTraversable(){
 							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
 						}
 					}	
-				}else if(mountainDifference[1] == 0){
+				}else if(Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == 0){
 					if(mountainDifference[0] > 0){
-						removeArray.push([xPos+1,yPos-1]);
-						removeArray.push([xPos+1,yPos-2]);
+						removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
+						removeArray.push([xPos+1,yPos-2-playerPos[0]%2]);
 					}else{
-						removeArray.push([xPos-1,yPos-1]);
-						removeArray.push([xPos-1,yPos-2]);
+						removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
+						removeArray.push([xPos-1,yPos-2-playerPos[0]%2]);
 					}
 				}else{
 					if(i == 0){
