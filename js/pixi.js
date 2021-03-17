@@ -1731,11 +1731,8 @@ function showTraversable(){
 						removeArray.push([xPos-1,yPos-2-playerPos[0]%2]);
 					}
 				}else{
-					if(i == 0){
-						yCount = count-1;
-					}else{
-						yCount = count;
-					}
+					if(i == 0)		yCount = count-1;
+					else			yCount = count;
 					for(j = 0; j < yCount; j++){
 						var newY;
 						if(bottom)		newY = yPos-j;
@@ -1744,8 +1741,6 @@ function showTraversable(){
 						removeArray.push([xPos,newY]);
 					}
 				}
-
-				
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
 		}else if(tileArray[indexNum].id == 6){
