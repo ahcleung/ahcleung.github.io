@@ -1703,11 +1703,11 @@ function showTraversable(){
 						if(bottom)		newY = yPos-j;
 						else  			newY = yPos+j;
 						console.log("Block: [" + xPos + ", " + newY + "]");
-						removeArray.push([xPos,newY]);
+						// removeArray.push([xPos,newY]);
 					}
 				}
 
-				// removeArray.push([xPos,yPos]);
+				removeArray.push([xPos,yPos]);
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
 		}else if(tileArray[indexNum].id == 6){
