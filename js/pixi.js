@@ -74,12 +74,12 @@ loader
 		{name:'tile_plains_1', url:'img/tile_plains_1.png'},
 		{name:'tile_plains_2', url:'img/tile_plains_2.png'},
 		{name:'tile_plains_3', url:'img/tile_plains_3.png'},
-		{name:'tile_water_m_1', url:'img/tile_water_m_1.png'},
-		{name:'tile_water_m_2', url:'img/tile_water_m_2.png'},
-		{name:'tile_water_m_3', url:'img/tile_water_m_3.png'},
-		{name:'tile_water_d_1', url:'img/tile_water_d_1.png'},
-		{name:'tile_water_d_2', url:'img/tile_water_d_2.png'},
-		{name:'tile_water_d_3', url:'img/tile_water_d_3.png'},
+		{name:'tile_water_d_base', url:'img/tile_water_d_base.png'},
+		{name:'tile_water_m_base', url:'img/tile_water_m_base.png'},
+		{name:'tile_water_s_base', url:'img/tile_water_s_base.png'},
+		{name:'tile_water_1', url:'img/tile_water_1.png'},
+		{name:'tile_water_2', url:'img/tile_water_2.png'},
+		{name:'tile_water_3', url:'img/tile_water_3.png'},
 
 		{name:'arrow_up_d', url:'img/arrow_up_d.png'},
 		{name:'arrow_up_n', url:'img/arrow_up_n.png'},
@@ -1490,10 +1490,12 @@ function createTile(item, itemIndex){
 			mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
 			break;
 		case 1:
-			mapTile = new PIXI.Sprite(resources['tile_water_d_' + randTile].texture);
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
 			break;
 		case 2:
-			mapTile = new PIXI.Sprite(resources['tile_water_m_' + randTile].texture);
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
 			break;
 		case 3:
 			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
@@ -1544,7 +1546,7 @@ function createTile(item, itemIndex){
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
 
-	if(item.id == 6){
+	if(item.id == 1 || item.id == 2 || item.id == 6){
 		mapBase.scale.set(sizeScale);
 		mapBase.anchor.set(0,1);
 		tileContainer.addChild(mapBase);
