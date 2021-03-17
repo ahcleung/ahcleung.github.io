@@ -1656,6 +1656,8 @@ function showTraversable(){
 				count = 1;
 				// if(range == 3 && Math.abs(mountainDifference[1]) == 1)	count = 5;	//adapt to range
 				// else			count = 3;
+			}else if(mountainDifference[1] == 0){
+				count = 1;
 			}else if(range == 2 && mountainDifference[1] == 1){
 				count = 0;
 			}else if(range == 3 && mountainDifference[1] == 2){
@@ -1721,6 +1723,8 @@ function showTraversable(){
 							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
 						}
 					}	
+				}else if(mountainDifference[1] == 0){
+					
 				}else{
 					if(i == 0){
 						yCount = count-1;
