@@ -1698,6 +1698,7 @@ function showTraversable(){
 				}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == -2){
 					removeArray.push([xPos,yPos]);
 				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
+					removeArray.push([xPos,yPos]);
 					if(range == 3 && Math.abs(mountainDifference[1]) == 1){
 						if(bottom){
 							removeArray.push([xPos,yPos-1]);
