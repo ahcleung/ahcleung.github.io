@@ -43,7 +43,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
-		{name:'tile_hidden', url:'img/tile_hidden2.png'},
+		{name:'tile_hidden', url:'img/tile_hidden1.png'},
 		{name:'tile_move1', url:'img/tile_move1.png'},
 		{name:'tile_move2', url:'img/tile_move2.png'},
 		{name:'tile_veela1', url:'img/tile_veela1.png'},
@@ -1489,83 +1489,95 @@ function createEdgeTiles(holder){
 
 function createTile(item, itemIndex){
 	const tileContainer = new PIXI.Container();
-	let mapTile, mapBase;
+	let mapTile, mapBase, mapHidden;
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
-	if(!item.discovered){
-		mapTile = new PIXI.Sprite(resources['tile_hidden'].texture);
-	}else{
-		switch(item.id){
-			case 0:
-				mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
-				break;
-			case 1:
-				mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
-				mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
-				break;
-			case 2:
-				mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
-				mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
-				break;
-			case 3:
-				mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
-				break;
-			case 4:
-				mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
-				break;
-			case 5:
-				mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
-				// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
-				break;
-			case 6:
-				mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
-				mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
-				break;
-			case 7:
-				mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
-				// ifMountain = true;
-				break;
-			case 8:
-				mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
-				break;
-			case 9:
-				mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
-				break;
-			case 10:
-				mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
-				break;
-			case 11:
-				mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
-				break;
-			case 12:
-				mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
-				break;
-			case 13:
-				mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
-				break;
-			case 14:
-				mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
-				break;
-			case 15:
-				mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
-				break;
-			case 16:
-				mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
-				break;
-			default:
-				statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
-		}
-		if(item.id == 1 || item.id == 2 || item.id == 6){
-			mapBase.scale.set(sizeScale);
-			mapBase.anchor.set(0,1);
-			tileContainer.addChild(mapBase);
-		}
-	}
 
-	
+	mapHidden = new PIXI.Sprite(resources['tile_hidden'].texture);
+	mapHidden.scale.set(sizeScale);
+	mapHidden.anchor.set(0,1);
+	tileContainer.hidden = mapHidden;
+	tileContainer.addChild(mapHidden);
+	const tileImage = new PIXI.Container();
+	switch(item.id){
+		case 0:
+			mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
+			break;
+		case 1:
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
+			break;
+		case 2:
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
+			break;
+		case 3:
+			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
+			break;
+		case 4:
+			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+			break;
+		case 5:
+			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+			// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
+			break;
+		case 6:
+			mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
+			break;
+		case 7:
+			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+			// ifMountain = true;
+			break;
+		case 8:
+			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+			break;
+		case 9:
+			mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+			break;
+		case 10:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
+			break;
+		case 11:
+			mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
+			break;
+		case 12:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
+			break;
+		case 13:
+			mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
+			break;
+		case 14:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
+			break;
+		case 15:
+			mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
+			break;
+		case 16:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
+			break;
+		default:
+			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+	}
+	if(item.id == 1 || item.id == 2 || item.id == 6){
+		mapBase.scale.set(sizeScale);
+		mapBase.anchor.set(0,1);
+		tileImage.addChild(mapBase);
+	}
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
-	tileContainer.addChild(mapTile);
+	tileImage.addChild(mapTile);
+
+	tileContainer.image = tileImage;
+	tileContainer.addChild(tileImage);
+
+	if(item.discoverd){
+		tileContainer.image.visible = true;
+		tileContainer.hidden.visible = false;
+	}else{
+		tileContainer.image.visible = false;
+		tileContainer.hidden.visible = true;
+	}
 
 	// item.pos[0]==j item.pos[1]==i
 	tileContainer.interactive = true;
