@@ -43,7 +43,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
-		{name:'tile_hidden', url:'img/tile_hidden1.png'},
+		{name:'tile_hidden', url:'img/tile_hidden2.png'},
 		{name:'tile_move1', url:'img/tile_move1.png'},
 		{name:'tile_move2', url:'img/tile_move2.png'},
 		{name:'tile_veela1', url:'img/tile_veela1.png'},
