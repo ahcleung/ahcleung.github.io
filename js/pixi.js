@@ -1571,7 +1571,7 @@ function createTile(item, itemIndex){
 	tileContainer.image = tileImage;
 	tileContainer.addChild(tileImage);
 
-	if(item.discoverd){
+	if(item.discovered){
 		tileContainer.image.visible = true;
 		tileContainer.hidden.visible = false;
 	}else{
