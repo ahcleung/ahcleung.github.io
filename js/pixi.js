@@ -1690,11 +1690,10 @@ function showTraversable(){
 				count = 1;
 			}else if(Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == 0){
 				count = 1;
-			}else if(range == 2 && mountainDifference[1] == 1){
+			}else if(mountainDifference[1] == range-1){
 				count = 0;
-			}else if(range == 3 && mountainDifference[1] == 2){
-				count = 0;
-			}else if(range == 3 && Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == -2){
+			}
+			else if(range == 3 && Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == -2){
 				count = 0;
 			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
 				count = 2;
@@ -1779,8 +1778,6 @@ function showTraversable(){
 				}
 				// removeFromArray.push(yPos * 50 + xPos);
 			}
-		}else if(tileArray[indexNum].id == 6){
-			console.log("Hill at: " + tileArray[indexNum].pos);
 		}
 	});
 
