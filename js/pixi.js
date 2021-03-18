@@ -1626,14 +1626,19 @@ function showTraversable(){
 			yAdjust = (Aa * -1) + (playerPos[0]%2) + Bb - Cc;
 		}
 		for(var j = 0; j < range*2-i+1; j++){
-			traversablePos.push([playerPos[0]-i,playerPos[1]-range+j+1-yAdjust]);
-			traversablePos.push([playerPos[0]+i,playerPos[1]-range+j+1-yAdjust]);
+			var playerPosYAdjust = playerPos[1]-range+j+1-yAdjust;
+			if(playerPos[0]-i > 0 && playerPosYAdjust > 0 && playerPosYAdjust < 44){
+				traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
+			}
+			if(playerPos[0]+i < 50 && playerPosYAdjust > 0 && playerPosYAdjust < 44){
+				traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
+			}
 		}
 	}
 	//main column
 	for (var i = 1; i < range+1; i++){
-		traversablePos.push([playerPos[0],playerPos[1]+i]);
-		traversablePos.push([playerPos[0],playerPos[1]-i]);
+		if(playerPos[1]+i < 44)		traversablePos.push([playerPos[0],playerPos[1]+i]);
+		if(playerPos[1]-i > 0)		traversablePos.push([playerPos[0],playerPos[1]-i]);
 	}
 	
 	console.log(traversablePos);
