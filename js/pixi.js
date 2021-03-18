@@ -39,6 +39,7 @@ loader
 		"js/element.json",
 		"js/item.json",
 		"js/map.json",
+		"js/player_map.json",
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
@@ -283,6 +284,7 @@ const elementList = resources["js/element.json"];
 const creatureList = resources["js/creature.json"];
 const itemList = resources["js/item.json"];
 const mapList = resources["js/map.json"];
+const playerMapList = resources["js/player_map.json"];
 
 let state, onScreenStats, consoleScreen, turnText, mapBG, sizeScale;
 
@@ -1308,11 +1310,15 @@ function setup(){
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
+			var discovered = false;
+			var travelled = false;
+			if(playerMapList.data.maps[0].tiles[i][j] == 1)			discovered = true;
+			else if(playerMapList.data.maps[0].tiles[i][j] == 2)	travelled = true;
 			const newTile = new Tile({
 				id: mapList.data.maps[0].tiles[i][j],
 				pos: [j,i],
-				discovered: false,
-				travelled: false
+				discovered: discovered,
+				travelled: travelled
 			});
 			tileArray.push(newTile);
 		}
@@ -1991,6 +1997,7 @@ function onMapDown(){
 
 function onTileDown(){
 	console.log("TILE: " + this.object.pos);
+	console.log("discovered: " + this.object.discovered + " || travelled: " + this.object.travelled);
 	var mountainDifference = [
 		this.object.pos[0] - playerPos[0],
 		this.object.pos[1] - playerPos[1]
