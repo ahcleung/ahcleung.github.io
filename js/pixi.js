@@ -1555,13 +1555,14 @@ function createTile(item, itemIndex){
 			default:
 				statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 		}
+		if(item.id == 1 || item.id == 2 || item.id == 6){
+			mapBase.scale.set(sizeScale);
+			mapBase.anchor.set(0,1);
+			tileContainer.addChild(mapBase);
+		}
 	}
 
-	if(item.id == 1 || item.id == 2 || item.id == 6){
-		mapBase.scale.set(sizeScale);
-		mapBase.anchor.set(0,1);
-		tileContainer.addChild(mapBase);
-	}
+	
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileContainer.addChild(mapTile);
