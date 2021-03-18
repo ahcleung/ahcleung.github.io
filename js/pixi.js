@@ -1669,7 +1669,7 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(tileArray[indexNum].id == 7){
+		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6){
 			console.log("Mountain at: " + tileArray[indexNum].pos);
 			var mountainDifference = [
 				arrayIndex[0] - playerPos[0],
