@@ -1492,7 +1492,7 @@ function createTile(item, itemIndex){
 	let mapTile, mapBase;
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
-	if(item.discovered){
+	if(!item.discovered){
 		mapTile = new PIXI.Sprite(resources['tile_hidden'].texture);
 	}else{
 		switch(item.id){
