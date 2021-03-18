@@ -43,6 +43,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
+		{name:'tile_hidden', url:'img/tile_hidden1.png'},
 		{name:'tile_move1', url:'img/tile_move1.png'},
 		{name:'tile_move2', url:'img/tile_move2.png'},
 		{name:'tile_veela1', url:'img/tile_veela1.png'},
@@ -1492,7 +1493,7 @@ function createTile(item, itemIndex){
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 	if(item.discovered){
-		
+		mapTile = new PIXI.Sprite(resources['tile_hidden'].texture);
 	}else{
 		switch(item.id){
 			case 0:
