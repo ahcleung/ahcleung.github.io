@@ -23,6 +23,9 @@ class Tile{
 
 	showMove1(){
 		if(this.id != 7){
+			this.discovered = true;
+			this.sprite.image.visible = true;
+			this.sprite.hidden.visible = false;
 			this.sprite.moveTile1.visible = true;
 			this.traversable = true;
 		}		
