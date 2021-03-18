@@ -1313,7 +1313,7 @@ function setup(){
 			var discovered = false;
 			var travelled = false;
 			if(playerMapList.data.maps[0].tiles[i][j] == 1)			discovered = true;
-			else if(playerMapList.data.maps[0].tiles[i][j] == 2)	travelled = true;
+			else if(playerMapList.data.maps[0].tiles[i][j] == 2)	discovered = true;travelled = true;
 			const newTile = new Tile({
 				id: mapList.data.maps[0].tiles[i][j],
 				pos: [j,i],
@@ -1491,65 +1491,69 @@ function createTile(item, itemIndex){
 	let mapTile, mapBase;
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
-	switch(item.id){
-		case 0:
-			mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
-			break;
-		case 1:
-			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
-			mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
-			break;
-		case 2:
-			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
-			mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
-			break;
-		case 3:
-			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
-			break;
-		case 4:
-			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
-			break;
-		case 5:
-			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
-			// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
-			break;
-		case 6:
-			mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
-			mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
-			break;
-		case 7:
-			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
-			// ifMountain = true;
-			break;
-		case 8:
-			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
-			break;
-		case 9:
-			mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
-			break;
-		case 10:
-			mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
-			break;
-		case 11:
-			mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
-			break;
-		case 12:
-			mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
-			break;
-		case 13:
-			mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
-			break;
-		case 14:
-			mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
-			break;
-		case 15:
-			mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
-			break;
-		case 16:
-			mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
-			break;
-		default:
-			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+	if(item.discovered){
+		
+	}else{
+		switch(item.id){
+			case 0:
+				mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
+				break;
+			case 1:
+				mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+				mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
+				break;
+			case 2:
+				mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+				mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
+				break;
+			case 3:
+				mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
+				break;
+			case 4:
+				mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+				break;
+			case 5:
+				mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+				// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
+				break;
+			case 6:
+				mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+				mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
+				break;
+			case 7:
+				mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+				// ifMountain = true;
+				break;
+			case 8:
+				mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+				break;
+			case 9:
+				mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+				break;
+			case 10:
+				mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
+				break;
+			case 11:
+				mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
+				break;
+			case 12:
+				mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
+				break;
+			case 13:
+				mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
+				break;
+			case 14:
+				mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
+				break;
+			case 15:
+				mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
+				break;
+			case 16:
+				mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
+				break;
+			default:
+				statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+		}
 	}
 
 	if(item.id == 1 || item.id == 2 || item.id == 6){
