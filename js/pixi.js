@@ -1627,11 +1627,9 @@ function showTraversable(){
 		}
 		for(var j = 0; j < range*2-i+1; j++){
 			var playerPosYAdjust = playerPos[1]-range+j+1-yAdjust;
-			if(playerPos[0]-i >= 0 && playerPosYAdjust >= 0 && playerPosYAdjust < 44){
-				traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
-			}
-			if(playerPos[0]+i < 50 && playerPosYAdjust >= 0 && playerPosYAdjust < 44){
-				traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
+			if(playerPosYAdjust >= 0 && playerPosYAdjust < 44){
+				if(playerPos[0]-i >= 0)		traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
+				if(playerPos[0]+i < 50)		traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
 			}
 		}
 	}
