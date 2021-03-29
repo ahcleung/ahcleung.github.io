@@ -1424,7 +1424,7 @@ function setup(){
 	// mapHolder.tileWidth
 	// mapHolder.tileHeight
 
-	var centerGraphic = PIXI.Texture.from('img/additional_item.png');
+	var centerGraphic = new PIXI.Sprite(textureAdditionalItem);	
 	// textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	// centerGraphic.beginFill(0xff0000);
 	// centerGraphic.beginFill(0x00ff00);
