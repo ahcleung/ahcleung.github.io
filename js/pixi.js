@@ -59,6 +59,7 @@ loader
 		{name:'tile_bamboo_1', url:'img/tile_bamboo_1.png'},
 		{name:'tile_bamboo_2', url:'img/tile_bamboo_2.png'},
 		{name:'tile_bamboo_3', url:'img/tile_bamboo_3.png'},
+		{name:'tile_forest_base', url:'img/tile_forest_base.png'},
 		{name:'tile_forest_1', url:'img/tile_forest_1.png'},
 		{name:'tile_forest_2', url:'img/tile_forest_2.png'},
 		{name:'tile_forest_3', url:'img/tile_forest_3.png'},
@@ -71,6 +72,7 @@ loader
 		{name:'tile_hill_1', url:'img/tile_hill_1.png'},
 		{name:'tile_hill_2', url:'img/tile_hill_2.png'},
 		{name:'tile_hill_3', url:'img/tile_hill_3.png'},
+		{name:'tile_mountain_base', url:'img/tile_mountain_base.png'},
 		{name:'tile_mountain_1', url:'img/tile_mountain_1.png'},
 		{name:'tile_mountain_2', url:'img/tile_mountain_2.png'},
 		{name:'tile_mountain_3', url:'img/tile_mountain_3.png'},
@@ -1521,6 +1523,7 @@ function createTile(item, itemIndex){
 			break;
 		case 5:
 			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_forest_base'].texture);
 			// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
 			break;
 		case 6:
@@ -1529,6 +1532,7 @@ function createTile(item, itemIndex){
 			break;
 		case 7:
 			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_mountain_base'].texture);
 			// ifMountain = true;
 			break;
 		case 8:
@@ -1561,7 +1565,7 @@ function createTile(item, itemIndex){
 		default:
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
-	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 6){
+	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5 || item.id == 6 || item.id == 7){
 		mapBase.scale.set(sizeScale);
 		mapBase.anchor.set(0,1);
 		tileImage.addChild(mapBase);
