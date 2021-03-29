@@ -1302,7 +1302,7 @@ function setup(){
 
 	stageContainer.visible = false;
 	turnText.visible = false;
-	interfaceHolder.visible = false;
+	// interfaceHolder.visible = false;
 
 	playerPos = [17,13];	
 	// var playerPos = [0,1];
