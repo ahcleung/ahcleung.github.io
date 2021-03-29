@@ -1433,8 +1433,8 @@ function setup(){
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	app.stage.addChild(centerGraphic);
-	centerGraphic.x = -100;
-	centerGraphic.y = -100;
+	centerGraphic.x = 0;
+	centerGraphic.y = 0;
 
 	// mapHolder
 
