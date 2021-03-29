@@ -1302,7 +1302,7 @@ function setup(){
 
 	stageContainer.visible = false;
 	turnText.visible = false;
-	// interfaceHolder.visible = false;
+	interfaceHolder.visible = false;
 
 	playerPos = [17,13];	
 	// var playerPos = [0,1];
@@ -1400,6 +1400,8 @@ function setup(){
 
 	app.stage.addChild(mapHolder);
 
+
+
 	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
 	// const newTile = new Tile({
 	// 	id: 1,
@@ -1424,15 +1426,15 @@ function setup(){
 	// mapHolder.tileWidth
 	// mapHolder.tileHeight
 
-	// var centerGraphic = new PIXI.Graphics();
-	// // centerGraphic.beginFill(0xff0000);
-	// // centerGraphic.beginFill(0x00ff00);
-	// centerGraphic.beginFill(0x0000ff);
-	// centerGraphic.drawRect(0, 0, 100, 100);
-	// centerGraphic.endFill();
-	// app.stage.addChild(centerGraphic);
-	// centerGraphic.x = app.screen.width/2;
-	// centerGraphic.y = app.screen.height/2;
+	var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.beginFill(0x00ff00);
+	centerGraphic.beginFill(0x0000ff);
+	centerGraphic.drawRect(0, 0, 100, 100);
+	centerGraphic.endFill();
+	app.stage.addChild(centerGraphic);
+	centerGraphic.x = -100;
+	centerGraphic.y = -100;
 
 	// mapHolder
 
