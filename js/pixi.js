@@ -1400,8 +1400,6 @@ function setup(){
 
 	app.stage.addChild(mapHolder);
 
-
-
 	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
 	// const newTile = new Tile({
 	// 	id: 1,
@@ -1426,15 +1424,15 @@ function setup(){
 	// mapHolder.tileWidth
 	// mapHolder.tileHeight
 
-	// var centerGraphic = new PIXI.Graphics();
-	// // centerGraphic.beginFill(0xff0000);
-	// // centerGraphic.beginFill(0x00ff00);
-	// centerGraphic.beginFill(0x0000ff);
-	// centerGraphic.drawRect(0, 0, 100, 100);
-	// centerGraphic.endFill();
-	// app.stage.addChild(centerGraphic);
-	// centerGraphic.x = 0;
-	// centerGraphic.y = 0;
+	var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.beginFill(0x00ff00);
+	centerGraphic.beginFill(0x0000ff);
+	centerGraphic.drawRect(0, 0, 100, 100);
+	centerGraphic.endFill();
+	mapHolder.addChild(centerGraphic);
+	centerGraphic.x = 0;
+	centerGraphic.y = 0;
 
 	// mapHolder
 
@@ -1619,14 +1617,6 @@ function createTile(item, itemIndex){
 	tileContainer.moveTile1 = moveTile1;
 	item.sprite = tileContainer;
 	tileContainer.object = item;
-
-	var centerGraphic = new PIXI.Graphics();
-	centerGraphic.beginFill(0x0000ff);
-	centerGraphic.drawRect(0, 0, 100, 100);
-	centerGraphic.endFill();
-	tileContainer.addChild(centerGraphic);
-	centerGraphic.x = -100;
-	centerGraphic.y = -100;
 
 	// var centerGraphic = new PIXI.Graphics();
 	// centerGraphic.beginFill(0xff0000);
