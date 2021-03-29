@@ -3129,8 +3129,13 @@ function onAdditionalMoveDown(){
 
 function onAdditionalItemDown(){
 	console.log("Additional Item");
-	onScreenStats.visible = true;
-	consoleScreen.visible = true;
+	// onScreenStats.visible = true;
+	// consoleScreen.visible = true;
+	mapBG.visible = true;
+	mapHolder.visible = true;
+	stageContainer.visible = false;
+	turnText.visible = false;
+	interfaceHolder.visible = false;
 }
 
 function onAdditionalSkipDown(){
