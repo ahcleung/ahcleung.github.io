@@ -1514,7 +1514,7 @@ function createTile(item, itemIndex){
 			break;
 		case 3:
 			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
-			mapBase = new PIXI.Sprite(resources['tile_grass_base' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_grass_base'].texture);
 			break;
 		case 4:
 			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
