@@ -1434,6 +1434,14 @@ function setup(){
 	centerGraphic.x = -100;
 	centerGraphic.y = -100;
 
+	centerGraphic.interactive = true;
+	centerGraphic.buttonMode = true;
+
+	centerGraphic
+		// events for drag start
+		.on('mousedown', onSwitchDown)
+		.on('touchstart', onSwitchDown);
+
 	// mapHolder
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
@@ -1824,6 +1832,13 @@ function onMapDown(){
 		console.log("Player moves to next map [" + playerPos + "]");
 	}
 	console.log("onMapDown");
+}
+
+function onSwitchDown(){
+	mapHolder.visible = false;
+	stageContainer.visible = true;
+	turnText.visible = true;
+	interfaceHolder.visible = true;
 }
 
 function onTileDown(){
