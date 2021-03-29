@@ -1835,6 +1835,7 @@ function onMapDown(){
 }
 
 function onSwitchDown(){
+	mapBG.visible = false;
 	mapHolder.visible = false;
 	stageContainer.visible = true;
 	turnText.visible = true;
