@@ -1841,6 +1841,13 @@ function onSwitchDown(){
 	stageContainer.visible = true;
 	turnText.visible = true;
 	interfaceHolder.visible = true;
+	if(playerPos[0]% 2 == 0){		
+		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+	}else{
+		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
+	}
+	var mapTween = new TimelineMax();
+	mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut});
 }
 
 function onTileDown(){
