@@ -1431,8 +1431,8 @@ function setup(){
 	centerGraphic.drawRect(0, 0, 100, 100);
 	centerGraphic.endFill();
 	mapHolder.addChild(centerGraphic);
-	centerGraphic.x = 0;
-	centerGraphic.y = 0;
+	centerGraphic.x = -100;
+	centerGraphic.y = -100;
 
 	// mapHolder
 
