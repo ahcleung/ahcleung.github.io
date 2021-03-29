@@ -1424,12 +1424,13 @@ function setup(){
 	// mapHolder.tileWidth
 	// mapHolder.tileHeight
 
-	var centerGraphic = new PIXI.Graphics();
+	var centerGraphic = PIXI.Texture.from('img/additional_item.png');
+	// textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	// centerGraphic.beginFill(0xff0000);
 	// centerGraphic.beginFill(0x00ff00);
-	centerGraphic.beginFill(0x0000ff);
-	centerGraphic.drawRect(0, 0, 100, 100);
-	centerGraphic.endFill();
+	// centerGraphic.beginFill(0x0000ff);
+	// centerGraphic.drawRect(0, 0, 100, 100);
+	// centerGraphic.endFill();
 	mapHolder.addChild(centerGraphic);
 	centerGraphic.x = -100;
 	centerGraphic.y = -100;
