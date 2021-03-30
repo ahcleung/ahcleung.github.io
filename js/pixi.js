@@ -1585,8 +1585,8 @@ function createTile(item, itemIndex){
 	moveTile1.scale.set(sizeScale);
 	moveTile1.anchor.set(0,1);
 	moveTile1.visible = false;
-	tileContainer.addChild(moveTile1);
-	tileContainer.moveTile1 = moveTile1;
+	tileImage.addChild(moveTile1);
+	tileImage.moveTile1 = moveTile1;
 	
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
