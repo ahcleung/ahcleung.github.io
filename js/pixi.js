@@ -1871,7 +1871,10 @@ function onTileDown(){
 	console.log("Difference: " + mountainDifference);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
-		
+		tileTraversable.forEach(item =>{
+			item.hideMove1();
+			item.hideMove2();
+		});
 		playerPos = this.object.pos;
 		var newVeelaX = playerPos[0] * mapHolder.tileWidth * 3/4;
 		var newVeelaY = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
@@ -1893,10 +1896,6 @@ function onTileDown(){
 		}
 		var mapTween = new TimelineMax();
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
-			tileTraversable.forEach(item =>{
-				item.hideMove1();
-				item.hideMove2();
-			});
 			showTraversable();
 		}});
 
