@@ -27,7 +27,7 @@ class Tile{
 		// this.sprite.image.fog.visible = false;
 		// this.sprite.image.detail.visible = true;
 		this.sprite.hidden.visible = false;
-		if(this.id != 7 || this.id != 1 || this.id != 2){
+		if(this.id != 7 && this.id != 1 && this.id != 2){
 			this.sprite.moveTile1.visible = true;
 			this.traversable = true;
 		}

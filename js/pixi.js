@@ -1696,38 +1696,38 @@ function showTraversable(){
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6){
 			console.log("Obstacle at: " + tileArray[indexNum].pos);
-			var mountainDifference = [
+			var obstacleDifference = [
 				arrayIndex[0] - playerPos[0],
 				arrayIndex[1] - playerPos[1]
 			];
-			console.log("Difference 1: " + mountainDifference);
+			console.log("Difference 1: " + obstacleDifference);
 			var count;
 			if(isEven){
-				if(Math.abs(mountainDifference[0]) == 1)			mountainDifference[1]--
-				else if(Math.abs(mountainDifference[0]) == 3)		mountainDifference[1]--
+				if(Math.abs(obstacleDifference[0]) == 1)			obstacleDifference[1]--
+				else if(Math.abs(obstacleDifference[0]) == 3)		obstacleDifference[1]--
 			}
-			console.log("Difference 2: " + mountainDifference);
-			if(range == 1 || range == Math.abs(mountainDifference[1]) || range == Math.abs(mountainDifference[0])){
+			console.log("Difference 2: " + obstacleDifference);
+			if(range == 1 || range == Math.abs(obstacleDifference[1]) || range == Math.abs(obstacleDifference[0])){
 				count = 0;
-			}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
+			}else if(obstacleDifference[0] == 0 && Math.abs(obstacleDifference[1]) > 0){
 				count = 1;
-			}else if(Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == 0){
+			}else if(Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == 0){
 				count = 1;
-			}else if(mountainDifference[1] == range-1){
+			}else if(obstacleDifference[1] == range-1){
 				count = 0;
-			}else if(range == 3 && Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == -2){
+			}else if(range == 3 && Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == -2){
 				count = 0;
-			}else if(Math.abs(mountainDifference[0]) > 1 || Math.abs(mountainDifference[1]) > 1){
+			}else if(Math.abs(obstacleDifference[0]) > 1 || Math.abs(obstacleDifference[1]) > 1){
 				count = 2;
-			}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == 1){
+			}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
 				count = 2;
 			}else{
 				count = range;
 			}
 			for(var i = 0; i < count; i++){
-				var xPos = Math.sign(mountainDifference[0])*i+arrayIndex[0];
+				var xPos = Math.sign(obstacleDifference[0])*i+arrayIndex[0];
 				var yPos, bottom, removeIndex, yCount;
-				if(mountainDifference[1] >= 0){
+				if(obstacleDifference[1] >= 0){
 					yPos = 0;
 					bottom = true;
 				}else{
@@ -1746,13 +1746,13 @@ function showTraversable(){
 				// xPos = playerPos[0]+i
 				console.log("Block: [" + xPos + ", " + yPos + "]");
 
-				if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == 1){
+				if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
 					removeArray.push([xPos,yPos]);
-				}else if(Math.abs(mountainDifference[0]) == 1 && mountainDifference[1] == -2){
+				}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == -2){
 					removeArray.push([xPos,yPos]);
-				}else if(mountainDifference[0] == 0 && Math.abs(mountainDifference[1]) > 0){
+				}else if(obstacleDifference[0] == 0 && Math.abs(obstacleDifference[1]) > 0){
 					removeArray.push([xPos,yPos]);
-					if(range == 3 && Math.abs(mountainDifference[1]) == 1){
+					if(range == 3 && Math.abs(obstacleDifference[1]) == 1){
 						if(bottom){
 							removeArray.push([xPos,yPos-1]);
 							removeArray.push([xPos+1,yPos-playerPos[0]%2]);
@@ -1779,8 +1779,8 @@ function showTraversable(){
 							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
 						}
 					}	
-				}else if(Math.abs(mountainDifference[0]) == 2 && mountainDifference[1] == 0){
-					if(mountainDifference[0] > 0){
+				}else if(Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == 0){
+					if(obstacleDifference[0] > 0){
 						removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
 						removeArray.push([xPos+1,yPos-2-playerPos[0]%2]);
 					}else{
@@ -1864,11 +1864,11 @@ function onSwitchDown(){
 function onTileDown(){
 	console.log("TILE: " + this.object.pos);
 	console.log("discovered: " + this.object.discovered + " || travelled: " + this.object.travelled);
-	var mountainDifference = [
+	var obstacleDifference = [
 		this.object.pos[0] - playerPos[0],
 		this.object.pos[1] - playerPos[1]
 	];
-	console.log("Difference: " + mountainDifference);
+	console.log("Difference: " + obstacleDifference);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
 		tileTraversable.forEach(item =>{
