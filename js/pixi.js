@@ -1694,8 +1694,8 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6){
-			console.log("Mountain at: " + tileArray[indexNum].pos);
+		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 1 || tileArray[indexNum].id == 2){
+			console.log("Obstacle at: " + tileArray[indexNum].pos);
 			var mountainDifference = [
 				arrayIndex[0] - playerPos[0],
 				arrayIndex[1] - playerPos[1]
