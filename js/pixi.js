@@ -1309,7 +1309,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [17,13];
-	travelMechanic = 1;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
+	travelMechanic = 2;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
