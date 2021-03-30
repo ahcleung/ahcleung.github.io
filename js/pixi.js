@@ -56,6 +56,7 @@ loader
 		{name:'tile_edge_SW', url:'img/tile_edge_SW.png'},
 		{name:'tile_edge_W', url:'img/tile_edge_W.png'},
 		{name:'tile_edge_NW', url:'img/tile_edge_NW.png'},
+		{name:'tile_bamboo_base', url:'img/tile_bamboo_base.png'},
 		{name:'tile_bamboo_1', url:'img/tile_bamboo_1.png'},
 		{name:'tile_bamboo_2', url:'img/tile_bamboo_2.png'},
 		{name:'tile_bamboo_3', url:'img/tile_bamboo_3.png'},
@@ -76,6 +77,7 @@ loader
 		{name:'tile_mountain_1', url:'img/tile_mountain_1.png'},
 		{name:'tile_mountain_2', url:'img/tile_mountain_2.png'},
 		{name:'tile_mountain_3', url:'img/tile_mountain_3.png'},
+		{name:'tile_plains_base', url:'img/tile_plains_base.png'},
 		{name:'tile_plains_1', url:'img/tile_plains_1.png'},
 		{name:'tile_plains_2', url:'img/tile_plains_2.png'},
 		{name:'tile_plains_3', url:'img/tile_plains_3.png'},
@@ -1512,9 +1514,6 @@ function createTile(item, itemIndex){
 	tileContainer.addChild(mapHidden);
 	const tileImage = new PIXI.Container();
 	switch(item.id){
-		case 0:
-			mapTile = new PIXI.Sprite(resources['tile_cliff' + randTile].texture);
-			break;
 		case 1:
 			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
 			mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
@@ -1529,6 +1528,7 @@ function createTile(item, itemIndex){
 			break;
 		case 4:
 			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_bamboo_base'].texture);
 			break;
 		case 5:
 			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
@@ -1546,6 +1546,7 @@ function createTile(item, itemIndex){
 			break;
 		case 8:
 			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_plains_base'].texture);
 			break;
 		case 9:
 			mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
@@ -1574,7 +1575,7 @@ function createTile(item, itemIndex){
 		default:
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
-	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5 || item.id == 6 || item.id == 7){
+	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 4 || item.id == 5 || item.id == 6 || item.id == 7 || item.id == 8){
 		mapBase.scale.set(sizeScale);
 		mapBase.anchor.set(0,1);
 		tileImage.addChild(mapBase);
