@@ -1694,7 +1694,7 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6){
+		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
 			console.log("Obstacle at: " + tileArray[indexNum].pos);
 			var obstacleDifference = [
 				arrayIndex[0] - playerPos[0],
