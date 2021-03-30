@@ -1841,6 +1841,7 @@ function onSwitchDown(){
 	stageContainer.visible = true;
 	turnText.visible = true;
 	interfaceHolder.visible = true;
+	var newMapX = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
 	if(playerPos[0]% 2 == 0){		
 		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
 	}else{
