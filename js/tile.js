@@ -35,6 +35,8 @@ class Tile{
 
 	hideMove1(){
 		this.sprite.moveTile1.visible = false;
+		this.sprite.image.fog.visible = true;
+		this.sprite.image.detail.visible = false;
 		this.traversable = false;
 	}
 
@@ -46,9 +48,7 @@ class Tile{
 	}
 
 	hideMove2(){
-		this.sprite.moveTile2.visible = false;		
-		this.sprite.image.fog.visible = true;
-		this.sprite.image.detail.visible = false;
+		this.sprite.moveTile2.visible = false;
 		this.travelConfirm = false;
 	}
 
