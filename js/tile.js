@@ -24,6 +24,8 @@ class Tile{
 	showMove1(){
 		this.discovered = true;
 		this.sprite.image.visible = true;
+		this.sprite.image.fog.visible = false;
+		this.sprite.image.detail.visible = true;
 		this.sprite.hidden.visible = false;
 		if(this.id != 7){
 			this.sprite.moveTile1.visible = true;
@@ -33,6 +35,8 @@ class Tile{
 
 	hideMove1(){
 		this.sprite.moveTile1.visible = false;
+		this.sprite.image.fog.visible = true;
+		this.sprite.image.detail.visible = false;
 		this.traversable = false;
 	}
 

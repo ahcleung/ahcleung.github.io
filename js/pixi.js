@@ -44,6 +44,7 @@ loader
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
 		{name:'tile_hidden', url:'img/tile_hidden1.png'},
+		{name:'tile_fog', url:'img/tile_fog.png'},
 		{name:'tile_move1', url:'img/tile_move1.png'},
 		{name:'tile_move2', url:'img/tile_move2.png'},
 		{name:'tile_veela1', url:'img/tile_veela1.png'},
@@ -1503,7 +1504,7 @@ function createEdgeTiles(holder){
 
 function createTile(item, itemIndex){
 	const tileContainer = new PIXI.Container();
-	let mapTile, mapBase, mapHidden;
+	let mapTile, mapBase, mapHidden, mapFog;
 	// var ifMountain = false;
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 
@@ -1583,6 +1584,14 @@ function createTile(item, itemIndex){
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileImage.addChild(mapTile);
+	tileImage.detail = mapTile;
+
+	mapFog = new PIXI.Sprite(resources['tile_fog'].texture);
+	mapFog.scale.set(sizeScale);
+	mapFog.anchor.set(0,1);
+	mapFog.visible = false;
+	tileImage.addChild(mapFog);
+	tileImage.fog = mapFog;
 
 	tileContainer.image = tileImage;
 	tileContainer.addChild(tileImage);
