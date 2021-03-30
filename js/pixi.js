@@ -1845,6 +1845,9 @@ function showTraversable(){
 	}
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
+	var playerTileIndex = playerPos[1] * 50 + playerPos[0];
+	tileArray[playerTileIndex].showTile();
+
 	traversablePos.forEach(pos=>{
 		// console.log(arrayIndex);
 		var indexNum = pos[1] * 50 + pos[0];
