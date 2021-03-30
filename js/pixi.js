@@ -360,6 +360,7 @@ const additionalArray = [];				//Array of additional menu buttons
 const tileArray = [];
 var tileTraversable = [];
 var playerPos = [];
+var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1307,7 +1308,8 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [17,13];	
+	playerPos = [17,13];
+	travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1654,7 +1656,30 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	var range = 3;
+	switch(travelMechanic){
+		case 0:
+			range = 1;
+			break;
+		case 1:
+			range = 2;
+			break;
+		case 2:
+			range = 3;
+			break;
+		case 3:
+			range = 3;
+			break;
+		case 4:
+			range = 2;
+			break;
+		case 5:
+			range = 3;
+			break;
+		default:
+			range = 1;
+			break;
+	}
+	// var range = 3;
 	var traversablePos = [];
 	var numberTiles = 0;
 	var isEven = false;
