@@ -21,6 +21,12 @@ class Tile{
 		this.travelConfirm = false;
 	}
 
+	showTile(){
+		this.discovered = true;
+		this.sprite.image.visible = true;
+		this.sprite.hidden.visible = false;
+	}
+
 	showMove1(){
 		this.discovered = true;
 		this.sprite.image.visible = true;
