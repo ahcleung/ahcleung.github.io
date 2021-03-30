@@ -1309,7 +1309,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [17,13];
-	travelMechanic = 2;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
+	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1719,111 +1719,113 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-			console.log("Obstacle at: " + tileArray[indexNum].pos);
-			var obstacleDifference = [
-				arrayIndex[0] - playerPos[0],
-				arrayIndex[1] - playerPos[1]
-			];
-			console.log("Difference 1: " + obstacleDifference);
-			var count;
-			if(isEven){
-				if(Math.abs(obstacleDifference[0]) == 1)			obstacleDifference[1]--
-				else if(Math.abs(obstacleDifference[0]) == 3)		obstacleDifference[1]--
-			}
-			console.log("Difference 2: " + obstacleDifference);
-			if(range == 1 || range == Math.abs(obstacleDifference[1]) || range == Math.abs(obstacleDifference[0])){
-				count = 0;
-			}else if(obstacleDifference[0] == 0 && Math.abs(obstacleDifference[1]) > 0){
-				count = 1;
-			}else if(Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == 0){
-				count = 1;
-			}else if(obstacleDifference[1] == range-1){
-				count = 0;
-			}else if(range == 3 && Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == -2){
-				count = 0;
-			}else if(Math.abs(obstacleDifference[0]) > 1 || Math.abs(obstacleDifference[1]) > 1){
-				count = 2;
-			}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
-				count = 2;
-			}else{
-				count = range;
-			}
-			for(var i = 0; i < count; i++){
-				var xPos = Math.sign(obstacleDifference[0])*i+arrayIndex[0];
-				var yPos, bottom, removeIndex, yCount;
-				if(obstacleDifference[1] >= 0){
-					yPos = 0;
-					bottom = true;
-				}else{
-					yPos = 44;
-					bottom = false;
+		if(travelMechanic != 3){
+			if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+				console.log("Obstacle at: " + tileArray[indexNum].pos);
+				var obstacleDifference = [
+					arrayIndex[0] - playerPos[0],
+					arrayIndex[1] - playerPos[1]
+				];
+				console.log("Difference 1: " + obstacleDifference);
+				var count;
+				if(isEven){
+					if(Math.abs(obstacleDifference[0]) == 1)			obstacleDifference[1]--
+					else if(Math.abs(obstacleDifference[0]) == 3)		obstacleDifference[1]--
 				}
-				traversablePos.forEach((arrayIndex,index)=>{
-					if(arrayIndex[0] == xPos){
-						if(bottom){
-							if(yPos < arrayIndex[1])	yPos = arrayIndex[1];
-						}else{
-							if(yPos > arrayIndex[1])	yPos = arrayIndex[1];
-						}
-					}
-				});
-				// xPos = playerPos[0]+i
-				console.log("Block: [" + xPos + ", " + yPos + "]");
-
-				if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
-					removeArray.push([xPos,yPos]);
-				}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == -2){
-					removeArray.push([xPos,yPos]);
+				console.log("Difference 2: " + obstacleDifference);
+				if(range == 1 || range == Math.abs(obstacleDifference[1]) || range == Math.abs(obstacleDifference[0])){
+					count = 0;
 				}else if(obstacleDifference[0] == 0 && Math.abs(obstacleDifference[1]) > 0){
-					removeArray.push([xPos,yPos]);
-					if(range == 3 && Math.abs(obstacleDifference[1]) == 1){
-						if(bottom){
-							removeArray.push([xPos,yPos-1]);
-							removeArray.push([xPos+1,yPos-playerPos[0]%2]);
-							removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
-							removeArray.push([xPos-1,yPos-playerPos[0]%2]);
-							removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
-							removeArray.push([xPos-2,yPos-1]);
-							removeArray.push([xPos+2,yPos-1]);
-						}else{
-							removeArray.push([xPos,yPos+1]);
-							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
-							removeArray.push([xPos+1,yPos+2-playerPos[0]%2]);
-							removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
-							removeArray.push([xPos-1,yPos+2-playerPos[0]%2]);
-							removeArray.push([xPos-2,yPos+1]);
-							removeArray.push([xPos+2,yPos+1]);
-						}
-					}else{
-						if(bottom){
-							removeArray.push([xPos-1,yPos-playerPos[0]%2]);
-							removeArray.push([xPos+1,yPos-playerPos[0]%2]);
-						}else{
-							removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
-							removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
-						}
-					}	
+					count = 1;
 				}else if(Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == 0){
-					if(obstacleDifference[0] > 0){
-						removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
-						removeArray.push([xPos+1,yPos-2-playerPos[0]%2]);
-					}else{
-						removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
-						removeArray.push([xPos-1,yPos-2-playerPos[0]%2]);
-					}
+					count = 1;
+				}else if(obstacleDifference[1] == range-1){
+					count = 0;
+				}else if(range == 3 && Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == -2){
+					count = 0;
+				}else if(Math.abs(obstacleDifference[0]) > 1 || Math.abs(obstacleDifference[1]) > 1){
+					count = 2;
+				}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
+					count = 2;
 				}else{
-					if(i == 0)		yCount = count-1;
-					else			yCount = count;
-					for(j = 0; j < yCount; j++){
-						var newY;
-						if(bottom)		newY = yPos-j;
-						else  			newY = yPos+j;
-						console.log("Block: [" + xPos + ", " + newY + "]");
-						removeArray.push([xPos,newY]);
-					}
+					count = range;
 				}
-				// removeFromArray.push(yPos * 50 + xPos);
+				for(var i = 0; i < count; i++){
+					var xPos = Math.sign(obstacleDifference[0])*i+arrayIndex[0];
+					var yPos, bottom, removeIndex, yCount;
+					if(obstacleDifference[1] >= 0){
+						yPos = 0;
+						bottom = true;
+					}else{
+						yPos = 44;
+						bottom = false;
+					}
+					traversablePos.forEach((arrayIndex,index)=>{
+						if(arrayIndex[0] == xPos){
+							if(bottom){
+								if(yPos < arrayIndex[1])	yPos = arrayIndex[1];
+							}else{
+								if(yPos > arrayIndex[1])	yPos = arrayIndex[1];
+							}
+						}
+					});
+					// xPos = playerPos[0]+i
+					console.log("Block: [" + xPos + ", " + yPos + "]");
+
+					if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == 1){
+						removeArray.push([xPos,yPos]);
+					}else if(Math.abs(obstacleDifference[0]) == 1 && obstacleDifference[1] == -2){
+						removeArray.push([xPos,yPos]);
+					}else if(obstacleDifference[0] == 0 && Math.abs(obstacleDifference[1]) > 0){
+						removeArray.push([xPos,yPos]);
+						if(range == 3 && Math.abs(obstacleDifference[1]) == 1){
+							if(bottom){
+								removeArray.push([xPos,yPos-1]);
+								removeArray.push([xPos+1,yPos-playerPos[0]%2]);
+								removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
+								removeArray.push([xPos-1,yPos-playerPos[0]%2]);
+								removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
+								removeArray.push([xPos-2,yPos-1]);
+								removeArray.push([xPos+2,yPos-1]);
+							}else{
+								removeArray.push([xPos,yPos+1]);
+								removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
+								removeArray.push([xPos+1,yPos+2-playerPos[0]%2]);
+								removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
+								removeArray.push([xPos-1,yPos+2-playerPos[0]%2]);
+								removeArray.push([xPos-2,yPos+1]);
+								removeArray.push([xPos+2,yPos+1]);
+							}
+						}else{
+							if(bottom){
+								removeArray.push([xPos-1,yPos-playerPos[0]%2]);
+								removeArray.push([xPos+1,yPos-playerPos[0]%2]);
+							}else{
+								removeArray.push([xPos-1,yPos+1-playerPos[0]%2]);
+								removeArray.push([xPos+1,yPos+1-playerPos[0]%2]);
+							}
+						}	
+					}else if(Math.abs(obstacleDifference[0]) == 2 && obstacleDifference[1] == 0){
+						if(obstacleDifference[0] > 0){
+							removeArray.push([xPos+1,yPos-1-playerPos[0]%2]);
+							removeArray.push([xPos+1,yPos-2-playerPos[0]%2]);
+						}else{
+							removeArray.push([xPos-1,yPos-1-playerPos[0]%2]);
+							removeArray.push([xPos-1,yPos-2-playerPos[0]%2]);
+						}
+					}else{
+						if(i == 0)		yCount = count-1;
+						else			yCount = count;
+						for(j = 0; j < yCount; j++){
+							var newY;
+							if(bottom)		newY = yPos-j;
+							else  			newY = yPos+j;
+							console.log("Block: [" + xPos + ", " + newY + "]");
+							removeArray.push([xPos,newY]);
+						}
+					}
+					// removeFromArray.push(yPos * 50 + xPos);
+				}
 			}
 		}
 	});
