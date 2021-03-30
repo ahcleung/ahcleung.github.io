@@ -1581,13 +1581,6 @@ function createTile(item, itemIndex){
 		mapBase.anchor.set(0,1);
 		tileImage.addChild(mapBase);
 	}
-	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(sizeScale);
-	moveTile1.anchor.set(0,1);
-	moveTile1.visible = false;
-	tileImage.addChild(moveTile1);
-	tileImage.moveTile1 = moveTile1;
-	
 	mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileImage.addChild(mapTile);
@@ -1635,7 +1628,12 @@ function createTile(item, itemIndex){
 	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;	
-	
+	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
+	moveTile1.scale.set(sizeScale);
+	moveTile1.anchor.set(0,1);
+	moveTile1.visible = false;
+	tileContainer.addChild(moveTile1);
+	tileContainer.moveTile1 = moveTile1;
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 

@@ -28,13 +28,13 @@ class Tile{
 		// this.sprite.image.detail.visible = true;
 		this.sprite.hidden.visible = false;
 		if(this.id != 7){
-			this.sprite.image.moveTile1.visible = true;
+			this.sprite.moveTile1.visible = true;
 			this.traversable = true;
 		}
 	}
 
 	hideMove1(){
-		this.sprite.image.moveTile1.visible = false;
+		this.sprite.moveTile1.visible = false;
 		// this.sprite.image.fog.visible = true;
 		// this.sprite.image.detail.visible = false;
 		this.traversable = false;
