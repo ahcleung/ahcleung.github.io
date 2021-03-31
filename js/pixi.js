@@ -1788,8 +1788,14 @@ function showTraversable(){
 					tileObstacle = true;
 				}
 			}else{
-				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
-					tileObstacle = true;
+				if(surfMechanic == 0){
+					if(tileArray[indexNum].id == 1 || tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
+						tileObstacle = true;
+					}
+				}else{
+					if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
+						tileObstacle = true;
+					}
 				}
 			}
 			if(tileObstacle){
