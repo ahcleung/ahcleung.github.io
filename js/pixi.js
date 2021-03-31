@@ -1881,15 +1881,18 @@ function showTraversable(){
 	}
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
-	// if(canSurf){
+	if(canSurf){
+		console.log("can surf");
 		waterArray.forEach(arrayIndex=>{
+			console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+				console.log(arrayIndex + " is water");
 				tileArray[indexNum].showMove1();
 				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
-	// }
+	}
 
 	var playerTileIndex = playerPos[1] * 50 + playerPos[0];
 	tileArray[playerTileIndex].showTile();
