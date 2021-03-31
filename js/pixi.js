@@ -1743,7 +1743,7 @@ function showTraversable(){
 	}
 	
 	console.log(traversablePos);
-	console.log("Water array: " + waterArray);
+	console.log(waterArray);
 	var removeArray = [];
 
 	traversablePos.forEach(arrayIndex=>{
