@@ -1460,7 +1460,7 @@ function setup(){
 		.on('touchstart', onTravelSwitchDown);
 
 	travelSwitchText = new Text("Walk", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
-	travelSwitchText.anchor.set(0.5, 0.5);
+	travelSwitchText.anchor.set(1, 0);
 	mapHolder.addChild(travelSwitchText);
 	travelSwitchText.x = -200;
 	travelSwitchText.y = 0;
