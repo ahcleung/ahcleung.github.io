@@ -1781,11 +1781,13 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(travelMechanic != 3 && !surfing){
+		// if(travelMechanic != 3){
 			var tileObstacle = false;
 			if(!surfing){
-				if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-					tileObstacle = true;
+				if(travelMechanic != 3){
+					if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+						tileObstacle = true;
+					}
 				}
 			}else{
 				if(surfMechanic == 0){
@@ -1905,7 +1907,7 @@ function showTraversable(){
 					// removeFromArray.push(yPos * 50 + xPos);
 				}
 			}
-		}
+		// }
 	});
 
 	var removeFromArray = [];
