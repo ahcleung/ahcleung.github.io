@@ -363,6 +363,7 @@ var playerPos = [];
 var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 var travelSwitchText;
 var canSurf = false;
+var surfing = false;
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1882,9 +1883,9 @@ function showTraversable(){
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
 	if(canSurf){
-		console.log("can surf");
+		// console.log("can surf");
 		waterArray.forEach(arrayIndex=>{
-			console.log("check water");
+			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
 				// traversablePos.push(arrayIndex);
@@ -1982,6 +1983,12 @@ function onTileDown(){
 	console.log("Difference: " + obstacleDifference);
 	if(this.object.travelConfirm){
 		console.log("MOVE TO: " + this.object.pos);
+		if(this.object.id == 1 || this.object.id == 2){
+			if(!surfing)	surfing = true;
+		}else{
+			if(surfing)		surfing = false;
+		}
+		console.log("Surfing: " + surfing);
 		tileTraversable.forEach(item =>{
 			item.hideMove1();
 			item.hideMove2();
