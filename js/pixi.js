@@ -1438,20 +1438,23 @@ function setup(){
 	// centerGraphic.endFill();
 	mapHolder.addChild(centerGraphic);
 	centerGraphic.x = 0;
-	centerGraphic.y = -100;
-
+	centerGraphic.y = -200;
 	centerGraphic.interactive = true;
 	centerGraphic.buttonMode = true;
-
 	centerGraphic
 		// events for drag start
 		.on('mousedown', onSwitchDown)
 		.on('touchstart', onSwitchDown);
+	var switchText = new Text("Switch to battle scene", {fontFamily : styleFontFamily, fontSize: 36, fill : 0x000000});
+	// travelSwitchText.anchor.set(1, 0);
+	mapHolder.addChild(switchText);
+	switchText.x = 100;
+	switchText.y = -200;
 
 	var travelSwitch = new PIXI.Sprite(textureAdditionalMove);
 	mapHolder.addChild(travelSwitch);
 	travelSwitch.x = 0;
-	travelSwitch.y = -200;
+	travelSwitch.y = -300;
 	travelSwitch.interactive = true;
 	travelSwitch.buttonMode = true;
 	travelSwitch
@@ -1463,7 +1466,7 @@ function setup(){
 	// travelSwitchText.anchor.set(1, 0);
 	mapHolder.addChild(travelSwitchText);
 	travelSwitchText.x = 100;
-	travelSwitchText.y = -200;
+	travelSwitchText.y = -300;
 
 	// mapHolder
 
