@@ -1310,7 +1310,7 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [17,13];
-	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
+	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing, 5 = surfing+
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1894,8 +1894,31 @@ function onMapDown(){
 
 function onTravelSwitchDown(){
 	travelMechanic++;
-	if(travelMechanic == 5)		travelMechanic = 0;
-	travelSwitchText.text = "";
+	if(travelMechanic == 6)		travelMechanic = 0;
+	switch(travelMechanic){
+		case 0:
+			travelSwitchText.text = "Walking";
+			break;
+		case 1:
+			travelSwitchText.text = "Boots";
+			break;
+		case 2:
+			travelSwitchText.text = "Mounted";
+			break;
+		case 3:
+			travelSwitchText.text = "Flying";
+			break;
+		case 4:
+			travelSwitchText.text = "Surfing";
+			break;
+		case 5:
+			travelSwitchText.text = "Surfing+";
+			break;
+		default:
+			travelSwitchText.text = "Walking";
+			break;
+	}
+	
 }
 
 function onSwitchDown(){
