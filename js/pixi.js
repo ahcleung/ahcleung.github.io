@@ -1989,7 +1989,7 @@ function onMapDown(){
 
 function onTravelSwitchDown(){
 	travelMechanic++;
-	if(travelMechanic == 6)		travelMechanic = 0;
+	if(travelMechanic == 4)		travelMechanic = 0;
 	switch(travelMechanic){
 		case 0:
 			travelSwitchText.text = "Walking";
@@ -2002,12 +2002,6 @@ function onTravelSwitchDown(){
 			break;
 		case 3:
 			travelSwitchText.text = "Flying";
-			break;
-		case 4:
-			travelSwitchText.text = "Surfing";
-			break;
-		case 5:
-			travelSwitchText.text = "Surfing+";
 			break;
 		default:
 			travelSwitchText.text = "Walking";
