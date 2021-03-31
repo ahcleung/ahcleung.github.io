@@ -1881,7 +1881,7 @@ function showTraversable(){
 	}
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
-	if(canSurf){
+	// if(canSurf){
 		waterArray.forEach(arrayIndex=>{
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
@@ -1889,7 +1889,7 @@ function showTraversable(){
 				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
-	}
+	// }
 
 	var playerTileIndex = playerPos[1] * 50 + playerPos[0];
 	tileArray[playerTileIndex].showTile();
