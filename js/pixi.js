@@ -1892,12 +1892,27 @@ function showTraversable(){
 	}
 	// traversableIndex = traversableRing1.concat(traversableRing2);
 
-	if(canSurf){
+	if(canSurf && !surfing){
 		// console.log("can surf");
 		waterArray.forEach(arrayIndex=>{
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+				// traversablePos.push(arrayIndex);
+				// console.log(arrayIndex + " is water");
+				tileArray[indexNum].showTile();
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
+			}
+		});
+	}
+
+	if(surfing){
+		// console.log("can surf");
+		waterArray.forEach(arrayIndex=>{
+			// console.log("check water");
+			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+			if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
 				// traversablePos.push(arrayIndex);
 				// console.log(arrayIndex + " is water");
 				tileArray[indexNum].showTile();
