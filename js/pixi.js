@@ -1725,7 +1725,7 @@ function showTraversable(){
 			if(playerPosYAdjust >= 0 && playerPosYAdjust < 44){
 				if(playerPos[0]-i >= 0)		traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
 				if(playerPos[0]+i < 50)		traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
-				if(range == 1){
+				if(i == 1){
 					if(playerPos[0]-i >= 0)		waterArray.push([playerPos[0]-i,playerPosYAdjust]);
 					if(playerPos[0]+i < 50)		waterArray.push([playerPos[0]+i,playerPosYAdjust]);
 				}
@@ -1736,7 +1736,7 @@ function showTraversable(){
 	for (var i = 1; i < range+1; i++){
 		if(playerPos[1]+i < 44)		traversablePos.push([playerPos[0],playerPos[1]+i]);
 		if(playerPos[1]-i >= 0)		traversablePos.push([playerPos[0],playerPos[1]-i]);
-		if(range == 1){
+		if(i == 1){
 			if(playerPos[1]+i < 44)		waterArray.push([playerPos[0],playerPos[1]+i]);
 			if(playerPos[1]-i >= 0)		waterArray.push([playerPos[0],playerPos[1]-i]);
 		}
