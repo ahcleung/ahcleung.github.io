@@ -1437,7 +1437,7 @@ function setup(){
 	// centerGraphic.drawRect(0, 0, 100, 100);
 	// centerGraphic.endFill();
 	mapHolder.addChild(centerGraphic);
-	centerGraphic.x = -100;
+	centerGraphic.x = 0;
 	centerGraphic.y = -100;
 
 	centerGraphic.interactive = true;
@@ -1450,8 +1450,8 @@ function setup(){
 
 	var travelSwitch = new PIXI.Sprite(textureAdditionalMove);
 	mapHolder.addChild(travelSwitch);
-	travelSwitch.x = -100;
-	travelSwitch.y = 0;
+	travelSwitch.x = 0;
+	travelSwitch.y = -200;
 	travelSwitch.interactive = true;
 	travelSwitch.buttonMode = true;
 	travelSwitch
@@ -1459,11 +1459,11 @@ function setup(){
 		.on('mousedown', onTravelSwitchDown)
 		.on('touchstart', onTravelSwitchDown);
 
-	travelSwitchText = new Text("Walk", {fontFamily : styleFontFamily, fontSize: 36, fill : 0x000000, align : 'center'});
-	travelSwitchText.anchor.set(1, 0);
+	travelSwitchText = new Text("Walking", {fontFamily : styleFontFamily, fontSize: 36, fill : 0x000000});
+	// travelSwitchText.anchor.set(1, 0);
 	mapHolder.addChild(travelSwitchText);
-	travelSwitchText.x = -200;
-	travelSwitchText.y = 0;
+	travelSwitchText.x = 100;
+	travelSwitchText.y = -200;
 
 	// mapHolder
 
