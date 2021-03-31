@@ -1887,11 +1887,11 @@ function showTraversable(){
 			console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-				traversablePos.push(arrayIndex);
+				// traversablePos.push(arrayIndex);
 				// console.log(arrayIndex + " is water");
-				// tileArray[indexNum].showTile();
-				// tileArray[indexNum].showMove1();
-				// tileTraversable.push(tileArray[indexNum]);
+				tileArray[indexNum].showTile();
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
 	}
@@ -1908,7 +1908,7 @@ function showTraversable(){
 		// 	console.log("Hill at: " + tileArray[indexNum].pos);
 		// }
 		tileArray[indexNum].showTile();
-		if(!canSurf && tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
+		if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
 			tileArray[indexNum].showMove1();
 			tileTraversable.push(tileArray[indexNum]);
 		}
