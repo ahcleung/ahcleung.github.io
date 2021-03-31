@@ -1459,7 +1459,7 @@ function setup(){
 		.on('mousedown', onTravelSwitchDown)
 		.on('touchstart', onTravelSwitchDown);
 
-	travelSwitchText = new Text("Walk", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
+	travelSwitchText = new Text("Walk", {fontFamily : styleFontFamily, fontSize: 36, fill : 0x000000, align : 'center'});
 	travelSwitchText.anchor.set(1, 0);
 	mapHolder.addChild(travelSwitchText);
 	travelSwitchText.x = -200;
@@ -1890,6 +1890,12 @@ function onMapDown(){
 		console.log("Player moves to next map [" + playerPos + "]");
 	}
 	console.log("onMapDown");
+}
+
+function onTravelSwitchDown(){
+	travelMechanic++;
+	if(travelMechanic == 5)		travelMechanic = 0;
+	travelSwitchText.text = "";
 }
 
 function onSwitchDown(){
