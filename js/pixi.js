@@ -1954,7 +1954,7 @@ function showTraversable(){
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(surfMechanic == 0){
-				if(tileArray[indexNum].id == 1 || tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
+				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
 					tileArray[indexNum].showTile();
 					tileArray[indexNum].showMove1();
 					tileTraversable.push(tileArray[indexNum]);
