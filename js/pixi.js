@@ -361,7 +361,8 @@ const tileArray = [];
 var tileTraversable = [];
 var playerPos = [];
 var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
-var travelSwitchText;
+var surfMechanic = 0;			//0 = surf, 1 = surf+
+var travelSwitchText, surfSwitchText;
 var canSurf = false;
 var surfing = false;
 
@@ -1312,7 +1313,8 @@ function setup(){
 	interfaceHolder.visible = false;
 
 	playerPos = [17,13];
-	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing, 5 = surfing+
+	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying
+	surfMechanic = 0;			//0 = surf, 1 = surf+
 	canSurf = true;
 	// var playerPos = [0,1];
 
@@ -1470,6 +1472,23 @@ function setup(){
 	mapHolder.addChild(travelSwitchText);
 	travelSwitchText.x = 100;
 	travelSwitchText.y = -300;
+
+	var surfSwitch = new PIXI.Sprite(textureAdditionalMove);
+	mapHolder.addChild(surfSwitch);
+	surfSwitch.x = 0;
+	surfSwitch.y = -400;
+	surfSwitch.interactive = true;
+	surfSwitch.buttonMode = true;
+	surfSwitch
+		// events for drag start
+		.on('mousedown', onSurfSwitchDown)
+		.on('touchstart', onSurfSwitchDown);
+
+	surfSwitchText = new Text("Surf", {fontFamily : styleFontFamily, fontSize: 36, fill : 0x000000});
+	// surfSwitchText.anchor.set(1, 0);
+	mapHolder.addChild(surfSwitchText);
+	surfSwitchText.x = 100;
+	surfSwitchText.y = -400;
 
 	// mapHolder
 
@@ -1679,28 +1698,36 @@ function createTile(item, itemIndex){
 }
 
 function showTraversable(){
-	switch(travelMechanic){
-		case 0:
-			range = 1;
-			break;
-		case 1:
-			range = 2;
-			break;
-		case 2:
-			range = 3;
-			break;
-		case 3:
-			range = 3;
-			break;
-		case 4:
-			range = 2;
-			break;
-		case 5:
-			range = 3;
-			break;
-		default:
-			range = 1;
-			break;
+	if(!surfing){
+		switch(travelMechanic){
+			case 0:
+				range = 1;
+				break;
+			case 1:
+				range = 2;
+				break;
+			case 2:
+				range = 3;
+				break;
+			case 3:
+				range = 3;
+				break;
+			default:
+				range = 1;
+				break;
+		}
+	}else{
+		switch(surfMechanic){
+			case 0:
+				range = 2;
+				break;
+			case 1:
+				range = 3;
+				break;
+			default:
+				range = 1;
+				break;
+		}
 	}
 	// var range = 3;
 	var traversablePos = [];
@@ -1986,7 +2013,22 @@ function onTravelSwitchDown(){
 			travelSwitchText.text = "Walking";
 			break;
 	}
-	
+}
+
+function onSurfSwitchDown(){
+	surfMechanic++;
+	if(surfMechanic == 2)		surfMechanic = 0;
+	switch(surfMechanic){
+		case 0:
+			surfSwitchText.text = "Surf";
+			break;
+		case 1:
+			surfSwitchText.text = "Surf+";
+			break;
+		default:
+			travelSwitchText.text = "Surf";
+			break;
+	}
 }
 
 function onSwitchDown(){
