@@ -1725,7 +1725,7 @@ function showTraversable(){
 			if(playerPosYAdjust >= 0 && playerPosYAdjust < 44){
 				if(playerPos[0]-i >= 0)		traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
 				if(playerPos[0]+i < 50)		traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
-				if(j == 0){
+				if(i == 1){
 					if(playerPos[0]-i >= 0)		waterArray.push([playerPos[0]-i,playerPosYAdjust]);
 					if(playerPos[0]+i < 50)		waterArray.push([playerPos[0]+i,playerPosYAdjust]);
 				}
