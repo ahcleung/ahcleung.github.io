@@ -2004,7 +2004,7 @@ function onTravelSwitchDown(){
 			travelSwitchText.text = "Flying";
 			break;
 		default:
-			travelSwitchText.text = "Walking";
+			travelSwitchText.text = "DefaultTravel";
 			break;
 	}
 }
@@ -2020,7 +2020,7 @@ function onSurfSwitchDown(){
 			surfSwitchText.text = "Surf+";
 			break;
 		default:
-			travelSwitchText.text = "Surf";
+			surfSwitchText.text = "DefaultSurf";
 			break;
 	}
 }
