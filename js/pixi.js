@@ -1885,7 +1885,8 @@ function showTraversable(){
 		waterArray.forEach(arrayIndex=>{
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-				traversablePos.push(arrayIndex);
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
 	}
