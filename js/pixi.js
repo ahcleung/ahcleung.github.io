@@ -361,6 +361,7 @@ const tileArray = [];
 var tileTraversable = [];
 var playerPos = [];
 var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
+var travelSwitchText;
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1429,8 +1430,7 @@ function setup(){
 	// mapHolder.tileWidth
 	// mapHolder.tileHeight
 
-	var centerGraphic = new PIXI.Sprite(textureAdditionalItem);	
-	// textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
+	var centerGraphic = new PIXI.Sprite(textureAdditionalItem);
 	// centerGraphic.beginFill(0xff0000);
 	// centerGraphic.beginFill(0x00ff00);
 	// centerGraphic.beginFill(0x0000ff);
@@ -1447,6 +1447,23 @@ function setup(){
 		// events for drag start
 		.on('mousedown', onSwitchDown)
 		.on('touchstart', onSwitchDown);
+
+	var travelSwitch = new PIXI.Sprite(textureAdditionalMove);
+	mapHolder.addChild(travelSwitch);
+	travelSwitch.x = -100;
+	travelSwitch.y = 0;
+	travelSwitch.interactive = true;
+	travelSwitch.buttonMode = true;
+	travelSwitch
+		// events for drag start
+		.on('mousedown', onTravelSwitchDown)
+		.on('touchstart', onTravelSwitchDown);
+
+	travelSwitchText = new Text("Walk", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
+	travelSwitchText.anchor.set(0.5, 0.5);
+	mapHolder.addChild(travelSwitchText);
+	travelSwitchText.x = -200;
+	travelSwitchText.y = 0;
 
 	// mapHolder
 
