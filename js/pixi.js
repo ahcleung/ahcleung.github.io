@@ -1905,6 +1905,7 @@ function showTraversable(){
 		// }else if(tileArray[indexNum].id == 6){
 		// 	console.log("Hill at: " + tileArray[indexNum].pos);
 		// }
+		tileArray[indexNum].showTile();
 		if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
 			tileArray[indexNum].showMove1();
 			tileTraversable.push(tileArray[indexNum]);
