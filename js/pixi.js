@@ -1725,9 +1725,11 @@ function showTraversable(){
 			if(playerPosYAdjust >= 0 && playerPosYAdjust < 44){
 				if(playerPos[0]-i >= 0)		traversablePos.push([playerPos[0]-i,playerPosYAdjust]);
 				if(playerPos[0]+i < 50)		traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
-				if(i == 1){
-					if(playerPos[0]-i >= 0)		waterArray.push([playerPos[0]-i,playerPosYAdjust]);
-					if(playerPos[0]+i < 50)		waterArray.push([playerPos[0]+i,playerPosYAdjust]);
+				if(j == range-1 || j == range){
+					if(i == 1){
+						if(playerPos[0]-i >= 0)		waterArray.push([playerPos[0]-i,playerPosYAdjust]);
+						if(playerPos[0]+i < 50)		waterArray.push([playerPos[0]+i,playerPosYAdjust]);
+					}
 				}
 			}
 		}
