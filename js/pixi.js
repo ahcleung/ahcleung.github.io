@@ -1945,12 +1945,20 @@ function showTraversable(){
 		waterArray.forEach(arrayIndex=>{
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-			if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
-				// traversablePos.push(arrayIndex);
-				// console.log(arrayIndex + " is water");
-				tileArray[indexNum].showTile();
-				tileArray[indexNum].showMove1();
-				tileTraversable.push(tileArray[indexNum]);
+			if(surfMechanic == 0){
+				if(tileArray[indexNum].id == 1 || tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
+					tileArray[indexNum].showTile();
+					tileArray[indexNum].showMove1();
+					tileTraversable.push(tileArray[indexNum]);
+				}
+			}else{
+				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
+					// traversablePos.push(arrayIndex);
+					// console.log(arrayIndex + " is water");
+					tileArray[indexNum].showTile();
+					tileArray[indexNum].showMove1();
+					tileTraversable.push(tileArray[indexNum]);
+				}
 			}
 		});
 	}
@@ -1973,9 +1981,16 @@ function showTraversable(){
 				tileTraversable.push(tileArray[indexNum]);
 			}
 		}else{
-			if(tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
-				tileArray[indexNum].showMove1();
-				tileTraversable.push(tileArray[indexNum]);
+			if(surfMechanic == 0){
+				if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
+					tileArray[indexNum].showMove1();
+					tileTraversable.push(tileArray[indexNum]);
+				}
+			}else{
+				if(tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
+					tileArray[indexNum].showMove1();
+					tileTraversable.push(tileArray[indexNum]);
+				}
 			}
 		}
 	});
