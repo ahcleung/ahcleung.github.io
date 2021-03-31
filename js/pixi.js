@@ -1731,7 +1731,7 @@ function showTraversable(){
 	}
 	// var range = 3;
 	var traversablePos = [];
-	var waterArray = [];
+	var range1Array = [];
 	var numberTiles = 0;
 	var isEven = false;
 	if(playerPos[0]%2 == 0)		isEven = true;
@@ -1757,8 +1757,8 @@ function showTraversable(){
 				if(playerPos[0]+i < 50)		traversablePos.push([playerPos[0]+i,playerPosYAdjust]);
 				if(j == range-1 || j == range){
 					if(i == 1){
-						if(playerPos[0]-i >= 0)		waterArray.push([playerPos[0]-i,playerPosYAdjust]);
-						if(playerPos[0]+i < 50)		waterArray.push([playerPos[0]+i,playerPosYAdjust]);
+						if(playerPos[0]-i >= 0)		range1Array.push([playerPos[0]-i,playerPosYAdjust]);
+						if(playerPos[0]+i < 50)		range1Array.push([playerPos[0]+i,playerPosYAdjust]);
 					}
 				}
 			}
@@ -1769,13 +1769,13 @@ function showTraversable(){
 		if(playerPos[1]+i < 44)		traversablePos.push([playerPos[0],playerPos[1]+i]);
 		if(playerPos[1]-i >= 0)		traversablePos.push([playerPos[0],playerPos[1]-i]);
 		if(i == 1){
-			if(playerPos[1]+i < 44)		waterArray.push([playerPos[0],playerPos[1]+i]);
-			if(playerPos[1]-i >= 0)		waterArray.push([playerPos[0],playerPos[1]-i]);
+			if(playerPos[1]+i < 44)		range1Array.push([playerPos[0],playerPos[1]+i]);
+			if(playerPos[1]-i >= 0)		range1Array.push([playerPos[0],playerPos[1]-i]);
 		}
 	}
 	
 	console.log(traversablePos);
-	console.log(waterArray);
+	console.log(range1Array);
 	var removeArray = [];
 
 	traversablePos.forEach(arrayIndex=>{
@@ -1783,22 +1783,16 @@ function showTraversable(){
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 		// if(travelMechanic != 3){
 			var tileObstacle = false;
+			var tileID = tileArray[indexNum].id;
 			if(!surfing){
 				if(travelMechanic != 3){
-					if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-						tileObstacle = true;
-					}
+					if(tileID == 7 || tileID == 6 || tileID == 2 || tileID == 1)	tileObstacle = true;
 				}
 			}else{
 				if(surfMechanic == 0){
-					if(tileArray[indexNum].id == 1 || tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
-						tileObstacle = true;
-					}
-				}else{
-					if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
-						tileObstacle = true;
-					}
+					if(tileArray[indexNum].id == 1)		tileObstacle = true;
 				}
+				if(tileID == 3 || tileID == 4 || tileID == 5 || tileID == 6 || tileID == 7)		tileObstacle = true;
 			}
 			if(tileObstacle){
 				console.log("Obstacle at: " + tileArray[indexNum].pos);
@@ -1929,33 +1923,47 @@ function showTraversable(){
 
 	if(canSurf && !surfing){
 		// console.log("can surf");
-		waterArray.forEach(arrayIndex=>{
+		range1Array.forEach(arrayIndex=>{
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+			var tileID = tileArray[indexNum].id;
+			// if(surfMechanic == 0){
+			// 	if(tileArray[indexNum].id == 2){
+			// 		tileArray[indexNum].showTile();
+			// 		tileArray[indexNum].showMove1();
+			// 		tileTraversable.push(tileArray[indexNum]);
+			// 	}
+			// }else{
+			// 	if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+			// 		// traversablePos.push(arrayIndex);
+			// 		// console.log(arrayIndex + " is water");
+			// 		tileArray[indexNum].showTile();
+			// 		tileArray[indexNum].showMove1();
+			// 		tileTraversable.push(tileArray[indexNum]);
+			// 	}
+			// }
+
+			var showTile = false;
 			if(surfMechanic == 0){
-				if(tileArray[indexNum].id == 2){
-					tileArray[indexNum].showTile();
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
+				if(tileID == 2)		showTile = true;
 			}else{
-				if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
-					// traversablePos.push(arrayIndex);
-					// console.log(arrayIndex + " is water");
-					tileArray[indexNum].showTile();
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
+				if(tileID == 2 || tileID == 1)		showTile = true;
+			}
+			if(showTile){
+				tileArray[indexNum].showTile();
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
 	}
 
 	if(surfing){
 		// console.log("can surf");
-		waterArray.forEach(arrayIndex=>{
+		range1Array.forEach(arrayIndex=>{
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-			if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
+			var tileID = tileArray[indexNum].id;
+			if(tileID == 3 || tileID == 4 || tileID == 5 || tileID == 6){
 				tileArray[indexNum].showTile();
 				tileArray[indexNum].showMove1();
 				tileTraversable.push(tileArray[indexNum]);
@@ -1975,23 +1983,40 @@ function showTraversable(){
 		// 	console.log("Hill at: " + tileArray[indexNum].pos);
 		// }
 		tileArray[indexNum].showTile();
+
+		// if(!surfing){
+		// 	if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
+		// 		tileArray[indexNum].showMove1();
+		// 		tileTraversable.push(tileArray[indexNum]);
+		// 	}
+		// }else{
+		// 	if(surfMechanic == 0){
+		// 		if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
+		// 			tileArray[indexNum].showMove1();
+		// 			tileTraversable.push(tileArray[indexNum]);
+		// 		}
+		// 	}else{
+		// 		if(tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
+		// 			tileArray[indexNum].showMove1();
+		// 			tileTraversable.push(tileArray[indexNum]);
+		// 		}
+		// 	}
+		// }
+
+		var showTile = false;
+		var tileID = tileArray[indexNum].id;
 		if(!surfing){
-			if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
-				tileArray[indexNum].showMove1();
-				tileTraversable.push(tileArray[indexNum]);
-			}
+			if(tileID != 1 && tileID != 2)		showTile = true;
 		}else{
 			if(surfMechanic == 0){
-				if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
+				if(tileID != 1 && tileID != 3 && tileID != 4 && tileID != 5 && tileID != 6)		showTile = true;
 			}else{
-				if(tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
+				if(tileID != 3 && tileID != 4 && tileID != 5 && tileID != 6)	showTile = true;
 			}
+		}
+		if(showTile){
+			tileArray[indexNum].showMove1();
+			tileTraversable.push(tileArray[indexNum]);
 		}
 	});
 	
