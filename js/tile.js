@@ -28,11 +28,11 @@ class Tile{
 	}
 
 	showMove1(){
-		this.discovered = true;
-		this.sprite.image.visible = true;
+		// this.discovered = true;
+		// this.sprite.image.visible = true;
 		// this.sprite.image.fog.visible = false;
 		// this.sprite.image.detail.visible = true;
-		this.sprite.hidden.visible = false;
+		// this.sprite.hidden.visible = false;
 		if(this.id != 7){
 			this.sprite.moveTile1.visible = true;
 			this.traversable = true;
