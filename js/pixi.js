@@ -1781,7 +1781,7 @@ function showTraversable(){
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-		if(travelMechanic != 3){
+		if(travelMechanic != 3 && !surfing){
 			var tileObstacle = false;
 			if(!surfing){
 				if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
@@ -1953,20 +1953,10 @@ function showTraversable(){
 		waterArray.forEach(arrayIndex=>{
 			// console.log("check water");
 			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-			if(surfMechanic == 0){
-				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
-					tileArray[indexNum].showTile();
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
-			}else{
-				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
-					// traversablePos.push(arrayIndex);
-					// console.log(arrayIndex + " is water");
-					tileArray[indexNum].showTile();
-					tileArray[indexNum].showMove1();
-					tileTraversable.push(tileArray[indexNum]);
-				}
+			if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6){
+				tileArray[indexNum].showTile();
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
 			}
 		});
 	}
