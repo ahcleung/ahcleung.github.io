@@ -1905,8 +1905,10 @@ function showTraversable(){
 		// }else if(tileArray[indexNum].id == 6){
 		// 	console.log("Hill at: " + tileArray[indexNum].pos);
 		// }
-		tileArray[indexNum].showMove1();
-		tileTraversable.push(tileArray[indexNum]);
+		if(this.id != 1 && this.id != 2){
+			tileArray[indexNum].showMove1();
+			tileTraversable.push(tileArray[indexNum]);
+		}
 	});
 	
 }
