@@ -362,6 +362,7 @@ var tileTraversable = [];
 var playerPos = [];
 var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
 var travelSwitchText;
+var canSurf = false;
 
 const heroHazardSprite = [];
 const enemyHazardSprite = [];
@@ -1311,6 +1312,7 @@ function setup(){
 
 	playerPos = [17,13];
 	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing, 5 = surfing+
+	canSurf = true;
 	// var playerPos = [0,1];
 
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
@@ -1747,6 +1749,16 @@ function showTraversable(){
 	console.log(traversablePos);
 	console.log(waterArray);
 	var removeArray = [];
+
+	if(canSurf){
+		waterArray.forEach(arrayIndex=>{
+			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+			if(tileArray[indexNum].id == 2){
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
+			}
+		});
+	}
 
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
