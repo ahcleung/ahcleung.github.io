@@ -1919,9 +1919,16 @@ function showTraversable(){
 		// 	console.log("Hill at: " + tileArray[indexNum].pos);
 		// }
 		tileArray[indexNum].showTile();
-		if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
-			tileArray[indexNum].showMove1();
-			tileTraversable.push(tileArray[indexNum]);
+		if(!surfing){
+			if(tileArray[indexNum].id != 1 && tileArray[indexNum].id != 2){
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
+			}
+		}else{
+			if(tileArray[indexNum].id != 3 && tileArray[indexNum].id != 4 && tileArray[indexNum].id != 5 && tileArray[indexNum].id != 6){
+				tileArray[indexNum].showMove1();
+				tileTraversable.push(tileArray[indexNum]);
+			}
 		}
 	});
 	
