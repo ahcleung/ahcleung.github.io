@@ -1750,16 +1750,6 @@ function showTraversable(){
 	console.log(waterArray);
 	var removeArray = [];
 
-	if(canSurf){
-		waterArray.forEach(arrayIndex=>{
-			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
-			if(tileArray[indexNum].id == 2){
-				tileArray[indexNum].showMove1();
-				tileTraversable.push(tileArray[indexNum]);
-			}
-		});
-	}
-
 	traversablePos.forEach(arrayIndex=>{
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
@@ -1890,6 +1880,15 @@ function showTraversable(){
 		traversablePos.splice(removeFromArray[i],1);
 	}
 	// traversableIndex = traversableRing1.concat(traversableRing2);
+
+	if(canSurf){
+		waterArray.forEach(arrayIndex=>{
+			var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
+			if(tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+				traversablePos.push(arrayIndex);
+			}
+		});
+	}
 
 	var playerTileIndex = playerPos[1] * 50 + playerPos[0];
 	tileArray[playerTileIndex].showTile();
