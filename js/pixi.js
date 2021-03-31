@@ -2054,12 +2054,12 @@ function onTileDown(){
 		if(this.object.id == 1 || this.object.id == 2){
 			if(!surfing){
 				surfing = true;
-				travelMechanic = 4;
+				// travelMechanic = 4;
 			}
 		}else{
 			if(surfing){
 				surfing = false;
-				travelMechanic = 3;	
+				// travelMechanic = 3;
 			}
 		}
 		console.log("Surfing: " + surfing);
