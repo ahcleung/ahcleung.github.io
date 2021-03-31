@@ -1755,7 +1755,17 @@ function showTraversable(){
 		// console.log(arrayIndex);
 		var indexNum = arrayIndex[1] * 50 + arrayIndex[0];
 		if(travelMechanic != 3){
-			if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+			var tileObstacle = false;
+			if(!surfing){
+				if(tileArray[indexNum].id == 7 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 2 || tileArray[indexNum].id == 1){
+					tileObstacle = true;
+				}
+			}else{
+				if(tileArray[indexNum].id == 3 || tileArray[indexNum].id == 4 || tileArray[indexNum].id == 5 || tileArray[indexNum].id == 6 || tileArray[indexNum].id == 7){
+					tileObstacle = true;
+				}
+			}
+			if(tileObstacle){
 				console.log("Obstacle at: " + tileArray[indexNum].pos);
 				var obstacleDifference = [
 					arrayIndex[0] - playerPos[0],
