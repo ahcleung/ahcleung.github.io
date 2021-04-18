@@ -2523,7 +2523,7 @@ function createSprite(direction, item, index){
 	creatureAction.dDmgTween = dDmgTween;
 
 	var sprite_skillFX = new PIXI.Sprite(resources['skill_lightningbolt'].texture);
-	sprite_skillFX.anchor.set(1,0.5);
+	sprite_skillFX.anchor.set(0.5,1);
 	sprite_skillFX.visible = false;
 	actionContainer.addChild(sprite_skillFX);
 	creatureAction.skillFX = sprite_skillFX;
