@@ -98,6 +98,8 @@ loader
 		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
 		{name:'hazard_spores', url:'img/hazard_spores.png'},
 
+		{name:'skill_lightningbolt', url:'img/skill_lightningbolt.png'},		
+
 		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
 		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
 		{name:'gorilla3_p_back', url:'img/gorilla3_p_back.png'},
@@ -2499,6 +2501,7 @@ function createSprite(direction, item, index){
 	dDmgTween = new TimelineMax({paused: true});
 	dDmgTween.fromTo(sprite_d_dmg, anim2, {x:item.action[10][0], y:item.action[10][1]}, {ease:"custom", x:item.action[10][2], y:item.action[10][3], onComplete: function(){
 		sprite_d_dmg.visible = false;
+		sprite_skillFX.visible = false;
 		creatureAction.visible = false;
 		actionContainer.removeChild(creatureAction);
 	}});
@@ -2518,6 +2521,14 @@ function createSprite(direction, item, index){
 	creatureAction.dReadyTween = dReadyTween;
 	creatureAction.dMissTween = dMissTween;
 	creatureAction.dDmgTween = dDmgTween;
+
+	var sprite_skillFX = new PIXI.Sprite(resources['skill_lightningbolt'].texture);
+	sprite_skillFX.anchor.set(1,0.5);
+	sprite_skillFX.visible = false;
+	actionContainer.addChild(sprite_skillFX);
+	creatureAction.skillFX = sprite_skillFX;
+
+
 	const dmgContainer = new PIXI.Container();
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
@@ -5802,6 +5813,7 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 	defender.forEach(arrayCreature=>{
 		if(arrayCreature.newHP){
 			arrayCreature.action.dDmg.visible = true;
+			arrayCreature.action.skillFX.visible = true;
 			arrayCreature.action.dDmgTween.play(0);
 		}else{
 			arrayCreature.action.dMiss.visible = true;
