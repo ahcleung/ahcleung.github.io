@@ -3034,14 +3034,14 @@ function resize() {
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
 		resizeHP(0, item);
-		item.action.skillFX.x = -margin;
+		item.action.skillFX.x = -margin-healthMargin;
 		resizeDmg(0, item);
 	});	
 
 	enemyArray.forEach(function (item, index){
 		resizeSprite(-1, item.sprite, index);
 		resizeSprite(-1, item.action, index);
-		item.action.skillFX.x = -margin;
+		item.action.skillFX.x = -margin-healthMargin;
 		resizeHP(1, item);
 		resizeDmg(1, item);
 	});
