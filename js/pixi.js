@@ -3030,7 +3030,7 @@ function resize() {
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
-		item.action.skillFX.x = -item.sprite.width/2;
+		item.action.skillFX.x = item.sprite.width/2;
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
