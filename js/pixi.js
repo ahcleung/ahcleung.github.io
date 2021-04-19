@@ -98,7 +98,9 @@ loader
 		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
 		{name:'hazard_spores', url:'img/hazard_spores.png'},
 
-		{name:'skill_lightningbolt', url:'img/skill_lightningbolt.png'},		
+		{name:'skill_fire_flareup', url:'img/skill_fire_flareup.png'},
+		{name:'skill_storm_lightningstrike', url:'img/skill_storm_lightningstrike.png'},
+		{name:'skill_wind_aeropush', url:'img/skill_wind_aeropush.png'},
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
 		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
@@ -2522,10 +2524,10 @@ function createSprite(direction, item, index){
 	creatureAction.dMissTween = dMissTween;
 	creatureAction.dDmgTween = dDmgTween;
 
-	var sprite_skillFX = new PIXI.Sprite(resources['skill_lightningbolt'].texture);
+	var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
 	sprite_skillFX.anchor.set(1);
 	// sprite_skillFX.x = -creatureContainer.width/2;
-	sprite_skillFX.visible = false;
+	// sprite_skillFX.visible = false;
 	creatureAction.addChild(sprite_skillFX);
 	creatureAction.skillFX = sprite_skillFX;
 
