@@ -2524,7 +2524,8 @@ function createSprite(direction, item, index){
 	creatureAction.dMissTween = dMissTween;
 	creatureAction.dDmgTween = dDmgTween;
 
-	var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
+	// var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
+	var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
 	sprite_skillFX.anchor.set(0.5,1);
 	// sprite_skillFX.x = -creatureContainer.width/2;
 	// sprite_skillFX.visible = false;
