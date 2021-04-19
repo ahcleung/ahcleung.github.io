@@ -3034,7 +3034,7 @@ function resize() {
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
 		resizeHP(0, item);
-		item.action.skillFX.x = -(margin+healthMargin)*2;
+		item.action.skillFX.x = -(margin*2);
 		resizeDmg(0, item);
 	});	
 
