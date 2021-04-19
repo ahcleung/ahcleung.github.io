@@ -3030,6 +3030,7 @@ function resize() {
 	heroArray.forEach(function (item, index){
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
+		item.action.skillFX.x = -spriteResizeXPosition[1]/2;
 		resizeHP(0, item);
 		resizeDmg(0, item);
 	});	
@@ -5814,7 +5815,6 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 	defender.forEach(arrayCreature=>{
 		if(arrayCreature.newHP){
 			arrayCreature.action.dDmg.visible = true;
-			arrayCreature.action.skillFX.x = spriteResizeXPosition[1]/2;
 			arrayCreature.action.skillFX.visible = true;
 			arrayCreature.action.dDmgTween.play(0);
 		}else{
