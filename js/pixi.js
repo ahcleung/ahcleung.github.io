@@ -2523,7 +2523,7 @@ function createSprite(direction, item, index){
 	creatureAction.dDmgTween = dDmgTween;
 
 	var sprite_skillFX = new PIXI.Sprite(resources['skill_lightningbolt'].texture);
-	sprite_skillFX.anchor.set(1);
+	sprite_skillFX.anchor.set(0.5,1);
 	// sprite_skillFX.x = -creatureContainer.width/2;
 	// sprite_skillFX.visible = false;
 	creatureAction.addChild(sprite_skillFX);
@@ -5814,6 +5814,7 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 	defender.forEach(arrayCreature=>{
 		if(arrayCreature.newHP){
 			arrayCreature.action.dDmg.visible = true;
+			arrayCreature.action.skillFX.x = spriteResizeXPosition[1]/2;
 			arrayCreature.action.skillFX.visible = true;
 			arrayCreature.action.dDmgTween.play(0);
 		}else{
