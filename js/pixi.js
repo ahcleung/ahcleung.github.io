@@ -2527,7 +2527,7 @@ function createSprite(direction, item, index){
 	// var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
 	var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
 	sprite_skillFX.anchor.set(1);
-	sprite_skillFX.x = 100;
+	sprite_skillFX.y = -900;
 	// sprite_skillFX.visible = false;
 	creatureAction.addChild(sprite_skillFX);
 	creatureAction.skillFX = sprite_skillFX;
