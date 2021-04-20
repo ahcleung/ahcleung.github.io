@@ -5395,6 +5395,7 @@ function calculateDamage(attacker, defender, hitArray){
 		});	
 
 		if(hitArray[targetedIndex]){
+			targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
 			var multiHitNum = 1;
 			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
