@@ -3101,6 +3101,7 @@ function resizeDmg(roster, item){
 		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
 	}
 
+	item.dmgContainer.skillFX.y = app.screen.height/3;
 	item.dmgContainer.dmgPopup.y = app.screen.height/3;
 	item.dmgContainer.dmgStatus.y = app.screen.height*2/5;
 }
