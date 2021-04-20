@@ -3042,7 +3042,7 @@ function resize() {
 		resizeSprite(-1, item.sprite, index);
 		resizeSprite(-1, item.action, index);
 		resizeHP(1, item);
-		item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width);
+		item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+healthMargin);
 		resizeDmg(1, item);
 	});
 
