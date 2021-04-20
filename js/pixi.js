@@ -3060,15 +3060,19 @@ function resizeDmg(roster, item){
 	// var statusStrokeSize = app.screen.height/270;
 	if(app.screen.width < 860){
 		item.dmgContainer.dmgPopup.scale.set(0.4,0.4);
+		item.dmgContainer.skillFX.scale.set(0.4,0.4);
 		statusFontSize = 12;
 	}else if(app.screen.width < 1366){
 		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
+		item.dmgContainer.skillFX.scale.set(0.6,0.6;
 		statusFontSize = 20;
 	}else if(app.screen.width < 1500){
 		item.dmgContainer.dmgPopup.scale.set(0.75,0.75);
+		item.dmgContainer.skillFX.scale.set(0.75,0.75);
 	}
 	else{
 		item.dmgContainer.dmgPopup.scale.set(1,1);
+		item.dmgContainer.skillFX.scale.set(1,1);
 	}
 
 	item.dmgContainer.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
