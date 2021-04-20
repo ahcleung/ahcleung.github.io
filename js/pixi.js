@@ -2530,7 +2530,11 @@ function createSprite(direction, item, index){
 
 	var sprite_skillFX = new PIXI.Sprite(resources['skill_wind_aeropush'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
-	sprite_skillFX.anchor.set(0.5,1);
+	if(item.hero){
+		sprite_skillFX.anchor.set(-0.5,1);
+	}else{
+		sprite_skillFX.anchor.set(0.5,1);
+	}
 	sprite_skillFX.y = 500;
 	// sprite_skillFX.visible = false;
 	dmgContainer.addChild(sprite_skillFX);
