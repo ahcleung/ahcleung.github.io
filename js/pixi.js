@@ -3041,7 +3041,7 @@ function resize() {
 	enemyArray.forEach(function (item, index){
 		resizeSprite(-1, item.sprite, index);
 		resizeSprite(-1, item.action, index);
-		item.action.skillFX.x = -margin;
+		item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width);
 		resizeHP(1, item);
 		resizeDmg(1, item);
 	});
