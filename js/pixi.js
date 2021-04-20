@@ -3064,7 +3064,7 @@ function resizeDmg(roster, item){
 		statusFontSize = 12;
 	}else if(app.screen.width < 1366){
 		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
-		item.dmgContainer.skillFX.scale.set(0.6,0.6;
+		item.dmgContainer.skillFX.scale.set(0.6,0.6);
 		statusFontSize = 20;
 	}else if(app.screen.width < 1500){
 		item.dmgContainer.dmgPopup.scale.set(0.75,0.75);
