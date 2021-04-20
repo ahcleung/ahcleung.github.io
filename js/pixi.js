@@ -2528,10 +2528,9 @@ function createSprite(direction, item, index){
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
 
-	var sprite_skillFX = new PIXI.Sprite(resources['skill_wind_aeropush'].texture);
+	var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
 	sprite_skillFX.anchor.set(0.5,1);
-	sprite_skillFX.y = 500;
 	// sprite_skillFX.visible = false;
 	dmgContainer.addChild(sprite_skillFX);
 	dmgContainer.skillFX = sprite_skillFX;
@@ -5395,7 +5394,7 @@ function calculateDamage(attacker, defender, hitArray){
 		});	
 
 		if(hitArray[targetedIndex]){
-			targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+			targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
 			var multiHitNum = 1;
 			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
