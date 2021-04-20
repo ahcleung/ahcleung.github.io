@@ -3032,7 +3032,6 @@ function resize() {
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
 		resizeHP(0, item);
-		// item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+(healthMargin*3/4));
 		resizeDmg(0, item);
 	});	
 
@@ -3040,7 +3039,6 @@ function resize() {
 		resizeSprite(-1, item.sprite, index);
 		resizeSprite(-1, item.action, index);
 		resizeHP(1, item);
-		// item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+healthMargin);
 		resizeDmg(1, item);
 	});
 
@@ -5394,7 +5392,21 @@ function calculateDamage(attacker, defender, hitArray){
 		});	
 
 		if(hitArray[targetedIndex]){
-			targeted.dmgContainer.skillFX.texture = resources['skill_wind_aeropush'].texture;
+			var randomSkill = Math.floor(Math.random() * 3) + 1;
+			switch(randomSkill){
+				case 1:
+					targeted.dmgContainer.skillFX.texture = resources['skill_wind_aeropush'].texture;
+					break;
+				case 2:
+					targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					break;
+				case 3:
+					targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+					break;
+				default:
+					targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					break;
+			}
 			var multiHitNum = 1;
 			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
