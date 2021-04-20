@@ -5394,7 +5394,7 @@ function calculateDamage(attacker, defender, hitArray){
 		});	
 
 		if(hitArray[targetedIndex]){
-			targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+			targeted.dmgContainer.skillFX.texture = resources['skill_wind_aeropush'].texture;
 			var multiHitNum = 1;
 			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
