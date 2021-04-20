@@ -2530,11 +2530,7 @@ function createSprite(direction, item, index){
 
 	var sprite_skillFX = new PIXI.Sprite(resources['skill_wind_aeropush'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
-	if(item.hero){
-		sprite_skillFX.anchor.set(-0.5,1);
-	}else{
-		sprite_skillFX.anchor.set(0.5,1);
-	}
+	sprite_skillFX.anchor.set(0.5,1);
 	sprite_skillFX.y = 500;
 	// sprite_skillFX.visible = false;
 	dmgContainer.addChild(sprite_skillFX);
@@ -3062,21 +3058,23 @@ function resizeDmg(roster, item){
 	// var statusSpacer1 = app.screen.height/27;
 	// var statusSpacer2 = app.screen.height/10.8;
 	// var statusStrokeSize = app.screen.height/270;
+	var scaleInvert = 1;
+	if(item.hero)	scaleInvert = -1;
 	if(app.screen.width < 860){
 		item.dmgContainer.dmgPopup.scale.set(0.4,0.4);
-		item.dmgContainer.skillFX.scale.set(0.4,0.4);
+		item.dmgContainer.skillFX.scale.set(0.4*scaleInvert,0.4);
 		statusFontSize = 12;
 	}else if(app.screen.width < 1366){
 		item.dmgContainer.dmgPopup.scale.set(0.6,0.6);
-		item.dmgContainer.skillFX.scale.set(0.6,0.6);
+		item.dmgContainer.skillFX.scale.set(0.6*scaleInvert,0.6);
 		statusFontSize = 20;
 	}else if(app.screen.width < 1500){
 		item.dmgContainer.dmgPopup.scale.set(0.75,0.75);
-		item.dmgContainer.skillFX.scale.set(0.75,0.75);
+		item.dmgContainer.skillFX.scale.set(0.75*scaleInvert,0.75);
 	}
 	else{
 		item.dmgContainer.dmgPopup.scale.set(1,1);
-		item.dmgContainer.skillFX.scale.set(1,1);
+		item.dmgContainer.skillFX.scale.set(1*scaleInvert,1);
 	}
 
 	item.dmgContainer.dmgStatus.statusImageArray.forEach((statusImage,arrayIndex)=>{
