@@ -5818,7 +5818,7 @@ function attackerReadyOnComplete(attacker,defender,animateMove){
 	defender.forEach(arrayCreature=>{
 		if(arrayCreature.newHP){
 			arrayCreature.action.dDmg.visible = true;
-			arrayCreature.action.skillFX.visible = true;
+			arrayCreature.dmgContainer.skillFX.visible = true;
 			arrayCreature.action.dDmgTween.play(0);
 		}else{
 			arrayCreature.action.dMiss.visible = true;
