@@ -2524,18 +2524,17 @@ function createSprite(direction, item, index){
 	creatureAction.dMissTween = dMissTween;
 	creatureAction.dDmgTween = dDmgTween;
 
+	const dmgContainer = new PIXI.Container();
+	const dmgPopup = new PIXI.Container();
+	const dmgStatus = new PIXI.Container();
+
 	// var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
 	var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
 	sprite_skillFX.anchor.set(1);
 	sprite_skillFX.y = -1200;
 	// sprite_skillFX.visible = false;
-	creatureAction.addChild(sprite_skillFX);
-	creatureAction.skillFX = sprite_skillFX;
-
-
-	const dmgContainer = new PIXI.Container();
-	const dmgPopup = new PIXI.Container();
-	const dmgStatus = new PIXI.Container();
+	dmgContainer.addChild(sprite_skillFX);
+	dmgContainer.skillFX = sprite_skillFX;
 
 	var dmgNumArray = [];
 	
@@ -3034,7 +3033,7 @@ function resize() {
 		resizeSprite(1, item.sprite, index);
 		resizeSprite(1, item.action, index);
 		resizeHP(0, item);
-		item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+(healthMargin*3/4));
+		// item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+(healthMargin*3/4));
 		resizeDmg(0, item);
 	});	
 
@@ -3042,7 +3041,7 @@ function resize() {
 		resizeSprite(-1, item.sprite, index);
 		resizeSprite(-1, item.action, index);
 		resizeHP(1, item);
-		item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+healthMargin);
+		// item.action.skillFX.x = -((margin*2)+item.healthBar.outer.width+healthMargin);
 		resizeDmg(1, item);
 	});
 
