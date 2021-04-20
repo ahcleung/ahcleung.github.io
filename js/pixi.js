@@ -2528,7 +2528,7 @@ function createSprite(direction, item, index){
 	const dmgPopup = new PIXI.Container();
 	const dmgStatus = new PIXI.Container();
 
-	var sprite_skillFX = new PIXI.Sprite(resources['skill_storm_lightningstrike'].texture);
+	var sprite_skillFX = new PIXI.Sprite(resources['skill_wind_aeropush'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
 	sprite_skillFX.anchor.set(0.5,1);
 	sprite_skillFX.y = 500;
