@@ -5210,7 +5210,7 @@ function onCreatureDown(){
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
 				if(this.object == targeted[0]){
-					targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+					targeted[0].dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
 					correctTarget = true;
 					targetedVitaIndex = targetedIndex;
 				}
