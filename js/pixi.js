@@ -5180,6 +5180,7 @@ function onCreatureDown(){
 	console.log("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	console.log("================================  DAMAGE  CALCULATIONS  ================================");
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
+	console.log("Clicked target: " + this.object.name);
 	var targetedVitaIndex = 0;
 	var animateBattle = false;
 	// var animatePopup = false;
