@@ -98,6 +98,7 @@ loader
 		{name:'hazard_spikes', url:'img/hazard_spikes.png'},
 		{name:'hazard_spores', url:'img/hazard_spores.png'},
 
+		{name:'blank', url:'img/blank.png'},
 		{name:'skill_fire_flareup', url:'img/skill_fire_flareup.png'},
 		{name:'skill_storm_lightningstrike', url:'img/skill_storm_lightningstrike.png'},
 		{name:'skill_wind_aeropush', url:'img/skill_wind_aeropush.png'},
@@ -2531,7 +2532,7 @@ function createSprite(direction, item, index){
 	// var sprite_skillFX = new PIXI.Sprite(resources['skill_fire_flareup'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['skill_wind_aeropush'].texture);
 	// var sprite_skillFX = new PIXI.Sprite(resources['skill_storm_lightningstrike'].texture);
-	var sprite_skillFX = new PIXI.Sprite(resources['status_bleed'].texture);
+	var sprite_skillFX = new PIXI.Sprite(resources['blank'].texture);
 	sprite_skillFX.anchor.set(0.5,1);
 	sprite_skillFX.visible = false;
 	dmgContainer.addChild(sprite_skillFX);
