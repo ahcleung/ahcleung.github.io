@@ -5210,6 +5210,7 @@ function onCreatureDown(){
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
 				if(this.object == targeted[0]){
+					targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
 					correctTarget = true;
 					targetedVitaIndex = targetedIndex;
 				}
@@ -5395,21 +5396,21 @@ function calculateDamage(attacker, defender, hitArray){
 		});	
 
 		if(hitArray[targetedIndex]){
-			var randomSkill = Math.floor(Math.random() * 3) + 1;
-			switch(randomSkill){
-				case 1:
-					targeted.dmgContainer.skillFX.texture = resources['skill_wind_aeropush'].texture;
-					break;
-				case 2:
-					targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
-					break;
-				case 3:
-					targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
-					break;
-				default:
-					targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
-					break;
-			}
+			// var randomSkill = Math.floor(Math.random() * 3) + 1;
+			// switch(randomSkill){
+			// 	case 1:
+			// 		targeted.dmgContainer.skillFX.texture = resources['skill_wind_aeropush'].texture;
+			// 		break;
+			// 	case 2:
+			// 		targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+			// 		break;
+			// 	case 3:
+			// 		targeted.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+			// 		break;
+			// 	default:
+			// 		targeted.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+			// 		break;
+			// }
 			var multiHitNum = 1;
 			skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 				if(tagName == "heal"){
