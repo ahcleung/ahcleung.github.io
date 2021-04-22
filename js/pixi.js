@@ -5605,7 +5605,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 				targeted.dmgContainer.dmgPopup.dmgEffective.visible = false;
 			}
 
-			skillPower *= dmgMod[targetedIndex];
+			skillPower = skillList.data.skill[selectedSkill].power * dmgMod[targetedIndex];
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
 			console.log("Name: " + targeted.name + "\nLevel: " + level + " SkillPower: " + skillPower + " Attack: " + attack + " Defense: " + defense + " Effectiveness: " + effectiveness + " SEAB: " + SEAB);
 			// console.log("damageCalc: " + damageCalc);
