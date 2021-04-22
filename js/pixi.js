@@ -5255,8 +5255,8 @@ function onCreatureDown(){
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			if(!hitArray[splashTarget]){
 				console.log("Miss main target");
-				hitArray.forEach(hitElement=>{
-					hitElement = false;
+				hitArray.forEach(hitValue =>{
+					hitValue = false;
 				});
 			}
 
