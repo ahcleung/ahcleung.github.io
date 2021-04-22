@@ -5211,7 +5211,7 @@ function onCreatureDown(){
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
 				if(this.object == targeted[0]){
-					targeted[0].dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+					// targeted[0].dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
 					correctTarget = true;
 					targetedVitaIndex = targetedIndex;
 				}
@@ -5247,6 +5247,9 @@ function onCreatureDown(){
 				console.log(arrayElement.name + "\n");
 				if(this.object == arrayElement){
 					splashTarget = arrayIndex;
+					arrayElement.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+				}else{
+					arrayElement.dmgContainer.skillFX.texture = resources['blank'].texture;
 				}
 			});
 			console.log(splashTarget);
