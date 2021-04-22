@@ -5241,24 +5241,25 @@ function onCreatureDown(){
 		if(correctTarget){
 			animateBattle = true;
 			// animatePopup = true;
-			var splashTarget;
+			var splashTarget = 0;
 			console.log(selectedVita.name + " uses " + skillList.data.skill[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach((arrayElement, arrayIndex) =>{
 				console.log(arrayElement.name + "\n");
-				if(arrayElement == this.object){
+				if(this.object == arrayElement){
 					splashTarget = arrayIndex;
 				}
 			});
-
+			console.log(splashTarget);
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			if(!hitArray[splashTarget]){
+				console.log("Miss main target");
 				hitArray.forEach(hitElement=>{
 					hitElement = false;
 				});
 			}
-			
+
 			console.log("Hit/miss: " + hitArray);
 			hitArray.forEach(hitValue =>{
 				if(hitValue && tagDisplace)		animateMove = true;
