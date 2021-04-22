@@ -5261,16 +5261,18 @@ function onCreatureDown(){
 				}
 			});
 			console.log(splashTarget);
-			console.log(dmgMod);
+			console.log("DmgMod: " + dmgMod);
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			console.log("Hit/miss: " + hitArray);
-			if(!hitArray[splashTarget]){
-				console.log("Miss main target");
-				hitArray.forEach((hitValue,hitIndex) =>{
-					hitArray[hitIndex] = false;
-				});
+			if(tagSplash){
+				if(!hitArray[splashTarget]){
+					console.log("Miss main target");
+					hitArray.forEach((hitValue,hitIndex) =>{
+						hitArray[hitIndex] = false;
+					});
+				}
 			}
 
 			console.log("Hit/miss: " + hitArray);
