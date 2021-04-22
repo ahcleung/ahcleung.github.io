@@ -5189,6 +5189,7 @@ function onCreatureDown(){
 	var animateStatus = false;
 	var animateHealth = false;
 	var correctTarget = false;
+	var dmgMod = [];
 	userInput = true;
 	if(validSkillObjectArray.length > 0){
 		skillContainerArray.forEach(skillContainer=>{
@@ -5245,14 +5246,22 @@ function onCreatureDown(){
 			console.log(selectedVita.name + " uses " + skillList.data.skill[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach((arrayElement, arrayIndex) =>{
 				console.log(arrayElement.name + "\n");
-				if(this.object == arrayElement){
-					splashTarget = arrayIndex;
-					arrayElement.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+				if(tagSplash){
+					if(this.object == arrayElement){
+						splashTarget = arrayIndex;
+						arrayElement.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
+						dmgMod.push(1);
+					}else{
+						arrayElement.dmgContainer.skillFX.texture = resources['blank'].texture;
+						dmgMod.push(skillList.data.skill[selectedSkill].splash);
+					}
 				}else{
-					arrayElement.dmgContainer.skillFX.texture = resources['blank'].texture;
+					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					dmgMod.push(1);
 				}
 			});
 			console.log(splashTarget);
+			console.log(dmgMod);
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
@@ -5269,7 +5278,7 @@ function onCreatureDown(){
 				if(hitValue && tagDisplace)		animateMove = true;
 				if(hitValue && tagStatus)		animateStatus = true;
 			});
-			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray);
+			var dmgArray = calculateDamage(selectedVita, validSkillObjectArray[targetedVitaIndex], hitArray, dmgMod);
 			console.log("Damage: " + dmgArray);
 			// console.log(dmgArray[0]);
 			// console.log(dmgArray[0][0]);
@@ -5371,7 +5380,7 @@ function calculateHit(attacker, defender){
 	return hitArray;
 }
 
-function calculateDamage(attacker, defender, hitArray){
+function calculateDamage(attacker, defender, hitArray, dmgMod){
 	var dmgArray = [];
 	var level = attacker.level;
 	var attack = 0;
