@@ -5247,6 +5247,8 @@ function onCreatureDown(){
 				console.log(arrayElement.name + "\n");
 			});
 
+			//if splash, calculate hit only if main is hit
+
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
 			console.log("Hit/miss: " + hitArray);
 			hitArray.forEach(hitValue =>{
