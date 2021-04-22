@@ -5360,7 +5360,7 @@ function calculateHit(attacker, defender){
 		}
 		var hitRoll = Math.random();
 
-		console.log("Name: " + targeted.name + " | AccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + "\nHitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
+		console.log("Name: " + targeted.name + "\nAccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + "\nHitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
 
 		if(hitRoll < hitChance){
 			hitArray.push(true);
@@ -5595,7 +5595,7 @@ function calculateDamage(attacker, defender, hitArray){
 			}
 
 			var damageCalc = Math.round((((((2*level/5) + 2) * skillPower * (attack/defense))/150) + 2)*effectiveness*SEAB);
-			console.log("Name: " + targeted.name + " | Level: " + level + " SkillPower: " + skillPower + " Attack: " + attack + " Defense: " + defense + " Effectiveness: " + effectiveness + " SEAB: " + SEAB);
+			console.log("Name: " + targeted.name + "\nLevel: " + level + " SkillPower: " + skillPower + " Attack: " + attack + " Defense: " + defense + " Effectiveness: " + effectiveness + " SEAB: " + SEAB);
 			// console.log("damageCalc: " + damageCalc);
 
 			// var dmgNumbers = [];
