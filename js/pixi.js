@@ -5256,8 +5256,8 @@ function onCreatureDown(){
 			console.log("Hit/miss: " + hitArray);
 			if(!hitArray[splashTarget]){
 				console.log("Miss main target");
-				hitArray.forEach(hitValue =>{
-					hitValue = false;
+				hitArray.forEach((hitValue,hitIndex) =>{
+					hitArray[hitIndex] = false;
 				});
 			}
 
