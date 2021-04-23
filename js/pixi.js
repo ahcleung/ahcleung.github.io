@@ -102,6 +102,7 @@ loader
 		{name:'skill_fire_flareup', url:'img/skill_fire_flareup.png'},
 		{name:'skill_storm_lightningstrike', url:'img/skill_storm_lightningstrike.png'},
 		{name:'skill_wind_aeropush', url:'img/skill_wind_aeropush.png'},
+		{name:'skill_water_watergeyser', url:'img/skill_water_watergeyser.png'},
 
 		{name:'gorilla3_p_ready', url:'img/gorilla3_p_ready.png'},
 		{name:'gorilla3_p_main', url:'img/gorilla3_p_main.png'},
@@ -5259,7 +5260,7 @@ function onCreatureDown(){
 						dmgMod.push(skillList.data.skill[selectedSkill].splash);
 					}
 				}else if(tagColumn){
-					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					arrayElement.dmgContainer.skillFX.texture = resources['skill_water_watergeyser'].texture;
 					//adjust texture to fit decay
 					dmgMod.push(skillList.data.skill[selectedSkill].column[1]**arrayIndex);
 				}else{
