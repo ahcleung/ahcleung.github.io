@@ -5261,12 +5261,6 @@ function onCreatureDown(){
 				}else if(tagColumn){
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
 					dmgMod.push(skillList.data.skill[selectedSkill].column[1]**arrayIndex);
-					// if(arrayIndex == 0){
-					// 	dmgMod.push(1);
-					// }else{
-					// 	dmgMod.push(skillList.data.skill[selectedSkill].column[1]);
-					// }
-					// dmgMod.push(1);
 				}else{
 					//set to skill fx
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
@@ -5275,6 +5269,12 @@ function onCreatureDown(){
 			});
 			console.log(splashTarget);
 			console.log("DmgMod: " + dmgMod);
+			if(tagColumn){
+				if(skillList.data.skill[selectedSkill].column[3] == -1){
+					dmgMod.reverse();
+					validSkillObjectArray[targetedVitaIndex].reverse();
+				}
+			}
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
