@@ -5260,6 +5260,7 @@ function onCreatureDown(){
 					}
 				}else if(tagColumn){
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					//adjust texture to fit decay
 					dmgMod.push(skillList.data.skill[selectedSkill].column[1]**arrayIndex);
 				}else{
 					//set to skill fx
