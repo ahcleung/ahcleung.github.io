@@ -5260,11 +5260,12 @@ function onCreatureDown(){
 					}
 				}else if(tagColumn){
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
-					if(arrayIndex == 0){
-						dmgMod.push(1);
-					}else{
-						dmgMod.push(skillList.data.skill[selectedSkill].column[1]);
-					}
+					dmgMod.push(skillList.data.skill[selectedSkill].column[1]**arrayIndex);
+					// if(arrayIndex == 0){
+					// 	dmgMod.push(1);
+					// }else{
+					// 	dmgMod.push(skillList.data.skill[selectedSkill].column[1]);
+					// }
 					// dmgMod.push(1);
 				}else{
 					//set to skill fx
