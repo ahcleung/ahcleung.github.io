@@ -5267,10 +5267,12 @@ function onCreatureDown(){
 					dmgMod.push(1);
 				}
 			});
-			console.log(splashTarget);
+			// console.log(splashTarget);
 			console.log("DmgMod: " + dmgMod);
+
+			//reverse column order if forward for proper animation sequence
 			if(tagColumn){
-				if(skillList.data.skill[selectedSkill].column[3] == -1){
+				if(skillList.data.skill[selectedSkill].column[2] == 1){
 					dmgMod.reverse();
 					validSkillObjectArray[targetedVitaIndex].reverse();
 				}
