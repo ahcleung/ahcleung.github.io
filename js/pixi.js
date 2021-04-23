@@ -406,7 +406,7 @@ hero[1] = {
 };
 hero[2] = {
 	id: 11, level: 51, 
-	skill1: 17, skill2: 14, skill3: 5, skill4: 12,
+	skill1: 17, skill2: 6, skill3: 5, skill4: 12,
 	statDODG: 2, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: true
 };
