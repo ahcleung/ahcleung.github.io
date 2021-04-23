@@ -5249,6 +5249,7 @@ function onCreatureDown(){
 				if(tagSplash){
 					if(this.object == arrayElement){
 						splashTarget = arrayIndex;
+						//set to skill fx
 						arrayElement.dmgContainer.skillFX.texture = resources['skill_storm_lightningstrike'].texture;
 						dmgMod.push(1);
 					}else{
@@ -5256,6 +5257,7 @@ function onCreatureDown(){
 						dmgMod.push(skillList.data.skill[selectedSkill].splash);
 					}
 				}else{
+					//set to skill fx
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
 					dmgMod.push(1);
 				}
