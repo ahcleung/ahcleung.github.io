@@ -5202,12 +5202,14 @@ function onCreatureDown(){
 		var tagHazard = false;
 		var tagTurns = false;
 		var tagDisplace = false;
+		var tagColumn = false;
 		skillList.data.skill[selectedSkill].tags.forEach(tagName =>{
 			if(tagName == "splash")			tagSplash = true;
 			if(tagName == "displace")		tagDisplace = true;
 			if(tagName == "status")			tagStatus = true;
 			if(tagName == "statchange")		tagStatus = true;
 			if(tagName == "hazard")			tagHazard = true;
+			if(tagName == "column")			tagColumn = true;
 		});
 		validSkillObjectArray.forEach((targeted, targetedIndex) => {
 			if(tagSplash){
@@ -5256,6 +5258,14 @@ function onCreatureDown(){
 						arrayElement.dmgContainer.skillFX.texture = resources['blank'].texture;
 						dmgMod.push(skillList.data.skill[selectedSkill].splash);
 					}
+				}else if(tagColumn){
+					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
+					if(arrayIndex == 0){
+						dmgMod.push(1);
+					}else{
+						dmgMod.push(arrayElement[arrayIndex-1]*skillList.data.skill[selectedSkill].column[1]);
+					}
+					// dmgMod.push(1);
 				}else{
 					//set to skill fx
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
