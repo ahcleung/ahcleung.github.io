@@ -5263,7 +5263,7 @@ function onCreatureDown(){
 					if(arrayIndex == 0){
 						dmgMod.push(1);
 					}else{
-						dmgMod.push(validSkillObjectArray[targetedVitaIndex][arrayIndex-1]*skillList.data.skill[selectedSkill].column[1]);
+						dmgMod.push(skillList.data.skill[selectedSkill].column[1]);
 					}
 					// dmgMod.push(1);
 				}else{
