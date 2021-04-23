@@ -5249,7 +5249,7 @@ function onCreatureDown(){
 			console.log(selectedVita.name + " uses " + skillList.data.skill[selectedSkill].name + " on:");
 			validSkillObjectArray[targetedVitaIndex].forEach((arrayElement, arrayIndex) =>{
 				console.log(arrayElement.name + "\n");
-				arrayElement.dmgContainer.skillFX.texture.set(1,1);
+				arrayElement.dmgContainer.skillFX.scale.set(1,1);
 				if(tagSplash){
 					if(this.object == arrayElement){
 						splashTarget = arrayIndex;
@@ -5264,7 +5264,7 @@ function onCreatureDown(){
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_water_watergeyser'].texture;
 					//adjust texture to fit decay
 					dmgMod.push(skillList.data.skill[selectedSkill].column[1]**arrayIndex);
-					arrayElement.dmgContainer.skillFX.texture.set(1,skillList.data.skill[selectedSkill].column[1]**arrayIndex);
+					arrayElement.dmgContainer.skillFX.scale.set(1,skillList.data.skill[selectedSkill].column[1]**arrayIndex);
 				}else{
 					//set to skill fx
 					arrayElement.dmgContainer.skillFX.texture = resources['skill_fire_flareup'].texture;
