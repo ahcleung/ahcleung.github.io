@@ -126,7 +126,7 @@
 			"element": 5,
 			"type": "Special",
 			"power": 40,
-			"accuracy": 80,
+			"accuracy": 110,
 			"description": "Summon 3 geysers to burst in front of the user.",
 			"position": [
 				1,1,1,1
