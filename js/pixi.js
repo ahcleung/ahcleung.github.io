@@ -1498,7 +1498,7 @@ function setup(){
 
 	// mapHolder
 
-	onSwitchDown();
+	// onSwitchDown();
 
 	// heroArray[1].action.sprite_s_back.alpha = 1;
 	// heroArray[1].action.sprite_s_back.visible = true;
