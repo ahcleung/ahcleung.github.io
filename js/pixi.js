@@ -2135,11 +2135,12 @@ function onTileDown(){
 			var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
 		}
 		var mapTween = new TimelineMax();
+		var encounterRate = Math.random() - (this.object.travelled ? 0.5 : 0);		//calculated rate from outside factors
+		var encounterRoll = Math.random();		//random roll
+		console.log(this.object.travelled ? 0.5 : 0);
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
-			var encounterRate = Math.random() - (this.object.travelled ? 0.5 : 0);		//calculated rate from outside factors
-			var encounterRoll = Math.random();		//random roll
 			if(encounterRoll < encounterRate){
-				console.log("Encounter battle! " + (this.object.travelled ? 0.5:0));
+				console.log("Encounter battle! ");
 				showTraversable();
 			}else{
 				console.log("No encounter");
