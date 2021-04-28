@@ -2103,18 +2103,12 @@ function onTileDown(){
 		this.object.pos[1] - playerPos[1]
 	];
 	console.log("Difference: " + obstacleDifference);
-	if(this.object.travelConfirm){		//move to tile
+	if(this.object.travelConfirm){			//move to tile
 		console.log("MOVE TO: " + this.object.pos);
-		if(this.object.id == 1 || this.object.id == 2){
-			if(!surfing){
-				surfing = true;
-				// travelMechanic = 4;
-			}
+		if(this.object.id == 1 || this.object.id == 2){		//surfing switch when changing from land to water
+			if(!surfing)	surfing = true;
 		}else{
-			if(surfing){
-				surfing = false;
-				// travelMechanic = 3;
-			}
+			if(surfing)		surfing = false;
 		}
 		console.log("Surfing: " + surfing);
 		tileTraversable.forEach(item =>{
@@ -2142,19 +2136,16 @@ function onTileDown(){
 		}
 		var mapTween = new TimelineMax();
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
-			var encounterRate = Math.random();		//calculated rate from outside factors
+			var encounterRate = Math.random() - (this.object.travelled ? 0.5:0);		//calculated rate from outside factors
 			var encounterRoll = Math.random();		//random roll
 			if(encounterRoll < encounterRate){
-				console.log("Encounter battle!");
+				console.log("Encounter battle! " + (this.object.travelled ? 0.5:0));
 				showTraversable();
 			}else{
 				console.log("No encounter");
 				showTraversable();	
 			}
-			
 		}});
-
-		
 	}else if(this.object.traversable){			//select tile
 		// console.log("SELECT: " + this.object.pos);
 		tileTraversable.forEach(item =>{
