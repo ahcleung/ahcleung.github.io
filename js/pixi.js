@@ -2136,7 +2136,7 @@ function onTileDown(){
 		}
 		var mapTween = new TimelineMax();
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
-			var encounterRate = Math.random() - (this.object.travelled ? 0.5:0);		//calculated rate from outside factors
+			var encounterRate = Math.random() - (this.object.travelled ? 0.5 : 0);		//calculated rate from outside factors
 			var encounterRoll = Math.random();		//random roll
 			if(encounterRoll < encounterRate){
 				console.log("Encounter battle! " + (this.object.travelled ? 0.5:0));
