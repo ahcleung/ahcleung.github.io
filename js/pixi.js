@@ -4239,7 +4239,7 @@ function onHPDown(){
 			var columnDirection = (skillList.data.skill[skill]["column"][2] > 0 ? "+ " : "- "); 
 			var columnColour = (skillList.data.skill[skill]["column"][3] > 0 ? 0x66cc66 : 0xFF6961); 
 			var columnText = columnDirection + skillList.data.skill[skill]["column"][0];
-			let targetTExt = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
+			let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
 			// if(skillList.data.skill[skill]["column"][2] > 0){
 			// 	columnText = "+ " + skillList.data.skill[skill]["column"][0];
 			// }else{
