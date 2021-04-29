@@ -3104,11 +3104,12 @@ function resizeDmg(roster, item){
 		item.dmgContainer.dmgStatus.x = resizeWidth/2;
 	}
 
-	if(roster == 0){
-		item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
-	}else{
-		item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
-	}
+	item.dmgContainer.x = (roster == 0 ? heroHealthXPosition[item.pos-1+switcher] : spriteResizeXPosition[item.pos-1]);
+	// if(roster == 0){
+	// 	item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
+	// }else{
+	// 	item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
+	// }
 
 	item.dmgContainer.skillFX.y = app.screen.height*3/4;
 	item.dmgContainer.dmgPopup.y = app.screen.height/3;
