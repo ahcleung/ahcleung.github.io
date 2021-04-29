@@ -4484,13 +4484,14 @@ function onHPDown(){
 
 		creatureInfo.item.addChild(itemContainer);
 
-		if(itemIndex%2 == 0){
-			itemContainer.x = 0;
-			// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
-		}else{
-			itemContainer.x = infoItemWidth + 10;
-			// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
-		}
+		itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
+		// if(itemIndex%2 == 0){
+		// 	itemContainer.x = 0;
+		// 	// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
+		// }else{
+		// 	itemContainer.x = infoItemWidth + 10;
+		// 	// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
+		// }
 
 		infoItemArray.push(itemContainer);
 	});
@@ -5457,7 +5458,7 @@ function calculateHit(attacker, defender){
 			hitMod = 3/(Math.abs(accDifference) + 3);
 		}
 
-		if(skillList.data.skill[selectedSkill].accuracy == 110){
+		if(skillList.data.skill[selectedSkill].accuracy == 0){
 			var hitChance = 1;
 		}else{
 			var hitChance = ((skillList.data.skill[selectedSkill].accuracy/100) - (defenderDodge/200)) * hitMod;
@@ -6577,23 +6578,27 @@ function calculateTurnOrder(){
 	turnArray = [];
 
 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
-		var calcSpeed;
-		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
-		}else{
-			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
-		}
+		var speedMod = (arrayCreature.statMod[6]>0 ? ((Math.abs(arrayCreature.statMod[6])+2)/2) : (2/(Math.abs(arrayCreature.statMod[6])+2)));
+		var calcSpeed = (arrayCreature.spd/5) * speedMod + (Math.floor(Math.random() * 7) + 1);
+		// var calcSpeed;
+		// if(arrayCreature.statMod[6]>0){
+		// 	calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
+		// }else{
+		// 	calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
+		// }
 		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
 	});
 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
-		var calcSpeed;
-		if(arrayCreature.statMod[6]>0){
-			calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
-		}else{
-			calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
-		}
+		var speedMod = (arrayCreature.statMod[6]>0 ? ((Math.abs(arrayCreature.statMod[6])+2)/2) : (2/(Math.abs(arrayCreature.statMod[6])+2)));
+		var calcSpeed = (arrayCreature.spd/5) * speedMod + (Math.floor(Math.random() * 7) + 1);
+		// var calcSpeed;
+		// if(arrayCreature.statMod[6]>0){
+		// 	calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
+		// }else{
+		// 	calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
+		// }
 		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
@@ -6956,26 +6961,33 @@ function selectCreature(object2){
 		skillList.data.skill[skillID].tags.forEach(tagName =>{
 			if(tagName == "column"){
 				column = true;
-				if(skillList.data.skill[skillID][tagName][2] > 0){
-					skillContainerArray[skillContainerIndex].targetText.text = skillList.data.skill[skillID][tagName][0] + " ►";
-				}else{
-					skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillList.data.skill[skillID][tagName][0];
-				}
+				var columnDirection = (skillList.data.skill[skillID][tagName][2] > 0 ? "+ " : "- "); 
+				skillContainerArray[skillContainerIndex].targetText.style.fill = (skillList.data.skill[skillID][tagName][3] > 0 ? '0x66cc66' : '0xFF6961'); 
+				// var columnText = columnDirection + skillList.data.skill[skill]["column"][0];
+				// let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
+				skillContainerArray[skillContainerIndex].targetText.text = columnDirection + skillList.data.skill[skillID][tagName][0]
+
+				// if(skillList.data.skill[skillID][tagName][2] > 0){
+				// 	skillContainerArray[skillContainerIndex].targetText.text = skillList.data.skill[skillID][tagName][0] + " ►";
+				// }else{
+				// 	skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillList.data.skill[skillID][tagName][0];
+				// }
 				
-				if(skillList.data.skill[skillID][tagName][3] > 0){					
-					skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
-				}else{
-					skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
-				}
+				// if(skillList.data.skill[skillID][tagName][3] > 0){					
+				// 	skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
+				// }else{
+				// 	skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
+				// }
 			}else if(tagName == "several"){
 				skillContainerArray[skillContainerIndex].markerTargetSeveralContainer.visible = true;
 				//Show target dashes if 1
 				skillList.data.skill[skillID][tagName].forEach((dash, dashIndex) => {
-					if(dash == 1){
-						skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = true;
-					}else{
-						skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = false;
-					}
+					skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = (dash == 1 ? true : false);
+					// if(dash == 1){
+					// 	skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = true;
+					// }else{
+					// 	skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = false;
+					// }
 				});
 			}
 			else if(tagName == "self"){
@@ -6987,11 +6999,12 @@ function selectCreature(object2){
 				skillContainerArray[skillContainerIndex].markerTargetTeamContainer.visible = true;
 				skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
 				skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
-					if(skillTarget == 1){
-						skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = true;
-					}else{
-						skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = false;
-					}
+					skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = (skillTarget == 1 ? true: false);
+					// if(skillTarget == 1){
+					// 	skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = true;
+					// }else{
+					// 	skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = false;
+					// }
 				});
 			}
 			// console.log(skillList.data.skill[skillID][tagName]);
@@ -7004,11 +7017,12 @@ function selectCreature(object2){
 			skillContainerArray[skillContainerIndex].markerTargetContainer.visible = true;
 			skillContainerArray[skillContainerIndex].targetText.visible = false;
 			skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
-				if(skillTarget == 1){
-					skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = true;
-				}else{
-					skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = false;
-				}
+				skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = (skillTarget == 1 ? true : false);
+				// if(skillTarget == 1){
+				// 	skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = true;
+				// }else{
+				// 	skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = false;
+				// }
 			});
 		}
 	});	
