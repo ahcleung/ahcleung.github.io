@@ -4067,13 +4067,15 @@ function onHPDown(){
 	creatureInfo.status.arrowUp.interactive = false;
 	creatureInfo.status.arrowUp.texture = resources.arrow_up_d.texture;
 
-	if(creatureInfo.status.pages.length>1){
-		creatureInfo.status.arrowDown.interactive = true;
-		creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
-	}else{
-		creatureInfo.status.arrowDown.interactive = false;
-		creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
-	}
+	creatureInfo.status.arrowDown.interactive = (creatureInfo.status.pages.length > 1 ? true : false);
+	creatureInfo.status.arrowDown.texture = (creatureInfo.status.pages.length > 1 ? resources.arrow_down_n.texture : resources.arrow_down_d.texture);
+	// if(creatureInfo.status.pages.length>1){
+	// 	creatureInfo.status.arrowDown.interactive = true;
+	// 	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
+	// }else{
+	// 	creatureInfo.status.arrowDown.interactive = false;
+	// 	creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
+	// }
 	
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
@@ -4164,11 +4166,13 @@ function onHPDown(){
 		
 		for(var i = 0; i < 4; i++){
 			let posMarker = new PIXI.Graphics();
-			if(skillList.data.skill[skill].position[i] == 1){
-				posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-			}else{
-				posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-			}
+			var markerColour = (skillList.data.skill[skill].position[i] == 1 ? 0x66cc66 : 0x636363);
+			posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
+			// if(skillList.data.skill[skill].position[i] == 1){
+			// 	posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+			// }else{
+			// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+			// }
 			posMarker.x = 25 * i;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
@@ -4218,11 +4222,13 @@ function onHPDown(){
 		}else if(skillTargeting == 2){
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
-				if(skillList.data.skill[skill].target[i] == 1){
-					posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-				}else{
-					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				}
+				var markerColour = (skillList.data.skill[skill].position[i] == 1 ? 0x66cc66 : 0x636363);
+				posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
+				// if(skillList.data.skill[skill].target[i] == 1){
+				// 	posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
+				// }else{
+				// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				// }
 				posMarker.x = 25 * i;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
@@ -4230,18 +4236,21 @@ function onHPDown(){
 				markerTargetContainer.addChild(posMarker);
 			}
 		}else if(skillTargeting == 3){
-			var columnText = "";
-			if(skillList.data.skill[skill]["column"][2] > 0){
-				columnText = "+ " + skillList.data.skill[skill]["column"][0];
-			}else{
-				columnText = "- " + skillList.data.skill[skill]["column"][0];
-			}
-			let targetText;
-			if(skillList.data.skill[skill]["column"][3] > 0){					
-				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
-			}else{
-				targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
-			}
+			var columnDirection = (skillList.data.skill[skill]["column"][2] > 0 ? "+ " : "- "); 
+			var columnColour = (skillList.data.skill[skill]["column"][3] > 0 ? 0x66cc66 : 0xFF6961); 
+			var columnText = columnDirection + skillList.data.skill[skill]["column"][0];
+			let targetTExt = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
+			// if(skillList.data.skill[skill]["column"][2] > 0){
+			// 	columnText = "+ " + skillList.data.skill[skill]["column"][0];
+			// }else{
+			// 	columnText = "- " + skillList.data.skill[skill]["column"][0];
+			// }
+			// let targetText;
+			// if(skillList.data.skill[skill]["column"][3] > 0){					
+			// 	targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
+			// }else{
+			// 	targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
+			// }
 			targetText.anchor.set(0, 0.5);
 			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
 			targetText.x = (infoSkillWidth/6) + ((infoSkillWidth*2/3) * 0.569);
@@ -4251,11 +4260,14 @@ function onHPDown(){
 		}else{
 			for(var i = 0; i < 4; i++){
 				let posMarker = new PIXI.Graphics();
-				if(skillList.data.skill[skill].target[i] == 1){
-					posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-				}else{
-					posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				}
+				var markerColour = (skillList.data.skill[skill].target[i] == 1 ? 0xFF6961 : 0x636363);
+				posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
+
+				// if(skillList.data.skill[skill].target[i] == 1){
+				// 	posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
+				// }else{
+				// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
+				// }
 				posMarker.x = 25 * i;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
@@ -4363,16 +4375,18 @@ function onHPDown(){
 		}
 	});
 
-	if(skillList.data.skill[this.object.skill[0]].power == 0){
-		creatureInfo.info_skill_text[1].text = "--";
-	}else{
-		creatureInfo.info_skill_text[1].text = skillList.data.skill[this.object.skill[0]].power;
-	}
-	if(skillList.data.skill[this.object.skill[0]].accuracy == 110){
-		creatureInfo.info_skill_text[3].text = "--";
-	}else{
-		creatureInfo.info_skill_text[3].text = skillList.data.skill[this.object.skill[0]].accuracy;
-	}
+	creatureInfo.info_skill_text[1].text = (skillList.data.skill[this.object.skill[0]].power || "--");
+	// if(skillList.data.skill[this.object.skill[0]].power == 0){
+	// 	creatureInfo.info_skill_text[1].text = "--";
+	// }else{
+	// 	creatureInfo.info_skill_text[1].text = skillList.data.skill[this.object.skill[0]].power;
+	// }
+	creatureInfo.info_skill_text[3].text = (skillList.data.skill[this.object.skill[0]].accuracy || "--");
+	// if(skillList.data.skill[this.object.skill[0]].accuracy == 110){
+	// 	creatureInfo.info_skill_text[3].text = "--";
+	// }else{
+	// 	creatureInfo.info_skill_text[3].text = skillList.data.skill[this.object.skill[0]].accuracy;
+	// }
 	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.object.skill[0]].type;
 	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.object.skill[0]].description;
 	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
