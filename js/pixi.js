@@ -3197,11 +3197,13 @@ function resizeHP(roster, item){
 		});
 	}
 
-	if(roster == 0){
-		item.healthBar.x = heroHealthXPosition[item.pos-1+switcher];
-	}else{		
-		item.healthBar.x = spriteResizeXPosition[item.pos-1];
-	}
+	item.healthBar.x = (roster == 0 ? heroHealthXPosition[item.pos-1+switcher] : spriteResizeXPosition[item.pos-1]);
+
+	// if(roster == 0){
+	// 	item.healthBar.x = heroHealthXPosition[item.pos-1+switcher];
+	// }else{		
+	// 	item.healthBar.x = spriteResizeXPosition[item.pos-1];
+	// }
 
 	item.healthBar.dmgBarContainer.x = item.healthBar.inner.width;	
 	item.healthBar.textHP.x = item.healthBar.outer.width/2;
@@ -3242,11 +3244,12 @@ function resizeSprite(direction, item, index){
 	// }
 	item.scale.set(direction * spriteScale, spriteScale);
 
-	if(direction > 0){
-		item.x = -spriteResizeXPosition[heroArray[index].pos-1];
-	}else{
-		item.x = spriteResizeXPosition[enemyArray[index].pos-1];
-	}	
+	item.x = (direction > 0 ? -spriteResizeXPosition[heroArray[index].pos-1] : spriteResizeXPosition[enemyArray[index].pos-1]);
+	// if(direction > 0){
+	// 	item.x = -spriteResizeXPosition[heroArray[index].pos-1];
+	// }else{
+	// 	item.x = spriteResizeXPosition[enemyArray[index].pos-1];
+	// }	
 }
 
 function resizeStatus(item){
@@ -3588,13 +3591,17 @@ function onHPDown(){
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
-	if(app.screen.width < 860){
-		infoBtnTextSize = 16;
-	}else if(app.screen.width < 1366){
-		infoBtnTextSize = 26;
-	}else{
-		infoBtnTextSize = 36;
-	}
+	infoBtnTextSize = (app.screen.width < 860 ? 16
+						: app.screen.width < 1366 ? 26
+						: 36);
+
+	// if(app.screen.width < 860){
+	// 	infoBtnTextSize = 16;
+	// }else if(app.screen.width < 1366){
+	// 	infoBtnTextSize = 26;
+	// }else{
+	// 	infoBtnTextSize = 36;
+	// }
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(app.screen.width/3200);
@@ -3610,21 +3617,25 @@ function onHPDown(){
 	creatureInfo.info_main_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex < 5){
-			if(textIndex%2 == 0){
-				text.x = app.screen.width/15;
-				text.y = textIndex * infoMainMargin;
-			}else{
-				text.x = app.screen.width/12;
-				text.y = (textIndex-1) * infoMainMargin;
-			}
+			text.x = (textIndex%2 == 0 ? app.screen.width/15 : app.screen.width/12);
+			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex-1) * infoMainMargin);
+			// if(textIndex%2 == 0){
+			// 	text.x = app.screen.width/15;
+			// 	text.y = textIndex * infoMainMargin;
+			// }else{
+			// 	text.x = app.screen.width/12;
+			// 	text.y = (textIndex-1) * infoMainMargin;
+			// }
 		}else{
-			if(textIndex%2 == 0){
-				text.x = app.screen.width/12;
-				text.y = textIndex * infoMainMargin;
-			}else{
-				text.x = app.screen.width/15;
-				text.y = (textIndex+1) * infoMainMargin;
-			}
+			text.x = (textIndex%2 == 0 ? app.screen.width/12 : app.screen.width/15);
+			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex+1) * infoMainMargin);
+			// if(textIndex%2 == 0){
+			// 	text.x = app.screen.width/12;
+			// 	text.y = textIndex * infoMainMargin;
+			// }else{
+			// 	text.x = app.screen.width/15;
+			// 	text.y = (textIndex+1) * infoMainMargin;
+			// }
 		}
 	});
 
@@ -3671,34 +3682,75 @@ function onHPDown(){
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
-		if(element == 1){
-			creatureInfo.info_main_element[elementIndex].text = "Flora";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-		}else if(element == 2){
-			creatureInfo.info_main_element[elementIndex].text = "Water";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
-		}else if(element == 3){
-			creatureInfo.info_main_element[elementIndex].text = "Fire";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
-		}else if(element == 4){
-			creatureInfo.info_main_element[elementIndex].text = "Earth";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
-		}else if(element == 5){
-			creatureInfo.info_main_element[elementIndex].text = "Storm";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
-		}else if(element == 6){
-			creatureInfo.info_main_element[elementIndex].text = "Wind";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
-		}else if(element == 7){
-			creatureInfo.info_main_element[elementIndex].text = "Toxic";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
-		}else if(element == 8){
-			creatureInfo.info_main_element[elementIndex].text = "Spirit";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
-		}else if(element == 9){
-			creatureInfo.info_main_element[elementIndex].text = "Void";
-			creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
+		switch(element){
+			case 1:
+				creatureInfo.info_main_element[elementIndex].text = "Flora";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+				break;
+			case 2:
+				creatureInfo.info_main_element[elementIndex].text = "Water";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
+				break;
+			case 3:
+				creatureInfo.info_main_element[elementIndex].text = "Fire";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
+				break;
+			case 4:
+				creatureInfo.info_main_element[elementIndex].text = "Earth";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
+				break;
+			case 5:
+				creatureInfo.info_main_element[elementIndex].text = "Storm";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
+				break;
+			case 6:
+				creatureInfo.info_main_element[elementIndex].text = "Wind";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
+				break;
+			case 7:
+				creatureInfo.info_main_element[elementIndex].text = "Toxic";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
+				break;
+			case 8:
+				creatureInfo.info_main_element[elementIndex].text = "Spirit";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
+				break;
+			case 9:
+				creatureInfo.info_main_element[elementIndex].text = "Void";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
+				break;
+			default:
+				creatureInfo.info_main_element[elementIndex].text = "Flora";
+				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
 		}
+		// if(element == 1){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Flora";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+		// }else if(element == 2){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Water";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
+		// }else if(element == 3){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Fire";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
+		// }else if(element == 4){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Earth";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
+		// }else if(element == 5){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Storm";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
+		// }else if(element == 6){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Wind";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
+		// }else if(element == 7){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Toxic";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
+		// }else if(element == 8){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Spirit";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
+		// }else if(element == 9){
+		// 	creatureInfo.info_main_element[elementIndex].text = "Void";
+		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
+		// }
 	});
 	
 	infoBtnArray.forEach((btn, btnIndex)=>{
