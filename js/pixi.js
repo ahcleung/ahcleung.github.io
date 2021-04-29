@@ -4670,16 +4670,18 @@ function onInfoSkillDown(){
 	});
 	this.selected.visible = true;
 
-	if(skillList.data.skill[this.skillID].power == 0){
-		creatureInfo.info_skill_text[1].text = "--";
-	}else{
-		creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
-	}
-	if(skillList.data.skill[this.skillID].accuracy == 110){
-		creatureInfo.info_skill_text[3].text = "--";
-	}else{
-		creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
-	}
+	creatureInfo.info_skill_text[1].text = (skillList.data.skill[this.skillID].power || "--");
+	creatureInfo.info_skill_text[3].text = (skillList.data.skill[this.skillID].accuracy || "--");
+	// if(skillList.data.skill[this.skillID].power == 0){
+	// 	creatureInfo.info_skill_text[1].text = "--";
+	// }else{
+	// 	creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
+	// }
+	// if(skillList.data.skill[this.skillID].accuracy == 110){
+	// 	creatureInfo.info_skill_text[3].text = "--";
+	// }else{
+	// 	creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
+	// }
 	// creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
 	// creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
 	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.skillID].type;
