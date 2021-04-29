@@ -3125,13 +3125,16 @@ function resizeHP(roster, item){
 	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
-	if(app.screen.width < 860){
-		item.healthBar.textHP.style.fontSize = 14;
-	}else if(app.screen.width < 1366){
-		item.healthBar.textHP.style.fontSize = 18;
-	}else{
-		item.healthBar.textHP.style.fontSize = 24;
-	}
+	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 14
+										: app.screen.width < 1366 ? 18
+										: 24);
+	// if(app.screen.width < 860){
+	// 	item.healthBar.textHP.style.fontSize = 14;
+	// }else if(app.screen.width < 1366){
+	// 	item.healthBar.textHP.style.fontSize = 18;
+	// }else{
+	// 	item.healthBar.textHP.style.fontSize = 24;
+	// }
 	
 	turnText.position.set(app.screen.width/2, resizeHeight);
 
