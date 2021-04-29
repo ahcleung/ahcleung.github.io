@@ -1899,9 +1899,10 @@ function showTraversable(){
 						if(i == 0)		yCount = count-1;
 						else			yCount = count;
 						for(j = 0; j < yCount; j++){
-							var newY;
-							if(bottom)		newY = yPos-j;
-							else  			newY = yPos+j;
+							// var newY;
+							// if(bottom)		newY = yPos-j;
+							// else  			newY = yPos+j;
+							var newY = (bottom ? yPos-j : yPos+j);
 							console.log("Block: [" + xPos + ", " + newY + "]");
 							removeArray.push([xPos,newY]);
 						}
@@ -5393,11 +5394,12 @@ function calculateHit(attacker, defender){
 
 		console.log("Name: " + targeted.name + "\nAccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + "\nHitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
 
-		if(hitRoll < hitChance){
-			hitArray.push(true);
-		}else{
-			hitArray.push(false);
-		}
+		// if(hitRoll < hitChance){
+		// 	hitArray.push(true);
+		// }else{
+		// 	hitArray.push(false);
+		// }
+		hitArray.push(hitRoll < hitChance ? true : false);
 	});
 	return hitArray;
 }
