@@ -3310,19 +3310,20 @@ function resizeStatus(item){
 }
 
 function onMenuDown(){
-	stageContainer.visible = false;
-	turnText.visible = false;
-	selectedVita.healthBar.select.animate.kill();
-	// interfaceHolder.visible = false;
+	// stageContainer.visible = false;
+	// turnText.visible = false;
+	// selectedVita.healthBar.select.animate.kill();
+	// // interfaceHolder.visible = false;
 
-	stageContainer.destroy(true);
-	turnText.destroy(true);
-	interfaceHolder.destroy(true);
+	// stageContainer.destroy(true);
+	// turnText.destroy(true);
+	// interfaceHolder.destroy(true);
 
-	console.log("explore");
-	// if (screenfull.isEnabled) {
-	// 	screenfull.toggle();
-	// }
+	// console.log("explore");
+	
+	if (screenfull.isEnabled) {
+		screenfull.toggle();
+	}
 }
 
 function onAdditionalDown(){
