@@ -1379,11 +1379,14 @@ function setup(){
 	mapHolder.veela = veelaHolder;
 	
 	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
-	if(playerPos[0]% 2 == 0){		
-		mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
-	}else{
-		mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
-	}
+	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
+	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
+
+	// if(playerPos[0]% 2 == 0){		
+	// 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+	// }else{
+	// 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
+	// }
 
 	// if(playerPos[0]% 2 == 0){		
 	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
@@ -1648,13 +1651,16 @@ function createTile(item, itemIndex){
 	tileContainer.image = tileImage;
 	tileContainer.addChild(tileImage);
 
-	if(item.discovered){
-		tileContainer.image.visible = true;
-		tileContainer.hidden.visible = false;
-	}else{
-		tileContainer.image.visible = false;
-		tileContainer.hidden.visible = true;
-	}
+	tileContainer.image.visible = (item.discovered ? true : false);
+	tileContainer.hidden.visible = (item.discovered ? false : true);
+
+	// if(item.discovered){
+	// 	tileContainer.image.visible = true;
+	// 	tileContainer.hidden.visible = false;
+	// }else{
+	// 	tileContainer.image.visible = false;
+	// 	tileContainer.hidden.visible = true;
+	// }
 
 	// item.pos[0]==j item.pos[1]==i
 	tileContainer.interactive = true;
@@ -1835,13 +1841,15 @@ function showTraversable(){
 				for(var i = 0; i < count; i++){
 					var xPos = Math.sign(obstacleDifference[0])*i+arrayIndex[0];
 					var yPos, bottom, removeIndex, yCount;
-					if(obstacleDifference[1] >= 0){
-						yPos = 0;
-						bottom = true;
-					}else{
-						yPos = 44;
-						bottom = false;
-					}
+					yPos = (obstacleDifference[1] >= 0 ? 0 : 44);
+					bottom = (obstacleDifference[1] >= 0 ? true : false);
+					// if(obstacleDifference[1] >= 0){
+					// 	yPos = 0;
+					// 	bottom = true;
+					// }else{
+					// 	yPos = 44;
+					// 	bottom = false;
+					// }
 					traversablePos.forEach((arrayIndex,index)=>{
 						if(arrayIndex[0] == xPos){
 							if(bottom){
@@ -2087,11 +2095,14 @@ function onSwitchDown(){
 	turnText.visible = true;
 	interfaceHolder.visible = true;
 	var newMapX = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
-	if(playerPos[0]% 2 == 0){		
-		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
-	}else{
-		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
-	}
+	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
+	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
+
+	// if(playerPos[0]% 2 == 0){		
+	// 	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+	// }else{
+	// 	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
+	// }
 	var mapTween = new TimelineMax();
 	mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut});
 }
@@ -2123,18 +2134,19 @@ function onTileDown(){
 		veelaMoveTween.to(mapHolder.veela, 1, {x: newVeelaX, y: newVeelaY, ease:Sine.easeInOut});
 
 		var newMapX = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
-
+		var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
+		var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
 		// mapHolder.x = -(sizeTile.width*3/4 * playerPos[0]) - (sizeTile.width/2) + (app.screen.width/2);
 		// 	if(playerPos[0]% 2 == 0){		
 		// 		mapHolder.y = -(sizeTile.height * (playerPos[1])) - (sizeTile.height/2) + (app.screen.height/2);
 		// 	}else{
 		// 		mapHolder.y = -(sizeTile.height * (playerPos[1])) + (app.screen.height/2);
 		// 	}
-		if(playerPos[0]% 2 == 0){		
-			var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
-		}else{
-			var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
-		}
+		// if(playerPos[0]% 2 == 0){		
+		// 	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
+		// }else{
+		// 	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
+		// }
 		var mapTween = new TimelineMax();
 		var encounterRate = Math.random() - (this.object.travelled ? 0.5 : 0);		//calculated rate from outside factors
 		var encounterRoll = Math.random();		//random roll
