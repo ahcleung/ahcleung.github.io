@@ -2081,6 +2081,7 @@ function onTileDown(){
 	console.log("Difference: " + obstacleDifference);
 	if(this.object.travelConfirm){			//move to tile
 		console.log("MOVE TO: " + this.object.pos);
+		this.object.setTravelled();
 		if(this.object.id == 1 || this.object.id == 2){		//surfing switch when changing from land to water
 			if(!surfing)	surfing = true;
 		}else{
