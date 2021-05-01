@@ -39,6 +39,7 @@ loader
 		"js/element.json",
 		"js/item.json",
 		"js/map.json",
+		"js/encounter.json",
 		"js/player_map.json",
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
@@ -297,6 +298,7 @@ const elementList = resources["js/element.json"];
 const creatureList = resources["js/creature.json"];
 const itemList = resources["js/item.json"];
 const mapList = resources["js/map.json"];
+const encounterList = resources["js/encounter.json"];
 const playerMapList = resources["js/player_map.json"];
 
 let state, onScreenStats, consoleScreen, turnText, mapBG, sizeScale;
@@ -2125,6 +2127,7 @@ function onTileDown(){
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
 			if(encounterRoll < encounterRate){
 				console.log("Encounter battle! ");
+				encounterSpawn(this.object.id);
 				showTraversable();
 			}else{
 				console.log("No encounter");
@@ -2141,6 +2144,16 @@ function onTileDown(){
 	}
 	// console.log(this.object.pos);
 	// this.move2.visible = false;
+}
+
+function encounterSpawn(id){
+	var tileCreatureArray = [];
+	encounterList.data.encounter[0].creatures.forEach(creature=>{
+		if(creature[0] == id){
+			tileCreatureArray.push(creature);
+		}
+	});
+	console.log(tileCreatureArray);
 }
 
 function onDragStart(event)
