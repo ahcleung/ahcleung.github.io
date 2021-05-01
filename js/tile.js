@@ -54,9 +54,12 @@ class Tile{
 	}
 
 	hideMove2(){
-		this.travelled = true;
 		this.sprite.moveTile2.visible = false;
 		this.travelConfirm = false;
+	}
+
+	setTravelled(){
+		this.travelled = true;
 	}
 
 	// get id(){
