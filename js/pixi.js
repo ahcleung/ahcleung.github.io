@@ -1331,10 +1331,17 @@ function setup(){
 
 	for(var i = 0; i < 44; i++){
 		for(var j = 0; j < 50; j++){
-			var discovered = false;
-			var travelled = false;
-			if(playerMapList.data.maps[0].tiles[i][j] == 1)			discovered = true;
-			else if(playerMapList.data.maps[0].tiles[i][j] == 2)	discovered = true;travelled = true;
+			var discovered = (playerMapList.data.maps[0].tiles[i][j] > 0 ? true : false);
+			var travelled = (playerMapList.data.maps[0].tiles[i][j] == 2 ? true : false);
+			// var discovered = false;
+			// var travelled = false;
+			// if(playerMapList.data.maps[0].tiles[i][j] == 1){
+			// 	discovered = true;	
+			// }
+			// else if(playerMapList.data.maps[0].tiles[i][j] == 2){
+			// 	discovered = true;
+			// 	travelled = true;
+			// }	
 			const newTile = new Tile({
 				id: mapList.data.maps[0].tiles[i][j],
 				pos: [j,i],
@@ -1382,25 +1389,6 @@ function setup(){
 	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
 
-	// if(playerPos[0]% 2 == 0){		
-	// 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - (mapHolder.tileHeight/2) + (app.screen.height/2);
-	// }else{
-	// 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
-	// }
-
-	// if(playerPos[0]% 2 == 0){		
-	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) - (sizeTile.height/2) + (app.screen.height/2);
-	// }else{
-	// 	mapHolder.y = -(sizeTile.height*0.8625 * (playerPos[1]+1)) + (app.screen.height/2);
-	// }
-	// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@ MAP: " + mapHolder.x + "," + mapHolder.y);
-
-	// mapHolder.x = -(tileSize[0] * playerPos[0]) + (app.screen.width/2) - (tileSize[0]/2);
-	// mapHolder.y = -(tileSize[1] * playerPos[1]) + (app.screen.height/2) - (tileSize[0]/2);
-
-	// mapHolder.x = app.screen.width/2;
-	// mapHolder.y = app.screen.height/2;
-
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
 
@@ -1419,30 +1407,6 @@ function setup(){
         .on('touchmove', onDragMove);
 
 	app.stage.addChild(mapHolder);
-
-	// ({id = 0, pos = [0,0], discovered = false, travelled = false}){
-	// const newTile = new Tile({
-	// 	id: 1,
-	// 	pos: [0,0],
-	// 	discovered: false,
-	// 	travelled: false
-	// });
-	
-	// tileArray.push(newTile);
-
-	// tileArray.forEach(item =>{
-	// 	createTile(item)
-	// });
-
-	// app.stage.addChild(tileArray[0].sprite);
-
-	// tileArray[0].sprite.x = app.screen.width/2;
-	// tileArray[0].sprite.x = app.screen.height/2;
-	
-	// app.stage.addChild(tileArray[0].sprite);
-
-	// mapHolder.tileWidth
-	// mapHolder.tileHeight
 
 	var centerGraphic = new PIXI.Sprite(textureAdditionalItem);
 	// centerGraphic.beginFill(0xff0000);
