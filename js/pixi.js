@@ -3104,17 +3104,22 @@ function resizeDmg(roster, item){
 		statusText.y = -(arrayIndex*app.screen.height/10.8);
 	});
 
-	var switcher = 0;
-	if(item.size > 1){
-		item.dmgContainer.skillFX.x = (resizeWidth * 2 + healthMargin)/2;
-		item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthMargin)/2;
-		item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthMargin)/2;
-		switcher = 1;
-	}else{
-		item.dmgContainer.skillFX.x = resizeWidth/2;
-		item.dmgContainer.dmgPopup.x = resizeWidth/2;
-		item.dmgContainer.dmgStatus.x = resizeWidth/2;
-	}
+	var switcher = (item.size > 1 ? 1 : 0);
+	item.dmgContainer.skillFX.x = 	(item.size > 1 ? (resizeWidth * 2 + healthMargin)/2 : resizeWidth/2);
+	item.dmgContainer.dmgPopup.x = 	(item.size > 1 ? (resizeWidth * 2 + healthMargin)/2 : resizeWidth/2);
+	item.dmgContainer.dmgStatus.x = (item.size > 1 ? (resizeWidth * 2 + healthMargin)/2 : resizeWidth/2);
+
+	// var switcher = 0;
+	// if(item.size > 1){
+	// 	item.dmgContainer.skillFX.x = (resizeWidth * 2 + healthMargin)/2;
+	// 	item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthMargin)/2;
+	// 	item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthMargin)/2;
+	// 	switcher = 1;
+	// }else{
+	// 	item.dmgContainer.skillFX.x = resizeWidth/2;
+	// 	item.dmgContainer.dmgPopup.x = resizeWidth/2;
+	// 	item.dmgContainer.dmgStatus.x = resizeWidth/2;
+	// }
 
 	item.dmgContainer.x = (roster == 0 ? heroHealthXPosition[item.pos-1+switcher] : spriteResizeXPosition[item.pos-1]);
 	// if(roster == 0){
