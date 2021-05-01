@@ -2124,10 +2124,11 @@ function onTileDown(){
 
 		var encounterRoll = Math.floor(Math.random() * 2880);		//random roll
 		console.log("Encounter rate: " + encounterRate + "\nEncounter roll: " +  encounterRoll);
+		var tileID = this.object.id
 		mapTween.to(mapHolder, 1, {x: newMapX, y: newMapY, ease:Sine.easeInOut, onComplete: function(){
 			if(encounterRoll < encounterRate){
 				console.log("Encounter battle! ");
-				encounterSpawn(this.object.id);
+				encounterSpawn(tileID);
 				showTraversable();
 			}else{
 				console.log("No encounter");
