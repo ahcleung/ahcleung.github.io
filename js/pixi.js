@@ -2081,7 +2081,6 @@ function onTileDown(){
 	console.log("Difference: " + obstacleDifference);
 	if(this.object.travelConfirm){			//move to tile
 		console.log("MOVE TO: " + this.object.pos);
-		this.object.setTravelled();
 		if(this.object.id == 1 || this.object.id == 2){		//surfing switch when changing from land to water
 			if(!surfing)	surfing = true;
 		}else{
@@ -2125,6 +2124,7 @@ function onTileDown(){
 				showTraversable();	
 			}
 		}});
+		this.object.setTravelled();
 	}else if(this.object.traversable){			//select tile
 		// console.log("SELECT: " + this.object.pos);
 		tileTraversable.forEach(item =>{
