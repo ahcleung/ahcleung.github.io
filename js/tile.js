@@ -54,6 +54,7 @@ class Tile{
 	}
 
 	hideMove2(){
+		this.travelled = true;
 		this.sprite.moveTile2.visible = false;
 		this.travelConfirm = false;
 	}
