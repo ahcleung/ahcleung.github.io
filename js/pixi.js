@@ -2149,12 +2149,28 @@ function onTileDown(){
 
 function encounterSpawn(id){
 	var tileCreatureArray = [];
+	var enemyRoster = [];
 	encounterList.data.encounter[0].creatures.forEach(creature=>{
 		if(creature[0] == id){
 			tileCreatureArray.push(creature);
 		}
 	});
+
+	var i = 4;
+	do{
+		var creatureRoll = Math.floor(Math.random() * 100) + 1;
+		var creatureTracker = 1;
+		tileCreatureArray.forEach(creature =>{
+			if(creatureRoll >= creatureTracker && creature[4]){
+				enemyRoster.push(creature);
+			}else{
+				creatureTracker+=creature[4];
+			}
+		});
+		i--;
+	}while(i > 0);
 	console.log(tileCreatureArray);
+	console.log(enemyRoster);
 }
 
 function onDragStart(event)
