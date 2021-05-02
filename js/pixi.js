@@ -2163,12 +2163,11 @@ function encounterSpawn(id){
 		tileCreatureArray.forEach(creature =>{
 			if(creatureRoll >= creatureTracker && creatureRoll < creatureTracker+creature[4]){
 				enemyRoster.push(creature);
-				creatureTracker+=creature[4];
-			}else{
-				creatureTracker+=creature[4];
+				i-= creatureList.data.creature[creature[1]].size;
 			}
+			creatureTracker+=creature[4];
 		});
-		i--;
+		// i--;
 	}while(i > 0);
 	console.log(tileCreatureArray);
 	console.log(enemyRoster);
