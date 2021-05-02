@@ -2114,7 +2114,7 @@ function onTileDown(){
 		// 	var newMapY = -(mapHolder.tileHeight * (playerPos[1])) + (app.screen.height/2);
 		// }
 		var mapTween = new TimelineMax();
-		var tileRate = 50;
+		var tileRate = 150;
 		var encounterMod = [];
 		encounterMod.push((this.object.travelled ? 0.5 : 1));
 		var encounterRate = tileRate * 16;		//calculated rate from outside factors
