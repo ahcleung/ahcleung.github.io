@@ -2161,7 +2161,7 @@ function encounterSpawn(id){
 		var creatureRoll = Math.floor(Math.random() * 100) + 1;
 		var creatureTracker = 1;
 		tileCreatureArray.forEach(creature =>{
-			if(creatureRoll >= creatureTracker && creatureRoll <= creature[4]){
+			if(creatureRoll >= creatureTracker && creatureRoll <= creatureTracker+creature[4]){
 				enemyRoster.push(creature);
 			}else{
 				creatureTracker+=creature[4];
