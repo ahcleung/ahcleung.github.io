@@ -2167,7 +2167,7 @@ function encounterSpawn(id){
 				enemyRoster.push([
 					creature[1],
 					creatureList.data.creature[creature[1]].name,
-					Math.floor(Math.random() * creature[3]) + creature[2]
+					Math.floor(Math.random() * (creature[3] - creature[2] + 1) + creature[2])
 					]);
 				i-= creatureList.data.creature[creature[1]].size;
 			}
