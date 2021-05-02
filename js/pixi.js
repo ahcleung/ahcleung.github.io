@@ -2165,6 +2165,7 @@ function encounterSpawn(id){
 				creatureRoll < creatureTracker+creature[4] && 
 				creatureList.data.creature[creature[1]].size <= i){
 				enemyRoster.push([
+					creature[1],
 					creatureList.data.creature[creature[1]].name,
 					Math.floor(Math.random() * creature[3]) + creature[2]
 					]);
