@@ -2129,7 +2129,7 @@ function onTileDown(){
 			if(encounterRoll < encounterRate){
 				console.log("Encounter battle! ");
 				encounterSpawn(tileID);
-				showTraversable();
+				// showTraversable();
 			}else{
 				console.log("No encounter");
 				showTraversable();	
@@ -2148,6 +2148,15 @@ function onTileDown(){
 }
 
 function encounterSpawn(id){
+	var encounterBlack = new PIXI.Graphics();
+	encounterBlack.beginFill(0x000000);
+	encounterBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
+	encounterBlack.endFill();
+	encounterBlack.alpha = 0;
+
+	// encounterBlackTween = new TimelineMax({paused: true});
+	encounterBlackTween.to(actionBlack, 0.167, {alpha:0.75});
+
 	var tileCreatureArray = [];
 	var enemyRoster = [];
 	encounterList.data.encounter[0].creatures.forEach(creature=>{
