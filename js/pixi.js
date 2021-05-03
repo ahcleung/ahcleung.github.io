@@ -2155,7 +2155,7 @@ function encounterSpawn(id){
 	encounterBlack.alpha = 0;
 
 	// encounterBlackTween = new TimelineMax({paused: true});
-	encounterBlackTween.to(actionBlack, 0.167, {alpha:0.75});
+	TweenMax.to(encounterBlack, 0.167, {alpha:0.75});
 
 	var tileCreatureArray = [];
 	var enemyRoster = [];
