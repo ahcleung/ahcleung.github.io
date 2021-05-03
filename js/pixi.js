@@ -317,6 +317,7 @@ const interfaceEnemyFloatingInfo = new PIXI.Container();				//Enemy damage UI
 const interfaceAdditional = new PIXI.Container();	//Additional actions
 const interfaceHolder = new PIXI.Container();
 const veelaHolder = new PIXI.Container();
+const encounterHolder = new PIXI.Container();
 
 const mapHolder = new PIXI.Container();
 
@@ -1465,6 +1466,17 @@ function setup(){
 	surfSwitchText.x = 100;
 	surfSwitchText.y = -400;
 
+	app.stage.addChild(encounterHolder);
+
+	var encounterBlack = new PIXI.Graphics();
+	encounterBG.beginFill(0x000000);
+	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
+	encounterBG.endFill();
+	encounterBG.alpha = 0;
+	encounterHolder.addChild(encounterBG);
+	encounterBlackTween = new TimelineMax({paused: true});
+	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
+	encounterHolder.bgTween = encounterBlackTween;
 	// mapHolder
 
 	// onSwitchDown();
@@ -2149,16 +2161,9 @@ function onTileDown(){
 
 function encounterSpawn(id){
 	mapHolder.interactive = false;
-	
-	var encounterBlack = new PIXI.Graphics();
-	encounterBlack.beginFill(0x000000);
-	encounterBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
-	encounterBlack.endFill();
-	encounterBlack.alpha = 0;
-	app.stage.addChild(encounterBlack);
-	// encounterBlackTween = new TimelineMax({paused: true});
-	TweenMax.to(encounterBlack, 0.167, {alpha:0.75});
 
+	encounterHolder.bgTween.play(0);
+	
 	var tileCreatureArray = [];
 	var enemyRoster = [];
 	encounterList.data.encounter[0].creatures.forEach(creature=>{
