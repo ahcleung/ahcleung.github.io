@@ -2153,7 +2153,7 @@ function encounterSpawn(id){
 	encounterBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBlack.endFill();
 	encounterBlack.alpha = 0;
-
+	app.stage.addChild(encounterBlack);
 	// encounterBlackTween = new TimelineMax({paused: true});
 	TweenMax.to(encounterBlack, 0.167, {alpha:0.75});
 
