@@ -1468,7 +1468,7 @@ function setup(){
 
 	app.stage.addChild(encounterHolder);
 
-	var encounterBlack = new PIXI.Graphics();
+	var encounterBG = new PIXI.Graphics();
 	encounterBG.beginFill(0x000000);
 	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBG.endFill();
@@ -2163,7 +2163,7 @@ function encounterSpawn(id){
 	mapHolder.interactive = false;
 
 	encounterHolder.bgTween.play(0);
-	
+
 	var tileCreatureArray = [];
 	var enemyRoster = [];
 	encounterList.data.encounter[0].creatures.forEach(creature=>{
