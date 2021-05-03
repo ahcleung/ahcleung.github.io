@@ -2148,6 +2148,8 @@ function onTileDown(){
 }
 
 function encounterSpawn(id){
+	mapHolder.interactive = false;
+	
 	var encounterBlack = new PIXI.Graphics();
 	encounterBlack.beginFill(0x000000);
 	encounterBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
