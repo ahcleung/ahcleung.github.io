@@ -1387,7 +1387,7 @@ function setup(){
 	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut});
 	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale, y: sizeScale, ease:Sine.easeInOut, onComplete: function(){
 		encounterHolder.bgTween.play(0);
-	});
+	}});
 	encounterMarker.tween = markerTween;
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
