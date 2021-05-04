@@ -1376,11 +1376,17 @@ function setup(){
 	veelaTile2.y = -(veelaTile2.height/2);
 
 	let encounterMarker = new PIXI.Sprite(resources.encounterMarker.texture);
-	encounterMarker.scale.set(sizeScale);
+	encounterMarker.scale.set(0);
 	encounterMarker.anchor.set(0.5,1);
 	encounterMarker.x = veelaTile2.width/2;
 	encounterMarker.y = -veelaTile2.height;
 	veelaHolder.addChild(encounterMarker);
+	veelaHolder.marker = encounterMarker;
+
+	var markerTween = new TimelineMax({paused: true});
+	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale+0.1, y: sizeScale+0.1});
+	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale, y: sizeScale});
+	encounterMarker.tween = markerTween;
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 	veelaTileTween.to(veelaTile2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
@@ -2255,6 +2261,7 @@ function encounterSpawn(id){
 }
 
 function onEncounterDown(){
+	mapHolder.veela.marker.tween.play(0);
 	updateEncounterText = true;
 }
 
