@@ -318,6 +318,7 @@ const interfaceAdditional = new PIXI.Container();	//Additional actions
 const interfaceHolder = new PIXI.Container();
 const veelaHolder = new PIXI.Container();
 const encounterHolder = new PIXI.Container();
+var updateEncounterText = true;
 
 const mapHolder = new PIXI.Container();
 
@@ -2261,6 +2262,9 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
+	if(updateEncounterText){
+		encounterHolder.textBox.textObj.updateText("This is the updated text");
+	}
 }
 
 function consolePrint(fromText){
