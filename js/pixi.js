@@ -1379,7 +1379,7 @@ function setup(){
 	encounterMarker.scale.set(sizeScale);
 	encounterMarker.anchor.set(0.5,1);
 	encounterMarker.x = veelaTile2.width/2;
-	encounterMarker.y = 0;
+	encounterMarker.y = -veelaTile2.height;
 	veelaHolder.addChild(encounterMarker);
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
