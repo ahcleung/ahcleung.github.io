@@ -369,6 +369,7 @@ const heroArray = [];					//Array of hero vitas
 const enemyArray = [];					//Array of enemy vitas
 const additionalArray = [];				//Array of additional menu buttons
 const tileArray = [];
+const tileSpriteArray = [];
 var tileTraversable = [];
 var playerPos = [];
 var travelMechanic = 0;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying, 4 = surfing
@@ -1765,7 +1766,8 @@ function createTile(item, itemIndex){
 
 	// tileContainer.x = app.screen.width/2;
 	// tileContainer.x = app.screen.height/2;
-	mapHolder.addChild(tileContainer)
+	tileSpriteArray.push(tileContainer);
+	mapHolder.addChild(tileContainer);
 }
 
 function showTraversable(){
@@ -2240,7 +2242,11 @@ function onTileDown(){
 
 function encounterSpawn(id){
 	mapHolder.interactive = false;
-	mapHolder.buttonMode = false;
+	// mapHolder.buttonMode = false;
+	tileSpriteArray.forEach(tileSprite=>{
+		tileSprite.interactive = false;
+	});
+
 	mapHolder.veela.marker.tween.play(0);
 	// encounterHolder.bgTween.play(0);
 
