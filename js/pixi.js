@@ -1507,7 +1507,10 @@ function setup(){
 
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete(){
+		encounterBtn1.visible = true;
+		encounterText.tween.play(0);
+	}},0);
 	encounterHolder.bgTween = encounterBlackTween;
 
 	var textBoxMargin = 20;
@@ -1546,6 +1549,7 @@ function setup(){
 	// encounterBtn1.x = app.screen.width/2;
 	// encounterBtn1.y = app.screen.height/5;
 
+	encounterBtn1.visible = false;
 	encounterBtn1.x = app.screen.width-margin-textBoxMargin-100;
 	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 
