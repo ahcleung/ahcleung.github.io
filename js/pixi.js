@@ -2262,9 +2262,9 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
-	if(updateEncounterText){
+	// if(updateEncounterText){
 		encounterHolder.textBox.textObj.updateText("This is the updated text");
-	}
+	// }
 }
 
 function consolePrint(fromText){
