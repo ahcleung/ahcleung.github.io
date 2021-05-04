@@ -2226,7 +2226,7 @@ function onTileDown(){
 
 function encounterSpawn(id){
 	mapHolder.interactive = false;
-
+	mapHolder.veela.marker.tween.play(0);
 	encounterHolder.bgTween.play(0);
 
 	var tileCreatureArray = [];
@@ -2261,7 +2261,7 @@ function encounterSpawn(id){
 }
 
 function onEncounterDown(){
-	mapHolder.veela.marker.tween.play(0);
+	// mapHolder.veela.marker.tween.play(0);
 	updateEncounterText = true;
 }
 
