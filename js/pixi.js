@@ -1484,10 +1484,10 @@ function setup(){
 	app.stage.addChild(encounterHolder);
 
 	var encounterBG = new PIXI.Graphics();
-	encounterBG.beginFill(0x000000);
+	encounterBG.beginFill(0x111111);
 	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBG.endFill();
-	encounterBG.alpha = 0.75;
+	encounterBG.alpha = 0.85;
 	encounterHolder.addChild(encounterBG);
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
