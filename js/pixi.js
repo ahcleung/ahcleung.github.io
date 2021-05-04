@@ -1533,7 +1533,7 @@ function setup(){
 	// encounterBtn1.y = app.screen.height/5;
 
 	encounterBtn1.x = app.screen.width-margin-textBoxMargin-100;
-	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-30;
+	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 
 	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
