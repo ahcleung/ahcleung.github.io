@@ -1376,7 +1376,7 @@ function setup(){
 	veelaTile2.y = -(veelaTile2.height/2);
 
 	let encounterMarker = new PIXI.Sprite(resources.encounterMarker.texture);
-	encounterMarker.scale.set(0.2);
+	encounterMarker.scale.set(sizeScale);
 	encounterMarker.anchor.set(0.5,1);
 	encounterMarker.x = veelaTile2.width/2;
 	encounterMarker.y = -veelaTile2.height;
@@ -1527,6 +1527,9 @@ function setup(){
 	encounterBtn1.rect = btnRect;
 	encounterBtn1.addChild(btnText);
 	encounterBtn1.btnText = btnText;
+
+	encounterBtn1.x = app.screen.width-margin-10-50;
+	encounterBtn1.y = (app.screen.height/3)-margin-10-50;
 
 	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
