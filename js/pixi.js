@@ -1507,7 +1507,7 @@ function setup(){
 	encounterTextBox.rect = textRect;
 
 	var textBoxMargin = 20;
-	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
+	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:app.screen.width-(margin*2)-(textBoxMargin*2)});
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + textBoxMargin;
