@@ -1502,7 +1502,7 @@ function setup(){
 	textRect.beginFill(0x000000);
 	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	textRect.endFill();
-	textRect.alpha = 0.95;
+	textRect.alpha = 0.75;
 	encounterTextBox.addChild(textRect);
 	encounterTextBox.rect = textRect;
 
