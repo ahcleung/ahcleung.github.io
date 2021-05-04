@@ -1480,7 +1480,7 @@ function setup(){
 
 	var encounterTextbox = new PIXI.Graphics();
 	encounterTextbox .beginFill(0x000000);
-	encounterTextbox .drawRect(margin, app.screen.height*2/3, app.screen.width-margin, app.screen.height/3);
+	encounterTextbox .drawRect(margin, app.screen.height*2/3, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	encounterTextbox .endFill();
 	encounterTextbox .alpha = 0.75;
 	encounterHolder.addChild(encounterTextbox);
