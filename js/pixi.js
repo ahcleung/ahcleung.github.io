@@ -1501,7 +1501,7 @@ function setup(){
 	encounterTextBox.rect = textRect;
 
 	var textBoxMargin = 20;
-	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 30, fill : 0xfefefe, align : 'left'});
+	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'left'});
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + textBoxMargin;
@@ -1517,7 +1517,7 @@ function setup(){
 	// set the mousedown and touchstart callback...
 	.on('pointerdown', onEncounterDown);	
 	encounterBtn1.identifier = [i];
-	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
+	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'center'});
 	btnText.anchor.set(0.5, 0.5);
 	
 	btnRect.beginFill(0x636363).drawRect(-100, -30, 200, 60);
