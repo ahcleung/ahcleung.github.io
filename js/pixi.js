@@ -1499,13 +1499,13 @@ function setup(){
 	textRect.beginFill(0x111111);
 	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	textRect.endFill();
-	textRect.alpha = 0.85;
+	textRect.alpha = 0;
 	encounterTextBox.addChild(textRect);
 	encounterTextBox.rect = textRect;
 
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterBlackTween.to(textRect, 0.167, {alpha:0.85});
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
 	encounterHolder.bgTween = encounterBlackTween;
 
 	var textBoxMargin = 20;
