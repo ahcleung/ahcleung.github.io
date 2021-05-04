@@ -1484,7 +1484,7 @@ function setup(){
 	app.stage.addChild(encounterHolder);
 
 	var encounterBG = new PIXI.Graphics();
-	encounterBG.beginFill(0x000000);
+	encounterBG.beginFill(0x222222);
 	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBG.endFill();
 	encounterBG.alpha = 0.75;
@@ -1499,7 +1499,7 @@ function setup(){
 	encounterHolder.textBox.y = app.screen.height*2/3;
 
 	var textRect = new PIXI.Graphics();
-	textRect.beginFill(0x000000);
+	textRect.beginFill(0x222222);
 	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	textRect.endFill();
 	textRect.alpha = 0.75;
