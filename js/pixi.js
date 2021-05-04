@@ -1472,7 +1472,7 @@ function setup(){
 	encounterBG.beginFill(0x000000);
 	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBG.endFill();
-	encounterBG.alpha = 0;
+	encounterBG.alpha = 0.75;
 	encounterHolder.addChild(encounterBG);
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
