@@ -1520,7 +1520,7 @@ function setup(){
 	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'center'});
 	btnText.anchor.set(0.5, 0.5);
 	
-	btnRect.beginFill(0x636363).drawRect(-100, -30, 200, 60);
+	btnRect.beginFill(0x636363).drawRect(-100, -25, 200, 50);
 	btnRect.x = 0;
 	btnRect.y = 0;
 	
