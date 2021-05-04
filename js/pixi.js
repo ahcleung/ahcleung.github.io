@@ -1507,10 +1507,11 @@ function setup(){
 
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete: function(){
-		encounterBtn1.visible = true;
-		encounterText.tween.play(0);
-	}},0);
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
+	// encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete: function(){
+	// 	encounterBtn1.visible = true;
+	// 	encounterText.tween.play(0);
+	// }},0);
 	encounterHolder.bgTween = encounterBlackTween;
 
 	var textBoxMargin = 20;
