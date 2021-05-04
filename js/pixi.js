@@ -1477,6 +1477,13 @@ function setup(){
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
 	encounterHolder.bgTween = encounterBlackTween;
+
+	var encounterTextbox = new PIXI.Graphics();
+	encounterTextbox .beginFill(0x000000);
+	encounterTextbox .drawRect(margin, app.screen.height*2/3, app.screen.width-margin, app.screen.height/3);
+	encounterTextbox .endFill();
+	encounterTextbox .alpha = 0.75;
+	encounterHolder.addChild(encounterTextbox);
 	// mapHolder
 
 	// onSwitchDown();
