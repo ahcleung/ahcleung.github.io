@@ -1519,7 +1519,7 @@ function setup(){
 	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
 	btnText.anchor.set(0.5, 0.5);
 	
-	btnRect.beginFill(0x636363).drawRect(-100, -40, 200, 80);
+	btnRect.beginFill(0x636363).drawRect(-100, -30, 200, 60);
 	btnRect.x = 0;
 	btnRect.y = 0;
 	
@@ -1532,7 +1532,7 @@ function setup(){
 	// encounterBtn1.y = app.screen.height/5;
 
 	encounterBtn1.x = app.screen.width-margin-10-100;
-	encounterBtn1.y = (app.screen.height/3)-margin-10-40;
+	encounterBtn1.y = (app.screen.height/3)-margin-10-30;
 
 	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
