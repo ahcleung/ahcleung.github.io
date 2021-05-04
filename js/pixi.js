@@ -1507,7 +1507,7 @@ function setup(){
 
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete(){
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete: function(){
 		encounterBtn1.visible = true;
 		encounterText.tween.play(0);
 	}},0);
