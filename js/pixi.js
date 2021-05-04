@@ -1500,11 +1500,12 @@ function setup(){
 	encounterTextBox.addChild(textRect);
 	encounterTextBox.rect = textRect;
 
+	var textBoxMargin = 20;
 	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 30, fill : 0xfefefe, align : 'left'});
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
-	encounterTextBox.textObj.x = margin + 10;
-	encounterTextBox.textObj.y = 10;
+	encounterTextBox.textObj.x = margin + textBoxMargin;
+	encounterTextBox.textObj.y = textBoxMargin;
 
 	let btnRect = new PIXI.Graphics();
 	const encounterBtn1 = new PIXI.Container();
@@ -1531,8 +1532,8 @@ function setup(){
 	// encounterBtn1.x = app.screen.width/2;
 	// encounterBtn1.y = app.screen.height/5;
 
-	encounterBtn1.x = app.screen.width-margin-10-100;
-	encounterBtn1.y = (app.screen.height/3)-margin-10-30;
+	encounterBtn1.x = app.screen.width-margin-textBoxMargin-100;
+	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-30;
 
 	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
