@@ -1500,7 +1500,7 @@ function setup(){
 	encounterTextBox.addChild(textRect);
 	encounterTextBox.rect = textRect;
 
-	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'left'});
+	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 30, fill : 0xfefefe, align : 'left'});
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + 10;
@@ -1519,7 +1519,7 @@ function setup(){
 	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
 	btnText.anchor.set(0.5, 0.5);
 	
-	btnRect.beginFill(0x636363).drawRect(-50, -25, 100, 50);
+	btnRect.beginFill(0x636363).drawRect(-100, -40, 200, 80);
 	btnRect.x = 0;
 	btnRect.y = 0;
 	
@@ -1531,8 +1531,8 @@ function setup(){
 	// encounterBtn1.x = app.screen.width/2;
 	// encounterBtn1.y = app.screen.height/5;
 
-	encounterBtn1.x = app.screen.width-margin-10-50;
-	encounterBtn1.y = (app.screen.height/3)-margin-10-25;
+	encounterBtn1.x = app.screen.width-margin-10-100;
+	encounterBtn1.y = (app.screen.height/3)-margin-10-40;
 
 	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
