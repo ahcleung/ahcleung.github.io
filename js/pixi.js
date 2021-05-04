@@ -1507,7 +1507,7 @@ function setup(){
 	encounterTextBox.rect = textRect;
 
 	var textBoxMargin = 20;
-	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + textBoxMargin;
@@ -2267,7 +2267,7 @@ function encounterSpawn(id){
 function onEncounterDown(){
 	// mapHolder.veela.marker.tween.play(0);
 	encounterHolder.textBox.textObj.alpha = 0;
-	encounterHolder.textBox.textObj.text = "This is the updated text";
+	encounterHolder.textBox.textObj.text = "Ohh it’s so nice to see a young Ranger on their trial. I remember going on my trial when I was your age. It changed my life! How about a little battle with little old me?";
 	encounterHolder.textBox.textObj.tween.play(0)
 	// updateEncounterText = true;
 }
