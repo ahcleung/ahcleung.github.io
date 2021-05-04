@@ -1488,7 +1488,7 @@ function setup(){
 	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	textRect.endFill();
 	textRect.alpha = 0.75;
-	encounterTextbox.addChild(textbox);
+	encounterTextbox.addChild(textRect);
 	encounterTextbox.rect = textRect;
 
 	// mapHolder
