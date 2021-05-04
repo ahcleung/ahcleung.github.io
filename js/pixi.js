@@ -1487,11 +1487,8 @@ function setup(){
 	encounterBG.beginFill(0x000000);
 	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
 	encounterBG.endFill();
-	encounterBG.alpha = 0.75;
+	encounterBG.alpha = 0;
 	encounterHolder.addChild(encounterBG);
-	encounterBlackTween = new TimelineMax({paused: true});
-	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterHolder.bgTween = encounterBlackTween;
 
 	var encounterTextBox = new PIXI.Container();
 	encounterHolder.addChild(encounterTextBox);
@@ -1505,6 +1502,11 @@ function setup(){
 	textRect.alpha = 0.85;
 	encounterTextBox.addChild(textRect);
 	encounterTextBox.rect = textRect;
+
+	encounterBlackTween = new TimelineMax({paused: true});
+	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85});
+	encounterHolder.bgTween = encounterBlackTween;
 
 	var textBoxMargin = 20;
 	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:app.screen.width-(margin*2)-(textBoxMargin*2)});
