@@ -318,7 +318,7 @@ const interfaceAdditional = new PIXI.Container();	//Additional actions
 const interfaceHolder = new PIXI.Container();
 const veelaHolder = new PIXI.Container();
 const encounterHolder = new PIXI.Container();
-var updateEncounterText = true;
+var updateEncounterText = false;
 
 const mapHolder = new PIXI.Container();
 
@@ -1497,6 +1497,30 @@ function setup(){
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + 10;
 	encounterTextBox.textObj.y = 10;
+
+	let btnRect = new PIXI.Graphics();
+	const encounterBtn1 = new PIXI.Container();
+	
+	// make the button interactive...
+	encounterBtn1.buttonMode = true;
+	encounterBtn1.interactive = true;
+	encounterBtn1
+	// set the mousedown and touchstart callback...
+	.on('pointerdown', onEncounterDown);	
+	encounterBtn1.identifier = [i];
+	let btnText = new Text("Fight", {fontFamily : styleFontFamily, fontSize: 36, fill : 0xfefefe, align : 'center'});
+	btnText.anchor.set(0.5, 0.5);
+	
+	btnRect.beginFill(0x636363).drawRect(0, 0, 50, 50);
+	btnRect.x = 0;
+	btnRect.y = 0;
+	
+	encounterBtn1.addChild(btnRect);
+	encounterBtn1.rect = btnRect;
+	encounterBtn1.addChild(btnText);
+	encounterBtn1.btnText = btnText;
+
+	encounterTextBox.addChild(encounterBtn1);
 	// mapHolder
 
 	// onSwitchDown();
@@ -2215,6 +2239,10 @@ function encounterSpawn(id){
 	console.log(enemyRoster);
 }
 
+function onEncounterDown(){
+	updateEncounterText = true;
+}
+
 function onDragStart(event)
 {
 	// console.log("MAP!");
@@ -2262,9 +2290,9 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
-	// if(updateEncounterText){
+	if(updateEncounterText){
 		encounterHolder.textBox.textObj.text = "This is the updated text";
-	// }
+	}
 }
 
 function consolePrint(fromText){
