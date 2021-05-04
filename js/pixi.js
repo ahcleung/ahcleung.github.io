@@ -1376,7 +1376,7 @@ function setup(){
 	veelaTile2.y = -(veelaTile2.height/2);
 
 	let encounterMarker = new PIXI.Sprite(resources.encounterMarker.texture);
-	encounterMarker.scale.set(sizeScale);
+	encounterMarker.scale.set(0.2);
 	encounterMarker.anchor.set(0.5,1);
 	encounterMarker.x = veelaTile2.width/2;
 	encounterMarker.y = -veelaTile2.height;
