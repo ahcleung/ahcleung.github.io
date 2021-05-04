@@ -1491,6 +1491,9 @@ function setup(){
 	encounterTextbox.addChild(textRect);
 	encounterTextbox.rect = textRect;
 
+	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'left'});
+	encounterTextBox.addChild(encounterText);
+	encounterTextBox.textObj = encounterText;
 	// mapHolder
 
 	// onSwitchDown();
