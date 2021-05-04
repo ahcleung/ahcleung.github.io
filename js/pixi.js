@@ -1506,9 +1506,9 @@ function setup(){
 	encounterTextBox.rect = textRect;
 
 	encounterBlackTween = new TimelineMax({paused: true});
-	encounterBlackTween.to(encounterBG, 0.167, {delay: 0.5, alpha:0.75});
+	encounterBlackTween.to(encounterBG, 0.167, {delay: 0.33, alpha:0.75, ease:Sine.easeInOut});
 	// encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
-	encounterBlackTween.to(textRect, 0.167, {delay: 0.5, alpha:0.85, onComplete: function(){
+	encounterBlackTween.to(textRect, 0.167, {delay: 0.33, alpha:0.85, ease:Sine.easeInOut, onComplete: function(){
 		encounterBtn1.visible = true;
 		encounterText.tween.play(0);
 	}},0);
@@ -1523,7 +1523,7 @@ function setup(){
 	encounterTextBox.textObj.y = textBoxMargin;
 
 	encounterTextTween = new TimelineMax({paused: true});
-	encounterTextTween.to(encounterText, 0.167, {alpha:1});
+	encounterTextTween.to(encounterText, 0.167, {alpha:1, ease:Sine.easeInOut});
 	encounterText.tween = encounterTextTween;
 
 	let btnRect = new PIXI.Graphics();
