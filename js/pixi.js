@@ -1384,8 +1384,8 @@ function setup(){
 	veelaHolder.marker = encounterMarker;
 
 	var markerTween = new TimelineMax({paused: true});
-	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale+0.1, y: sizeScale+0.1});
-	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale, y: sizeScale});
+	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut});
+	markerTween.to(encounterMarker.scale,0.1, {x:sizeScale, y: sizeScale, ease:Sine.easeInOut});
 	encounterMarker.tween = markerTween;
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
