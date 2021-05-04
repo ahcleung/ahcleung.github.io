@@ -2240,6 +2240,7 @@ function onTileDown(){
 
 function encounterSpawn(id){
 	mapHolder.interactive = false;
+	mapHolder.buttonMode = false;
 	mapHolder.veela.marker.tween.play(0);
 	// encounterHolder.bgTween.play(0);
 
