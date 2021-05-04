@@ -44,6 +44,7 @@ loader
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
+		{name:'encounterMarker', url:'img/encounterMarker.png'},
 		{name:'tile_hidden', url:'img/tile_hidden1.png'},
 		{name:'tile_fog', url:'img/tile_fog.png'},
 		{name:'tile_move1', url:'img/tile_move1.png'},
@@ -1373,6 +1374,13 @@ function setup(){
 	veelaTile2.alpha = 0;
 	veelaTile2.x = veelaTile2.width/2;
 	veelaTile2.y = -(veelaTile2.height/2);
+
+	let encounterMarker = new PIXI.Sprite(resources.encounterMarker.texture);
+	encounterMarker.scale.set(sizeScale);
+	encounterMarker.anchor.set(0.5,1);
+	encounterMarker.x = 0;
+	encounterMarker.y = -(veelaTile1.height/2);
+	veelaHolder.addChild(encounterMarker);
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 	veelaTileTween.to(veelaTile2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
