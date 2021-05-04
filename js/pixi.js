@@ -1478,12 +1478,19 @@ function setup(){
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
 	encounterHolder.bgTween = encounterBlackTween;
 
-	var encounterTextbox = new PIXI.Graphics();
-	encounterTextbox .beginFill(0x000000);
-	encounterTextbox .drawRect(margin, app.screen.height*2/3, app.screen.width-(2*margin), (app.screen.height/3)-margin);
-	encounterTextbox .endFill();
-	encounterTextbox .alpha = 0.75;
+	var encounterTextbox = new PIXI.Container();
 	encounterHolder.addChild(encounterTextbox);
+	encounterHolder.textBox = encounterTextbox;
+	encounterHolder.textBox.y = app.screen.height*2/3;
+
+	var textRect = new PIXI.Graphics();
+	textRect.beginFill(0x000000);
+	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
+	textRect.endFill();
+	textRect.alpha = 0.75;
+	encounterTextbox.addChild(textbox);
+	encounterTextbox.rect = textRect;
+
 	// mapHolder
 
 	// onSwitchDown();
