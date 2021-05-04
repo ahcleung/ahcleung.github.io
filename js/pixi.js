@@ -2263,7 +2263,7 @@ function play(delta){
 		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
 	// if(updateEncounterText){
-		encounterHolder.textBox.textObj.updateText("This is the updated text");
+		encounterHolder.textBox.textObj.text = "This is the updated text";
 	// }
 }
 
