@@ -1513,6 +1513,10 @@ function setup(){
 	encounterTextBox.textObj.x = margin + textBoxMargin;
 	encounterTextBox.textObj.y = textBoxMargin;
 
+	encounterTextTween = new TimelineMax({paused: true});
+	encounterTextTween.to(encounterText, 0.167, {alpha:1});
+	encounterText.tween = encounterTextTween;
+
 	let btnRect = new PIXI.Graphics();
 	const encounterBtn1 = new PIXI.Container();
 	
@@ -2262,7 +2266,10 @@ function encounterSpawn(id){
 
 function onEncounterDown(){
 	// mapHolder.veela.marker.tween.play(0);
-	updateEncounterText = true;
+	encounterHolder.textBox.textObj.alpha = 0;
+	encounterHolder.textBox.textObj.text = "This is the updated text";
+	encounterHolder.textBox.textObj.tween.play(0)
+	// updateEncounterText = true;
 }
 
 function onDragStart(event)
@@ -2312,9 +2319,9 @@ function play(delta){
 		"\nAppScreen Width: " + app.screen.width + 
 		"\nAppScreen Height: " + app.screen.height;
 	// turnText.text = turnNumber;
-	if(updateEncounterText){
-		encounterHolder.textBox.textObj.text = "This is the updated text";
-	}
+	// if(updateEncounterText){
+	// 	encounterHolder.textBox.textObj.text = "This is the updated text";
+	// }
 }
 
 function consolePrint(fromText){
