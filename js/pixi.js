@@ -1478,9 +1478,9 @@ function setup(){
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
 	encounterHolder.bgTween = encounterBlackTween;
 
-	var encounterTextbox = new PIXI.Container();
-	encounterHolder.addChild(encounterTextbox);
-	encounterHolder.textBox = encounterTextbox;
+	var encounterTextBox = new PIXI.Container();
+	encounterHolder.addChild(encounterTextBox);
+	encounterHolder.textBox = encounterTextBox;
 	encounterHolder.textBox.y = app.screen.height*2/3;
 
 	var textRect = new PIXI.Graphics();
@@ -1488,8 +1488,8 @@ function setup(){
 	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
 	textRect.endFill();
 	textRect.alpha = 0.75;
-	encounterTextbox.addChild(textRect);
-	encounterTextbox.rect = textRect;
+	encounterTextBox.addChild(textRect);
+	encounterTextBox.rect = textRect;
 
 	let encounterText = new Text("Hello World", {fontFamily : styleFontFamily, fontSize: 24, fill : 0xfefefe, align : 'left'});
 	encounterTextBox.addChild(encounterText);
