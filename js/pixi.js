@@ -1507,16 +1507,16 @@ function setup(){
 
 	encounterBlackTween = new TimelineMax({paused: true});
 	encounterBlackTween.to(encounterBG, 0.167, {alpha:0.75});
-	encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
-	// encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete: function(){
-	// 	encounterBtn1.visible = true;
-	// 	encounterText.tween.play(0);
-	// }},0);
+	// encounterBlackTween.to(textRect, 0.167, {alpha:0.85},0);
+	encounterBlackTween.to(textRect, 0.167, {alpha:0.85, onComplete: function(){
+		encounterBtn1.visible = true;
+		encounterText.tween.play(0);
+	}},0);
 	encounterHolder.bgTween = encounterBlackTween;
 
 	var textBoxMargin = 20;
 	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:app.screen.width-(margin*2)-(textBoxMargin*2)});
-	encounterTextBox.alpha = 0;
+	encounterText.alpha = 0;
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
 	encounterTextBox.textObj.x = margin + textBoxMargin;
