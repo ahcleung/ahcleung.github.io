@@ -1324,7 +1324,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [1,1];
+	playerPos = [17,13];
 	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying
 	surfMechanic = 0;			//0 = surf, 1 = surf+
 	canSurf = true;
@@ -1335,8 +1335,8 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	for(var i = 0; i < 3; i++){
-		for(var j = 0; j < 3; j++){
+	for(var i = 0; i < 44; i++){
+		for(var j = 0; j < 50; j++){
 			var discovered = (playerMapList.data.maps[0].tiles[i][j] > 0 ? true : false);
 			var travelled = (playerMapList.data.maps[0].tiles[i][j] == 2 ? true : false);
 			// var discovered = false;
