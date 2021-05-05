@@ -3194,11 +3194,16 @@ function resize() {
 }
 
 function resizeEncounter(){
-	tileSpriteArray.forEach(tileContainer=>{
+	tileSpriteArray.forEach((tileContainer, tileIndex)=>{
 		tileContainer.scale.set(sizeScale); 	
-		tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
-		tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
+		tileContainer.x = tileArray[tileIndex].pos[0] * mapHolder.tileWidth * 3/4;
+		tileContainer.y = (tileArray[tileIndex].pos[1]+1) * mapHolder.tileHeight - ((tileArray[tileIndex].pos[0]%2)*mapHolder.tileHeight)/2;
 	});	
+
+	// tileArray.forEach((item, itemIndex) =>{
+	// 	createTile(item, itemIndex)
+	// });
+
 }
 
 function resizeDmg(roster, item){
