@@ -1723,14 +1723,19 @@ function createTile(item, itemIndex){
 	// item.pos[0]==j item.pos[1]==i
 	tileContainer.interactive = true;
 	tileContainer.buttonMode = true;
+
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	// sizeTile.scale.set(sizeScale);
+	// mapHolder.tileWidth = sizeTile.width;
+	// mapHolder.tileHeight = sizeTile.height;
 	
 	var points = [
-		mapHolder.tileWidth/4,-mapHolder.tileHeight,
-		mapHolder.tileWidth*3/4,-mapHolder.tileHeight,
-		mapHolder.tileWidth,-mapHolder.tileHeight/2,
-		mapHolder.tileWidth*3/4,0,
-		mapHolder.tileWidth/4,0,
-		0,-mapHolder.tileHeight/2
+		sizeTile.width/4,-sizeTile.height,
+		sizeTile.width*3/4,-sizeTile.height,
+		sizeTile.width,-sizeTile.height/2,
+		sizeTile.width*3/4,0,
+		sizeTile.width/4,0,
+		0,-sizeTile.height/2
 	];
 	tileContainer.hitArea = new PIXI.Polygon(points);
 	tileContainer
