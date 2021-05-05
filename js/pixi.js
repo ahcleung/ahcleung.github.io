@@ -1382,8 +1382,8 @@ function setup(){
 	veelaHolder.marker = encounterMarker;
 
 	var markerTween = new TimelineMax({paused: true});
-	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut});
-	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale, y: sizeScale, ease:Sine.easeInOut, onComplete: function(){
+	markerTween.to(encounterMarker.scale, 0.1, {x:1.1, y: 1.1, ease:Sine.easeInOut});
+	markerTween.to(encounterMarker.scale, 0.1, {x:1, y: 1, ease:Sine.easeInOut, onComplete: function(){
 		encounterHolder.bgTween.play(0);
 	}});
 	encounterMarker.tween = markerTween;
@@ -1391,8 +1391,8 @@ function setup(){
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 	veelaTileTween.to(veelaTile2.scale, 1, {x: 1.1, y: 1.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
 	veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
-	veelaHolder.tween = veelaTileTween;
-	veelaHolder.veela2 = veelaTile2;
+	// veelaHolder.tween = veelaTileTween;
+	// veelaHolder.veela2 = veelaTile2;
 	veelaHolder.addChild(veelaTile2);
 	veelaHolder.addChild(veelaTile1);
 
