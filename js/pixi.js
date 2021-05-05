@@ -3226,8 +3226,8 @@ function resizeEncounter(){
 	encounterHolder.bg.y = 100;
 	encounterHolder.bg.width = 100;
 	encounterHolder.bg.height = 100;
-	encounterHolder.bg.width = app.screen.width;
-	encounterHolder.bg.height = app.screen.height;
+	// encounterHolder.bg.width = app.screen.width;
+	// encounterHolder.bg.height = app.screen.height;
 }
 
 function resizeDmg(roster, item){
