@@ -1497,7 +1497,8 @@ function setup(){
 
 	var textRect = new PIXI.Graphics();
 	textRect.beginFill(0x111111);
-	textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
+	// textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
+	textRect.drawRect(0, 0, 100, 100);
 	textRect.endFill();
 	textRect.alpha = 0;
 	encounterTextBox.addChild(textRect);
@@ -3226,6 +3227,11 @@ function resizeEncounter(){
 	encounterHolder.bg.y = 10;
 	encounterHolder.bg.width = app.screen.width-20;
 	encounterHolder.bg.height = app.screen.height-20;
+
+	encounterHolder.textBox.rect.x = 10;
+	encounterHolder.textBox.rect.y = 10;
+	encounterHolder.textBox.rect.width = app.screen.width/2;
+	encounterHolder.textBox.rect.height = app.screen.height/3;
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
 }
