@@ -3200,9 +3200,9 @@ function resizeEncounter(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	// mapHolder.veela.scale.set(sizeScale);
-	// mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
-	// mapHolder.veela.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
+	mapHolder.veela.scale.set(sizeScale);
+	mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
+	mapHolder.veela.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
 	tileSpriteArray.forEach((tileContainer, tileIndex)=>{
 		tileContainer.scale.set(sizeScale); 	
