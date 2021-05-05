@@ -3211,6 +3211,7 @@ function resizeEncounter(){
 
 	// var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 	mapHolder.veela.tween.kill();
+	mapHolder.veela.tween = new TimelineMax({repeat:-1, repeatDelay:0.2});
 	mapHolder.veela.tween.to(mapHolder.veela.veela2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
 	mapHolder.veela.tween.to(mapHolder.veela.veela2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 
