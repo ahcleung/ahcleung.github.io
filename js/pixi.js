@@ -1365,12 +1365,12 @@ function setup(){
 	showTraversable();
 
 	let veelaTile1 = new PIXI.Sprite(resources.tile_veela1.texture);
-	veelaTile1.scale.set(sizeScale);
+	// veelaTile1.scale.set(sizeScale);
 	veelaTile1.anchor.set(0.5,0.5);
 	veelaTile1.x = veelaTile1.width/2;
 	veelaTile1.y = -(veelaTile1.height/2);
 	let veelaTile2 = new PIXI.Sprite(resources.tile_veela2.texture);
-	veelaTile2.scale.set(sizeScale);
+	// veelaTile2.scale.set(sizeScale);
 	veelaTile2.anchor.set(0.5,0.5);
 	veelaTile2.alpha = 0;
 	veelaTile2.x = veelaTile2.width/2;
@@ -1383,6 +1383,7 @@ function setup(){
 	encounterMarker.y = -veelaTile2.height;
 	veelaHolder.addChild(encounterMarker);
 	veelaHolder.marker = encounterMarker;
+	veelaHolder.scale.set(sizeScale);
 
 	var markerTween = new TimelineMax({paused: true});
 	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut});
@@ -3198,7 +3199,7 @@ function resizeEncounter(){
 	sizeTile.scale.set(sizeScale);
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
-	
+
 	tileSpriteArray.forEach((tileContainer, tileIndex)=>{
 		tileContainer.scale.set(sizeScale); 	
 		tileContainer.x = tileArray[tileIndex].pos[0] * mapHolder.tileWidth * 3/4;
