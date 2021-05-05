@@ -3225,7 +3225,7 @@ function resizeMap(){
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
 
-	var textBoxMargin = 20;
+	var textBoxMargin = (app.screen.width < 860 ? 10 : 20);
 
 	// encounterHolder.bg.x = 5;
 	// encounterHolder.bg.y = 5;
@@ -3243,6 +3243,7 @@ function resizeEncounter(){
 	encounterHolder.textBox.textObj.x = margin + textBoxMargin;
 	encounterHolder.textBox.textObj.y = textBoxMargin;
 	encounterHolder.textBox.textObj.style.wordWrapWidth = app.screen.width-(margin*2)-(textBoxMargin*2);
+	encounterHolder.textBox.textObj.style.fontSize = skillNameFontSize;
 
 	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-100;
 	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
