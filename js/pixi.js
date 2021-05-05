@@ -3222,10 +3222,10 @@ function resizeMap(){
 
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
-	encounterHolder.bg.x = 40;
-	encounterHolder.bg.y = 40;
-	encounterHolder.bg.width = 800;
-	encounterHolder.bg.height = 800;
+	encounterHolder.bg.x = 50;
+	encounterHolder.bg.y = 50;
+	encounterHolder.bg.width = app.screen.width/2;
+	encounterHolder.bg.height = app.screen.height/2;
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
 }
