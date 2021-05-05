@@ -3230,10 +3230,11 @@ function resizeEncounter(){
 
 	encounterHolder.textBox.y = app.screen.height*2/3;
 
-	encounterHolder.textBox.rect.x = 10;
-	encounterHolder.textBox.rect.y = 10;
-	encounterHolder.textBox.rect.width = app.screen.width/2;
-	encounterHolder.textBox.rect.height = app.screen.height/3;
+	// textRect.drawRect(margin, 0, app.screen.width-(2*margin), (app.screen.height/3)-margin);
+	encounterHolder.textBox.rect.x = margin;
+	encounterHolder.textBox.rect.y = 0;
+	encounterHolder.textBox.rect.width = app.screen.width-(2*margin);
+	encounterHolder.textBox.rect.height = (app.screen.height/3)-margin;
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
 }
