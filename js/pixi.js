@@ -1763,7 +1763,7 @@ function createTile(item, itemIndex){
 	// centerGraphic.drawPolygon(points);
 	// centerGraphic.endFill();
 	// tileContainer.addChild(centerGraphic);
-	
+
 	// // centerGraphic.x = app.screen.width/2;
 	// // centerGraphic.y = app.screen.height/2;
 	tileContainer.scale.set(sizeScale); 	
@@ -3194,9 +3194,11 @@ function resize() {
 }
 
 function resizeEncounter(){
-	tileContainer.scale.set(sizeScale); 	
-	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
-	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
+	tileSpriteArray.forEach(tileContainer=>{
+		tileContainer.scale.set(sizeScale); 	
+		tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
+		tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
+	});	
 }
 
 function resizeDmg(roster, item){
