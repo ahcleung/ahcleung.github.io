@@ -1404,9 +1404,7 @@ function setup(){
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
 	
-	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
-	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
-	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
+	
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
@@ -1560,6 +1558,10 @@ function setup(){
 	window.addEventListener('resize', resize);
 
 	resize();
+
+	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
+	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
+	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
 	// mapHolder
 
 	// onSwitchDown();
