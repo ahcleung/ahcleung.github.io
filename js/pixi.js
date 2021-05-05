@@ -319,7 +319,7 @@ const interfaceAdditional = new PIXI.Container();	//Additional actions
 const interfaceHolder = new PIXI.Container();
 const veelaHolder = new PIXI.Container();
 const encounterHolder = new PIXI.Container();
-var updateEncounterText = false;
+// var updateEncounterText = false;
 
 const mapHolder = new PIXI.Container();
 
@@ -3222,6 +3222,8 @@ function resizeMap(){
 
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
+	encounterHolder.bg.x = -25;
+	encounterHolder.bg.y = -25;
 	encounterHolder.bg.width = app.screen.width+50;
 	encounterHolder.bg.height = app.screen.width+50;
 }
