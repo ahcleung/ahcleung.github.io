@@ -3222,8 +3222,8 @@ function resizeMap(){
 
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
-	encounterHolder.bg.x = 50;
-	encounterHolder.bg.y = 50;
+	encounterHolder.bg.x = 10;
+	encounterHolder.bg.y = 10;
 	encounterHolder.bg.width = app.screen.width/2;
 	encounterHolder.bg.height = app.screen.height/2;
 	// encounterHolder.bg.width = app.screen.width;
