@@ -3194,6 +3194,11 @@ function resize() {
 }
 
 function resizeEncounter(){
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	sizeTile.scale.set(sizeScale);
+	mapHolder.tileWidth = sizeTile.width;
+	mapHolder.tileHeight = sizeTile.height;
+	
 	tileSpriteArray.forEach((tileContainer, tileIndex)=>{
 		tileContainer.scale.set(sizeScale); 	
 		tileContainer.x = tileArray[tileIndex].pos[0] * mapHolder.tileWidth * 3/4;
