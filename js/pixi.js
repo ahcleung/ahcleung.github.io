@@ -1622,7 +1622,7 @@ function createTile(item, itemIndex){
 	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
 
 	mapHidden = new PIXI.Sprite(resources['tile_hidden'].texture);
-	mapHidden.scale.set(sizeScale);
+	// mapHidden.scale.set(sizeScale);
 	mapHidden.anchor.set(0,1);
 	tileContainer.hidden = mapHidden;
 	tileContainer.addChild(mapHidden);
@@ -1690,17 +1690,17 @@ function createTile(item, itemIndex){
 			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
 	}
 	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 4 || item.id == 5 || item.id == 6 || item.id == 7 || item.id == 8){
-		mapBase.scale.set(sizeScale);
+		// mapBase.scale.set(sizeScale);
 		mapBase.anchor.set(0,1);
 		tileImage.addChild(mapBase);
 	}
-	mapTile.scale.set(sizeScale);
+	// mapTile.scale.set(sizeScale);
 	mapTile.anchor.set(0,1);
 	tileImage.addChild(mapTile);
 	tileImage.detail = mapTile;
 
 	mapFog = new PIXI.Sprite(resources['tile_fog'].texture);
-	mapFog.scale.set(sizeScale);
+	// mapFog.scale.set(sizeScale);
 	mapFog.anchor.set(0,1);
 	mapFog.visible = false;
 	tileImage.addChild(mapFog);
@@ -1739,13 +1739,13 @@ function createTile(item, itemIndex){
 		.on('touchstart', onTileDown);
 
 	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
-	moveTile2.scale.set(sizeScale);
+	// moveTile2.scale.set(sizeScale);
 	moveTile2.anchor.set(0,1);
 	moveTile2.visible = false;
 	tileContainer.addChild(moveTile2);
 	tileContainer.moveTile2 = moveTile2;	
 	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
-	moveTile1.scale.set(sizeScale);
+	// moveTile1.scale.set(sizeScale);
 	moveTile1.anchor.set(0,1);
 	moveTile1.visible = false;
 	tileContainer.addChild(moveTile1);
@@ -1760,7 +1760,7 @@ function createTile(item, itemIndex){
 	// tileContainer.addChild(centerGraphic);
 	// centerGraphic.x = app.screen.width/2;
 	// centerGraphic.y = app.screen.height/2;
-		
+	tileContainer.scale.set(sizeScale); 	
 	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
 	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
 
@@ -3181,9 +3181,14 @@ function resize() {
 		resizeDmg(1, item);
 	});
 
+	// resizeEncounter();
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
+}
+
+function resizeEncounter(){
+
 }
 
 function resizeDmg(roster, item){
