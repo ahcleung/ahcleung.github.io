@@ -1484,7 +1484,7 @@ function setup(){
 
 	var encounterBG = new PIXI.Graphics();
 	encounterBG.beginFill(0x000000);
-	encounterBG.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
+	encounterBG.drawRect(0, 0, 100, 100);
 	encounterBG.endFill();
 	encounterBG.alpha = 0;
 	encounterHolder.addChild(encounterBG);
