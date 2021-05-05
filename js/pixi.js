@@ -3222,10 +3222,10 @@ function resizeMap(){
 
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
-	encounterHolder.bg.x = -25;
-	encounterHolder.bg.y = -25;
-	encounterHolder.bg.width = app.screen.width+50;
-	encounterHolder.bg.height = app.screen.width+50;
+	encounterHolder.bg.x = 0;
+	encounterHolder.bg.y = 0;
+	encounterHolder.bg.width = app.screen.width;
+	encounterHolder.bg.height = app.screen.width;
 }
 
 function resizeDmg(roster, item){
