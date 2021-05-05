@@ -1335,8 +1335,8 @@ function setup(){
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
 
-	for(var i = 0; i < 44; i++){
-		for(var j = 0; j < 50; j++){
+	for(var i = 0; i < 1; i++){
+		for(var j = 0; j < 1; j++){
 			var discovered = (playerMapList.data.maps[0].tiles[i][j] > 0 ? true : false);
 			var travelled = (playerMapList.data.maps[0].tiles[i][j] == 2 ? true : false);
 			// var discovered = false;
