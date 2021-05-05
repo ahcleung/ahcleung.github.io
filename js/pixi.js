@@ -1383,7 +1383,6 @@ function setup(){
 	encounterMarker.y = -veelaTile2.height;
 	veelaHolder.addChild(encounterMarker);
 	veelaHolder.marker = encounterMarker;
-	veelaHolder.scale.set(sizeScale);
 
 	var markerTween = new TimelineMax({paused: true});
 	markerTween.to(encounterMarker.scale, 0.1, {x:sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut});
@@ -1400,6 +1399,7 @@ function setup(){
 
 	mapHolder.addChild(veelaHolder);
 
+	veelaHolder.scale.set(sizeScale);
 	veelaHolder.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 	veelaHolder.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
@@ -3199,6 +3199,10 @@ function resizeEncounter(){
 	sizeTile.scale.set(sizeScale);
 	mapHolder.tileWidth = sizeTile.width;
 	mapHolder.tileHeight = sizeTile.height;
+
+	// mapHolder.veela.scale.set(sizeScale);
+	// mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
+	// mapHolder.veela.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
 	tileSpriteArray.forEach((tileContainer, tileIndex)=>{
 		tileContainer.scale.set(sizeScale); 	
