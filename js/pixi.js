@@ -1753,13 +1753,13 @@ function createTile(item, itemIndex){
 	item.sprite = tileContainer;
 	tileContainer.object = item;
 
-	// var centerGraphic = new PIXI.Graphics();
-	// centerGraphic.beginFill(0xff0000);
-	// centerGraphic.drawPolygon(points);
-	// centerGraphic.endFill();
-	// tileContainer.addChild(centerGraphic);
-	// centerGraphic.x = app.screen.width/2;
-	// centerGraphic.y = app.screen.height/2;
+	var centerGraphic = new PIXI.Graphics();
+	centerGraphic.beginFill(0xff0000);
+	centerGraphic.drawPolygon(points);
+	centerGraphic.endFill();
+	tileContainer.addChild(centerGraphic);
+	centerGraphic.x = item.pos[0] * mapHolder.tileWidth * 3/4;
+	centerGraphic.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
 	tileContainer.scale.set(sizeScale); 	
 	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
 	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
