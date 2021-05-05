@@ -1389,7 +1389,7 @@ function setup(){
 	encounterMarker.tween = markerTween;
 
 	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	veelaTileTween.to(veelaTile2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+	veelaTileTween.to(veelaTile2.scale, 1, {x: 1.1, y: 1.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
 	veelaTileTween.to(veelaTile2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
 	veelaHolder.tween = veelaTileTween;
 	veelaHolder.veela2 = veelaTile2;
@@ -3210,15 +3210,15 @@ function resizeEncounter(){
 	mapHolder.veela.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
 	
-	mapHolder.veela.tween.kill();
-	mapHolder.veela.tween.destroy();
-	// mapHolder.veela.veela2.scale = 
-	mapHolder.veela.veela2.alpha = 0;
-	var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	// veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	veelaTileTween.to(mapHolder.veela.veela2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
-	veelaTileTween.to(mapHolder.veela.veela2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
-	mapHolder.veela.tween = veelaTileTween;
+	// mapHolder.veela.tween.kill();
+	// // mapHolder.veela.tween.destroy();
+	// // mapHolder.veela.veela2.scale = 
+	// mapHolder.veela.veela2.alpha = 0;
+	// var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
+	// // veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
+	// veelaTileTween.to(mapHolder.veela.veela2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
+	// veelaTileTween.to(mapHolder.veela.veela2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
+	// mapHolder.veela.tween = veelaTileTween;
 
 	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
 	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
