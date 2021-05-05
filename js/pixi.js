@@ -3193,6 +3193,7 @@ function resize() {
 	});
 
 	resizeMap();
+	resizeEncounter();
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
