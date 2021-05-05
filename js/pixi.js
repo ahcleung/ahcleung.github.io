@@ -1488,6 +1488,7 @@ function setup(){
 	encounterBG.endFill();
 	encounterBG.alpha = 0;
 	encounterHolder.addChild(encounterBG);
+	encounterHolder.bg = encounterBG;
 
 	var encounterTextBox = new PIXI.Container();
 	encounterHolder.addChild(encounterTextBox);
@@ -3207,17 +3208,6 @@ function resizeMap(){
 	mapHolder.veela.x = playerPos[0] * mapHolder.tileWidth * 3/4;
 	mapHolder.veela.y = (playerPos[1]+1) * mapHolder.tileHeight - ((playerPos[0]%2)*mapHolder.tileHeight)/2;
 
-	
-	// mapHolder.veela.tween.kill();
-	// // mapHolder.veela.tween.destroy();
-	// // mapHolder.veela.veela2.scale = 
-	// mapHolder.veela.veela2.alpha = 0;
-	// var veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	// // veelaTileTween = new TimelineMax({repeat:-1, repeatDelay:0.2});
-	// veelaTileTween.to(mapHolder.veela.veela2.scale, 1, {x: sizeScale+0.1, y: sizeScale+0.1, ease:Sine.easeInOut, repeat: 1, yoyo: true});
-	// veelaTileTween.to(mapHolder.veela.veela2, 1, {alpha: 1, ease:Sine.easeInOut, repeat: 1, yoyo: true},0);
-	// mapHolder.veela.tween = veelaTileTween;
-
 	mapHolder.x = -(mapHolder.tileWidth*3/4 * playerPos[0]) - (mapHolder.tileWidth/2) + (app.screen.width/2);
 	var yAdjust = (playerPos[0]% 2 == 0 ? mapHolder.tileHeight/2 : 0);
 	mapHolder.y = -(mapHolder.tileHeight * (playerPos[1])) - yAdjust + (app.screen.height/2);
@@ -3226,12 +3216,13 @@ function resizeMap(){
 		tileContainer.scale.set(sizeScale); 	
 		tileContainer.x = tileArray[tileIndex].pos[0] * mapHolder.tileWidth * 3/4;
 		tileContainer.y = (tileArray[tileIndex].pos[1]+1) * mapHolder.tileHeight - ((tileArray[tileIndex].pos[0]%2)*mapHolder.tileHeight)/2;
-	});	
+	});
+}
 
-	// tileArray.forEach((item, itemIndex) =>{
-	// 	createTile(item, itemIndex)
-	// });
-
+function resizeEncounter(){
+	// -25, -25, app.screen.width+50, app.screen.height+50
+	encounterHolder.bg.width = app.screen.width+50;
+	encounterHolder.bg.height = app.screen.width+50;
 }
 
 function resizeDmg(roster, item){
