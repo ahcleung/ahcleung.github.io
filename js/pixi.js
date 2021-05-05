@@ -1513,7 +1513,7 @@ function setup(){
 	}},0);
 	encounterHolder.bgTween = encounterBlackTween;
 
-	var textBoxMargin = 20;
+	// var textBoxMargin = 20;
 	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:app.screen.width-(margin*2)-(textBoxMargin*2)});
 	encounterText.alpha = 0;
 	encounterTextBox.addChild(encounterText);
@@ -1555,6 +1555,7 @@ function setup(){
 	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 
 	encounterTextBox.addChild(encounterBtn1);
+	encounterTextBox.btn1 = encounterBtn1;
 
 	//Resize the screen
 	window.addEventListener('resize', resize);
@@ -3223,6 +3224,9 @@ function resizeMap(){
 
 function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
+
+	var textBoxMargin = 20;
+
 	encounterHolder.bg.x = 10;
 	encounterHolder.bg.y = 10;
 	encounterHolder.bg.width = app.screen.width-20;
@@ -3235,6 +3239,13 @@ function resizeEncounter(){
 	encounterHolder.textBox.rect.y = 0;
 	encounterHolder.textBox.rect.width = app.screen.width-(2*margin);
 	encounterHolder.textBox.rect.height = (app.screen.height/3)-margin;
+
+	encounterHolder.textBox.textObj.x = margin + textBoxMargin;
+	encounterHolder.textBox.textObj.y = textBoxMargin;
+
+	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-100;
+	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
+	
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
 }
