@@ -1324,7 +1324,7 @@ function setup(){
 	turnText.visible = false;
 	interfaceHolder.visible = false;
 
-	playerPos = [17,13];
+	playerPos = [1,1];
 	travelMechanic = 3;			//0 = walking, 1 = boots, 2 = mounted, 3 = flying
 	surfMechanic = 0;			//0 = surf, 1 = surf+
 	canSurf = true;
