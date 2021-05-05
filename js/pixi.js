@@ -3187,14 +3187,16 @@ function resize() {
 		resizeDmg(1, item);
 	});
 
-	// resizeEncounter();
+	resizeEncounter();
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
 function resizeEncounter(){
-
+	tileContainer.scale.set(sizeScale); 	
+	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
+	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
 }
 
 function resizeDmg(roster, item){
