@@ -3227,10 +3227,10 @@ function resizeEncounter(){
 
 	var textBoxMargin = 20;
 
-	encounterHolder.bg.x = 10;
-	encounterHolder.bg.y = 10;
-	encounterHolder.bg.width = app.screen.width-20;
-	encounterHolder.bg.height = app.screen.height-20;
+	encounterHolder.bg.x = 5;
+	encounterHolder.bg.y = 5;
+	encounterHolder.bg.width = app.screen.width;
+	encounterHolder.bg.height = app.screen.height;
 
 	encounterHolder.textBox.y = app.screen.height*2/3;
 
