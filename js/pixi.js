@@ -1315,10 +1315,7 @@ function setup(){
 	// 	.on('mousedown', onMapDown)
 	// 	.on('touchstart', onMapDown);
 
-	//Resize the screen
-	window.addEventListener('resize', resize);
-
-	resize();
+	
 
 	stageContainer.visible = false;
 	turnText.visible = false;
@@ -1558,6 +1555,11 @@ function setup(){
 	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 
 	encounterTextBox.addChild(encounterBtn1);
+
+	//Resize the screen
+	window.addEventListener('resize', resize);
+
+	resize();
 	// mapHolder
 
 	// onSwitchDown();
@@ -1775,6 +1777,7 @@ function createTile(item, itemIndex){
 	// tileContainer.x = app.screen.height/2;
 	tileSpriteArray.push(tileContainer);
 	mapHolder.addChild(tileContainer);
+
 }
 
 function showTraversable(){
