@@ -1405,8 +1405,6 @@ function setup(){
 	// createEdgeTiles(veelaHolder);
 	// veelaHolder.x = playerPos[0]
 	mapHolder.veela = veelaHolder;
-	
-	
 
 	mapHolder.interactive = true;
 	mapHolder.buttonMode = true;
@@ -3193,13 +3191,13 @@ function resize() {
 		resizeDmg(1, item);
 	});
 
-	resizeEncounter();
+	resizeMap();
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
-function resizeEncounter(){
+function resizeMap(){
 	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
 	sizeTile.scale.set(sizeScale);
 	mapHolder.tileWidth = sizeTile.width;
