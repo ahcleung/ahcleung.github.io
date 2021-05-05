@@ -3247,6 +3247,7 @@ function resizeEncounter(){
 
 	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-100;
 	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
+	encounterHolder.textBox.btn1.btnText.style.fontSize = skillNameFontSize;
 
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
