@@ -1514,12 +1514,12 @@ function setup(){
 	encounterHolder.bgTween = encounterBlackTween;
 
 	// var textBoxMargin = 20;
-	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:app.screen.width-(margin*2)-(textBoxMargin*2)});
+	let encounterText = new Text("Herbalist Kora wants to battle!", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:100});
 	encounterText.alpha = 0;
 	encounterTextBox.addChild(encounterText);
 	encounterTextBox.textObj = encounterText;
-	encounterTextBox.textObj.x = margin + textBoxMargin;
-	encounterTextBox.textObj.y = textBoxMargin;
+	// encounterTextBox.textObj.x = margin + textBoxMargin;
+	// encounterTextBox.textObj.y = textBoxMargin;
 
 	encounterTextTween = new TimelineMax({paused: true});
 	encounterTextTween.to(encounterText, 0.167, {alpha:1, ease:Sine.easeInOut});
@@ -1551,8 +1551,8 @@ function setup(){
 	// encounterBtn1.y = app.screen.height/5;
 
 	encounterBtn1.visible = false;
-	encounterBtn1.x = app.screen.width-margin-textBoxMargin-100;
-	encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
+	// encounterBtn1.x = app.screen.width-margin-textBoxMargin-100;
+	// encounterBtn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 
 	encounterTextBox.addChild(encounterBtn1);
 	encounterTextBox.btn1 = encounterBtn1;
@@ -3242,10 +3242,11 @@ function resizeEncounter(){
 
 	encounterHolder.textBox.textObj.x = margin + textBoxMargin;
 	encounterHolder.textBox.textObj.y = textBoxMargin;
+	encounterHolder.textBox.textObj.style.wordWrapWidth = app.screen.width-(margin*2)-(textBoxMargin*2);
 
 	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-100;
 	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
-	
+
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
 }
