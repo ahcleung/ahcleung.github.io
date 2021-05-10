@@ -3296,7 +3296,23 @@ function resizeInfo(){
 	creatureInfo.info_main_elementIcon[1].y = 4.4*infoMainMargin;
 	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
-	
+
+	creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
+	creatureInfo.info_main_element[0].y = 4*infoMainMargin;
+	creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
+	creatureInfo.info_main_element[1].y = 4*infoMainMargin;
+	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
+	creatureInfo.info_main_element[1].style.fontSize = skillNameFontSize;
+
+	creatureInfo.info_main_expBar[0].x = app.screen.width/12;
+	creatureInfo.info_main_expBar[1].x = app.screen.width/12;
+	creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
+	creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
+	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
+	creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
+	creatureInfo.info_main_expBar[0].height = app.screen.height/75;
+	creatureInfo.info_main_expBar[1].height = app.screen.height/75;
+
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.rect.height = app.screen.height/14;
@@ -3874,78 +3890,78 @@ function onHPDown(){
 	// }
 	
 	creatureInfoSprite.addChild(armatureHero);
-	creatureInfoSprite.scale.set(app.screen.width/3200);
+	// creatureInfoSprite.scale.set(app.screen.width/3200);
 	// console.log("Width: " + creatureInfoSprite.width);
 
-	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
+	// creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
 	creatureInfo.addChild(creatureInfoSprite);
-	creatureInfo.main.x = textOrigin[0];
-	creatureInfo.main.y = textOrigin[1];
+	// creatureInfo.main.x = textOrigin[0];
+	// creatureInfo.main.y = textOrigin[1];
 
 	creatureInfo.info_main_text[6].text = this.object.experienceGained + " / " + this.object.experienceNext;
 
-	creatureInfo.info_main_text.forEach((text,textIndex) =>{
-		text.style.fontSize = skillNameFontSize;
-		if(textIndex < 5){
-			text.x = (textIndex%2 == 0 ? app.screen.width/15 : app.screen.width/12);
-			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex-1) * infoMainMargin);
-			// if(textIndex%2 == 0){
-			// 	text.x = app.screen.width/15;
-			// 	text.y = textIndex * infoMainMargin;
-			// }else{
-			// 	text.x = app.screen.width/12;
-			// 	text.y = (textIndex-1) * infoMainMargin;
-			// }
-		}else{
-			text.x = (textIndex%2 == 0 ? app.screen.width/12 : app.screen.width/15);
-			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex+1) * infoMainMargin);
-			// if(textIndex%2 == 0){
-			// 	text.x = app.screen.width/12;
-			// 	text.y = textIndex * infoMainMargin;
-			// }else{
-			// 	text.x = app.screen.width/15;
-			// 	text.y = (textIndex+1) * infoMainMargin;
-			// }
-		}
-	});
+	// creatureInfo.info_main_text.forEach((text,textIndex) =>{
+	// 	text.style.fontSize = skillNameFontSize;
+	// 	if(textIndex < 5){
+	// 		text.x = (textIndex%2 == 0 ? app.screen.width/15 : app.screen.width/12);
+	// 		text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex-1) * infoMainMargin);
+	// 		// if(textIndex%2 == 0){
+	// 		// 	text.x = app.screen.width/15;
+	// 		// 	text.y = textIndex * infoMainMargin;
+	// 		// }else{
+	// 		// 	text.x = app.screen.width/12;
+	// 		// 	text.y = (textIndex-1) * infoMainMargin;
+	// 		// }
+	// 	}else{
+	// 		text.x = (textIndex%2 == 0 ? app.screen.width/12 : app.screen.width/15);
+	// 		text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex+1) * infoMainMargin);
+	// 		// if(textIndex%2 == 0){
+	// 		// 	text.x = app.screen.width/12;
+	// 		// 	text.y = textIndex * infoMainMargin;
+	// 		// }else{
+	// 		// 	text.x = app.screen.width/15;
+	// 		// 	text.y = (textIndex+1) * infoMainMargin;
+	// 		// }
+	// 	}
+	// });
 
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
 	// creatureInfo.info_main_text[8].text = "It's dominant hand is encrusted with a rock-like formation that it uses as a shield and a weapon. The rock is bejeweled with spiritual gems.";
 	creatureInfo.info_main_text[8].text = creatureList.data.creature[this.object.id].desc;
-	creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
+	// creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
 	// creatureInfo.info_main_text[5].text = this.object.name;
 
-	creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
-	creatureInfo.info_main_elementIcon[0].y = 4.4*infoMainMargin;
-	creatureInfo.info_main_elementIcon[1].x = app.screen.width/5;
-	creatureInfo.info_main_elementIcon[1].y = 4.4*infoMainMargin;
-	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
-	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
+	// creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
+	// creatureInfo.info_main_elementIcon[0].y = 4.4*infoMainMargin;
+	// creatureInfo.info_main_elementIcon[1].x = app.screen.width/5;
+	// creatureInfo.info_main_elementIcon[1].y = 4.4*infoMainMargin;
+	// creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
+	// creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
 
-	creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
-	creatureInfo.info_main_element[0].y = 4*infoMainMargin;
-	creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
-	creatureInfo.info_main_element[1].y = 4*infoMainMargin;
+	// creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
+	// creatureInfo.info_main_element[0].y = 4*infoMainMargin;
+	// creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
+	// creatureInfo.info_main_element[1].y = 4*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
-	creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
-	creatureInfo.info_main_element[1].style.fontSize = skillNameFontSize;
+	// creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
+	// creatureInfo.info_main_element[1].style.fontSize = skillNameFontSize;
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
-	// creatureInfo.info_main_expBar[0].x = 100;
-	creatureInfo.info_main_expBar[0].x = app.screen.width/12;
-	creatureInfo.info_main_expBar[1].x = app.screen.width/12;
-	creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
-	creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
-	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
-	creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
-	creatureInfo.info_main_expBar[0].height = app.screen.height/75;
-	creatureInfo.info_main_expBar[1].height = app.screen.height/75;
-	// creatureInfo.info_main_expBar[1].x = 100;
+	// // creatureInfo.info_main_expBar[0].x = 100;
+	// creatureInfo.info_main_expBar[0].x = app.screen.width/12;
+	// creatureInfo.info_main_expBar[1].x = app.screen.width/12;
+	// creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
+	// creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
+	// creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
+	// creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
+	// creatureInfo.info_main_expBar[0].height = app.screen.height/75;
+	// creatureInfo.info_main_expBar[1].height = app.screen.height/75;
+	// // creatureInfo.info_main_expBar[1].x = 100;
 
 	// creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
 
