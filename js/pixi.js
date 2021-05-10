@@ -3264,7 +3264,7 @@ function resizeInfo(){
 	// var statusMargin = [app.screen.width/20,app.screen.height/17];
 	// var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/6];
-	// var infoMainMargin = app.screen.height/20;
+	var infoMainMargin = app.screen.height/20;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
 
@@ -3272,12 +3272,31 @@ function resizeInfo(){
 						: app.screen.width < 1366 ? 26
 						: 36);
 
-	// creatureInfoSprite
+	creatureInfoSprite.scale.set(app.screen.width/3200);
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
-	// creatureInfo.addChild(creatureInfoSprite);
 	creatureInfo.main.x = textOrigin[0];
 	creatureInfo.main.y = textOrigin[1];
 
+	creatureInfo.info_main_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex < 5){
+			text.x = (textIndex%2 == 0 ? app.screen.width/15 : app.screen.width/12);
+			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex-1) * infoMainMargin);
+		}else{
+			text.x = (textIndex%2 == 0 ? app.screen.width/12 : app.screen.width/15);
+			text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex+1) * infoMainMargin);
+		}
+	});
+
+	creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
+
+	creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
+	creatureInfo.info_main_elementIcon[0].y = 4.4*infoMainMargin;
+	creatureInfo.info_main_elementIcon[1].x = app.screen.width/5;
+	creatureInfo.info_main_elementIcon[1].y = 4.4*infoMainMargin;
+	creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
+	creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
+	
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.rect.height = app.screen.height/14;
