@@ -3259,6 +3259,19 @@ function resizeEncounter(){
 
 function resizeInfo(){
 
+	var infoSpacer = app.screen.width/77;
+	var infoBtnTextSize = 36;
+	// var statusMargin = [app.screen.width/20,app.screen.height/17];
+	// var turnMargin = app.screen.width/192;
+	// var textOrigin = [app.screen.width/2,app.screen.height/6];
+	// var infoMainMargin = app.screen.height/20;
+	var infoInnerMargin = app.screen.width/19.2;
+	var infoSelectPadding = app.screen.width/384;
+
+	infoBtnTextSize = (app.screen.width < 860 ? 16
+						: app.screen.width < 1366 ? 26
+						: 36);
+	
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.rect.height = app.screen.height/14;
