@@ -3196,6 +3196,7 @@ function resize() {
 
 	resizeMap();
 	resizeEncounter();
+	resizeInfo();
 	//Console log RESIZE
 	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
@@ -3254,6 +3255,28 @@ function resizeEncounter(){
 
 	// encounterHolder.bg.width = app.screen.width;
 	// encounterHolder.bg.height = app.screen.height;
+}
+
+function resizeInfo(){
+
+	infoBtnArray.forEach((btn, btnIndex)=>{
+		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
+		btn.rect.height = app.screen.height/14;
+		btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
+		btn.selected.stroke.height = app.screen.height/14;
+		btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6 - (infoSelectPadding*2);
+		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
+
+		btn.infoBtnText.style.fontSize = infoBtnTextSize;
+
+		btn.selected.fill.x = infoSelectPadding;
+		btn.selected.fill.y = infoSelectPadding;
+
+		btn.infoBtnText.x = btn.rect.width/2;
+		btn.infoBtnText.y = btn.rect.height/2;
+		btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
+		btn.y = app.screen.height*5/6;
+	});
 }
 
 function resizeDmg(roster, item){
