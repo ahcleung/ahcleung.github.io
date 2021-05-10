@@ -1104,6 +1104,7 @@ function setup(){
 	creatureInfoMain.addChild(expBarOverall);
 	creatureInfoMain.addChild(expBarGained);
 	creatureInfo.info_main_expBar = info_main_expBar;
+	creatureInfo.info_main_expBar.percentage = 0;
 
 	let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_desc1.anchor.set(1,0);
@@ -3308,7 +3309,7 @@ function resizeInfo(){
 	creatureInfo.info_main_expBar[1].x = app.screen.width/12;
 	creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
 	creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
-	creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
+	creatureInfo.info_main_expBar[0].width = creatureInfo.info_main_expBar.percentage * app.screen.width/3.84;
 	creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
 	creatureInfo.info_main_expBar[0].height = app.screen.height/75;
 	creatureInfo.info_main_expBar[1].height = app.screen.height/75;
@@ -3957,6 +3958,7 @@ function onHPDown(){
 	// creatureInfo.info_main_expBar[1].x = app.screen.width/12;
 	// creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
 	// creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
+	creatureInfo.info_main_expBar.percentage = this.object.experienceGained / this.object.experienceNext;
 	// creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
 	// creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
 	// creatureInfo.info_main_expBar[0].height = app.screen.height/75;
