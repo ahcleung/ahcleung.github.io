@@ -3226,7 +3226,7 @@ function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
 
 	var textBoxMargin = (app.screen.width < 860 ? 10 : 20);
-	var textBoxSize = (app.screen.width < 1366 ? 7.5 : 9.6);
+	var textBoxSize = (app.screen.width < 1366 ? 7 : 9.6);
 
 	// encounterHolder.bg.x = 5;
 	// encounterHolder.bg.y = 5;
