@@ -3245,6 +3245,8 @@ function resizeEncounter(){
 	encounterHolder.textBox.textObj.style.wordWrapWidth = app.screen.width-(margin*2)-(textBoxMargin*2);
 	encounterHolder.textBox.textObj.style.fontSize = skillNameFontSize;
 
+	encounterHolder.textBox.btn1.rect.width = app.screen.width/9.6;
+	encounterHolder.textBox.btn1.rect.height = encounterHolder.textBox.btn1.rect.width/4;
 	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-100;
 	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-25;
 	encounterHolder.textBox.btn1.btnText.style.fontSize = skillNameFontSize;
