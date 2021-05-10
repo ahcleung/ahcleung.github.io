@@ -3263,7 +3263,7 @@ function resizeInfo(){
 	var infoBtnTextSize = 36;
 	// var statusMargin = [app.screen.width/20,app.screen.height/17];
 	// var turnMargin = app.screen.width/192;
-	// var textOrigin = [app.screen.width/2,app.screen.height/6];
+	var textOrigin = [app.screen.width/2,app.screen.height/6];
 	// var infoMainMargin = app.screen.height/20;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
@@ -3271,7 +3271,13 @@ function resizeInfo(){
 	infoBtnTextSize = (app.screen.width < 860 ? 16
 						: app.screen.width < 1366 ? 26
 						: 36);
-	
+
+	// creatureInfoSprite
+	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
+	// creatureInfo.addChild(creatureInfoSprite);
+	creatureInfo.main.x = textOrigin[0];
+	creatureInfo.main.y = textOrigin[1];
+
 	infoBtnArray.forEach((btn, btnIndex)=>{
 		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
 		btn.rect.height = app.screen.height/14;
