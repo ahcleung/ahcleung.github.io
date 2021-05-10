@@ -3226,6 +3226,7 @@ function resizeEncounter(){
 	// -25, -25, app.screen.width+50, app.screen.height+50
 
 	var textBoxMargin = (app.screen.width < 860 ? 10 : 20);
+	var textBoxSize = (app.screen.width < 860 ? 8 : 9.6);
 
 	// encounterHolder.bg.x = 5;
 	// encounterHolder.bg.y = 5;
@@ -3245,7 +3246,7 @@ function resizeEncounter(){
 	encounterHolder.textBox.textObj.style.wordWrapWidth = app.screen.width-(margin*2)-(textBoxMargin*2);
 	encounterHolder.textBox.textObj.style.fontSize = skillNameFontSize;
 
-	encounterHolder.textBox.btn1.rect.width = app.screen.width/9.6;
+	encounterHolder.textBox.btn1.rect.width = app.screen.width/textBoxSize;
 	encounterHolder.textBox.btn1.rect.height = encounterHolder.textBox.btn1.rect.width/4;
 	encounterHolder.textBox.btn1.x = app.screen.width-margin-textBoxMargin-(encounterHolder.textBox.btn1.rect.width/2);
 	encounterHolder.textBox.btn1.y = (app.screen.height/3)-margin-textBoxMargin-(encounterHolder.textBox.btn1.rect.height/2);
