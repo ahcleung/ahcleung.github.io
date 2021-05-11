@@ -3369,11 +3369,13 @@ function resizeInfo(){
 
 	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
-	creatureInfo.infoSkillArray.forEach(skillContainer =>{
-		skillContainer.skillName.style.fontSize = skillNameFontSize;
-		skillContainer.skillName.x = infoSkillWidth/6;
-		skillContainer.skillName.y = infoSkillHeight/3;
-	});
+	if(creatureInfo.infoSkillArray != undefined){
+		creatureInfo.infoSkillArray.forEach(skillContainer =>{
+			skillContainer.skillName.style.fontSize = skillNameFontSize;
+			skillContainer.skillName.x = infoSkillWidth/6;
+			skillContainer.skillName.y = infoSkillHeight/3;
+		});
+	}
 
 }
 
