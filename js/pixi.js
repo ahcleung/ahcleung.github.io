@@ -3262,8 +3262,8 @@ function resizeInfo(){
 
 	var infoSpacer = app.screen.width/77;
 	var infoBtnTextSize = 36;
-	// var statusMargin = [app.screen.width/20,app.screen.height/17];
-	// var turnMargin = app.screen.width/192;
+	var statusMargin = [app.screen.width/20,app.screen.height/17];
+	var turnMargin = app.screen.width/192;
 	var textOrigin = [app.screen.width/2,app.screen.height/6];
 	var infoMainMargin = app.screen.height/20;
 	var infoInnerMargin = app.screen.width/19.2;
@@ -3336,7 +3336,7 @@ function resizeInfo(){
 	creatureInfo.status.x = textOrigin[0];
 	creatureInfo.status.y = textOrigin[1];
 
-	if(creatureInfo.statusIcon  != undefined){
+	if(creatureInfo.statusIcon != undefined){
 		creatureInfo.statusIcon.forEach((icon) =>{
 			icon.width = app.screen.width/38;
 			icon.height = icon.width;
@@ -3344,8 +3344,9 @@ function resizeInfo(){
 	}
 
 	if(creatureInfo.statusText != undefined){
-		creatureInfo.statusText.forEach((textContainer,textIndex) =>{
-			textContainer.statusContainerText.forEach(text=>{
+		creatureInfo.statusText.forEach((textContainer,containerIndex) =>{
+			textContainer.statusContainerText.forEach((text,textIndex)=>{
+				text.x = (textIndex == 0 ? creatureInfo.statusIcon[0].width + turnMargin : statusMargin[0]);
 				text.style.fontSize = skillNameFontSize;
 			});
 		});
