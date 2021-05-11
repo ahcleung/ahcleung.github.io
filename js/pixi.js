@@ -3343,11 +3343,11 @@ function resizeInfo(){
 		});
 	}
 
-	if(creatureInfo.statusText != undefined){
-		creatureInfo.statusText.forEach((text,textIndex) =>{
-			text.style.fontSize = skillNameFontSize;
-		});
-	}
+	// if(creatureInfo.statusText != undefined){
+	// 	creatureInfo.statusText.forEach((text,textIndex) =>{
+	// 		text.style.fontSize = skillNameFontSize;
+	// 	});
+	// }
 
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
@@ -3815,9 +3815,9 @@ function onInfoDown(){
 			console.log("destroy icon");
 			icon.destroy();
 		});
-		creatureInfo.statusText.forEach(text=>{
+		creatureInfo.statusText.forEach(textContainer=>{
 			console.log("destroy text");
-			text.destroy();
+			textContainer.destroy(true);
 		});
 
 		creatureInfo.skillText.forEach(text=>{
@@ -4091,6 +4091,8 @@ function onHPDown(){
 
 	creatureStatusInfoArray.forEach((statusNum, statusIndex) =>{
 		const statusContainer = new PIXI.Container();
+		var statusContainerText = [];
+		statusContainer.statusContainerText = statusContainerText;
 		let statusEffectIcon;
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
@@ -4177,7 +4179,8 @@ function onHPDown(){
 		statusContainer.addChild(textStatus);
 		textStatus.x = statusEffectIcon.width + turnMargin;
 		textStatus.anchor.set(0,0.5);
-		statusText.push(textStatus);
+		statusContainerText.push(textStatus);
+		// statusText.push(textStatus);
 		textLevel++;
 
 		var detailLevel = 1;
@@ -4221,7 +4224,8 @@ function onHPDown(){
 					// textBuffTurn.y = detailLevel*statusMargin[1];
 					// textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
-					statusText.push(textBuff);
+					statusContainerText.push(textBuff);
+					// statusText.push(textBuff);
 					// statusContainer.addChild(textBuffTurn);
 					// statusText.push(textBuffTurn);
 					detailLevel++;
@@ -4238,7 +4242,8 @@ function onHPDown(){
 					// textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	" + this.object.EHP/16 + " :: " + status[1]);
 					statusContainer.addChild(textDamageStatus);
-					statusText.push(textDamageStatus);
+					statusContainerText.push(textDamageStatus);
+					// statusText.push(textDamageStatus);
 					// statusContainer.addChild(textDamageStatusTurn);
 					// statusText.push(textDamageStatusTurn);
 					detailLevel++;
@@ -4255,7 +4260,8 @@ function onHPDown(){
 					// textHealStatusTurn.anchor.set(0,0.5);
 					console.log("	Heal " + Math.floor(this.object.EHP/16) + " per turn :: " + status[1]);
 					statusContainer.addChild(textHealStatus);
-					statusText.push(textHealStatus);
+					statusContainerText.push(textHealStatus);
+					// statusText.push(textHealStatus);
 					// statusContainer.addChild(textHealStatusTurn);
 					// statusText.push(textHealStatusTurn);
 					detailLevel++;
@@ -4298,7 +4304,8 @@ function onHPDown(){
 					// textDebuffTurn.y = detailLevel*statusMargin[1];
 					// textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
-					statusText.push(textDebuff);
+					statusContainerText.push(textDebuff);
+					// statusText.push(textDebuff);
 					// statusContainer.addChild(textDebuffTurn);
 					// statusText.push(textDebuffTurn);
 					detailLevel++;
@@ -4321,7 +4328,8 @@ function onHPDown(){
 					textCritical.y = detailLevel*statusMargin[1];
 					textCritical.anchor.set(0,0.5);
 					statusContainer.addChild(textCritical);
-					statusText.push(textCritical);
+					statusContainerText.push(textCritical);
+					// statusText.push(textCritical);
 					detailLevel++;
 					textLevel++;
 					console.log("	-" + this.object.critDmg);
@@ -4346,7 +4354,7 @@ function onHPDown(){
 		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
 		// statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
-
+		statusText.push(statusContainer);
 		creatureInfo.status.pages[creatureInfo.status.pages.length-1].addChild(statusContainer);
 	});
 
