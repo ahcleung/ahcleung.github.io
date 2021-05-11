@@ -3354,10 +3354,10 @@ function resizeInfo(){
 				detailLevel++;
 			});
 			// statusContainer.y = (statusContainer.y == 0 ? 0 : );
-			if(statusContainer.y == 0){
+			if(textContainer.y == 0){
 				detailLevel = 0;
 			}
-			statusContainer.y = statusMargin[1]*detailLevel;
+			textContainer.y = statusMargin[1]*detailLevel;
 		});
 	}
 
