@@ -3347,6 +3347,10 @@ function resizeInfo(){
 		var detailLevel = 0;
 		creatureInfo.statusText.forEach((textContainer,containerIndex) =>{
 			detailLevel++;
+			if(textContainer.y == 0){
+				detailLevel = 0;
+			}
+			textContainer.y = statusMargin[1]*detailLevel;
 			textContainer.statusContainerText.forEach((text,textIndex)=>{
 				text.x = (textIndex == 0 ? creatureInfo.statusIcon[0].width + turnMargin : statusMargin[0]);
 				text.y = textIndex*statusMargin[1];
@@ -3354,10 +3358,7 @@ function resizeInfo(){
 				detailLevel++;
 			});
 			// statusContainer.y = (statusContainer.y == 0 ? 0 : );
-			if(textContainer.y == 0){
-				detailLevel = 0;
-			}
-			textContainer.y = statusMargin[1]*detailLevel;
+
 		});
 	}
 
