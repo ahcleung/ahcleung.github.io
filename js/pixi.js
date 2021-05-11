@@ -3433,7 +3433,7 @@ function resizeInfo(){
 		creatureInfo.infoItemBG.forEach((bgItem, bgIndex) =>{
 			bgItem.width = infoItemWidth;
 			bgItem.height = infoItemHeight;
-			bgItem.x = (i%2 == 0 ? 0 : infoItemWidth + 10);
+			bgItem.x = (bgIndex%2 == 0 ? 0 : infoItemWidth + 10);
 			// if(bgIndex%2 == 0){
 			// 	bgItem.x = 0;
 			// 	// bgItem.y = ((infoItemHeight+10)/2)*bgIndex;
