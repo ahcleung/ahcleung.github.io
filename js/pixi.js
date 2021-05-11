@@ -4307,12 +4307,12 @@ function onHPDown(){
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					textStatus.text += status[1];
-					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
-					textTurn.y = (detailLevel-1)*statusMargin[1];
-					textTurn.anchor.set(0,0.5);
-					statusContainer.addChild(textTurn);
-					statusText.push(textTurn);
+					// let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
+					// textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
+					// textTurn.y = (detailLevel-1)*statusMargin[1];
+					// textTurn.anchor.set(0,0.5);
+					// statusContainer.addChild(textTurn);
+					// statusText.push(textTurn);
 					console.log("	[" + status[1] + "]");
 				}
 				if(statusNum == 14){
