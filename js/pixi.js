@@ -4146,7 +4146,7 @@ function onHPDown(){
 				break;
 			case 11:
 				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-				textStatus.text = "Secured  ::  " + this.object.statusArray[1];
+				textStatus.text = "Secured  ::  ";
 				console.log("Secured:");
 				break;
 			case 12:
@@ -4306,6 +4306,7 @@ function onHPDown(){
 					console.log(debuffStat + " [" + status[1] + "]");
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
+					textStatus.text += status[1];
 					let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
 					textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
 					textTurn.y = (detailLevel-1)*statusMargin[1];
