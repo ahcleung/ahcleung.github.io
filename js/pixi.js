@@ -3407,22 +3407,21 @@ function resizeInfo(){
 				skillContainer.targetText.y = skillContainer.rect.height*3/4;
 			}
 		});
-
-		creatureInfo.info_skill_text.forEach((text,textIndex) =>{
-			text.style.fontSize = skillNameFontSize;
-			if(textIndex%2 == 0 && textIndex<7){
-				text.x = app.screen.width/10;
-				text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-				// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
-			}else{
-				// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
-				text.x = app.screen.width/10 + 25;
-				// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
-				text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
-			}
-		});
-		creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 	}
+	creatureInfo.info_skill_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex%2 == 0 && textIndex<7){
+			text.x = app.screen.width/10;
+			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
+			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
+		}else{
+			// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
+			text.x = app.screen.width/10 + 25;
+			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
+			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+		}
+	});
+	creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
