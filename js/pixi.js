@@ -3350,7 +3350,7 @@ function resizeInfo(){
 				detailLevel = 0;
 			}
 			textContainer.y = statusMargin[1]*detailLevel;
-			detailLevel++;
+			// detailLevel++;
 			textContainer.statusContainerText.forEach((text,textIndex)=>{
 				text.x = (textIndex == 0 ? creatureInfo.statusIcon[0].width + turnMargin : statusMargin[0]);
 				text.y = textIndex*statusMargin[1];
