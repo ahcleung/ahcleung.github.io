@@ -3370,7 +3370,7 @@ function resizeInfo(){
 	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
 	if(creatureInfo.infoSkillArray != undefined){
-		creatureInfo.infoSkillArray.forEach(skillContainer =>{
+		creatureInfo.infoSkillArray.forEach((skillContainer, skillIndex) =>{
 			skillContainer.skillName.style.fontSize = skillNameFontSize;
 			skillContainer.skillName.x = infoSkillWidth/6;
 			skillContainer.skillName.y = infoSkillHeight/3;
@@ -3382,11 +3382,19 @@ function resizeInfo(){
 			skillContainer.selected.fill.height = infoSkillHeight-skillSelectPadding*2;
 			skillContainer.selected.fill.x = skillSelectPadding;
 			skillContainer.selected.fill.y = skillSelectPadding;
-			
+
 			skillContainer.skillElement.width = infoSkillWidth/11;
 			skillContainer.skillElement.height = skillContainer.skillElement.width * 2.3;
 			skillContainer.skillElement.x = skillMargin;
 			skillContainer.skillElement.y = infoSkillHeight/2;
+
+			if(skillIndex%2 == 0){
+				skillContainer.x = 0;
+				skillContainer.y = ((infoSkillHeight+10)/2)*skillIndex;
+			}else{
+				skillContainer.x = infoSkillWidth + 10;
+				skillContainer.y = ((infoSkillHeight+10)/2)*(skillIndex-1);
+			}
 		});
 	}
 
