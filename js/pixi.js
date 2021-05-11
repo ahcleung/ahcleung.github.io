@@ -3341,6 +3341,13 @@ function resizeInfo(){
 			text.style.fontSize = skillNameFontSize;
 		});
 	}
+
+	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
+	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
+	creatureInfo.status.arrowUp.x = app.screen.width/3;
+	creatureInfo.status.arrowUp.y = (app.screen.height*2/5)-textOrigin[1];
+	creatureInfo.status.arrowDown.x = app.screen.width/3;
+	creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
 	
 }
 
