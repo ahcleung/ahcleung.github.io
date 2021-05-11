@@ -3431,6 +3431,15 @@ function resizeInfo(){
 
 	if(creatureInfo.infoItemArray != undefined){
 		creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
+			itemContainer.rect.width = infoItemWidth;
+			itemContainer.rect.height = infoItemHeight;
+			itemContainer.selected.stroke.width = infoItemWidth;
+			itemContainer.selected.stroke.height = infoItemHeight;
+			itemContainer.selected.fill.width = infoItemWidth-skillSelectPadding*2;
+			itemContainer.selected.fill.height = infoItemHeight-skillSelectPadding*2;
+			itemContainer.selected.fill.x = skillSelectPadding;
+			itemContainer.selected.fill.y = skillSelectPadding;
+
 			itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
 		});
 	}
