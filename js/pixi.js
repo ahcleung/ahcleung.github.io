@@ -4211,7 +4211,7 @@ function onHPDown(){
 							buffStat = "Accuracy  +" + status[3];
 							break;
 					}
-					console.log(buffStat + " [" + status[1] + "]");
+					console.log(buffStat + " :: " + status[1]);
 					let textBuff = new Text(buffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
@@ -4236,7 +4236,7 @@ function onHPDown(){
 					// textDamageStatusTurn.x = statusMargin[0] + turnMargin + textDamageStatus.width;
 					// textDamageStatusTurn.y = detailLevel*statusMargin[1];
 					// textDamageStatusTurn.anchor.set(0,0.5);
-					console.log("	" + this.object.EHP/16 + " [" + status[1] + "]");
+					console.log("	" + this.object.EHP/16 + " :: " + status[1]);
 					statusContainer.addChild(textDamageStatus);
 					statusText.push(textDamageStatus);
 					// statusContainer.addChild(textDamageStatusTurn);
@@ -4253,7 +4253,7 @@ function onHPDown(){
 					// textHealStatusTurn.x = statusMargin[0] + turnMargin + textHealStatus.width;
 					// textHealStatusTurn.y = detailLevel*statusMargin[1];
 					// textHealStatusTurn.anchor.set(0,0.5);
-					// console.log("	10 Dmg" + " [" + status[1] + "]");
+					console.log("	Heal " + Math.floor(this.object.EHP/16) + " per turn :: " + status[1]);
 					statusContainer.addChild(textHealStatus);
 					statusText.push(textHealStatus);
 					// statusContainer.addChild(textHealStatusTurn);
@@ -4303,7 +4303,7 @@ function onHPDown(){
 					// statusText.push(textDebuffTurn);
 					detailLevel++;
 					textLevel++;
-					console.log(debuffStat + " [" + status[1] + "]");
+					console.log(debuffStat + " ::" + status[1]);
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					textStatus.text += "  ::  " + status[1];
@@ -4313,7 +4313,7 @@ function onHPDown(){
 					// textTurn.anchor.set(0,0.5);
 					// statusContainer.addChild(textTurn);
 					// statusText.push(textTurn);
-					console.log("	[" + status[1] + "]");
+					console.log("	:: " + status[1]);
 				}
 				if(statusNum == 14){
 					let textCritical = new Text("-" + this.object.critDmg + " health points", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
