@@ -3915,10 +3915,10 @@ function onHPDown(){
 	// }
 	
 	creatureInfoSprite.addChild(armatureHero);
-	// creatureInfoSprite.scale.set(app.screen.width/3200);
+	creatureInfoSprite.scale.set(app.screen.width/3200);
 	// console.log("Width: " + creatureInfoSprite.width);
 
-	// creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
+	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
 	creatureInfo.addChild(creatureInfoSprite);
 	// creatureInfo.main.x = textOrigin[0];
 	// creatureInfo.main.y = textOrigin[1];
