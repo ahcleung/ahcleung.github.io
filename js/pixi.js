@@ -4212,18 +4212,18 @@ function onHPDown(){
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
-					let textBuff = new Text(buffStat, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textBuff = new Text(buffStat + " :: " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
 					textBuff.anchor.set(0,0.5);
-					let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textBuffTurn.x = statusMargin[0] + turnMargin + textBuff.width;
-					textBuffTurn.y = detailLevel*statusMargin[1];
-					textBuffTurn.anchor.set(0,0.5);
+					// let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
+					// textBuffTurn.x = statusMargin[0] + turnMargin + textBuff.width;
+					// textBuffTurn.y = detailLevel*statusMargin[1];
+					// textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
 					statusText.push(textBuff);
-					statusContainer.addChild(textBuffTurn);
-					statusText.push(textBuffTurn);
+					// statusContainer.addChild(textBuffTurn);
+					// statusText.push(textBuffTurn);
 					detailLevel++;
 					textLevel++;
 				}
