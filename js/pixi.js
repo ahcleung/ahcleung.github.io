@@ -4212,7 +4212,7 @@ function onHPDown(){
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
-					let textBuff = new Text(buffStat + " :: " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textBuff = new Text(buffStat + "  ||  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
 					textBuff.anchor.set(0,0.5);
