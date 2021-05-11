@@ -3332,6 +3332,13 @@ function resizeInfo(){
 		btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
 		btn.y = app.screen.height*5/6;
 	});
+
+	creatureInfo.status.x = textOrigin[0];
+	creatureInfo.status.y = textOrigin[1];
+
+	creatureInfo.statusText.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+	});
 }
 
 function resizeDmg(roster, item){
@@ -4037,8 +4044,8 @@ function onHPDown(){
 	// const creatureInfoStatus = new PIXI.Container();
 	
 	creatureInfo.status.visible = false;
-	creatureInfo.status.x = textOrigin[0];
-	creatureInfo.status.y = textOrigin[1];
+	// creatureInfo.status.x = textOrigin[0];
+	// creatureInfo.status.y = textOrigin[1];
 
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
