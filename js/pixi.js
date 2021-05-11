@@ -3346,19 +3346,14 @@ function resizeInfo(){
 	if(creatureInfo.statusText != undefined){
 		var detailLevel = 0;
 		creatureInfo.statusText.forEach((textContainer,containerIndex) =>{
-			if(textContainer.y == 0){
-				detailLevel = 0;
-			}
+			if(textContainer.y == 0)	detailLevel = 0;
 			textContainer.y = statusMargin[1]*detailLevel;
-			// detailLevel++;
 			textContainer.statusContainerText.forEach((text,textIndex)=>{
 				text.x = (textIndex == 0 ? creatureInfo.statusIcon[0].width + turnMargin : statusMargin[0]);
 				text.y = textIndex*statusMargin[1];
 				text.style.fontSize = skillNameFontSize;
 				detailLevel++;
 			});
-			// statusContainer.y = (statusContainer.y == 0 ? 0 : );
-
 		});
 	}
 
@@ -3368,6 +3363,9 @@ function resizeInfo(){
 	creatureInfo.status.arrowUp.y = (app.screen.height*2/5)-textOrigin[1];
 	creatureInfo.status.arrowDown.x = app.screen.width/3;
 	creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
+	
+	creatureInfo.skill.x = textOrigin[0];
+	creatureInfo.skill.y = textOrigin[1];
 	
 }
 
@@ -4398,8 +4396,8 @@ function onHPDown(){
 	////////////////////
 	//INFO SKILL
 	////////////////////
-	creatureInfo.skill.x = textOrigin[0];
-	creatureInfo.skill.y = textOrigin[1];
+	// creatureInfo.skill.x = textOrigin[0];
+	// creatureInfo.skill.y = textOrigin[1];
 
 	var skillText = [];
 	var infoSkillArray = [];
