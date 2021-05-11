@@ -3336,9 +3336,9 @@ function resizeInfo(){
 	creatureInfo.status.x = textOrigin[0];
 	creatureInfo.status.y = textOrigin[1];
 
-	creatureInfo.statusText.forEach((text,textIndex) =>{
-		text.style.fontSize = skillNameFontSize;
-	});
+	// creatureInfo.statusText.forEach((text,textIndex) =>{
+	// 	text.style.fontSize = skillNameFontSize;
+	// });
 }
 
 function resizeDmg(roster, item){
