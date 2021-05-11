@@ -3429,6 +3429,20 @@ function resizeInfo(){
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;
 
+	if(creatureInfo.infoItemBG != undefined){
+		creatureInfo.infoItemBG.forEach((bgItem, bgIndex) =>{
+			bgItem.width = infoItemWidth;
+			bgItem.height = infoItemHeight;
+			if(bgIndex%2 == 0){
+				bgItem.x = 0;
+				// bgItem.y = ((infoItemHeight+10)/2)*bgIndex;
+			}else{
+				bgItem.x = infoItemWidth + 10;
+				// bgItem.y = ((infoItemHeight+10)/2)*(bgIndex-1);
+			}
+		});
+	}
+	
 	if(creatureInfo.infoItemArray != undefined){
 		creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
 			itemContainer.rect.width = infoItemWidth;
@@ -4804,6 +4818,7 @@ function onHPDown(){
 	creatureInfo.item.y = textOrigin[1];
 	var infoItemArray = [];
 	var infoItemSprite = [];
+	var infoItemBG = [];
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;
 
@@ -4811,6 +4826,7 @@ function onHPDown(){
 		let itemRect = new PIXI.Graphics();
 		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		creatureInfo.item.addChild(itemRect);
+		infoItemBG.push(itemRect);
 		if(i%2 == 0){
 			itemRect.x = 0;
 			itemRect.y = ((infoItemHeight+10)/2)*i;
@@ -4919,6 +4935,7 @@ function onHPDown(){
 
 	creatureInfo.infoItemArray = infoItemArray;
 	creatureInfo.infoItemSprite = infoItemSprite;
+	creatureInfo.infoItemBG = infoItemBG;
 
 	////////////////////
 	//INFO STAT
