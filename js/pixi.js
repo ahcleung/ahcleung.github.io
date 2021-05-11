@@ -4303,7 +4303,7 @@ function onHPDown(){
 					// statusText.push(textDebuffTurn);
 					detailLevel++;
 					textLevel++;
-					console.log(debuffStat + " ::" + status[1]);
+					console.log(debuffStat + " :: " + status[1]);
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					textStatus.text += "  ::  " + status[1];
