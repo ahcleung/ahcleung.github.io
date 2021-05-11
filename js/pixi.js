@@ -3427,6 +3427,15 @@ function resizeInfo(){
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
 
+	var infoItemHeight = (app.screen.width/18)*2 + 10;
+	var infoItemWidth = infoItemHeight/2;
+
+	if(creatureInfo.infoItemArray != undefined){
+		creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
+			itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
+		});
+	}
+
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
