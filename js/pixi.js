@@ -3374,6 +3374,8 @@ function resizeInfo(){
 			skillContainer.skillName.style.fontSize = skillNameFontSize;
 			skillContainer.skillName.x = infoSkillWidth/6;
 			skillContainer.skillName.y = infoSkillHeight/3;
+			skillContainer.rect.width = infoSkillWidth;
+			skillContainer.rect.height = infoSkillHeight;
 		});
 	}
 
