@@ -3336,6 +3336,13 @@ function resizeInfo(){
 	creatureInfo.status.x = textOrigin[0];
 	creatureInfo.status.y = textOrigin[1];
 
+	if(creatureInfo.statusIcon  != undefined){
+		creatureInfo.statusIcon.forEach((icon) =>{
+			icon.width = app.screen.width/38;
+			icon.height = icon.width;
+		});
+	}
+
 	if(creatureInfo.statusText != undefined){
 		creatureInfo.statusText.forEach((text,textIndex) =>{
 			text.style.fontSize = skillNameFontSize;
@@ -4355,12 +4362,12 @@ function onHPDown(){
 	// 	creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
 	// }
 	
-	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
-	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
-	creatureInfo.status.arrowUp.x = app.screen.width/3;
-	creatureInfo.status.arrowUp.y = (app.screen.height*2/5)-textOrigin[1];
-	creatureInfo.status.arrowDown.x = app.screen.width/3;
-	creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
+	// creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
+	// creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
+	// creatureInfo.status.arrowUp.x = app.screen.width/3;
+	// creatureInfo.status.arrowUp.y = (app.screen.height*2/5)-textOrigin[1];
+	// creatureInfo.status.arrowDown.x = app.screen.width/3;
+	// creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
 
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
