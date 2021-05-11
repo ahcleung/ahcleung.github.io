@@ -3433,13 +3433,14 @@ function resizeInfo(){
 		creatureInfo.infoItemBG.forEach((bgItem, bgIndex) =>{
 			bgItem.width = infoItemWidth;
 			bgItem.height = infoItemHeight;
-			if(bgIndex%2 == 0){
-				bgItem.x = 0;
-				// bgItem.y = ((infoItemHeight+10)/2)*bgIndex;
-			}else{
-				bgItem.x = infoItemWidth + 10;
-				// bgItem.y = ((infoItemHeight+10)/2)*(bgIndex-1);
-			}
+			bgItem.x = (i%2 == 0 ? 0 : infoItemWidth + 10);
+			// if(bgIndex%2 == 0){
+			// 	bgItem.x = 0;
+			// 	// bgItem.y = ((infoItemHeight+10)/2)*bgIndex;
+			// }else{
+			// 	bgItem.x = infoItemWidth + 10;
+			// 	// bgItem.y = ((infoItemHeight+10)/2)*(bgIndex-1);
+			// }
 		});
 	}
 	
@@ -4827,13 +4828,14 @@ function onHPDown(){
 		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		creatureInfo.item.addChild(itemRect);
 		infoItemBG.push(itemRect);
-		if(i%2 == 0){
-			itemRect.x = 0;
-			itemRect.y = ((infoItemHeight+10)/2)*i;
-		}else{
-			itemRect.x = infoItemWidth + 10;
-			itemRect.y = ((infoItemHeight+10)/2)*(i-1);
-		}
+		itemRect.x = (i%2 == 0 ? 0 : infoItemWidth + 10);
+		// if(i%2 == 0){
+		// 	itemRect.x = 0;
+		// 	// itemRect.y = ((infoItemHeight+10)/2)*i;
+		// }else{
+		// 	itemRect.x = infoItemWidth + 10;
+		// 	// itemRect.y = ((infoItemHeight+10)/2)*(i-1);
+		// }
 	}
 
 	this.object.item.forEach((item,itemIndex) =>{
