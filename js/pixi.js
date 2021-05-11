@@ -4146,7 +4146,7 @@ function onHPDown(){
 				break;
 			case 11:
 				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-				textStatus.text = "Secured";
+				textStatus.text = "Secured  ::  " + this.object.statusArray[1];
 				console.log("Secured:");
 				break;
 			case 12:
@@ -4245,19 +4245,19 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 10){
-					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16) + " per turn", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textHealStatus = new Text("Heal " + Math.floor(this.object.EHP/16) + " per turn  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textHealStatus.x = statusMargin[0];
 					textHealStatus.y = detailLevel*statusMargin[1];
 					textHealStatus.anchor.set(0,0.5);
-					let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textHealStatusTurn.x = statusMargin[0] + turnMargin + textHealStatus.width;
-					textHealStatusTurn.y = detailLevel*statusMargin[1];
-					textHealStatusTurn.anchor.set(0,0.5);
+					// let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
+					// textHealStatusTurn.x = statusMargin[0] + turnMargin + textHealStatus.width;
+					// textHealStatusTurn.y = detailLevel*statusMargin[1];
+					// textHealStatusTurn.anchor.set(0,0.5);
 					// console.log("	10 Dmg" + " [" + status[1] + "]");
 					statusContainer.addChild(textHealStatus);
 					statusText.push(textHealStatus);
-					statusContainer.addChild(textHealStatusTurn);
-					statusText.push(textHealStatusTurn);
+					// statusContainer.addChild(textHealStatusTurn);
+					// statusText.push(textHealStatusTurn);
 					detailLevel++;
 					textLevel++;
 				}
@@ -4289,18 +4289,18 @@ function onHPDown(){
 							debuffStat = "Accuracy  " + status[3];
 							break;
 					}
-					let textDebuff = new Text(debuffStat, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textDebuff = new Text(debuffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDebuff.x = statusMargin[0];
 					textDebuff.y = detailLevel*statusMargin[1];
 					textDebuff.anchor.set(0,0.5);
-					let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textDebuffTurn.x = statusMargin[0] + turnMargin + textDebuff.width;
-					textDebuffTurn.y = detailLevel*statusMargin[1];
-					textDebuffTurn.anchor.set(0,0.5);
+					// let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
+					// textDebuffTurn.x = statusMargin[0] + turnMargin + textDebuff.width;
+					// textDebuffTurn.y = detailLevel*statusMargin[1];
+					// textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
 					statusText.push(textDebuff);
-					statusContainer.addChild(textDebuffTurn);
-					statusText.push(textDebuffTurn);
+					// statusContainer.addChild(textDebuffTurn);
+					// statusText.push(textDebuffTurn);
 					detailLevel++;
 					textLevel++;
 					console.log(debuffStat + " [" + status[1] + "]");
