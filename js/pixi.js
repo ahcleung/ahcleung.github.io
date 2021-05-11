@@ -3427,6 +3427,17 @@ function resizeInfo(){
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
 
+	creatureInfo.info_item_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex%2 == 0 && textIndex<7){
+			text.x = app.screen.width/10;
+			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
+		}else{
+			text.x = app.screen.width/10 + 25;
+			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+		}
+	});
+	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 }
 
 function resizeDmg(roster, item){
@@ -4862,22 +4873,22 @@ function onHPDown(){
 	});
 	infoItemArray[0].selected.visible = true;
 
-	creatureInfo.info_item_text.forEach((text,textIndex) =>{
-		text.style.fontSize = skillNameFontSize;
-		if(textIndex%2 == 0 && textIndex<7){
-			text.x = app.screen.width/10;
-			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-		}else{
-			text.x = app.screen.width/10 + 25;
-			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
-		}
-	});
+	// creatureInfo.info_item_text.forEach((text,textIndex) =>{
+	// 	text.style.fontSize = skillNameFontSize;
+	// 	if(textIndex%2 == 0 && textIndex<7){
+	// 		text.x = app.screen.width/10;
+	// 		text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
+	// 	}else{
+	// 		text.x = app.screen.width/10 + 25;
+	// 		text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
+	// 	}
+	// });
 
 	creatureInfo.info_item_text[1].text = itemList.data.item[this.object.item[0]].name;
 	creatureInfo.info_item_text[3].text = itemList.data.item[this.object.item[0]].type;
 	creatureInfo.info_item_text[5].text = itemList.data.item[this.object.item[0]].category;
 	creatureInfo.info_item_text[7].text = itemList.data.item[this.object.item[0]].description;
-	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
+	// creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	creatureInfo.infoItemArray = infoItemArray;
 	creatureInfo.infoItemSprite = infoItemSprite;
