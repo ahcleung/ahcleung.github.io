@@ -3398,6 +3398,12 @@ function resizeInfo(){
 
 			skillContainer.markerContainer.width = (skillContainer.rect.width/3)*2;
 			skillContainer.markerContainer.height = skillContainer.markerContainer.width/12;
+			skillContainer.markerContainer.x = skillContainer.rect.width/6;
+			skillContainer.markerContainer.y = skillContainer.rect.height*3/4;
+
+			skillContainer.targetText.style.fontSize = targetTextFontSize;
+			skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+			skillContainer.targetText.y = skillContainer.rect.height*3/4;
 		});
 	}
 
