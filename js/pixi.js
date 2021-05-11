@@ -3444,6 +3444,16 @@ function resizeInfo(){
 		});
 	}
 
+	if(creatureInfo.infoItemSprite != undefined){
+		creatureInfo.infoItemSprite.forEach((spriteItem, spriteIndex)=>{
+			spriteItem.width = infoItemWidth-skillSelectPadding*2;
+			spriteItem.height = infoItemHeight-skillSelectPadding*2;
+			spriteItem.x = skillSelectPadding;
+			spriteItem.y = skillSelectPadding;
+		});
+	}
+	
+
 	creatureInfo.info_item_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex%2 == 0 && textIndex<7){
