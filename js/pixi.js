@@ -4012,54 +4012,26 @@ function onHPDown(){
 				creatureInfo.info_main_element[elementIndex].text = "Flora";
 				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
 		}
-		// if(element == 1){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Flora";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-		// }else if(element == 2){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Water";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
-		// }else if(element == 3){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Fire";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
-		// }else if(element == 4){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Earth";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
-		// }else if(element == 5){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Storm";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
-		// }else if(element == 6){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Wind";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
-		// }else if(element == 7){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Toxic";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
-		// }else if(element == 8){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Spirit";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
-		// }else if(element == 9){
-		// 	creatureInfo.info_main_element[elementIndex].text = "Void";
-		// 	creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
-		// }
 	});
 	
-	infoBtnArray.forEach((btn, btnIndex)=>{
-		btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
-		btn.rect.height = app.screen.height/14;
-		btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
-		btn.selected.stroke.height = app.screen.height/14;
-		btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6 - (infoSelectPadding*2);
-		btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
+	// infoBtnArray.forEach((btn, btnIndex)=>{
+	// 	btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
+	// 	btn.rect.height = app.screen.height/14;
+	// 	btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
+	// 	btn.selected.stroke.height = app.screen.height/14;
+	// 	btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6 - (infoSelectPadding*2);
+	// 	btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
 
-		btn.infoBtnText.style.fontSize = infoBtnTextSize;
+	// 	btn.infoBtnText.style.fontSize = infoBtnTextSize;
 
-		btn.selected.fill.x = infoSelectPadding;
-		btn.selected.fill.y = infoSelectPadding;
+	// 	btn.selected.fill.x = infoSelectPadding;
+	// 	btn.selected.fill.y = infoSelectPadding;
 
-		btn.infoBtnText.x = btn.rect.width/2;
-		btn.infoBtnText.y = btn.rect.height/2;
-		btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
-		btn.y = app.screen.height*5/6;
-	});
+	// 	btn.infoBtnText.x = btn.rect.width/2;
+	// 	btn.infoBtnText.y = btn.rect.height/2;
+	// 	btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
+	// 	btn.y = app.screen.height*5/6;
+	// });
 
 	var creatureStatusInfoArray = [];
 	// const creatureInfoStatus = new PIXI.Container();
