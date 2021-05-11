@@ -4212,7 +4212,7 @@ function onHPDown(){
 							break;
 					}
 					console.log(buffStat + " [" + status[1] + "]");
-					let textBuff = new Text(buffStat + "  ||  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textBuff = new Text(buffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
 					textBuff.anchor.set(0,0.5);
@@ -4228,7 +4228,7 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
-					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage per turn  ||  " +  status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage per turn  ::  " +  status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDamageStatus.x = statusMargin[0];
 					textDamageStatus.y = detailLevel*statusMargin[1];
 					textDamageStatus.anchor.set(0,0.5);
