@@ -3395,6 +3395,9 @@ function resizeInfo(){
 				skillContainer.x = infoSkillWidth + 10;
 				skillContainer.y = ((infoSkillHeight+10)/2)*(skillIndex-1);
 			}
+
+			skillContainer.markerContainer.width = (skillContainer.rect.width/3)*2;
+			skillContainer.markerContainer.height = skillContainer.markerContainer.width/12;
 		});
 	}
 
