@@ -3401,9 +3401,11 @@ function resizeInfo(){
 			skillContainer.markerContainer.x = skillContainer.rect.width/6;
 			skillContainer.markerContainer.y = skillContainer.rect.height*3/4;
 
-			skillContainer.targetText.style.fontSize = targetTextFontSize;
-			skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
-			skillContainer.targetText.y = skillContainer.rect.height*3/4;
+			if(skillContainer.targetText != undefined){
+				skillContainer.targetText.style.fontSize = targetTextFontSize;
+				skillContainer.targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+				skillContainer.targetText.y = skillContainer.rect.height*3/4;
+			}
 		});
 	}
 
