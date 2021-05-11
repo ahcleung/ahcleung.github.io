@@ -3343,11 +3343,13 @@ function resizeInfo(){
 		});
 	}
 
-	// if(creatureInfo.statusText != undefined){
-	// 	creatureInfo.statusText.forEach((text,textIndex) =>{
-	// 		text.style.fontSize = skillNameFontSize;
-	// 	});
-	// }
+	if(creatureInfo.statusText != undefined){
+		creatureInfo.statusText.forEach((textContainer,textIndex) =>{
+			textContainer.statusContainerText.forEach(text=>{
+				text.style.fontSize = skillNameFontSize;
+			});
+		});
+	}
 
 	creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
 	creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
