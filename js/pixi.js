@@ -4228,19 +4228,19 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 1 || statusNum == 3 || statusNum == 5 || statusNum == 9){
-					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage per turn" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+					let textDamageStatus = new Text(Math.floor(this.object.EHP/16) + " damage per turn  ||  " +  status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDamageStatus.x = statusMargin[0];
 					textDamageStatus.y = detailLevel*statusMargin[1];
 					textDamageStatus.anchor.set(0,0.5);
-					let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					textDamageStatusTurn.x = statusMargin[0] + turnMargin + textDamageStatus.width;
-					textDamageStatusTurn.y = detailLevel*statusMargin[1];
-					textDamageStatusTurn.anchor.set(0,0.5);
-					console.log("	10 Dmg" + " [" + status[1] + "]");
+					// let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
+					// textDamageStatusTurn.x = statusMargin[0] + turnMargin + textDamageStatus.width;
+					// textDamageStatusTurn.y = detailLevel*statusMargin[1];
+					// textDamageStatusTurn.anchor.set(0,0.5);
+					console.log("	" + this.object.EHP/16 + " [" + status[1] + "]");
 					statusContainer.addChild(textDamageStatus);
 					statusText.push(textDamageStatus);
-					statusContainer.addChild(textDamageStatusTurn);
-					statusText.push(textDamageStatusTurn);
+					// statusContainer.addChild(textDamageStatusTurn);
+					// statusText.push(textDamageStatusTurn);
 					detailLevel++;
 					textLevel++;
 				}
