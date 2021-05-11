@@ -3366,7 +3366,15 @@ function resizeInfo(){
 	
 	creatureInfo.skill.x = textOrigin[0];
 	creatureInfo.skill.y = textOrigin[1];
-	
+
+	var infoSkillWidth = app.screen.width/4.5;
+	var infoSkillHeight = infoSkillWidth/4;
+	creatureInfo.infoSkillArray.forEach(skillContainer =>{
+		skillContainer.skillName.style.fontSize = skillNameFontSize;
+		skillContainer.skillName.x = infoSkillWidth/6;
+		skillContainer.skillName.y = infoSkillHeight/3;
+	});
+
 }
 
 function resizeDmg(roster, item){
@@ -4452,7 +4460,7 @@ function onHPDown(){
 		skillContainer.selected.visible = false;
 		
 		skillContainer.addChild(skillName);
-		// skillContainer.skillName = skillName;
+		skillContainer.skillName = skillName;
 
 		//Skill position and target markers
 
