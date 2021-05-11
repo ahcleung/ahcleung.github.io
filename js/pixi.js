@@ -3421,6 +3421,7 @@ function resizeInfo(){
 				text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 			}
 		});
+		creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 	}
 
 }
