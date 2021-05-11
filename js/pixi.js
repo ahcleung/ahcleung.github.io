@@ -3376,6 +3376,10 @@ function resizeInfo(){
 			skillContainer.skillName.y = infoSkillHeight/3;
 			skillContainer.rect.width = infoSkillWidth;
 			skillContainer.rect.height = infoSkillHeight;
+			skillContainer.selected.stroke.width = infoSkillWidth;
+			skillContainer.selected.stroke.height = infoSkillHeight;
+			skillContainer.selected.fill.width = infoSkillWidth-skillSelectPadding*2;
+			skillContainer.selected.fill.height = infoSkillHeight-skillSelectPadding*2;
 		});
 	}
 
