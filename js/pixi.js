@@ -3480,6 +3480,9 @@ function resizeInfo(){
 		}
 	});
 	creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
+
+	creatureInfo.stat.x = textOrigin[0];
+	creatureInfo.stat.y = app.screen.height/8;
 }
 
 function resizeDmg(roster, item){
@@ -4886,20 +4889,6 @@ function onHPDown(){
 
 		if(itemList.data.item[item].size == 2){
 			infoItemBG[1].alpha = 0.2;
-			// let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-
-			// const filter1 = new PIXI.filters.ColorMatrixFilter();
-			// filter1.desaturate();
-			// // filter1.greyscale(0.5);
-			// spriteItem.filters = [filter1];
-
-			// spriteItem.width = infoItemWidth-skillSelectPadding*2;
-			// spriteItem.height = infoItemHeight-skillSelectPadding*2;
-			// spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
-			// spriteItem.y = skillSelectPadding;
-			// // itemContainer.addChild(spriteItem);
-			// creatureInfo.item.addChild(spriteItem);
-			// infoItemSprite.push(spriteItem);
 		}
 
 		itemContainer.selected.visible = false;
