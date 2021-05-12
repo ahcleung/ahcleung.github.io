@@ -4885,20 +4885,21 @@ function onHPDown(){
 		infoItemSprite.push(spriteItem);
 
 		if(itemList.data.item[item].size == 2){
-			let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+			infoItemBG[1].alpha = 0.2;
+			// let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
 
-			const filter1 = new PIXI.filters.ColorMatrixFilter();
-			filter1.desaturate();
-			// filter1.greyscale(0.5);
-			spriteItem.filters = [filter1];
+			// const filter1 = new PIXI.filters.ColorMatrixFilter();
+			// filter1.desaturate();
+			// // filter1.greyscale(0.5);
+			// spriteItem.filters = [filter1];
 
-			spriteItem.width = infoItemWidth-skillSelectPadding*2;
-			spriteItem.height = infoItemHeight-skillSelectPadding*2;
-			spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
-			spriteItem.y = skillSelectPadding;
-			// itemContainer.addChild(spriteItem);
-			creatureInfo.item.addChild(spriteItem);
-			infoItemSprite.push(spriteItem);
+			// spriteItem.width = infoItemWidth-skillSelectPadding*2;
+			// spriteItem.height = infoItemHeight-skillSelectPadding*2;
+			// spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
+			// spriteItem.y = skillSelectPadding;
+			// // itemContainer.addChild(spriteItem);
+			// creatureInfo.item.addChild(spriteItem);
+			// infoItemSprite.push(spriteItem);
 		}
 
 		itemContainer.selected.visible = false;
