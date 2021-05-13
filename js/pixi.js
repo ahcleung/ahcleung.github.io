@@ -1221,7 +1221,7 @@ function setup(){
 		// make the button interactive...
 		// itemContainer.itemID = item;
 		itemContainer.buttonMode = true;
-		itemContainer.interactive = true;
+		itemContainer.interactive = false;
 		itemContainer
 		// set the mousedown and touchstart callback...
 		.on('pointerdown', onInfoItemDown);
@@ -4948,8 +4948,17 @@ function onHPDown(){
 	});
 
 	this.object.item.forEach((item,itemIndex) =>{
+		creatureInfo.infoItemSprite[itemIndex].filters = 'null';
 		creatureInfo.infoItemSprite[itemIndex].texture = resources[itemList.data.item[item].code].texture;
 		creatureInfo.infoItemArray[itemIndex].itemID = item;
+		creatureInfo.infoItemArray[itemIndex].interactive = true;
+
+		if(itemList.data.item[item].size == 2){
+			creatureInfo.infoItemSprite[itemIndex+1].texture = resources[itemList.data.item[item].code].texture;
+			const filter1 = new PIXI.filters.ColorMatrixFilter();
+			filter1.desaturate();
+			creatureInfo.infoItemSprite[itemIndex+1].filters = [filter1];
+		}
 	});
 
 	creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
