@@ -4071,8 +4071,8 @@ function onInfoDown(){
 		});
 
 		creatureInfo.infoItemSprite.forEach(icon=>{
-			console.log("destroy item sprite");
-			icon.destroy();
+			// console.log("destroy item sprite");
+			icon.texture = resources['blank'].texture;
 		});
 
 		creatureInfoSprite.getChildAt(0).destroy();
