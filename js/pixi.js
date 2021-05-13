@@ -3483,6 +3483,19 @@ function resizeInfo(){
 
 	creatureInfo.stat.x = textOrigin[0];
 	creatureInfo.stat.y = app.screen.height/8;
+
+	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
+		text.style.fontSize = skillNameFontSize;
+		if(textIndex < 3){
+			text.x = ((textIndex%3)+1) * app.screen.width/10 + app.screen.width/50;
+		}else if(textIndex%3 != 0){
+			text.x = (textIndex%3) * app.screen.width/10 + app.screen.width/50;
+			text.y = Math.floor(textIndex/3) * app.screen.height/12;
+		}else{
+			text.x = app.screen.width/15;
+			text.y = Math.floor(textIndex/3) * app.screen.height/12;
+		}
+	});
 }
 
 function resizeDmg(roster, item){
