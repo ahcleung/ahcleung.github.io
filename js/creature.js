@@ -27,7 +27,7 @@ class Creature{
 		this.newCrit = false;
 		this.newHP = false;
 		this.newMove = 0;
-		this.item = [1];
+		this.item = [Math.floor(Math.random() * (2 - 1) + 1)];
 		
 		const creatureList = resources["js/creature.json"];				//Load creature JSON list
 		
