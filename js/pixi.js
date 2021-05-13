@@ -3501,8 +3501,12 @@ function resizeInfo(){
 
 	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 		increase.increaseText.style.fontSize = skillNameFontSize;
-		increase.x = 3 * app.screen.width/10 + app.screen.width/50;
+		increase.x = 3 * app.screen.width/11 + app.screen.width/50;
 		increase.y = (increaseIndex+1) * app.screen.height/12;
+
+		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
+		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/11 + app.screen.width/50 + increase.increaseText.x;
+		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
 	});
 }
 
