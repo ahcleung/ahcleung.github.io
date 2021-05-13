@@ -1206,10 +1206,10 @@ function setup(){
 	var infoItemWidth = infoItemHeight/2;
 
 	for(var i = 0; i < 2; i++){
-		let itemRect = new PIXI.Graphics();
-		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
-		creatureInfo.item.addChild(itemRect);
-		infoItemBG.push(itemRect);
+		let itemBG = new PIXI.Graphics();
+		itemBG.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		creatureInfo.item.addChild(itemBG);
+		infoItemBG.push(itemBG);
 
 		let itemRect = new PIXI.Graphics();
 		let itemSelectFill = new PIXI.Graphics();
