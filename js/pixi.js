@@ -4070,6 +4070,10 @@ function onInfoDown(){
 			skillContainer.destroy();
 		});
 
+		creatureInfo.infoItemArray.forEach(itemContainer =>{
+			itemContainer.interactive = false;
+		});
+
 		creatureInfo.infoItemSprite.forEach(icon=>{
 			// console.log("destroy item sprite");
 			icon.texture = resources['blank'].texture;
