@@ -1219,7 +1219,7 @@ function setup(){
 		const itemSelect = new PIXI.Container();
 		
 		// make the button interactive...
-		itemContainer.itemID = item;
+		// itemContainer.itemID = item;
 		itemContainer.buttonMode = true;
 		itemContainer.interactive = true;
 		itemContainer
@@ -4947,6 +4947,11 @@ function onHPDown(){
 		bgItem.x = (bgIndex%2 == 0 ? 0 : infoItemWidth + 10);
 	});
 
+	this.object.item.forEach((item,itemIndex) =>{
+		creatureInfo.infoItemSprite[itemIndex].texture = resources[itemList.data.item[item].code].texture;
+		creatureInfo.infoItemArray[itemIndex].itemID = item;
+	});
+
 	creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
 		itemContainer.rect.width = infoItemWidth;
 		itemContainer.rect.height = infoItemHeight;
@@ -4961,7 +4966,7 @@ function onHPDown(){
 	});
 
 	creatureInfo.infoItemSprite.forEach((spriteItem, spriteIndex)=>{
-		spriteItem.texture = resources[itemList.data.item[item].code].texture;
+		// spriteItem.texture = resources[itemList.data.item[item].code].texture;
 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
 		spriteItem.x = skillSelectPadding;
