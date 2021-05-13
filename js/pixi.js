@@ -1196,6 +1196,95 @@ function setup(){
 
 	creatureInfo.info_item_text = info_item_text;
 
+	var infoItemArray = [];
+	var infoItemSprite = [];
+	var infoItemBG = [];
+	creatureInfo.infoItemArray = infoItemArray;
+	creatureInfo.infoItemSprite = infoItemSprite;
+	creatureInfo.infoItemBG = infoItemBG;
+	var infoItemHeight = (app.screen.width/18)*2 + 10;
+	var infoItemWidth = infoItemHeight/2;
+
+	for(var i = 0; i < 2; i++){
+		let itemRect = new PIXI.Graphics();
+		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		creatureInfo.item.addChild(itemRect);
+		infoItemBG.push(itemRect);
+
+		let itemRect = new PIXI.Graphics();
+		let itemSelectFill = new PIXI.Graphics();
+		let itemSelectStroke = new PIXI.Graphics();
+
+		const itemContainer = new PIXI.Container();
+		const itemSelect = new PIXI.Container();
+		
+		// make the button interactive...
+		itemContainer.itemID = item;
+		itemContainer.buttonMode = true;
+		itemContainer.interactive = true;
+		itemContainer
+		// set the mousedown and touchstart callback...
+		.on('pointerdown', onInfoItemDown);
+
+		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+
+		itemContainer.addChild(itemRect);
+		itemContainer.rect = itemRect;
+
+		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
+		// itemSelectFill.x = skillSelectPadding;
+		// itemSelectFill.y = skillSelectPadding;
+
+		itemSelect.addChild(itemSelectStroke);
+		itemSelect.addChild(itemSelectFill);
+		itemSelect.stroke = itemSelectStroke;
+		itemSelect.fill = itemSelectFill;
+
+		itemContainer.addChild(itemSelect);
+		itemContainer.selected = itemSelect;
+
+		let spriteItem = new PIXI.Sprite(resources['blank'].texture);
+		// spriteItem.width = infoItemWidth-skillSelectPadding*2;
+		// spriteItem.height = infoItemHeight-skillSelectPadding*2;
+		// spriteItem.x = skillSelectPadding;
+		// spriteItem.y = skillSelectPadding;
+		itemContainer.addChild(spriteItem);
+		infoItemSprite.push(spriteItem);
+
+		itemContainer.selected.visible = false;
+
+		creatureInfo.item.addChild(itemContainer);
+
+		// itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
+		infoItemArray.push(itemContainer);
+	}
+	infoItemArray[0].selected.visible = true;
+
+	// this.object.item.forEach((item,itemIndex) =>{
+	// 	// if(itemList.data.item[item].size == 2){
+	// 	// 	infoItemWidth = infoItemHeight+10;
+	// 	// }
+	// 	if(itemList.data.item[item].size == 2){
+	// 		infoItemBG[1].alpha = 0.2;
+	// 		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+
+	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
+	// 		filter1.desaturate();
+	// 		// filter1.greyscale(0.5);
+	// 		spriteItem.filters = [filter1];
+
+	// 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
+	// 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
+	// 		spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
+	// 		spriteItem.y = skillSelectPadding;
+	// 		// itemContainer.addChild(spriteItem);
+	// 		creatureInfo.item.addChild(spriteItem);
+	// 		infoItemSprite.push(spriteItem);
+	// 	}
+	// });
+	
+
 	for(var i = 0; i < 24; i++){
 		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		if(i%3 == 0 && i != 0){
@@ -4845,93 +4934,121 @@ function onHPDown(){
 	////////////////////
 	creatureInfo.item.x = textOrigin[0];
 	creatureInfo.item.y = textOrigin[1];
-	var infoItemArray = [];
-	var infoItemSprite = [];
-	var infoItemBG = [];
+	// var infoItemArray = [];
+	// var infoItemSprite = [];
+	// var infoItemBG = [];
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;
 
-	for(var i = 0; i < 2; i++){
-		let itemRect = new PIXI.Graphics();
-		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
-		creatureInfo.item.addChild(itemRect);
-		infoItemBG.push(itemRect);
-		itemRect.x = (i%2 == 0 ? 0 : infoItemWidth + 10);
-		// if(i%2 == 0){
-		// 	itemRect.x = 0;
-		// 	// itemRect.y = ((infoItemHeight+10)/2)*i;
-		// }else{
-		// 	itemRect.x = infoItemWidth + 10;
-		// 	// itemRect.y = ((infoItemHeight+10)/2)*(i-1);
-		// }
-	}
 
-	this.object.item.forEach((item,itemIndex) =>{
-		// if(itemList.data.item[item].size == 2){
-		// 	infoItemWidth = infoItemHeight+10;
-		// }
-		
-		let itemRect = new PIXI.Graphics();
-		let itemSelectFill = new PIXI.Graphics();
-		let itemSelectStroke = new PIXI.Graphics();
+	creatureInfo.infoItemBG.forEach((bgItem, bgIndex) =>{
+		bgItem.width = infoItemWidth;
+		bgItem.height = infoItemHeight;
+		bgItem.x = (bgIndex%2 == 0 ? 0 : infoItemWidth + 10);
+	});
 
-		const itemContainer = new PIXI.Container();
-		const itemSelect = new PIXI.Container();
-		
-		// make the button interactive...
-		itemContainer.itemID = item;
-		itemContainer.buttonMode = true;
-		itemContainer.interactive = true;
-		itemContainer
-		// set the mousedown and touchstart callback...
-		.on('pointerdown', onInfoItemDown);
+	creatureInfo.infoItemArray.forEach((itemContainer, itemIndex)=>{
+		itemContainer.rect.width = infoItemWidth;
+		itemContainer.rect.height = infoItemHeight;
+		itemContainer.selected.stroke.width = infoItemWidth;
+		itemContainer.selected.stroke.height = infoItemHeight;
+		itemContainer.selected.fill.width = infoItemWidth-skillSelectPadding*2;
+		itemContainer.selected.fill.height = infoItemHeight-skillSelectPadding*2;
+		itemContainer.selected.fill.x = skillSelectPadding;
+		itemContainer.selected.fill.y = skillSelectPadding;
 
-		itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+		itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
+	});
 
-		itemContainer.addChild(itemRect);
-		itemContainer.rect = itemRect;
-
-		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
-		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
-		itemSelectFill.x = skillSelectPadding;
-		itemSelectFill.y = skillSelectPadding;
-
-		itemSelect.addChild(itemSelectStroke);
-		itemSelect.addChild(itemSelectFill);
-		itemSelect.stroke = itemSelectStroke;
-		itemSelect.fill = itemSelectFill;
-
-		itemContainer.addChild(itemSelect);
-		itemContainer.selected = itemSelect;
-
-		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+	creatureInfo.infoItemSprite.forEach((spriteItem, spriteIndex)=>{
+		spriteItem.texture = resources[itemList.data.item[item].code].texture;
 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
 		spriteItem.x = skillSelectPadding;
 		spriteItem.y = skillSelectPadding;
-		itemContainer.addChild(spriteItem);
-		infoItemSprite.push(spriteItem);
-
-		if(itemList.data.item[item].size == 2){
-			infoItemBG[1].alpha = 0.2;
-		}
-
-		itemContainer.selected.visible = false;
-
-		creatureInfo.item.addChild(itemContainer);
-
-		itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
-		// if(itemIndex%2 == 0){
-		// 	itemContainer.x = 0;
-		// 	// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
-		// }else{
-		// 	itemContainer.x = infoItemWidth + 10;
-		// 	// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
-		// }
-
-		infoItemArray.push(itemContainer);
 	});
-	infoItemArray[0].selected.visible = true;
+
+
+	// this.object.item.forEach((item,itemIndex) =>{
+	// 	// if(itemList.data.item[item].size == 2){
+	// 	// 	infoItemWidth = infoItemHeight+10;
+	// 	// }
+		
+	// 	let itemRect = new PIXI.Graphics();
+	// 	let itemSelectFill = new PIXI.Graphics();
+	// 	let itemSelectStroke = new PIXI.Graphics();
+
+	// 	const itemContainer = new PIXI.Container();
+	// 	const itemSelect = new PIXI.Container();
+		
+	// 	// make the button interactive...
+	// 	itemContainer.itemID = item;
+	// 	itemContainer.buttonMode = true;
+	// 	itemContainer.interactive = true;
+	// 	itemContainer
+	// 	// set the mousedown and touchstart callback...
+	// 	.on('pointerdown', onInfoItemDown);
+
+	// 	itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
+
+	// 	itemContainer.addChild(itemRect);
+	// 	itemContainer.rect = itemRect;
+
+	// 	itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
+	// 	itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
+	// 	itemSelectFill.x = skillSelectPadding;
+	// 	itemSelectFill.y = skillSelectPadding;
+
+	// 	itemSelect.addChild(itemSelectStroke);
+	// 	itemSelect.addChild(itemSelectFill);
+	// 	itemSelect.stroke = itemSelectStroke;
+	// 	itemSelect.fill = itemSelectFill;
+
+	// 	itemContainer.addChild(itemSelect);
+	// 	itemContainer.selected = itemSelect;
+
+	// 	let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+	// 	spriteItem.width = infoItemWidth-skillSelectPadding*2;
+	// 	spriteItem.height = infoItemHeight-skillSelectPadding*2;
+	// 	spriteItem.x = skillSelectPadding;
+	// 	spriteItem.y = skillSelectPadding;
+	// 	itemContainer.addChild(spriteItem);
+	// 	infoItemSprite.push(spriteItem);
+
+	// 	if(itemList.data.item[item].size == 2){
+	// 		infoItemBG[1].alpha = 0.2;
+	// 		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
+
+	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
+	// 		filter1.desaturate();
+	// 		// filter1.greyscale(0.5);
+	// 		spriteItem.filters = [filter1];
+
+	// 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
+	// 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
+	// 		spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
+	// 		spriteItem.y = skillSelectPadding;
+	// 		// itemContainer.addChild(spriteItem);
+	// 		creatureInfo.item.addChild(spriteItem);
+	// 		infoItemSprite.push(spriteItem);
+	// 	}
+
+	// 	itemContainer.selected.visible = false;
+
+	// 	creatureInfo.item.addChild(itemContainer);
+
+	// 	itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
+	// 	// if(itemIndex%2 == 0){
+	// 	// 	itemContainer.x = 0;
+	// 	// 	// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
+	// 	// }else{
+	// 	// 	itemContainer.x = infoItemWidth + 10;
+	// 	// 	// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
+	// 	// }
+
+	// 	infoItemArray.push(itemContainer);
+	// });
+	// infoItemArray[0].selected.visible = true;
 
 	// creatureInfo.info_item_text.forEach((text,textIndex) =>{
 	// 	text.style.fontSize = skillNameFontSize;
@@ -4950,9 +5067,9 @@ function onHPDown(){
 	creatureInfo.info_item_text[7].text = itemList.data.item[this.object.item[0]].description;
 	// creatureInfo.info_item_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
-	creatureInfo.infoItemArray = infoItemArray;
-	creatureInfo.infoItemSprite = infoItemSprite;
-	creatureInfo.infoItemBG = infoItemBG;
+	// creatureInfo.infoItemArray = infoItemArray;
+	// creatureInfo.infoItemSprite = infoItemSprite;
+	// creatureInfo.infoItemBG = infoItemBG;
 
 	////////////////////
 	//INFO STAT
