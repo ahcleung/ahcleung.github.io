@@ -4950,6 +4950,7 @@ function onHPDown(){
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;
 
+	creatureInfo.infoItemArray[0].selected.visible = true;
 
 	creatureInfo.infoItemBG.forEach((bgItem, bgIndex) =>{
 		bgItem.width = infoItemWidth;
