@@ -402,18 +402,21 @@ const hero = [];
 hero[0] = {
 	id: 6, level: 51, 
 	skill1: 4, skill2: 1, skill3: 3, skill4: 2,
+	items: [2,2],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 150, statSDEF: 0, statSPD: 0,
 	hero: true
 };
 hero[1] = {
 	id: 12, level: 47, 
 	skill1: 1, skill2: 10, skill3: 22, skill4: 3,
+	items: [2,2],
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 130,
 	hero: true
 };
 hero[2] = {
 	id: 11, level: 51, 
 	skill1: 17, skill2: 6, skill3: 5, skill4: 12,
+	items: [2,2],
 	statDODG: 2, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: true
 };
@@ -428,18 +431,21 @@ const enemy = [];
 enemy[0] = {
 	id: 8, level: 46, 
 	skill1: 4, skill2: 10, skill3: 11, skill4: 2,
+	items: [1],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: false
 };
 enemy[1] = {
 	id: 5, level: 49, 
 	skill1: 4, skill2: 6, skill3: 1, skill4: 2,
+	items: [2,2],
 	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 60,
 	hero: false
 };
 enemy[2] = {
 	id: 13, level: 45, 
 	skill1: 4, skill2: 1, skill3: 5, skill4: 21,
+	items: [1],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 85, statSATK: 40, statSDEF: 0, statSPD: 0,
 	hero: false
 };
@@ -561,7 +567,7 @@ function setup(){
 				item.skill2,
 				item.skill3,
 				item.skill4
-			], hero: item.hero
+			], item: item.item, hero: item.hero
 		});
 		heroArray.push(newCreature);
 	});
