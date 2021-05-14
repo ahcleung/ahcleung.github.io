@@ -12,13 +12,14 @@
 ======================================================================================*/
 
 class Creature{
-	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skill=[0,0,0,0], hero=false}){
+	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skill=[0,0,0,0], items=[0], hero=false}){
 		this.id = id;
 		this.level = level;
 		this.experienceGained = 778;
 		this.experienceNext = 1000;
 		this.statDis = statDis;
 		this.skill = skill;
+		this.item = items;
 		this.pos = 0;
 		this.hero = hero;
 		
@@ -27,7 +28,7 @@ class Creature{
 		this.newCrit = false;
 		this.newHP = false;
 		this.newMove = 0;
-		this.item = [Math.floor(Math.random() * 2) + 1];
+		// this.item = [Math.floor(Math.random() * 2) + 1];
 		
 		const creatureList = resources["js/creature.json"];				//Load creature JSON list
 		
