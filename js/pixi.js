@@ -408,7 +408,7 @@ hero[0] = {
 };
 hero[1] = {
 	id: 12, level: 47,
-	skill:[1,10,22,3],
+	skill:[1,10,22],
 	items: [2,2],
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 130,
 	hero: true
@@ -685,9 +685,9 @@ function setup(){
 		.on('pointerdown', onSkillDown);
 		
 		//Identifier = [skill index, skill id, ]
-		skillContainer.identifier = [i , heroArray[1].skill[i], 1];
+		skillContainer.identifier = [i , 1, 1];
 		
-		let skillName = new Text(skillList.data.skill[heroArray[1].skill[i]].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+		let skillName = new Text(skillList.data.skill[1].name, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
 		skillName.anchor.set(0, 0.5);
 		
 		skillRect.beginFill(0x222222).drawRect(0, 0, 50, 50);
@@ -826,7 +826,7 @@ function setup(){
 		skillContainer.targetText.visible = false;
 		
 		var skillElement;
-		switch(skillList.data.skill[heroArray[1].skill[i]].element){
+		switch(skillList.data.skill[1].element){
 			case 1:
 				skillElement = new PIXI.Sprite(resources.element_flora.texture);
 				break;
