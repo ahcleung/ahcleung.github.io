@@ -567,7 +567,7 @@ function setup(){
 				item.skill2,
 				item.skill3,
 				item.skill4
-			], item: item.item, hero: item.hero
+			], items: item.items, hero: item.hero
 		});
 		heroArray.push(newCreature);
 	});
@@ -594,7 +594,7 @@ function setup(){
 				item.skill2,
 				item.skill3,
 				item.skill4
-			], hero: item.hero
+			], items: item.items, hero: item.hero
 		});
 		enemyArray.push(newCreature);
 	});
