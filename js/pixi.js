@@ -7471,9 +7471,14 @@ function selectCreature(object2){
 	}else if(object2.size == 2){
 		currPos.push(object2.pos);
 		currPos.push(object2.pos+1);
-	}	
+	}
+
+	skillContainerArray.forEach(skillContainer =>{
+		skillContainer.visible = false;
+	});
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
+		skillContainerArray[skillContainerIndex].visible = true;
 		switch(skillList.data.skill[skillID].element){
 			case 1:
 				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
