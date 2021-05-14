@@ -402,13 +402,13 @@ const hero = [];
 hero[0] = {
 	id: 6, level: 51,
 	skill:[4,1,3,2],
-	items: [2,2],
+	items: [2],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 150, statSDEF: 0, statSPD: 0,
 	hero: true
 };
 hero[1] = {
 	id: 12, level: 47,
-	skill:[1,10,22,3],
+	skill:[1,10,22],
 	items: [2,2],
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 130,
 	hero: true
@@ -416,7 +416,7 @@ hero[1] = {
 hero[2] = {
 	id: 11, level: 51,
 	skill:[17,6,5,12],
-	items: [2,2],
+	items: [2],
 	statDODG: 2, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: true
 };
