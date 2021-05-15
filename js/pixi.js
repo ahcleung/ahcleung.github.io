@@ -1511,18 +1511,23 @@ function setup(){
 
 	app.stage.addChild(mapHolder);
 
-	var centerGraphic = new PIXI.Sprite(textureAdditionalItem);
+	// var centerGraphic = new PIXI.Sprite(textureAdditionalItem);
 	// centerGraphic.beginFill(0xff0000);
 	// centerGraphic.beginFill(0x00ff00);
 	// centerGraphic.beginFill(0x0000ff);
 	// centerGraphic.drawRect(0, 0, 100, 100);
 	// centerGraphic.endFill();
-	mapHolder.addChild(centerGraphic);
-	centerGraphic.x = 0;
-	centerGraphic.y = -200;
-	centerGraphic.interactive = true;
-	centerGraphic.buttonMode = true;
-	centerGraphic
+	// mapHolder.addChild(centerGraphic);
+	// centerGraphic.x = 0;
+	// centerGraphic.y = -200;
+
+	var sceneSwitch = new PIXI.Sprite(textureAdditionalItem);
+	mapHolder.addChild(sceneSwitch);
+	sceneSwitch.x = 0;
+	sceneSwitch.y = -200;	
+	sceneSwitch.interactive = true;
+	sceneSwitch.buttonMode = true;
+	sceneSwitch
 		// events for drag start
 		.on('mousedown', onSwitchDown)
 		.on('touchstart', onSwitchDown);
