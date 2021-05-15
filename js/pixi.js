@@ -3032,7 +3032,8 @@ function createSprite(direction, item, index){
 	});
 	
 	creatureStatusInfoArray.forEach(status => {
-		let statusEffect = statusEffectSprite(status);
+		// let statusEffect = statusEffectSprite(status);
+		let statusEffect = new PIXI.Sprite(statusEffectResource(status));
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
@@ -6248,7 +6249,8 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = statusEffectSprite(newStatus[0]);				
+							let newStatusEffect = new PIXI.Sprite(statusEffectResource(newStatus[0]));
+							// let newStatusEffect = statusEffectSprite(newStatus[0]);				
 							newStatusEffect.visible = false;
 							selectedVita.healthBar.addChild(newStatusEffect);
 							selectedVita.statusSpriteArray.push(newStatusEffect);
@@ -6266,7 +6268,8 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = statusEffectSprite(newStatus[0]);				
+							let newStatusEffect = new PIXI.Sprite(statusEffectResource(newStatus[0]));
+							// let newStatusEffect = statusEffectSprite(newStatus[0]);
 							newStatusEffect.visible = false;
 							targeted.healthBar.addChild(newStatusEffect);
 							targeted.statusSpriteArray.push(newStatusEffect);
@@ -6441,7 +6444,8 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 					});
 
 					if(!statusStored){
-						let newStatusEffect = statusEffectSprite(statusElement[0]);				
+						let newStatusEffect = new PIXI.Sprite(statusEffectResource(statusElement[0]));
+						// let newStatusEffect = statusEffectSprite(statusElement[0]);
 						newStatusEffect.visible = false;
 						targeted.healthBar.addChild(newStatusEffect);
 						targeted.statusSpriteArray.push(newStatusEffect);
@@ -6759,93 +6763,94 @@ function moveCreature(movingCreature, displacement){
 }
 
 function updateDmgStatus(container, newStatus, newStatusIndex){
+	container.dmgStatus.statusImageArray[newStatusIndex].texture = statusEffectResource(newStatus);
 	switch(newStatus){
 		case 1:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
 			break;
 		case 2:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 			break;
 		case 3:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
 			break;
 		case 4:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
 			break;
 		case 5:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
 			break;
 		case 6:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
 			break;
 		case 7:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
 			break;
 		case 8:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
 			break;
 		case 9:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
 			break;
 		case 10:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
 			break;
 		case 11:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
 			break;
 		case 12:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
 			break;
 		case 13:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
 			break;
 		case 14:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
 			break;
 		default:
-			container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
+			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
 			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
