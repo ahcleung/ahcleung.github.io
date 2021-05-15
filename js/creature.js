@@ -15,7 +15,7 @@ class Creature{
 	constructor({id = 0, level = 1, statDis = [0,0,0,0,0,0,0], skill=[0,0,0,0], items=[0], hero=false}){
 		this.id = id;
 		this.level = level;
-		this.experienceGained = 778;
+		this.experienceGained = Math.floor(Math.random() * (1000 - 1) + 1);
 		this.experienceNext = 1000;
 		this.statDis = statDis;
 		this.skill = skill;
