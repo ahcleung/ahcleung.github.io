@@ -4329,81 +4329,81 @@ function onHPDown(){
 		const statusContainer = new PIXI.Container();
 		var statusContainerText = [];
 		statusContainer.statusContainerText = statusContainerText;
-		let statusEffectIcon;
+		let statusEffectIcon = statusEffectSprite(statusNum);
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
 			case 1:
-				statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
 				textStatus.text = "Bleed";
 				console.log("Bleed:");
 				break;
 			case 2:
-				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
 				console.log("Buff:");
 				break;
 			case 3:
-				statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
 				textStatus.text = "Burned";
 				console.log("Burned:");
 				break;
 			case 4:
-				statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
 				textStatus.text = "Debuff";
 				console.log("Debuff:");
 				break;
 			case 5:
-				statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
 				textStatus.text = "Depressed";
 				console.log("Depressed:");
 				break;
 			case 6:
-				statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
 				textStatus.text = "Guard";
 				console.log("Guard:");
 				break;
 			case 7:
-				statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
 				textStatus.text = "Immune";
 				console.log("Immune:");
 				break;
 			case 8:
-				statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
 				textStatus.text = "Paralyzed";
 				console.log("Paralyzed:");
 				break;
 			case 9:
-				statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
 				textStatus.text = "Poisoned";
 				console.log("Poisoned:");
 				break;
 			case 10:
-				statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
 				textStatus.text = "Recover";
 				console.log("Recover:");
 				break;
 			case 11:
-				statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
 				textStatus.text = "Secured";
 				console.log("Secured:");
 				break;
 			case 12:
-				statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
 				textStatus.text = "Silenced";
 				console.log("Silenced:");
 				break;
 			case 13:
-				statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
 				textStatus.text = "Stunned";
 				console.log("Stunned:");
 				break;
 			case 14:
-				statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
 				textStatus.text = "Critical";
 				console.log("Critical:");
 				break;
 			default:
-				statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+				// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 				textStatus.text = "Buff";
 				console.log("Buff:");
 		}
