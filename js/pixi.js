@@ -4320,47 +4320,48 @@ function onHPDown(){
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].texture = textureResourceElement(element);
-		switch(element){
-			case 1:
-				creatureInfo.info_main_element[elementIndex].text = "Flora";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-				break;
-			case 2:
-				creatureInfo.info_main_element[elementIndex].text = "Water";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
-				break;
-			case 3:
-				creatureInfo.info_main_element[elementIndex].text = "Fire";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
-				break;
-			case 4:
-				creatureInfo.info_main_element[elementIndex].text = "Earth";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
-				break;
-			case 5:
-				creatureInfo.info_main_element[elementIndex].text = "Storm";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
-				break;
-			case 6:
-				creatureInfo.info_main_element[elementIndex].text = "Wind";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
-				break;
-			case 7:
-				creatureInfo.info_main_element[elementIndex].text = "Toxic";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
-				break;
-			case 8:
-				creatureInfo.info_main_element[elementIndex].text = "Spirit";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
-				break;
-			case 9:
-				creatureInfo.info_main_element[elementIndex].text = "Void";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
-				break;
-			default:
-				creatureInfo.info_main_element[elementIndex].text = "Flora";
-				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-		}
+		creatureInfo.info_main_element[elementIndex].text = textureResourceElement(element, true);
+		// switch(element){
+		// 	case 1:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+		// 		break;
+		// 	case 2:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Water";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
+		// 		break;
+		// 	case 3:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Fire";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
+		// 		break;
+		// 	case 4:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Earth";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
+		// 		break;
+		// 	case 5:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Storm";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
+		// 		break;
+		// 	case 6:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Wind";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
+		// 		break;
+		// 	case 7:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Toxic";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
+		// 		break;
+		// 	case 8:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Spirit";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
+		// 		break;
+		// 	case 9:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Void";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
+		// 		break;
+		// 	default:
+		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
+		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+		// }
 	});
 	
 	// infoBtnArray.forEach((btn, btnIndex)=>{
