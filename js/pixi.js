@@ -2522,57 +2522,57 @@ function statusEffectResource(identifier){
 	// return statusEffectIcon;
 }
 
-function statusEffectSprite(identifier){
-	let statusEffectIcon;
-	switch(identifier){
-		case 1:
-			statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
-			break;
-		case 2:
-			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-			break;
-		case 3:
-			statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
-			break;
-		case 4:
-			statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
-			break;
-		case 5:
-			statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
-			break;
-		case 6:
-			statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
-			break;
-		case 7:
-			statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
-			break;
-		case 8:
-			statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
-			break;
-		case 9:
-			statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
-			break;
-		case 10:
-			statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
-			break;
-		case 11:
-			statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-			break;
-		case 12:
-			statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
-			break;
-		case 13:
-			statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
-			break;
-		case 14:
-			statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
-			break;
-		default:
-			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+// function statusEffectSprite(identifier){
+// 	let statusEffectIcon;
+// 	switch(identifier){
+// 		case 1:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
+// 			break;
+// 		case 2:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+// 			break;
+// 		case 3:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
+// 			break;
+// 		case 4:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
+// 			break;
+// 		case 5:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
+// 			break;
+// 		case 6:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
+// 			break;
+// 		case 7:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
+// 			break;
+// 		case 8:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
+// 			break;
+// 		case 9:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
+// 			break;
+// 		case 10:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
+// 			break;
+// 		case 11:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
+// 			break;
+// 		case 12:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
+// 			break;
+// 		case 13:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
+// 			break;
+// 		case 14:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
+// 			break;
+// 		default:
+// 			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
 			
-	}
-	return statusEffectIcon;
-}
+// 	}
+// 	return statusEffectIcon;
+// }
 
 function createSprite(direction, item, index){
 	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.hp + "/" + item.EHP + "|Vital: " + item.critDmg);
