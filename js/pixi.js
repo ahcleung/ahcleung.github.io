@@ -825,39 +825,39 @@ function setup(){
 		skillContainer.targetText = targetText;
 		skillContainer.targetText.visible = false;
 		
-		var skillElement;
-		switch(skillList.data.skill[1].element){
-			case 1:
-				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-				break;
-			case 2:
-				skillElement = new PIXI.Sprite(resources.element_water.texture);
-				break;
-			case 3:
-				skillElement = new PIXI.Sprite(resources.element_fire.texture);
-				break;
-			case 4:
-				skillElement = new PIXI.Sprite(resources.element_earth.texture);
-				break;
-			case 5:
-				skillElement = new PIXI.Sprite(resources.element_storm.texture);
-				break;
-			case 6:
-				skillElement = new PIXI.Sprite(resources.element_wind.texture);
-				break;
-			case 7:
-				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-				break;
-			case 8:
-				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-				break;
-			case 9:
-				skillElement = new PIXI.Sprite(resources.element_void.texture);
-				break;
-			default:
-				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-				break;
-		}
+		var skillElement = new PIXI.Sprite(textureResourceElement(skillList.data.skill[1].element));
+		// switch(skillList.data.skill[1].element){
+		// 	case 1:
+		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+		// 		break;
+		// 	case 2:
+		// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
+		// 		break;
+		// 	case 3:
+		// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
+		// 		break;
+		// 	case 4:
+		// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
+		// 		break;
+		// 	case 5:
+		// 		skillElement = new PIXI.Sprite(resources.element_storm.texture);
+		// 		break;
+		// 	case 6:
+		// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
+		// 		break;
+		// 	case 7:
+		// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
+		// 		break;
+		// 	case 8:
+		// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+		// 		break;
+		// 	case 9:
+		// 		skillElement = new PIXI.Sprite(resources.element_void.texture);
+		// 		break;
+		// 	default:
+		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+		// 		break;
+		// }
 		skillElement.anchor.set(0, 0.5);
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
@@ -2470,7 +2470,42 @@ function setPos(item, index, array){
 	}	
 }
 
-function statusEffectResource(identifier){
+function textureResourceElement(identifier){
+	switch(identifier){
+		case 1:
+			return resources.element_flora.texture;
+			break;
+		case 2:
+			return resources.element_water.texture;
+			break;
+		case 3:
+			return resources.element_fire.texture;
+			break;
+		case 4:
+			return resources.element_earth.texture;
+			break;
+		case 5:
+			return resources.element_storm.texture;
+			break;
+		case 6:
+			return resources.element_wind.texture;
+			break;
+		case 7:
+			return resources.element_toxic.texture;
+			break;
+		case 8:
+			return resources.element_spirit.texture;
+			break;
+		case 9:
+			return resources.element_void.texture;
+			break;
+		default:
+			return resources.element_flora.texture;
+			break;
+	}
+}
+
+function textureResourceStatus(identifier){
 	// let statusEffectIcon;
 	switch(identifier){
 		case 1:
@@ -3033,7 +3068,7 @@ function createSprite(direction, item, index){
 	
 	creatureStatusInfoArray.forEach(status => {
 		// let statusEffect = statusEffectSprite(status);
-		let statusEffect = new PIXI.Sprite(statusEffectResource(status));
+		let statusEffect = new PIXI.Sprite(textureResourceStatus(status));
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
@@ -4284,46 +4319,47 @@ function onHPDown(){
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
+		creatureInfo.info_main_elementIcon[elementIndex].texture = textureResourceElement(element);
 		switch(element){
 			case 1:
 				creatureInfo.info_main_element[elementIndex].text = "Flora";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
 				break;
 			case 2:
 				creatureInfo.info_main_element[elementIndex].text = "Water";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
 				break;
 			case 3:
 				creatureInfo.info_main_element[elementIndex].text = "Fire";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
 				break;
 			case 4:
 				creatureInfo.info_main_element[elementIndex].text = "Earth";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
 				break;
 			case 5:
 				creatureInfo.info_main_element[elementIndex].text = "Storm";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
 				break;
 			case 6:
 				creatureInfo.info_main_element[elementIndex].text = "Wind";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
 				break;
 			case 7:
 				creatureInfo.info_main_element[elementIndex].text = "Toxic";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
 				break;
 			case 8:
 				creatureInfo.info_main_element[elementIndex].text = "Spirit";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
 				break;
 			case 9:
 				creatureInfo.info_main_element[elementIndex].text = "Void";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
 				break;
 			default:
 				creatureInfo.info_main_element[elementIndex].text = "Flora";
-				creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
+				// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
 		}
 	});
 	
@@ -4382,7 +4418,7 @@ function onHPDown(){
 		const statusContainer = new PIXI.Container();
 		var statusContainerText = [];
 		statusContainer.statusContainerText = statusContainerText;
-		let statusEffectIcon = new PIXI.Sprite(statusEffectResource(statusNum));
+		let statusEffectIcon = new PIXI.Sprite(textureResourceStatus(statusNum));
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
 			case 1:
@@ -4888,39 +4924,39 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
 
-		var skillElement;
-		switch(skillList.data.skill[skill].element){
-			case 1:
-				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-				break;
-			case 2:
-				skillElement = new PIXI.Sprite(resources.element_water.texture);
-				break;
-			case 3:
-				skillElement = new PIXI.Sprite(resources.element_fire.texture);
-				break;
-			case 4:
-				skillElement = new PIXI.Sprite(resources.element_earth.texture);
-				break;
-			case 5:
-				skillElement = new PIXI.Sprite(resources.element_storm.texture);
-				break;
-			case 6:
-				skillElement = new PIXI.Sprite(resources.element_wind.texture);
-				break;
-			case 7:
-				skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-				break;
-			case 8:
-				skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-				break;
-			case 9:
-				skillElement = new PIXI.Sprite(resources.element_void.texture);
-				break;
-			default:
-				skillElement = new PIXI.Sprite(resources.element_flora.texture);
-				break;
-		}
+		var skillElement = new PIXI.Sprite(textureResourceElement(skillList.data.skill[skill].element));
+		// switch(skillList.data.skill[skill].element){
+		// 	case 1:
+		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+		// 		break;
+		// 	case 2:
+		// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
+		// 		break;
+		// 	case 3:
+		// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
+		// 		break;
+		// 	case 4:
+		// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
+		// 		break;
+		// 	case 5:
+		// 		skillElement = new PIXI.Sprite(resources.element_storm.texture);
+		// 		break;
+		// 	case 6:
+		// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
+		// 		break;
+		// 	case 7:
+		// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
+		// 		break;
+		// 	case 8:
+		// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
+		// 		break;
+		// 	case 9:
+		// 		skillElement = new PIXI.Sprite(resources.element_void.texture);
+		// 		break;
+		// 	default:
+		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
+		// 		break;
+		// }
 		skillElement.anchor.set(0, 0.5);
 		// skillElement.scale.set(elementIconSize);
 		skillElement.width = infoSkillWidth/11;
@@ -6249,7 +6285,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(statusEffectResource(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(textureResourceStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);				
 							newStatusEffect.visible = false;
 							selectedVita.healthBar.addChild(newStatusEffect);
@@ -6268,7 +6304,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(statusEffectResource(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(textureResourceStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);
 							newStatusEffect.visible = false;
 							targeted.healthBar.addChild(newStatusEffect);
@@ -6444,7 +6480,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 					});
 
 					if(!statusStored){
-						let newStatusEffect = new PIXI.Sprite(statusEffectResource(statusElement[0]));
+						let newStatusEffect = new PIXI.Sprite(textureResourceStatus(statusElement[0]));
 						// let newStatusEffect = statusEffectSprite(statusElement[0]);
 						newStatusEffect.visible = false;
 						targeted.healthBar.addChild(newStatusEffect);
@@ -6763,7 +6799,7 @@ function moveCreature(movingCreature, displacement){
 }
 
 function updateDmgStatus(container, newStatus, newStatusIndex){
-	container.dmgStatus.statusImageArray[newStatusIndex].texture = statusEffectResource(newStatus);
+	container.dmgStatus.statusImageArray[newStatusIndex].texture = textureResourceStatus(newStatus);
 	switch(newStatus){
 		case 1:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
@@ -7188,38 +7224,39 @@ function selectCreature(object2){
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		skillContainerArray[skillContainerIndex].visible = true;
-		switch(skillList.data.skill[skillID].element){
-			case 1:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
-				break;
-			case 2:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
-				break;
-			case 3:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
-				break;
-			case 4:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
-				break;
-			case 5:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_storm.texture;
-				break;
-			case 6:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
-				break;
-			case 7:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
-				break;
-			case 8:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
-				break;
-			case 9:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_void.texture;
-				break;
-			default:
-				skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
-				break;
-		}
+		skillContainerArray[skillContainerIndex].skillElement.texture = textureResourceElement(skillList.data.skill[skillID].element);
+		// switch(skillList.data.skill[skillID].element){
+		// 	case 1:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
+		// 		break;
+		// 	case 2:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
+		// 		break;
+		// 	case 3:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
+		// 		break;
+		// 	case 4:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
+		// 		break;
+		// 	case 5:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_storm.texture;
+		// 		break;
+		// 	case 6:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
+		// 		break;
+		// 	case 7:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
+		// 		break;
+		// 	case 8:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
+		// 		break;
+		// 	case 9:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_void.texture;
+		// 		break;
+		// 	default:
+		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
+		// 		break;
+		// }
 		
 		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
 		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID];
