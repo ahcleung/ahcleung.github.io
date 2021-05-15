@@ -2470,37 +2470,37 @@ function setPos(item, index, array){
 	}	
 }
 
-function textureResourceElement(identifier){
+function textureResourceElement(identifier, text = false){
 	switch(identifier){
 		case 1:
-			return resources.element_flora.texture;
+			return (text ? "Flora" : resources.element_flora.texture);
 			break;
 		case 2:
-			return resources.element_water.texture;
+			return (text ? "Water" : resources.element_water.texture);
 			break;
 		case 3:
-			return resources.element_fire.texture;
+			return (text ? "Fire" : resources.element_fire.texture);
 			break;
 		case 4:
-			return resources.element_earth.texture;
+			return (text ? "Earth" : resources.element_earth.texture);
 			break;
 		case 5:
-			return resources.element_storm.texture;
+			return (text ? "Storm" : resources.element_storm.texture);
 			break;
 		case 6:
-			return resources.element_wind.texture;
+			return (text ? "Wind" : resources.element_wind.texture);
 			break;
 		case 7:
-			return resources.element_toxic.texture;
+			return (text ? "Toxic" : resources.element_toxic.texture);
 			break;
 		case 8:
-			return resources.element_spirit.texture;
+			return (text ? "Spirit" : resources.element_spirit.texture);
 			break;
 		case 9:
-			return resources.element_void.texture;
+			return (text ? "Void" : resources.element_void.texture);
 			break;
 		default:
-			return resources.element_flora.texture;
+			return (text ? "Flora" : resources.element_flora.texture);
 			break;
 	}
 }
