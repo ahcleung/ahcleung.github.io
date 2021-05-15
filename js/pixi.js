@@ -2470,6 +2470,58 @@ function setPos(item, index, array){
 	}	
 }
 
+function statusEffectResource(identifier){
+	// let statusEffectIcon;
+	switch(identifier){
+		case 1:
+			return resources.status_bleed.texture;
+			break;
+		case 2:
+			return resources.status_buff.texture;
+			break;
+		case 3:
+			return resources.status_burned.texture;
+			break;
+		case 4:
+			return resources.status_debuff.texture;
+			break;
+		case 5:
+			return resources.status_depressed.texture;
+			break;
+		case 6:
+			return resources.status_guard.texture;
+			break;
+		case 7:
+			return resources.status_immune.texture;
+			break;
+		case 8:
+			return resources.status_paralyzed.texture;
+			break;
+		case 9:
+			return resources.status_poisoned.texture;
+			break;
+		case 10:
+			return resources.status_recover.texture;
+			break;
+		case 11:
+			return resources.status_secured.texture;
+			break;
+		case 12:
+			return resources.status_silenced.texture;
+			break;
+		case 13:
+			return resources.status_stunned.texture;
+			break;
+		case 14:
+			return resources.status_critical.texture;
+			break;
+		default:
+			return resources.status_buff.texture;
+			
+	}
+	// return statusEffectIcon;
+}
+
 function statusEffectSprite(identifier){
 	let statusEffectIcon;
 	switch(identifier){
@@ -4329,7 +4381,7 @@ function onHPDown(){
 		const statusContainer = new PIXI.Container();
 		var statusContainerText = [];
 		statusContainer.statusContainerText = statusContainerText;
-		let statusEffectIcon = statusEffectSprite(statusNum);
+		let statusEffectIcon = new PIXI.Sprite(statusEffectResource(statusNum));
 		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		switch(statusNum){
 			case 1:
