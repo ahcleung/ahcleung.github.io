@@ -4134,26 +4134,18 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	var infoSpacer = app.screen.width/77;
-	var infoBtnTextSize = 36;
+	// var infoSpacer = app.screen.width/77;
+	// var infoBtnTextSize = 36;
 	var statusMargin = [app.screen.width/20,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
-	var textOrigin = [app.screen.width/2,app.screen.height/6];
-	var infoMainMargin = app.screen.height/20;
-	var infoInnerMargin = app.screen.width/19.2;
-	var infoSelectPadding = app.screen.width/384;
+	// var textOrigin = [app.screen.width/2,app.screen.height/6];
+	// var infoMainMargin = app.screen.height/20;
+	// var infoInnerMargin = app.screen.width/19.2;
+	// var infoSelectPadding = app.screen.width/384;
 
-	infoBtnTextSize = (app.screen.width < 860 ? 16
-						: app.screen.width < 1366 ? 26
-						: 36);
-
-	// if(app.screen.width < 860){
-	// 	infoBtnTextSize = 16;
-	// }else if(app.screen.width < 1366){
-	// 	infoBtnTextSize = 26;
-	// }else{
-	// 	infoBtnTextSize = 36;
-	// }
+	// infoBtnTextSize = (app.screen.width < 860 ? 16
+	// 					: app.screen.width < 1366 ? 26
+	// 					: 36);
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(app.screen.width/3200);
@@ -4161,8 +4153,6 @@ function onHPDown(){
 
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
 	creatureInfo.addChild(creatureInfoSprite);
-	// creatureInfo.main.x = textOrigin[0];
-	// creatureInfo.main.y = textOrigin[1];
 
 	creatureInfo.info_main_text[6].text = this.object.experienceGained + " / " + this.object.experienceNext;
 
@@ -4932,8 +4922,8 @@ function onHPDown(){
 	////////////////////
 	//INFO ITEM
 	////////////////////
-	creatureInfo.item.x = textOrigin[0];
-	creatureInfo.item.y = textOrigin[1];
+	// creatureInfo.item.x = textOrigin[0];
+	// creatureInfo.item.y = textOrigin[1];
 	// var infoItemArray = [];
 	// var infoItemSprite = [];
 	// var infoItemBG = [];
@@ -5093,8 +5083,8 @@ function onHPDown(){
 
 	// var textOrigin = [app.screen.width/2,app.screen.height/6];
 
-	creatureInfo.stat.x = textOrigin[0];
-	creatureInfo.stat.y = app.screen.height/8;
+	// creatureInfo.stat.x = textOrigin[0];
+	// creatureInfo.stat.y = app.screen.height/8;
 
 	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
@@ -6711,103 +6701,6 @@ function moveCreature(movingCreature, displacement){
 	return movedCreature;
 }
 
-// function animateBattle(attacker, defender){
-// 	const blurFilter1 = new PIXI.filters.BlurFilter();
-// 	// const blurFilter2 = new PIXI.filters.BlurFilter();
-// 	blurFilter1.blur = 0;
-// 	// blurFilter2.blur = 0;
-
-// 	spriteHolder.filters = [blurFilter1];
-// 	TweenMax.fromTo(blurFilter1, 0.167, {blur:0}, {blur:10});
-
-// 	TweenMax.fromTo(stageContainer, 0.05, {x:-10}, {delay:anim1, x:10, yoyo:true, ease:Sine.easeOut, repeat:10, onComplete:function(){
-// 		TweenMax.to(stageContainer,0.5, {x:0,ease:Elastic.easeOut})
-// 	}});
-
-// 	var animateArray = [];
-
-// 	defender.forEach(arrayCreature => {
-// 		actionContainer.addChild(arrayCreature.action);
-// 		arrayCreature.action.visible = true;
-// 		arrayCreature.sprite.visible = false;
-// 		animateArray.push(arrayCreature.sprite);
-// 	});
-
-// 	actionContainer.addChild(attacker.action);
-// 	attacker.action.visible = true;
-// 	attacker.sprite.visible = false;
-// 	animateArray.push(attacker.sprite);
-
-// 	stageContainer.actionBlackTween.play(0);
-
-// 	var heroShiftSizeTracker = 0;
-// 	var enemyShiftSizeTracker = 0;
-
-// 	defender.forEach((arrayCreature,arrayCreatureIndex) => {
-// 		if(arrayCreature.hero){
-// 			var originalX = arrayCreature.action.x;
-// 			var originalFloatX = arrayCreature.dmgContainer.x;
-// 			TweenMax.to(arrayCreature.action, 0.25, {x:-spriteResizeXPosition[heroShiftSizeTracker]});
-
-// 			if(arrayCreature.size > 1)	heroShiftSizeTracker++;
-// 			TweenMax.to(arrayCreature.dmgContainer, 0.25, {x:heroHealthXPosition[heroShiftSizeTracker]});
-
-// 			arrayCreature.action.dMissTween.play(0);
-// 			arrayCreature.action.dMissTween.eventCallback("onComplete", function(){
-// 				arrayCreature.action.x = originalX;
-// 				arrayCreature.dmgContainer.x = originalFloatX;
-// 				arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-// 				arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-// 					arrayCreature.statusSpriteArray.forEach(statusSprite => {
-// 						statusSprite.visible = true;
-// 					});
-// 				});
-// 			});
-
-// 			heroShiftSizeTracker++;			
-// 		}else{
-// 			var originalX = arrayCreature.action.x;
-// 			TweenMax.to(arrayCreature.action, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-// 			TweenMax.to(arrayCreature.dmgContainer, 0.25, {x:spriteResizeXPosition[enemyShiftSizeTracker]});
-
-// 			arrayCreature.action.dMissTween.play(0);
-// 			arrayCreature.action.dMissTween.eventCallback("onComplete", function(){
-// 				arrayCreature.action.x = originalX;
-// 				arrayCreature.dmgContainer.x = originalX;
-// 				arrayCreature.dmgContainer.dmgStatus.tween.play(0);
-// 				arrayCreature.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-// 					arrayCreature.statusSpriteArray.forEach(statusSprite => {
-// 						statusSprite.visible = true;
-// 					});
-// 				});
-// 			});
-
-// 			enemyShiftSizeTracker++;
-// 			if(arrayCreature.size > 1)	enemyShiftSizeTracker++;
-// 		}	
-// 	});	
-
-// 	var originalX = attacker.action.x;
-// 	TweenMax.to(attacker.action, 0.25, {x:0});
-
-// 	attacker.action.pAtkTween.play(0);
-// 	attacker.action.pAtkTween.eventCallback("onComplete", function(){
-// 		animateArray.forEach(item =>{
-// 			item.visible = true;
-// 		});
-// 		attacker.action.x = originalX;
-// 		TweenMax.fromTo(blurFilter1, 0.1, {blur:10}, {blur:0});
-// 		attacker.dmgContainer.dmgStatus.tween.play(0);
-// 		attacker.dmgContainer.dmgStatus.tween.eventCallback("onComplete", function(){
-// 			attacker.statusSpriteArray.forEach(statusSprite => {
-// 				statusSprite.visible = true;
-// 			});
-// 			if(userInput)	endTurn();
-// 		});
-// 	});
-// 	// actionHero[0].pAtkTween.play(0);
-// }
-
 function updateDmgStatus(container, newStatus, newStatusIndex){
 	switch(newStatus){
 		case 1:
@@ -6901,198 +6794,6 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 	}
 }
-
-// function updateDamage(object, effective, skillCrit, critTracker, dmgArray, skillHeal, attackerStatus, defenderStatus, skillStatus, skillStatusTarget){
-// 	var totalDmgCalc = 0;
-// 	dmgArray.forEach(dmg => {
-// 		totalDmgCalc += dmg;
-// 	});
-
-// 	if(skillHeal){
-// 		object.heal(totalDmgCalc);			//add heal
-// 	}else{
-// 		object.damage(totalDmgCalc);		//subtract damage
-// 	}
-
-// 	object.dmgContainer.dmgPopup.dmgEffective.visible = true;
-// 	object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 		dmgNumArrayItem.style.fill = '#D80000';
-// 		dmgNumArrayItem.style.stroke = '#222222';
-// 		dmgNumArrayItem.visible = false;
-// 	});
-
-// 	object.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-// 		dmgStatusImageItem.visible = false;
-// 	});
-// 	object.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-// 		dmgStatusTextItem.visible = false;
-// 	});
-
-// 	if(Array.isArray(effective)){
-// 		object.dmgContainer.dmgPopup.dmgEffective.visible = false;
-// 		effective.forEach((effectiveNum, effectiveIndex) => {
-// 			var colour = '#D80000';
-// 			if(effectiveNum == 0.25){
-// 				colour = '#9D9D9D';
-// 			}else if(effectiveNum == 0.5){
-// 				colour = '#FFFFFF';
-// 			}else if(effectiveNum == 2){
-// 				colour = '#FFE81C';
-// 			}else if(effectiveNum == 4){
-// 				colour = '#DB00FF';
-// 			}
-// 			object.dmgContainer.dmgPopup.dmgNumArray[effectiveIndex].style.fill = colour;
-// 		});
-// 	}else{
-// 		if(effective == 0.25){
-// 			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.25";
-// 			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#9D9D9D';
-// 			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 				dmgNumArrayItem.style.fill = '#9D9D9D';
-// 			});
-// 		}else if(effective == 0.5){
-// 			object.dmgContainer.dmgPopup.dmgEffective.text = "Resist  ×0.5";
-// 			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFFFFF';
-// 			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 				dmgNumArrayItem.style.fill = '#FFFFFF';
-// 			});
-// 		}else if(effective == 2){
-// 			object.dmgContainer.dmgPopup.dmgEffective.text = "SUPER  ×2";
-// 			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#FFE81C';
-// 			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 				dmgNumArrayItem.style.fill = '#FFE81C';
-// 			});
-// 		}else if(effective == 4){
-// 			object.dmgContainer.dmgPopup.dmgEffective.text = "ULTRA  ×4";
-// 			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#DB00FF';
-// 			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 				dmgNumArrayItem.style.fill = '#DB00FF';
-// 			});
-// 		}else if(effective == 0){
-// 			object.dmgContainer.dmgPopup.dmgEffective.text = "MISS!";
-// 			object.dmgContainer.dmgPopup.dmgEffective.style.fill = '#D80000';
-// 			object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 				dmgNumArrayItem.style.fill = '#D80000';
-// 			});
-// 		}else{
-// 			object.dmgContainer.dmgPopup.dmgEffective.visible = false;
-// 		}
-// 	}
-	
-// 	if(skillCrit){
-// 		var critTotal = 0;
-// 		dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-// 			if(critTracker[dmgArrayIndex] == 1)		critTotal = critTotal + (dmgArrayNum/3)
-// 		});
-
-// 		object.criticalHit(Math.floor(critTotal));
-
-// 		var newCritWidth = -(object.healthBar.outer.width * (object.critDmg/object.overallHP));
-
-// 		TweenMax.fromTo(object.healthBar.critDmgBar
-// 			, 1, {
-// 				width: object.healthBar.critDmgBar.width
-// 			}, {delay: 1.75, ease:Expo.easeIn, width:newCritWidth});
-
-// 		object.dmgContainer.dmgPopup.dmgNumArray.forEach((dmgNumArrayItem, dmgNumArrayIndex) =>{
-// 			if(critTracker[dmgNumArrayIndex] == 1){
-// 				dmgNumArrayItem.style.fill = '#ff7b00';
-// 				dmgNumArrayItem.style.stroke = '#4E2600';
-// 			}
-// 		});
-// 	}
-
-// 	if(skillHeal){
-// 		object.dmgContainer.dmgPopup.dmgNumArray.forEach(dmgNumArrayItem =>{
-// 			dmgNumArrayItem.style.fill = '#1bc617';
-// 			dmgNumArrayItem.style.stroke = '#052805';
-// 		});
-
-// 		var newWidth = (object.healthBar.outer.width * (object.hp/object.overallHP)) - object.healthBar.inner.width;
-
-// 		object.healthBar.dmgBarContainer.x = object.healthBar.inner.width;
-// 		object.healthBar.dmgBarContainer.dmgBar.visible = true;
-// 		var tween = new TimelineMax({onComplete: function(){
-// 			object.healthBar.dmgBarContainer.dmgBar.visible = false;	
-// 			object.healthBar.dmgBarContainer.dmgBar.alpha = 0.9;
-// 		}});
-// 		tween.fromTo(object.healthBar.dmgBarContainer.dmgBar
-// 			, 1 , {width: 0}, {ease:Expo.easeIn, width:newWidth, onComplete:function(){
-// 				object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
-// 			}});
-// 		tween.to(object.healthBar.dmgBarContainer.dmgBar
-// 			, 1, {ease:Expo.easeIn, alpha:0, onComplete:function(){
-// 				if(userInput)	endTurn();
-// 			}});
-// 	}else{
-// 		var newWidth = object.healthBar.inner.width - (object.healthBar.outer.width * (object.hp/object.overallHP));
-
-// 		object.healthBar.dmgBarContainer.dmgBar.width = newWidth;
-// 		object.healthBar.dmgBarContainer.dmgBar.visible = true;
-// 		TweenMax.fromTo(object.healthBar.dmgBarContainer.dmgBar
-// 			, 1, {
-// 				width: newWidth
-// 			}, {delay: 1.75, ease:Expo.easeIn, width:0, onComplete: function(){
-// 			object.healthBar.dmgBarContainer.dmgBar.visible = false;
-// 			if(userInput)	endTurn();
-// 		}});
-
-// 		object.healthBar.dmgBarContainer.x = object.healthBar.outer.width * (object.hp/object.overallHP);
-// 		object.healthBar.inner.width = object.healthBar.outer.width * (object.hp/object.overallHP);
-// 	}
-
-// 	if(skillStatus){
-// 		skillStatusTarget.dmgContainer.dmgStatus.statusImageArray.forEach(dmgStatusImageItem =>{
-// 			dmgStatusImageItem.visible = false;
-// 		});
-// 		skillStatusTarget.dmgContainer.dmgStatus.statusTextArray.forEach(dmgStatusTextItem =>{
-// 			dmgStatusTextItem.visible = false;
-// 		});
-// 		defenderStatus.forEach((statusNumber, statusNumberIndex)=>{
-// 			var statusStored = false;
-// 			object.statusArray.forEach(statusElement =>{
-// 				if(statusElement[0] == statusNumber[0])	statusStored = true
-// 			});
-// 			if(!statusStored){
-// 				let newStatusEffect = statusEffectSprite(statusNumber[0]);				
-// 				newStatusEffect.visible = false;
-// 				object.healthBar.addChild(newStatusEffect);
-// 				object.statusSpriteArray.push(newStatusEffect);
-// 			}
-// 			object.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-// 			object.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;
-// 			updateDmgStatus(object.dmgContainer, statusNumber[0], statusNumberIndex);
-// 			object.statusArray.push(statusNumber);
-// 		});
-// 		resizeStatus(object);
-// 		attackerStatus.forEach((statusNumber, statusNumberIndex)=>{
-// 			var statusStored = false;
-// 			object.statusArray.forEach(statusElement =>{
-// 				if(statusElement[0] == statusNumber[0])	statusStored = true
-// 			});
-// 			if(!statusStored){
-// 				let newStatusEffect = statusEffectSprite(statusNumber[0]);
-// 				newStatusEffect.visible = false;
-// 				skillStatusTarget.healthBar.addChild(newStatusEffect);
-// 				skillStatusTarget.statusSpriteArray.push(newStatusEffect);
-// 			}
-// 			skillStatusTarget.dmgContainer.dmgStatus.statusImageArray[statusNumberIndex].visible = true;
-// 			skillStatusTarget.dmgContainer.dmgStatus.statusTextArray[statusNumberIndex].visible = true;			
-// 			updateDmgStatus(skillStatusTarget.dmgContainer, statusNumber[0], statusNumberIndex);			
-// 			skillStatusTarget.statusArray.push([statusNumber]);
-// 		});
-// 		resizeStatus(skillStatusTarget);
-// 	}
-
-// 	object.healthBar.textHP.text = object.hp + " / " + object.EHP;
-
-// 	dmgArray.forEach((dmgArrayNum, dmgArrayIndex) => {
-// 		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].visible = true;
-// 		object.dmgContainer.dmgPopup.dmgNumArray[dmgArrayIndex].text = dmgArrayNum;
-// 	});
-
-// 	object.dmgContainer.dmgPopup.tween.play(0);
-// }
 
 function calculateTurnOrder(){
 	turnNumber++;
@@ -7356,60 +7057,6 @@ function selectCreature(object2){
 				var statusDamage = Math.floor(selectedVita.EHP/16);
 				dmgTotal += statusDamage;
 			}
-			// if(dmgStatus[0] == 1){		//bleed
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#E3C2C2';
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#910A0A';
-			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-			// 	dmgTotal += statusDamage;
-			// }else if (dmgStatus[0] == 3){		//burn
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#ECCFC6';
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#B23F1B';
-			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-			// 	dmgTotal += statusDamage;
-			// 	// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = 10;
-			// 	// dmgTotal += 10;
-			// }else if (dmgStatus[0] == 5){		//depressed
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#CCCCCC';
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#353535';
-			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-			// 	dmgTotal += statusDamage;
-			// }else if (dmgStatus[0] == 9){		//poisoned
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DEC2ED';
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#7C0BB7';
-			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-			// 	dmgTotal += statusDamage;
-			// }else if (dmgStatus[0] == 10){		//recover
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#C6F1C5';
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#1BC617';
-			// 	var statusDamage = Math.floor(selectedVita.EHP/16);
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = statusDamage;
-			// 	dmgTotal += statusDamage;
-			// }else{			//hazard
-			// 	selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.stroke = '#222222';
-			// 	if(dmgStatus[2] == 0.25){
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#9D9D9D';
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-			// 	}else if(dmgStatus[2] == 0.5){
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFFFFF';
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-			// 	}else if(dmgStatus[2] == 2){
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#FFE81C';
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-			// 	}else if(dmgStatus[2] == 4){
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#DB00FF';
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-			// 	}else if(dmgStatus[2] == 0){
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].style.fill = '#D80000';
-			// 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].text = dmgStatus[1];
-			// 	}
-			// 	dmgTotal += dmgStatus[1];
-			// }
-			// selectedVita.dmgContainer.dmgPopup.dmgNumArray[dmgStatusIndex].visible = true;
-			// console.log("dmgStatusIndex: " + dmgStatusIndex);
 		});
 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[0].visible = true;
 		selectedVita.dmgContainer.dmgPopup.dmgNumArray[0].text = dmgTotal;
