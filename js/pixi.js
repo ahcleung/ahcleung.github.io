@@ -825,7 +825,7 @@ function setup(){
 		skillContainer.targetText = targetText;
 		skillContainer.targetText.visible = false;
 		
-		var skillElement = new PIXI.Sprite(elementTexture(skillList.data.skill[1].element));
+		var skillElement = new PIXI.Sprite(textureElement(skillList.data.skill[1].element));
 		// switch(skillList.data.skill[1].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -2470,7 +2470,7 @@ function setPos(item, index, array){
 	}	
 }
 
-function elementTexture(identifier){
+function textureElement(identifier){
 	switch(identifier){
 		case 1:
 			return resources.element_flora.texture;
@@ -2505,7 +2505,7 @@ function elementTexture(identifier){
 	}
 }
 
-function elementText(identifier){
+function textElement(identifier){
 	switch(identifier){
 		case 1:
 			return "Flora";
@@ -2540,8 +2540,7 @@ function elementText(identifier){
 	}
 }
 
-function textureResourceStatus(identifier){
-	// let statusEffectIcon;
+function textureStatus(identifier){
 	switch(identifier){
 		case 1:
 			return resources.status_bleed.texture;
@@ -2589,7 +2588,56 @@ function textureResourceStatus(identifier){
 			return resources.status_buff.texture;
 			
 	}
-	// return statusEffectIcon;
+}
+
+function textStatus(identifier){
+	switch(identifier){
+		case 1:
+			return "Bleed";
+			break;
+		case 2:
+			return "Buff";
+			break;
+		case 3:
+			return "Burned";
+			break;
+		case 4:
+			return "Debuff";
+			break;
+		case 5:
+			return "Depressed";
+			break;
+		case 6:
+			return "Guard";
+			break;
+		case 7:
+			return "Immune";
+			break;
+		case 8:
+			return "Paralyzed";
+			break;
+		case 9:
+			return "Poisoned";
+			break;
+		case 10:
+			return "Recover";
+			break;
+		case 11:
+			return "Secured";
+			break;
+		case 12:
+			return "Silenced";
+			break;
+		case 13:
+			return "Stunned";
+			break;
+		case 14:
+			return "Critical";
+			break;
+		default:
+			return "Buff";
+			
+	}
 }
 
 // function statusEffectSprite(identifier){
@@ -3103,7 +3151,7 @@ function createSprite(direction, item, index){
 	
 	creatureStatusInfoArray.forEach(status => {
 		// let statusEffect = statusEffectSprite(status);
-		let statusEffect = new PIXI.Sprite(textureResourceStatus(status));
+		let statusEffect = new PIXI.Sprite(textureStatus(status));
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
@@ -4354,8 +4402,8 @@ function onHPDown(){
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
-		creatureInfo.info_main_elementIcon[elementIndex].texture = elementTexture(element);
-		creatureInfo.info_main_element[elementIndex].text = elementText(element)
+		creatureInfo.info_main_elementIcon[elementIndex].texture = textureElement(element);
+		creatureInfo.info_main_element[elementIndex].text = textElement(element)
 		// switch(element){
 		// 	case 1:
 		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
@@ -4454,84 +4502,85 @@ function onHPDown(){
 		const statusContainer = new PIXI.Container();
 		var statusContainerText = [];
 		statusContainer.statusContainerText = statusContainerText;
-		let statusEffectIcon = new PIXI.Sprite(textureResourceStatus(statusNum));
-		let textStatus = new Text("Status", {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-		switch(statusNum){
-			case 1:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
-				textStatus.text = "Bleed";
-				console.log("Bleed:");
-				break;
-			case 2:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-				textStatus.text = "Buff";
-				console.log("Buff:");
-				break;
-			case 3:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
-				textStatus.text = "Burned";
-				console.log("Burned:");
-				break;
-			case 4:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
-				textStatus.text = "Debuff";
-				console.log("Debuff:");
-				break;
-			case 5:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
-				textStatus.text = "Depressed";
-				console.log("Depressed:");
-				break;
-			case 6:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
-				textStatus.text = "Guard";
-				console.log("Guard:");
-				break;
-			case 7:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
-				textStatus.text = "Immune";
-				console.log("Immune:");
-				break;
-			case 8:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
-				textStatus.text = "Paralyzed";
-				console.log("Paralyzed:");
-				break;
-			case 9:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
-				textStatus.text = "Poisoned";
-				console.log("Poisoned:");
-				break;
-			case 10:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
-				textStatus.text = "Recover";
-				console.log("Recover:");
-				break;
-			case 11:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-				textStatus.text = "Secured";
-				console.log("Secured:");
-				break;
-			case 12:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
-				textStatus.text = "Silenced";
-				console.log("Silenced:");
-				break;
-			case 13:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
-				textStatus.text = "Stunned";
-				console.log("Stunned:");
-				break;
-			case 14:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
-				textStatus.text = "Critical";
-				console.log("Critical:");
-				break;
-			default:
-				// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-				textStatus.text = "Buff";
-				console.log("Buff:");
-		}
+		let statusEffectIcon = new PIXI.Sprite(textureStatus(statusNum));
+		let textStatus = new Text(textStatus(statusNum), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+		console.log(textStatus(statusNum) + ":");
+		// switch(statusNum){
+		// 	case 1:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
+		// 		textStatus.text = "Bleed";
+		// 		console.log("Bleed:");
+		// 		break;
+		// 	case 2:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+		// 		textStatus.text = "Buff";
+		// 		console.log("Buff:");
+		// 		break;
+		// 	case 3:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
+		// 		textStatus.text = "Burned";
+		// 		console.log("Burned:");
+		// 		break;
+		// 	case 4:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
+		// 		textStatus.text = "Debuff";
+		// 		console.log("Debuff:");
+		// 		break;
+		// 	case 5:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
+		// 		textStatus.text = "Depressed";
+		// 		console.log("Depressed:");
+		// 		break;
+		// 	case 6:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
+		// 		textStatus.text = "Guard";
+		// 		console.log("Guard:");
+		// 		break;
+		// 	case 7:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
+		// 		textStatus.text = "Immune";
+		// 		console.log("Immune:");
+		// 		break;
+		// 	case 8:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
+		// 		textStatus.text = "Paralyzed";
+		// 		console.log("Paralyzed:");
+		// 		break;
+		// 	case 9:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
+		// 		textStatus.text = "Poisoned";
+		// 		console.log("Poisoned:");
+		// 		break;
+		// 	case 10:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
+		// 		textStatus.text = "Recover";
+		// 		console.log("Recover:");
+		// 		break;
+		// 	case 11:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
+		// 		textStatus.text = "Secured";
+		// 		console.log("Secured:");
+		// 		break;
+		// 	case 12:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
+		// 		textStatus.text = "Silenced";
+		// 		console.log("Silenced:");
+		// 		break;
+		// 	case 13:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
+		// 		textStatus.text = "Stunned";
+		// 		console.log("Stunned:");
+		// 		break;
+		// 	case 14:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
+		// 		textStatus.text = "Critical";
+		// 		console.log("Critical:");
+		// 		break;
+		// 	default:
+		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
+		// 		textStatus.text = "Buff";
+		// 		console.log("Buff:");
+		// }
 		statusIcon.push(statusEffectIcon);
 		statusContainer.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
@@ -4960,7 +5009,7 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
 
-		var skillElement = new PIXI.Sprite(elementTexture(skillList.data.skill[skill].element));
+		var skillElement = new PIXI.Sprite(textureElement(skillList.data.skill[skill].element));
 		// switch(skillList.data.skill[skill].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -6321,7 +6370,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(textureResourceStatus(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(textureStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);				
 							newStatusEffect.visible = false;
 							selectedVita.healthBar.addChild(newStatusEffect);
@@ -6340,7 +6389,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(textureResourceStatus(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(textureStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);
 							newStatusEffect.visible = false;
 							targeted.healthBar.addChild(newStatusEffect);
@@ -6516,7 +6565,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 					});
 
 					if(!statusStored){
-						let newStatusEffect = new PIXI.Sprite(textureResourceStatus(statusElement[0]));
+						let newStatusEffect = new PIXI.Sprite(textureStatus(statusElement[0]));
 						// let newStatusEffect = statusEffectSprite(statusElement[0]);
 						newStatusEffect.visible = false;
 						targeted.healthBar.addChild(newStatusEffect);
@@ -6835,95 +6884,96 @@ function moveCreature(movingCreature, displacement){
 }
 
 function updateDmgStatus(container, newStatus, newStatusIndex){
-	container.dmgStatus.statusImageArray[newStatusIndex].texture = textureResourceStatus(newStatus);
+	container.dmgStatus.statusImageArray[newStatusIndex].texture = textureStatus(newStatus);
+	container.dmgStatus.statusTextArray[newStatusIndex].text = textStatus(newStatus)
 	switch(newStatus){
 		case 1:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
 			break;
 		case 2:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 			break;
 		case 3:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
 			break;
 		case 4:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
 			break;
 		case 5:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
 			break;
 		case 6:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
 			break;
 		case 7:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
 			break;
 		case 8:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
 			break;
 		case 9:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
 			break;
 		case 10:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
 			break;
 		case 11:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
 			break;
 		case 12:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
 			break;
 		case 13:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
 			break;
 		case 14:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
 			break;
 		default:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
+			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 	}
@@ -7260,7 +7310,7 @@ function selectCreature(object2){
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		skillContainerArray[skillContainerIndex].visible = true;
-		skillContainerArray[skillContainerIndex].skillElement.texture = elementTexture(skillList.data.skill[skillID].element);
+		skillContainerArray[skillContainerIndex].skillElement.texture = textureElement(skillList.data.skill[skillID].element);
 		// switch(skillList.data.skill[skillID].element){
 		// 	case 1:
 		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
