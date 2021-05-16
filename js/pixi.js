@@ -4469,11 +4469,6 @@ function onHPDown(){
 	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
 	this.object.skill.forEach((skill,skillIndex) =>{
-		let skillName = new Text(skillList.data.skill[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-		skillName.anchor.set(0,0.5);
-		skillName.x = infoSkillWidth/6;
-		skillName.y = infoSkillHeight/3;
-
 		// creatureInfoSkill.addChild(skillName);
 		// skillText.push(skillName);
 
@@ -4493,15 +4488,10 @@ function onHPDown(){
 		.on('pointerdown', onInfoSkillDown);
 
 		skillRect.beginFill(0x222222).drawRect(0, 0, infoSkillWidth, infoSkillHeight);
-		// skillRect.x = 0;
-		// skillRect.y = 0;
-
 		skillContainer.addChild(skillRect);
 		skillContainer.rect = skillRect;
 
 		skillSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoSkillWidth, infoSkillHeight);
-		// skillSelectStroke.x = 0;
-		// skillSelectStroke.y = 0;
 		skillSelectFill.beginFill(0x222222).drawRect(0, 0, infoSkillWidth-skillSelectPadding*2, infoSkillHeight-skillSelectPadding*2);
 		skillSelectFill.x = skillSelectPadding;
 		skillSelectFill.y = skillSelectPadding;
@@ -4513,9 +4503,12 @@ function onHPDown(){
 
 		skillContainer.addChild(skillSelect);
 		skillContainer.selected = skillSelect;
-
 		skillContainer.selected.visible = false;
-		
+
+		let skillName = new Text(skillList.data.skill[skill].name, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+		skillName.anchor.set(0,0.5);
+		skillName.x = infoSkillWidth/6;
+		skillName.y = infoSkillHeight/3;
 		skillContainer.addChild(skillName);
 		skillContainer.skillName = skillName;
 
@@ -4676,40 +4669,7 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer.visible = false;
 
 		var skillElement = new PIXI.Sprite(getTextureElement(skillList.data.skill[skill].element));
-		// switch(skillList.data.skill[skill].element){
-		// 	case 1:
-		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-		// 		break;
-		// 	case 2:
-		// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
-		// 		break;
-		// 	case 3:
-		// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
-		// 		break;
-		// 	case 4:
-		// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
-		// 		break;
-		// 	case 5:
-		// 		skillElement = new PIXI.Sprite(resources.element_storm.texture);
-		// 		break;
-		// 	case 6:
-		// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
-		// 		break;
-		// 	case 7:
-		// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-		// 		break;
-		// 	case 8:
-		// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-		// 		break;
-		// 	case 9:
-		// 		skillElement = new PIXI.Sprite(resources.element_void.texture);
-		// 		break;
-		// 	default:
-		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-		// 		break;
-		// }
 		skillElement.anchor.set(0, 0.5);
-		// skillElement.scale.set(elementIconSize);
 		skillElement.width = infoSkillWidth/11;
 		skillElement.height = skillElement.width * 2.3;
 		skillElement.x = skillMargin;
@@ -4731,35 +4691,10 @@ function onHPDown(){
 	
 	infoSkillArray[0].selected.visible = true;
 
-	// creatureInfo.info_skill_text.forEach((text,textIndex) =>{
-	// 	text.style.fontSize = skillNameFontSize;
-	// 	if(textIndex%2 == 0 && textIndex<7){
-	// 		text.x = app.screen.width/10;
-	// 		text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-	// 		// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
-	// 	}else{
-	// 		// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
-	// 		text.x = app.screen.width/10 + 25;
-	// 		// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
-	// 		text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
-	// 	}
-	// });
-
 	creatureInfo.info_skill_text[1].text = (skillList.data.skill[this.object.skill[0]].power || "--");
-	// if(skillList.data.skill[this.object.skill[0]].power == 0){
-	// 	creatureInfo.info_skill_text[1].text = "--";
-	// }else{
-	// 	creatureInfo.info_skill_text[1].text = skillList.data.skill[this.object.skill[0]].power;
-	// }
 	creatureInfo.info_skill_text[3].text = (skillList.data.skill[this.object.skill[0]].accuracy || "--");
-	// if(skillList.data.skill[this.object.skill[0]].accuracy == 110){
-	// 	creatureInfo.info_skill_text[3].text = "--";
-	// }else{
-	// 	creatureInfo.info_skill_text[3].text = skillList.data.skill[this.object.skill[0]].accuracy;
-	// }
 	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.object.skill[0]].type;
 	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.object.skill[0]].description;
-	// creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
 	// creatureInfo.skillText = skillText;
 	creatureInfo.infoSkillArray = infoSkillArray;
