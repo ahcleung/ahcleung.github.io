@@ -825,7 +825,7 @@ function setup(){
 		skillContainer.targetText = targetText;
 		skillContainer.targetText.visible = false;
 		
-		var skillElement = new PIXI.Sprite(textureElement(skillList.data.skill[1].element));
+		var skillElement = new PIXI.Sprite(getTextureElement(skillList.data.skill[1].element));
 		// switch(skillList.data.skill[1].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -2470,7 +2470,7 @@ function setPos(item, index, array){
 	}	
 }
 
-function textureElement(identifier){
+function getTextureElement(identifier){
 	switch(identifier){
 		case 1:
 			return resources.element_flora.texture;
@@ -2505,7 +2505,7 @@ function textureElement(identifier){
 	}
 }
 
-function textElement(identifier){
+function getTextElement(identifier){
 	switch(identifier){
 		case 1:
 			return "Flora";
@@ -2540,7 +2540,7 @@ function textElement(identifier){
 	}
 }
 
-function textureStatus(identifier){
+function getTextureStatus(identifier){
 	switch(identifier){
 		case 1:
 			return resources.status_bleed.texture;
@@ -2590,7 +2590,7 @@ function textureStatus(identifier){
 	}
 }
 
-function textStatus(identifier){
+function getTextStatus(identifier){
 	switch(identifier){
 		case 1:
 			return "Bleed";
@@ -3128,7 +3128,7 @@ function createSprite(direction, item, index){
 	
 	creatureStatusInfoArray.forEach(status => {
 		// let statusEffect = statusEffectSprite(status);
-		let statusEffect = new PIXI.Sprite(textureStatus(status));
+		let statusEffect = new PIXI.Sprite(getTextureStatus(status));
 		healthBar.addChild(statusEffect);
 		item.statusSpriteArray.push(statusEffect);
 	});	
@@ -4315,8 +4315,8 @@ function onHPDown(){
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
-		creatureInfo.info_main_elementIcon[elementIndex].texture = textureElement(element);
-		creatureInfo.info_main_element[elementIndex].text = textElement(element)
+		creatureInfo.info_main_elementIcon[elementIndex].texture = getTextureElement(element);
+		creatureInfo.info_main_element[elementIndex].text = getTextElement(element)
 	});
 
 	var creatureStatusInfoArray = [];
@@ -4352,9 +4352,9 @@ function onHPDown(){
 		const statusContainer = new PIXI.Container();
 		var statusContainerText = [];
 		statusContainer.statusContainerText = statusContainerText;
-		let statusEffectIcon = new PIXI.Sprite(textureStatus(statusNum));
-		let textStatus = new Text(textStatus(statusNum), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
-		console.log(textStatus(statusNum) + ":");
+		let statusEffectIcon = new PIXI.Sprite(getTextureStatus(statusNum));
+		let textStatus = new Text(getTextStatus(statusNum), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
+		console.log(getTextStatus(statusNum) + ":");
 		statusIcon.push(statusEffectIcon);
 		statusContainer.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
@@ -4675,7 +4675,7 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
 
-		var skillElement = new PIXI.Sprite(textureElement(skillList.data.skill[skill].element));
+		var skillElement = new PIXI.Sprite(getTextureElement(skillList.data.skill[skill].element));
 		// switch(skillList.data.skill[skill].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -6036,7 +6036,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(textureStatus(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(getTextureStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);				
 							newStatusEffect.visible = false;
 							selectedVita.healthBar.addChild(newStatusEffect);
@@ -6055,7 +6055,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 						});
 
 						if(!statusStored){
-							let newStatusEffect = new PIXI.Sprite(textureStatus(newStatus[0]));
+							let newStatusEffect = new PIXI.Sprite(getTextureStatus(newStatus[0]));
 							// let newStatusEffect = statusEffectSprite(newStatus[0]);
 							newStatusEffect.visible = false;
 							targeted.healthBar.addChild(newStatusEffect);
@@ -6231,7 +6231,7 @@ function calculateDamage(attacker, defender, hitArray, dmgMod){
 					});
 
 					if(!statusStored){
-						let newStatusEffect = new PIXI.Sprite(textureStatus(statusElement[0]));
+						let newStatusEffect = new PIXI.Sprite(getTextureStatus(statusElement[0]));
 						// let newStatusEffect = statusEffectSprite(statusElement[0]);
 						newStatusEffect.visible = false;
 						targeted.healthBar.addChild(newStatusEffect);
@@ -6550,8 +6550,8 @@ function moveCreature(movingCreature, displacement){
 }
 
 function updateDmgStatus(container, newStatus, newStatusIndex){
-	container.dmgStatus.statusImageArray[newStatusIndex].texture = textureStatus(newStatus);
-	container.dmgStatus.statusTextArray[newStatusIndex].text = textStatus(newStatus)
+	container.dmgStatus.statusImageArray[newStatusIndex].texture = getTextureStatus(newStatus);
+	container.dmgStatus.statusTextArray[newStatusIndex].text = getTextStatus(newStatus)
 	switch(newStatus){
 		case 1:
 			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
@@ -6976,7 +6976,7 @@ function selectCreature(object2){
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		skillContainerArray[skillContainerIndex].visible = true;
-		skillContainerArray[skillContainerIndex].skillElement.texture = textureElement(skillList.data.skill[skillID].element);
+		skillContainerArray[skillContainerIndex].skillElement.texture = getTextureElement(skillList.data.skill[skillID].element);
 		// switch(skillList.data.skill[skillID].element){
 		// 	case 1:
 		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
