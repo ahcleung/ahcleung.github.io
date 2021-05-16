@@ -826,38 +826,7 @@ function setup(){
 		skillContainer.targetText.visible = false;
 		
 		var skillElement = new PIXI.Sprite(getTextureElement(skillList.data.skill[1].element));
-		// switch(skillList.data.skill[1].element){
-		// 	case 1:
-		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-		// 		break;
-		// 	case 2:
-		// 		skillElement = new PIXI.Sprite(resources.element_water.texture);
-		// 		break;
-		// 	case 3:
-		// 		skillElement = new PIXI.Sprite(resources.element_fire.texture);
-		// 		break;
-		// 	case 4:
-		// 		skillElement = new PIXI.Sprite(resources.element_earth.texture);
-		// 		break;
-		// 	case 5:
-		// 		skillElement = new PIXI.Sprite(resources.element_storm.texture);
-		// 		break;
-		// 	case 6:
-		// 		skillElement = new PIXI.Sprite(resources.element_wind.texture);
-		// 		break;
-		// 	case 7:
-		// 		skillElement = new PIXI.Sprite(resources.element_toxic.texture);
-		// 		break;
-		// 	case 8:
-		// 		skillElement = new PIXI.Sprite(resources.element_spirit.texture);
-		// 		break;
-		// 	case 9:
-		// 		skillElement = new PIXI.Sprite(resources.element_void.texture);
-		// 		break;
-		// 	default:
-		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
-		// 		break;
-		// }
+
 		skillElement.anchor.set(0, 0.5);
 		skillContainer.addChild(skillElement);
 		skillContainer.skillElement = skillElement;
