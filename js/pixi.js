@@ -2640,57 +2640,34 @@ function textStatus(identifier){
 	}
 }
 
-// function statusEffectSprite(identifier){
-// 	let statusEffectIcon;
-// 	switch(identifier){
-// 		case 1:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
-// 			break;
-// 		case 2:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-// 			break;
-// 		case 3:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
-// 			break;
-// 		case 4:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
-// 			break;
-// 		case 5:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
-// 			break;
-// 		case 6:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
-// 			break;
-// 		case 7:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
-// 			break;
-// 		case 8:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
-// 			break;
-// 		case 9:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
-// 			break;
-// 		case 10:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
-// 			break;
-// 		case 11:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-// 			break;
-// 		case 12:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
-// 			break;
-// 		case 13:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
-// 			break;
-// 		case 14:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
-// 			break;
-// 		default:
-// 			statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-			
-// 	}
-// 	return statusEffectIcon;
-// }
+function textStat(identifier){
+	switch(identifier){
+		case 1:
+			return "HP";
+			break;
+		case 2:
+			return "Dodge";
+			break;
+		case 3:
+			return "Physical attack";
+			break;
+		case 4:
+			return "Physical defense";
+			break;
+		case 5:
+			return "Special attack";
+			break;
+		case 6:
+			return "Special defense";
+			break;
+		case 7:
+			return "Speed";
+			break;
+		case 8:
+			return "Accuracy";
+			break;
+	}
+}
 
 function createSprite(direction, item, index){
 	console.log("ID: " + item.id + " |Size: " + item.size + " |Code: " + item.code + " |Position: " + item.pos + " |HP: " + item.hp + "/" + item.EHP + "|Vital: " + item.critDmg);
@@ -4597,33 +4574,33 @@ function onHPDown(){
 		this.object.statusArray.forEach((status,sIndex) =>{
 			if(status[0] == statusNum){
 				if(statusNum == 2){
-					var buffStat;
-					switch(status[2]+1){
-						case 1:
-							buffStat = "HP  +" + status[3];
-							break;
-						case 2:
-							buffStat = "Dodge  +" + status[3];
-							break;
-						case 3:
-							buffStat = "Physical attack  +" + status[3];
-							break;
-						case 4:
-							buffStat = "Physical defense  +" + status[3];
-							break;
-						case 5:
-							buffStat = "Special attack  +" + status[3];
-							break;
-						case 6:
-							buffStat = "Special defense  +" + status[3];
-							break;
-						case 7:
-							buffStat = "Speed  +" + status[3];
-							break;
-						case 8:
-							buffStat = "Accuracy  +" + status[3];
-							break;
-					}
+					var buffStat = textStat(status[2]+1) + "  +" + status[3];
+					// switch(status[2]+1){
+					// 	case 1:
+					// 		buffStat = "HP  +" + status[3];
+					// 		break;
+					// 	case 2:
+					// 		buffStat = "Dodge  +" + status[3];
+					// 		break;
+					// 	case 3:
+					// 		buffStat = "Physical attack  +" + status[3];
+					// 		break;
+					// 	case 4:
+					// 		buffStat = "Physical defense  +" + status[3];
+					// 		break;
+					// 	case 5:
+					// 		buffStat = "Special attack  +" + status[3];
+					// 		break;
+					// 	case 6:
+					// 		buffStat = "Special defense  +" + status[3];
+					// 		break;
+					// 	case 7:
+					// 		buffStat = "Speed  +" + status[3];
+					// 		break;
+					// 	case 8:
+					// 		buffStat = "Accuracy  +" + status[3];
+					// 		break;
+					// }
 					console.log(buffStat + " :: " + status[1]);
 					let textBuff = new Text(buffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
@@ -4678,33 +4655,33 @@ function onHPDown(){
 					textLevel++;
 				}
 				if(statusNum == 4){
-					var debuffStat;
-					switch(status[2]+1){
-						case 1:
-							debuffStat = "HP  " + status[3];
-							break;
-						case 2:
-							debuffStat = "Dodge  " + status[3];
-							break;
-						case 3:
-							debuffStat = "Physical attack  " + status[3];
-							break;
-						case 4:
-							debuffStat = "Physical defense  " + status[3];
-							break;
-						case 5:
-							debuffStat = "Special attack  " + status[3];
-							break;
-						case 6:
-							debuffStat = "Special defense  " + status[3];
-							break;
-						case 7:
-							debuffStat = "Speed  " + status[3];
-							break;
-						case 8:
-							debuffStat = "Accuracy  " + status[3];
-							break;
-					}
+					var debuffStat = textStat(status[2]+1) + "  " + status[3];
+					// switch(status[2]+1){
+					// 	case 1:
+					// 		debuffStat = "HP  " + status[3];
+					// 		break;
+					// 	case 2:
+					// 		debuffStat = "Dodge  " + status[3];
+					// 		break;
+					// 	case 3:
+					// 		debuffStat = "Physical attack  " + status[3];
+					// 		break;
+					// 	case 4:
+					// 		debuffStat = "Physical defense  " + status[3];
+					// 		break;
+					// 	case 5:
+					// 		debuffStat = "Special attack  " + status[3];
+					// 		break;
+					// 	case 6:
+					// 		debuffStat = "Special defense  " + status[3];
+					// 		break;
+					// 	case 7:
+					// 		debuffStat = "Speed  " + status[3];
+					// 		break;
+					// 	case 8:
+					// 		debuffStat = "Accuracy  " + status[3];
+					// 		break;
+					// }
 					let textDebuff = new Text(debuffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDebuff.x = statusMargin[0];
 					textDebuff.y = detailLevel*statusMargin[1];
