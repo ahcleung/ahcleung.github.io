@@ -3797,19 +3797,11 @@ function resizeHP(roster, item){
 	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 14
 										: app.screen.width < 1366 ? 18
 										: 24);
-	// if(app.screen.width < 860){
-	// 	item.healthBar.textHP.style.fontSize = 14;
-	// }else if(app.screen.width < 1366){
-	// 	item.healthBar.textHP.style.fontSize = 18;
-	// }else{
-	// 	item.healthBar.textHP.style.fontSize = 24;
-	// }
 	
 	turnText.position.set(app.screen.width/2, resizeHeight);
 
 	item.healthBar.outer.height = resizeHeight;
 	item.healthBar.inner.height = resizeHeight;
-
 	item.healthBar.critDmgBar.height = resizeHeight;
 	item.healthBar.dmgBarContainer.dmgBar.height = resizeHeight;
 	item.healthBar.outer.width = resizeWidth;
@@ -3904,38 +3896,13 @@ function resizeHP(roster, item){
 
 function resizeSprite(direction, item, index){
 	spriteScale = app.screen.width/3840;	
-	// if(app.screen.width < 860){
-	// 	spriteScale = 0.23;
-	// }else if(app.screen.width < 1366){
-	// 	spriteScale = 0.3;
-	// }else{
-	// 	spriteScale = 0.5;
-	// }
 	item.scale.set(direction * spriteScale, spriteScale);
-
 	item.x = (direction > 0 ? -spriteResizeXPosition[heroArray[index].pos-1] : spriteResizeXPosition[enemyArray[index].pos-1]);
-	// if(direction > 0){
-	// 	item.x = -spriteResizeXPosition[heroArray[index].pos-1];
-	// }else{
-	// 	item.x = spriteResizeXPosition[enemyArray[index].pos-1];
-	// }	
 }
 
 function resizeStatus(item){
 	var resizeHeight = app.screen.width/48;
-	var statusSpacing = app.screen.width/384;
-	
-	// if(app.screen.width < 860){
-	// 	resizeHeight = 20;
-	// 	statusSpacing = 2;
-	// }else if(app.screen.width < 1366){
-	// 	resizeHeight = 30;
-	// 	statusSpacing = 4;
-	// }else{
-	// 	resizeHeight = 40;
-	// 	statusSpacing = 5;
-	// }
-	
+	var statusSpacing = app.screen.width/384;	
 	if(item.size > 1){
 		item.statusSpriteArray.forEach((statusSprite, index) => {
 			statusSprite.width = (resizeWidth - (statusSpacing * 5))/4;
