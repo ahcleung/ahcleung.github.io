@@ -4500,11 +4500,6 @@ function onHPDown(){
 			let posMarker = new PIXI.Graphics();
 			var markerColour = (skillList.data.skill[skill].position[i] == 1 ? 0x66cc66 : 0x636363);
 			posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
-			// if(skillList.data.skill[skill].position[i] == 1){
-			// 	posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-			// }else{
-			// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-			// }
 			posMarker.x = 25 * i;
 			posMarker.pivot.set(0.5);
 			posMarker.angle = 45;
@@ -4556,11 +4551,6 @@ function onHPDown(){
 				let posMarker = new PIXI.Graphics();
 				var markerColour = (skillList.data.skill[skill].position[i] == 1 ? 0x66cc66 : 0x636363);
 				posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
-				// if(skillList.data.skill[skill].target[i] == 1){
-				// 	posMarker.beginFill(0x66cc66).drawRect(0, -w, w, w);
-				// }else{
-				// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				// }
 				posMarker.x = 25 * i;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
@@ -4572,19 +4562,7 @@ function onHPDown(){
 			var columnColour = (skillList.data.skill[skill]["column"][3] > 0 ? 0x66cc66 : 0xFF6961); 
 			var columnText = columnDirection + skillList.data.skill[skill]["column"][0];
 			let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
-			// if(skillList.data.skill[skill]["column"][2] > 0){
-			// 	columnText = "+ " + skillList.data.skill[skill]["column"][0];
-			// }else{
-			// 	columnText = "- " + skillList.data.skill[skill]["column"][0];
-			// }
-			// let targetText;
-			// if(skillList.data.skill[skill]["column"][3] > 0){					
-			// 	targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0x66cc66});
-			// }else{
-			// 	targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFF6961});
-			// }
-			targetText.anchor.set(0, 0.5);
-			// targetText.x =  (skillContainer.rect.width/6) + (skillContainer.markerContainer.width * 0.569);
+			targetText.anchor.set(0, 0.5);			
 			targetText.x = (infoSkillWidth/6) + ((infoSkillWidth*2/3) * 0.569);
 			targetText.y = infoSkillHeight*3/4;
 			skillContainer.addChild(targetText);
@@ -4594,12 +4572,6 @@ function onHPDown(){
 				let posMarker = new PIXI.Graphics();
 				var markerColour = (skillList.data.skill[skill].target[i] == 1 ? 0xFF6961 : 0x636363);
 				posMarker.beginFill(markerColour).drawRect(0, -w, w, w);
-
-				// if(skillList.data.skill[skill].target[i] == 1){
-				// 	posMarker.beginFill(0xFF6961).drawRect(0, -w, w, w);
-				// }else{
-				// 	posMarker.beginFill(0x636363).drawRect(0, -w, w, w);
-				// }
 				posMarker.x = 25 * i;
 				posMarker.pivot.set(0.5);
 				posMarker.angle = 45;
@@ -4671,11 +4643,6 @@ function onHPDown(){
 	////////////////////
 	//INFO ITEM
 	////////////////////
-	// creatureInfo.item.x = textOrigin[0];
-	// creatureInfo.item.y = textOrigin[1];
-	// var infoItemArray = [];
-	// var infoItemSprite = [];
-	// var infoItemBG = [];
 	var infoItemHeight = (app.screen.width/18)*2 + 10;
 	var infoItemWidth = infoItemHeight/2;
 
@@ -4693,7 +4660,6 @@ function onHPDown(){
 		creatureInfo.infoItemSprite[itemIndex].texture = resources[itemList.data.item[item].code].texture;
 		creatureInfo.infoItemArray[itemIndex].itemID = item;
 		creatureInfo.infoItemArray[itemIndex].interactive = true;
-
 		if(itemList.data.item[item].size == 2){
 			creatureInfo.infoItemSprite[itemIndex+1].texture = resources[itemList.data.item[item].code].texture;
 			const filter1 = new PIXI.filters.ColorMatrixFilter();
@@ -4711,110 +4677,15 @@ function onHPDown(){
 		itemContainer.selected.fill.height = infoItemHeight-skillSelectPadding*2;
 		itemContainer.selected.fill.x = skillSelectPadding;
 		itemContainer.selected.fill.y = skillSelectPadding;
-
 		itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
 	});
 
 	creatureInfo.infoItemSprite.forEach((spriteItem, spriteIndex)=>{
-		// spriteItem.texture = resources[itemList.data.item[item].code].texture;
 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
 		spriteItem.x = skillSelectPadding;
 		spriteItem.y = skillSelectPadding;
 	});
-
-
-	// this.object.item.forEach((item,itemIndex) =>{
-	// 	// if(itemList.data.item[item].size == 2){
-	// 	// 	infoItemWidth = infoItemHeight+10;
-	// 	// }
-		
-	// 	let itemRect = new PIXI.Graphics();
-	// 	let itemSelectFill = new PIXI.Graphics();
-	// 	let itemSelectStroke = new PIXI.Graphics();
-
-	// 	const itemContainer = new PIXI.Container();
-	// 	const itemSelect = new PIXI.Container();
-		
-	// 	// make the button interactive...
-	// 	itemContainer.itemID = item;
-	// 	itemContainer.buttonMode = true;
-	// 	itemContainer.interactive = true;
-	// 	itemContainer
-	// 	// set the mousedown and touchstart callback...
-	// 	.on('pointerdown', onInfoItemDown);
-
-	// 	itemRect.beginFill(0x222222).drawRect(0, 0, infoItemWidth, infoItemHeight);
-
-	// 	itemContainer.addChild(itemRect);
-	// 	itemContainer.rect = itemRect;
-
-	// 	itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
-	// 	itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
-	// 	itemSelectFill.x = skillSelectPadding;
-	// 	itemSelectFill.y = skillSelectPadding;
-
-	// 	itemSelect.addChild(itemSelectStroke);
-	// 	itemSelect.addChild(itemSelectFill);
-	// 	itemSelect.stroke = itemSelectStroke;
-	// 	itemSelect.fill = itemSelectFill;
-
-	// 	itemContainer.addChild(itemSelect);
-	// 	itemContainer.selected = itemSelect;
-
-	// 	let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-	// 	spriteItem.width = infoItemWidth-skillSelectPadding*2;
-	// 	spriteItem.height = infoItemHeight-skillSelectPadding*2;
-	// 	spriteItem.x = skillSelectPadding;
-	// 	spriteItem.y = skillSelectPadding;
-	// 	itemContainer.addChild(spriteItem);
-	// 	infoItemSprite.push(spriteItem);
-
-	// 	if(itemList.data.item[item].size == 2){
-	// 		infoItemBG[1].alpha = 0.2;
-	// 		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-
-	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
-	// 		filter1.desaturate();
-	// 		// filter1.greyscale(0.5);
-	// 		spriteItem.filters = [filter1];
-
-	// 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
-	// 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
-	// 		spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
-	// 		spriteItem.y = skillSelectPadding;
-	// 		// itemContainer.addChild(spriteItem);
-	// 		creatureInfo.item.addChild(spriteItem);
-	// 		infoItemSprite.push(spriteItem);
-	// 	}
-
-	// 	itemContainer.selected.visible = false;
-
-	// 	creatureInfo.item.addChild(itemContainer);
-
-	// 	itemContainer.x = (itemIndex%2 == 0 ? 0 : infoItemWidth + 10);
-	// 	// if(itemIndex%2 == 0){
-	// 	// 	itemContainer.x = 0;
-	// 	// 	// itemContainer.y = ((infoItemHeight+10)/2)*itemIndex;
-	// 	// }else{
-	// 	// 	itemContainer.x = infoItemWidth + 10;
-	// 	// 	// itemContainer.y = ((infoItemHeight+10)/2)*(itemIndex-1);
-	// 	// }
-
-	// 	infoItemArray.push(itemContainer);
-	// });
-	// infoItemArray[0].selected.visible = true;
-
-	// creatureInfo.info_item_text.forEach((text,textIndex) =>{
-	// 	text.style.fontSize = skillNameFontSize;
-	// 	if(textIndex%2 == 0 && textIndex<7){
-	// 		text.x = app.screen.width/10;
-	// 		text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-	// 	}else{
-	// 		text.x = app.screen.width/10 + 25;
-	// 		text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
-	// 	}
-	// });
 
 	creatureInfo.info_item_text[1].text = itemList.data.item[this.object.item[0]].name;
 	creatureInfo.info_item_text[3].text = itemList.data.item[this.object.item[0]].type;
