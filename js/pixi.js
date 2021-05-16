@@ -4216,7 +4216,7 @@ function onInfoDown(){
 		// });
 
 		creatureInfo.infoSkillArray.forEach(skillContainer=>{
-			skillContainer.destroy(true);
+			skillContainer.destroy();
 		});
 
 		creatureInfo.infoItemArray.forEach(itemContainer =>{
