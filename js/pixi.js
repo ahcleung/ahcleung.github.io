@@ -4372,7 +4372,7 @@ function onHPDown(){
 			if(status[0] == statusNum){
 				if(statusNum == 2){
 					var buffStat = textStat(status[2]+1) + "  +" + status[3];
-					console.log(buffStat + " :: " + status[1]);
+					console.log("	" + buffStat + " :: " + status[1]);
 					let textBuff = new Text(buffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
@@ -4414,7 +4414,7 @@ function onHPDown(){
 					statusContainerText.push(textDebuff);
 					detailLevel++;
 					textLevel++;
-					console.log(debuffStat + " :: " + status[1]);
+					console.log("	" + debuffStat + " :: " + status[1]);
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					textStatus.text += "  ::  " + status[1];
