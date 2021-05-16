@@ -825,7 +825,7 @@ function setup(){
 		skillContainer.targetText = targetText;
 		skillContainer.targetText.visible = false;
 		
-		var skillElement = new PIXI.Sprite(textureResourceElement(skillList.data.skill[1].element));
+		var skillElement = new PIXI.Sprite(elementTexture(skillList.data.skill[1].element));
 		// switch(skillList.data.skill[1].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -2470,37 +2470,72 @@ function setPos(item, index, array){
 	}	
 }
 
-function textureResourceElement(identifier, text = false){
+function elementTexture(identifier){
 	switch(identifier){
 		case 1:
-			return (text ? "Flora" : resources.element_flora.texture);
+			return resources.element_flora.texture;
 			break;
 		case 2:
-			return (text ? "Water" : resources.element_water.texture);
+			return resources.element_water.texture;
 			break;
 		case 3:
-			return (text ? "Fire" : resources.element_fire.texture);
+			return resources.element_fire.texture;
 			break;
 		case 4:
-			return (text ? "Earth" : resources.element_earth.texture);
+			return resources.element_earth.texture;
 			break;
 		case 5:
-			return (text ? "Storm" : resources.element_storm.texture);
+			return resources.element_storm.texture;
 			break;
 		case 6:
-			return (text ? "Wind" : resources.element_wind.texture);
+			return resources.element_wind.texture;
 			break;
 		case 7:
-			return (text ? "Toxic" : resources.element_toxic.texture);
+			return resources.element_toxic.texture;
 			break;
 		case 8:
-			return (text ? "Spirit" : resources.element_spirit.texture);
+			return resources.element_spirit.texture;
 			break;
 		case 9:
-			return (text ? "Void" : resources.element_void.texture);
+			return resources.element_void.texture;
 			break;
 		default:
-			return (text ? "Flora" : resources.element_flora.texture);
+			return resources.element_flora.texture;
+			break;
+	}
+}
+
+function elementText(identifier){
+	switch(identifier){
+		case 1:
+			return "Flora";
+			break;
+		case 2:
+			return "Water";
+			break;
+		case 3:
+			return "Fire";
+			break;
+		case 4:
+			return "Earth";
+			break;
+		case 5:
+			return "Storm";
+			break;
+		case 6:
+			return "Wind";
+			break;
+		case 7:
+			return "Toxic";
+			break;
+		case 8:
+			return "Spirit";
+			break;
+		case 9:
+			return "Void";
+			break;
+		default:
+			return "Flora";
 			break;
 	}
 }
@@ -4319,8 +4354,8 @@ function onHPDown(){
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
-		creatureInfo.info_main_elementIcon[elementIndex].texture = textureResourceElement(element);
-		creatureInfo.info_main_element[elementIndex].text = textureResourceElement(element, true);
+		creatureInfo.info_main_elementIcon[elementIndex].texture = elementTexture(element);
+		creatureInfo.info_main_element[elementIndex].text = elementText(element)
 		// switch(element){
 		// 	case 1:
 		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
@@ -4925,7 +4960,7 @@ function onHPDown(){
 		skillContainer.markerTargetTeamContainer = markerTargetTeamContainer;
 		skillContainer.markerTargetTeamContainer.visible = false;
 
-		var skillElement = new PIXI.Sprite(textureResourceElement(skillList.data.skill[skill].element));
+		var skillElement = new PIXI.Sprite(elementTexture(skillList.data.skill[skill].element));
 		// switch(skillList.data.skill[skill].element){
 		// 	case 1:
 		// 		skillElement = new PIXI.Sprite(resources.element_flora.texture);
@@ -7225,7 +7260,7 @@ function selectCreature(object2){
 	
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		skillContainerArray[skillContainerIndex].visible = true;
-		skillContainerArray[skillContainerIndex].skillElement.texture = textureResourceElement(skillList.data.skill[skillID].element);
+		skillContainerArray[skillContainerIndex].skillElement.texture = elementTexture(skillList.data.skill[skillID].element);
 		// switch(skillList.data.skill[skillID].element){
 		// 	case 1:
 		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
