@@ -4210,10 +4210,10 @@ function onInfoDown(){
 			textContainer.destroy(true);
 		});
 
-		creatureInfo.skillText.forEach(text=>{
-			console.log("destroy text");
-			text.destroy();
-		});
+		// creatureInfo.skillText.forEach(text=>{
+		// 	console.log("destroy text");
+		// 	text.destroy();
+		// });
 
 		creatureInfo.infoSkillArray.forEach(skillContainer=>{
 			skillContainer.destroy();
@@ -4287,18 +4287,8 @@ function onHPDown(){
 	// creatureInfo.addChild(armatureHero);
 	// const creatureInfoSprite = new PIXI.Container();
 
-	// var infoSpacer = app.screen.width/77;
-	// var infoBtnTextSize = 36;
 	var statusMargin = [app.screen.width/20,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
-	// var textOrigin = [app.screen.width/2,app.screen.height/6];
-	// var infoMainMargin = app.screen.height/20;
-	// var infoInnerMargin = app.screen.width/19.2;
-	// var infoSelectPadding = app.screen.width/384;
-
-	// infoBtnTextSize = (app.screen.width < 860 ? 16
-	// 					: app.screen.width < 1366 ? 26
-	// 					: 36);
 	
 	creatureInfoSprite.addChild(armatureHero);
 	creatureInfoSprite.scale.set(app.screen.width/3200);
@@ -4307,148 +4297,31 @@ function onHPDown(){
 	creatureInfoSprite.position.set((app.screen.width/4)+(creatureInfoSprite.width/2), app.screen.height*3/4);
 	creatureInfo.addChild(creatureInfoSprite);
 
-	creatureInfo.info_main_text[6].text = this.object.experienceGained + " / " + this.object.experienceNext;
-
-	// creatureInfo.info_main_text.forEach((text,textIndex) =>{
-	// 	text.style.fontSize = skillNameFontSize;
-	// 	if(textIndex < 5){
-	// 		text.x = (textIndex%2 == 0 ? app.screen.width/15 : app.screen.width/12);
-	// 		text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex-1) * infoMainMargin);
-	// 		// if(textIndex%2 == 0){
-	// 		// 	text.x = app.screen.width/15;
-	// 		// 	text.y = textIndex * infoMainMargin;
-	// 		// }else{
-	// 		// 	text.x = app.screen.width/12;
-	// 		// 	text.y = (textIndex-1) * infoMainMargin;
-	// 		// }
-	// 	}else{
-	// 		text.x = (textIndex%2 == 0 ? app.screen.width/12 : app.screen.width/15);
-	// 		text.y = (textIndex%2 == 0 ? textIndex * infoMainMargin : (textIndex+1) * infoMainMargin);
-	// 		// if(textIndex%2 == 0){
-	// 		// 	text.x = app.screen.width/12;
-	// 		// 	text.y = textIndex * infoMainMargin;
-	// 		// }else{
-	// 		// 	text.x = app.screen.width/15;
-	// 		// 	text.y = (textIndex+1) * infoMainMargin;
-	// 		// }
-	// 	}
-	// });
-
 	creatureInfo.info_main_text[1].text = this.object.name;
 	creatureInfo.info_main_text[3].text = this.object.level;
-	// creatureInfo.info_main_text[8].text = "It's dominant hand is encrusted with a rock-like formation that it uses as a shield and a weapon. The rock is bejeweled with spiritual gems.";
+	creatureInfo.info_main_text[6].text = this.object.experienceGained + " / " + this.object.experienceNext;
 	creatureInfo.info_main_text[8].text = creatureList.data.creature[this.object.id].desc;
-	// creatureInfo.info_main_text[8].style.wordWrapWidth = app.screen.width/3;
-	// creatureInfo.info_main_text[5].text = this.object.name;
-
-	// creatureInfo.info_main_elementIcon[0].x = app.screen.width/12;
-	// creatureInfo.info_main_elementIcon[0].y = 4.4*infoMainMargin;
-	// creatureInfo.info_main_elementIcon[1].x = app.screen.width/5;
-	// creatureInfo.info_main_elementIcon[1].y = 4.4*infoMainMargin;
-	// creatureInfo.info_main_elementIcon[0].scale.set(app.screen.height/2160);
-	// creatureInfo.info_main_elementIcon[1].scale.set(app.screen.height/2160);
+	
 	creatureInfo.info_main_elementIcon[0].visible = false;
 	creatureInfo.info_main_elementIcon[1].visible = false;
-
-	// creatureInfo.info_main_element[0].x = app.screen.width/12 + creatureInfo.info_main_elementIcon[0].width + 10;
-	// creatureInfo.info_main_element[0].y = 4*infoMainMargin;
-	// creatureInfo.info_main_element[1].x = app.screen.width/5 +  creatureInfo.info_main_elementIcon[1].width + 10;
-	// creatureInfo.info_main_element[1].y = 4*infoMainMargin;
 	creatureInfo.info_main_element[0].text = "";
 	creatureInfo.info_main_element[1].text = "";
-	// creatureInfo.info_main_element[0].style.fontSize = skillNameFontSize;
-	// creatureInfo.info_main_element[1].style.fontSize = skillNameFontSize;
 	creatureInfo.info_main_element[0].visible = false;
 	creatureInfo.info_main_element[1].visible = false;
 
-	// // creatureInfo.info_main_expBar[0].x = 100;
-	// creatureInfo.info_main_expBar[0].x = app.screen.width/12;
-	// creatureInfo.info_main_expBar[1].x = app.screen.width/12;
-	// creatureInfo.info_main_expBar[0].y = 6.8*infoMainMargin;
-	// creatureInfo.info_main_expBar[1].y = 6.8*infoMainMargin;
 	creatureInfo.info_main_expPercentage = this.object.experienceGained / this.object.experienceNext;
 	creatureInfo.info_main_expBar[0].width = creatureInfo.info_main_expPercentage * app.screen.width/3.84;
-	// creatureInfo.info_main_expBar[0].width = (this.object.experienceGained / this.object.experienceNext) * app.screen.width/3.84;
-	// creatureInfo.info_main_expBar[1].width = app.screen.width/3.84;
-	// creatureInfo.info_main_expBar[0].height = app.screen.height/75;
-	// creatureInfo.info_main_expBar[1].height = app.screen.height/75;
-	// // creatureInfo.info_main_expBar[1].x = 100;
-
-	// creatureInfo.info_main_expBar[1].y = 11.8*infoMainMargin;
-
+	
 	this.object.element.forEach((element, elementIndex) =>{
 		creatureInfo.info_main_element[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].visible = true;
 		creatureInfo.info_main_elementIcon[elementIndex].texture = textureElement(element);
 		creatureInfo.info_main_element[elementIndex].text = textElement(element)
-		// switch(element){
-		// 	case 1:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-		// 		break;
-		// 	case 2:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Water";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_water.texture;
-		// 		break;
-		// 	case 3:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Fire";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_fire.texture;
-		// 		break;
-		// 	case 4:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Earth";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_earth.texture;
-		// 		break;
-		// 	case 5:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Storm";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_storm.texture;
-		// 		break;
-		// 	case 6:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Wind";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_wind.texture;
-		// 		break;
-		// 	case 7:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Toxic";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_toxic.texture;
-		// 		break;
-		// 	case 8:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Spirit";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_spirit.texture;
-		// 		break;
-		// 	case 9:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Void";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_void.texture;
-		// 		break;
-		// 	default:
-		// 		creatureInfo.info_main_element[elementIndex].text = "Flora";
-		// 		// creatureInfo.info_main_elementIcon[elementIndex].texture = resources.element_flora.texture;
-		// }
 	});
-	
-	// infoBtnArray.forEach((btn, btnIndex)=>{
-	// 	btn.rect.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
-	// 	btn.rect.height = app.screen.height/14;
-	// 	btn.selected.stroke.width = (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6;
-	// 	btn.selected.stroke.height = app.screen.height/14;
-	// 	btn.selected.fill.width =  (app.screen.width - (2*healthMargin) - (2*infoInnerMargin) - (4*infoSpacer))/6 - (infoSelectPadding*2);
-	// 	btn.selected.fill.height = app.screen.height/14 - (infoSelectPadding*2);
-
-	// 	btn.infoBtnText.style.fontSize = infoBtnTextSize;
-
-	// 	btn.selected.fill.x = infoSelectPadding;
-	// 	btn.selected.fill.y = infoSelectPadding;
-
-	// 	btn.infoBtnText.x = btn.rect.width/2;
-	// 	btn.infoBtnText.y = btn.rect.height/2;
-	// 	btn.x = healthMargin + infoInnerMargin + (btn.rect.width + infoSpacer)*btnIndex;
-	// 	btn.y = app.screen.height*5/6;
-	// });
 
 	var creatureStatusInfoArray = [];
-	// const creatureInfoStatus = new PIXI.Container();
 	
 	creatureInfo.status.visible = false;
-	// creatureInfo.status.x = textOrigin[0];
-	// creatureInfo.status.y = textOrigin[1];
 
 	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
@@ -4482,82 +4355,6 @@ function onHPDown(){
 		let statusEffectIcon = new PIXI.Sprite(textureStatus(statusNum));
 		let textStatus = new Text(textStatus(statusNum), {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 		console.log(textStatus(statusNum) + ":");
-		// switch(statusNum){
-		// 	case 1:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_bleed.texture);
-		// 		textStatus.text = "Bleed";
-		// 		console.log("Bleed:");
-		// 		break;
-		// 	case 2:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-		// 		textStatus.text = "Buff";
-		// 		console.log("Buff:");
-		// 		break;
-		// 	case 3:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_burned.texture);
-		// 		textStatus.text = "Burned";
-		// 		console.log("Burned:");
-		// 		break;
-		// 	case 4:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_debuff.texture);
-		// 		textStatus.text = "Debuff";
-		// 		console.log("Debuff:");
-		// 		break;
-		// 	case 5:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_depressed.texture);
-		// 		textStatus.text = "Depressed";
-		// 		console.log("Depressed:");
-		// 		break;
-		// 	case 6:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_guard.texture);
-		// 		textStatus.text = "Guard";
-		// 		console.log("Guard:");
-		// 		break;
-		// 	case 7:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_immune.texture);
-		// 		textStatus.text = "Immune";
-		// 		console.log("Immune:");
-		// 		break;
-		// 	case 8:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_paralyzed.texture);
-		// 		textStatus.text = "Paralyzed";
-		// 		console.log("Paralyzed:");
-		// 		break;
-		// 	case 9:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_poisoned.texture);
-		// 		textStatus.text = "Poisoned";
-		// 		console.log("Poisoned:");
-		// 		break;
-		// 	case 10:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_recover.texture);
-		// 		textStatus.text = "Recover";
-		// 		console.log("Recover:");
-		// 		break;
-		// 	case 11:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_secured.texture);
-		// 		textStatus.text = "Secured";
-		// 		console.log("Secured:");
-		// 		break;
-		// 	case 12:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_silenced.texture);
-		// 		textStatus.text = "Silenced";
-		// 		console.log("Silenced:");
-		// 		break;
-		// 	case 13:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_stunned.texture);
-		// 		textStatus.text = "Stunned";
-		// 		console.log("Stunned:");
-		// 		break;
-		// 	case 14:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_critical.texture);
-		// 		textStatus.text = "Critical";
-		// 		console.log("Critical:");
-		// 		break;
-		// 	default:
-		// 		// statusEffectIcon = new PIXI.Sprite(resources.status_buff.texture);
-		// 		textStatus.text = "Buff";
-		// 		console.log("Buff:");
-		// }
 		statusIcon.push(statusEffectIcon);
 		statusContainer.addChild(statusEffectIcon);
 		statusEffectIcon.width = app.screen.width/38;
@@ -4575,46 +4372,13 @@ function onHPDown(){
 			if(status[0] == statusNum){
 				if(statusNum == 2){
 					var buffStat = textStat(status[2]+1) + "  +" + status[3];
-					// switch(status[2]+1){
-					// 	case 1:
-					// 		buffStat = "HP  +" + status[3];
-					// 		break;
-					// 	case 2:
-					// 		buffStat = "Dodge  +" + status[3];
-					// 		break;
-					// 	case 3:
-					// 		buffStat = "Physical attack  +" + status[3];
-					// 		break;
-					// 	case 4:
-					// 		buffStat = "Physical defense  +" + status[3];
-					// 		break;
-					// 	case 5:
-					// 		buffStat = "Special attack  +" + status[3];
-					// 		break;
-					// 	case 6:
-					// 		buffStat = "Special defense  +" + status[3];
-					// 		break;
-					// 	case 7:
-					// 		buffStat = "Speed  +" + status[3];
-					// 		break;
-					// 	case 8:
-					// 		buffStat = "Accuracy  +" + status[3];
-					// 		break;
-					// }
 					console.log(buffStat + " :: " + status[1]);
 					let textBuff = new Text(buffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textBuff.x = statusMargin[0];
 					textBuff.y = detailLevel*statusMargin[1];
 					textBuff.anchor.set(0,0.5);
-					// let textBuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					// textBuffTurn.x = statusMargin[0] + turnMargin + textBuff.width;
-					// textBuffTurn.y = detailLevel*statusMargin[1];
-					// textBuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textBuff);
 					statusContainerText.push(textBuff);
-					// statusText.push(textBuff);
-					// statusContainer.addChild(textBuffTurn);
-					// statusText.push(textBuffTurn);
 					detailLevel++;
 					textLevel++;
 				}
@@ -4623,16 +4387,9 @@ function onHPDown(){
 					textDamageStatus.x = statusMargin[0];
 					textDamageStatus.y = detailLevel*statusMargin[1];
 					textDamageStatus.anchor.set(0,0.5);
-					// let textDamageStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					// textDamageStatusTurn.x = statusMargin[0] + turnMargin + textDamageStatus.width;
-					// textDamageStatusTurn.y = detailLevel*statusMargin[1];
-					// textDamageStatusTurn.anchor.set(0,0.5);
 					console.log("	" + this.object.EHP/16 + " :: " + status[1]);
 					statusContainer.addChild(textDamageStatus);
 					statusContainerText.push(textDamageStatus);
-					// statusText.push(textDamageStatus);
-					// statusContainer.addChild(textDamageStatusTurn);
-					// statusText.push(textDamageStatusTurn);
 					detailLevel++;
 					textLevel++;
 				}
@@ -4641,72 +4398,26 @@ function onHPDown(){
 					textHealStatus.x = statusMargin[0];
 					textHealStatus.y = detailLevel*statusMargin[1];
 					textHealStatus.anchor.set(0,0.5);
-					// let textHealStatusTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					// textHealStatusTurn.x = statusMargin[0] + turnMargin + textHealStatus.width;
-					// textHealStatusTurn.y = detailLevel*statusMargin[1];
-					// textHealStatusTurn.anchor.set(0,0.5);
 					console.log("	Heal " + Math.floor(this.object.EHP/16) + " per turn :: " + status[1]);
 					statusContainer.addChild(textHealStatus);
 					statusContainerText.push(textHealStatus);
-					// statusText.push(textHealStatus);
-					// statusContainer.addChild(textHealStatusTurn);
-					// statusText.push(textHealStatusTurn);
 					detailLevel++;
 					textLevel++;
 				}
 				if(statusNum == 4){
 					var debuffStat = textStat(status[2]+1) + "  " + status[3];
-					// switch(status[2]+1){
-					// 	case 1:
-					// 		debuffStat = "HP  " + status[3];
-					// 		break;
-					// 	case 2:
-					// 		debuffStat = "Dodge  " + status[3];
-					// 		break;
-					// 	case 3:
-					// 		debuffStat = "Physical attack  " + status[3];
-					// 		break;
-					// 	case 4:
-					// 		debuffStat = "Physical defense  " + status[3];
-					// 		break;
-					// 	case 5:
-					// 		debuffStat = "Special attack  " + status[3];
-					// 		break;
-					// 	case 6:
-					// 		debuffStat = "Special defense  " + status[3];
-					// 		break;
-					// 	case 7:
-					// 		debuffStat = "Speed  " + status[3];
-					// 		break;
-					// 	case 8:
-					// 		debuffStat = "Accuracy  " + status[3];
-					// 		break;
-					// }
 					let textDebuff = new Text(debuffStat + "  ::  " + status[1], {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xfefefe, align : 'left'});
 					textDebuff.x = statusMargin[0];
 					textDebuff.y = detailLevel*statusMargin[1];
 					textDebuff.anchor.set(0,0.5);
-					// let textDebuffTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					// textDebuffTurn.x = statusMargin[0] + turnMargin + textDebuff.width;
-					// textDebuffTurn.y = detailLevel*statusMargin[1];
-					// textDebuffTurn.anchor.set(0,0.5);
 					statusContainer.addChild(textDebuff);
 					statusContainerText.push(textDebuff);
-					// statusText.push(textDebuff);
-					// statusContainer.addChild(textDebuffTurn);
-					// statusText.push(textDebuffTurn);
 					detailLevel++;
 					textLevel++;
 					console.log(debuffStat + " :: " + status[1]);
 				}
 				if(statusNum == 6 || statusNum == 7 || statusNum == 8 || statusNum == 11 || statusNum == 12 || statusNum == 13){
 					textStatus.text += "  ::  " + status[1];
-					// let textTurn = new Text("[" + status[1] + "]" , {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : 0xFFD600, align : 'left'});
-					// textTurn.x = (turnMargin*2) + textStatus.width + statusEffectIcon.width;
-					// textTurn.y = (detailLevel-1)*statusMargin[1];
-					// textTurn.anchor.set(0,0.5);
-					// statusContainer.addChild(textTurn);
-					// statusText.push(textTurn);
 					console.log("	:: " + status[1]);
 				}
 				if(statusNum == 14){
@@ -4737,9 +4448,6 @@ function onHPDown(){
 			textLevelTracker = textLevel;
 		}
 
-		// creatureInfo.status.addChild(statusContainer);
-		// statusContainer.x = statusXAdjust*((app.screen.width - (2*infoInnerMargin))/4);
-		// statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 		statusContainer.y = statusMargin[1]*(textLevel-detailLevel-statusYAdjust);
 		statusText.push(statusContainer);
 		creatureInfo.status.pages[creatureInfo.status.pages.length-1].addChild(statusContainer);
@@ -4750,32 +4458,13 @@ function onHPDown(){
 
 	creatureInfo.status.arrowDown.interactive = (creatureInfo.status.pages.length > 1 ? true : false);
 	creatureInfo.status.arrowDown.texture = (creatureInfo.status.pages.length > 1 ? resources.arrow_down_n.texture : resources.arrow_down_d.texture);
-	// if(creatureInfo.status.pages.length>1){
-	// 	creatureInfo.status.arrowDown.interactive = true;
-	// 	creatureInfo.status.arrowDown.texture = resources.arrow_down_n.texture;
-	// }else{
-	// 	creatureInfo.status.arrowDown.interactive = false;
-	// 	creatureInfo.status.arrowDown.texture = resources.arrow_down_d.texture;
-	// }
-	
-	// creatureInfo.status.arrowUp.scale.set(app.screen.width/2160);
-	// creatureInfo.status.arrowDown.scale.set(app.screen.width/2160);
-	// creatureInfo.status.arrowUp.x = app.screen.width/3;
-	// creatureInfo.status.arrowUp.y = (app.screen.height*2/5)-textOrigin[1];
-	// creatureInfo.status.arrowDown.x = app.screen.width/3;
-	// creatureInfo.status.arrowDown.y = (app.screen.height*3/5)-textOrigin[1];
-
 	creatureInfo.statusIcon = statusIcon;
 	creatureInfo.statusText = statusText;
-	// var creatureInfoSkill = new PIXI.Container();
-
+	
 	////////////////////
 	//INFO SKILL
 	////////////////////
-	// creatureInfo.skill.x = textOrigin[0];
-	// creatureInfo.skill.y = textOrigin[1];
-
-	var skillText = [];
+	// var skillText = [];
 	var infoSkillArray = [];
 	var infoSkillWidth = app.screen.width/4.5;
 	var infoSkillHeight = infoSkillWidth/4;
@@ -5072,7 +4761,7 @@ function onHPDown(){
 	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.object.skill[0]].description;
 	// creatureInfo.info_skill_text[7].style.wordWrapWidth = app.screen.width/3.5;
 
-	creatureInfo.skillText = skillText;
+	// creatureInfo.skillText = skillText;
 	creatureInfo.infoSkillArray = infoSkillArray;
 
 	////////////////////
