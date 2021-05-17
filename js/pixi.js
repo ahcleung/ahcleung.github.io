@@ -3108,12 +3108,20 @@ function createSprite(direction, item, index){
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
-	const select = new PIXI.Container();
+	const select = indicatorBar(0xFFD600);
 	const target = new PIXI.Container();
 	const heal = new PIXI.Container();
 	const move = new PIXI.Container();
+
+	var selectTween = new TimelineMax({paused:true, repeat:-1});
+	select.animate = selectTween;
+
+	healthBar.addChild(select);
+	healthBar.select = select;
+	healthBar.select.visible = false;
+	healthBar.healthBarIndicators.push(select);
 	
-	for(var i = 0; i < 4; i++){
+	for(var i = 1; i < 4; i++){
 		var colour;
 		if(i == 0){
 			//Select
@@ -3230,6 +3238,42 @@ function createSprite(direction, item, index){
 	item.healthBar = healthBar;
 	item.sprite = creatureContainer;
 	item.action = creatureAction;
+}
+
+function indicatorBar(colour){
+	const indicatorContainer = new PIXI.Container();
+	let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
+
+	indicatorEnd = new PIXI.Graphics();
+	indicatorEnd.beginFill(colour);
+	indicatorEnd.drawRect(0, 0, 4, 18);
+	indicatorEnd.endFill();
+
+	indicatorStart = new PIXI.Graphics();
+	indicatorStart.beginFill(colour);
+	indicatorStart.drawRect(0, 0, 4, 18);
+	indicatorStart.endFill();
+
+	indicatorBar1 = new PIXI.Graphics();
+	indicatorBar1.beginFill(colour);
+	indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	indicatorBar1.endFill();
+
+	indicatorBar2 = new PIXI.Graphics();
+	indicatorBar2.beginFill(colour);
+	indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	indicatorBar2.endFill();
+
+	indicatorContainer.addChild(indicatorEnd);
+	indicatorContainer.indicatorEnd = indicatorEnd;
+	indicatorContainer.addChild(indicatorStart);
+	indicatorContainer.indicatorStart = indicatorStart;
+	indicatorContainer.addChild(indicatorBar1);
+	indicatorContainer.indicatorBar1 = indicatorBar1;
+	indicatorContainer.addChild(indicatorBar2);
+	indicatorContainer.indicatorBar2 = indicatorBar2;
+
+	return indicatorContainer;
 }
 
 // Resize function window
