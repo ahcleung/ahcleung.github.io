@@ -3118,7 +3118,7 @@ function createSprite(direction, item, index){
 
 	healthBar.addChild(select);
 	healthBar.select = select;
-	healthBar.select.visible = false;
+	// healthBar.select.visible = false;
 	healthBar.healthBarIndicators.push(select);
 	
 	for(var i = 1; i < 4; i++){
@@ -3273,6 +3273,7 @@ function indicatorBar(colour){
 	indicatorContainer.addChild(indicatorBar2);
 	indicatorContainer.indicatorBar2 = indicatorBar2;
 
+	indicatorContainer.visible = false;
 	return indicatorContainer;
 }
 
