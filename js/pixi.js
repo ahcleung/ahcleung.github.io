@@ -3109,7 +3109,7 @@ function createSprite(direction, item, index){
 	healthBar.textHP = textHP;
 
 	const select = indicatorBar(0xFFD600);
-	const target = new PIXI.Container();
+	const target = indicatorBar(0xFF392F);
 	const heal = new PIXI.Container();
 	const move = new PIXI.Container();
 
@@ -3120,8 +3120,12 @@ function createSprite(direction, item, index){
 	healthBar.select = select;
 	// healthBar.select.visible = false;
 	healthBar.healthBarIndicators.push(select);
+	healthBar.addChild(target);
+	healthBar.target = target;
+	// healthBar.target.visible = false;
+	healthBar.healthBarIndicators.push(target);
 	
-	for(var i = 1; i < 4; i++){
+	for(var i = 2; i < 4; i++){
 		var colour;
 		if(i == 0){
 			//Select
