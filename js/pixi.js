@@ -3110,124 +3110,132 @@ function createSprite(direction, item, index){
 
 	const select = indicatorBar(0xFFD600);
 	const target = indicatorBar(0xFF392F);
-	const heal = new PIXI.Container();
-	const move = new PIXI.Container();
+	const heal = indicatorBar(0x28F828);
+	const move = indicatorBar(0x6ee4ff);
 
 	var selectTween = new TimelineMax({paused:true, repeat:-1});
 	select.animate = selectTween;
-
 	healthBar.addChild(select);
 	healthBar.select = select;
-	// healthBar.select.visible = false;
 	healthBar.healthBarIndicators.push(select);
+	
 	healthBar.addChild(target);
 	healthBar.target = target;
-	// healthBar.target.visible = false;
 	healthBar.healthBarIndicators.push(target);
+
+	var healTween = new TimelineMax({paused:true, repeat:-1});
+	heal.animate = healTween;
+	healthBar.addChild(heal);
+	healthBar.heal = heal;
+	healthBar.healthBarIndicators.push(heal);
+
+	healthBar.addChild(move);
+	healthBar.move = move;
+	healthBar.healthBarIndicators.push(move);
 	
-	for(var i = 2; i < 4; i++){
-		var colour;
-		if(i == 0){
-			//Select
-			colour = 0xFFD600;		
-		}else if(i == 1){
-			//Target
-			colour = 0xFF392F;
-		}else if(i == 2){
-			//Heal
-			colour = 0x28F828;
-		}else if(i == 3){
-			//Move
-			colour = 0x6ee4ff;
-		}
-		let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
+	// for(var i = 5; i < 4; i++){
+	// 	var colour;
+	// 	if(i == 0){
+	// 		//Select
+	// 		colour = 0xFFD600;		
+	// 	}else if(i == 1){
+	// 		//Target
+	// 		colour = 0xFF392F;
+	// 	}else if(i == 2){
+	// 		//Heal
+	// 		colour = 0x28F828;
+	// 	}else if(i == 3){
+	// 		//Move
+	// 		colour = 0x6ee4ff;
+	// 	}
+	// 	let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
 
-		indicatorEnd = new PIXI.Graphics();
-		indicatorEnd.beginFill(colour);
-		indicatorEnd.drawRect(0, 0, 4, 18);
-		indicatorEnd.endFill();
+	// 	indicatorEnd = new PIXI.Graphics();
+	// 	indicatorEnd.beginFill(colour);
+	// 	indicatorEnd.drawRect(0, 0, 4, 18);
+	// 	indicatorEnd.endFill();
 
-		indicatorStart = new PIXI.Graphics();
-		indicatorStart.beginFill(colour);
-		indicatorStart.drawRect(0, 0, 4, 18);
-		indicatorStart.endFill();
+	// 	indicatorStart = new PIXI.Graphics();
+	// 	indicatorStart.beginFill(colour);
+	// 	indicatorStart.drawRect(0, 0, 4, 18);
+	// 	indicatorStart.endFill();
 
-		indicatorBar1 = new PIXI.Graphics();
-		indicatorBar1.beginFill(colour);
-		indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-		indicatorBar1.endFill();
+	// 	indicatorBar1 = new PIXI.Graphics();
+	// 	indicatorBar1.beginFill(colour);
+	// 	indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
+	// 	indicatorBar1.endFill();
 
-		indicatorBar2 = new PIXI.Graphics();
-		indicatorBar2.beginFill(colour);
-		indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-		indicatorBar2.endFill();
+	// 	indicatorBar2 = new PIXI.Graphics();
+	// 	indicatorBar2.beginFill(colour);
+	// 	indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
+	// 	indicatorBar2.endFill();
 
-		if(i == 0){
-			//Select
-			select.addChild(indicatorEnd);
-			select.indicatorEnd = indicatorEnd;
-			select.addChild(indicatorStart);
-			select.indicatorStart = indicatorStart;
-			select.addChild(indicatorBar1);
-			select.indicatorBar1 = indicatorBar1;
-			select.addChild(indicatorBar2);
-			select.indicatorBar2 = indicatorBar2;
+	// 	if(i == 0){
+	// 		//Select
+	// 		select.addChild(indicatorEnd);
+	// 		select.indicatorEnd = indicatorEnd;
+	// 		select.addChild(indicatorStart);
+	// 		select.indicatorStart = indicatorStart;
+	// 		select.addChild(indicatorBar1);
+	// 		select.indicatorBar1 = indicatorBar1;
+	// 		select.addChild(indicatorBar2);
+	// 		select.indicatorBar2 = indicatorBar2;
 
-			var selectTween = new TimelineMax({paused:true, repeat:-1});
-			select.animate = selectTween;
+	// 		var selectTween = new TimelineMax({paused:true, repeat:-1});
+	// 		select.animate = selectTween;
 
-			healthBar.addChild(select);
-			healthBar.select = select;
-			healthBar.select.visible = false;
-			healthBar.healthBarIndicators.push(select);
-		}else if(i == 1){
-			//Target
-			target.addChild(indicatorEnd);
-			target.indicatorEnd = indicatorEnd;
-			target.addChild(indicatorStart);
-			target.indicatorStart = indicatorStart;
-			target.addChild(indicatorBar1);
-			target.indicatorBar1 = indicatorBar1;
-			target.addChild(indicatorBar2);
-			target.indicatorBar2 = indicatorBar2;
-			healthBar.addChild(target);
-			healthBar.target = target;
-			healthBar.target.visible = false;
-			healthBar.healthBarIndicators.push(target);
-		}else if(i == 2){
-			//Heal
-			heal.addChild(indicatorEnd);
-			heal.indicatorEnd = indicatorEnd;
-			heal.addChild(indicatorStart);
-			heal.indicatorStart = indicatorStart;
-			heal.addChild(indicatorBar1);
-			heal.indicatorBar1 = indicatorBar1;
-			heal.addChild(indicatorBar2);
-			heal.indicatorBar2 = indicatorBar2;
+	// 		healthBar.addChild(select);
+	// 		healthBar.select = select;
+	// 		healthBar.select.visible = false;
+	// 		healthBar.healthBarIndicators.push(select);
+	// 	}else if(i == 1){
+	// 		//Target
+	// 		target.addChild(indicatorEnd);
+	// 		target.indicatorEnd = indicatorEnd;
+	// 		target.addChild(indicatorStart);
+	// 		target.indicatorStart = indicatorStart;
+	// 		target.addChild(indicatorBar1);
+	// 		target.indicatorBar1 = indicatorBar1;
+	// 		target.addChild(indicatorBar2);
+	// 		target.indicatorBar2 = indicatorBar2;
+	// 		healthBar.addChild(target);
+	// 		healthBar.target = target;
+	// 		healthBar.target.visible = false;
+	// 		healthBar.healthBarIndicators.push(target);
+	// 	}else if(i == 2){
+	// 		//Heal
+	// 		heal.addChild(indicatorEnd);
+	// 		heal.indicatorEnd = indicatorEnd;
+	// 		heal.addChild(indicatorStart);
+	// 		heal.indicatorStart = indicatorStart;
+	// 		heal.addChild(indicatorBar1);
+	// 		heal.indicatorBar1 = indicatorBar1;
+	// 		heal.addChild(indicatorBar2);
+	// 		heal.indicatorBar2 = indicatorBar2;
 
-			var healTween = new TimelineMax({paused:true, repeat:-1});
-			heal.animate = healTween;
+	// 		var healTween = new TimelineMax({paused:true, repeat:-1});
+	// 		heal.animate = healTween;
 
-			healthBar.addChild(heal);
-			healthBar.heal = heal;
-			healthBar.heal.visible = false;
-			healthBar.healthBarIndicators.push(heal);
-		}else if(i == 3){
-			//Move
-			move.addChild(indicatorEnd);
-			move.indicatorEnd = indicatorEnd;
-			move.addChild(indicatorStart);
-			move.indicatorStart = indicatorStart;
-			move.addChild(indicatorBar1);
-			move.indicatorBar1 = indicatorBar1;
-			move.addChild(indicatorBar2);
-			move.indicatorBar2 = indicatorBar2;
-			healthBar.addChild(move);
-			healthBar.move = move;
-			healthBar.move.visible = false;
-			healthBar.healthBarIndicators.push(move);
-		}
-	}
+	// 		healthBar.addChild(heal);
+	// 		healthBar.heal = heal;
+	// 		healthBar.heal.visible = false;
+	// 		healthBar.healthBarIndicators.push(heal);
+	// 	}else if(i == 3){
+	// 		//Move
+	// 		move.addChild(indicatorEnd);
+	// 		move.indicatorEnd = indicatorEnd;
+	// 		move.addChild(indicatorStart);
+	// 		move.indicatorStart = indicatorStart;
+	// 		move.addChild(indicatorBar1);
+	// 		move.indicatorBar1 = indicatorBar1;
+	// 		move.addChild(indicatorBar2);
+	// 		move.indicatorBar2 = indicatorBar2;
+	// 		healthBar.addChild(move);
+	// 		healthBar.move = move;
+	// 		healthBar.move.visible = false;
+	// 		healthBar.healthBarIndicators.push(move);
+	// 	}
+	// }
 	
 	if(direction > 0){
 		heroSprites.addChild(creatureContainer);
