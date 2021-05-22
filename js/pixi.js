@@ -988,34 +988,10 @@ function setup(){
 	let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Level:");
 	let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, 1);
 	let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Element:");
-	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_name1.anchor.set(1,0);
-	// info_main_text.push(info_main_name1);
-	// creatureInfoMain.addChild(info_main_name1);
-	// let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_text.push(info_main_name2);
-	// creatureInfoMain.addChild(info_main_name2);
-	// let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_level1.anchor.set(1,0);
-	// info_main_text.push(info_main_level1);
-	// creatureInfoMain.addChild(info_main_level1);
-	// let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_text.push(info_main_level2);
-	// creatureInfoMain.addChild(info_main_level2);
-	// let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_element1.anchor.set(1,0);
-	// info_main_text.push(info_main_element1);
-	// creatureInfoMain.addChild(info_main_element1);
 
 	var info_main_element = [];
 	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, 1);
 	let info_main_element3 = infoTextObject(info_main_element, creatureInfoMain, 1);
-	// let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_element.push(info_main_element2);
-	// creatureInfoMain.addChild(info_main_element2);
-	// let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_element.push(info_main_element3);
-	// creatureInfoMain.addChild(info_main_element3);
 
 	creatureInfo.info_main_text = info_main_text;
 	creatureInfo.info_main_element = info_main_element;
@@ -1038,13 +1014,6 @@ function setup(){
 
 	let info_main_exp1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Experience:");
 	let info_main_exp2 = infoTextObject(info_main_text, creatureInfoMain, 1);
-	// var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_exp1.anchor.set(1,0);
-	// info_main_text.push(info_main_exp1);
-	// creatureInfoMain.addChild(info_main_exp1);
-	// var info_main_exp2 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_text.push(info_main_exp2);
-	// creatureInfoMain.addChild(info_main_exp2);
 	var info_main_expBar = [];
 	let expBarGained = new PIXI.Graphics();
 	expBarGained.beginFill(0x66cc66).drawRect(0, 0, 100, 50);
@@ -1063,14 +1032,6 @@ function setup(){
 
 	let info_main_desc1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Description:");
 	let info_main_desc2 = infoTextObject(info_main_text, creatureInfoMain, 3);
-
-	// let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_desc1.anchor.set(1,0);
-	// info_main_text.push(info_main_desc1);
-	// creatureInfoMain.addChild(info_main_desc1);
-	// let info_main_desc2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
-	// info_main_text.push(info_main_desc2);
-	// creatureInfoMain.addChild(info_main_desc2);
 
 	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_d.texture);				//Button additional
 	btnStatusUp.anchor.set(0,0.5);
@@ -1100,34 +1061,6 @@ function setup(){
 	let info_skill_type2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
 	let info_skill_des1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Description:");
 	let info_skill_des2 = infoTextObject(info_skill_text, creatureInfoSkill, 3);
-	// var info_skill_power1 = new Text("Power:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_skill_power1.anchor.set(1,0);
-	// info_skill_text.push(info_skill_power1);
-	// creatureInfoSkill.addChild(info_skill_power1);
-	// var info_skill_power2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_skill_text.push(info_skill_power2);
-	// creatureInfoSkill.addChild(info_skill_power2);
-	// var info_skill_acc1 = new Text("Accuracy:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_skill_acc1.anchor.set(1,0);
-	// info_skill_text.push(info_skill_acc1);
-	// creatureInfoSkill.addChild(info_skill_acc1);
-	// var info_skill_acc2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_skill_text.push(info_skill_acc2);
-	// creatureInfoSkill.addChild(info_skill_acc2);
-	// var info_skill_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_skill_type1.anchor.set(1,0);
-	// info_skill_text.push(info_skill_type1);
-	// creatureInfoSkill.addChild(info_skill_type1);
-	// var info_skill_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_skill_text.push(info_skill_type2);
-	// creatureInfoSkill.addChild(info_skill_type2);
-	// var info_skill_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_skill_des1.anchor.set(1,0);
-	// info_skill_text.push(info_skill_des1);
-	// creatureInfoSkill.addChild(info_skill_des1);
-	// var info_skill_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
-	// info_skill_text.push(info_skill_des2);
-	// creatureInfoSkill.addChild(info_skill_des2);
 
 	creatureInfo.info_skill_text = info_skill_text;
 
@@ -1139,34 +1072,6 @@ function setup(){
 	let info_item_cat2 = infoTextObject(info_item_text, creatureInfoItem, 1);
 	let info_item_des1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Description:");
 	let info_item_des2 = infoTextObject(info_item_text, creatureInfoItem, 3);
-	// var info_item_name1 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_item_name1.anchor.set(1,0);
-	// info_item_text.push(info_item_name1);
-	// creatureInfoItem.addChild(info_item_name1);
-	// var info_item_name2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_item_text.push(info_item_name2);
-	// creatureInfoItem.addChild(info_item_name2);
-	// var info_item_type1 = new Text("Type:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_item_type1.anchor.set(1,0);
-	// info_item_text.push(info_item_type1);
-	// creatureInfoItem.addChild(info_item_type1);
-	// var info_item_type2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_item_text.push(info_item_type2);
-	// creatureInfoItem.addChild(info_item_type2);
-	// var info_item_cat1 = new Text("Category:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_item_cat1.anchor.set(1,0);
-	// info_item_text.push(info_item_cat1);
-	// creatureInfoItem.addChild(info_item_cat1);
-	// var info_item_cat2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_item_text.push(info_item_cat2);
-	// creatureInfoItem.addChild(info_item_cat2);
-	// var info_item_des1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_item_des1.anchor.set(1,0);
-	// info_item_text.push(info_item_des1);
-	// creatureInfoItem.addChild(info_item_des1);
-	// var info_item_des2 = new Text("99", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
-	// info_item_text.push(info_item_des2);
-	// creatureInfoItem.addChild(info_item_des2);
 
 	creatureInfo.info_item_text = info_item_text;
 
@@ -1207,8 +1112,6 @@ function setup(){
 
 		itemSelectStroke.beginFill(0xFFD600).drawRect(0, 0, infoItemWidth, infoItemHeight);
 		itemSelectFill.beginFill(0x222222).drawRect(0, 0, infoItemWidth-skillSelectPadding*2, infoItemHeight-skillSelectPadding*2);
-		// itemSelectFill.x = skillSelectPadding;
-		// itemSelectFill.y = skillSelectPadding;
 
 		itemSelect.addChild(itemSelectStroke);
 		itemSelect.addChild(itemSelectFill);
@@ -1219,10 +1122,6 @@ function setup(){
 		itemContainer.selected = itemSelect;
 
 		let spriteItem = new PIXI.Sprite(resources['blank'].texture);
-		// spriteItem.width = infoItemWidth-skillSelectPadding*2;
-		// spriteItem.height = infoItemHeight-skillSelectPadding*2;
-		// spriteItem.x = skillSelectPadding;
-		// spriteItem.y = skillSelectPadding;
 		itemContainer.addChild(spriteItem);
 		infoItemSprite.push(spriteItem);
 
@@ -1234,30 +1133,6 @@ function setup(){
 		infoItemArray.push(itemContainer);
 	}
 	infoItemArray[0].selected.visible = true;
-
-	// this.object.item.forEach((item,itemIndex) =>{
-	// 	// if(itemList.data.item[item].size == 2){
-	// 	// 	infoItemWidth = infoItemHeight+10;
-	// 	// }
-	// 	if(itemList.data.item[item].size == 2){
-	// 		infoItemBG[1].alpha = 0.2;
-	// 		let spriteItem = new PIXI.Sprite(resources[itemList.data.item[item].code].texture);
-
-	// 		const filter1 = new PIXI.filters.ColorMatrixFilter();
-	// 		filter1.desaturate();
-	// 		// filter1.greyscale(0.5);
-	// 		spriteItem.filters = [filter1];
-
-	// 		spriteItem.width = infoItemWidth-skillSelectPadding*2;
-	// 		spriteItem.height = infoItemHeight-skillSelectPadding*2;
-	// 		spriteItem.x = infoItemWidth + 10 + skillSelectPadding;
-	// 		spriteItem.y = skillSelectPadding;
-	// 		// itemContainer.addChild(spriteItem);
-	// 		creatureInfo.item.addChild(spriteItem);
-	// 		infoItemSprite.push(spriteItem);
-	// 	}
-	// });
-	
 
 	for(var i = 0; i < 24; i++){
 		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
@@ -1664,18 +1539,13 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 	switch(adjustment){
 		case 1:
 			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left'});
-			// textObject.align = 'left';
 			break;
 		case 2:
 			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'right'});
-			// textObject.algin = 'right';
 			textObject.anchor.set(1,0);
 			break;
 		case 3:
 			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left', wordWrap: true, wordWrapWidth: 500});
-			// textObject.align = 'left';
-			// textObject.wordWrap = true;
-			// textObject.wordWrapWidth = 500;
 			break;
 	}
 	textArray.push(textObject);
