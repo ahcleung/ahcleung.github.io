@@ -985,6 +985,9 @@ function setup(){
 
 	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, false, "Species:");
 	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, true);
+	let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, false, "Level:");
+	let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, true);
+	let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, false, "Element:");
 	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	// info_main_name1.anchor.set(1,0);
 	// info_main_text.push(info_main_name1);
@@ -992,17 +995,17 @@ function setup(){
 	// let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	// info_main_text.push(info_main_name2);
 	// creatureInfoMain.addChild(info_main_name2);
-	let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_level1.anchor.set(1,0);
-	info_main_text.push(info_main_level1);
-	creatureInfoMain.addChild(info_main_level1);
-	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_main_text.push(info_main_level2);
-	creatureInfoMain.addChild(info_main_level2);
-	let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_element1.anchor.set(1,0);
-	info_main_text.push(info_main_element1);
-	creatureInfoMain.addChild(info_main_element1);
+	// let info_main_level1 = new Text("Level:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_level1.anchor.set(1,0);
+	// info_main_text.push(info_main_level1);
+	// creatureInfoMain.addChild(info_main_level1);
+	// let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	// info_main_text.push(info_main_level2);
+	// creatureInfoMain.addChild(info_main_level2);
+	// let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_element1.anchor.set(1,0);
+	// info_main_text.push(info_main_element1);
+	// creatureInfoMain.addChild(info_main_element1);
 
 	var info_main_element = [];
 	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
