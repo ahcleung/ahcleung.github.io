@@ -1656,6 +1656,7 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 		case 3:
 			textObject.align = 'left';
 			textObject.wordWrap = true;
+			textObject.wordWrapWidth = 500;
 			break;
 		default:
 
