@@ -603,16 +603,6 @@ function setup(){
 	// rectTemp.alpha = 0.1;
 	// app.stage.add(rectTemp);
 
-// 	rectHero.beginFill(0xaec6cf).drawRect(0, 0, -200, 100);
-// 	rectHero.x = 0;
-// 	rectHero.y = 0;
-// 	interfaceHeroHealth.addChild(rectHero);
-	
-// 	rectEnemy.beginFill(0xff6961).drawRect(0, 0, 200, 100);
-// 	rectEnemy.x = 0;
-// 	rectEnemy.y = 0;
-// 	interfaceEnemyHealth.addChild(rectEnemy);
-
 	actionBlack = new PIXI.Graphics();
 	actionBlack.beginFill(0x000000);
 	actionBlack.drawRect(-25, -25, app.screen.width+50, app.screen.height+50);
@@ -993,10 +983,11 @@ function setup(){
 	var info_item_text = [];
 	var info_stat_text = [];
 
-	let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_name1.anchor.set(1,0);
-	info_main_text.push(info_main_name1);
-	creatureInfoMain.addChild(info_main_name1);
+	let info_main_name1 = infoTextObject("Species", info_main_text, creatureInfoMain);
+	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_name1.anchor.set(1,0);
+	// info_main_text.push(info_main_name1);
+	// creatureInfoMain.addChild(info_main_name1);
 	let info_main_name2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_name2);
 	creatureInfoMain.addChild(info_main_name2);
@@ -1007,13 +998,6 @@ function setup(){
 	let info_main_level2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	info_main_text.push(info_main_level2);
 	creatureInfoMain.addChild(info_main_level2);
-	// let info_main_species1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	// info_main_species1.anchor.set(1,0);
-	// info_main_text.push(info_main_species1);
-	// creatureInfoMain.addChild(info_main_species1);
-	// let info_main_species2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_text.push(info_main_species2);
-	// creatureInfoMain.addChild(info_main_species2);
 	let info_main_element1 = new Text("Element:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	info_main_element1.anchor.set(1,0);
 	info_main_text.push(info_main_element1);
@@ -1648,6 +1632,19 @@ function setup(){
 	app.ticker.add(delta => gameLoop(delta));
 
 	calculateTurnOrder();
+}
+
+function infoTextObject(text="", textArray, mainContaier, leftAlign = false){
+	let textObject;
+	if(leftAlign){
+		textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	}else{
+		textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+		textObject.anchor.set(1,0);
+	}
+	textArray.push(textObject);
+	mainContaier.addChild(textObject);
+	return textObject;	
 }
 
 function createEdgeTiles(holder){
@@ -3112,130 +3109,14 @@ function createSprite(direction, item, index){
 	const target = indicatorBar(0xFF392F, healthBar);
 	const heal = indicatorBar(0x28F828, healthBar);
 	const move = indicatorBar(0x6ee4ff, healthBar);
-
 	var selectTween = new TimelineMax({paused:true, repeat:-1});
 	select.animate = selectTween;
-	// healthBar.addChild(select);
 	healthBar.select = select;
-	// healthBar.healthBarIndicators.push(select);
-	
-	// healthBar.addChild(target);
 	healthBar.target = target;
-	// healthBar.healthBarIndicators.push(target);
-
 	var healTween = new TimelineMax({paused:true, repeat:-1});
 	heal.animate = healTween;
-	// healthBar.addChild(heal);
 	healthBar.heal = heal;
-	// healthBar.healthBarIndicators.push(heal);
-
-	// healthBar.addChild(move);
 	healthBar.move = move;
-	// healthBar.healthBarIndicators.push(move);
-	
-	// for(var i = 5; i < 4; i++){
-	// 	var colour;
-	// 	if(i == 0){
-	// 		//Select
-	// 		colour = 0xFFD600;		
-	// 	}else if(i == 1){
-	// 		//Target
-	// 		colour = 0xFF392F;
-	// 	}else if(i == 2){
-	// 		//Heal
-	// 		colour = 0x28F828;
-	// 	}else if(i == 3){
-	// 		//Move
-	// 		colour = 0x6ee4ff;
-	// 	}
-	// 	let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
-
-	// 	indicatorEnd = new PIXI.Graphics();
-	// 	indicatorEnd.beginFill(colour);
-	// 	indicatorEnd.drawRect(0, 0, 4, 18);
-	// 	indicatorEnd.endFill();
-
-	// 	indicatorStart = new PIXI.Graphics();
-	// 	indicatorStart.beginFill(colour);
-	// 	indicatorStart.drawRect(0, 0, 4, 18);
-	// 	indicatorStart.endFill();
-
-	// 	indicatorBar1 = new PIXI.Graphics();
-	// 	indicatorBar1.beginFill(colour);
-	// 	indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	// 	indicatorBar1.endFill();
-
-	// 	indicatorBar2 = new PIXI.Graphics();
-	// 	indicatorBar2.beginFill(colour);
-	// 	indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	// 	indicatorBar2.endFill();
-
-	// 	if(i == 0){
-	// 		//Select
-	// 		select.addChild(indicatorEnd);
-	// 		select.indicatorEnd = indicatorEnd;
-	// 		select.addChild(indicatorStart);
-	// 		select.indicatorStart = indicatorStart;
-	// 		select.addChild(indicatorBar1);
-	// 		select.indicatorBar1 = indicatorBar1;
-	// 		select.addChild(indicatorBar2);
-	// 		select.indicatorBar2 = indicatorBar2;
-
-	// 		var selectTween = new TimelineMax({paused:true, repeat:-1});
-	// 		select.animate = selectTween;
-
-	// 		healthBar.addChild(select);
-	// 		healthBar.select = select;
-	// 		healthBar.select.visible = false;
-	// 		healthBar.healthBarIndicators.push(select);
-	// 	}else if(i == 1){
-	// 		//Target
-	// 		target.addChild(indicatorEnd);
-	// 		target.indicatorEnd = indicatorEnd;
-	// 		target.addChild(indicatorStart);
-	// 		target.indicatorStart = indicatorStart;
-	// 		target.addChild(indicatorBar1);
-	// 		target.indicatorBar1 = indicatorBar1;
-	// 		target.addChild(indicatorBar2);
-	// 		target.indicatorBar2 = indicatorBar2;
-	// 		healthBar.addChild(target);
-	// 		healthBar.target = target;
-	// 		healthBar.target.visible = false;
-	// 		healthBar.healthBarIndicators.push(target);
-	// 	}else if(i == 2){
-	// 		//Heal
-	// 		heal.addChild(indicatorEnd);
-	// 		heal.indicatorEnd = indicatorEnd;
-	// 		heal.addChild(indicatorStart);
-	// 		heal.indicatorStart = indicatorStart;
-	// 		heal.addChild(indicatorBar1);
-	// 		heal.indicatorBar1 = indicatorBar1;
-	// 		heal.addChild(indicatorBar2);
-	// 		heal.indicatorBar2 = indicatorBar2;
-
-	// 		var healTween = new TimelineMax({paused:true, repeat:-1});
-	// 		heal.animate = healTween;
-
-	// 		healthBar.addChild(heal);
-	// 		healthBar.heal = heal;
-	// 		healthBar.heal.visible = false;
-	// 		healthBar.healthBarIndicators.push(heal);
-	// 	}else if(i == 3){
-	// 		//Move
-	// 		move.addChild(indicatorEnd);
-	// 		move.indicatorEnd = indicatorEnd;
-	// 		move.addChild(indicatorStart);
-	// 		move.indicatorStart = indicatorStart;
-	// 		move.addChild(indicatorBar1);
-	// 		move.indicatorBar1 = indicatorBar1;
-	// 		move.addChild(indicatorBar2);
-	// 		move.indicatorBar2 = indicatorBar2;
-	// 		healthBar.addChild(move);
-	// 		healthBar.move = move;
-	// 		healthBar.move.visible = false;
-	// 		healthBar.healthBarIndicators.push(move);
-	// 	}
-	// }
 	
 	if(direction > 0){
 		heroSprites.addChild(creatureContainer);
@@ -3679,11 +3560,8 @@ function resizeInfo(){
 		if(textIndex%2 == 0 && textIndex<7){
 			text.x = app.screen.width/10;
 			text.y = textIndex * app.screen.height/36 + infoSkillHeight*2+30;
-			// text.y = textIndex * infoSkillMargin[0] + infoSkillMargin[1];
 		}else{
-			// text.x = creatureInfo.info_skill_text[textIndex-1].width + app.screen.width/96;
 			text.x = app.screen.width/10 + 25;
-			// text.y = (textIndex-1) * infoSkillMargin[0] + infoSkillMargin[1];
 			text.y = (textIndex-1) * app.screen.height/36 + infoSkillHeight*2+30;
 		}
 	});
@@ -3700,13 +3578,6 @@ function resizeInfo(){
 			bgItem.width = infoItemWidth;
 			bgItem.height = infoItemHeight;
 			bgItem.x = (bgIndex%2 == 0 ? 0 : infoItemWidth + 10);
-			// if(bgIndex%2 == 0){
-			// 	bgItem.x = 0;
-			// 	// bgItem.y = ((infoItemHeight+10)/2)*bgIndex;
-			// }else{
-			// 	bgItem.x = infoItemWidth + 10;
-			// 	// bgItem.y = ((infoItemHeight+10)/2)*(bgIndex-1);
-			// }
 		});
 	}
 	
