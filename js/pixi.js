@@ -983,11 +983,11 @@ function setup(){
 	var info_item_text = [];
 	var info_stat_text = [];
 
-	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, false, "Species:");
-	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, true);
-	let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, false, "Level:");
-	let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, true);
-	let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, false, "Element:");
+	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Species:");
+	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Level:");
+	let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Element:");
 	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	// info_main_name1.anchor.set(1,0);
 	// info_main_text.push(info_main_name1);
@@ -1008,8 +1008,8 @@ function setup(){
 	// creatureInfoMain.addChild(info_main_element1);
 
 	var info_main_element = [];
-	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, true);
-	let info_main_element3 = infoTextObject(info_main_element, creatureInfoMain, true);
+	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, 1);
+	let info_main_element3 = infoTextObject(info_main_element, creatureInfoMain, 1);
 	// let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
 	// info_main_element.push(info_main_element2);
 	// creatureInfoMain.addChild(info_main_element2);
@@ -1638,13 +1638,22 @@ function setup(){
 	calculateTurnOrder();
 }
 
-function infoTextObject(textArray, mainContaier, leftAlign, text=""){
+function infoTextObject(textArray, mainContaier, adjustment, text=""){
 	let textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
-	if(leftAlign){
-		textObject.align = 'left';
-	}else{
-		textObject.algin = 'right';
-		textObject.anchor.set(1,0);
+	switch(adjustment){
+		case 1:
+			textObject.align = 'left';
+			break;
+		case 2:
+			textObject.algin = 'right';
+			textObject.anchor.set(1,0);
+			break;
+		case 3:
+
+			break;
+		default:
+
+			break;
 	}
 	textArray.push(textObject);
 	mainContaier.addChild(textObject);
