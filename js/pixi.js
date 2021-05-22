@@ -1639,11 +1639,11 @@ function setup(){
 }
 
 function infoTextObject(textArray, mainContaier, leftAlign, text=""){
-	let textObject;
+	let textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
 	if(leftAlign){
-		textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+		textObject.align = 'left';
 	}else{
-		textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+		textObject.algin = 'right';
 		textObject.anchor.set(1,0);
 	}
 	textArray.push(textObject);
