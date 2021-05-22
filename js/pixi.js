@@ -3108,30 +3108,30 @@ function createSprite(direction, item, index){
 	healthBar.addChild(textHP);
 	healthBar.textHP = textHP;
 
-	const select = indicatorBar(0xFFD600);
-	const target = indicatorBar(0xFF392F);
-	const heal = indicatorBar(0x28F828);
-	const move = indicatorBar(0x6ee4ff);
+	const select = indicatorBar(0xFFD600, healthBar);
+	const target = indicatorBar(0xFF392F, healthBar);
+	const heal = indicatorBar(0x28F828, healthBar);
+	const move = indicatorBar(0x6ee4ff, healthBar);
 
 	var selectTween = new TimelineMax({paused:true, repeat:-1});
 	select.animate = selectTween;
-	healthBar.addChild(select);
+	// healthBar.addChild(select);
 	healthBar.select = select;
-	healthBar.healthBarIndicators.push(select);
+	// healthBar.healthBarIndicators.push(select);
 	
-	healthBar.addChild(target);
+	// healthBar.addChild(target);
 	healthBar.target = target;
-	healthBar.healthBarIndicators.push(target);
+	// healthBar.healthBarIndicators.push(target);
 
 	var healTween = new TimelineMax({paused:true, repeat:-1});
 	heal.animate = healTween;
-	healthBar.addChild(heal);
+	// healthBar.addChild(heal);
 	healthBar.heal = heal;
-	healthBar.healthBarIndicators.push(heal);
+	// healthBar.healthBarIndicators.push(heal);
 
-	healthBar.addChild(move);
+	// healthBar.addChild(move);
 	healthBar.move = move;
-	healthBar.healthBarIndicators.push(move);
+	// healthBar.healthBarIndicators.push(move);
 	
 	// for(var i = 5; i < 4; i++){
 	// 	var colour;
@@ -3252,7 +3252,7 @@ function createSprite(direction, item, index){
 	item.action = creatureAction;
 }
 
-function indicatorBar(colour){
+function indicatorBar(colour, healthBar){
 	const indicatorContainer = new PIXI.Container();
 	let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
 
@@ -3285,7 +3285,9 @@ function indicatorBar(colour){
 	indicatorContainer.addChild(indicatorBar2);
 	indicatorContainer.indicatorBar2 = indicatorBar2;
 
+	healthBar.addChild(indicatorContainer);
 	indicatorContainer.visible = false;
+	healthBar.healthBarIndicators.push(indicatorContainer);
 	return indicatorContainer;
 }
 
