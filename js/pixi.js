@@ -983,8 +983,8 @@ function setup(){
 	var info_item_text = [];
 	var info_stat_text = [];
 
-	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, "Species:");
-	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, "", true);
+	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, false, "Species:");
+	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, true);
 	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	// info_main_name1.anchor.set(1,0);
 	// info_main_text.push(info_main_name1);
@@ -1635,7 +1635,7 @@ function setup(){
 	calculateTurnOrder();
 }
 
-function infoTextObject(textArray, mainContaier, text="", leftAlign = false){
+function infoTextObject(textArray, mainContaier, leftAlign, text=""){
 	let textObject;
 	if(leftAlign){
 		textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
