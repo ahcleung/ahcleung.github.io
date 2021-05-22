@@ -1008,14 +1008,14 @@ function setup(){
 	// creatureInfoMain.addChild(info_main_element1);
 
 	var info_main_element = [];
-	let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_element2.anchor.set(0,0.5);
-	info_main_element.push(info_main_element2);
-	creatureInfoMain.addChild(info_main_element2);
-	let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	// info_main_element3.anchor.set(0,0.5);
-	info_main_element.push(info_main_element3);
-	creatureInfoMain.addChild(info_main_element3);
+	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, true);
+	let info_main_element3 = infoTextObject(info_main_element, creatureInfoMain, true);
+	// let info_main_element2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	// info_main_element.push(info_main_element2);
+	// creatureInfoMain.addChild(info_main_element2);
+	// let info_main_element3 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	// info_main_element.push(info_main_element3);
+	// creatureInfoMain.addChild(info_main_element3);
 
 	creatureInfo.info_main_text = info_main_text;
 	creatureInfo.info_main_element = info_main_element;
