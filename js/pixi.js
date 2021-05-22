@@ -1644,19 +1644,22 @@ function setup(){
 }
 
 function infoTextObject(textArray, mainContaier, adjustment, text=""){
-	let textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe});
+	let textObject;
 	switch(adjustment){
 		case 1:
-			textObject.align = 'left';
+			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left'});
+			// textObject.align = 'left';
 			break;
 		case 2:
-			textObject.algin = 'right';
+			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'right'});
+			// textObject.algin = 'right';
 			textObject.anchor.set(1,0);
 			break;
 		case 3:
-			textObject.align = 'left';
-			textObject.wordWrap = true;
-			textObject.wordWrapWidth = 500;
+			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left', wordWrap: true, wordWrapWidth: 500});
+			// textObject.align = 'left';
+			// textObject.wordWrap = true;
+			// textObject.wordWrapWidth = 500;
 			break;
 	}
 	textArray.push(textObject);
