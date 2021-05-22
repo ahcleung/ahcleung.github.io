@@ -1036,13 +1036,15 @@ function setup(){
 
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
 
-	var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_exp1.anchor.set(1,0);
-	info_main_text.push(info_main_exp1);
-	creatureInfoMain.addChild(info_main_exp1);
-	var info_main_exp2 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
-	info_main_text.push(info_main_exp2);
-	creatureInfoMain.addChild(info_main_exp2);
+	let info_main_exp1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Experience:");
+	let info_main_exp2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	// var info_main_exp1 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_exp1.anchor.set(1,0);
+	// info_main_text.push(info_main_exp1);
+	// creatureInfoMain.addChild(info_main_exp1);
+	// var info_main_exp2 = new Text("Experience:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left'});
+	// info_main_text.push(info_main_exp2);
+	// creatureInfoMain.addChild(info_main_exp2);
 	var info_main_expBar = [];
 	let expBarGained = new PIXI.Graphics();
 	expBarGained.beginFill(0x66cc66).drawRect(0, 0, 100, 50);
@@ -1059,13 +1061,16 @@ function setup(){
 	creatureInfo.info_main_expBar = info_main_expBar;
 	creatureInfo.info_main_expPercentage = 0;
 
-	let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-	info_main_desc1.anchor.set(1,0);
-	info_main_text.push(info_main_desc1);
-	creatureInfoMain.addChild(info_main_desc1);
-	let info_main_desc2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
-	info_main_text.push(info_main_desc2);
-	creatureInfoMain.addChild(info_main_desc2);
+	let info_main_desc1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Description:");
+	let info_main_desc2 = infoTextObject(info_main_text, creatureInfoMain, 3);
+
+	// let info_main_desc1 = new Text("Description:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// info_main_desc1.anchor.set(1,0);
+	// info_main_text.push(info_main_desc1);
+	// creatureInfoMain.addChild(info_main_desc1);
+	// let info_main_desc2 = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'left', wordWrap:true, wordWrapWidth:500});
+	// info_main_text.push(info_main_desc2);
+	// creatureInfoMain.addChild(info_main_desc2);
 
 	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_d.texture);				//Button additional
 	btnStatusUp.anchor.set(0,0.5);
@@ -1649,7 +1654,8 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 			textObject.anchor.set(1,0);
 			break;
 		case 3:
-
+			textObject.align = 'left';
+			textObject.wordWrap = true;
 			break;
 		default:
 
