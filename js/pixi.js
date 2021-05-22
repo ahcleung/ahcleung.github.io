@@ -983,7 +983,7 @@ function setup(){
 	var info_item_text = [];
 	var info_stat_text = [];
 
-	let info_main_name1 = infoTextObject("Species", info_main_text, creatureInfoMain);
+	let info_main_name1 = infoTextObject("Species:", info_main_text, creatureInfoMain);
 	// let info_main_name1 = new Text("Species:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 	// info_main_name1.anchor.set(1,0);
 	// info_main_text.push(info_main_name1);
