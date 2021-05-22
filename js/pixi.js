@@ -1658,9 +1658,6 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 			textObject.wordWrap = true;
 			textObject.wordWrapWidth = 500;
 			break;
-		default:
-
-			break;
 	}
 	textArray.push(textObject);
 	mainContaier.addChild(textObject);
