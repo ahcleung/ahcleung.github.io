@@ -3597,24 +3597,7 @@ function resizeDmg(roster, item){
 	item.dmgContainer.dmgPopup.x = 	(item.size > 1 ? (resizeWidth * 2 + healthMargin)/2 : resizeWidth/2);
 	item.dmgContainer.dmgStatus.x = (item.size > 1 ? (resizeWidth * 2 + healthMargin)/2 : resizeWidth/2);
 
-	// var switcher = 0;
-	// if(item.size > 1){
-	// 	item.dmgContainer.skillFX.x = (resizeWidth * 2 + healthMargin)/2;
-	// 	item.dmgContainer.dmgPopup.x = (resizeWidth * 2 + healthMargin)/2;
-	// 	item.dmgContainer.dmgStatus.x = (resizeWidth * 2 + healthMargin)/2;
-	// 	switcher = 1;
-	// }else{
-	// 	item.dmgContainer.skillFX.x = resizeWidth/2;
-	// 	item.dmgContainer.dmgPopup.x = resizeWidth/2;
-	// 	item.dmgContainer.dmgStatus.x = resizeWidth/2;
-	// }
-
 	item.dmgContainer.x = (roster == 0 ? heroHealthXPosition[item.pos-1+switcher] : spriteResizeXPosition[item.pos-1]);
-	// if(roster == 0){
-	// 	item.dmgContainer.x = heroHealthXPosition[item.pos-1+switcher];
-	// }else{
-	// 	item.dmgContainer.x = spriteResizeXPosition[item.pos-1];
-	// }
 
 	item.dmgContainer.skillFX.y = app.screen.height*3/4;
 	item.dmgContainer.dmgPopup.y = app.screen.height/3;
@@ -3695,12 +3678,6 @@ function resizeHP(roster, item){
 	}
 
 	item.healthBar.x = (roster == 0 ? heroHealthXPosition[item.pos-1+switcher] : spriteResizeXPosition[item.pos-1]);
-
-	// if(roster == 0){
-	// 	item.healthBar.x = heroHealthXPosition[item.pos-1+switcher];
-	// }else{		
-	// 	item.healthBar.x = spriteResizeXPosition[item.pos-1];
-	// }
 
 	item.healthBar.dmgBarContainer.x = item.healthBar.inner.width;	
 	item.healthBar.textHP.x = item.healthBar.outer.width/2;
@@ -4658,18 +4635,6 @@ function onInfoSkillDown(){
 
 	creatureInfo.info_skill_text[1].text = (skillList.data.skill[this.skillID].power || "--");
 	creatureInfo.info_skill_text[3].text = (skillList.data.skill[this.skillID].accuracy || "--");
-	// if(skillList.data.skill[this.skillID].power == 0){
-	// 	creatureInfo.info_skill_text[1].text = "--";
-	// }else{
-	// 	creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
-	// }
-	// if(skillList.data.skill[this.skillID].accuracy == 110){
-	// 	creatureInfo.info_skill_text[3].text = "--";
-	// }else{
-	// 	creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
-	// }
-	// creatureInfo.info_skill_text[1].text = skillList.data.skill[this.skillID].power;
-	// creatureInfo.info_skill_text[3].text = skillList.data.skill[this.skillID].accuracy;
 	creatureInfo.info_skill_text[5].text = skillList.data.skill[this.skillID].type;
 	creatureInfo.info_skill_text[7].text = skillList.data.skill[this.skillID].description;
 }
@@ -5452,11 +5417,6 @@ function calculateHit(attacker, defender){
 
 		console.log("Name: " + targeted.name + "\nAccMod: " + attackerAccMod + " Dodge: " + defenderDodge + " DodgeMod: " + defenderDodgeMod + " Diff: " + accDifference + "\nHitMod: " + hitMod + " HitChance: " + hitChance + " HitRoll: " + hitRoll);
 
-		// if(hitRoll < hitChance){
-		// 	hitArray.push(true);
-		// }else{
-		// 	hitArray.push(false);
-		// }
 		hitArray.push(hitRoll < hitChance ? true : false);
 	});
 	return hitArray;
@@ -6132,92 +6092,62 @@ function updateDmgStatus(container, newStatus, newStatusIndex){
 	container.dmgStatus.statusTextArray[newStatusIndex].text = getTextStatus(newStatus)
 	switch(newStatus){
 		case 1:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_bleed.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Bleed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E3C2C2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#910A0A';
 			break;
 		case 2:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 			break;
 		case 3:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_burned.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Burned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#ECCFC6';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#B23F1B';
 			break;
 		case 4:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_debuff.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Debuff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C1D9FF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#0666FF';
 			break;
 		case 5:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_depressed.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Depressed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CCCCCC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#353535';
 			break;
 		case 6:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_guard.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Guard";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#BFE9F0';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#00A8C4';
 			break;
 		case 7:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_immune.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Immune";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#E8C2EC';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#A50BB2';
 			break;
 		case 8:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_paralyzed.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Paralyzed";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#EFDFBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#C18100';
 			break;
 		case 9:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_poisoned.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Poisoned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DEC2ED';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#7C0BB7';
 			break;
 		case 10:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_recover.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Recover";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#C6F1C5';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#1BC617';
 			break;
 		case 11:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_secured.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Secured";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#CBE1D9';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#2E8966';
 			break;
 		case 12:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_silenced.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Silenced";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#DACDEE';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#6A37BC';
 			break;
 		case 13:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_stunned.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Stunned";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#F9EFD2';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#E6C04B';
 			break;
 		case 14:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_critical.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Critical";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFDEBF';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF7B00';
 			break;
 		default:
-			// container.dmgStatus.statusImageArray[newStatusIndex].texture = resources.status_buff.texture;
-			// container.dmgStatus.statusTextArray[newStatusIndex].text = "Buff";
 			container.dmgStatus.statusTextArray[newStatusIndex].style.fill = '#FFE7C1';
 			container.dmgStatus.statusTextArray[newStatusIndex].style.stroke = '#FF9F06';
 	}
@@ -6281,12 +6211,6 @@ function calculateTurnOrder(){
 	heroArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		var speedMod = (arrayCreature.statMod[6]>0 ? ((Math.abs(arrayCreature.statMod[6])+2)/2) : (2/(Math.abs(arrayCreature.statMod[6])+2)));
 		var calcSpeed = (arrayCreature.spd/5) * speedMod + (Math.floor(Math.random() * 7) + 1);
-		// var calcSpeed;
-		// if(arrayCreature.statMod[6]>0){
-		// 	calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
-		// }else{
-		// 	calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
-		// }
 		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
@@ -6294,12 +6218,6 @@ function calculateTurnOrder(){
 	enemyArray.forEach((arrayCreature,arrayCreatureIndex) => {
 		var speedMod = (arrayCreature.statMod[6]>0 ? ((Math.abs(arrayCreature.statMod[6])+2)/2) : (2/(Math.abs(arrayCreature.statMod[6])+2)));
 		var calcSpeed = (arrayCreature.spd/5) * speedMod + (Math.floor(Math.random() * 7) + 1);
-		// var calcSpeed;
-		// if(arrayCreature.statMod[6]>0){
-		// 	calcSpeed = (arrayCreature.spd/5) * ((Math.abs(arrayCreature.statMod[6])+2)/2) + (Math.floor(Math.random() * 7) + 1);
-		// }else{
-		// 	calcSpeed = (arrayCreature.spd/5) * (2/(Math.abs(arrayCreature.statMod[6])+2)) + (Math.floor(Math.random() * 7) + 1);
-		// }
 		console.log(arrayCreatureIndex + ": " + arrayCreature.name + " Pre-Speed: " + arrayCreature.spd + "| CalcSpeed: " + calcSpeed);
 		arrayCalcSpeedSorted.push(calcSpeed);
 		arrayCalcSpeedPositions.push(calcSpeed);
@@ -6555,38 +6473,6 @@ function selectCreature(object2){
 	newSkills.forEach((skillID, skillContainerIndex) => {
 		skillContainerArray[skillContainerIndex].visible = true;
 		skillContainerArray[skillContainerIndex].skillElement.texture = getTextureElement(skillList.data.skill[skillID].element);
-		// switch(skillList.data.skill[skillID].element){
-		// 	case 1:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_flora.texture;
-		// 		break;
-		// 	case 2:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_water.texture;
-		// 		break;
-		// 	case 3:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
-		// 		break;
-		// 	case 4:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_earth.texture;
-		// 		break;
-		// 	case 5:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_storm.texture;
-		// 		break;
-		// 	case 6:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_wind.texture;
-		// 		break;
-		// 	case 7:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_toxic.texture;
-		// 		break;
-		// 	case 8:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_spirit.texture;
-		// 		break;
-		// 	case 9:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_void.texture;
-		// 		break;
-		// 	default:
-		// 		skillContainerArray[skillContainerIndex].skillElement.texture = resources.element_fire.texture;
-		// 		break;
-		// }
 		
 		//identifier = [skillContainerIndex, skillID, stageSide, creaturePos]
 		skillContainerArray[skillContainerIndex].identifier = [skillContainerIndex, skillID];
