@@ -6505,28 +6505,11 @@ function selectCreature(object2){
 				// var columnText = columnDirection + skillList.data.skill[skill]["column"][0];
 				// let targetText = new Text(columnText, {fontFamily : styleFontFamily, fontSize: skillNameFontSize, fill : columnColour});
 				skillContainerArray[skillContainerIndex].targetText.text = columnDirection + skillList.data.skill[skillID][tagName][0]
-
-				// if(skillList.data.skill[skillID][tagName][2] > 0){
-				// 	skillContainerArray[skillContainerIndex].targetText.text = skillList.data.skill[skillID][tagName][0] + " ►";
-				// }else{
-				// 	skillContainerArray[skillContainerIndex].targetText.text = "◄ " + skillList.data.skill[skillID][tagName][0];
-				// }
-				
-				// if(skillList.data.skill[skillID][tagName][3] > 0){					
-				// 	skillContainerArray[skillContainerIndex].targetText.style.fill = '0x66cc66';
-				// }else{
-				// 	skillContainerArray[skillContainerIndex].targetText.style.fill = '0xFF6961';
-				// }
 			}else if(tagName == "several"){
 				skillContainerArray[skillContainerIndex].markerTargetSeveralContainer.visible = true;
 				//Show target dashes if 1
 				skillList.data.skill[skillID][tagName].forEach((dash, dashIndex) => {
 					skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = (dash == 1 ? true : false);
-					// if(dash == 1){
-					// 	skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = true;
-					// }else{
-					// 	skillContainerArray[skillContainerIndex].markerTargetSeveralArray[dashIndex].visible = false;
-					// }
 				});
 			}
 			else if(tagName == "self"){
@@ -6539,11 +6522,6 @@ function selectCreature(object2){
 				skillContainerArray[skillContainerIndex].markerTargetContainer.visible = false;
 				skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
 					skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = (skillTarget == 1 ? true: false);
-					// if(skillTarget == 1){
-					// 	skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = true;
-					// }else{
-					// 	skillContainerArray[skillContainerIndex].markerTargetTeamArray[targetIndex].visible = false;
-					// }
 				});
 			}
 			// console.log(skillList.data.skill[skillID][tagName]);
@@ -6557,11 +6535,6 @@ function selectCreature(object2){
 			skillContainerArray[skillContainerIndex].targetText.visible = false;
 			skillList.data.skill[skillID].target.forEach((skillTarget, targetIndex) => {
 				skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = (skillTarget == 1 ? true : false);
-				// if(skillTarget == 1){
-				// 	skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = true;
-				// }else{
-				// 	skillContainerArray[skillContainerIndex].markerTargetArray[targetIndex].visible = false;
-				// }
 			});
 		}
 	});	
