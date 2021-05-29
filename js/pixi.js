@@ -4920,6 +4920,28 @@ function onSkillDown(){
 	//[110]
 	//[111]
 	if(several){
+
+		var newTargets = [];
+		skillList.data.skill[this.identifier[1]].several.forEach((spot, spotIndex) =>{
+			if(placement == 1){
+				if(selectedVita.hero){
+					enemyArray.forEach(arrayCreature =>{
+						if(arrayCreature.size == 1){
+							if(arrayCreature.pos == spotIndex+1 || arrayCreature.pos == spotIndex+2){
+								newTargets.push(arrayCreature);
+							}
+						}else if(arrayCreature.size == 2){
+							var pos1 = arrayCreature.pos;
+							var pos2 = arrayCreature.pos + 1;
+							if(pos1 == spotIndex+1 || pos2 == spotIndex+1 || pos1 == spotIndex+2 || pos2 == spotIndex+2){
+								newTargets.push(arrayCreature);	
+							}
+						}
+					});
+				}
+			}
+		});
+
 		var array11 = [];
 		var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
 		if(joinedSeveral == "0,0,1"){
@@ -5175,6 +5197,12 @@ function onSkillDown(){
 		}
 	}
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
+
+	newTargets.forEach(object =>{
+		console.log("Target: " + object.name);
+	});
+
+	console.log("###########################################");
 
 	validSkillObjectArray.forEach(object1=>{
 		object1.forEach(object2=>{
