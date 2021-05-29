@@ -5220,7 +5220,7 @@ function onSkillDown(){
 	// 		}
 	// 		validSkillObjectArray = [array11, array22];
 	// 	}
-	// }
+	}
 	
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
 
