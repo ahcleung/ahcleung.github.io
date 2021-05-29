@@ -4921,20 +4921,26 @@ function onSkillDown(){
 	//[111]
 	if(several){
 
-		var newTargets = [];
+		var newTargets1 = [];
+		var newTargets2 = [];
+		var severalSplit = false;
 		skillList.data.skill[this.identifier[1]].several.forEach((spot, spotIndex) =>{
 			if(spot == 1){
+				var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
+				if(spotIndex == 2 && joinedSeveral == "1,0,1")		severalSplit = true;
 				if(selectedVita.hero){
 					enemyArray.forEach(arrayCreature =>{
 						if(arrayCreature.size == 1){
 							if(arrayCreature.pos == spotIndex+1 || arrayCreature.pos == spotIndex+2){
-								newTargets.push(arrayCreature);
+								if(!severalSplit)	newTargets1.push(arrayCreature);
+								else 				newTargets2.push(arrayCreature);
 							}
 						}else if(arrayCreature.size == 2){
 							var pos1 = arrayCreature.pos;
 							var pos2 = arrayCreature.pos + 1;
 							if(pos1 == spotIndex+1 || pos2 == spotIndex+1 || pos1 == spotIndex+2 || pos2 == spotIndex+2){
-								newTargets.push(arrayCreature);	
+								if(!severalSplit)	newTargets1.push(arrayCreature);
+								else 				newTargets2.push(arrayCreature);
 							}
 						}
 					});
@@ -4942,19 +4948,24 @@ function onSkillDown(){
 					heroArray.forEach(arrayCreature =>{
 						if(arrayCreature.size == 1){
 							if(arrayCreature.pos == spotIndex+1 || arrayCreature.pos == spotIndex+2){
-								newTargets.push(arrayCreature);
+								if(!severalSplit)	newTargets1.push(arrayCreature);
+								else 				newTargets2.push(arrayCreature);
 							}
 						}else if(arrayCreature.size == 2){
 							var pos1 = arrayCreature.pos;
 							var pos2 = arrayCreature.pos + 1;
 							if(pos1 == spotIndex+1 || pos2 == spotIndex+1 || pos1 == spotIndex+2 || pos2 == spotIndex+2){
-								newTargets.push(arrayCreature);	
+								if(!severalSplit)	newTargets1.push(arrayCreature);
+								else 				newTargets2.push(arrayCreature);	
 							}
 						}
 					});
 				}
 			}
 		});
+
+		if(!severalSplit)	newTargets = [newTargets1];
+		else 				newTargets = [newTargets1, newTargets2];	
 
 		var array11 = [];
 		var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
@@ -5212,8 +5223,12 @@ function onSkillDown(){
 	}
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
 
-	newTargets.forEach(object =>{
-		console.log("Target: " + object.name);
+
+	newTargets.forEach(object1 =>{
+		console.log("*************************************************");
+		object1.forEach(object2 =>{
+			console.log("Target: " + object2.name);
+		});
 	});
 
 	console.log("###########################################");
