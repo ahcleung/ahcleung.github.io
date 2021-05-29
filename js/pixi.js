@@ -4923,7 +4923,7 @@ function onSkillDown(){
 
 		var newTargets = [];
 		skillList.data.skill[this.identifier[1]].several.forEach((spot, spotIndex) =>{
-			if(placement == 1){
+			if(spot == 1){
 				if(selectedVita.hero){
 					enemyArray.forEach(arrayCreature =>{
 						if(arrayCreature.size == 1){
