@@ -430,21 +430,21 @@ const enemy = [];
 
 enemy[0] = {
 	id: 5, level: 46,
-	skill:[4,10,11,2],
+	skill:[4,3,11,2],
 	items: [1],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: false
 };
 enemy[1] = {
 	id: 8, level: 49,
-	skill:[4,6,1,2],
+	skill:[4,3,1,2],
 	items: [2,2],
 	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 60,
 	hero: false
 };
 enemy[2] = {
 	id: 13, level: 45,
-	skill:[4,1,5,21],
+	skill:[4,3,5,21],
 	items: [1],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 85, statSATK: 40, statSDEF: 0, statSPD: 0,
 	hero: false
@@ -5221,7 +5221,7 @@ function onSkillDown(){
 	// 		validSkillObjectArray = [array11, array22];
 	// 	}
 	}
-	
+
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 
