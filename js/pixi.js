@@ -5219,6 +5219,7 @@ function onSkillDown(){
 	console.log("###########################################");
 
 	validSkillObjectArray.forEach(object1=>{
+		console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 		object1.forEach(object2=>{
 			console.log("Target: " + object2.name);
 			if(heal || self || team){
