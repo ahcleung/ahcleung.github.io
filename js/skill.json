@@ -45,7 +45,7 @@
 			],
 			"hazard": [2,10],
 			"turns": 2,
-			"several": [1,0,1]
+			"several": [1,0,0]
 		},
 		{
 			"name": "Heal wave",
