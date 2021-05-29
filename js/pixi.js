@@ -4964,272 +4964,273 @@ function onSkillDown(){
 			}
 		});
 
-		if(!severalSplit)	newTargets = [newTargets1];
-		else 				newTargets = [newTargets1, newTargets2];	
+		if(!severalSplit)	validSkillObjectArray = [newTargets1];
+		else 				validSkillObjectArray = [newTargets1, newTargets2];	
 
-		var array11 = [];
-		var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
-		if(joinedSeveral == "0,0,1"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}	
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}	
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}	
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "0,1,0"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array11.push(arrayCreature);
-						}	
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array11.push(arrayCreature);
-						}	
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array11.push(arrayCreature);
-						}	
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array11.push(arrayCreature);
-						}	
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "1,0,0"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array11.push(arrayCreature);
-						}	
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array11.push(arrayCreature);
-						}	
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "1,1,0"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "0,1,1"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "1,1,1"){
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-			}
-			validSkillObjectArray = [];
-			validSkillObjectArray = [array11];
-		}else if(joinedSeveral == "1,0,1"){
-			var array22 = [];
-			if(selectedVita.hero){
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-				enemyArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array22.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array22.push(arrayCreature);
-						}
-					}
-				});
-			}else{
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
-							array11.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
-							array11.push(arrayCreature);
-						}
-					}
-				});
-				heroArray.forEach(arrayCreature => {
-					if(arrayCreature.size == 1){
-						if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
-							array22.push(arrayCreature);
-						}
-					}else if(arrayCreature.size == 2){
-						var pos1 = arrayCreature.pos;
-						var pos2 = arrayCreature.pos + 1;
-						if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
-							array22.push(arrayCreature);
-						}
-					}
-				});
-			}
-			validSkillObjectArray = [array11, array22];
-		}
-	}
+	// 	var array11 = [];
+	// 	var joinedSeveral = skillList.data.skill[this.identifier[1]].several.join();
+	// 	if(joinedSeveral == "0,0,1"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "0,1,0"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 2 || arrayCreature.pos == 3){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "1,0,0"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+	// 						array11.push(arrayCreature);
+	// 					}	
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "1,1,0"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "0,1,1"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "1,1,1"){
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2 || arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2 || pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [];
+	// 		validSkillObjectArray = [array11];
+	// 	}else if(joinedSeveral == "1,0,1"){
+	// 		var array22 = [];
+	// 		if(selectedVita.hero){
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 			enemyArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array22.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array22.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}else{
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 1 || arrayCreature.pos == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 1 || pos2 == 1 || pos1 == 2 || pos2 == 2){
+	// 						array11.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 			heroArray.forEach(arrayCreature => {
+	// 				if(arrayCreature.size == 1){
+	// 					if(arrayCreature.pos == 3 || arrayCreature.pos == 4){
+	// 						array22.push(arrayCreature);
+	// 					}
+	// 				}else if(arrayCreature.size == 2){
+	// 					var pos1 = arrayCreature.pos;
+	// 					var pos2 = arrayCreature.pos + 1;
+	// 					if(pos1 == 3 || pos2 == 3 || pos1 == 4 || pos2 == 4){
+	// 						array22.push(arrayCreature);
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 		validSkillObjectArray = [array11, array22];
+	// 	}
+	// }
+	
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
 
 
-	newTargets.forEach(object1 =>{
-		console.log("*************************************************");
-		object1.forEach(object2 =>{
-			console.log("Target: " + object2.name);
-		});
-	});
+	// newTargets.forEach(object1 =>{
+	// 	console.log("*************************************************");
+	// 	object1.forEach(object2 =>{
+	// 		console.log("Target: " + object2.name);
+	// 	});
+	// });
 
 	console.log("###########################################");
 
