@@ -4894,12 +4894,46 @@ function onSkillDown(){
 							var pos1 = arrayCreature.pos;
 							var pos2 = arrayCreature.pos + 1;
 							if(posTracker == pos1 || posTracker == pos2){
-								validSkillObjectArray.push([arrayCreature]);
+								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
+								heroArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										if(arrayCreature2.pos+1 == pos1-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == pos2+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else if(arrayCreature2.size == 1){
+										if(arrayCreature2.pos == pos1-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == pos2+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}
+								});
+								validSkillObjectArray.push(arrayTarget);
 								targeted = true;
 							}
 						}else{
 							if(posTracker == arrayCreature.pos){
-								validSkillObjectArray.push([arrayCreature]);
+								var arrayTarget = [];
+								arrayTarget.push(arrayCreature);
+								heroArray.forEach(arrayCreature2 =>{
+									if(arrayCreature2.size == 2){
+										if(arrayCreature2.pos+1 == arrayCreature.pos-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == arrayCreature.pos+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}else if(arrayCreature2.size == 1){
+										if(arrayCreature2.pos == arrayCreature.pos-1){
+											arrayTarget.push(arrayCreature2);
+										}else if(arrayCreature2.pos == arrayCreature.pos+1){
+											arrayTarget.push(arrayCreature2);
+										}
+									}
+								});
+								validSkillObjectArray.push(arrayTarget);
 								targeted = true;
 							}
 						}
