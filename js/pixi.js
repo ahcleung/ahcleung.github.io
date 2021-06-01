@@ -999,8 +999,8 @@ function setup(){
 	// let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Element:");
 
 	var info_main_element = [];
-	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, 1);
-	let info_main_element3 = infoTextObject(info_main_element, creatureInfoMain, 1);
+	infoTextObject(info_main_element, creatureInfoMain, 1);
+	infoTextObject(info_main_element, creatureInfoMain, 1);
 
 	creatureInfo.info_main_text = info_main_text;
 	creatureInfo.info_main_element = info_main_element;
@@ -1021,8 +1021,8 @@ function setup(){
 
 	creatureInfo.info_main_elementIcon = info_main_elementIcon;
 
-	let info_main_exp1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Experience:");
-	let info_main_exp2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	infoTextObject(info_main_text, creatureInfoMain, 2, "Experience:");
+	infoTextObject(info_main_text, creatureInfoMain, 1);
 	var info_main_expBar = [];
 	let expBarGained = new PIXI.Graphics();
 	expBarGained.beginFill(0x66cc66).drawRect(0, 0, 100, 50);
@@ -1039,8 +1039,8 @@ function setup(){
 	creatureInfo.info_main_expBar = info_main_expBar;
 	creatureInfo.info_main_expPercentage = 0;
 
-	let info_main_desc1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Description:");
-	let info_main_desc2 = infoTextObject(info_main_text, creatureInfoMain, 3);
+	infoTextObject(info_main_text, creatureInfoMain, 2, "Description:");
+	infoTextObject(info_main_text, creatureInfoMain, 3);
 
 	var btnStatusUp = new PIXI.Sprite(resources.arrow_up_d.texture);				//Button additional
 	btnStatusUp.anchor.set(0,0.5);
@@ -1075,7 +1075,7 @@ function setup(){
 	// let info_skill_type1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Type:");
 	// let info_skill_type2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
 	// let info_skill_des1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Description:");
-	let info_skill_des2 = infoTextObject(info_skill_text, creatureInfoSkill, 3);
+	infoTextObject(info_skill_text, creatureInfoSkill, 3);
 
 	creatureInfo.info_skill_text = info_skill_text;
 
@@ -1091,7 +1091,7 @@ function setup(){
 	// let info_item_cat1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Category:");
 	// let info_item_cat2 = infoTextObject(info_item_text, creatureInfoItem, 1);
 	// let info_item_des1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Description:");
-	let info_item_des2 = infoTextObject(info_item_text, creatureInfoItem, 3);
+	infoTextObject(info_item_text, creatureInfoItem, 3);
 
 	creatureInfo.info_item_text = info_item_text;
 
