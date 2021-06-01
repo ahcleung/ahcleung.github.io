@@ -1062,24 +1062,35 @@ function setup(){
 	creatureInfo.status.addChild(btnStatusDown);
 	creatureInfo.status.arrowDown = btnStatusDown;
 
-	let info_skill_power1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Power:");
-	let info_skill_power2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
-	let info_skill_acc1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Accuracy:");
-	let info_skill_acc2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
-	let info_skill_type1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Type:");
-	let info_skill_type2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
-	let info_skill_des1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Description:");
+	var skillHeaders = ["Power:", "Accuracy:", "Type:", "Description:"];
+	for(var i = 0; i < 7; i++){
+		if(i%2 == 0)			infoTextObject(info_skill_text, creatureInfoSkill, 2, skillHeaders[i/2]);	
+		else					infoTextObject(info_skill_text, creatureInfoSkill, 1);
+	}
+
+	// let info_skill_power1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Power:");
+	// let info_skill_power2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
+	// let info_skill_acc1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Accuracy:");
+	// let info_skill_acc2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
+	// let info_skill_type1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Type:");
+	// let info_skill_type2 = infoTextObject(info_skill_text, creatureInfoSkill, 1);
+	// let info_skill_des1 = infoTextObject(info_skill_text, creatureInfoSkill, 2, "Description:");
 	let info_skill_des2 = infoTextObject(info_skill_text, creatureInfoSkill, 3);
 
 	creatureInfo.info_skill_text = info_skill_text;
 
-	let info_item_name1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Name:");
-	let info_item_name2 = infoTextObject(info_item_text, creatureInfoItem, 1);
-	let info_item_type1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Type:");
-	let info_item_type2 = infoTextObject(info_item_text, creatureInfoItem, 1);
-	let info_item_cat1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Category:");
-	let info_item_cat2 = infoTextObject(info_item_text, creatureInfoItem, 1);
-	let info_item_des1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Description:");
+	var itemHeaders = ["Name:", "Type:", "Category:", "Description:"];
+	for(var i = 0; i < 7; i++){
+		if(i%2 == 0)			infoTextObject(info_item_text, creatureInfoItem, 2, itemHeaders[i/2]);	
+		else					infoTextObject(info_item_text, creatureInfoItem, 1);
+	}
+	// let info_item_name1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Name:");
+	// let info_item_name2 = infoTextObject(info_item_text, creatureInfoItem, 1);
+	// let info_item_type1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Type:");
+	// let info_item_type2 = infoTextObject(info_item_text, creatureInfoItem, 1);
+	// let info_item_cat1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Category:");
+	// let info_item_cat2 = infoTextObject(info_item_text, creatureInfoItem, 1);
+	// let info_item_des1 = infoTextObject(info_item_text, creatureInfoItem, 2, "Description:");
 	let info_item_des2 = infoTextObject(info_item_text, creatureInfoItem, 3);
 
 	creatureInfo.info_item_text = info_item_text;
