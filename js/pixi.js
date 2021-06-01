@@ -983,11 +983,20 @@ function setup(){
 	var info_item_text = [];
 	var info_stat_text = [];
 
-	let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Species:");
-	let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, 1);
-	let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Level:");
-	let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, 1);
-	let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Element:");
+	var infoHeaders = ["Species:", "Level:", "Element:"];
+	for(var i = 0; i < 5; i++){
+		if(i%2 == 0){
+			infoTextObject(info_main_text, creatureInfoMain, 2, infoHeaders[i/2]);	
+		}else{
+			infoTextObject(info_main_text, creatureInfoMain, 1);
+		}	
+	}
+
+	// let info_main_name1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Species:");
+	// let info_main_name2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	// let info_main_level1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Level:");
+	// let info_main_level2 = infoTextObject(info_main_text, creatureInfoMain, 1);
+	// let info_main_element1 = infoTextObject(info_main_text, creatureInfoMain, 2, "Element:");
 
 	var info_main_element = [];
 	let info_main_element2 = infoTextObject(info_main_element, creatureInfoMain, 1);
