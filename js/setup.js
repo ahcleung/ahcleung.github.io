@@ -1,6 +1,6 @@
 function setup(){
 	loadText.destroy();
-	// consolePrint("SETUP");
+	consolePrint("SETUP");
 	// app.stage.addChild(spriteHolder);
 	backgroundImage = new PIXI.Sprite.from('img/bg3.png');
 	backgroundImage.anchor.set(0.5);

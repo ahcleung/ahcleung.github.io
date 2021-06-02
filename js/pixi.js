@@ -2337,14 +2337,14 @@ function play(delta){
 	// }
 }
 
-// function consolePrint(fromText){
-// 	console.log(
-// 		fromText + 
-// 		"\nResolution: " + app.renderer.resolution +
-// 		"\nRendererWidth: " + app.renderer.width + 
-// 		"\nRendererHeight: " + app.renderer.height
-// 		);
-// }
+function consolePrint(fromText){
+	console.log(
+		fromText + 
+		"\nResolution: " + app.renderer.resolution +
+		"\nRendererWidth: " + app.renderer.width + 
+		"\nRendererHeight: " + app.renderer.height
+		);
+}
 
 // Listen for animate update
 // app.ticker.add((delta) => {
@@ -3272,7 +3272,7 @@ function resize() {
 	resizeEncounter();
 	resizeInfo();
 	//Console log RESIZE
-	// consolePrint("RESIZE");
+	consolePrint("RESIZE");
 	// consoleScreen.text = "RESIZE\n" + consoleScreen.text;
 }
 
