@@ -1577,3 +1577,196 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 	mainContaier.addChild(textObject);
 	return textObject;	
 }
+
+function createEdgeTiles(holder){
+	const tileContainer = new PIXI.Container();
+	let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+	mapTile.scale.set(sizeScale);
+	mapTile.anchor.set(0.5,0.5);
+	tileContainer.addChild(mapTile);
+
+	// item.pos[0]==j item.pos[1]==i
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+	
+	var points = [
+		-mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
+		mapHolder.tileWidth/4,-mapHolder.tileHeight/2,
+		mapHolder.tileWidth/2,0,
+		mapHolder.tileWidth/4,mapHolder.tileHeight/2,
+		-mapHolder.tileWidth/4,mapHolder.tileHeight/2,
+		-mapHolder.tileWidth/2,0
+	];
+	tileContainer.hitArea = new PIXI.Polygon(points);
+
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+
+	tileContainer.x = mapHolder.tileWidth/2;
+	tileContainer.y = - mapHolder.tileHeight - (mapHolder.tileHeight/2);
+	holder.addChild(tileContainer);
+}
+
+function createTile(item, itemIndex){
+	const tileContainer = new PIXI.Container();
+	let mapTile, mapBase, mapHidden, mapFog;
+	// var ifMountain = false;
+	var randTile = Math.floor(Math.random() * Math.floor(3)+1);
+
+	mapHidden = new PIXI.Sprite(resources['tile_hidden'].texture);
+	// mapHidden.scale.set(sizeScale);
+	mapHidden.anchor.set(0,1);
+	tileContainer.hidden = mapHidden;
+	tileContainer.addChild(mapHidden);
+	const tileImage = new PIXI.Container();
+	switch(item.id){
+		case 1:
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_d_base'].texture);
+			break;
+		case 2:
+			mapTile = new PIXI.Sprite(resources['tile_water_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_water_m_base'].texture);
+			break;
+		case 3:
+			mapTile = new PIXI.Sprite(resources['tile_grass_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_grass_base'].texture);
+			break;
+		case 4:
+			mapTile = new PIXI.Sprite(resources['tile_bamboo_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_bamboo_base'].texture);
+			break;
+		case 5:
+			mapTile = new PIXI.Sprite(resources['tile_forest_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_forest_base'].texture);
+			// mapTile = new PIXI.Sprite(resources['tile_forest_4'].texture);
+			break;
+		case 6:
+			mapTile = new PIXI.Sprite(resources['tile_hill_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_hill_base'].texture);
+			break;
+		case 7:
+			mapTile = new PIXI.Sprite(resources['tile_mountain_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_mountain_base'].texture);
+			// ifMountain = true;
+			break;
+		case 8:
+			mapTile = new PIXI.Sprite(resources['tile_plains_' + randTile].texture);
+			mapBase = new PIXI.Sprite(resources['tile_plains_base'].texture);
+			break;
+		case 9:
+			mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
+			break;
+		case 10:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NE'].texture);
+			break;
+		case 11:
+			mapTile = new PIXI.Sprite(resources['tile_edge_E'].texture);
+			break;
+		case 12:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SE'].texture);
+			break;
+		case 13:
+			mapTile = new PIXI.Sprite(resources['tile_edge_S'].texture);
+			break;
+		case 14:
+			mapTile = new PIXI.Sprite(resources['tile_edge_SW'].texture);
+			break;
+		case 15:
+			mapTile = new PIXI.Sprite(resources['tile_edge_W'].texture);
+			break;
+		case 16:
+			mapTile = new PIXI.Sprite(resources['tile_edge_NW'].texture);
+			break;
+		default:
+			statusEffectIcon = new PIXI.Sprite(resources.tile_black.texture);	
+	}
+	if(item.id == 1 || item.id == 2 || item.id == 3 || item.id == 4 || item.id == 5 || item.id == 6 || item.id == 7 || item.id == 8){
+		// mapBase.scale.set(sizeScale);
+		mapBase.anchor.set(0,1);
+		tileImage.addChild(mapBase);
+	}
+	// mapTile.scale.set(sizeScale);
+	mapTile.anchor.set(0,1);
+	tileImage.addChild(mapTile);
+	tileImage.detail = mapTile;
+
+	mapFog = new PIXI.Sprite(resources['tile_fog'].texture);
+	// mapFog.scale.set(sizeScale);
+	mapFog.anchor.set(0,1);
+	mapFog.visible = false;
+	tileImage.addChild(mapFog);
+	tileImage.fog = mapFog;
+
+	tileContainer.image = tileImage;
+	tileContainer.addChild(tileImage);
+
+	tileContainer.image.visible = (item.discovered ? true : false);
+	tileContainer.hidden.visible = (item.discovered ? false : true);
+
+	// if(item.discovered){
+	// 	tileContainer.image.visible = true;
+	// 	tileContainer.hidden.visible = false;
+	// }else{
+	// 	tileContainer.image.visible = false;
+	// 	tileContainer.hidden.visible = true;
+	// }
+
+	// item.pos[0]==j item.pos[1]==i
+	tileContainer.interactive = true;
+	tileContainer.buttonMode = true;
+
+	let sizeTile = new PIXI.Sprite(resources.tile_move1.texture);
+	// sizeTile.scale.set(sizeScale);
+	// mapHolder.tileWidth = sizeTile.width;
+	// mapHolder.tileHeight = sizeTile.height;
+	
+	var points = [
+		sizeTile.width/4,-sizeTile.height,
+		sizeTile.width*3/4,-sizeTile.height,
+		sizeTile.width,-sizeTile.height/2,
+		sizeTile.width*3/4,0,
+		sizeTile.width/4,0,
+		0,-sizeTile.height/2
+	];
+	tileContainer.hitArea = new PIXI.Polygon(points);
+	tileContainer
+		// events for drag start
+		.on('mousedown', onTileDown)
+		.on('touchstart', onTileDown);
+
+	let moveTile2 = new PIXI.Sprite(resources.tile_move2.texture);
+	// moveTile2.scale.set(sizeScale);
+	moveTile2.anchor.set(0,1);
+	moveTile2.visible = false;
+	tileContainer.addChild(moveTile2);
+	tileContainer.moveTile2 = moveTile2;	
+	let moveTile1 = new PIXI.Sprite(resources.tile_move1.texture);
+	// moveTile1.scale.set(sizeScale);
+	moveTile1.anchor.set(0,1);
+	moveTile1.visible = false;
+	tileContainer.addChild(moveTile1);
+	tileContainer.moveTile1 = moveTile1;
+	item.sprite = tileContainer;
+	tileContainer.object = item;
+
+	// var centerGraphic = new PIXI.Graphics();
+	// centerGraphic.beginFill(0xff0000);
+	// centerGraphic.drawPolygon(points);
+	// centerGraphic.endFill();
+	// tileContainer.addChild(centerGraphic);
+
+	// // centerGraphic.x = app.screen.width/2;
+	// // centerGraphic.y = app.screen.height/2;
+	tileContainer.scale.set(sizeScale); 	
+	tileContainer.x = item.pos[0] * mapHolder.tileWidth * 3/4;
+	tileContainer.y = (item.pos[1]+1) * mapHolder.tileHeight - ((item.pos[0]%2)*mapHolder.tileHeight)/2;
+
+	// tileContainer.x = app.screen.width/2;
+	// tileContainer.x = app.screen.height/2;
+	tileSpriteArray.push(tileContainer);
+	mapHolder.addChild(tileContainer);
+
+}
