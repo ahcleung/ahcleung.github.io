@@ -30,7 +30,7 @@ class Creature{
 		this.newMove = 0;
 		// this.item = [Math.floor(Math.random() * 2) + 1];
 		
-		const creatureList = resources["js/creature.json"];				//Load creature JSON list
+		const creatureList = resources["js/json/creature.json"];				//Load creature JSON list
 		
 		this.frames = creatureList.data.creature[this.id].frames;			//Number of frames for creature animation
 		this.code = creatureList.data.creature[this.id].code;				//Creature code
