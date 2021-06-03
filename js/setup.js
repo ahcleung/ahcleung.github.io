@@ -1578,6 +1578,12 @@ function infoTextObject(textArray, mainContaier, adjustment, text=""){
 	return textObject;	
 }
 
+
+/*******************************************
+********************************************
+*				Create map
+********************************************
+*******************************************/
 function createEdgeTiles(holder){
 	const tileContainer = new PIXI.Container();
 	let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
@@ -1768,5 +1774,4 @@ function createTile(item, itemIndex){
 	// tileContainer.x = app.screen.height/2;
 	tileSpriteArray.push(tileContainer);
 	mapHolder.addChild(tileContainer);
-
 }
