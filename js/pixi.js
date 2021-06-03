@@ -3901,8 +3901,8 @@ function selectCreature(object2){
 	});	
 
 	if(!selectedVita.hero){
-		selectedVita.skill.forEach((skillID,skillIndex) =>{
-			console.log(skillList.data.skill[skillID].position[skillIndex]);
+		selectedVita.skill.forEach(skillID =>{
+			console.log(skillList.data.skill[skillID].position[selectedVita.pos-1]);
 			console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
 		});
