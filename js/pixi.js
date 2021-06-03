@@ -294,13 +294,13 @@ function loadProgressHandler(loader, resource) {
 /*
 *	Declare  variables
 */
-const skillList = resources["js/skill.json"];
-const elementList = resources["js/element.json"];
-const creatureList = resources["js/creature.json"];
-const itemList = resources["js/item.json"];
-const mapList = resources["js/map.json"];
-const encounterList = resources["js/encounter.json"];
-const playerMapList = resources["js/player_map.json"];
+const skillList = resources["js/json/skill.json"];
+const elementList = resources["js/json/element.json"];
+const creatureList = resources["js/json/creature.json"];
+const itemList = resources["js/json/item.json"];
+const mapList = resources["js/json/map.json"];
+const encounterList = resources["js/json/encounter.json"];
+const playerMapList = resources["js/json/player_map.json"];
 
 let state, onScreenStats, consoleScreen, turnText, mapBG, sizeScale;
 
