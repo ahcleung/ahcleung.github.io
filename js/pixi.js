@@ -3904,7 +3904,7 @@ function selectCreature(object2){
 		selectedVita.skill.forEach(skillID =>{
 			console.log(selectedVita.pos-1);
 			console.log(skillList.data.skill[skillID].position);
-			console.log(skillList.data.skill[skillID].accuracy);
+			// console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
 		});
 	}
