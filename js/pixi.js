@@ -1289,47 +1289,6 @@ function textStat(identifier){
 	}
 }
 
-function indicatorBar(colour, healthBar){
-	const indicatorContainer = new PIXI.Container();
-	let indicatorStart, indicatorEnd, indicatorBar1, indicatorBar2;
-
-	indicatorEnd = new PIXI.Graphics();
-	indicatorEnd.beginFill(colour);
-	indicatorEnd.drawRect(0, 0, 4, 18);
-	indicatorEnd.endFill();
-
-	indicatorStart = new PIXI.Graphics();
-	indicatorStart.beginFill(colour);
-	indicatorStart.drawRect(0, 0, 4, 18);
-	indicatorStart.endFill();
-
-	indicatorBar1 = new PIXI.Graphics();
-	indicatorBar1.beginFill(colour);
-	indicatorBar1.drawRect(0, 0, (app.screen.width-320)/8, 7);
-	indicatorBar1.endFill();
-
-	indicatorBar2 = new PIXI.Graphics();
-	indicatorBar2.beginFill(colour);
-	indicatorBar2.drawRect(0, 0, (app.screen.width-320)/8, 2);
-	indicatorBar2.endFill();
-
-	indicatorContainer.addChild(indicatorEnd);
-	indicatorContainer.indicatorEnd = indicatorEnd;
-	indicatorContainer.addChild(indicatorStart);
-	indicatorContainer.indicatorStart = indicatorStart;
-	indicatorContainer.addChild(indicatorBar1);
-	indicatorContainer.indicatorBar1 = indicatorBar1;
-	indicatorContainer.addChild(indicatorBar2);
-	indicatorContainer.indicatorBar2 = indicatorBar2;
-
-	healthBar.addChild(indicatorContainer);
-	indicatorContainer.visible = false;
-	healthBar.healthBarIndicators.push(indicatorContainer);
-	return indicatorContainer;
-}
-
-
-
 function onMenuDown(){
 	// stageContainer.visible = false;
 	// turnText.visible = false;
