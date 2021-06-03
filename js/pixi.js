@@ -492,25 +492,6 @@ enemy[2] = {
 // const framesIdleFlygon = [];				//Flygon spritesheet
 
 
-function infoTextObject(textArray, mainContaier, adjustment, text=""){
-	let textObject;
-	switch(adjustment){
-		case 1:
-			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left'});
-			break;
-		case 2:
-			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'right'});
-			textObject.anchor.set(1,0);
-			break;
-		case 3:
-			textObject = new Text(text, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align: 'left', wordWrap: true, wordWrapWidth: 500});
-			break;
-	}
-	textArray.push(textObject);
-	mainContaier.addChild(textObject);
-	return textObject;	
-}
-
 function createEdgeTiles(holder){
 	const tileContainer = new PIXI.Container();
 	let mapTile = new PIXI.Sprite(resources['tile_edge_N'].texture);
