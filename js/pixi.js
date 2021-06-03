@@ -410,7 +410,7 @@ hero[1] = {
 	id: 12, level: 47,
 	skill:[1,10,3,22],
 	items: [2,2],
-	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 130,
+	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 0,
 	hero: true
 };
 hero[2] = {
@@ -432,7 +432,7 @@ enemy[0] = {
 	id: 5, level: 46,
 	skill:[4,3,11,2],
 	items: [1],
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 130,
 	hero: false
 };
 enemy[1] = {
