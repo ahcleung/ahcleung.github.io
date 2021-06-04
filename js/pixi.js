@@ -4196,12 +4196,14 @@ function selectCreature(object2){
 				}
 			}
 			
-			heroArray.forEach(creatureObject =>{
-				var targetArray = [];
-				targetArray.push(validPos);
-				targetArray.push(skillList.data.skill[skillID].target[creatureObject.pos-1]);
-				skillCalculatedWeight.push(targetArray);
-			});
+			console.log(getValidSkillTargets(skillID));
+
+			// heroArray.forEach(creatureObject =>{
+			// 	var targetArray = [];
+			// 	targetArray.push(validPos);
+			// 	targetArray.push(skillList.data.skill[skillID].target[creatureObject.pos-1]);
+			// 	skillCalculatedWeight.push(targetArray);
+			// });
 
 			// console.log(targetArray);
 			// console.log(skillList.data.skill[skillID].accuracy);
