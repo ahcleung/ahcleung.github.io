@@ -2547,7 +2547,7 @@ function onSkillDown(){
 }
 
 function getValidSkillTargets(skillID){
-	var validSkillObjectArray;
+	var validSkillObjectArray = [];
 	var column = false;
 	var several = false;
 	var displace = false;
@@ -2565,7 +2565,7 @@ function getValidSkillTargets(skillID){
 		if(tagName == "self")			self = true
 		if(tagName == "team")			team = true
 	});
-	
+
 	// validSkillObjectArray = [];
 	if(column){
 		var columnObjectArray = [];
