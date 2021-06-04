@@ -3905,8 +3905,8 @@ function selectCreature(object2){
 			// console.log(selectedVita.pos-1);
 			var validPos = 0;
 			for(var i = 0; i < selectedVita.size; i++){
-				if(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4 - i)] > 0){
-					validPos = skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4-i)];
+				if(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4+i)] > 0){
+					validPos = skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4+i)];
 				}
 			}
 			console.log(validPos);
