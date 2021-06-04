@@ -432,14 +432,14 @@ enemy[0] = {
 	id: 5, level: 46,
 	skill:[4,3,11,2],
 	items: [1],
-	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 130,
+	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: false
 };
 enemy[1] = {
 	id: 8, level: 49,
 	skill:[4,3,1,22],
 	items: [2,2],
-	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 60,
+	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 130,
 	hero: false
 };
 enemy[2] = {
@@ -3902,7 +3902,7 @@ function selectCreature(object2){
 
 	if(!selectedVita.hero){
 		selectedVita.skill.forEach(skillID =>{
-			console.log(selectedVita.pos-1);
+			// console.log(selectedVita.pos-1);
 			console.log(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4)]);
 			// console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
