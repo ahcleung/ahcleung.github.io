@@ -2467,16 +2467,7 @@ function onSkillDown(){
 
 	// console.log(validSkillTargetArray);
 	//validSkillTargetArray [1, 2, 4] = [[1,2],[2,4]]
-	//several [1, 0, 1]
-	//[001]
-	//[010]
-	//[011]
-	//[100]
-	//[101]
-	//[110]
-	//[111]
 	if(several){
-
 		var newTargets1 = [];
 		var newTargets2 = [];
 		var severalSplit = false;
@@ -2519,20 +2510,11 @@ function onSkillDown(){
 				}
 			}
 		});
-
 		if(!severalSplit)	validSkillObjectArray = [newTargets1];
 		else 				validSkillObjectArray = [newTargets1, newTargets2];	
 	}
 
 	// console.log("validSkillObjectArray: " + validSkillObjectArray);
-
-
-	// newTargets.forEach(object1 =>{
-	// 	console.log("*************************************************");
-	// 	object1.forEach(object2 =>{
-	// 		console.log("Target: " + object2.name);
-	// 	});
-	// });
 
 	console.log("###########################################");
 
