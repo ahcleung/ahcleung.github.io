@@ -3910,13 +3910,11 @@ function selectCreature(object2){
 				}
 			}
 			console.log(validPos);
-			// if(selectedVita.size > 1){
-			// 	var validPos = 0;
-
-			// 	console.log(validPos);
-			// }else{
-			// 	console.log(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4)]);
-			// }
+			var targetArray = [];
+			heroArray.forEach(creatureObject =>{
+				targetArray.push(skillList.data.skill[skillID].target[creatureObject.pos-1]);
+			});
+			console.log(targetArray);
 			// console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
 		});
