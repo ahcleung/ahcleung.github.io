@@ -2216,23 +2216,23 @@ function onSkillDown(){
 		" <<<<<<<<<<<<<<\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
 
 	// console.log("Skill: " + skillList.data.skill[this.identifier[1]].name);
-	var column = false;
-	var several = false;
-	var displace = false;
-	var heal = false;
-	var splash = false;
-	var self = false;
-	var team = false;
-	skillList.data.skill[this.identifier[1]].tags.forEach(tagName =>{
-		if(tagName == "column")			column = true;
-			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
-		if(tagName == "heal")			heal = true;
-		if(tagName == "several")		several = true
-		if(tagName == "displace")		displace = true
-		if(tagName == "splash")			splash = true
-		if(tagName == "self")			self = true
-		if(tagName == "team")			team = true
-	});
+	// var column = false;
+	// var several = false;
+	// var displace = false;
+	// var heal = false;
+	// var splash = false;
+	// var self = false;
+	// var team = false;
+	// skillList.data.skill[this.identifier[1]].tags.forEach(tagName =>{
+	// 	if(tagName == "column")			column = true;
+	// 		//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
+	// 	if(tagName == "heal")			heal = true;
+	// 	if(tagName == "several")		several = true
+	// 	if(tagName == "displace")		displace = true
+	// 	if(tagName == "splash")			splash = true
+	// 	if(tagName == "self")			self = true
+	// 	if(tagName == "team")			team = true
+	// });
 	validMoveObjectArray = [];
 	validSkillObjectArray = getValidSkillTargets(this.identifier[1]);
 	// validSkillObjectArray = [];
@@ -2548,7 +2548,24 @@ function onSkillDown(){
 
 function getValidSkillTargets(skillID){
 	var validSkillObjectArray;
-
+	var column = false;
+	var several = false;
+	var displace = false;
+	var heal = false;
+	var splash = false;
+	var self = false;
+	var team = false;
+	skillList.data.skill[skillID].tags.forEach(tagName =>{
+		if(tagName == "column")			column = true;
+			//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
+		if(tagName == "heal")			heal = true;
+		if(tagName == "several")		several = true
+		if(tagName == "displace")		displace = true
+		if(tagName == "splash")			splash = true
+		if(tagName == "self")			self = true
+		if(tagName == "team")			team = true
+	});
+	
 	// validSkillObjectArray = [];
 	if(column){
 		var columnObjectArray = [];
