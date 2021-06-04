@@ -3902,6 +3902,7 @@ function selectCreature(object2){
 
 	if(!selectedVita.hero){
 		selectedVita.skill.forEach(skillID =>{
+			var skillCalculatedWeight = [];
 			// console.log(selectedVita.pos-1);
 			var validPos = 0;
 			for(var i = 0; i < selectedVita.size; i++){
@@ -3909,14 +3910,18 @@ function selectCreature(object2){
 					validPos = skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4+i)];
 				}
 			}
-			console.log(validPos);
-			var targetArray = [];
+			
 			heroArray.forEach(creatureObject =>{
+				var targetArray = [];
+				targetArray.push(validPos);
 				targetArray.push(skillList.data.skill[skillID].target[creatureObject.pos-1]);
+				skillCalculatedWeight.push(targetArray);
 			});
-			console.log(targetArray);
+
+			// console.log(targetArray);
 			// console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
+			console.log(skillCalculatedWeight);
 		});
 	}
 }
