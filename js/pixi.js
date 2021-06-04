@@ -3903,7 +3903,20 @@ function selectCreature(object2){
 	if(!selectedVita.hero){
 		selectedVita.skill.forEach(skillID =>{
 			// console.log(selectedVita.pos-1);
-			console.log(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4)]);
+			var validPos = 0;
+			for(var i = 0; i < selectedVita.size; i++){
+				if(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4 - i)] > 0){
+					validPos = skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4-i)];
+				}
+			}
+			console.log(validPos);
+			// if(selectedVita.size > 1){
+			// 	var validPos = 0;
+
+			// 	console.log(validPos);
+			// }else{
+			// 	console.log(skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4)]);
+			// }
 			// console.log(skillList.data.skill[skillID].accuracy);
 			// console.log(skillList.data.skill[skillID].power);
 		});
