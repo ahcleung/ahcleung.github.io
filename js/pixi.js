@@ -4202,7 +4202,7 @@ function selectCreature(object2){
 				list.forEach(creatureObject=>{
 					var effectiveness = 0;
 					creatureObject.element.forEach(element =>{
-						var element1 = skillList.data.skill[selectedSkill].element-1;
+						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
