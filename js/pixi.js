@@ -2132,8 +2132,8 @@ function onBtnStatUp(){
 	}else{
 		console.log("No stat to allocate");
 	}
-	console.log(selectedHP.statDis);
-	console.log(selectedHP.statCalc);
+	console.log(selectedHP.patk);
+	console.log(selectedHP.satk);
 }
 
 function onBtnStatusUp(){
@@ -4275,11 +4275,11 @@ function selectCreature(object2){
 
 					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod;
 					if(skillList.data.skill[skillID].type == "Physical"){
-						weight.push(selectedVita.statCalc[2]/10);
-						damageCalc *= selectedVita.statCalc[2]/10;
+						weight.push(selectedVita.patk/10);
+						damageCalc *= selectedVita.patk/10;
 					}else if(skillList.data.skill[skillID].type == "Special"){
-						weight.push(selectedVita.statCalc[4]/10);
-						damageCalc *= selectedVita.statCalc[4]/10;
+						weight.push(selectedVita.satk/10);
+						damageCalc *= selectedVita.satk/10;
 					}
 					damage+= damageCalc;
 					weights.push(weight);
