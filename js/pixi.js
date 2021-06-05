@@ -4200,13 +4200,21 @@ function selectCreature(object2){
 			validTargets.forEach(list=>{
 				var damage = 0;
 				list.forEach(creatureObject=>{
+					var damageCalc = 1;
 					var effectiveness = 1;
 					creatureObject.element.forEach(element =>{
 						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
-					damage+= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
+					if(skillList.data.skill[skillID].type == "Physical"){
+						damageCalc *= selectedVita.statCalc[2];
+					}else if(skillList.data.skill[skillID].type == "Special"){
+						damageCalc *= selectedVita.statCalc[4];
+					}
+					damage+= damageCalc;
+
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
 					
