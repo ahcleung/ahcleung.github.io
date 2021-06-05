@@ -4197,13 +4197,18 @@ function selectCreature(object2){
 			}
 			
 			var validTargets = getValidSkillTargets(skillID);
-			validTargets.forEach(creatureObject=>{
-				var targetArray = {
-					canHit: validPos,
-					creatureName: creatureObject.name
-				};
+			validTargets.forEach(list=>{
+				var hp = 0;
+				list.forEach(creatureObject=>{
+					hp+= creatureObject.EHP; 
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
+					
+				});
+				var targetArray = {
+					canHit: validPos,
+					totalHP: hp
+				};
 				skillCalculatedWeight.push(targetArray);
 			});
 
