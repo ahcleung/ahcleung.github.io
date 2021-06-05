@@ -401,7 +401,7 @@ const skillContainerArray = [];			//Array of skill containers
 const hero = [];
 hero[0] = {
 	id: 6, level: 51,
-	skill:[4,1,3,2],
+	skill:[4,1,6,2],
 	items: [2],
 	statDODG: 0, statHP: 0, statPATK: 0, statPDEF: 0, statSATK: 150, statSDEF: 0, statSPD: 0,
 	hero: true
