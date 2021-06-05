@@ -2132,6 +2132,8 @@ function onBtnStatUp(){
 	}else{
 		console.log("No stat to allocate");
 	}
+	console.log(selectedHP.statDis);
+	console.log(selectedHP.statCalc);
 }
 
 function onBtnStatusUp(){
