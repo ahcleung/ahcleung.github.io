@@ -4238,12 +4238,13 @@ function selectCreature(object2){
 					});
 
 					weight.push(skillList.data.skill[skillID].power);
-					weight.push(skillList.data.skill[skillID].accuracy/100);
+					var skillAccuracy = (skillList.data.skill[skillID].accuracy != 0 ? skillList.data.skill[skillID].accuracy/100: 1);
+					weight.push(skillAccuracy);
 					weight.push(effectiveness);
 					weight.push(SEAB);
 					weight.push(splashMod);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB * splashMod;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod;
 					if(skillList.data.skill[skillID].type == "Physical"){
 						weight.push(selectedVita.statCalc[2]/10);
 						damageCalc *= selectedVita.statCalc[2]/10;
