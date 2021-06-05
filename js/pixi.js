@@ -4209,9 +4209,9 @@ function selectCreature(object2){
 					});
 					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
 					if(skillList.data.skill[skillID].type == "Physical"){
-						damageCalc *= selectedVita.statCalc[2];
+						damageCalc *= selectedVita.statCalc[2]/100;
 					}else if(skillList.data.skill[skillID].type == "Special"){
-						damageCalc *= selectedVita.statCalc[4];
+						damageCalc *= selectedVita.statCalc[4]/100;
 					}
 					damage+= damageCalc;
 
