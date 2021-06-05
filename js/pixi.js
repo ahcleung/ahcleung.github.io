@@ -2958,8 +2958,8 @@ function onCreatureDown(){
 							tempArray2.push(creatureObject);
 						}
 					});
-					tempArray1.reverse();
-					tempArray2.reverse();
+					// tempArray1.reverse();
+					// tempArray2.reverse();
 					tempArray2.forEach(creatureObject=>{
 						validSkillObjectArray[targetedVitaIndex].shift();
 						dmgMod.shift();
