@@ -4199,7 +4199,9 @@ function selectCreature(object2){
 			var validTargets = getValidSkillTargets(skillID);
 			validTargets.forEach(list=>{
 				var damage = 0;
+				var weights = [];
 				list.forEach(creatureObject=>{
+					var weight = [];
 					var damageCalc = 1;
 					var effectiveness = 1;
 					creatureObject.element.forEach(element =>{
@@ -4207,21 +4209,27 @@ function selectCreature(object2){
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
+					weight.push(skillList.data.skill[skillID].power);
+					weight.push(skillList.data.skill[skillID].accuracy/100);
+					weight.push(effectiveness);
+
 					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
 					if(skillList.data.skill[skillID].type == "Physical"){
-						damageCalc *= selectedVita.statCalc[2]/100;
+						weight.push(selectedVita.statCalc[2]/100);
+						// damageCalc *= selectedVita.statCalc[2]/100;
 					}else if(skillList.data.skill[skillID].type == "Special"){
-						damageCalc *= selectedVita.statCalc[4]/100;
+						weight.push(selectedVita.statCalc[2]/100);
+						// damageCalc *= selectedVita.statCalc[4]/100;
 					}
 					damage+= damageCalc;
-
+					weights.push(weight);
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
 					
 				});
 				var targetArray = {
 					canHit: validPos,
-					totalDamage: damage
+					totalDamage: weights
 				};
 				skillCalculatedWeight.push(targetArray);
 			});
