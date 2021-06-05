@@ -2946,12 +2946,12 @@ function onCreatureDown(){
 			console.log("DmgMod: " + dmgMod);
 
 			//reverse column order if forward for proper animation sequence
-			if(tagColumn){
-				if(skillList.data.skill[selectedSkill].column[2] == 1){
-					dmgMod.reverse();
-					validSkillObjectArray[targetedVitaIndex].reverse();
-				}
-			}
+			// if(tagColumn){
+			// 	if(skillList.data.skill[selectedSkill].column[2] == 1){
+			// 		dmgMod.reverse();
+			// 		validSkillObjectArray[targetedVitaIndex].reverse();
+			// 	}
+			// }
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
