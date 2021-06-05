@@ -4227,9 +4227,9 @@ function selectCreature(object2){
 					var weight = [];
 					var damageCalc = 1;
 					var effectiveness = 1;
-					var splash = 1;
+					var splashMod = 1;
 					if(splash && creatureIndex > 0){
-						splash = skillList.data.skill[skillID].splash;
+						splashMod = skillList.data.skill[skillID].splash;
 					}
 					creatureObject.element.forEach(element =>{
 						var element1 = skillList.data.skill[skillID].element-1;
@@ -4241,9 +4241,9 @@ function selectCreature(object2){
 					weight.push(skillList.data.skill[skillID].accuracy/100);
 					weight.push(effectiveness);
 					weight.push(SEAB);
-					weight.push(splash);
+					weight.push(splashMod);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB * splash;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB * splashMod;
 					if(skillList.data.skill[skillID].type == "Physical"){
 						weight.push(selectedVita.statCalc[2]/10);
 						damageCalc *= selectedVita.statCalc[2]/10;
