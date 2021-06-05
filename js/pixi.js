@@ -4187,6 +4187,24 @@ function selectCreature(object2){
 
 	if(!selectedVita.hero){
 		selectedVita.skill.forEach(skillID =>{
+			var column = false;
+			var several = false;
+			var displace = false;
+			var heal = false;
+			var splash = false;
+			var self = false;
+			var team = false;
+			skillList.data.skill[skillID].tags.forEach(tagName =>{
+				if(tagName == "column")			column = true;
+					//Column tag breakdown = [Number of targets, Decay, Direction, Heal/Damage]						
+				if(tagName == "heal")			heal = true;
+				if(tagName == "several")		several = true
+				if(tagName == "displace")		displace = true
+				if(tagName == "splash")			splash = true
+				if(tagName == "self")			self = true
+				if(tagName == "team")			team = true
+			});
+
 			var skillCalculatedWeight = [];
 			// console.log(selectedVita.pos-1);
 			var validPos = 0;
@@ -4205,10 +4223,14 @@ function selectCreature(object2){
 			validTargets.forEach(list=>{
 				var damage = 0;
 				var weights = [];
-				list.forEach(creatureObject=>{
+				list.forEach((creatureObject, creatureIndex)=>{
 					var weight = [];
 					var damageCalc = 1;
 					var effectiveness = 1;
+					var splash = 1;
+					if(splash && creatureIndex > 0){
+						splash = skillList.data.skill[skillID].splash;
+					}
 					creatureObject.element.forEach(element =>{
 						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
@@ -4219,8 +4241,9 @@ function selectCreature(object2){
 					weight.push(skillList.data.skill[skillID].accuracy/100);
 					weight.push(effectiveness);
 					weight.push(SEAB);
+					weight.push(splash);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB * splash;
 					if(skillList.data.skill[skillID].type == "Physical"){
 						weight.push(selectedVita.statCalc[2]/10);
 						damageCalc *= selectedVita.statCalc[2]/10;
