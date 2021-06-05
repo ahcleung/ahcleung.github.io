@@ -123,7 +123,7 @@
 			"displace": [1]
 		},
 		{
-			"name": "Water geyser",
+			"name": "Geyser burst",
 			"element": 5,
 			"type": "Special",
 			"power": 40,
