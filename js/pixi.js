@@ -4206,7 +4206,7 @@ function selectCreature(object2){
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
-					damage+= skillList.data.skill[skillID].power * effectiveness;
+					damage+= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
 					
