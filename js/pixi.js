@@ -4200,7 +4200,7 @@ function selectCreature(object2){
 			validTargets.forEach(list=>{
 				var damage = 0;
 				list.forEach(creatureObject=>{
-					var effectiveness = 0;
+					var effectiveness = 1;
 					creatureObject.element.forEach(element =>{
 						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
@@ -4213,7 +4213,7 @@ function selectCreature(object2){
 				});
 				var targetArray = {
 					canHit: validPos,
-					totalHP: damage
+					totalDamage: damage
 				};
 				skillCalculatedWeight.push(targetArray);
 			});
