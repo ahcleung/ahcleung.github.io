@@ -4204,22 +4204,27 @@ function selectCreature(object2){
 					var weight = [];
 					var damageCalc = 1;
 					var effectiveness = 1;
+					var SEAB = 1;
 					creatureObject.element.forEach(element =>{
+						if(element == skillList.data.skill[skillID].element)		SEAB = 1.5;
+
 						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
+
 					weight.push(skillList.data.skill[skillID].power);
 					weight.push(skillList.data.skill[skillID].accuracy/100);
 					weight.push(effectiveness);
+					weight.push(SEAB);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillList.data.skill[skillID].accuracy/100 * SEAB;
 					if(skillList.data.skill[skillID].type == "Physical"){
-						weight.push(selectedVita.statCalc[2]/100);
-						// damageCalc *= selectedVita.statCalc[2]/100;
+						weight.push(selectedVita.statCalc[2]/10);
+						damageCalc *= selectedVita.statCalc[2]/10;
 					}else if(skillList.data.skill[skillID].type == "Special"){
-						weight.push(selectedVita.statCalc[4]/100);
-						// damageCalc *= selectedVita.statCalc[4]/100;
+						weight.push(selectedVita.statCalc[4]/10);
+						damageCalc *= selectedVita.statCalc[4]/10;
 					}
 					damage+= damageCalc;
 					weights.push(weight);
@@ -4229,7 +4234,8 @@ function selectCreature(object2){
 				});
 				var targetArray = {
 					canHit: validPos,
-					totalDamage: weights
+					totalDamage: damage,
+					totalWeight: weights
 				};
 				skillCalculatedWeight.push(targetArray);
 			});
