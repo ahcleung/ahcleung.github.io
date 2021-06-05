@@ -62,7 +62,7 @@ class Creature{
 
 		// 0, 	  1,    2,    3,    4,    5,   6,   7
 		//hp, dodge, patk, pdef, satk, sdef, spd, acc
-		this.statMod = [0, 0, 1, 0, 0, 0, 0, 0];
+		this.statMod = [0, 0, 0, 0, 0, 0, 0, 0];
 		// this.statMod = [
 		// Math.floor(Math.random() * 30) + 1,
 		// Math.floor(Math.random() * 30) + 1,
@@ -128,11 +128,11 @@ class Creature{
 	}
 
 	get hp(){
-		return this.statCalc[0];
+		return this.statCalc[0] + this.statDis[0];
 	}
 
 	get dodge(){
-		return this.statCalc[1];
+		return (this.statCalc[1] + this.statDis[0])/3;
 	}
 
 	get dodgeMod(){
@@ -151,37 +151,40 @@ class Creature{
 	}
 
 	get pdef(){
+		var statSum = this.statCalc[3] + this.statDis[3];
 		if(this.statMod[3] > 0){
-			return this.statCalc[3] * ((this.statMod[3]+2)/2);
+			return statSum * ((this.statMod[3]+2)/2);
 		}else if(this.statMod[3] < 0){
-			return this.statCalc[3] * (2/(Math.abs(this.statMod[3])+2));
+			return statSum * (2/(Math.abs(this.statMod[3])+2));
 		}else{
-			return this.statCalc[3];
+			return statSum;
 		}
 	}
 
 	get satk(){
+		var statSum = this.statCalc[4] + this.statDis[4];
 		if(this.statMod[4] > 0){
-			return this.statCalc[4] * ((this.statMod[4]+2)/2);
+			return statSum * ((this.statMod[4]+2)/2);
 		}else if(this.statMod[4] < 0){
-			return this.statCalc[4] * (2/(Math.abs(this.statMod[4])+2));
+			return statSum * (2/(Math.abs(this.statMod[4])+2));
 		}else{
-			return this.statCalc[4];
+			return statSum;
 		}
 	}
 
 	get sdef(){
+		var statSum = this.statCalc[5] + this.statDis[5];
 		if(this.statMod[5] > 0){
-			return this.statCalc[5] * ((this.statMod[5]+2)/2);
+			return statSum * ((this.statMod[5]+2)/2);
 		}else if(this.statMod[5] < 0){
-			return this.statCalc[5] * (2/(Math.abs(this.statMod[5])+2));
+			return statSum * (2/(Math.abs(this.statMod[5])+2));
 		}else{
-			return this.statCalc[5];
+			return statSum;
 		}
 	}
 
 	get spd(){
-		return this.statCalc[6];
+		return this.statCalc[6] + this.statDis[6];
 	}
 
 	get accMod(){
