@@ -4218,7 +4218,7 @@ function selectCreature(object2){
 						weight.push(selectedVita.statCalc[2]/100);
 						// damageCalc *= selectedVita.statCalc[2]/100;
 					}else if(skillList.data.skill[skillID].type == "Special"){
-						weight.push(selectedVita.statCalc[2]/100);
+						weight.push(selectedVita.statCalc[4]/100);
 						// damageCalc *= selectedVita.statCalc[4]/100;
 					}
 					damage+= damageCalc;
