@@ -4195,6 +4195,11 @@ function selectCreature(object2){
 					validPos = skillList.data.skill[skillID].position[Math.abs(selectedVita.pos - 4+i)];
 				}
 			}
+
+			var SEAB = 1;
+			selectedVita.element.forEach(element =>{
+				if(element == skillList.data.skill[skillID].element)		SEAB = 1.5;
+			});
 			
 			var validTargets = getValidSkillTargets(skillID);
 			validTargets.forEach(list=>{
@@ -4204,10 +4209,7 @@ function selectCreature(object2){
 					var weight = [];
 					var damageCalc = 1;
 					var effectiveness = 1;
-					var SEAB = 1;
 					creatureObject.element.forEach(element =>{
-						if(element == skillList.data.skill[skillID].element)		SEAB = 1.5;
-
 						var element1 = skillList.data.skill[skillID].element-1;
 						var element2 = element-1;
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
