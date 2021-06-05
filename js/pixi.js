@@ -4250,6 +4250,10 @@ function selectCreature(object2){
 					var damageCalc = 1;
 					var effectiveness = 1;
 					var splashMod = 1;
+					var columnMod = 1;
+					if(column){
+						columnMod = skillList.data.skill[skillID].column[1]**creatureIndex;
+					}
 					if(splash && creatureIndex > 0){
 						splashMod = skillList.data.skill[skillID].splash;
 					}
@@ -4265,8 +4269,9 @@ function selectCreature(object2){
 					weight.push(effectiveness);
 					weight.push(SEAB);
 					weight.push(splashMod);
+					weight.push(columnMod);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod;
 					if(skillList.data.skill[skillID].type == "Physical"){
 						weight.push(selectedVita.statCalc[2]/10);
 						damageCalc *= selectedVita.statCalc[2]/10;
