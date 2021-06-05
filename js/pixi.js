@@ -2612,7 +2612,7 @@ function getValidSkillTargets(skillID){
 
 			for(var i = 0; i < skillList.data.skill[skillID].column[0]; i++){
 				temp++;
-				console.log("=================================" + temp);
+				// console.log("=================================" + temp);
 				if(selectedVita.hero){
 					heroArray.forEach(arrayCreature => {
 						if(arrayCreature.pos == temp)			columnObjectArray.push(arrayCreature)
@@ -4062,7 +4062,7 @@ function selectCreature(object2){
 			dmgNumArrayItem.visible = false;
 		});	
 		var dmgTotal = 0;
-		console.log(dmgStatusArray);
+		// console.log(dmgStatusArray);
 		selectedVita.dmgContainer.dmgPopup.dmgEffective.visible = false;
 		dmgStatusArray.forEach((dmgStatus, dmgStatusIndex) =>{
 			if(dmgStatus[0] == 11){
