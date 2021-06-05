@@ -140,12 +140,13 @@ class Creature{
 	}
 
 	get patk(){
+		var statSum = this.statCalc[2] + this.statDis[2];
 		if(this.statMod[2] > 0){
-			return this.statCalc[2] * ((this.statMod[2]+2)/2);
+			return statSum * ((this.statMod[2]+2)/2);
 		}else if(this.statMod[2] < 0){
-			return this.statCalc[2] * (2/(Math.abs(this.statMod[2])+2));
+			return statSum * (2/(Math.abs(this.statMod[2])+2));
 		}else{
-			return this.statCalc[2];
+			return statSum;
 		}
 	}
 
