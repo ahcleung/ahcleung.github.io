@@ -2943,15 +2943,39 @@ function onCreatureDown(){
 				}
 			});
 			// console.log(splashTarget);
+			console.log("Targets: " + validSkillObjectArray[targetedVitaIndex]);
 			console.log("DmgMod: " + dmgMod);
 
 			//reverse column order if forward for proper animation sequence
-			// if(tagColumn){
-			// 	if(skillList.data.skill[selectedSkill].column[2] == 1){
-			// 		dmgMod.reverse();
-			// 		validSkillObjectArray[targetedVitaIndex].reverse();
-			// 	}
-			// }
+			if(tagColumn){
+				if(skillList.data.skill[selectedSkill].column[2] == 1){
+					// dmgMod.reverse();
+					var tempArray1 = [];
+					var tempArray2 = [];
+					validSkillObjectArray[targetedVitaIndex].forEach((creatureObject, creatureIndex)=>{
+						if(creatureObject.hero == selectedVita.hero){
+							tempArray1.push(dmgMod[creatureIndex]);
+							tempArray2.push(creatureObject);
+						}
+					});
+					tempArray1.reverse();
+					tempArray2.reverse();
+					tempArray2.forEach(creatureObject=>{
+						validSkillObjectArray[targetedVitaIndex].shift();
+						dmgMod.shift();
+					});
+
+					tempArray2.forEach((creatureObject, creatureIndex)=>{
+						validSkillObjectArray[targetedVitaIndex].unshift(creatureObject);
+						dmgMod.unshift(tempArray1[creatureIndex]);
+					});					
+					// validSkillObjectArray[targetedVitaIndex].reverse();
+				}
+			}
+
+			console.log("Targets: " + validSkillObjectArray[targetedVitaIndex]);
+			console.log("DmgMod: " + dmgMod);
+			
 			//if splash, calculate hit only if main is hit
 
 			var hitArray = calculateHit(selectedVita, validSkillObjectArray[targetedVitaIndex]);
