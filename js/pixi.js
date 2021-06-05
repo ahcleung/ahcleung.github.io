@@ -4200,7 +4200,7 @@ function selectCreature(object2){
 			validTargets.forEach(creatureObject=>{
 				var targetArray = {
 					canHit: validPos,
-					creatureName: creatureObject.name;
+					creatureName: creatureObject.name
 				};
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
