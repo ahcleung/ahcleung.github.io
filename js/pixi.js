@@ -4196,7 +4196,16 @@ function selectCreature(object2){
 				}
 			}
 			
-			console.log(getValidSkillTargets(skillID));
+			var validTargets = getValidSkillTargets(skillID);
+			validTargets.forEach(creatureObject=>{
+				var targetArray = {
+					canHit: validPos,
+					creatureName: creatureObject.name;
+				};
+				// targetArray.push(validPos);
+				// targetArray.push(creatureObject.name);
+				skillCalculatedWeight.push(targetArray);
+			});
 
 			// heroArray.forEach(creatureObject =>{
 			// 	var targetArray = [];
