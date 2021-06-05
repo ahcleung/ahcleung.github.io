@@ -124,7 +124,7 @@
 		},
 		{
 			"name": "Geyser burst",
-			"element": 5,
+			"element": 6,
 			"type": "Special",
 			"power": 40,
 			"accuracy": 0,
