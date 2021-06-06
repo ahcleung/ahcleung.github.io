@@ -663,7 +663,7 @@ function setup(){
 
 	for(var i = 0; i < 31; i++){
 		var info_stat = new Text(i, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-		if(i%3 == 0 && i != 0){
+		if((i+1)%4 == 0 && i != 0){
 			info_stat.anchor.set(1,0.5);
 		}else{
 			info_stat.anchor.set(0.5,0.5);
