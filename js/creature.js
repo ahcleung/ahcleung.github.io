@@ -137,7 +137,7 @@ class Creature{
 	// }
 
 	get hp(){
-		return this.statCalc[0] + this.statDis[0];
+		return this.statCalc[0];
 	}
 
 	get dodge(){
