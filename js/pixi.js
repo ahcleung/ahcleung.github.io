@@ -2049,28 +2049,28 @@ function onHPDown(){
 		toAllocate -= statDis;
 	});
 
-	creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
-		increase.increaseText.style.fontSize = skillNameFontSize;
-		increase.x = 3 * app.screen.width/11 + app.screen.width/50;
-		increase.y = (increaseIndex+1) * app.screen.height/12;
+	// creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
+	// 	increase.increaseText.style.fontSize = skillNameFontSize;
+	// 	increase.x = 3 * app.screen.width/11 + app.screen.width/50;
+	// 	increase.y = (increaseIndex+1) * app.screen.height/12;
 
-		creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
-		creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/11 + app.screen.width/50 + increase.increaseText.x;
-		creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
-		if(this.object.statDis[increaseIndex] == 150){
-			increase.visible = false;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = true;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
-		}else if(toAllocate == 0){
-			increase.visible = false;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
-		}else{
-			increase.visible = true;
-			creatureInfo.info_stat_maxed[increaseIndex].visible = false;
-			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
-		}
-	});
+	// 	creatureInfo.info_stat_maxed[increaseIndex].style.fontSize = skillNameFontSize;
+	// 	creatureInfo.info_stat_maxed[increaseIndex].x = 3 * app.screen.width/11 + app.screen.width/50 + increase.increaseText.x;
+	// 	creatureInfo.info_stat_maxed[increaseIndex].y = (increaseIndex+1) * app.screen.height/12;
+	// 	if(this.object.statDis[increaseIndex] == 150){
+	// 		increase.visible = false;
+	// 		creatureInfo.info_stat_maxed[increaseIndex].visible = true;
+	// 		creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#FFd600';
+	// 	}else if(toAllocate == 0){
+	// 		increase.visible = false;
+	// 		creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+	// 		creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+	// 	}else{
+	// 		increase.visible = true;
+	// 		creatureInfo.info_stat_maxed[increaseIndex].visible = false;
+	// 		creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
+	// 	}
+	// });
 	
 	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
 	creatureInfo.info_stat_text[5].text = this.object.statDis[0];
@@ -2097,33 +2097,33 @@ function onHPDown(){
 	// console.log(app.screen.width/2 + ", " + creatureInfo.status.width);
 }
 
-function onBtnStatUp(){
-	console.log(selectedHP.name);
-	var toAllocate = selectedHP.level * 3;
-	selectedHP.statDis.forEach(statDis =>{
-		toAllocate -= statDis;
-	});
-	if(toAllocate > 0){
-		selectedHP.statDis[this.identifier] += 1;
-		if(selectedHP.statDis[this.identifier] == 150){
-			creatureInfo.info_stat_maxed[this.identifier].visible = true;
-			creatureInfo.info_stat_increase[this.identifier].visible = false;
-			creatureInfo.info_stat_text[this.identifier*3+5].style.fill = '#FFd600';
-		}
-		toAllocate--;
-		creatureInfo.info_stat_text[this.identifier*3+5].text = selectedHP.statDis[this.identifier];
-		creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
-		if(toAllocate==0){
-			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
-				increase.visible = false;
-			});
-		}
-	}else{
-		console.log("No stat to allocate");
-	}
-	console.log(selectedHP.patk);
-	console.log(selectedHP.satk);
-}
+// function onBtnStatUp(){
+// 	console.log(selectedHP.name);
+// 	var toAllocate = selectedHP.level * 3;
+// 	selectedHP.statDis.forEach(statDis =>{
+// 		toAllocate -= statDis;
+// 	});
+// 	if(toAllocate > 0){
+// 		selectedHP.statDis[this.identifier] += 1;
+// 		if(selectedHP.statDis[this.identifier] == 150){
+// 			creatureInfo.info_stat_maxed[this.identifier].visible = true;
+// 			creatureInfo.info_stat_increase[this.identifier].visible = false;
+// 			creatureInfo.info_stat_text[this.identifier*3+5].style.fill = '#FFd600';
+// 		}
+// 		toAllocate--;
+// 		creatureInfo.info_stat_text[this.identifier*3+5].text = selectedHP.statDis[this.identifier];
+// 		creatureInfo.info_stat_text[2].text = "To allocate: " + toAllocate;
+// 		if(toAllocate==0){
+// 			creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
+// 				increase.visible = false;
+// 			});
+// 		}
+// 	}else{
+// 		console.log("No stat to allocate");
+// 	}
+// 	console.log(selectedHP.patk);
+// 	console.log(selectedHP.satk);
+// }
 
 function onBtnStatusUp(){
 	console.log("status up");
