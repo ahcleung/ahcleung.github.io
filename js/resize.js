@@ -310,6 +310,7 @@ function resizeInfo(){
 	creatureInfo.status.y = textOrigin[1];
 
 	if(creatureInfo.statusIcon != undefined){
+		console.log("info status icon resize");
 		// if(creatureInfo.statusIcon[0] != undefined){
 			creatureInfo.statusIcon.forEach(icon =>{
 				icon.width = app.screen.width/38;
@@ -319,6 +320,7 @@ function resizeInfo(){
 	}
 
 	if(creatureInfo.statusText != undefined){
+		console.log("info status text resize");
 		var detailLevel = 0;
 		// creatureInfo.statusIcon.forEach(icon =>{
 		// 	icon.width = app.screen.width/38;
