@@ -683,42 +683,42 @@ function setup(){
 	info_stat_text[18].text = "Special defense:";
 	info_stat_text[21].text = "Speed:";
 
-	var info_stat_increase = [];
-	var info_stat_maxed = [];
-	for(var i = 0; i < 7; i++){
-		const creatureStatIncrease = new PIXI.Container();
-		creatureStatIncrease.identifier = i;
-		var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
-		info_stat_increaseIcon.width = app.screen.height/25;
-		info_stat_increaseIcon.height = app.screen.height/25;
-		// info_stat_increaseIcon.x = -info_stat_increaseIcon.width;
-		info_stat_increaseIcon.anchor.set(0,0.5);
-		creatureStatIncrease.addChild(info_stat_increaseIcon);
-		var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
-		var info_stat_maxedText = new Text("Maxed", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'right'});
+	// var info_stat_increase = [];
+	// var info_stat_maxed = [];
+	// for(var i = 0; i < 7; i++){
+	// 	const creatureStatIncrease = new PIXI.Container();
+	// 	creatureStatIncrease.identifier = i;
+	// 	var info_stat_increaseIcon = new PIXI.Sprite(resources.icon_plus.texture);
+	// 	info_stat_increaseIcon.width = app.screen.height/25;
+	// 	info_stat_increaseIcon.height = app.screen.height/25;
+	// 	// info_stat_increaseIcon.x = -info_stat_increaseIcon.width;
+	// 	info_stat_increaseIcon.anchor.set(0,0.5);
+	// 	creatureStatIncrease.addChild(info_stat_increaseIcon);
+	// 	var info_stat_increaseText = new Text("Increase", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+	// 	var info_stat_maxedText = new Text("Maxed", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xFFD600, align : 'right'});
 
-		info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/100;
-		info_stat_maxedText.x = info_stat_increaseIcon.width + app.screen.width/100;
-		info_stat_increaseText.anchor.set(0,0.5);
-		info_stat_maxedText.anchor.set(0,0.5);
-		// info_item_text.push(info_stat_increaseIcon);
-		creatureStatIncrease.addChild(info_stat_increaseText);
-		// info_stat_increaseIcon.y = info_stat_increaseText.height/2;
-		creatureStatIncrease.buttonMode = true;
-	    	creatureStatIncrease.interactive = true;
-		creatureStatIncrease
-	        // set the mousedown and touchstart callback...
-	        .on('pointerdown', onBtnStatUp);
-	    creatureStatIncrease.increaseText = info_stat_increaseText;
-	    creatureStatIncrease.increaseIcon = info_stat_increaseIcon;
-	    info_stat_increase.push(creatureStatIncrease);
-	    info_stat_maxed.push(info_stat_maxedText);
-		creatureInfoStat.addChild(creatureStatIncrease);
-		creatureInfoStat.addChild(info_stat_maxedText);
-	}
+	// 	info_stat_increaseText.x = info_stat_increaseIcon.width + app.screen.width/100;
+	// 	info_stat_maxedText.x = info_stat_increaseIcon.width + app.screen.width/100;
+	// 	info_stat_increaseText.anchor.set(0,0.5);
+	// 	info_stat_maxedText.anchor.set(0,0.5);
+	// 	// info_item_text.push(info_stat_increaseIcon);
+	// 	creatureStatIncrease.addChild(info_stat_increaseText);
+	// 	// info_stat_increaseIcon.y = info_stat_increaseText.height/2;
+	// 	creatureStatIncrease.buttonMode = true;
+	//     	creatureStatIncrease.interactive = true;
+	// 	creatureStatIncrease
+	//         // set the mousedown and touchstart callback...
+	//         .on('pointerdown', onBtnStatUp);
+	//     creatureStatIncrease.increaseText = info_stat_increaseText;
+	//     creatureStatIncrease.increaseIcon = info_stat_increaseIcon;
+	//     info_stat_increase.push(creatureStatIncrease);
+	//     info_stat_maxed.push(info_stat_maxedText);
+	// 	creatureInfoStat.addChild(creatureStatIncrease);
+	// 	creatureInfoStat.addChild(info_stat_maxedText);
+	// }
 
-	creatureInfo.info_stat_increase = info_stat_increase;
-	creatureInfo.info_stat_maxed = info_stat_maxed;
+	// creatureInfo.info_stat_increase = info_stat_increase;
+	// creatureInfo.info_stat_maxed = info_stat_maxed;
 	// info_main_elementIcon.push(info_stat_increaseIcon);
 
 	creatureInfo.info_stat_text = info_stat_text;
