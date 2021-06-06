@@ -2032,7 +2032,7 @@ function onHPDown(){
 	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
 		text.x = (textIndex%4) * app.screen.width/13 + app.screen.width/50;
-		text.y = Math.floor(textIndex/4) * app.screen.height/12;
+		text.y = Math.floor(textIndex/4)+1 * app.screen.height/12;
 		// if(textIndex > 28){
 		// 	text.x = ((textIndex%3)+1) * app.screen.width/13 + app.screen.width/50;
 		// }else if(textIndex % 4 == 0){
