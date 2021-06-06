@@ -439,7 +439,7 @@ enemy[1] = {
 	id: 8, level: 49,
 	skill:[4,3,6,22],
 	items: [2,2],
-	statDODG: 70, statHP: 12, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
+	statDODG: 0, statHP: 82, statPATK: 0, statPDEF: 0, statSATK: 0, statSDEF: 0, statSPD: 0,
 	hero: false
 };
 enemy[2] = {
