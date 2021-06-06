@@ -1495,7 +1495,7 @@ function onInfoDown(){
 
 		creatureInfo.statusIcon.forEach(icon=>{
 			console.log("destroy icon");
-			icon.destroy();
+			icon.destroy(true);
 		});
 		creatureInfo.statusText.forEach(textContainer=>{
 			console.log("destroy text");
