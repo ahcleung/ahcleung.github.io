@@ -2031,11 +2031,11 @@ function onHPDown(){
 
 	creatureInfo.info_stat_text.forEach((text,textIndex) =>{
 		text.style.fontSize = skillNameFontSize;
-		if(textIndex < 2){
+		if(textIndex > 28){
 			text.x = ((textIndex%3)+1) * app.screen.width/13 + app.screen.width/50;
-		}else if((textIndex+1) % 4 == 0){
+		}else if(textIndex % 4 == 0){
 			text.x = app.screen.width/15;
-			text.y = Math.floor((textIndex+1)/4) * app.screen.height/12;
+			text.y = Math.floor(((textIndex/4)+1) * app.screen.height/12;
 		}
 		// }else if(textIndex == 2){
 		// 	text.x = ((textIndex%3)+1) * app.screen.width/11 + app.screen.width/50;
