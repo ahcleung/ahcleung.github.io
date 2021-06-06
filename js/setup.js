@@ -661,7 +661,7 @@ function setup(){
 	}
 	infoItemArray[0].selected.visible = true;
 
-	for(var i = 0; i < 24; i++){
+	for(var i = 0; i < 31; i++){
 		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		if(i%3 == 0 && i != 0){
 			info_stat.anchor.set(1,0.5);
