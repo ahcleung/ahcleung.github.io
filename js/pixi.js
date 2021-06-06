@@ -2033,15 +2033,19 @@ function onHPDown(){
 		text.style.fontSize = skillNameFontSize;
 		if(textIndex < 2){
 			text.x = ((textIndex%3)+1) * app.screen.width/13 + app.screen.width/50;
-		}else if(textIndex == 2){
-			text.x = ((textIndex%3)+1) * app.screen.width/11 + app.screen.width/50;
-		}else if(textIndex%3 != 0){
-			text.x = (textIndex%3) * app.screen.width/13 + app.screen.width/50;
-			text.y = Math.floor(textIndex/3) * app.screen.height/12;
-		}else{
+		}else if((textIndex-3) % 4 == 0){
 			text.x = app.screen.width/15;
-			text.y = Math.floor(textIndex/3) * app.screen.height/12;
+			text.y = Math.floor((textIndex+1)/4) * app.screen.height/12;
 		}
+		// }else if(textIndex == 2){
+		// 	text.x = ((textIndex%3)+1) * app.screen.width/11 + app.screen.width/50;
+		// }else if(textIndex%3 != 0){
+		// 	text.x = (textIndex%3) * app.screen.width/13 + app.screen.width/50;
+		// 	text.y = Math.floor(textIndex/3) * app.screen.height/12;
+		// }else{
+		// 	text.x = app.screen.width/15;
+		// 	text.y = Math.floor(textIndex/3) * app.screen.height/12;
+		// }
 	});
 
 	// var toAllocate = this.object.level * 3;
@@ -2088,7 +2092,7 @@ function onHPDown(){
 	// creatureInfo.info_stat_text[23].text = this.object.statDis[6];
 
 
-	
+
 	// if(skillIndex%2 == 0){
 	// 	textSkill.x = 0;
 	// 	textSkill.y = 100*skillIndex;
