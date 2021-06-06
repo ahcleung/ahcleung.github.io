@@ -666,7 +666,7 @@ function setup(){
 		if(i%3 == 0 && i != 0){
 			info_stat.anchor.set(1,0.5);
 		}else{
-			info_stat.anchor.set(0,0.5);
+			info_stat.anchor.set(0.5,0.5);
 		}
 		info_stat_text.push(info_stat);
 		creatureInfoStat.addChild(info_stat);
