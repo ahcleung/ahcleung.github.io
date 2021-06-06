@@ -662,7 +662,7 @@ function setup(){
 	infoItemArray[0].selected.visible = true;
 
 	for(var i = 0; i < 31; i++){
-		var info_stat = new Text("Name:", {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
+		var info_stat = new Text(i, {fontFamily : styleFontFamily, fontSize: 28, fill : 0xfefefe, align : 'right'});
 		if(i%3 == 0 && i != 0){
 			info_stat.anchor.set(1,0.5);
 		}else{
@@ -672,16 +672,16 @@ function setup(){
 		creatureInfoStat.addChild(info_stat);
 	}
 
-	info_stat_text[0].text = "Base";
-	info_stat_text[1].text = "Allocated";
-	info_stat_text[2].text = "Total";
-	info_stat_text[3].text = "Health points:";
-	info_stat_text[6].text = "Dodge:";
-	info_stat_text[9].text = "Physical attack:";
-	info_stat_text[12].text = "Physical defense:";
-	info_stat_text[15].text = "Special attack:";
-	info_stat_text[18].text = "Special defense:";
-	info_stat_text[21].text = "Speed:";
+	// info_stat_text[0].text = "Base";
+	// info_stat_text[1].text = "Allocated";
+	// info_stat_text[2].text = "Total";
+	// info_stat_text[3].text = "Health points:";
+	// info_stat_text[6].text = "Dodge:";
+	// info_stat_text[9].text = "Physical attack:";
+	// info_stat_text[12].text = "Physical defense:";
+	// info_stat_text[15].text = "Special attack:";
+	// info_stat_text[18].text = "Special defense:";
+	// info_stat_text[21].text = "Speed:";
 
 	// var info_stat_increase = [];
 	// var info_stat_maxed = [];
