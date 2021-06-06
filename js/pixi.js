@@ -2044,10 +2044,10 @@ function onHPDown(){
 		}
 	});
 
-	var toAllocate = this.object.level * 3;
-	this.object.statDis.forEach(statDis =>{
-		toAllocate -= statDis;
-	});
+	// var toAllocate = this.object.level * 3;
+	// this.object.statDis.forEach(statDis =>{
+	// 	toAllocate -= statDis;
+	// });
 
 	// creatureInfo.info_stat_increase.forEach((increase, increaseIndex)=>{
 	// 	increase.increaseText.style.fontSize = skillNameFontSize;
