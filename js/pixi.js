@@ -1615,7 +1615,7 @@ function onHPDown(){
 	
 	creatureInfo.status.visible = false;
 
-	console.log("Name: " + this.object.name + "\nHP: " + this.object.statCalc[0] + "\nStats: " + this.object.statMod);
+	console.log("Name: " + this.object.name + "\nHP: " + this.object.hp + "\nStats: " + this.object.statMod);
 	this.object.statusArray.forEach(status =>{
 		// console.log(status);
 		var tracker = false;
