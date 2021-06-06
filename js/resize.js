@@ -310,10 +310,12 @@ function resizeInfo(){
 	creatureInfo.status.y = textOrigin[1];
 
 	if(creatureInfo.statusIcon != undefined){
-		creatureInfo.statusIcon.forEach((icon) =>{
-			icon.width = app.screen.width/38;
-			icon.height = icon.width;
-		});
+		if(creatureInfo.statusIcon[0] != undefined){
+			creatureInfo.statusIcon.forEach((icon) =>{
+				icon.width = app.screen.width/38;
+				icon.height = icon.width;
+			});
+		}
 	}
 
 	if(creatureInfo.statusText != undefined){
