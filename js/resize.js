@@ -309,21 +309,21 @@ function resizeInfo(){
 	creatureInfo.status.x = textOrigin[0];
 	creatureInfo.status.y = textOrigin[1];
 
-	// if(creatureInfo.statusIcon != undefined){
-	// 	if(creatureInfo.statusIcon[0] != undefined){
-	// 		creatureInfo.statusIcon.forEach((icon) =>{
-	// 			icon.width = app.screen.width/38;
-	// 			icon.height = icon.width;
-	// 		});
-	// 	}
-	// }
+	if(creatureInfo.statusIcon != undefined){
+		// if(creatureInfo.statusIcon[0] != undefined){
+			creatureInfo.statusIcon.forEach(icon =>{
+				icon.width = app.screen.width/38;
+				icon.height = icon.width;
+			});
+		// }
+	}
 
 	if(creatureInfo.statusText != undefined){
 		var detailLevel = 0;
-		creatureInfo.statusIcon.forEach((icon) =>{
-			icon.width = app.screen.width/38;
-			icon.height = icon.width;
-		});
+		// creatureInfo.statusIcon.forEach(icon =>{
+		// 	icon.width = app.screen.width/38;
+		// 	icon.height = icon.width;
+		// });
 		creatureInfo.statusText.forEach((textContainer,containerIndex) =>{
 			if(textContainer.y == 0)	detailLevel = 0;
 			textContainer.y = statusMargin[1]*detailLevel;
