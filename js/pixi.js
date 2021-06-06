@@ -2071,30 +2071,19 @@ function onHPDown(){
 			creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
 		}
 	});
-
-	creatureInfo.info_stat_text[0].text = "Base";
-	creatureInfo.info_stat_text[1].text = "Assigned";
 	
-	creatureInfo.info_stat_text[2].text = "To assign: " + toAllocate;
-	creatureInfo.info_stat_text[3].text = "Health points:";
 	creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
 	creatureInfo.info_stat_text[5].text = this.object.statDis[0];
-	creatureInfo.info_stat_text[6].text = "Dodge:";
 	creatureInfo.info_stat_text[7].text = creatureList.data.creature[this.object.id].dodge;
 	creatureInfo.info_stat_text[8].text = this.object.statDis[1];
-	creatureInfo.info_stat_text[9].text = "Physical attack:";
 	creatureInfo.info_stat_text[10].text = creatureList.data.creature[this.object.id].patk;
 	creatureInfo.info_stat_text[11].text = this.object.statDis[2];
-	creatureInfo.info_stat_text[12].text = "Physical defense:";
 	creatureInfo.info_stat_text[13].text = creatureList.data.creature[this.object.id].pdef;
 	creatureInfo.info_stat_text[14].text = this.object.statDis[3];
-	creatureInfo.info_stat_text[15].text = "Special attack:";
 	creatureInfo.info_stat_text[16].text = creatureList.data.creature[this.object.id].satk;
 	creatureInfo.info_stat_text[17].text = this.object.statDis[4];
-	creatureInfo.info_stat_text[18].text = "Special defense:";
 	creatureInfo.info_stat_text[19].text = creatureList.data.creature[this.object.id].sdef;
 	creatureInfo.info_stat_text[20].text = this.object.statDis[5];
-	creatureInfo.info_stat_text[21].text = "Speed:";
 	creatureInfo.info_stat_text[22].text = creatureList.data.creature[this.object.id].spd;
 	creatureInfo.info_stat_text[23].text = this.object.statDis[6];
 	// if(skillIndex%2 == 0){
