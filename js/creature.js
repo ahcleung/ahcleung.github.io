@@ -141,7 +141,7 @@ class Creature{
 	}
 
 	get dodge(){
-		return (this.statCalc[1] + this.statDis[0])/3;
+		return this.statCalc[1];
 	}
 
 	get dodgeMod(){
@@ -149,51 +149,51 @@ class Creature{
 	}
 
 	get patk(){
-		var statSum = this.statCalc[2] + this.statDis[2];
+		// var statSum = this.statCalc[2] + this.statDis[2];
 		if(this.statMod[2] > 0){
-			return statSum * ((this.statMod[2]+2)/2);
+			return this.statCalc[2] * ((this.statMod[2]+2)/2);
 		}else if(this.statMod[2] < 0){
-			return statSum * (2/(Math.abs(this.statMod[2])+2));
+			return this.statCalc[2] * (2/(Math.abs(this.statMod[2])+2));
 		}else{
-			return statSum;
+			return this.statCalc[2];
 		}
 	}
 
 	get pdef(){
-		var statSum = this.statCalc[3] + this.statDis[3];
+		// var statSum = this.statCalc[3] + this.statDis[3];
 		if(this.statMod[3] > 0){
-			return statSum * ((this.statMod[3]+2)/2);
+			return this.statCalc[3] * ((this.statMod[3]+2)/2);
 		}else if(this.statMod[3] < 0){
-			return statSum * (2/(Math.abs(this.statMod[3])+2));
+			return this.statCalc[3] * (2/(Math.abs(this.statMod[3])+2));
 		}else{
-			return statSum;
+			return this.statCalc[3];
 		}
 	}
 
 	get satk(){
-		var statSum = this.statCalc[4] + this.statDis[4];
+		// var statSum = this.statCalc[4] + this.statDis[4];
 		if(this.statMod[4] > 0){
-			return statSum * ((this.statMod[4]+2)/2);
+			return this.statCalc[4] * ((this.statMod[4]+2)/2);
 		}else if(this.statMod[4] < 0){
-			return statSum * (2/(Math.abs(this.statMod[4])+2));
+			return this.statCalc[4] * (2/(Math.abs(this.statMod[4])+2));
 		}else{
-			return statSum;
+			return this.statCalc[4];
 		}
 	}
 
 	get sdef(){
-		var statSum = this.statCalc[5] + this.statDis[5];
+		// var statSum = this.statCalc[5] + this.statDis[5];
 		if(this.statMod[5] > 0){
-			return statSum * ((this.statMod[5]+2)/2);
+			return this.statCalc[5] * ((this.statMod[5]+2)/2);
 		}else if(this.statMod[5] < 0){
-			return statSum * (2/(Math.abs(this.statMod[5])+2));
+			return this.statCalc[5] * (2/(Math.abs(this.statMod[5])+2));
 		}else{
-			return statSum;
+			return this.statCalc[5];
 		}
 	}
 
 	get spd(){
-		return this.statCalc[6] + this.statDis[6];
+		return this.statCalc[6];
 	}
 
 	get accMod(){
