@@ -43,7 +43,7 @@ class Creature{
 		this.element = creatureList.data.creature[this.id].element;		//Creature element
 		
 		this.baseHP = creatureList.data.creature[this.id].hp;
-		// this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
+		this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
 			
 		this.EHP = this.overallHP - this.critDmg;
@@ -128,9 +128,9 @@ class Creature{
 		this.statCalc[0] = this.EHP;	
 	}
 
-	get overallHP(){
-		return Math.round(((((2*this.baseHP + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
-	}
+	// get overallHP(){
+	// 	return Math.round(((((2*this.baseHP + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
+	// }
 
 	// get EHP(){
 	// 	return this.overallHP - this.critDmg;
