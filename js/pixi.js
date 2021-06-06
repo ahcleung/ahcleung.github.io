@@ -1504,7 +1504,7 @@ function onInfoDown(){
 			console.log("destroy text");
 			textContainer.destroy(true);
 		});
-
+		creatureInfo.statusText.length = 0;
 		// creatureInfo.skillText.forEach(text=>{
 		// 	console.log("destroy text");
 		// 	text.destroy();
