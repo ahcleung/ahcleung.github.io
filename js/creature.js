@@ -42,10 +42,11 @@ class Creature{
 		this.name = creatureList.data.creature[this.id].name;				//Creature name
 		this.element = creatureList.data.creature[this.id].element;		//Creature element
 		
-		this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
+		this.baseHP = creatureList.data.creature[this.id].hp;
+		// this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
 			
-		this.EHP = this.overallHP - this.critDmg;
+		// this.EHP = this.overallHP - this.critDmg;
 
 		this.statCalc = [
 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
@@ -125,6 +126,14 @@ class Creature{
 
 	fullHeal(){
 		this.statCalc[0] = this.EHP;	
+	}
+
+	get overallHP(){
+		return Math.round(((((2*this.baseHP + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
+	}
+
+	get EHP(){
+		return this.overallHP - this.critDmg;
 	}
 
 	get hp(){
