@@ -673,7 +673,7 @@ function setup(){
 	}
 
 	info_stat_text[0].text = "Base";
-	info_stat_text[1].text = "Assigned";
+	info_stat_text[1].text = "Allocated";
 	info_stat_text[2].text = "Total";
 	info_stat_text[3].text = "Health points:";
 	info_stat_text[6].text = "Dodge:";
