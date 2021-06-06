@@ -1513,6 +1513,7 @@ function onInfoDown(){
 		creatureInfo.infoSkillArray.forEach(skillContainer=>{
 			skillContainer.destroy();
 		});
+		creatureInfo.infoSkillArray.length = 0;
 
 		creatureInfo.infoItemArray.forEach(itemContainer =>{
 			itemContainer.interactive = false;
