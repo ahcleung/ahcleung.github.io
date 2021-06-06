@@ -2081,6 +2081,13 @@ function onHPDown(){
 	// 		creatureInfo.info_stat_text[increaseIndex*3+5].style.fill = '#fefefe';
 	// 	}
 	// });
+	this.object.statDis.forEach((stat,statIndex) =>{
+		if(stat == 150){
+			creatureInfo.info_stat_text[statIndex*4+2].style.fill = '#FFd600';	
+		}else{
+			creatureInfo.info_stat_text[statIndex*4+2].style.fill = '#fefefe';
+		}
+	})
 	
 	creatureInfo.info_stat_text[1].text = creatureList.data.creature[this.object.id].hp;
 	creatureInfo.info_stat_text[2].text = this.object.statDis[0];
