@@ -2082,20 +2082,27 @@ function onHPDown(){
 	// 	}
 	// });
 	
-	// creatureInfo.info_stat_text[4].text = creatureList.data.creature[this.object.id].hp;
-	// creatureInfo.info_stat_text[5].text = this.object.statDis[0];
-	// creatureInfo.info_stat_text[7].text = creatureList.data.creature[this.object.id].dodge;
-	// creatureInfo.info_stat_text[8].text = this.object.statDis[1];
-	// creatureInfo.info_stat_text[10].text = creatureList.data.creature[this.object.id].patk;
-	// creatureInfo.info_stat_text[11].text = this.object.statDis[2];
-	// creatureInfo.info_stat_text[13].text = creatureList.data.creature[this.object.id].pdef;
-	// creatureInfo.info_stat_text[14].text = this.object.statDis[3];
-	// creatureInfo.info_stat_text[16].text = creatureList.data.creature[this.object.id].satk;
-	// creatureInfo.info_stat_text[17].text = this.object.statDis[4];
-	// creatureInfo.info_stat_text[19].text = creatureList.data.creature[this.object.id].sdef;
-	// creatureInfo.info_stat_text[20].text = this.object.statDis[5];
-	// creatureInfo.info_stat_text[22].text = creatureList.data.creature[this.object.id].spd;
-	// creatureInfo.info_stat_text[23].text = this.object.statDis[6];
+	creatureInfo.info_stat_text[1].text = creatureList.data.creature[this.object.id].hp;
+	creatureInfo.info_stat_text[2].text = this.object.statDis[0];
+	creatureInfo.info_stat_text[3].text = creatureList.data.creature[this.object.id].hp + this.object.statDis[0];
+	creatureInfo.info_stat_text[5].text = creatureList.data.creature[this.object.id].dodge;
+	creatureInfo.info_stat_text[6].text = this.object.statDis[1];
+	creatureInfo.info_stat_text[7].text = creatureList.data.creature[this.object.id].dodge + this.object.statDis[1];	
+	creatureInfo.info_stat_text[9].text = creatureList.data.creature[this.object.id].patk;
+	creatureInfo.info_stat_text[10].text = this.object.statDis[2];
+	creatureInfo.info_stat_text[11].text = creatureList.data.creature[this.object.id].patk + this.object.statDis[2];
+	creatureInfo.info_stat_text[13].text = creatureList.data.creature[this.object.id].pdef;
+	creatureInfo.info_stat_text[14].text = this.object.statDis[3];
+	creatureInfo.info_stat_text[15].text = creatureList.data.creature[this.object.id].pdef + this.object.statDis[3];
+	creatureInfo.info_stat_text[17].text = creatureList.data.creature[this.object.id].satk;
+	creatureInfo.info_stat_text[18].text = this.object.statDis[4];
+	creatureInfo.info_stat_text[19].text = creatureList.data.creature[this.object.id].satk + this.object.statDis[4];
+	creatureInfo.info_stat_text[21].text = creatureList.data.creature[this.object.id].sdef;
+	creatureInfo.info_stat_text[22].text = this.object.statDis[5];
+	creatureInfo.info_stat_text[23].text = creatureList.data.creature[this.object.id].sdef + this.object.statDis[5];
+	creatureInfo.info_stat_text[25].text = creatureList.data.creature[this.object.id].spd;
+	creatureInfo.info_stat_text[26].text = this.object.statDis[6];
+	creatureInfo.info_stat_text[27].text = creatureList.data.creature[this.object.id].spd + this.object.statDis[6];
 
 
 
