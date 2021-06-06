@@ -46,7 +46,7 @@ class Creature{
 		// this.overallHP = Math.round(((((2*creatureList.data.creature[this.id].hp + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 // 		this.overallHP = 100;
 			
-		// this.EHP = this.overallHP - this.critDmg;
+		this.EHP = this.overallHP - this.critDmg;
 
 		this.statCalc = [
 			this.EHP - Math.floor(Math.random() * ((this.EHP - 12) - 12 + 1)), 
@@ -132,9 +132,9 @@ class Creature{
 		return Math.round(((((2*this.baseHP + this.statDis[0]) * this.level)/100) + this.level + 10) * this.size);
 	}
 
-	get EHP(){
-		return this.overallHP - this.critDmg;
-	}
+	// get EHP(){
+	// 	return this.overallHP - this.critDmg;
+	// }
 
 	get hp(){
 		return this.statCalc[0] + this.statDis[0];
