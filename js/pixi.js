@@ -4303,7 +4303,7 @@ function selectCreature(object2){
 						weight.push(selectedVita.satk/10);
 						damageCalc *= selectedVita.satk/10;
 					}
-					damage+= damageCalc;
+					damage+= Math.round(damageCalc);
 					weights.push(weight);
 				// targetArray.push(validPos);
 				// targetArray.push(creatureObject.name);
