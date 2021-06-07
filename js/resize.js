@@ -237,7 +237,10 @@ function resizeInfo(){
 	var infoBtnTextSize = 36;
 	var statusMargin = [app.screen.width/20,app.screen.height/17];
 	var turnMargin = app.screen.width/192;
-	var textOrigin = [app.screen.width/2,app.screen.height/6];
+	// var textOrigin = [app.screen.width/2,app.screen.height/6];
+	var textOrigin = [];
+	textOrigin[0] = app.screen.width/2;
+	textOrigin[1] = (app.screen.width < 860 ? app.screen.height/7 : app.screen.height/6);
 	var infoMainMargin = app.screen.height/20;
 	var infoInnerMargin = app.screen.width/19.2;
 	var infoSelectPadding = app.screen.width/384;
@@ -310,22 +313,16 @@ function resizeInfo(){
 	creatureInfo.status.y = textOrigin[1];
 
 	if(creatureInfo.statusIcon != undefined){
-		console.log("info status icon resize");
-		// if(creatureInfo.statusIcon[0] != undefined){
-			creatureInfo.statusIcon.forEach(icon =>{
-				icon.width = app.screen.width/38;
-				icon.height = icon.width;
-			});
-		// }
+		// console.log("info status icon resize");
+		creatureInfo.statusIcon.forEach(icon =>{
+			icon.width = app.screen.width/38;
+			icon.height = icon.width;
+		});
 	}
 
 	if(creatureInfo.statusText != undefined){
-		console.log("info status text resize");
+		// console.log("info status text resize");
 		var detailLevel = 0;
-		// creatureInfo.statusIcon.forEach(icon =>{
-		// 	icon.width = app.screen.width/38;
-		// 	icon.height = icon.width;
-		// });
 		creatureInfo.statusText.forEach((textContainer,containerIndex) =>{
 			if(textContainer.y == 0)	detailLevel = 0;
 			textContainer.y = statusMargin[1]*detailLevel;
