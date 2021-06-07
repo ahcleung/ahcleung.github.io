@@ -4292,7 +4292,8 @@ function selectCreature(object2){
 					weight.push(SEAB);
 					weight.push(splashMod);
 					weight.push(columnMod);
-					weight.push(1-(creatureObject.hp/creatureObject.EHP));
+					var hpWeight = (1-((creatureObject.hp/creatureObject.EHP)*100))/100;
+					weight.push(hpWeight);
 
 					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod;
 					if(skillList.data.skill[skillID].type == "Physical"){
