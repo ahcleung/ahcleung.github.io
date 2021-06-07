@@ -4292,7 +4292,7 @@ function selectCreature(object2){
 					weight.push(SEAB);
 					weight.push(splashMod);
 					weight.push(columnMod);
-					var hpWeight = (1-((creatureObject.hp/creatureObject.EHP)*100))/100;
+					var hpWeight = Math.round((1-(creatureObject.hp/creatureObject.EHP))*100)/100;
 					weight.push(hpWeight);
 
 					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod;
