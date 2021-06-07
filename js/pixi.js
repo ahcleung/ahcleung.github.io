@@ -4295,7 +4295,7 @@ function selectCreature(object2){
 					var hpWeight = Math.round((1-(creatureObject.hp/creatureObject.EHP))*100)/100;
 					weight.push(hpWeight);
 
-					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod;
+					damageCalc *= skillList.data.skill[skillID].power * effectiveness * skillAccuracy * SEAB * splashMod * columnMod * hpWeight;
 					if(skillList.data.skill[skillID].type == "Physical"){
 						weight.push(selectedVita.patk/10);
 						damageCalc *= selectedVita.patk/10;
