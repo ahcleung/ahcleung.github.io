@@ -407,7 +407,7 @@ hero[0] = {
 	hero: true
 };
 hero[1] = {
-	id: 11, level: 47,
+	id: 2, level: 47,
 	skill:[1,10,3,22],
 	items: [2,2],
 	statDODG: 95, statHP: 0, statPATK: 0, statPDEF: 21, statSATK: 0, statSDEF: 25, statSPD: 0,
