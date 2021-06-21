@@ -44,7 +44,7 @@ function resize() {
 		sizeScale = 0.4;
 		margin = app.screen.height/72;
 		targetTextFontSize = 12;
-		skillNameFontSize = 12;
+		skillNameFontSize = 13;
 		hazardSize = 0.35;
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
@@ -542,7 +542,7 @@ function resizeHP(roster, item){
 	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
-	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 12
+	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 13
 										: app.screen.width < 1366 ? 18
 										: 24);
 	
