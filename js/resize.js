@@ -44,7 +44,7 @@ function resize() {
 		sizeScale = 0.4;
 		margin = app.screen.height/72;
 		targetTextFontSize = 12;
-		skillNameFontSize = 14;
+		skillNameFontSize = 12;
 		hazardSize = 0.35;
 		hazardMargin = 20;
 	}else if(app.screen.width < 1366){
