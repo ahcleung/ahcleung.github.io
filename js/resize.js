@@ -542,7 +542,7 @@ function resizeHP(roster, item){
 	item.healthBar.turn.height = app.screen.width/320;
 	item.healthBar.turn.y = resizeHeight;
 
-	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 14
+	item.healthBar.textHP.style.fontSize = (app.screen.width < 860 ? 12
 										: app.screen.width < 1366 ? 18
 										: 24);
 	
