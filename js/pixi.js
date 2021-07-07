@@ -4285,7 +4285,8 @@ function selectCreature(object2){
 						effectiveness *= elementList.data.element[element1]["effect"][element2];
 					});
 
-					weight.push(skillList.data.skill[skillID].power);
+					var skillPower = (skillList.data.skill[skillID].power != 0 ? skillList.data.skill[skillID].power: 1);
+					weight.push(skillPower);
 					var skillAccuracy = (skillList.data.skill[skillID].accuracy != 0 ? skillList.data.skill[skillID].accuracy/100: 1);
 					weight.push(skillAccuracy);
 					weight.push(effectiveness);
