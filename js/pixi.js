@@ -4305,7 +4305,8 @@ function selectCreature(object2){
 						damageCalc *= selectedVita.satk/10;
 					}else{
 						if(heal){
-							var healMod = skillList.data.skill[skillID].heal/creatureObject.EHP;
+							var healMod = skillList.data.skill[skillID].heal;
+							damageCalc *= healMod;
 							weight.push(healMod);	
 						}
 					}
