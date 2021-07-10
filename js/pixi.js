@@ -4303,6 +4303,11 @@ function selectCreature(object2){
 					}else if(skillList.data.skill[skillID].type == "Special"){
 						weight.push(selectedVita.satk/10);
 						damageCalc *= selectedVita.satk/10;
+					}else{
+						if(heal){
+							var healMod = skillList.data.skill[skillID].heal;
+							weight.push(healMod);	
+						}
 					}
 					damage+= Math.round(damageCalc);
 					weights.push(weight);
