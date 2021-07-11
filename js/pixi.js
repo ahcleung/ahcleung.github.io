@@ -42,7 +42,7 @@ loader
 		"js/json/encounter.json",
 		"js/json/player_map.json",
 
-		{name:'battle_theme', url:'sfx/Battle_Theme_Loop.wav'};
+		{name:'battle_theme', url:'sfx/Battle_Theme_Loop.wav'},
 
 		{name:'icon_plus', url:'img/icon_plus.png'},
 
