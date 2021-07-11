@@ -4306,7 +4306,7 @@ function selectCreature(object2){
 					}else{
 						if(heal){
 							var healMod = skillList.data.skill[skillID].heal;
-							damageCalc = skillList.data.skill[skillID].heal * skillAccuracy * columnMod * (1+hpWeight);
+							damageCalc = skillList.data.skill[skillID].heal * skillAccuracy * columnMod * (1+(hpWeight*2));
 							weight.push(healMod);
 							// damageCalc *= healMod;
 							// weight.push(healMod);	
