@@ -1305,7 +1305,12 @@ function onMenuDown(){
 
 	// console.log("explore");
 
-	sound.stop();
+	if(sound.isPlaying){
+		sound.stop();
+	}else{
+		sound.play();	
+	}
+	
 	
 	if (screenfull.isEnabled) {
 		screenfull.toggle();
