@@ -335,7 +335,7 @@ var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
 
-const sound;
+var sound;
 
 var creatureInfoBG;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
