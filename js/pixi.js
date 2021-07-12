@@ -335,6 +335,8 @@ var btnAdditional, btnSettings, textureAdditional, textureSettings;
 var textureAdditionalCancel, textureAdditionalMove, textureAdditionalItem, textureAdditionalSkip;
 var btnAdditionalCancel, btnAdditionalMove, btnAdditionalItem, btnAdditionalSkip;
 
+const sound;
+
 var creatureInfoBG;
 const blurFilterInfo = new PIXI.filters.BlurFilter();
 const creatureInfoSprite = new PIXI.Container();
@@ -1302,6 +1304,8 @@ function onMenuDown(){
 	// interfaceHolder.destroy(true);
 
 	// console.log("explore");
+
+
 	
 	if (screenfull.isEnabled) {
 		screenfull.toggle();
