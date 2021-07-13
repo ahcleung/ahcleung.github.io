@@ -13,7 +13,7 @@ function setup(){
 	textureAdditionalItem = PIXI.Texture.from('img/additional_item.png');
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
 
-	sound = resources.battle_theme.sound;
+	sound = resources.battle_theme2.sound;
 	sound.loop = true;
 
 	// const turnStyle = new PIXI.TextStyle({
