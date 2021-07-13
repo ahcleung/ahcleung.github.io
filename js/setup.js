@@ -14,7 +14,7 @@ function setup(){
 	textureAdditionalSkip = PIXI.Texture.from('img/additional_skip.png');
 
 	sound = resources.battle_theme.sound;
-	
+	sound.loop();
 
 	// const turnStyle = new PIXI.TextStyle({
  //        fontFamily: 'Arvo',
